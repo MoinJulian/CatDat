@@ -12,7 +12,7 @@ export type Category = {
 }
 
 export type CategoryProperty = {
-	id: string
+	id: number
 	name: string
 	description: string
 }
