@@ -15,4 +15,5 @@ export type CategoryProperty = {
 	id: number
 	name: string
 	description: string
+	prefix: 'is' | 'has' | 'has a' | 'is a' | 'is an'
 }
