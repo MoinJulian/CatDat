@@ -3,6 +3,8 @@
 	const { property, categories_with_this_property } = data
 </script>
 
+<a href="/">Home</a>
+
 <h2>{property.name}</h2>
 
 <p><strong>Definition:</strong> {property.description}</p>

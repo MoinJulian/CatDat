@@ -1,11 +1,25 @@
 <script lang="ts">
-	import { categories_list } from '$lib/lists'
+	import { categories_list, category_property_list } from '$lib/lists'
 </script>
+
+The following categories are available:
 
 <ul>
 	{#each categories_list as category (category.id)}
 		<li>
 			<a href="/category/{category.id}">{category.name}</a>
+		</li>
+	{/each}
+</ul>
+
+The following properties are available:
+
+<ul>
+	{#each category_property_list as property}
+		<li>
+			<a href="/property/{property.id}">
+				{property.name}
+			</a>
 		</li>
 	{/each}
 </ul>
