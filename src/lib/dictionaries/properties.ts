@@ -1,4 +1,4 @@
-import type { CategoryProperty } from '$lib/types'
+import type { Property } from '$lib/types'
 
 export const properties_dictionary = {
 	'small': {
@@ -124,11 +124,11 @@ export const properties_dictionary = {
 		description:
 			'A category has finite coproducts if it has coproducts for finite families of objects. Equivalently, it has an initial object and binary coproducts.',
 	},
-} as const satisfies Record<string, Omit<CategoryProperty, 'name'>>
+} as const satisfies Record<string, Omit<Property, 'name'>>
 
-export const properties_list: CategoryProperty[] = Object.entries(
-	properties_dictionary,
-).map(([name, property]) => ({
-	name,
-	...property,
-}))
+export const properties_list: Property[] = Object.entries(properties_dictionary).map(
+	([name, property]) => ({
+		name,
+		...property,
+	}),
+)

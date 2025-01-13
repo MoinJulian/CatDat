@@ -1,5 +1,7 @@
 import type { properties_dictionary } from './dictionaries/properties'
 
+type PropertyName = keyof typeof properties_dictionary
+
 export type Category = {
 	id: number
 	name: string
@@ -7,29 +9,25 @@ export type Category = {
 	objects: string
 	morphisms: string
 	description?: string
-	properties: (keyof typeof properties_dictionary)[]
-	non_properties: (keyof typeof properties_dictionary)[]
+	properties: PropertyName[]
+	non_properties: PropertyName[]
 }
 
 export type CategoryWithProperties = Omit<Category, 'properties' | 'non_properties'> & {
-	properties: CategoryProperty[]
-	non_properties: CategoryProperty[]
+	properties: Property[]
+	non_properties: Property[]
 }
 
 export const prefixes = ['is', 'is a', 'is an', 'has', 'has a', 'has an'] as const
 
-export type CategoryProperty = {
+export type Property = {
 	id: number
 	name: string
 	description: string
 	prefix: (typeof prefixes)[number]
 }
 
-export type CategoryPropertyImplication = {
-	assumption:
-		| keyof typeof properties_dictionary
-		| (keyof typeof properties_dictionary)[]
-	conclusion:
-		| keyof typeof properties_dictionary
-		| (keyof typeof properties_dictionary)[]
+export type Implication = {
+	assumption: PropertyName | PropertyName[]
+	conclusion: PropertyName | PropertyName[]
 }

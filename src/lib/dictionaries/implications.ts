@@ -1,6 +1,6 @@
-import type { CategoryPropertyImplication } from '$lib/types'
+import type { Implication } from '$lib/types'
 
-export const implications: CategoryPropertyImplication[] = [
+export const implications: Implication[] = [
 	{
 		assumption: 'locally small',
 		conclusion: 'small',
