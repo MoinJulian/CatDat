@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { categories_list, category_property_list } from '$lib/lists'
+	import { categories_list } from '$lib/dictionaries/categories'
+	import { category_property_list } from '$lib/dictionaries/category-properties'
 </script>
 
 The following categories are available:
