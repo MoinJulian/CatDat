@@ -29,6 +29,7 @@ export type Property = {
 }
 
 export type Implication = {
+	equivalent?: boolean
 	assumptions: PropertyName[]
 	conclusions: PropertyName[]
 }

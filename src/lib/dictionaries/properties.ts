@@ -124,6 +124,30 @@ export const properties_dictionary = {
 		description:
 			'A category has finite coproducts if it has coproducts for finite families of objects. Equivalently, it has an initial object and binary coproducts.',
 	},
+	'equalizers': {
+		id: 22,
+		prefix: 'has',
+		description:
+			'An equalizer of a pair of morphisms $f,g : A \\to B$ is an object $E$ with a morphism $e : E \\to A$ such that $f \\circ e = g \\circ e$ and which is universal with respect to this property.',
+	},
+	'coequalizers': {
+		id: 23,
+		prefix: 'has',
+		description:
+			'A coequalizer of a pair of morphisms $f,g : A \\to B$ is an object $C$ with a morphism $c : B \\to C$ such that $c \\circ f = c \\circ g$ and which is universal with respect to this property.',
+	},
+	'filtered limits': {
+		id: 24,
+		prefix: 'has',
+		description:
+			'A category has filtered limits if it has limits of diagrams indexed by filtered categories.',
+	},
+	'filtered colimits': {
+		id: 25,
+		prefix: 'has',
+		description:
+			'A category has filtered colimits if it has colimits of diagrams indexed by filtered categories.',
+	},
 } as const satisfies Record<string, Omit<Property, 'name'>>
 
 export const properties_list: Property[] = Object.entries(properties_dictionary).map(

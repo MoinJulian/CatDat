@@ -31,13 +31,17 @@ The following properties are available:
 	{/each}
 </ul>
 
-The following implications are available:
+The following implications and equivalences are available:
 
 <ul>
 	{#each implications as implication}
 		<li>
 			{@html implication.assumptions.join(' &and; ')}
-			&rArr;
+			{#if implication.equivalent}
+				&hArr;
+			{:else}
+				&rArr;
+			{/if}
 			{@html implication.conclusions.join(' &and; ')}
 		</li>
 	{/each}

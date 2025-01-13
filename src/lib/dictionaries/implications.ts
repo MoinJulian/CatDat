@@ -31,12 +31,14 @@ export const implications: Implication[] = [
 		conclusions: ['well-powered', 'well-copowered'],
 	},
 	{
+		equivalent: true,
 		assumptions: ['complete'],
-		conclusions: ['finitely complete'],
+		conclusions: ['finitely complete', 'filtered limits'],
 	},
 	{
+		equivalent: true,
 		assumptions: ['cocomplete'],
-		conclusions: ['finitely cocomplete'],
+		conclusions: ['finitely cocomplete', 'filtered colimits'],
 	},
 	{
 		assumptions: ['preadditive'],
@@ -59,20 +61,20 @@ export const implications: Implication[] = [
 		conclusions: ['finite products'],
 	},
 	{
-		assumptions: ['finitely complete'],
-		conclusions: ['finite products'],
-	},
-	{
-		assumptions: ['finite products'],
-		conclusions: ['terminal object'],
-	},
-	{
 		assumptions: ['coproducts'],
 		conclusions: ['finite coproducts'],
 	},
 	{
-		assumptions: ['finitely complete'],
-		conclusions: ['finite coproducts'],
+		assumptions: ['finite products', 'filtered limits'],
+		conclusions: ['products'],
+	},
+	{
+		assumptions: ['finite coproducts', 'filtered colimits'],
+		conclusions: ['coproducts'],
+	},
+	{
+		assumptions: ['finite products'],
+		conclusions: ['terminal object'],
 	},
 	{
 		assumptions: ['finite coproducts'],
@@ -85,5 +87,25 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['cartesian closed'],
 		conclusions: ['finite products'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['finite products', 'equalizers'],
+		conclusions: ['finitely complete'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['finite coproducts', 'coequalizers'],
+		conclusions: ['finitely cocomplete'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['products', 'equalizers'],
+		conclusions: ['complete'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['coproducts', 'coequalizers'],
+		conclusions: ['cocomplete'],
 	},
 ]
