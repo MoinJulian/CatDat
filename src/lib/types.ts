@@ -29,6 +29,6 @@ export type Property = {
 }
 
 export type Implication = {
-	assumption: PropertyName | PropertyName[]
-	conclusion: PropertyName | PropertyName[]
+	assumptions: PropertyName[]
+	conclusions: PropertyName[]
 }

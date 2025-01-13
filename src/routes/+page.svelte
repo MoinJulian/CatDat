@@ -35,16 +35,10 @@ The following implications are available:
 
 <ul>
 	{#each implications as implication}
-		{@const assumption = Array.isArray(implication.assumption)
-			? implication.assumption.join(' &and; ')
-			: implication.assumption}
-		{@const conclusion = Array.isArray(implication.conclusion)
-			? implication.conclusion.join(' &and; ')
-			: implication.conclusion}
 		<li>
-			{@html assumption}
+			{@html implication.assumptions.join(' &and; ')}
 			&rArr;
-			{@html conclusion}
+			{@html implication.conclusions.join(' &and; ')}
 		</li>
 	{/each}
 </ul>

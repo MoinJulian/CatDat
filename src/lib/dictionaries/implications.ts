@@ -2,20 +2,20 @@ import type { Implication } from '$lib/types'
 
 export const implications: Implication[] = [
 	{
-		assumption: 'locally small',
-		conclusion: 'small',
+		assumptions: ['locally small'],
+		conclusions: ['small'],
 	},
 	{
-		assumption: 'small',
-		conclusion: 'well-powered',
+		assumptions: ['small'],
+		conclusions: ['well-powered'],
 	},
 	{
-		assumption: 'locally finitely presentable',
-		conclusion: ['well-powered', 'well-copowered', 'complete', 'cocomplete'],
+		assumptions: ['locally finitely presentable'],
+		conclusions: ['well-powered', 'well-copowered', 'complete', 'cocomplete'],
 	},
 	{
-		assumption: 'abelian',
-		conclusion: [
+		assumptions: ['abelian'],
+		conclusions: [
 			'preadditive',
 			'finitely cocomplete',
 			'finitely complete',
@@ -23,67 +23,67 @@ export const implications: Implication[] = [
 		],
 	},
 	{
-		assumption: 'elementary topos',
-		conclusion: ['cartesian closed', 'finitely cocomplete', 'finitely complete'],
+		assumptions: ['elementary topos'],
+		conclusions: ['cartesian closed', 'finitely cocomplete', 'finitely complete'],
 	},
 	{
-		assumption: ['elementary topos', 'locally small'],
-		conclusion: ['well-powered', 'well-copowered'],
+		assumptions: ['elementary topos', 'locally small'],
+		conclusions: ['well-powered', 'well-copowered'],
 	},
 	{
-		assumption: 'complete',
-		conclusion: 'finitely complete',
+		assumptions: ['complete'],
+		conclusions: ['finitely complete'],
 	},
 	{
-		assumption: 'cocomplete',
-		conclusion: 'finitely cocomplete',
+		assumptions: ['cocomplete'],
+		conclusions: ['finitely cocomplete'],
 	},
 	{
-		assumption: 'preadditive',
-		conclusion: 'locally small',
+		assumptions: ['preadditive'],
+		conclusions: ['locally small'],
 	},
 	{
-		assumption: ['preadditive', 'initial object'],
-		conclusion: 'pointed',
+		assumptions: ['preadditive', 'initial object'],
+		conclusions: ['pointed'],
 	},
 	{
-		assumption: ['preadditive', 'terminal object'],
-		conclusion: 'pointed',
+		assumptions: ['preadditive', 'terminal object'],
+		conclusions: ['pointed'],
 	},
 	{
-		assumption: 'Grothendieck topos',
-		conclusion: ['elementary topos', 'locally small', 'complete', 'cocomplete'],
+		assumptions: ['Grothendieck topos'],
+		conclusions: ['elementary topos', 'locally small', 'complete', 'cocomplete'],
 	},
 	{
-		assumption: 'products',
-		conclusion: 'finite products',
+		assumptions: ['products'],
+		conclusions: ['finite products'],
 	},
 	{
-		assumption: 'finitely complete',
-		conclusion: 'finite products',
+		assumptions: ['finitely complete'],
+		conclusions: ['finite products'],
 	},
 	{
-		assumption: 'finite products',
-		conclusion: 'terminal object',
+		assumptions: ['finite products'],
+		conclusions: ['terminal object'],
 	},
 	{
-		assumption: 'coproducts',
-		conclusion: 'finite coproducts',
+		assumptions: ['coproducts'],
+		conclusions: ['finite coproducts'],
 	},
 	{
-		assumption: 'finitely complete',
-		conclusion: 'finite coproducts',
+		assumptions: ['finitely complete'],
+		conclusions: ['finite coproducts'],
 	},
 	{
-		assumption: 'finite coproducts',
-		conclusion: 'initial object',
+		assumptions: ['finite coproducts'],
+		conclusions: ['initial object'],
 	},
 	{
-		assumption: 'pointed',
-		conclusion: ['terminal object', 'initial object'],
+		assumptions: ['pointed'],
+		conclusions: ['terminal object', 'initial object'],
 	},
 	{
-		assumption: 'cartesian closed',
-		conclusion: 'finite products',
+		assumptions: ['cartesian closed'],
+		conclusions: ['finite products'],
 	},
 ]
