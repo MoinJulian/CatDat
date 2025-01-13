@@ -82,6 +82,12 @@ export const category_properties_dictionary = {
 		description:
 			'A category is well-powered if the collection of subobjects of each object is a set.',
 	},
+	'well-copowered': {
+		id: 15,
+		prefix: 'is',
+		description:
+			'A category is well-copowered if the collection of quotients of each object is a set.',
+	},
 } as const satisfies Record<string, Omit<CategoryProperty, 'name'>>
 
 export const category_property_list: CategoryProperty[] = Object.entries(

@@ -19,6 +19,7 @@ export const categories_dictionary = {
 			'well-powered',
 			'finitely complete',
 			'finitely cocomplete',
+			'well-copowered',
 		],
 		non_properties: ['small', 'abelian', 'preadditive structure', 'pointed'],
 	},
@@ -39,6 +40,7 @@ export const categories_dictionary = {
 			'finitely complete',
 			'locally finitely presentable',
 			'well-powered',
+			'well-copowered',
 		],
 		non_properties: [
 			'small',
@@ -60,6 +62,7 @@ export const categories_dictionary = {
 			'well-powered',
 			'finitely cocomplete',
 			'finitely complete',
+			'well-copowered',
 		],
 		non_properties: [
 			'small',
@@ -86,6 +89,7 @@ export const categories_dictionary = {
 			'locally finitely presentable',
 			'well-powered',
 			'pointed',
+			'well-copowered',
 		],
 		non_properties: [
 			'small',
@@ -109,6 +113,7 @@ export const categories_dictionary = {
 			'finitely complete',
 			'locally finitely presentable',
 			'well-powered',
+			'well-copowered',
 		],
 		non_properties: [
 			'small',
@@ -132,6 +137,7 @@ export const categories_dictionary = {
 			'finitely complete',
 			'cartesian closed',
 			'elementary topos',
+			'well-copowered',
 		],
 		non_properties: [
 			'small',
@@ -157,6 +163,7 @@ export const categories_dictionary = {
 			'well-powered',
 			'pointed',
 			'abelian',
+			'well-copowered',
 		],
 		non_properties: [
 			'small',
@@ -184,6 +191,7 @@ export const categories_dictionary = {
 			'finitely complete',
 			'locally finitely presentable',
 			'pointed',
+			'well-copowered',
 		],
 		non_properties: [
 			'small',
@@ -208,6 +216,7 @@ export const categories_dictionary = {
 			'locally finitely presentable',
 			'well-powered',
 			'pointed',
+			'well-copowered',
 		],
 		non_properties: [
 			'small',
@@ -232,6 +241,7 @@ export const categories_dictionary = {
 			'locally finitely presentable',
 			'well-powered',
 			'cartesian closed',
+			'well-copowered',
 		],
 		non_properties: [
 			'pointed',
@@ -264,6 +274,7 @@ export const categories_dictionary = {
 			'small',
 			'preadditive structure',
 			'abelian',
+			'well-copowered',
 		],
 		non_properties: [],
 	},
