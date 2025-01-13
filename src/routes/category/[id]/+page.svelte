@@ -21,10 +21,23 @@
 	<p>{category.description}</p>
 {/if}
 
-This category ...
+This category has the following properties:
 
 <ul>
 	{#each category.properties as property}
+		<li>
+			{property.prefix}
+			<a href="/property/{property.id}">
+				{property.name}
+			</a>
+		</li>
+	{/each}
+</ul>
+
+However, this category does not have the following properties:
+
+<ul>
+	{#each category.non_properties as property}
 		<li>
 			{property.prefix}
 			<a href="/property/{property.id}">
