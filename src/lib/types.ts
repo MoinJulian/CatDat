@@ -24,3 +24,12 @@ export type CategoryProperty = {
 	description: string
 	prefix: (typeof prefixes)[number]
 }
+
+export type CategoryPropertyImplication = {
+	assumption:
+		| keyof typeof category_properties_dictionary
+		| (keyof typeof category_properties_dictionary)[]
+	conclusion:
+		| keyof typeof category_properties_dictionary
+		| (keyof typeof category_properties_dictionary)[]
+}

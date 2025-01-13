@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { categories_list } from '$lib/dictionaries/categories'
 	import { category_property_list } from '$lib/dictionaries/category-properties'
+	import { implications } from '$lib/dictionaries/implications'
 </script>
 
 <p>
@@ -28,6 +29,22 @@ The following properties are available:
 			<a href="/property/{property.id}">
 				{property.name}
 			</a>
+		</li>
+	{/each}
+</ul>
+
+The following implications are available:
+
+<ul>
+	{#each implications as implication}
+		{@const assumption = Array.isArray(implication.assumption)
+			? implication.assumption.join(', ')
+			: implication.assumption}
+		{@const conclusion = Array.isArray(implication.conclusion)
+			? implication.conclusion.join(', ')
+			: implication.conclusion}
+		<li>
+			When a category is {assumption}, then it is also {conclusion}.
 		</li>
 	{/each}
 </ul>
