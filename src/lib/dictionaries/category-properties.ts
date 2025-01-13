@@ -50,10 +50,11 @@ export const category_properties_dictionary = {
 		prefix: 'has',
 		description: 'Every finite diagram in the category has a colimit.',
 	},
-	'zero object': {
+	'pointed': {
 		id: 10,
-		prefix: 'has a',
-		description: 'A zero object is both initial and terminal.',
+		prefix: 'is',
+		description:
+			'A category is called pointed when it has a zero object, i.e. an object which is both initial and terminal.',
 	},
 	'locally finitely presentable': {
 		id: 11,
