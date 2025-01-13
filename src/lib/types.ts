@@ -11,6 +11,11 @@ export type Category = {
 	non_properties: (keyof typeof category_properties_dictionary)[]
 }
 
+export type CategoryWithProperties = Omit<Category, 'properties' | 'non_properties'> & {
+	properties: CategoryProperty[]
+	non_properties: CategoryProperty[]
+}
+
 export type CategoryProperty = {
 	id: number
 	name: string

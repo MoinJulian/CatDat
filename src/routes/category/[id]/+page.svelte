@@ -1,0 +1,35 @@
+<script lang="ts">
+	const { data } = $props()
+	const { category } = data
+</script>
+
+<a href="/">Home</a>
+
+<h2>{category.name}</h2>
+
+<p>
+	<strong>objects:</strong>
+	{category.objects}
+</p>
+
+<p>
+	<strong>morphisms:</strong>
+	{category.morphisms}
+</p>
+
+{#if category.description}
+	<p>{category.description}</p>
+{/if}
+
+This category ...
+
+<ul>
+	{#each category.properties as property}
+		<li>
+			{property.prefix}
+			<a href="/property/{property.id}">
+				{property.name}
+			</a>
+		</li>
+	{/each}
+</ul>
