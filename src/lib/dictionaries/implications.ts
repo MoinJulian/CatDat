@@ -108,4 +108,12 @@ export const implications: Implication[] = [
 		assumptions: ['coproducts', 'coequalizers'],
 		conclusions: ['cocomplete'],
 	},
+	{
+		assumptions: ['self-dual', 'cocomplete'],
+		conclusions: ['complete'], // same with all other dual properties ...
+	},
+	{
+		assumptions: ['self-dual', 'complete'],
+		conclusions: ['cocomplete'], // same with all other dual properties ...
+	},
 ]

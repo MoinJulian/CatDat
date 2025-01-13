@@ -169,6 +169,13 @@ export const properties_dictionary = {
 			'A category has filtered colimits if it has colimits of diagrams indexed by filtered categories.',
 		dual: 24,
 	},
+	'self-dual': {
+		id: 26,
+		prefix: 'is',
+		description:
+			'A category is self-dual if it is equivalent to its opposite (or dual) category.',
+		dual: 26,
+	},
 } as const satisfies Record<string, Omit<Property, 'name'>>
 
 export const properties_list: Property[] = Object.entries(properties_dictionary).map(

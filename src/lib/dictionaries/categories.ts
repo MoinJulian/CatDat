@@ -22,7 +22,7 @@ export const categories_dictionary = {
 			'finitely cocomplete',
 			'well-copowered',
 		],
-		non_properties: ['small', 'abelian', 'preadditive', 'pointed'],
+		non_properties: ['small', 'abelian', 'preadditive', 'pointed', 'self-dual'],
 	},
 	'Category of abelian groups': {
 		id: 2,
@@ -49,6 +49,7 @@ export const categories_dictionary = {
 			'cartesian closed',
 			'Grothendieck topos',
 			'elementary topos',
+			'self-dual',
 		],
 	},
 	'Category of topological spaces': {
@@ -76,6 +77,7 @@ export const categories_dictionary = {
 			'preadditive',
 			'Grothendieck topos',
 			'elementary topos',
+			'self-dual',
 		],
 	},
 	'Category of groups': {
@@ -102,6 +104,7 @@ export const categories_dictionary = {
 			'preadditive',
 			'Grothendieck topos',
 			'elementary topos',
+			'self-dual',
 		],
 	},
 	'Category of rings': {
@@ -128,6 +131,7 @@ export const categories_dictionary = {
 			'pointed',
 			'Grothendieck topos',
 			'elementary topos',
+			'self-dual',
 		],
 	},
 	'Category of finite sets': {
@@ -154,6 +158,7 @@ export const categories_dictionary = {
 			'preadditive',
 			'Grothendieck topos',
 			'pointed',
+			'self-dual',
 		],
 	},
 	'Category of finite abelian groups': {
@@ -171,6 +176,7 @@ export const categories_dictionary = {
 			'pointed',
 			'abelian',
 			'well-copowered',
+			'self-dual',
 		],
 		non_properties: [
 			'small',
@@ -208,6 +214,7 @@ export const categories_dictionary = {
 			'preadditive',
 			'Grothendieck topos',
 			'elementary topos',
+			'self-dual',
 		],
 	},
 	'Category of monoids': {
@@ -234,6 +241,7 @@ export const categories_dictionary = {
 			'preadditive',
 			'Grothendieck topos',
 			'elementary topos',
+			'self-dual',
 		],
 	},
 	'Category of partial orders': {
@@ -260,6 +268,7 @@ export const categories_dictionary = {
 			'preadditive',
 			'Grothendieck topos',
 			'elementary topos',
+			'self-dual',
 		],
 	},
 	'Trivial category': {
@@ -286,6 +295,7 @@ export const categories_dictionary = {
 			'preadditive',
 			'abelian',
 			'well-copowered',
+			'self-dual',
 		],
 		non_properties: [],
 	},
