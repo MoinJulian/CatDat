@@ -5,8 +5,16 @@
 body {
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-size: 1.125rem;
+	background-color: white;
 	color: #222;
 	line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #222;
+		color: #eee;
+	}
 }
 
 a {
