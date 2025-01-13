@@ -1,3 +1,9 @@
+:root {
+	--bg-color: white;
+	--text-color: #222;
+	--heading-color: teal;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -5,16 +11,9 @@
 body {
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-size: 1.125rem;
-	background-color: white;
-	color: #222;
+	background-color: var(--bg-color);
+	color: var(--text-color);
 	line-height: 1.5;
-}
-
-@media (prefers-color-scheme: dark) {
-	body {
-		background-color: #222;
-		color: #eee;
-	}
 }
 
 a {
@@ -22,6 +21,16 @@ a {
 }
 
 h1,
-h2 {
+h2,
+h3 {
 	line-height: 1.2;
+	color: var(--heading-color);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: #222;
+		--text-color: white;
+		--heading-color: rgb(204, 206, 67);
+	}
 }
