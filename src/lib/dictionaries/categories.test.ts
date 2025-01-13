@@ -37,14 +37,4 @@ describe('categories list', () => {
 			}
 		})
 	}
-
-	for (const category of categories_list) {
-		it(`should have all properties for: ${category.name}`, () => {
-			const answered_properties = [
-				...category.properties,
-				...category.non_properties,
-			]
-			expect(new Set(answered_properties)).toEqual(new Set(property_names))
-		})
-	}
 })

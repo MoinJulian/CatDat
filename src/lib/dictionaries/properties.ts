@@ -88,6 +88,42 @@ export const properties_dictionary = {
 		description:
 			'A category is well-copowered if the collection of quotients of each object is a set.',
 	},
+	'initial object': {
+		id: 16,
+		prefix: 'has an',
+		description:
+			'An initial object is an object that has a unique morphism to every object in the category.',
+	},
+	'terminal object': {
+		id: 17,
+		prefix: 'has a',
+		description:
+			'A terminal object is an object that has a unique morphism from every object in the category.',
+	},
+	'products': {
+		id: 18,
+		prefix: 'has',
+		description:
+			'Given a family of objects $(A_i)_{i \\in I}$, a product $\\prod_{i \\in I} A_i$ is defined as an object with morphisms $p_i : \\prod_{i \\in I} A_i \\to A_i$ satisfying the following universal property: For every object $T$ and every family of morphisms $(f_i : T \\to A_i)_{i \\in I}$ there is a unique morphism $f : T \\to \\prod_{i \\in I} A_i$ such that $p_i \\circ f = f_i$ for all $i \\in I$.',
+	},
+	'coproducts': {
+		id: 19,
+		prefix: 'has',
+		description:
+			'Given a family of objects $(A_i)_{i \\in I}$, a coproduct $\\coprod_{i \\in I} A_i$ is defined as an object with morphisms $i_i : A_i \\to \\coprod_{i \\in I} A_i$ satisfying the following universal property: For every object $T$ and every family of morphisms $(f_i : A_i \\to T)_{i \\in I}$ there is a unique morphism $f : \\coprod_{i \\in I} A_i \\to T$ such that $f \\circ i_i = f_i$ for all $i \\in I$.',
+	},
+	'finite products': {
+		id: 20,
+		prefix: 'has',
+		description:
+			'A category has finite products if it has products for finite families of objects. Equivalently, it has a terminal object and binary products.',
+	},
+	'finite coproducts': {
+		id: 21,
+		prefix: 'has',
+		description:
+			'A category has finite coproducts if it has coproducts for finite families of objects. Equivalently, it has an initial object and binary coproducts.',
+	},
 } as const satisfies Record<string, Omit<CategoryProperty, 'name'>>
 
 export const properties_list: CategoryProperty[] = Object.entries(
