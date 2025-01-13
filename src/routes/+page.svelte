@@ -3,6 +3,10 @@
 	import { category_property_list } from '$lib/dictionaries/category-properties'
 </script>
 
+<p>
+	<a href="/search">Search</a> for categories with given properties.
+</p>
+
 The following categories are available:
 
 <ul>
