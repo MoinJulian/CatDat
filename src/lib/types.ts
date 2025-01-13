@@ -9,6 +9,7 @@ export type Category = {
 	objects: string
 	morphisms: string
 	description?: string
+	nlab_link?: string
 	properties: PropertyName[]
 	non_properties: PropertyName[]
 }

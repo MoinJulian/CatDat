@@ -19,6 +19,12 @@
 	{category.morphisms}
 </p>
 
+{#if category.nlab_link}
+	<p>
+		<a href={category.nlab_link}>nLab Link</a>
+	</p>
+{/if}
+
 {#if category.description}
 	<p>{category.description}</p>
 {/if}

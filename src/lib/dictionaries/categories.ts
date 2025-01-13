@@ -8,6 +8,7 @@ export const categories_dictionary = {
 		morphisms: 'functions / maps',
 		description:
 			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
+		nlab_link: 'https://ncatlab.org/nlab/show/Set',
 		properties: [
 			'cartesian closed',
 			'cocomplete',
@@ -29,6 +30,7 @@ export const categories_dictionary = {
 		objects: 'abelian groups',
 		morphisms: 'group homomorphisms',
 		description: 'This is the prototype of an abelian category.',
+		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
 		properties: [
 			'locally small',
 			'abelian',
@@ -55,6 +57,7 @@ export const categories_dictionary = {
 		objects: 'topological spaces',
 		morphisms: 'continuous functions',
 		description: 'This is the most basic category of geometric objects.',
+		nlab_link: 'https://ncatlab.org/nlab/show/Top',
 		properties: [
 			'locally small',
 			'complete',
@@ -80,6 +83,7 @@ export const categories_dictionary = {
 		notation: '\\mathbf{Grp}',
 		objects: 'groups',
 		morphisms: 'group homomorphisms',
+		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
 		properties: [
 			'locally small',
 			'complete',
@@ -105,6 +109,7 @@ export const categories_dictionary = {
 		notation: '\\mathbf{Ring}',
 		objects: 'rings',
 		morphisms: 'ring homomorphisms',
+		nlab_link: 'https://ncatlab.org/nlab/show/Ring',
 		properties: [
 			'locally small',
 			'complete',
@@ -130,6 +135,7 @@ export const categories_dictionary = {
 		notation: '\\mathbf{FinSet}',
 		objects: 'finite sets',
 		morphisms: 'functions / maps',
+		nlab_link: 'https://ncatlab.org/nlab/show/FinSet',
 		properties: [
 			'locally small',
 			'well-powered',
@@ -155,6 +161,7 @@ export const categories_dictionary = {
 		notation: '\\mathbf{FinAb}',
 		objects: 'finite abelian groups',
 		morphisms: 'group homomorphisms',
+		nlab_link: 'https://ncatlab.org/nlab/show/finite+abelian+group',
 		properties: [
 			'locally small',
 			'finitely cocomplete',
@@ -182,6 +189,7 @@ export const categories_dictionary = {
 		morphisms: 'pointed functions',
 		description:
 			'This is the category of sets with a distinguished element, often called the base point. A map is called pointed when it preserves the base point.',
+		nlab_link: 'https://ncatlab.org/nlab/show/pointed+set',
 		properties: [
 			'locally small',
 			'complete',
@@ -207,6 +215,7 @@ export const categories_dictionary = {
 		notation: '\\mathbf{Mon}',
 		objects: 'monoids',
 		morphisms: 'monoid homomorphisms',
+		nlab_link: 'https://ncatlab.org/nlab/show/category+of+monoids',
 		properties: [
 			'locally small',
 			'complete',
@@ -232,6 +241,7 @@ export const categories_dictionary = {
 		notation: '\\mathbf{Pos}',
 		objects: 'partial orders',
 		morphisms: 'order-preserving functions',
+		nlab_link: 'https://ncatlab.org/nlab/show/Pos',
 		properties: [
 			'locally small',
 			'complete',
@@ -259,6 +269,7 @@ export const categories_dictionary = {
 		morphisms: 'only the identity morphism',
 		description:
 			'This is the simplest category, consisting of a single object and only the identity morphism. It is the terminal object in the category of small categories.',
+		nlab_link: 'https://ncatlab.org/nlab/show/terminal+category',
 		properties: [
 			'locally small',
 			'complete',
