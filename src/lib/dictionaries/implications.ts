@@ -24,12 +24,11 @@ export const implications: CategoryPropertyImplication[] = [
 	},
 	{
 		assumption: 'elementary topos',
-		conclusion: [
-			'cartesian closed',
-			'finitely cocomplete',
-			'finitely complete',
-			'well-powered',
-		],
+		conclusion: ['cartesian closed', 'finitely cocomplete', 'finitely complete'],
+	},
+	{
+		assumption: ['elementary topos', 'locally small'],
+		conclusion: ['well-powered', 'well-copowered'],
 	},
 	{
 		assumption: 'complete',
@@ -42,5 +41,9 @@ export const implications: CategoryPropertyImplication[] = [
 	{
 		assumption: 'preadditive',
 		conclusion: 'locally small',
+	},
+	{
+		assumption: 'Grothendieck topos',
+		conclusion: ['elementary topos', 'locally small', 'complete', 'cocomplete'],
 	},
 ]
