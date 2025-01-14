@@ -9,6 +9,10 @@
 	let rendered_description = $derived(data.rendered_description)
 </script>
 
+<svelte:head>
+	<title>Property: {property.name}</title>
+</svelte:head>
+
 <a href="/">Home</a>
 
 <h2>{property.name}</h2>

@@ -16,6 +16,10 @@
 	$inspect(expected_properties, expected_non_properties)
 </script>
 
+<svelte:head>
+	<title>Search for categories</title>
+</svelte:head>
+
 <a href="/">Home</a>
 
 <h2>Search for categories</h2>

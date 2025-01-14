@@ -5,6 +5,10 @@
 	const { category, formula } = data
 </script>
 
+<svelte:head>
+	<title>{category.name}</title>
+</svelte:head>
+
 <a href="/">Home</a>
 
 <h2>{category.name}</h2>

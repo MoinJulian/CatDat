@@ -1,5 +1,3 @@
-export const prerender = true
-
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import { properties_list, type properties_dictionary } from '$lib/dictionaries/properties'
