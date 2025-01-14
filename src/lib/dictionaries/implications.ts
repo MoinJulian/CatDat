@@ -2,8 +2,8 @@ import type { Implication } from '$lib/types'
 
 export const implications: Implication[] = [
 	{
-		assumptions: ['locally small'],
 		conclusions: ['small'],
+		assumptions: ['locally small'],
 	},
 	{
 		assumptions: ['small'],
