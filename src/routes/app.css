@@ -1,6 +1,7 @@
 :root {
 	--bg-color: white;
 	--text-color: #222;
+	--secondary-text-color: #777;
 	--heading-color: teal;
 }
 
@@ -18,6 +19,9 @@ body {
 
 a {
 	color: inherit;
+	text-underline-offset: 2px;
+	text-decoration-thickness: 1px;
+	text-decoration-color: var(--secondary-text-color);
 }
 
 h1,
@@ -30,7 +34,8 @@ h3 {
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bg-color: #222;
-		--text-color: white;
+		--text-color: #fff;
 		--heading-color: rgb(204, 206, 67);
+		--secondary-text-color: #aaa;
 	}
 }
