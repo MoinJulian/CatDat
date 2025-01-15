@@ -1,6 +1,6 @@
 import { get_deductions } from './dictionaries/deductions'
 import { properties_dictionary } from './dictionaries/properties'
-import type { Category, CategoryWithProperties, Property } from './types'
+import type { Category, CategoryWithProperties, Prefix, Property } from './types'
 
 /**
  * Adds the actual properties (not just their names) and
@@ -32,4 +32,17 @@ export function add_properties(category: Category): CategoryWithProperties {
 
 export function get_property_url(property: Property) {
 	return `/property/${property.name.replaceAll(' ', '_')}`
+}
+
+const negation_prefixes: Record<Prefix, string> = {
+	'is': 'is not',
+	'is a': 'is not a',
+	'is an': 'is not an',
+	'has': 'does not have',
+	'has a': 'does not have a',
+	'has an': 'does not have an',
+}
+
+export function negate_prefix(prefix: Prefix): string {
+	return negation_prefixes[prefix]
 }

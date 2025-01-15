@@ -1,5 +1,5 @@
 import { categories_dictionary } from './dictionaries/categories'
-import { add_properties } from './transforms'
+import { add_properties, negate_prefix } from './transforms'
 
 describe('add_properties', () => {
 	it('adds the actual properties and deductions of these', () => {
@@ -15,5 +15,11 @@ describe('add_properties', () => {
 				(p) => p.name === 'initial object' && p.deduced,
 			),
 		).toBe(true)
+	})
+})
+
+describe('negate_prefix', () => {
+	it("negates 'has a' to 'does not have a'", () => {
+		expect(negate_prefix('has a')).toBe('does not have a')
 	})
 })

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { get_property_url } from '$lib/transforms.js'
+	import { get_property_url, negate_prefix } from '$lib/transforms.js'
 
 	const { data } = $props()
 	const { category, formula } = data
@@ -35,7 +35,7 @@
 	<p>{@html category.description}</p>
 {/if}
 
-<h3>Satisfied Properties</h3>
+<h3>Properties</h3>
 
 Properties from the database:
 
@@ -63,12 +63,12 @@ Deduced properties:
 	{/each}
 </ul>
 
-<h3>Missing Properties</h3>
+<h3>Non-Properties</h3>
 
 <ul>
 	{#each category.non_properties as property}
 		<li>
-			{property.prefix}
+			{negate_prefix(property.prefix)}
 			<a href={get_property_url(property)}>
 				{property.name}
 			</a>

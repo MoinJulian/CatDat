@@ -19,10 +19,12 @@ export type CategoryWithProperties = Omit<Category, 'properties' | 'non_properti
 
 export const prefixes = ['is', 'is a', 'is an', 'has', 'has a', 'has an'] as const
 
+export type Prefix = (typeof prefixes)[number]
+
 export type Property = {
 	name: string // cannot use PropertyName because of circularity
 	description: string
-	prefix: (typeof prefixes)[number]
+	prefix: Prefix
 	dual?: string
 }
 
