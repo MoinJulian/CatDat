@@ -34,24 +34,31 @@ function get_normalized_implications(): NormalizedImplication[] {
 
 export const normalized_implications = get_normalized_implications()
 
+/**
+ * A deduction is an iterated implication using some of the assumptions.
+ * For example: Given implications p -> q,q' and q -> r, then r is a deduction of p.
+ */
 export function get_deductions(assumptions: Set<PropertyName>): Set<PropertyName> {
 	let done = false
 	const deductions: Set<PropertyName> = assumptions
+
 	while (!done) {
 		done = true
 		for (const property of properties_list) {
 			const conclusion = property.name as PropertyName
 			if (deductions.has(conclusion)) continue
-			for (const implication of normalized_implications) {
-				const fits =
+
+			const implication = normalized_implications.find(
+				(implication) =>
 					implication.conclusion === conclusion &&
-					isSubset(implication.assumptions, deductions)
-				if (fits) {
-					done = false
-					deductions.add(conclusion)
-				}
+					isSubset(implication.assumptions, deductions),
+			)
+			if (implication) {
+				deductions.add(conclusion)
+				done = false
 			}
 		}
 	}
+
 	return deductions
 }
