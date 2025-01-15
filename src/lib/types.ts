@@ -12,9 +12,10 @@ export type Category = {
 	non_properties: PropertyName[]
 }
 
-export type CategoryWithProperties = Omit<Category, 'properties' | 'non_properties'> & {
+export type CategoryDetailed = Omit<Category, 'properties' | 'non_properties'> & {
 	properties: (Property & { deduced: boolean })[]
 	non_properties: (Property & { deduced: boolean })[]
+	unknown_properties: Property[]
 }
 
 export const prefixes = ['is', 'is a', 'is an', 'has', 'has a', 'has an'] as const

@@ -75,3 +75,21 @@ Deduced properties:
 		</li>
 	{/each}
 </ul>
+
+<h3>Unknown properties</h3>
+
+<p>
+	For these properties the database currently doesn't have an answer if they are
+	satisfied or not. Please help to complete the data!
+</p>
+
+<ul>
+	{#each category.unknown_properties as property}
+		<li>
+			{property.prefix}
+			<a href={get_property_url(property)}>
+				{property.name}
+			</a>?
+		</li>
+	{/each}
+</ul>

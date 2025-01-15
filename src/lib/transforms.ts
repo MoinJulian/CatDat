@@ -1,12 +1,12 @@
 import { get_deductions } from './dictionaries/deductions'
-import { properties_dictionary } from './dictionaries/properties'
-import type { Category, CategoryWithProperties, Prefix, Property } from './types'
+import { properties, properties_dictionary } from './dictionaries/properties'
+import type { Category, CategoryDetailed, Prefix, Property } from './types'
 
 /**
  * Adds the actual properties (not just their names) and
  * all their deductions to a given category.
  */
-export function add_properties(category: Category): CategoryWithProperties {
+export function add_properties(category: Category): CategoryDetailed {
 	const deduced_properties = Array.from(get_deductions(new Set(category.properties)))
 
 	const actual_properties = deduced_properties.map((name) => ({
@@ -23,10 +23,17 @@ export function add_properties(category: Category): CategoryWithProperties {
 
 	const { properties: _, non_properties: __, ...rest } = category
 
+	const unknown_properties = properties.filter(
+		(property) =>
+			!deduced_properties.includes(property.name) &&
+			!category.non_properties.includes(property.name), // TODO: handle deduced non-properties here
+	)
+
 	return {
 		...rest,
 		properties: actual_properties,
 		non_properties: actual_non_properties,
+		unknown_properties,
 	}
 }
 
