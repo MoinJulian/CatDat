@@ -4,6 +4,15 @@
 			<a href="/">Home</a>
 		</li>
 		<li>
+			<a href="/categories">Categories</a>
+		</li>
+		<li>
+			<a href="/properties">Properties</a>
+		</li>
+		<li>
+			<a href="/implications">Implications</a>
+		</li>
+		<li>
 			<a href="/search">Search</a>
 		</li>
 	</ul>
@@ -20,7 +29,8 @@
 		padding: 0;
 		list-style-type: none;
 		display: flex;
-		gap: 1rem;
+		flex-wrap: wrap;
+		gap: 0.25rem 1rem;
 	}
 	li {
 		margin: 0;
