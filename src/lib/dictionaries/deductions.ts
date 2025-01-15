@@ -1,6 +1,5 @@
 import type { NormalizedImplication } from '$lib/types'
 
-import { isSubset } from '$lib/utils'
 import { implications } from './implications'
 import type { PropertyName } from './properties'
 
@@ -46,7 +45,7 @@ export function get_deductions(assumptions: Set<PropertyName>): Set<PropertyName
 		done = true
 		for (const implication of normalized_implications) {
 			const found =
-				isSubset(implication.assumptions, deductions) &&
+				implication.assumptions.isSubsetOf(deductions) &&
 				!deductions.has(implication.conclusion)
 			if (found) {
 				done = false
