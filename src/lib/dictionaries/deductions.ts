@@ -44,18 +44,13 @@ export function get_deductions(assumptions: Set<PropertyName>): Set<PropertyName
 
 	while (!done) {
 		done = true
-		for (const property of properties_list) {
-			const conclusion = property.name as PropertyName
-			if (deductions.has(conclusion)) continue
-
-			const implication = normalized_implications.find(
-				(implication) =>
-					implication.conclusion === conclusion &&
-					isSubset(implication.assumptions, deductions),
-			)
-			if (implication) {
-				deductions.add(conclusion)
+		for (const implication of normalized_implications) {
+			const found =
+				isSubset(implication.assumptions, deductions) &&
+				!deductions.has(implication.conclusion)
+			if (found) {
 				done = false
+				deductions.add(implication.conclusion)
 			}
 		}
 	}
