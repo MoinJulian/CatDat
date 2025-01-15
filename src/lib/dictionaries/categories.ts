@@ -18,6 +18,7 @@ export const categories = [
 			'self-dual',
 			'groupoid',
 			'essentially small',
+			'thin',
 		],
 	},
 	{
@@ -36,6 +37,7 @@ export const categories = [
 			'elementary topos',
 			'self-dual',
 			'groupoid',
+			'thin',
 		],
 	},
 	{
@@ -64,6 +66,7 @@ export const categories = [
 			'elementary topos',
 			'self-dual',
 			'groupoid',
+			'thin',
 		],
 	},
 	{
@@ -83,6 +86,7 @@ export const categories = [
 			'elementary topos',
 			'self-dual',
 			'groupoid',
+			'thin',
 		],
 	},
 	{
@@ -104,6 +108,7 @@ export const categories = [
 			'elementary topos',
 			'self-dual',
 			'groupoid',
+			'thin',
 		],
 	},
 	{
@@ -125,6 +130,7 @@ export const categories = [
 			'pointed',
 			'self-dual',
 			'groupoid',
+			'thin',
 		],
 	},
 	{
@@ -150,6 +156,7 @@ export const categories = [
 			'elementary topos',
 			'locally finitely presentable',
 			'groupoid',
+			'thin',
 		],
 	},
 	{
@@ -171,6 +178,7 @@ export const categories = [
 			'elementary topos',
 			'self-dual',
 			'groupoid',
+			'thin',
 		],
 	},
 	{
@@ -190,6 +198,7 @@ export const categories = [
 			'elementary topos',
 			'self-dual',
 			'groupoid',
+			'thin',
 		],
 	},
 	{
@@ -209,6 +218,7 @@ export const categories = [
 			'elementary topos',
 			'self-dual',
 			'groupoid',
+			'thin',
 		],
 	},
 	{
@@ -223,12 +233,10 @@ export const categories = [
 		properties: [
 			'groupoid',
 			'small',
-			'equalizers',
-			'self-dual',
-			'coequalizers',
 			'filtered colimits',
 			'filtered limits',
 			'preadditive',
+			'thin',
 		],
 		non_properties: ['initial object', 'terminal object'],
 	},
@@ -246,8 +254,8 @@ export const categories = [
 			'Grothendieck topos',
 			'small',
 			'abelian',
-			'self-dual',
 			'groupoid',
+			'thin',
 		],
 		non_properties: [],
 	},
@@ -265,6 +273,7 @@ export const categories = [
 			'locally finitely presentable',
 			'small',
 			'self-dual',
+			'thin',
 		],
 		non_properties: ['pointed', 'preadditive', 'groupoid'],
 	},
@@ -278,7 +287,13 @@ export const categories = [
 			'Here, M can be any monoid. But the most important special case is that of a group.',
 		nlab_link: 'https://ncatlab.org/nlab/show/MSet',
 		properties: ['Grothendieck topos', 'locally finitely presentable'],
-		non_properties: ['preadditive', 'pointed', 'self-dual', 'essentially small'],
+		non_properties: [
+			'preadditive',
+			'pointed',
+			'self-dual',
+			'essentially small',
+			'thin',
+		],
 	},
 	{
 		id: 'R-Mod',
@@ -290,7 +305,7 @@ export const categories = [
 			'This is the category of left modules over a ring R. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring, hence not listed here. The non-properties refer to the case that the ring is non-trivial.',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
 		properties: ['abelian', 'locally finitely presentable'],
-		non_properties: ['essentially small', 'Grothendieck topos', 'self-dual'],
+		non_properties: ['essentially small', 'Grothendieck topos', 'self-dual', 'thin'],
 	},
 	{
 		id: 'Met',
@@ -315,6 +330,7 @@ export const categories = [
 			'preadditive',
 			'self-dual',
 			'pointed',
+			'thin',
 		],
 	},
 	{
@@ -344,6 +360,7 @@ export const categories = [
 			'equalizers',
 			'self-dual',
 			'pointed',
+			'thin',
 		],
 	},
 	{
@@ -362,7 +379,13 @@ export const categories = [
 			'complete',
 			'cocomplete',
 		],
-		non_properties: ['essentially small', 'preadditive', 'pointed', 'self-dual'],
+		non_properties: [
+			'essentially small',
+			'preadditive',
+			'pointed',
+			'self-dual',
+			'thin',
+		],
 	},
 	{
 		id: 'N',
@@ -372,7 +395,7 @@ export const categories = [
 		morphisms: 'a unique morphism n &rarr; m if n &leq; m',
 		description:
 			'This can also be seen as the path category of the infinite linear graph &bullet; &rarr; &bullet; &rarr; ...',
-		properties: ['small', 'finitely cocomplete', 'cartesian closed'],
+		properties: ['small', 'finitely cocomplete', 'cartesian closed', 'thin'],
 		non_properties: ['cocomplete', 'terminal object', 'preadditive', 'self-dual'],
 	},
 ] as const satisfies Category[]

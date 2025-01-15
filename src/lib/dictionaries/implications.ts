@@ -130,4 +130,16 @@ export const implications: Implication[] = [
 		assumptions: ['essentially small'],
 		conclusions: ['well-powered', 'well-copowered'],
 	},
+	{
+		assumptions: ['essentially small', 'complete'],
+		conclusions: ['thin'],
+	},
+	{
+		assumptions: ['essentially small', 'cocomplete'],
+		conclusions: ['thin'],
+	},
+	{
+		assumptions: ['thin'],
+		conclusions: ['equalizers', 'coequalizers'],
+	},
 ]

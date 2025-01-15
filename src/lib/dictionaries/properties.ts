@@ -190,6 +190,13 @@ export const properties = [
 			'A category is essentially small when it is equivalent to a small category. In particular, there is a set of objects such that every object is isomorphic to an object in this set.',
 		dual: 'essentially small',
 	},
+	{
+		name: 'thin',
+		prefix: 'is',
+		description:
+			'A category is thin when between any pair of objects there is at most one morphism. Such categories correspond to preordered collections of objects.',
+		dual: 'thin',
+	},
 ] as const satisfies Property[]
 
 export type PropertyName = (typeof properties)[number]['name']
