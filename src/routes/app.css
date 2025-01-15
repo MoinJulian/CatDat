@@ -45,3 +45,8 @@ h3 {
 		--secondary-text-color: #aaa;
 	}
 }
+
+.hint {
+	color: var(--secondary-text-color);
+	font-size: 1rem;
+}
