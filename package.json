@@ -13,7 +13,8 @@
 		"lint": "prettier --check .",
 		"test": "vitest",
 		"test:run": "vitest --run",
-		"prepare": "husky"
+		"prepare": "husky",
+		"unknowns": "tsx scripts/unknowns.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
