@@ -2,7 +2,11 @@
 	import { implications } from '$lib/dictionaries/implications'
 </script>
 
-<h2>Implications</h2>
+<svelte:head>
+	<title>List of Implications</title>
+</svelte:head>
+
+<h2>List of Implications</h2>
 
 <p>The following implications and equivalences are available.</p>
 

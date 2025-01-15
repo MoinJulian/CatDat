@@ -3,7 +3,11 @@
 	import { get_property_url } from '$lib/transforms'
 </script>
 
-<h2>Properties</h2>
+<svelte:head>
+	<title>List of Properties</title>
+</svelte:head>
+
+<h2>List of Properties</h2>
 
 <p>The following properties of categories are available.</p>
 

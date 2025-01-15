@@ -2,6 +2,10 @@
 	import { categories } from '$lib/dictionaries/categories'
 </script>
 
+<svelte:head>
+	<title>List of categories</title>
+</svelte:head>
+
 <h2>List of categories</h2>
 
 <p>The following categories are available.</p>
