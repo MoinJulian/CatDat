@@ -3,6 +3,7 @@
 	--text-color: #222;
 	--secondary-text-color: #777;
 	--heading-color: teal;
+	--secondary-heading-color: #234975;
 }
 
 * {
@@ -30,11 +31,20 @@ h2,
 h3 {
 	line-height: 1.2;
 	color: var(--heading-color);
+	font-weight: 500;
 }
 
-h2,
+h1 {
+	font-size: 2.25rem;
+}
+
+h2 {
+	font-size: 1.875rem;
+	color: var(--secondary-heading-color);
+}
+
 h3 {
-	font-weight: 500;
+	font-size: 1.45rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,6 +53,7 @@ h3 {
 		--text-color: #fff;
 		--heading-color: rgb(204, 206, 67);
 		--secondary-text-color: #aaa;
+		--secondary-heading-color: skyblue;
 	}
 }
 
