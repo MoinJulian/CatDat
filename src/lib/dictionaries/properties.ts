@@ -197,6 +197,13 @@ export const properties = [
 			'A category is thin when between any pair of objects there is at most one morphism. Such categories correspond to preordered collections of objects.',
 		dual: 'thin',
 	},
+	{
+		name: 'discrete',
+		prefix: 'is',
+		description:
+			'A category is discrete when every morphism is an identity morphism.',
+		dual: 'discrete',
+	},
 ] as const satisfies Property[]
 
 export type PropertyName = (typeof properties)[number]['name']

@@ -142,4 +142,8 @@ export const implications: Implication[] = [
 		assumptions: ['thin'],
 		conclusions: ['equalizers', 'coequalizers'],
 	},
+	{
+		assumptions: ['discrete'],
+		conclusions: ['thin', 'groupoid'],
+	},
 ]
