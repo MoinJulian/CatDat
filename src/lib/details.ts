@@ -1,11 +1,11 @@
-import { DeductionSystem } from './DeductionSystem'
+import { DeductionSystem } from '$lib/DeductionSystem'
+import type { Category, CategoryDetailed } from '$lib/types'
 import { implications } from './dictionaries/implications'
 import {
 	properties,
 	properties_dictionary,
 	type PropertyName,
 } from './dictionaries/properties'
-import type { Category, CategoryDetailed, Prefix, Property } from './types'
 
 const category_deduction_system = new DeductionSystem<PropertyName>(implications)
 
@@ -13,7 +13,7 @@ const category_deduction_system = new DeductionSystem<PropertyName>(implications
  * Adds the actual properties (not just their names) and
  * all their deductions to a given category. Same with non-properties.
  */
-export function add_properties(category: Category): CategoryDetailed {
+export function add_details(category: Category): CategoryDetailed {
 	const deduced_properties = category_deduction_system.get_deductions(
 		new Set(category.properties),
 	)
@@ -47,21 +47,4 @@ export function add_properties(category: Category): CategoryDetailed {
 		non_properties: non_property_objects,
 		unknown_properties,
 	}
-}
-
-export function get_property_url(property: Property) {
-	return `/property/${property.name.replaceAll(' ', '_')}`
-}
-
-const negation_prefixes: Record<Prefix, string> = {
-	'is': 'is not',
-	'is a': 'is not a',
-	'is an': 'is not an',
-	'has': 'does not have',
-	'has a': 'does not have a',
-	'has an': 'does not have an',
-}
-
-export function negate_prefix(prefix: Prefix): string {
-	return negation_prefixes[prefix]
 }

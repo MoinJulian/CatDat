@@ -1,7 +1,7 @@
 import { categories } from '$lib/dictionaries/categories'
-import { add_properties } from '$lib/transforms'
+import { add_details } from '$lib/details'
 
-const categories_with_properties = categories.map((cat) => add_properties(cat))
+const categories_with_properties = categories.map((cat) => add_details(cat))
 
 export function get_suitable_categories(properties: string[], non_properties: string[]) {
 	if (properties.length === 0 && non_properties.length === 0) {
