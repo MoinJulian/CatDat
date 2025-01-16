@@ -12,10 +12,23 @@ type NormalizedRule<T> = {
 export class DeductionSystem<T> {
 	private rules: Rule<T>[]
 	private normalized_rules: NormalizedRule<T>[] = []
+	private properties: Set<T> = new Set([])
 
 	constructor(rules: Rule<T>[]) {
 		this.rules = rules
+		this.compute_properties()
 		this.compute_normalized_rules()
+	}
+
+	private compute_properties() {
+		for (const rule of this.rules) {
+			for (const assumption of rule.assumptions) {
+				this.properties.add(assumption)
+			}
+			for (const conclusion of rule.conclusions) {
+				this.properties.add(conclusion)
+			}
+		}
 	}
 
 	private compute_normalized_rules() {
@@ -59,5 +72,27 @@ export class DeductionSystem<T> {
 		}
 
 		return deductions
+	}
+
+	get_deduced_negations(assumptions: Set<T>, negations: Set<T>): Set<T> {
+		let done = false
+		const deduced_negations = new Set(negations)
+
+		while (!done) {
+			done = true
+			for (const property of this.properties) {
+				const new_assumptions = new Set([...assumptions, property])
+				const new_deductions = this.get_deductions(new_assumptions)
+				const has_contradiction =
+					new_deductions.intersection(deduced_negations).size > 0
+				const is_new = !deduced_negations.has(property)
+				if (has_contradiction && is_new) {
+					done = false
+					deduced_negations.add(property)
+				}
+			}
+		}
+
+		return deduced_negations
 	}
 }

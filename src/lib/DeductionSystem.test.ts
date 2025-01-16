@@ -38,4 +38,45 @@ describe('Deduction systems', () => {
 			expect(deductionSystem.get_deductions(new Set(['b']))).toEqual(new Set(['b']))
 		})
 	})
+
+	describe('get_deduced_negations', () => {
+		const deductionSystem = new DeductionSystem<string>([
+			{ assumptions: ['a', 'b'], conclusions: ['c'] },
+			{ assumptions: ['c', 'd'], conclusions: ['e'] },
+			{ assumptions: ['e'], conclusions: ['f'] },
+		])
+
+		it("should deduce 'not a' from 'not a'", () => {
+			expect(
+				deductionSystem.get_deduced_negations(new Set([]), new Set(['a'])),
+			).toEqual(new Set(['a']))
+		})
+
+		it("should deduce everything from 'a' and 'not a'", () => {
+			expect(
+				deductionSystem.get_deduced_negations(new Set(['a']), new Set(['a'])),
+			).toEqual(new Set(['a', 'b', 'c', 'd', 'e', 'f']))
+		})
+
+		it("should deduce 'not e' from 'not f'", () => {
+			expect(
+				deductionSystem.get_deduced_negations(new Set([]), new Set(['f'])),
+			).toEqual(new Set(['e', 'f']))
+		})
+
+		it("should deduce 'not b' from 'a' and 'not c'", () => {
+			expect(
+				deductionSystem.get_deduced_negations(new Set(['a']), new Set(['c'])),
+			).toContain('b')
+		})
+
+		it("should deduce 'not d' from 'a,b' and 'not e'", () => {
+			expect(
+				deductionSystem.get_deduced_negations(
+					new Set(['a', 'b']),
+					new Set(['e']),
+				),
+			).toContain('d')
+		})
+	})
 })
