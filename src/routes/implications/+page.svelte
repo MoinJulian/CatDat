@@ -1,4 +1,5 @@
 <script>
+	import Implication from '$lib/components/Implication.svelte'
 	import { implications } from '$lib/dictionaries/implications'
 </script>
 
@@ -13,13 +14,7 @@
 <ul>
 	{#each implications as implication}
 		<li>
-			{@html implication.assumptions.join(' &and; ')}
-			{#if implication.equivalent}
-				&hArr;
-			{:else}
-				&rArr;
-			{/if}
-			{@html implication.conclusions.join(' &and; ')}
+			<Implication {implication} />
 		</li>
 	{/each}
 </ul>
