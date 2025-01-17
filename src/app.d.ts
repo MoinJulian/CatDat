@@ -8,6 +8,12 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	interface Window {
+		MathJax?: {
+			typeset: () => void
+		}
+	}
 }
 
 export {}

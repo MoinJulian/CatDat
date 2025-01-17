@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { get_property_url, negate_prefix } from '$lib/utils'
 
-	const { data } = $props()
-	const { category, formula } = data
+	let { data } = $props()
+	let { category } = data
+
+	$effect(() => {
+		window.MathJax?.typeset()
+	})
 </script>
 
 <svelte:head>
@@ -13,7 +17,7 @@
 
 <ul class="keypoints">
 	<li>
-		notation: {@html formula}
+		notation: ${category.notation}$
 	</li>
 	<li>
 		objects: {@html category.objects}

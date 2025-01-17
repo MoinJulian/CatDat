@@ -2,7 +2,6 @@ import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import { properties_dictionary, type PropertyName } from '$lib/dictionaries/properties'
 import { categories_detailed } from '$lib/dictionaries/categories'
-import { render_formulas } from '$lib/render'
 import type { Property } from '$lib/types'
 
 export const load: PageServerLoad = (event) => {
@@ -20,11 +19,8 @@ export const load: PageServerLoad = (event) => {
 		category.non_properties.some((p) => p.name === property.name),
 	)
 
-	const rendered_description = render_formulas(property.description)
-
 	return {
 		property,
-		rendered_description,
 		categories_with_this_property,
 		categories_without_this_property,
 	}

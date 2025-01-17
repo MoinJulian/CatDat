@@ -6,7 +6,12 @@
 	let property = $derived(data.property)
 	let categories_with_this_property = $derived(data.categories_with_this_property)
 	let categories_without_this_property = $derived(data.categories_without_this_property)
-	let rendered_description = $derived(data.rendered_description)
+
+	$effect(() => {
+		// if (property.name) {
+		window.MathJax?.typeset()
+		// }
+	})
 </script>
 
 <svelte:head>
@@ -15,7 +20,7 @@
 
 <h2>{property.name}</h2>
 
-<p><strong>Definition:</strong> {@html rendered_description}</p>
+<p><strong>Definition:</strong> {@html property.description}</p>
 
 {#if property.dual}
 	{@const dual_property = properties.find((p) => p.name === property.dual)!}
