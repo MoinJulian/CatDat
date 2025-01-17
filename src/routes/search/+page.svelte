@@ -12,8 +12,6 @@
 	let no_selection = $derived(
 		expected_properties.length === 0 && expected_non_properties.length === 0,
 	)
-
-	$inspect(expected_properties, expected_non_properties)
 </script>
 
 <svelte:head>
