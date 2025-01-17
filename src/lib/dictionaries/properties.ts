@@ -163,6 +163,22 @@ export const properties = [
 		related: ['coproducts'],
 	},
 	{
+		name: 'binary products',
+		prefix: 'has',
+		description:
+			'A category has <i>binary products</i> if every pair $A,B$ of objects has a product $A \\times B$.',
+		dual: 'binary coproducts',
+		related: ['finite products'],
+	},
+	{
+		name: 'binary coproducts',
+		prefix: 'has',
+		description:
+			'A category has <i>binary coproducts</i> if every pair $A,B$ of objects has a coproduct $A \\sqcup B$.',
+		dual: 'binary products',
+		related: ['finite coproducts'],
+	},
+	{
 		name: 'equalizers',
 		prefix: 'has',
 		description:

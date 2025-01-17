@@ -149,6 +149,8 @@ export const categories = [
 			'filtered limits',
 			'preadditive',
 			'discrete',
+			'binary coproducts',
+			'binary products',
 		],
 		non_properties: ['initial object', 'terminal object'],
 	},

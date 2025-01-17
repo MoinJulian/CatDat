@@ -83,12 +83,14 @@ export const implications: Implication[] = [
 		conclusions: ['coproducts'],
 	},
 	{
+		equivalent: true,
 		assumptions: ['finite products'],
-		conclusions: ['terminal object'],
+		conclusions: ['terminal object', 'binary products'],
 	},
 	{
+		equivalent: true,
 		assumptions: ['finite coproducts'],
-		conclusions: ['initial object'],
+		conclusions: ['initial object', 'binary coproducts'],
 	},
 	{
 		assumptions: ['pointed'],
@@ -125,6 +127,14 @@ export const implications: Implication[] = [
 	{
 		assumptions: ['self-dual', 'complete'],
 		conclusions: ['cocomplete'], // same with all other dual properties ...
+	},
+	{
+		assumptions: ['self-dual', 'binary products'],
+		conclusions: ['binary coproducts'], // same with all other dual properties ...
+	},
+	{
+		assumptions: ['self-dual', 'binary coproducts'],
+		conclusions: ['binary products'], // same with all other dual properties ...
 	},
 	{
 		assumptions: ['groupoid'],
