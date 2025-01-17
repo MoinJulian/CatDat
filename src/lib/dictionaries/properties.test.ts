@@ -34,4 +34,14 @@ describe('properties of categories', () => {
 			}
 		}
 	})
+
+	it('should only list related properties that exist in the list', () => {
+		for (const property of properties) {
+			if ('related' in property) {
+				for (const related of property.related) {
+					expect(properties.some((p) => p.name === related)).toBe(true)
+				}
+			}
+		}
+	})
 })

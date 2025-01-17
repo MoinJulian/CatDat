@@ -8,9 +8,7 @@
 	let categories_without_this_property = $derived(data.categories_without_this_property)
 
 	$effect(() => {
-		// if (property.name) {
 		window.MathJax?.typeset()
-		// }
 	})
 </script>
 
@@ -30,6 +28,14 @@
 			(self-dual)
 		{/if}
 	</p>
+{/if}
+
+{#if property.related}
+	Related properties: {#each property.related as related_property}
+		<a href={get_property_url(properties.find((p) => p.name === related_property)!)}>
+			{related_property}
+		</a>
+	{/each}
 {/if}
 
 <h3>Examples</h3>

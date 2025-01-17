@@ -7,6 +7,7 @@ export const properties = [
 		description:
 			'A category is <i>small</i> when the collection of objects and the collection of morphisms is a set, i.e. small.',
 		dual: 'small',
+		related: ['essentially small'],
 	},
 	{
 		name: 'locally small',
@@ -34,6 +35,7 @@ export const properties = [
 		prefix: 'is',
 		description:
 			'A category is <i>cartesian closed</i> if all finite products and exponentials exist.',
+		related: ['finite products'],
 	},
 	{
 		name: 'preadditive',
@@ -48,6 +50,7 @@ export const properties = [
 		description:
 			'A category is <i>abelian</i> if it is additive, every morphism has a kernel and a cokernel, and every monomorphism and epimorphism is normal. As opposed to many other concepts of categories, being abelian turns out to be a mere property. For example, monoidal not just a property.',
 		dual: 'abelian',
+		related: ['preadditive'],
 	},
 	{
 		name: 'finitely complete',
@@ -55,6 +58,7 @@ export const properties = [
 		description:
 			'A category is <i>finitely complete</i> when every finite diagram has a limit.',
 		dual: 'finitely cocomplete',
+		related: ['complete'],
 	},
 	{
 		name: 'finitely cocomplete',
@@ -62,6 +66,7 @@ export const properties = [
 		description:
 			'A category is <i>finitely cocomplete</i> when every finite diagram has a colimit.',
 		dual: 'finitely complete',
+		related: ['cocomplete'],
 	},
 	{
 		name: 'pointed',
@@ -69,6 +74,7 @@ export const properties = [
 		description:
 			'A category is <i>pointed</i> when it has a zero object, i.e. an object which is both initial and terminal.',
 		dual: 'pointed',
+		related: ['initial object', 'terminal object'],
 	},
 	{
 		name: 'locally finitely presentable',
@@ -87,6 +93,7 @@ export const properties = [
 		prefix: 'is a',
 		description:
 			'A <i>Grothendieck topos</i> is a category that is equivalent to the category of sheaves on a site.',
+		related: ['elementary topos'],
 	},
 	{
 		name: 'well-powered',
@@ -136,6 +143,7 @@ export const properties = [
 		description:
 			'A category has <i>finite products</i> if it has products for finite families of objects. Equivalently, it has a terminal object and binary products.',
 		dual: 'finite coproducts',
+		related: ['products'],
 	},
 	{
 		name: 'finite coproducts',
@@ -143,6 +151,7 @@ export const properties = [
 		description:
 			'A category has <i>finite coproducts</i> if it has coproducts for finite families of objects. Equivalently, it has an initial object and binary coproducts.',
 		dual: 'finite products',
+		related: ['coproducts'],
 	},
 	{
 		name: 'equalizers',
@@ -164,6 +173,7 @@ export const properties = [
 		description:
 			'A category has <i>filtered limits</i> if it has limits of diagrams indexed by filtered categories.',
 		dual: 'filtered colimits',
+		related: ['complete'],
 	},
 	{
 		name: 'filtered colimits',
@@ -171,6 +181,7 @@ export const properties = [
 		description:
 			'A category has <i>filtered colimits</i> if it has colimits of diagrams indexed by filtered categories.',
 		dual: 'filtered limits',
+		related: ['cocomplete'],
 	},
 	{
 		name: 'self-dual',
@@ -192,6 +203,7 @@ export const properties = [
 		description:
 			'A category is <i>essentially small</i> when it is equivalent to a small category. In particular, there is a set of objects such that every object is isomorphic to an object in this set. In contrast to the property of being small, being essentially small is invariant under equivalences of categories.',
 		dual: 'essentially small',
+		related: ['small'],
 	},
 	{
 		name: 'thin',

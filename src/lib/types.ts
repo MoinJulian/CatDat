@@ -27,6 +27,7 @@ export type Property = {
 	description: string
 	prefix: Prefix
 	dual?: string
+	related?: string[]
 }
 
 export type Implication = {
