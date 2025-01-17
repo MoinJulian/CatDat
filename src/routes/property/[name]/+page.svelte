@@ -31,10 +31,12 @@
 {/if}
 
 {#if property.related}
-	Related properties: {#each property.related as related_property}
+	Related properties: {#each property.related as related_property, i}
 		<a href={get_property_url(properties.find((p) => p.name === related_property)!)}>
 			{related_property}
-		</a>
+		</a>{#if i < property.related.length - 1}
+			,&nbsp;
+		{/if}
 	{/each}
 {/if}
 
