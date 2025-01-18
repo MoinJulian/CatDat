@@ -192,24 +192,25 @@ export const categories = [
 	},
 	{
 		id: 'M-Set',
-		name: 'The category of M-sets',
+		name: 'The category of $M$-sets',
 		notation: 'M{-}\\mathbf{Set}',
-		objects: 'sets with a left action of a monoid M',
-		morphisms: 'maps that are compatible with the M-action',
+		objects: 'sets with a left action of a monoid $M$',
+		morphisms:
+			'maps that are compatible with the $M$-action, meaning $f(m \\cdot x)=m \\cdot f(x)$',
 		description:
-			'Here, M can be any monoid. But the most important special case is that of a group.',
+			'Here, $M$ can be any monoid. But the most important special case is that of a group.',
 		nlab_link: 'https://ncatlab.org/nlab/show/MSet',
 		properties: ['Grothendieck topos', 'locally finitely presentable'],
 		non_properties: ['pointed', 'self-dual', 'thin'],
 	},
 	{
 		id: 'R-Mod',
-		name: 'The category of left R-modules',
+		name: 'The category of left $R$-modules',
 		notation: 'R{-}\\mathbf{Mod}',
-		objects: 'left R-modules',
-		morphisms: 'R-linear maps',
+		objects: 'left $R$-modules',
+		morphisms: '$R$-linear maps',
 		description:
-			'This is the category of left modules over a ring R. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring, hence not listed here. The non-properties refer to the case that the ring is non-trivial.',
+			'This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial.',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
 		properties: ['abelian', 'locally finitely presentable'],
 		non_properties: ['self-dual', 'thin', 'cartesian closed'],
@@ -219,9 +220,9 @@ export const categories = [
 		name: 'The category of metric spaces',
 		notation: '\\mathbf{Met}',
 		objects: 'metric spaces',
-		morphisms: 'metric, i.e. non-expansive maps',
+		morphisms:
+			'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
 		nlab_link: 'https://ncatlab.org/nlab/show/Met',
-		description: 'Here, non-expansive means d(f(x),f(y)) &leq; d(x,y) for all x,y.',
 		properties: [
 			'locally small',
 			'well-powered',
@@ -292,10 +293,10 @@ export const categories = [
 		id: 'N',
 		name: 'The partial order of natural numbers',
 		notation: '(\\mathbb{N},\\leq)',
-		objects: 'natural numbers 0, 1, 2, ...',
-		morphisms: 'a unique morphism n &rarr; m if n &leq; m',
+		objects: 'natural numbers $0, 1, 2, \\dotsc$',
+		morphisms: 'a unique morphism $n \\to m$ if $n \\leq m$',
 		description:
-			'This can also be seen as the path category of the infinite linear graph &bullet; &rarr; &bullet; &rarr; ...',
+			'This can also be seen as the path category of the infinite linear graph $\\bullet \\to \\bullet \\to \\bullet \\to \\cdots$.',
 		properties: [
 			'small',
 			'finitely cocomplete',
