@@ -4,7 +4,8 @@
 		properties_dictionary,
 		type PropertyName,
 	} from '$lib/dictionaries/properties'
-	import { get_suitable_categories } from './search'
+	import { get_suitable_categories } from '$lib/search'
+
 	import Selection from './Selection.svelte'
 
 	let selected_properties = $state<string[]>([''])
