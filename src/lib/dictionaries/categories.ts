@@ -164,7 +164,7 @@ export const categories = [
 		description:
 			'This is the simplest category, consisting of a single object and only the identity morphism. It is the terminal object in the category of small categories.',
 		nlab_link: 'https://ncatlab.org/nlab/show/terminal+category',
-		properties: ['algebraic', 'Grothendieck topos', 'abelian', 'discrete', 'finite'],
+		properties: ['trivial', 'finite', 'discrete'],
 		non_properties: [],
 	},
 	{

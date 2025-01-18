@@ -146,6 +146,10 @@ export const implications: Implication[] = [
 		assumptions: ['binary products'],
 		conclusions: ['connected'],
 	},
+	{
+		assumptions: ['trivial'],
+		conclusions: ['essentially small', 'algebraic', 'Grothendieck topos', 'abelian'],
+	},
 ]
 
 export const implications_with_duals: Implication[] = [

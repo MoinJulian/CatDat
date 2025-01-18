@@ -278,6 +278,13 @@ export const properties = [
 			'A category has <i>pushouts</i> if every span of morphisms $A \\leftarrow C \\rightarrow B$ has a pushout $A \\sqcup_C B$. This is also known as a fiber coproduct.',
 		dual: 'pullbacks',
 	},
+	{
+		name: 'trivial',
+		prefix: 'is',
+		description:
+			'A category is <i>trivial</i> if it is equivalent to the trivial category (with just one object and just one morphism). Equivalently, there is an initial object $0$ such that for every object $A$ the unique morphism $0 \\to A$ is an isomorphism. Notice that we do not demand that the category is isomorphic to the trivial category. As a consequence, every non-empty indiscrete category is trivial in our sense.',
+		dual: 'trivial',
+	},
 ] as const satisfies Property[]
 
 export type PropertyName = (typeof properties)[number]['name']
