@@ -1,22 +1,19 @@
 import { categories_detailed } from '$lib/dictionaries/categories'
+import type { PropertyName } from '$lib/dictionaries/properties'
 
-export function get_suitable_categories(properties: string[], non_properties: string[]) {
-	if (properties.length === 0 && non_properties.length === 0) {
-		return []
-	}
+export function get_suitable_categories(
+	properties: PropertyName[],
+	non_properties: PropertyName[],
+) {
+	if (properties.length === 0 && non_properties.length === 0) return []
 
-	const suitable_categories = []
-
-	for (const category of categories_detailed) {
+	return categories_detailed.filter((category) => {
 		const has_all_properties = properties.every((property) =>
 			category.properties.some((prop) => prop.name === property),
 		)
 		const has_no_non_properties = non_properties.every(
 			(property) => !category.properties.some((prop) => prop.name === property),
 		)
-		if (has_all_properties && has_no_non_properties) {
-			suitable_categories.push(category)
-		}
-	}
-	return suitable_categories
+		return has_all_properties && has_no_non_properties
+	})
 }
