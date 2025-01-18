@@ -41,6 +41,8 @@ export function get_self_dual_implication(property: PropertyName): null | Implic
 	const dual_property = get_dual_property(property)
 	if (!dual_property) return null
 
+	if (dual_property === property) return null
+
 	return {
 		assumptions: ['self-dual', property],
 		conclusions: [dual_property],

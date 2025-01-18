@@ -97,6 +97,11 @@ describe('get_self_dual_implication', () => {
 	it("should return null for properties that don't have a dual", () => {
 		expect(get_self_dual_implication('cartesian closed')).toBe(null)
 	})
+
+	it('should return null for properties that are already self-dual', () => {
+		expect(get_self_dual_implication('thin')).toBe(null)
+	})
+
 	it('should return the corresponding self-dual implication if available', () => {
 		expect(get_self_dual_implication('complete')).toEqual({
 			assumptions: ['self-dual', 'complete'],
