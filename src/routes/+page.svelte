@@ -1,8 +1,8 @@
 <svelte:head>
-	<title>Examples of Categories and their Properties</title>
+	<title>CatDat</title>
 </svelte:head>
 
-<h2>Welcome!</h2>
+<h2>Examples and properties of categories</h2>
 
 <p>
 	This page is all about finding categories that have certain properties. You can also

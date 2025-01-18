@@ -1,3 +1,3 @@
 <header>
-	<h1>Examples of Categories and their Properties</h1>
+	<h1>CatDat</h1>
 </header>
