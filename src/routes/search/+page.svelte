@@ -5,6 +5,7 @@
 		type PropertyName,
 	} from '$lib/dictionaries/properties'
 	import { get_suitable_categories } from './search'
+	import Selection from './Selection.svelte'
 
 	let selected_properties = $state<string[]>([''])
 	let selected_non_properties = $state<string[]>([''])
@@ -20,24 +21,6 @@
 	let suitable_categories = $derived(
 		get_suitable_categories(valid_properties, valid_non_properties),
 	)
-
-	function add_property() {
-		selected_properties.push('')
-	}
-
-	function remove_property() {
-		if (selected_properties.length === 0) return
-		selected_properties.pop()
-	}
-
-	function add_non_property() {
-		selected_non_properties.push('')
-	}
-
-	function remove_non_property() {
-		if (selected_non_properties.length === 0) return
-		selected_non_properties.pop()
-	}
 </script>
 
 <svelte:head>
@@ -56,51 +39,21 @@
 
 <p>Looking for categories with these properties:</p>
 
-<section class="selection" aria-label="selection of properties">
-	<div class="inputs">
-		{#each { length: selected_properties.length } as _, i}
-			<input
-				type="text"
-				list="property-list"
-				bind:value={selected_properties[i]}
-				aria-label="property {i + 1}"
-				aria-invalid={selected_properties[i].length > 0 &&
-					properties.every((p) => p.name != selected_properties[i])}
-			/>
-		{/each}
-	</div>
-	<div class="controls">
-		<button class="button positive" aria-label="add property" onclick={add_property}
-			>+</button
-		>
-		<button
-			class="button positive"
-			aria-label="remove property"
-			onclick={remove_property}>-</button
-		>
-	</div>
-</section>
+<Selection
+	aria_label="selection of properties"
+	bind:values={selected_properties}
+	name="property"
+	variant="positive"
+/>
 
 <p>... and <i>not</i> with these properties:</p>
 
-<section class="selection" aria-label="selection of non-properties">
-	<div class="inputs">
-		{#each { length: selected_non_properties.length } as _, i}
-			<input
-				type="text"
-				list="property-list"
-				bind:value={selected_non_properties[i]}
-				aria-label="non-property {i + 1}"
-				aria-invalid={selected_non_properties[i].length > 0 &&
-					properties.every((p) => p.name != selected_non_properties[i])}
-			/>
-		{/each}
-	</div>
-	<div class="controls">
-		<button class="button negative" onclick={add_non_property}>+</button>
-		<button class="button negative" onclick={remove_non_property}>-</button>
-	</div>
-</section>
+<Selection
+	aria_label="selection of non-properties"
+	bind:values={selected_non_properties}
+	name="non-property"
+	variant="negative"
+/>
 
 <datalist id="property-list">
 	{#each properties as property}
@@ -121,55 +74,3 @@
 		{/each}
 	</ul>
 {/if}
-
-<style>
-	.controls button {
-		font-weight: bold;
-		color: white;
-	}
-
-	button.positive {
-		background-color: var(--positive-color);
-	}
-
-	button.negative {
-		background-color: var(--negative-color);
-	}
-
-	.selection {
-		display: grid;
-		gap: 0.5rem;
-		margin-bottom: 1.5rem;
-	}
-
-	.inputs {
-		display: grid;
-		gap: 0.5rem;
-	}
-
-	.controls {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 2rem;
-	}
-
-	input[aria-invalid='true'] {
-		border-color: var(--negative-color);
-		outline: 1px solid var(--negative-color);
-	}
-
-	@media (min-width: 600px) {
-		.inputs {
-			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-		}
-
-		.controls {
-			display: inline-flex;
-			gap: 0.5rem;
-		}
-
-		button {
-			width: 3rem;
-		}
-	}
-</style>
