@@ -230,6 +230,8 @@ export const categories = [
 			'finite products',
 			'initial object',
 			'cartesian closed',
+			'coequalizers',
+			'filtered colimits',
 		],
 		non_properties: [
 			'essentially small',
@@ -284,7 +286,7 @@ export const categories = [
 			'complete',
 			'cocomplete',
 		],
-		non_properties: ['pointed', 'self-dual', 'thin'],
+		non_properties: ['pointed', 'self-dual', 'thin', 'cartesian closed'],
 	},
 	{
 		id: 'N',
