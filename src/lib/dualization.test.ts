@@ -1,4 +1,8 @@
-import { get_dual_implication, get_new_dual_implication } from './dualization'
+import {
+	get_dual_implication,
+	get_new_dual_implication,
+	get_self_dual_implication,
+} from './dualization'
 import type { Implication } from './types'
 
 describe('get_dual_implication', () => {
@@ -86,5 +90,17 @@ describe('get_new_dual_implication', () => {
 			conclusions: ['finitely complete', 'finitely cocomplete'],
 		}
 		expect(get_new_dual_implication(implication)).toBe(null)
+	})
+})
+
+describe('get_self_dual_implication', () => {
+	it("should return null for properties that don't have a dual", () => {
+		expect(get_self_dual_implication('cartesian closed')).toBe(null)
+	})
+	it('should return the corresponding self-dual implication if available', () => {
+		expect(get_self_dual_implication('complete')).toEqual({
+			assumptions: ['self-dual', 'complete'],
+			conclusions: ['cocomplete'],
+		})
 	})
 })

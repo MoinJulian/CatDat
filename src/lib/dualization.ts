@@ -1,3 +1,4 @@
+import type { PropertyName } from './dictionaries/properties'
 import type { Implication } from './types'
 import { get_dual_property } from './utils'
 
@@ -34,4 +35,14 @@ export function get_new_dual_implication(implication: Implication): Implication 
 			dual_implication.conclusions.toSorted().join(',')
 	if (is_the_same) return null
 	return dual_implication
+}
+
+export function get_self_dual_implication(property: PropertyName): null | Implication {
+	const dual_property = get_dual_property(property)
+	if (!dual_property) return null
+
+	return {
+		assumptions: ['self-dual', property],
+		conclusions: [dual_property],
+	}
 }
