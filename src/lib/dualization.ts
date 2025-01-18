@@ -28,8 +28,10 @@ export function get_new_dual_implication(implication: Implication): Implication 
 	const dual_implication = get_dual_implication(implication)
 	if (!dual_implication) return null
 	const is_the_same =
-		implication.assumptions.join(',') === dual_implication.assumptions.join(',') &&
-		implication.conclusions.join(',') === dual_implication.conclusions.join(',')
+		implication.assumptions.toSorted().join(',') ===
+			dual_implication.assumptions.toSorted().join(',') &&
+		implication.conclusions.toSorted().join(',') ===
+			dual_implication.conclusions.toSorted().join(',')
 	if (is_the_same) return null
 	return dual_implication
 }

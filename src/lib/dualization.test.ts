@@ -79,4 +79,12 @@ describe('get_new_dual_implication', () => {
 		}
 		expect(get_new_dual_implication(implication)).toBe(null)
 	})
+
+	it('should ignore the order when checking for a new implication', () => {
+		const implication: Implication = {
+			assumptions: ['abelian'],
+			conclusions: ['finitely complete', 'finitely cocomplete'],
+		}
+		expect(get_new_dual_implication(implication)).toBe(null)
+	})
 })
