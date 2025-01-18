@@ -29,6 +29,12 @@ a {
 	text-decoration-color: var(--secondary-text-color);
 }
 
+a:focus-visible,
+mjx-container:focus-visible {
+	outline: 1px solid var(--text-color);
+	outline-offset: 2px;
+}
+
 h1,
 h2,
 h3 {
