@@ -27,4 +27,14 @@
 <Heading />
 <Nav />
 
-<slot></slot>
+<main>
+	<slot></slot>
+</main>
+
+<style>
+	main {
+		max-width: 800px;
+		margin: 0 auto;
+		margin-bottom: 3rem;
+	}
+</style>

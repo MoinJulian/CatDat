@@ -21,17 +21,18 @@
 <style>
 	nav {
 		padding-bottom: 1.5rem;
-		display: flex;
-		align-items: center;
 	}
+
 	ul {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
 		display: flex;
+		justify-content: center;
 		flex-wrap: wrap;
 		gap: 0.25rem 1rem;
 	}
+
 	li {
 		margin: 0;
 	}
