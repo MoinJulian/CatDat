@@ -155,6 +155,23 @@ export const implications: Implication[] = [
 		assumptions: ['subobject classifier'],
 		conclusions: ['finitely complete'],
 	},
+	{
+		assumptions: ['strict initial object'],
+		conclusions: ['initial object'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['strict initial object', 'pointed'],
+		conclusions: ['trivial'],
+	},
+	{
+		assumptions: ['cartesian closed', 'initial object'],
+		conclusions: ['strict initial object'],
+	},
+	{
+		assumptions: ['thin', 'initial object'],
+		conclusions: ['strict initial object'],
+	},
 ]
 
 export const implications_with_duals: Implication[] = [
