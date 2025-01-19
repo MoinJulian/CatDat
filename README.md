@@ -36,9 +36,9 @@ To find the categories with unknown properties, run
 
 There are three TypeScript files\* that form the "database" of this project.
 
-- New categories are added to the file [categories.ts](src/lib/dictionaries/categories.ts).
-- New properties are added to the file [properties.ts](src/lib/dictionaries/properties.ts).
-- New implications are added to the file [implications.ts](src/lib/dictionaries/implications.ts).
+- New categories are added to the file [categories.ts](src/lib/categories/categories.ts).
+- New properties are added to the file [properties.ts](src/lib/properties/properties.ts).
+- New implications are added to the file [implications.ts](src/lib/implications/implications.ts).
 
 \*We decided for TypeScript here instead of JSON to enable autocompletion in various fields. Specifically, when you add a property to a category and start typign `"com`, you get already suggestions for properties like `complete` and `cocomplete`. Also, we didn't choose an external database, for example since the data is static and since it makes the local development much simpler.
 
