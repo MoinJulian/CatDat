@@ -30,7 +30,7 @@ describe('implications_with_duals', () => {
 	it('should contain the existing implications', () => {
 		const implication = {
 			assumptions: ['small'],
-			conclusions: ['locally small'],
+			conclusions: ['locally small', 'essentially small'],
 		}
 		expect(implications_with_duals).toContainEqual(implication)
 	})

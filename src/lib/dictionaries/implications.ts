@@ -6,7 +6,7 @@ import { properties, type PropertyName } from './properties'
 export const implications: Implication[] = [
 	{
 		assumptions: ['small'],
-		conclusions: ['locally small'],
+		conclusions: ['locally small', 'essentially small'],
 	},
 	{
 		assumptions: ['locally finitely presentable'],
@@ -92,10 +92,6 @@ export const implications: Implication[] = [
 		conclusions: ['self-dual'],
 	},
 	{
-		assumptions: ['small'],
-		conclusions: ['essentially small'],
-	},
-	{
 		assumptions: ['essentially small'],
 		conclusions: ['well-powered', 'well-copowered'],
 	},
@@ -147,7 +143,7 @@ export const implications: Implication[] = [
 	},
 	{
 		equivalent: true,
-		assumptions: ['additive', 'cartesian closed'],
+		assumptions: ['pointed', 'cartesian closed'],
 		conclusions: ['trivial'],
 	},
 ]
