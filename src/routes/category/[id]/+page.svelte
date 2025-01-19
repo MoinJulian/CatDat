@@ -2,7 +2,7 @@
 	import { get_property_url, negate_prefix } from '$lib/utils'
 
 	let { data } = $props()
-	let { category } = data
+	let category = $derived(data.category)
 
 	$effect(() => {
 		window.MathJax?.typeset()
