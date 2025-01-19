@@ -1,15 +1,11 @@
 import { DeductionSystem } from '$lib/DeductionSystem'
+import { implications_with_duals } from '$lib/implications/implications.duals'
+import { properties_dictionary } from '$lib/properties/property.dict'
+import type { PropertyID } from '$lib/properties/propertyIDs'
 import type { Category, CategoryDetailed } from '$lib/types'
-import { implications_with_duals } from './dictionaries/implications'
-import {
-	properties,
-	properties_dictionary,
-	type PropertyName,
-} from './properties/properties'
+import { properties } from '../properties/properties'
 
-const category_deduction_system = new DeductionSystem<PropertyName>(
-	implications_with_duals,
-)
+const category_deduction_system = new DeductionSystem<PropertyID>(implications_with_duals)
 
 /**
  * Adds the actual properties (not just their names) and
@@ -39,8 +35,8 @@ export function add_details(category: Category): CategoryDetailed {
 
 	const unknown_properties = properties.filter(
 		(property) =>
-			!deduced_properties.has(property.name) &&
-			!deduced_non_properties.has(property.name),
+			!deduced_properties.has(property.id) &&
+			!deduced_non_properties.has(property.id),
 	)
 
 	return {

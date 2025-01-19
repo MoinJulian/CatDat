@@ -1,6 +1,6 @@
-import type { PropertyName } from './properties/properties'
-import type { Implication } from './types'
-import { get_dual_property } from './utils'
+import type { PropertyID } from '$lib/properties/propertyIDs'
+import type { Implication } from '$lib/types'
+import { get_dual_property } from '$lib/properties/properties.utils'
 
 export function get_dual_implication(implication: Implication): Implication | null {
 	const dual_implication: Implication = {
@@ -37,7 +37,7 @@ export function get_new_dual_implication(implication: Implication): Implication 
 	return dual_implication
 }
 
-export function get_self_dual_implication(property: PropertyName): null | Implication {
+export function get_self_dual_implication(property: PropertyID): null | Implication {
 	const dual_property = get_dual_property(property)
 	if (!dual_property) return null
 

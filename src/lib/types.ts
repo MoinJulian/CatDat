@@ -1,5 +1,6 @@
 import type { CategoryID } from './categories/categoryIDs'
-import type { PropertyName } from './properties/properties'
+import type { Prefix } from './properties/prefix'
+import type { PropertyID } from './properties/propertyIDs'
 
 export type Category = {
 	id: CategoryID
@@ -9,8 +10,8 @@ export type Category = {
 	morphisms: string
 	description?: string
 	nlab_link?: string
-	properties: PropertyName[]
-	non_properties: PropertyName[]
+	properties: PropertyID[]
+	non_properties: PropertyID[]
 	related?: CategoryID[]
 }
 
@@ -20,25 +21,21 @@ export type CategoryDetailed = Omit<Category, 'properties' | 'non_properties'> &
 	unknown_properties: Property[]
 }
 
-export const prefixes = ['is', 'is a', 'is an', 'has', 'has a', 'has an'] as const
-
-export type Prefix = (typeof prefixes)[number]
-
 export type Property = {
-	name: string // cannot use PropertyName because of circularity
+	id: PropertyID
 	description: string
 	prefix: Prefix
-	dual?: string
-	related?: string[]
+	dual?: PropertyID
+	related?: PropertyID[]
 }
 
 export type Implication = {
 	equivalent?: boolean
-	assumptions: PropertyName[]
-	conclusions: PropertyName[]
+	assumptions: PropertyID[]
+	conclusions: PropertyID[]
 }
 
 export type NormalizedImplication = {
-	assumptions: Set<PropertyName>
-	conclusion: PropertyName
+	assumptions: Set<PropertyID>
+	conclusion: PropertyID
 }

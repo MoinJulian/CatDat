@@ -1,9 +1,9 @@
+import type { Implication } from '$lib/types'
 import {
 	get_dual_implication,
 	get_new_dual_implication,
 	get_self_dual_implication,
 } from './dualization'
-import type { Implication } from './types'
 
 describe('get_dual_implication', () => {
 	it('should return null when an assumption cannot be dualized', () => {

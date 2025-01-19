@@ -1,17 +1,4 @@
-import { properties_dictionary } from './properties/properties'
-import { get_property_url, group_items, negate_prefix } from './utils'
-
-describe('negate_prefix', () => {
-	it("negates 'has a' to 'does not have a'", () => {
-		expect(negate_prefix('has a')).toBe('does not have a')
-	})
-})
-
-describe('get_property_url', () => {
-	it("should return '/property/abelian'", () => {
-		expect(get_property_url(properties_dictionary.abelian)).toBe('/property/abelian')
-	})
-})
+import { group_items } from './utils'
 
 describe('group_items', () => {
 	it('should group items by id', () => {

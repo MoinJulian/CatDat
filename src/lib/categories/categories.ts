@@ -1,6 +1,4 @@
-import { add_details } from '$lib/details'
-import type { Category, CategoryDetailed } from '$lib/types'
-import type { CategoryID } from './categoryIDs'
+import type { Category } from '$lib/types'
 
 export const categories: Category[] = [
 	{

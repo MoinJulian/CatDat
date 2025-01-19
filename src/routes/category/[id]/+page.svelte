@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { get_property_url, negate_prefix } from '$lib/utils'
+	import { negate_prefix } from '$lib/properties/prefix'
+	import { get_property_url } from '$lib/properties/properties.utils'
 
 	let { data } = $props()
 	let category = $derived(data.category)
@@ -57,7 +58,7 @@
 		<li>
 			{property.prefix}
 			<a href={get_property_url(property)}>
-				{property.name}
+				{property.id}
 			</a>
 		</li>
 	{/each}
@@ -70,7 +71,7 @@
 		<li>
 			{property.prefix}
 			<a href={get_property_url(property)}>
-				{property.name}
+				{property.id}
 			</a>
 		</li>
 	{/each}
@@ -86,7 +87,7 @@
 			<li>
 				{negate_prefix(property.prefix)}
 				<a href={get_property_url(property)}>
-					{property.name}
+					{property.id}
 				</a>
 			</li>
 		{/each}
@@ -99,7 +100,7 @@
 			<li>
 				{negate_prefix(property.prefix)}
 				<a href={get_property_url(property)}>
-					{property.name}
+					{property.id}
 				</a>
 			</li>
 		{/each}
@@ -123,7 +124,7 @@
 			<li>
 				{property.prefix}
 				<a href={get_property_url(property)}>
-					{property.name}
+					{property.id}
 				</a>?
 			</li>
 		{/each}

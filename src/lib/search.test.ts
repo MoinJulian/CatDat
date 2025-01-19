@@ -23,14 +23,14 @@ describe('get_suitable_categories', () => {
 	it('should return all complete categories', () => {
 		const results = get_suitable_categories(['complete'], [])
 		for (const result of results) {
-			expect(result.properties.map((p) => p.name)).toContain('complete')
+			expect(result.properties.map((p) => p.id)).toContain('complete')
 		}
 	})
 
 	it('should return no thin categories', () => {
 		const results = get_suitable_categories([], ['thin'])
 		for (const result of results) {
-			expect(result.properties.map((p) => p.name)).not.toContain('thin')
+			expect(result.properties.map((p) => p.id)).not.toContain('thin')
 		}
 	})
 

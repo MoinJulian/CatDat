@@ -1,6 +1,6 @@
 import type { CategoryID } from './categoryIDs'
 import type { Category, CategoryDetailed } from '$lib/types'
-import { add_details } from '$lib/details'
+import { add_details } from '$lib/categories/details'
 import { group_items } from '$lib/utils'
 import { categories } from './categories'
 

@@ -1,8 +1,5 @@
 import type { Implication } from '$lib/types'
 
-import { get_new_dual_implication, get_self_dual_implication } from '$lib/dualization'
-import { properties, type PropertyName } from '../properties/properties'
-
 export const implications: Implication[] = [
 	{
 		assumptions: ['small'],
@@ -173,11 +170,3 @@ export const implications: Implication[] = [
 		conclusions: ['strict initial object'],
 	},
 ]
-
-export const implications_with_duals: Implication[] = [
-	...implications,
-	...implications.map(get_new_dual_implication),
-	...properties.map((property) =>
-		get_self_dual_implication(property.name as PropertyName),
-	),
-].filter((implication) => implication != null)

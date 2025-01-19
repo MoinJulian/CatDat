@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Implication from '$lib/components/Implication.svelte'
-	import { implications_with_duals } from '$lib/dictionaries/implications'
-	import { properties, type PropertyName } from '$lib/properties/properties.js'
-	import { get_property_url } from '$lib/utils'
+	import { implications_with_duals } from '$lib/implications/implications.duals'
+	import { properties } from '$lib/properties/properties'
+	import { get_property_url } from '$lib/properties/properties.utils'
 
 	let { data } = $props()
 	let property = $derived(data.property)
@@ -16,25 +16,25 @@
 	let relevant_implications = $derived(
 		implications_with_duals.filter(
 			(implication) =>
-				implication.conclusions.includes(property.name as PropertyName) ||
-				implication.assumptions.includes(property.name as PropertyName),
+				implication.conclusions.includes(property.id) ||
+				implication.assumptions.includes(property.id),
 		),
 	)
 </script>
 
 <svelte:head>
-	<title>Property: {property.name}</title>
+	<title>Property: {property.id}</title>
 </svelte:head>
 
-<h2>{property.name}</h2>
+<h2>{property.id}</h2>
 
 <p><strong>Definition:</strong> {@html property.description}</p>
 
 {#if property.dual}
-	{@const dual_property = properties.find((p) => p.name === property.dual)!}
+	{@const dual_property = properties.find((p) => p.id === property.dual)!}
 	<p>
 		Dual property: <a href={get_property_url(dual_property)}>{property.dual}</a>
-		{#if property.dual === property.name}
+		{#if property.dual === property.id}
 			(self-dual)
 		{/if}
 	</p>
@@ -45,7 +45,7 @@
 		Related properties: {#each property.related as related_property, i}
 			<a
 				href={get_property_url(
-					properties.find((p) => p.name === related_property)!,
+					properties.find((p) => p.id === related_property)!,
 				)}
 			>
 				{related_property}

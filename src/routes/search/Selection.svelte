@@ -29,7 +29,7 @@
 				bind:value={values[i]}
 				aria-label="{name} {i + 1}"
 				aria-invalid={values[i].length > 0 &&
-					properties.every((p) => p.name != values[i])}
+					properties.every((p) => p.id != values[i])}
 			/>
 		{/each}
 	</div>

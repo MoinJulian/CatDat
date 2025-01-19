@@ -1,4 +1,4 @@
-import { categories_detailed } from '$lib/categories/categories.details'
+import { categories_detailed } from '$lib/categories/categories.dict'
 
 console.info('find unknown properties ...\n')
 
@@ -7,6 +7,6 @@ for (const category of categories_detailed) {
 	console.info(
 		category.id,
 		' --- ',
-		category.unknown_properties.map((p) => p.name).join(', '),
+		category.unknown_properties.map((p) => p.id).join(', '),
 	)
 }

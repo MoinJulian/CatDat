@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { properties } from '$lib/properties/properties'
-	import { get_property_url } from '$lib/utils'
+	import { get_property_url } from '$lib/properties/properties.utils'
 </script>
 
 <svelte:head>
@@ -16,7 +16,7 @@
 		<li>
 			{property.prefix}
 			<a href={get_property_url(property)}>
-				{property.name}
+				{property.id}
 			</a>
 		</li>
 	{/each}

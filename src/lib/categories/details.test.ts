@@ -1,4 +1,4 @@
-import { categories_dictionary } from './categories/categories.details'
+import { categories_dictionary } from './categories.dict'
 import { add_details } from './details'
 
 describe('add_details', () => {
@@ -7,12 +7,12 @@ describe('add_details', () => {
 		const FinAbTransformed = add_details(FinAb)
 
 		expect(
-			FinAbTransformed.properties.some((p) => p.name === 'self-dual' && !p.deduced),
+			FinAbTransformed.properties.some((p) => p.id === 'self-dual' && !p.deduced),
 		).toBe(true)
 
 		expect(
 			FinAbTransformed.properties.some(
-				(p) => p.name === 'initial object' && p.deduced,
+				(p) => p.id === 'initial object' && p.deduced,
 			),
 		).toBe(true)
 	})
@@ -22,7 +22,7 @@ describe('add_details', () => {
 		const SetDetailed = add_details(Set)
 
 		expect(
-			SetDetailed.non_properties.some((p) => p.name === 'small' && p.deduced),
+			SetDetailed.non_properties.some((p) => p.id === 'small' && p.deduced),
 		).toBe(true)
 	})
 
