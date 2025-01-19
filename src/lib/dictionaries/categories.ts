@@ -23,7 +23,7 @@ export const categories = [
 		description: 'This is the prototype of an abelian category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
 		properties: ['abelian', 'algebraic'],
-		non_properties: ['self-dual', 'thin'],
+		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 	},
 	{
 		id: 'Top',
@@ -47,6 +47,7 @@ export const categories = [
 			'preadditive',
 			'self-dual',
 			'thin',
+			'subobject classifier',
 		],
 	},
 	{
@@ -57,7 +58,7 @@ export const categories = [
 		morphisms: 'group homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
 		properties: ['pointed', 'algebraic'],
-		non_properties: ['preadditive', 'self-dual', 'thin'],
+		non_properties: ['preadditive', 'self-dual', 'thin', 'subobject classifier'],
 	},
 	{
 		id: 'Ring',
@@ -68,7 +69,13 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Ring',
 		description: 'Here, rings always have a unit, and homomorphisms preserve them.',
 		properties: ['algebraic'],
-		non_properties: ['cartesian closed', 'pointed', 'self-dual', 'thin'],
+		non_properties: [
+			'cartesian closed',
+			'pointed',
+			'self-dual',
+			'thin',
+			'subobject classifier',
+		],
 	},
 	{
 		id: 'CRing',
@@ -78,7 +85,14 @@ export const categories = [
 		morphisms: 'ring homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/CRing',
 		properties: ['algebraic'],
-		non_properties: ['cartesian closed', 'pointed', 'thin', 'groupoid', 'self-dual'],
+		non_properties: [
+			'cartesian closed',
+			'pointed',
+			'thin',
+			'groupoid',
+			'self-dual',
+			'subobject classifier',
+		],
 	},
 	{
 		id: 'Rng',
@@ -88,7 +102,13 @@ export const categories = [
 		morphisms: 'maps that preserve addition and multiplication',
 		nlab_link: 'https://ncatlab.org/nlab/show/Rng',
 		properties: ['algebraic', 'pointed'],
-		non_properties: ['thin', 'groupoid', 'preadditive', 'self-dual'],
+		non_properties: [
+			'thin',
+			'groupoid',
+			'preadditive',
+			'self-dual',
+			'subobject classifier',
+		],
 	},
 	{
 		id: 'FinSet',
@@ -114,7 +134,7 @@ export const categories = [
 			'well-copowered',
 			'self-dual',
 		],
-		non_properties: ['small', 'complete', 'groupoid', 'thin'],
+		non_properties: ['small', 'complete', 'groupoid', 'thin', 'subobject classifier'],
 	},
 	{
 		id: 'Set*',
@@ -125,7 +145,7 @@ export const categories = [
 		description:
 			'This is the category of sets with a distinguished element, often called the base point. A map is called pointed when it preserves the base point.',
 		nlab_link: 'https://ncatlab.org/nlab/show/pointed+set',
-		properties: ['pointed', 'algebraic'],
+		properties: ['pointed', 'algebraic', 'subobject classifier'],
 		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
 	},
 	{
@@ -136,7 +156,13 @@ export const categories = [
 		morphisms: 'monoid homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/category+of+monoids',
 		properties: ['pointed', 'algebraic'],
-		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
+		non_properties: [
+			'cartesian closed',
+			'preadditive',
+			'self-dual',
+			'thin',
+			'subobject classifier',
+		],
 	},
 	{
 		id: 'Pos',
@@ -149,7 +175,7 @@ export const categories = [
 		non_properties: [
 			'pointed',
 			'preadditive',
-			'elementary topos',
+			'subobject classifier',
 			'self-dual',
 			'thin',
 			'algebraic',
@@ -219,10 +245,10 @@ export const categories = [
 		objects: 'left $R$-modules',
 		morphisms: '$R$-linear maps',
 		description:
-			'This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial.',
+			'This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial, since for the trivial ring we get a trivial category which has all properties anyway.',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
 		properties: ['abelian', 'algebraic'],
-		non_properties: ['self-dual', 'thin'],
+		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 	},
 	{
 		id: 'Met',
@@ -334,7 +360,13 @@ export const categories = [
 			'cartesian closed',
 			'locally finitely presentable',
 		],
-		non_properties: ['pointed', 'thin', 'self-dual', 'elementary topos', 'algebraic'],
+		non_properties: [
+			'pointed',
+			'thin',
+			'self-dual',
+			'subobject classifier',
+			'algebraic',
+		],
 	},
 	{
 		id: 'On',
@@ -360,7 +392,7 @@ export const categories = [
 		objects: 'free abelian groups',
 		morphisms: 'group homomorphisms',
 		properties: ['additive', 'coproducts', 'well-powered', 'equalizers'],
-		non_properties: ['essentially small', 'products'],
+		non_properties: ['essentially small', 'products', 'subobject classifier'],
 	},
 	{
 		id: 'LRS',

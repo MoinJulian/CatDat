@@ -285,6 +285,13 @@ export const properties = [
 			'A category is <i>trivial</i> if it is equivalent to the trivial category (with just one object and just one morphism). Equivalently, there is an initial object $0$ such that for every object $A$ the unique morphism $0 \\to A$ is an isomorphism. Notice that we do not demand that the category is isomorphic to the trivial category. As a consequence, every non-empty indiscrete category is trivial in our sense.',
 		dual: 'trivial',
 	},
+	{
+		name: 'subobject classifier',
+		prefix: 'has a',
+		description:
+			'A category $\\mathcal{C}$ has a <i>subobject classifier</i> if it has finite limits and a monomorphism $\\top : 1 \\to \\Omega$ from the terminal object such that for every monomorphism $m : A \\to B$ there is a unique morphism $\\chi_m : B \\to \\Omega$ such that $B \\leftarrow A \\rightarrow 1$ is the pullback of $B \\rightarrow \\Omega \\leftarrow 1$. Equivalently, the functor $\\mathrm{Sub} : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}^+$ is representable.',
+		related: ['elementary topos'],
+	},
 ] as const satisfies Property[]
 
 export type PropertyName = (typeof properties)[number]['name']

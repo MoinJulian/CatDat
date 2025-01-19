@@ -19,8 +19,13 @@ export const implications: Implication[] = [
 		],
 	},
 	{
+		equivalent: true,
 		assumptions: ['elementary topos'],
-		conclusions: ['cartesian closed', 'finitely cocomplete', 'finitely complete'],
+		conclusions: ['cartesian closed', 'finitely complete', 'subobject classifier'],
+	},
+	{
+		assumptions: ['elementary topos'],
+		conclusions: ['finitely cocomplete'],
 	},
 	{
 		assumptions: ['elementary topos', 'locally small'],
@@ -145,6 +150,10 @@ export const implications: Implication[] = [
 		equivalent: true,
 		assumptions: ['pointed', 'cartesian closed'],
 		conclusions: ['trivial'],
+	},
+	{
+		assumptions: ['subobject classifier'],
+		conclusions: ['finitely complete'],
 	},
 ]
 
