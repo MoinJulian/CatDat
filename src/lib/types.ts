@@ -10,6 +10,7 @@ export type Category = {
 	nlab_link?: string
 	properties: PropertyName[]
 	non_properties: PropertyName[]
+	related?: string[]
 }
 
 export type CategoryDetailed = Omit<Category, 'properties' | 'non_properties'> & {

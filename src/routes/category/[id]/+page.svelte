@@ -36,6 +36,18 @@
 	<p>{@html category.description}</p>
 {/if}
 
+{#if category.related}
+	<p>
+		Related categories: {#each category.related as related_category, i}
+			<a href={`/category/${related_category}`}>
+				{related_category}
+			</a>{#if i < category.related.length - 1}
+				,&nbsp;
+			{/if}
+		{/each}
+	</p>
+{/if}
+
 <h3>Properties</h3>
 
 <p class="hint">Properties from the database</p>

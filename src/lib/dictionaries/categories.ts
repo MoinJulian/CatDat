@@ -13,6 +13,7 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
 		properties: ['Grothendieck topos', 'algebraic', 'strict initial object'],
 		non_properties: ['preadditive', 'pointed', 'strict terminal object', 'thin'],
+		related: ['FinSet'],
 	},
 	{
 		id: 'Ab',
@@ -24,6 +25,7 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab',
 		properties: ['abelian', 'algebraic'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
+		related: ['Grp', 'R-Mod'],
 	},
 	{
 		id: 'Top',
@@ -60,6 +62,7 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
 		properties: ['pointed', 'algebraic'],
 		non_properties: ['preadditive', 'self-dual', 'thin', 'subobject classifier'],
+		related: ['Ab', 'Mon'],
 	},
 	{
 		id: 'Ring',
@@ -77,6 +80,7 @@ export const categories = [
 			'thin',
 			'subobject classifier',
 		],
+		related: ['CRing', 'Rng'],
 	},
 	{
 		id: 'CRing',
@@ -94,6 +98,7 @@ export const categories = [
 			'strict initial object',
 			'subobject classifier',
 		],
+		related: ['Ring', 'Rng'],
 	},
 	{
 		id: 'Rng',
@@ -110,6 +115,7 @@ export const categories = [
 			'self-dual',
 			'subobject classifier',
 		],
+		related: ['Ring', 'CRing'],
 	},
 	{
 		id: 'FinSet',
@@ -126,6 +132,7 @@ export const categories = [
 			'strict terminal object',
 			'thin',
 		],
+		related: ['Set'],
 	},
 	{
 		id: 'FinAb',
@@ -142,6 +149,7 @@ export const categories = [
 			'self-dual',
 		],
 		non_properties: ['small', 'complete', 'groupoid', 'thin', 'subobject classifier'],
+		related: ['Ab'],
 	},
 	{
 		id: 'Set*',
@@ -170,6 +178,7 @@ export const categories = [
 			'thin',
 			'subobject classifier',
 		],
+		related: ['Grp'],
 	},
 	{
 		id: 'Pos',
@@ -256,6 +265,7 @@ export const categories = [
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
 		properties: ['abelian', 'algebraic'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
+		related: ['Ab'],
 	},
 	{
 		id: 'Met',
@@ -350,6 +360,7 @@ export const categories = [
 			'filtered limits',
 		],
 		non_properties: ['cocomplete', 'terminal object', 'cartesian closed', 'finite'],
+		related: ['On'],
 	},
 	{
 		id: 'Cat',
@@ -393,6 +404,7 @@ export const categories = [
 			'well-powered',
 		],
 		non_properties: ['essentially small', 'terminal object', 'well-copowered'],
+		related: ['N'],
 	},
 	{
 		id: 'FreeAb',
@@ -402,6 +414,7 @@ export const categories = [
 		morphisms: 'group homomorphisms',
 		properties: ['additive', 'coproducts', 'well-powered', 'equalizers'],
 		non_properties: ['essentially small', 'products', 'subobject classifier'],
+		related: ['Ab'],
 	},
 	{
 		id: 'LRS',
@@ -418,6 +431,7 @@ export const categories = [
 			'strict initial object',
 		],
 		non_properties: ['pointed', 'thin', 'cartesian closed', 'strict terminal object'],
+		related: ['Sch'],
 	},
 	{
 		id: 'Sch',
@@ -441,6 +455,7 @@ export const categories = [
 			'cartesian closed',
 			'strict terminal object',
 		],
+		related: ['LRS'],
 	},
 ] as const satisfies Category[]
 

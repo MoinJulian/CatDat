@@ -37,6 +37,18 @@ describe('categories list', () => {
 			expect(new Set(properties).intersection(new Set(non_properties)).size).toBe(0)
 		})
 	}
+
+	for (const category of categories) {
+		if ('related' in category) {
+			it(`should only list related categories that are present for each category ${category.id}`, () => {
+				expect(
+					category.related.every((rel) =>
+						categories.some((cat) => cat.id === rel),
+					),
+				).toBe(true)
+			})
+		}
+	}
 })
 
 describe('categories detailed', () => {
