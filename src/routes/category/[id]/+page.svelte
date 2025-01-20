@@ -53,13 +53,12 @@
 {#snippet property_list(
 	description: string,
 	properties: (Property & { deduced?: boolean })[],
-	deduced?: boolean,
 	negate?: boolean,
 )}
 	<p class="hint">{description}</p>
 
 	{#if properties.length}
-		{#each properties.filter((prop) => prop.deduced === deduced) as property}
+		{#each properties as property}
 			<li>
 				{negate ? negate_prefix(property.prefix) : property.prefix}
 				<a href={get_property_url(property.id)}>
@@ -74,20 +73,31 @@
 
 <h3>Properties</h3>
 
-{@render property_list('Properties from the database', category.properties, false)}
+{@render property_list(
+	'Properties from the database',
+	category.properties.filter((p) => !p.deduced),
+	false,
+)}
 
-{@render property_list('Deduced properties', category.properties, true)}
+{@render property_list(
+	'Deduced properties',
+	category.properties.filter((p) => p.deduced),
+	false,
+)}
 
 <h3>Non-Properties</h3>
 
 {@render property_list(
 	'Non-Properties from the database',
-	category.non_properties,
-	false,
+	category.non_properties.filter((p) => !p.deduced),
 	true,
 )}
 
-{@render property_list('Deduced Non-Properties*', category.non_properties, true, true)}
+{@render property_list(
+	'Deduced Non-Properties*',
+	category.non_properties.filter((p) => p.deduced),
+	true,
+)}
 
 <p class="hint">*This also uses the deduced properties.</p>
 
