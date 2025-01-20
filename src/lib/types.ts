@@ -34,8 +34,3 @@ export type Implication = {
 	assumptions: PropertyID[]
 	conclusions: PropertyID[]
 }
-
-export type NormalizedImplication = {
-	assumptions: Set<PropertyID>
-	conclusion: PropertyID
-}
