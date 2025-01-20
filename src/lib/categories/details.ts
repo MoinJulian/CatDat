@@ -5,7 +5,9 @@ import type { PropertyID } from '$lib/properties/propertyIDs'
 import type { Category, CategoryDetailed } from '$lib/types'
 import { properties } from '../properties/properties'
 
-const category_deduction_system = new DeductionSystem<PropertyID>(implications_with_duals)
+export const category_deduction_system = new DeductionSystem<PropertyID>(
+	implications_with_duals,
+)
 
 /**
  * Adds the actual properties (not just their names) and

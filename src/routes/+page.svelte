@@ -11,6 +11,7 @@
 
 <p>
 	This is a community effort. When a category has an unknown property, or a valid
-	combination of properties is not yet witnessed by a category, please contribute to
-	GitHub to fill in the gaps.
+	combination of properties is not yet witnessed by a category (see <a href="/missing"
+		>this list</a
+	>), please contribute to GitHub to fill in the gaps.
 </p>

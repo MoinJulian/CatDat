@@ -63,7 +63,10 @@
 <h2>Results</h2>
 
 {#if suitable_categories.length === 0}
-	<p>No categories found</p>
+	<p>
+		No categories found. This might be due to a <a href="/missing">missing category</a
+		>.
+	</p>
 {:else}
 	<ul>
 		{#each suitable_categories as category}
