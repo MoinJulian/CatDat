@@ -1,12 +1,12 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
-import type { Property } from '$lib/types'
 import { categories_detailed } from '$lib/categories/categories.dict'
 import { properties_dictionary } from '$lib/properties/property.dict'
 import { is_valid_property } from '$lib/properties/propertyIDs'
+import { decode_property_ID } from '$lib/properties/properties.utils'
 
 export const load: PageServerLoad = (event) => {
-	const id = event.params.id.replaceAll('_', ' ')
+	const id = decode_property_ID(event.params.id)
 	const valid = is_valid_property(id)
 
 	if (valid) {

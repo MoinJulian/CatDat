@@ -2,8 +2,17 @@ import type { Property } from '$lib/types'
 import { properties_dictionary } from './property.dict'
 import type { PropertyID } from './propertyIDs'
 
+export function encode_property_ID(id: PropertyID): string {
+	return id.replaceAll(' ', '_')
+}
+
+export function decode_property_ID(str: string): string {
+	return str.replaceAll('_', ' ')
+}
+
 export function get_property_url(property: Property) {
-	return `/property/${property.id.replaceAll(' ', '_')}`
+	const encoded_ID = encode_property_ID(property.id)
+	return `/property/${encoded_ID}`
 }
 
 export function get_dual_property(id: PropertyID): null | PropertyID {
