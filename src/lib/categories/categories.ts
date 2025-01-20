@@ -456,4 +456,31 @@ export const categories: Category[] = [
 		],
 		related: ['LRS'],
 	},
+	{
+		id: 'Fld',
+		name: 'The category of fields',
+		notation: '\\mathbf{Fld}',
+		objects: 'fields',
+		morphisms: 'field homomorphisms (i.e., ring homomorphisms)',
+		description: 'This is a typical example of a bad category of good objects.',
+		nlab_link: 'https://ncatlab.org/nlab/show/Field',
+		properties: [
+			'locally small',
+			'equalizers',
+			'pullbacks',
+			'filtered colimits',
+			'filtered limits', // even all connected limits
+		],
+		non_properties: [
+			'initial object',
+			'terminal object',
+			'connected',
+			'essentially small',
+			'preadditive',
+			'well-powered',
+			'well-copowered',
+			'coequalizers',
+			'pushouts',
+		],
+	},
 ]
