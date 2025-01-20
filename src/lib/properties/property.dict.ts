@@ -1,8 +1,6 @@
 import type { Property } from '$lib/types'
-import { properties } from './properties'
 import type { PropertyID } from './propertyIDs'
+import { group_items } from '$lib/utils'
+import { properties } from './properties'
 
-export const properties_dictionary = properties.reduce(
-	(acc, property) => ({ ...acc, [property.id]: property }),
-	{},
-) as Record<PropertyID, Property>
+export const properties_dictionary = group_items<PropertyID, Property>(properties)
