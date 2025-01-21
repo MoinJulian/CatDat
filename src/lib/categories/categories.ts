@@ -412,7 +412,12 @@ export const categories: Category[] = [
 		objects: 'free abelian groups',
 		morphisms: 'group homomorphisms',
 		properties: ['additive', 'coproducts', 'well-powered', 'equalizers'],
-		non_properties: ['essentially small', 'products', 'subobject classifier'],
+		non_properties: [
+			'essentially small',
+			'products',
+			'subobject classifier',
+			'coequalizers',
+		],
 		related: ['Ab'],
 	},
 	{
