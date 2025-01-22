@@ -237,8 +237,8 @@ export const categories: Category[] = [
 		description:
 			'This is the category with two objects and a single non-identity morphism between them. It has the property that functors out of this category are the same as morphisms.',
 		nlab_link: 'https://ncatlab.org/nlab/show/interval+category',
-		properties: ['algebraic', 'Grothendieck topos', 'self-dual', 'thin', 'finite'],
-		non_properties: ['pointed', 'groupoid'],
+		properties: ['algebraic', 'self-dual', 'thin', 'finite', 'cartesian closed'],
+		non_properties: ['pointed', 'groupoid', 'subobject classifier'],
 	},
 	{
 		id: 'M-Set',
