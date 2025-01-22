@@ -1,20 +1,31 @@
+<script lang="ts">
+	import { page } from '$app/state'
+
+	type Link = {
+		href: string
+		text: string
+		nested?: string
+	}
+
+	const links: Link[] = [
+		{ href: '/', text: 'Home' },
+		{ href: '/categories', text: 'Categories', nested: '/category' },
+		{ href: '/properties', text: 'Properties', nested: '/property' },
+		{ href: '/implications', text: 'Implications' },
+		{ href: '/search', text: 'Search' },
+	]
+</script>
+
 <nav>
 	<ul>
-		<li>
-			<a href="/">Home</a>
-		</li>
-		<li>
-			<a href="/categories">Categories</a>
-		</li>
-		<li>
-			<a href="/properties">Properties</a>
-		</li>
-		<li>
-			<a href="/implications">Implications</a>
-		</li>
-		<li>
-			<a href="/search">Search</a>
-		</li>
+		{#each links as { nested, href, text }}
+			<li
+				class:current={page.url.pathname === href ||
+					(nested && page.url.pathname.startsWith(nested))}
+			>
+				<a {href}>{text}</a>
+			</li>
+		{/each}
 	</ul>
 </nav>
 
@@ -35,5 +46,10 @@
 
 	li {
 		margin: 0;
+	}
+
+	li.current a {
+		color: var(--heading-color);
+		text-decoration-color: var(--heading-color);
 	}
 </style>
