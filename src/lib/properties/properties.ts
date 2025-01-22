@@ -308,4 +308,11 @@ export const properties: Property[] = [
 			'A category $\\mathcal{C}$ has a <i>subobject classifier</i> if it has finite limits and a monomorphism $\\top : 1 \\to \\Omega$ from the terminal object such that for every monomorphism $m : A \\to B$ there is a unique morphism $\\chi_m : B \\to \\Omega$ such that $B \\leftarrow A \\rightarrow 1$ is the pullback of $B \\rightarrow \\Omega \\leftarrow 1$. Equivalently, the functor $\\mathrm{Sub} : \\mathcal{C}^{\\mathrm{op}} \\to \\mathbf{Set}^+$ is representable.',
 		related: ['elementary topos'],
 	},
+	{
+		id: 'balanced',
+		prefix: 'is',
+		description:
+			'A category is <i>balanced</i> if every morphism which is a monomorphism and an epimorphism must be an isomorphism.',
+		dual: 'balanced',
+	},
 ]

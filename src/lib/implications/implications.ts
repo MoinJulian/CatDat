@@ -169,4 +169,16 @@ export const implications: Implication[] = [
 		assumptions: ['thin', 'initial object'],
 		conclusions: ['strict initial object'],
 	},
+	{
+		assumptions: ['subobject classifier'],
+		conclusions: ['balanced'],
+	},
+	{
+		assumptions: ['abelian'],
+		conclusions: ['balanced'],
+	},
+	{
+		assumptions: ['thin', 'balanced'],
+		conclusions: ['groupoid'],
+	},
 ]

@@ -41,6 +41,7 @@ export const PROPERTY_IDs = [
 	'pushouts',
 	'trivial',
 	'subobject classifier',
+	'balanced',
 ] as const
 
 export type PropertyID = (typeof PROPERTY_IDs)[number]
