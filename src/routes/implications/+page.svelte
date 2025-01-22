@@ -24,15 +24,14 @@
 </ul>
 
 <p>
-	Deductions from these implications are automatically added to each category when
-	appropriate. For example, the category of sets is registered as complete, and then the
-	property of having a terminal object is automatically added as well.
+	Deductions from these implications are automatically incorporated into each category
+	whenever applicable. For instance, if a category is identified as complete, the
+	property of having a terminal object is automatically inferred and added.
 </p>
-
 <p>
-	Also, implications are automatically dualized when the dual properties are available.
-	For example, the fact that finitely complete categories with filtered limits are
-	complete automatically implies that finitely cocomplete categories with filtered
-	colimits are cocomplete. Also, when a category is self-dual and, say, complete, it is
-	automatically cocomplete.
+	Moreover, implications are automatically dualized when the corresponding dual
+	properties exist. For example, the statement that finitely complete categories with
+	filtered limits are complete automatically implies that finitely cocomplete categories
+	with filtered colimits are cocomplete. Similarly, if a category is self-dual and, for
+	example, complete, it is automatically inferred to be cocomplete as well.
 </p>
