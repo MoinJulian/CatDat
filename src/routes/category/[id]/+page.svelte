@@ -2,6 +2,7 @@
 	import { negate_prefix } from '$lib/properties/prefix'
 	import { get_property_url } from '$lib/properties/properties.utils'
 	import type { Property } from '$lib/types'
+	import { get_category_detail_level } from '../../settings/+page.svelte'
 
 	let { data } = $props()
 	let category = $derived(data.category)
@@ -9,6 +10,8 @@
 	$effect(() => {
 		window.MathJax?.typeset()
 	})
+
+	const category_detail_level = get_category_detail_level()
 </script>
 
 <svelte:head>
@@ -51,11 +54,13 @@
 {/if}
 
 {#snippet property_list(
-	description: string,
 	properties: (Property & { deduced?: boolean })[],
-	negate?: boolean,
+	negate: boolean,
+	description?: string,
 )}
-	<p class="hint">{description}</p>
+	{#if description}
+		<p class="hint">{description}</p>
+	{/if}
 
 	{#if properties.length}
 		<ul>
@@ -75,39 +80,60 @@
 
 <h3>Properties</h3>
 
-{@render property_list(
-	'Properties from the database',
-	category.properties.filter((p) => !p.deduced),
-	false,
-)}
+{#if category_detail_level === 'all'}
+	{@render property_list(
+		category.properties.filter((p) => !p.deduced),
+		false,
+		'Properties from the database',
+	)}
 
-{@render property_list(
-	'Deduced properties',
-	category.properties.filter((p) => p.deduced),
-	false,
-)}
+	{@render property_list(
+		category.properties.filter((p) => p.deduced),
+		false,
+		'Deduced properties',
+	)}
+{:else if category_detail_level === 'merged'}
+	{@render property_list(category.properties, false)}
+{:else if category_detail_level === 'basic'}
+	{@render property_list(
+		category.properties.filter((p) => !p.deduced),
+		false,
+		'Properties from the database. Further properties can be deduced.',
+	)}
+{/if}
 
 <h3>Non-Properties</h3>
 
-{@render property_list(
-	'Non-Properties from the database',
-	category.non_properties.filter((p) => !p.deduced),
-	true,
-)}
+{#if category_detail_level === 'all'}
+	{@render property_list(
+		category.non_properties.filter((p) => !p.deduced),
+		true,
+		'Non-Properties from the database',
+	)}
 
-{@render property_list(
-	'Deduced Non-Properties*',
-	category.non_properties.filter((p) => p.deduced),
-	true,
-)}
+	{@render property_list(
+		category.non_properties.filter((p) => p.deduced),
+		true,
+		'Deduced Non-Properties*',
+	)}
 
-<p class="hint">*This also uses the deduced properties.</p>
+	<p class="hint">*This also uses the deduced properties.</p>
+{:else if category_detail_level === 'merged'}
+	{@render property_list(category.non_properties, true)}
+{:else if category_detail_level === 'basic'}
+	{@render property_list(
+		category.non_properties.filter((p) => !p.deduced),
+		true,
+		'Non-Properties from the database. Further non-properties can be deduced.',
+	)}
+{/if}
 
 <h3>Unknown properties</h3>
 
 {@render property_list(
-	"For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!",
 	category.unknown_properties,
+	false,
+	"For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!",
 )}
 
 <style>

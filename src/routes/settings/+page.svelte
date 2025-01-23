@@ -1,6 +1,36 @@
+<script lang="ts" module>
+	function get_saved_category_detail_level(): CategoryDetailLevel {
+		if (!browser) return DEFAULT_CATEGORY_DETAIL_LEVEL
+
+		const saved_category_detail_level = localStorage.getItem('category_detail_level')
+
+		if (
+			saved_category_detail_level &&
+			saved_category_detail_level in CATEGORY_DETAIL_LEVELS
+		) {
+			return saved_category_detail_level as CategoryDetailLevel
+		}
+		return DEFAULT_CATEGORY_DETAIL_LEVEL
+	}
+
+	let category_detail_level = $state<CategoryDetailLevel>(
+		get_saved_category_detail_level(),
+	)
+
+	export function get_category_detail_level() {
+		return category_detail_level
+	}
+</script>
+
 <script lang="ts">
 	import { browser } from '$app/environment'
-	import { THEMES, type Theme } from './config'
+	import {
+		CATEGORY_DETAIL_LEVELS,
+		DEFAULT_CATEGORY_DETAIL_LEVEL,
+		THEMES,
+		type CategoryDetailLevel,
+		type Theme,
+	} from './config'
 
 	function get_saved_theme(): Theme {
 		if (!browser) return 'dark'
@@ -21,8 +51,15 @@
 		document.body.setAttribute('data-theme', new_theme)
 		localStorage.setItem('theme', new_theme)
 	}
+	function update_category_detail_level(
+		new_category_detail_level: CategoryDetailLevel,
+	) {
+		if (!browser) return
+		localStorage.setItem('category_detail_level', new_category_detail_level)
+	}
 
 	$effect(() => update_theme(theme))
+	$effect(() => update_category_detail_level(category_detail_level))
 </script>
 
 <h2>Settings</h2>
@@ -42,6 +79,24 @@
 	{/each}
 </section>
 
+<section aria-label="Select a category detail level">
+	Category detail level:
+	{#each Object.keys(CATEGORY_DETAIL_LEVELS) as level}
+		<label class:selected={category_detail_level === level}>
+			<input
+				class="visually-hidden"
+				type="radio"
+				name="category-detail-level"
+				value={level}
+				bind:group={category_detail_level}
+			/>{level}
+		</label>
+	{/each}
+	<p class="hint" aria-live="polite">
+		{CATEGORY_DETAIL_LEVELS[category_detail_level]}
+	</p>
+</section>
+
 <style>
 	label {
 		cursor: pointer;
@@ -55,5 +110,9 @@
 	label:focus-within {
 		outline: 2px solid var(--outline-color);
 		outline-offset: 2px;
+	}
+
+	section {
+		margin-block: 1rem;
 	}
 </style>
