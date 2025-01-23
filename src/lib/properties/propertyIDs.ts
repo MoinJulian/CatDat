@@ -11,6 +11,7 @@ export const PROPERTY_IDs = [
 	'finitely cocomplete',
 	'pointed',
 	'locally finitely presentable',
+	'locally presentable',
 	'elementary topos',
 	'Grothendieck topos',
 	'well-powered',

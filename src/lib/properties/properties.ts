@@ -89,7 +89,15 @@ export const properties: Property[] = [
 		id: 'locally finitely presentable',
 		prefix: 'is',
 		description:
-			'A category is <i>locally finitely presentable</i> if it is locally small, cocomplete and every object is a filtered colimit of finitely presentable objects.',
+			'A category is <i>locally finitely presentable</i> if it is locally small, cocomplete, and there is a set $S$ of finitely presentable objects such that every object is a filtered colimit of objects in $S$. This is the same as being locally $\\aleph_0$-presentable.',
+		related: ['locally presentable'],
+	},
+	{
+		id: 'locally presentable',
+		prefix: 'is',
+		description:
+			'Let $\\kappa$ be a regular cardinal. A category is <i>locally $\\kappa$-presentable</i> if it is locally small, cocomplete, and there is a set of $\\kappa$-presentable objects $S$ such that every object is a $\\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\\kappa$-presentable for some regular cardinal $\\kappa$.',
+		related: ['locally finitely presentable'],
 	},
 	{
 		id: 'elementary topos',

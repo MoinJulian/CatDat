@@ -6,14 +6,22 @@ export const implications: Implication[] = [
 		conclusions: ['locally small', 'essentially small'],
 	},
 	{
-		assumptions: ['locally finitely presentable'],
+		assumptions: ['locally presentable'],
 		conclusions: [
+			'locally small',
 			'well-powered',
 			'well-copowered',
 			'complete',
 			'cocomplete',
-			'locally small',
 		],
+	},
+	{
+		assumptions: ['locally finitely presentable'],
+		conclusions: ['locally presentable'],
+	},
+	{
+		assumptions: ['locally presentable', 'self-dual'],
+		conclusions: ['thin'],
 	},
 	{
 		equivalent: true,
@@ -56,7 +64,7 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['Grothendieck topos'],
-		conclusions: ['elementary topos', 'locally small', 'complete', 'cocomplete'],
+		conclusions: ['elementary topos', 'locally presentable'],
 	},
 	{
 		assumptions: ['products'],

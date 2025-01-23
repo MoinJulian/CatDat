@@ -44,7 +44,7 @@ export const categories: Category[] = [
 		],
 		non_properties: [
 			'cartesian closed',
-			'locally finitely presentable',
+			'locally presentable',
 			'pointed',
 			'preadditive',
 			'strict terminal object',
