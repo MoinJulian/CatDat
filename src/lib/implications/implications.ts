@@ -197,4 +197,12 @@ export const implications: Implication[] = [
 		assumptions: ['cartesian closed', 'coproducts'],
 		conclusions: ['infinitary distributive'],
 	},
+	{
+		assumptions: ['complete'],
+		conclusions: ['connected limits'],
+	},
+	{
+		assumptions: ['connected limits'],
+		conclusions: ['filtered limits', 'pullbacks', 'equalizers'],
+	},
 ]

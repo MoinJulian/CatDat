@@ -25,6 +25,8 @@ export const PROPERTY_IDs = [
 	'binary coproducts',
 	'equalizers',
 	'coequalizers',
+	'connected limits',
+	'connected colimits',
 	'filtered limits',
 	'filtered colimits',
 	'strict initial object',

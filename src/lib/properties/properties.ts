@@ -209,6 +209,22 @@ export const properties: Property[] = [
 		related: ['cocomplete'],
 	},
 	{
+		id: 'connected limits',
+		prefix: 'has',
+		description:
+			'A category has <i>connected limits</i> if it has limits of diagrams indexed by connected categories.',
+		related: ['connected', 'complete', 'filtered limits'],
+		dual: 'connected colimits',
+	},
+	{
+		id: 'connected colimits',
+		prefix: 'has',
+		description:
+			'A category has <i>connected colimits</i> if it has colimits of diagrams indexed by connected categories.',
+		related: ['connected', 'cocomplete', 'filtered colimits'],
+		dual: 'connected limits',
+	},
+	{
 		id: 'strict initial object',
 		prefix: 'has a',
 		description:

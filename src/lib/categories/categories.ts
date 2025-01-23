@@ -223,16 +223,14 @@ export const categories: Category[] = [
 			'This is the category with no objects and no morphisms. It is the initial object in the category of small categories.',
 		nlab_link: 'https://ncatlab.org/nlab/show/empty+category',
 		properties: [
-			'filtered colimits',
-			'filtered limits',
+			'connected limits',
 			'preadditive',
 			'discrete',
-			'binary coproducts',
 			'binary products',
 			'finite',
 			'balanced',
 		],
-		non_properties: ['initial object', 'terminal object'],
+		non_properties: ['terminal object'],
 	},
 	{
 		id: '1',
@@ -407,7 +405,7 @@ export const categories: Category[] = [
 			'finitely cocomplete',
 			'binary products',
 			'thin',
-			'filtered limits',
+			'connected limits',
 		],
 		non_properties: ['cocomplete', 'terminal object', 'cartesian closed', 'finite'],
 		related: ['On'],
@@ -421,15 +419,7 @@ export const categories: Category[] = [
 		description:
 			'This is the category of small categories and functors between them. It is the prototype of a 2-category, but here we only treat it as a 1-category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Cat',
-		properties: [
-			'complete',
-			'cocomplete',
-			'locally small',
-			'well-powered',
-			'well-copowered',
-			'cartesian closed',
-			'locally finitely presentable',
-		],
+		properties: ['cartesian closed', 'locally finitely presentable'],
 		non_properties: [
 			'pointed',
 			'thin',
@@ -451,7 +441,7 @@ export const categories: Category[] = [
 			'locally small',
 			'cocomplete',
 			'binary products',
-			'filtered limits',
+			'connected limits',
 			'well-powered',
 		],
 		non_properties: ['essentially small', 'terminal object', 'well-copowered'],
@@ -510,7 +500,7 @@ export const categories: Category[] = [
 			'equalizers',
 			'pullbacks',
 			'filtered colimits',
-			'filtered limits', // even all connected limits
+			'connected limits',
 		],
 		non_properties: [
 			'initial object',
