@@ -5,10 +5,7 @@
 	} from '$lib/categories/categories.dict'
 	import { negate_prefix } from '$lib/properties/prefix'
 	import { properties_dictionary } from '$lib/properties/property.dict'
-	import {
-		missing_basic_combinations,
-		properties_without_counterexample,
-	} from './missing'
+	import { missing_basic_combinations } from './missing'
 </script>
 
 <svelte:head>
@@ -26,21 +23,6 @@ Please help us fill in the gaps by contributing to the GitHub repository.
 			<li>
 				<a href="/category/{category.id}">{category.id}</a>
 			</li>
-		{/each}
-	</ul>
-{:else}
-	<p>&mdash;</p>
-{/if}
-
-<h2>Missing counterexamples</h2>
-
-There are currently {properties_without_counterexample.length} properties for which the database
-does not offer a category which does <i>not</i> satisfy this property.
-
-{#if properties_without_counterexample.length}
-	<ul>
-		{#each properties_without_counterexample as property}
-			<li>{property.id}</li>
 		{/each}
 	</ul>
 {:else}

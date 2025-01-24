@@ -56,6 +56,8 @@ Create a pull request and follow the guidelines below.
 
 - When a new property is added, for every existing category try to find a proof if that category has this new property or not (in case it cannot be deduced from existing ones).
 
+- When a new property is added, you have to make sure that at least one category does not satisfy it (otherwise, it would not be interesting). This is enforced with a unit test, actually. If none of the existing categories fits, you need to add a new category that does not have the new property.
+
 - Try to reduce the categories with unknown properties. Use the script `pnpm unknowns` of the UI to detect these.
 
 - When a new implication is added, check if it simplifies existing implications, and also if it makes some properties and non-properties in the list of categories redundant.
