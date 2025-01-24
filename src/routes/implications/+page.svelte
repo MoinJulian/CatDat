@@ -17,7 +17,7 @@
 
 <h2>List of Implications</h2>
 
-<p>The following implications and equivalences are available.</p>
+<p>The following {implications.length} implications and equivalences are available.</p>
 
 <ul>
 	{#each sorted_implications as implication}

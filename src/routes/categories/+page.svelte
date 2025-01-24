@@ -8,7 +8,7 @@
 
 <h2>List of categories</h2>
 
-<p>The following categories are available.</p>
+<p>The following {categories.length} categories are available.</p>
 
 <ul>
 	{#each categories as category (category.id)}

@@ -10,7 +10,7 @@
 
 <h2>List of Properties</h2>
 
-<p>The following properties of categories are available.</p>
+<p>The following {properties.length} properties of categories are available.</p>
 
 <ul>
 	{#each sorted_properties as property}
