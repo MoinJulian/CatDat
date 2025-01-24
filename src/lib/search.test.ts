@@ -6,7 +6,7 @@ describe('get_suitable_categories', () => {
 	})
 
 	it('should return only the empty category', () => {
-		const results = get_suitable_categories(['small', 'thin'], ['initial object'])
+		const results = get_suitable_categories([], ['inhabited'])
 		expect(results).toHaveLength(1)
 		expect(results[0].name).toBe('The empty category')
 	})

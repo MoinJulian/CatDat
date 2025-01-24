@@ -14,6 +14,7 @@ export const CATEGORY_IDs = [
 	'Pos',
 	'0',
 	'1',
+	'2',
 	'I',
 	'M-Set',
 	'R-Mod',

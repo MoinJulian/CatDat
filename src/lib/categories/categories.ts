@@ -268,6 +268,19 @@ export const categories: Category[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/terminal+category',
 		properties: ['trivial', 'finite', 'discrete'],
 		non_properties: [],
+		related: ['2'],
+	},
+	{
+		id: '2',
+		name: 'The discrete category on two objects',
+		notation: '\\mathbf{2}',
+		objects: 'two objects',
+		morphisms: 'only the identity morphisms',
+		description:
+			'For a more concrete representation, this is the subcategory of $\\mathbf{CRing}$ of the two fields $\\mathbb{F}_2$ and $\\mathbb{F}_3$.',
+		properties: ['discrete', 'finite', 'inhabited'],
+		non_properties: ['connected'],
+		related: ['1'],
 	},
 	{
 		id: 'I',

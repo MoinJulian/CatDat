@@ -104,7 +104,7 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['groupoid'],
-		conclusions: ['self-dual'],
+		conclusions: ['self-dual', 'balanced'],
 	},
 	{
 		assumptions: ['essentially small'],
@@ -120,7 +120,21 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['discrete'],
-		conclusions: ['thin', 'groupoid'],
+		conclusions: [
+			'thin',
+			'groupoid',
+			'locally small',
+			'well-powered',
+			'connected limits',
+		],
+	},
+	{
+		assumptions: ['discrete', 'connected'],
+		conclusions: ['trivial'],
+	},
+	{
+		assumptions: ['discrete', 'preadditive', 'inhabited'],
+		conclusions: ['trivial'],
 	},
 	{
 		assumptions: ['algebraic'],
@@ -139,7 +153,7 @@ export const implications: Implication[] = [
 		conclusions: ['equalizers'],
 	},
 	{
-		assumptions: ['pointed'],
+		assumptions: ['initial object'],
 		conclusions: ['connected'],
 	},
 	{
