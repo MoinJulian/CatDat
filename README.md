@@ -66,4 +66,6 @@ Create a pull request and follow the guidelines below.
 
 - Do not add non-properties to the list of properties. For example, "large" (as the opposite of "small") is not allowed. When a category should be registered as large, simply add "small" to its list of non-properties. As a rule of thumb, every registered property should be satisfied by the trivial category `1`.
 
+- In your pull request, provide proofs for the non-obvious new claims, in particular with regards to the properties of very special categories.
+
 - For every new feature, add a test.
