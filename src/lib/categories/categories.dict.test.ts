@@ -27,4 +27,14 @@ describe('categories detailed', () => {
 			expect(counterexample).toBeDefined()
 		})
 	}
+
+	it('should distribute all the properties', () => {
+		const random_index = Math.floor(Math.random() * categories_detailed.length)
+		const example_category = categories_detailed[random_index]
+		const property_count =
+			example_category.properties.length +
+			example_category.non_properties.length +
+			example_category.unknown_properties.length
+		expect(property_count).toBe(properties.length)
+	})
 })
