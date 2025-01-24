@@ -8,6 +8,7 @@ export const properties: Property[] = [
 			'A category is <i>small</i> when the collection of objects and the collection of morphisms is a set, i.e. small.',
 		dual: 'small',
 		related: ['essentially small'],
+		invariant_under_equivalences: false,
 	},
 	{
 		id: 'locally small',
@@ -15,6 +16,7 @@ export const properties: Property[] = [
 		description:
 			'A category is <i>locally small</i> when for every pair of objects $A,B$ the collection of morphisms $A \\to B$ is a set, i.e. small.',
 		dual: 'locally small',
+		invariant_under_equivalences: false,
 	},
 	{
 		id: 'complete',
@@ -291,6 +293,7 @@ export const properties: Property[] = [
 		description:
 			'A category is <i>discrete</i> when every morphism is an identity morphism. Thus, a discrete category is merely a collection of objects.',
 		dual: 'discrete',
+		invariant_under_equivalences: false,
 	},
 	{
 		id: 'algebraic',
@@ -304,6 +307,7 @@ export const properties: Property[] = [
 		description:
 			'A category is <i>finite</i> if it has finitely many objects and morphisms.',
 		dual: 'finite',
+		invariant_under_equivalences: false,
 	},
 	{
 		id: 'connected',

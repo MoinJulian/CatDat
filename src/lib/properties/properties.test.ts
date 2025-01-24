@@ -27,4 +27,16 @@ describe('properties of categories', () => {
 			}
 		}
 	})
+
+	it('should state when a property is not invariant under equivalences', () => {
+		const being_small = properties.find((property) => property.id === 'small')
+		expect(being_small).toBeDefined()
+		expect(being_small?.invariant_under_equivalences).toBe(false)
+	})
+
+	it('should not state when a property is invariant under equivalences, since this is the default', () => {
+		const being_abelian = properties.find((property) => property.id === 'abelian')
+		expect(being_abelian).toBeDefined()
+		expect(being_abelian?.invariant_under_equivalences).toBeUndefined()
+	})
 })

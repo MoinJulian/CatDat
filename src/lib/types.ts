@@ -27,6 +27,7 @@ export type Property = {
 	prefix: Prefix
 	dual?: PropertyID
 	related?: PropertyID[]
+	invariant_under_equivalences?: false
 }
 
 export type Implication = {

@@ -27,7 +27,13 @@
 
 <h2>{property.id}</h2>
 
-<p><strong>Definition:</strong> {@html property.description}</p>
+<p>
+	<strong>Definition:</strong>
+	{@html property.description}
+	{#if property.invariant_under_equivalences === false}
+		Warning: This property is not invariant under equivalences.
+	{/if}
+</p>
 
 {#if property.dual}
 	<p>
