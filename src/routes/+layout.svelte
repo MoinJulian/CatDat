@@ -1,8 +1,11 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation'
 	import Footer from '$lib/components/Footer.svelte'
 	import Heading from '$lib/components/Heading.svelte'
 	import Nav from '$lib/components/Nav.svelte'
 	import './app.css'
+
+	afterNavigate(() => window.MathJax.Hub.Queue(['Typeset', window.MathJax.Hub]))
 </script>
 
 <svelte:head>

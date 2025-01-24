@@ -7,10 +7,6 @@
 	let { data } = $props()
 	let category = $derived(data.category)
 
-	$effect(() => {
-		window.MathJax?.typeset()
-	})
-
 	const category_detail_level = get_category_detail_level()
 </script>
 

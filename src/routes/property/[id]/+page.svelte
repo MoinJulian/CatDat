@@ -8,10 +8,6 @@
 	let categories_with_this_property = $derived(data.categories_with_this_property)
 	let categories_without_this_property = $derived(data.categories_without_this_property)
 
-	$effect(() => {
-		window.MathJax?.typeset()
-	})
-
 	let relevant_implications = $derived(
 		implications_with_duals.filter(
 			(implication) =>

@@ -2,10 +2,6 @@
 	import Implication from '$lib/components/Implication.svelte'
 	import { implications } from '$lib/implications/implications'
 
-	$effect(() => {
-		window.MathJax?.typeset()
-	})
-
 	const sorted_implications = implications.toSorted((a, b) =>
 		a.assumptions[0].localeCompare(b.assumptions[0]),
 	)
