@@ -124,14 +124,14 @@ export const properties: Property[] = [
 		id: 'well-powered',
 		prefix: 'is',
 		description:
-			'A category is <i>well-powered</i> if the collection of subobjects of any object is a set.',
+			'A category is <i>well-powered</i> if the collection of subobjects of any object is isomorphic to a set.',
 		dual: 'well-copowered',
 	},
 	{
 		id: 'well-copowered',
 		prefix: 'is',
 		description:
-			'A category is <i>well-copowered</i> if the collection of quotients of any object is a set.',
+			'A category is <i>well-copowered</i> if the collection of quotients of any object is isomorphic to a set.',
 		dual: 'well-powered',
 	},
 	{
