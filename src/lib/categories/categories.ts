@@ -616,4 +616,16 @@ export const categories: Category[] = [
 		],
 		related: ['Sch', 'Set'],
 	},
+	{
+		id: 'BG',
+		name: 'delooping of a group',
+		notation: 'BG',
+		objects: 'a single object',
+		morphisms: 'the elements of a group $G$',
+		nlab_link: 'https://ncatlab.org/nlab/show/delooping',
+		description:
+			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. When $G$ is trivial, then $BG$ is the trivial category. However, in the non-properties below, we refer to the case that $G$ is non-trivial. The non-property "finite" refers to the case that $G$ is "generic" and hence infinite.',
+		properties: ['small', 'groupoid', 'connected', 'generator'],
+		non_properties: ['trivial', 'finite', 'thin', 'preadditive'],
+	},
 ]
