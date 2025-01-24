@@ -19,7 +19,7 @@ Please help us fill in the gaps by contributing to the GitHub repository.
 
 {#if categories_with_unknown_properties.length > 0}
 	<ul>
-		{#each categories_detailed.filter((category) => category.unknown_properties.length > 0) as category}
+		{#each categories_with_unknown_properties as category}
 			<li>
 				<a href="/category/{category.id}">{category.id}</a>
 			</li>

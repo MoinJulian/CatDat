@@ -1,16 +1,20 @@
 <script lang="ts" module>
+	import {
+		CATEGORY_DETAIL_LEVELS,
+		DEFAULT_CATEGORY_DETAIL_LEVEL,
+		is_valid_category_detail_level,
+		THEMES,
+		type CategoryDetailLevel,
+		type Theme,
+	} from './config'
+
 	function get_saved_category_detail_level(): CategoryDetailLevel {
 		if (!browser) return DEFAULT_CATEGORY_DETAIL_LEVEL
-
 		const saved_category_detail_level = localStorage.getItem('category_detail_level')
 
-		if (
-			saved_category_detail_level &&
-			saved_category_detail_level in CATEGORY_DETAIL_LEVELS
-		) {
-			return saved_category_detail_level as CategoryDetailLevel
-		}
-		return DEFAULT_CATEGORY_DETAIL_LEVEL
+		return is_valid_category_detail_level(saved_category_detail_level)
+			? saved_category_detail_level
+			: DEFAULT_CATEGORY_DETAIL_LEVEL
 	}
 
 	let category_detail_level = $state<CategoryDetailLevel>(
@@ -24,13 +28,6 @@
 
 <script lang="ts">
 	import { browser } from '$app/environment'
-	import {
-		CATEGORY_DETAIL_LEVELS,
-		DEFAULT_CATEGORY_DETAIL_LEVEL,
-		THEMES,
-		type CategoryDetailLevel,
-		type Theme,
-	} from './config'
 
 	function get_saved_theme(): Theme {
 		if (!browser) return 'dark'

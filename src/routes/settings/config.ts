@@ -10,4 +10,10 @@ export const CATEGORY_DETAIL_LEVELS = {
 
 export type CategoryDetailLevel = keyof typeof CATEGORY_DETAIL_LEVELS
 
+export function is_valid_category_detail_level(
+	level: string | null,
+): level is CategoryDetailLevel {
+	return level != null && Object.keys(CATEGORY_DETAIL_LEVELS).includes(level)
+}
+
 export const DEFAULT_CATEGORY_DETAIL_LEVEL: CategoryDetailLevel = 'all'

@@ -38,5 +38,5 @@ export const CATEGORY_IDs = [
 export type CategoryID = (typeof CATEGORY_IDs)[number]
 
 export function is_valid_category(id: string): id is CategoryID {
-	return CATEGORY_IDs.includes(id as CategoryID)
+	return (CATEGORY_IDs as readonly string[]).includes(id)
 }

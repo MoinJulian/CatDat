@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { properties } from '$lib/properties/properties'
-	import { properties_dictionary } from '$lib/properties/property.dict'
-	import type { PropertyID } from '$lib/properties/propertyIDs'
+	import { is_valid_property, type PropertyID } from '$lib/properties/propertyIDs'
 	import { get_suitable_categories } from '$lib/search'
 
 	import Selection from './Selection.svelte'
@@ -9,13 +8,13 @@
 	let selected_properties = $state<string[]>([''])
 	let selected_non_properties = $state<string[]>([''])
 
-	const valid_properties = $derived(
-		selected_properties.filter((p) => p != '' && p in properties_dictionary),
-	) as PropertyID[]
+	const valid_properties: PropertyID[] = $derived(
+		selected_properties.filter(is_valid_property),
+	)
 
-	const valid_non_properties = $derived(
-		selected_non_properties.filter((p) => p != '' && p in properties_dictionary),
-	) as PropertyID[]
+	const valid_non_properties: PropertyID[] = $derived(
+		selected_non_properties.filter(is_valid_property),
+	)
 
 	let suitable_categories = $derived(
 		get_suitable_categories(valid_properties, valid_non_properties),
