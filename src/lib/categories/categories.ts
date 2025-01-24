@@ -318,6 +318,7 @@ export const categories: Category[] = [
 			'filtered colimits',
 			'strict initial object',
 			'generator',
+			'cogenerator',
 		],
 		non_properties: [
 			'essentially small',
@@ -350,6 +351,7 @@ export const categories: Category[] = [
 			'cocomplete',
 			'infinitary distributive',
 			'generator',
+			'cogenerator',
 		],
 		non_properties: [
 			'essentially small',
