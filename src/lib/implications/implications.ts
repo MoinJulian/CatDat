@@ -171,6 +171,10 @@ export const implications: Implication[] = [
 		conclusions: ['equalizers'],
 	},
 	{
+		assumptions: ['pullbacks', 'terminal object'],
+		conclusions: ['binary products'],
+	},
+	{
 		assumptions: ['initial object'],
 		conclusions: ['connected'],
 	},

@@ -330,7 +330,6 @@ export const categories: Category[] = [
 			'initial object',
 			'coequalizers',
 			'filtered colimits',
-			'pushouts',
 			'strict initial object',
 			'generator',
 		],
