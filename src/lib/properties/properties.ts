@@ -393,4 +393,16 @@ export const properties: Property[] = [
 			'In a category $\\mathcal{C}$, which we assume to have filtered colimits and finite limits, we say that <i>filtered colimits commute with finite limits</i> if for every finite category $\\mathcal{I}$ the functor $\\lim : [\\mathcal{I}, \\mathcal{C}] \\to \\mathcal{C}$ preserves filtered colimits. Equivalently, for every diagram $X : \\mathcal{I} \\times \\mathcal{J} \\to \\mathcal{C}$, where $\\mathcal{I}$ is finite and $\\mathcal{J}$ is filtered, the canonical morphism $\\mathrm{colim}_{j} \\lim_{i} X(i,j) \\to \\lim_{i} \\mathrm{colim}_j X(i,j)$ is an isomorphism.',
 		related: ['filtered colimits', 'finitely complete'],
 	},
+	{
+		id: 'Grothendieck abelian',
+		prefix: 'is',
+		description:
+			'A category is <i>Grothendieck abelian</i> if it is abelian, has coproducts (and is therefore cocomplete), a generator, and filtered colimits commute with finite limits. These categories play an important role in homological algebra.',
+		related: [
+			'abelian',
+			'cocomplete',
+			'generator',
+			'filtered colimits that commute with finite limits',
+		],
+	},
 ]

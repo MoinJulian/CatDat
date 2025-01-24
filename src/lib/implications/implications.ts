@@ -63,6 +63,24 @@ export const implications: Implication[] = [
 	},
 	{
 		equivalent: true,
+		assumptions: ['Grothendieck abelian'],
+		conclusions: [
+			'abelian',
+			'coproducts',
+			'generator',
+			'filtered colimits that commute with finite limits',
+		],
+	},
+	{
+		assumptions: ['Grothendieck abelian'],
+		conclusions: ['locally presentable', 'cogenerator', 'complete'],
+	},
+	{
+		assumptions: ['Grothendieck abelian', 'self-dual'],
+		conclusions: ['trivial'],
+	},
+	{
+		equivalent: true,
 		assumptions: ['additive'],
 		conclusions: ['preadditive', 'finite products'],
 	},
