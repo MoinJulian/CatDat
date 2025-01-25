@@ -655,4 +655,18 @@ export const categories: Category[] = [
 			'pullbacks',
 		],
 	},
+	{
+		id: 'walking_isomorphism',
+		name: 'The walking isomorphism',
+		notation: '$\\{0 \\rightleftarrows 1\\}$',
+		objects: 'two objects $0$ and $1$',
+		morphisms:
+			'identities, and two morphisms $0 \\to 1$ and $1 \\to 0$ that are mutually inverse',
+		description:
+			"This is the 'walking isomorphism' category. The name comes from the fact that it consists of two objects and an isomorphism between them, and a functor out of this category is the same as an isomorphism in the target category. The walking isomorphism is actually equivalent to the trivial category.",
+		nlab_link: 'https://ncatlab.org/nlab/show/walking+isomorphism',
+		related: ['I', '1'],
+		properties: ['trivial', 'finite'],
+		non_properties: ['discrete'],
+	},
 ]

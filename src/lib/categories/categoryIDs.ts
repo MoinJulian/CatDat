@@ -33,6 +33,7 @@ export const CATEGORY_IDs = [
 	'BG',
 	'BN',
 	'walking_pair',
+	'walking_isomorphism',
 ] as const
 
 export type CategoryID = (typeof CATEGORY_IDs)[number]

@@ -14,7 +14,7 @@ describe('get_suitable_categories', () => {
 	it('should return only the category of finite abelian groups', () => {
 		const results = get_suitable_categories(
 			['abelian', 'essentially small'],
-			['discrete'],
+			['groupoid'],
 		)
 		expect(results).toHaveLength(1)
 		expect(results[0].name).toBe('The category of finite abelian groups')
