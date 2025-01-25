@@ -34,7 +34,7 @@ export const implications: Implication[] = [
 	},
 	{
 		assumptions: ['elementary topos'],
-		conclusions: ['finitely cocomplete'],
+		conclusions: ['finitely cocomplete', 'disjoint finite coproducts'],
 	},
 	{
 		assumptions: ['elementary topos', 'locally small'],
@@ -91,6 +91,7 @@ export const implications: Implication[] = [
 			'locally presentable',
 			'cogenerator',
 			'filtered colimits that commute with finite limits',
+			'disjoint coproducts',
 		],
 	},
 	{
@@ -123,6 +124,27 @@ export const implications: Implication[] = [
 		equivalent: true,
 		assumptions: ['products', 'equalizers'],
 		conclusions: ['complete'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['disjoint coproducts'],
+		conclusions: ['coproducts', 'disjoint finite coproducts'],
+	},
+	{
+		assumptions: ['disjoint finite coproducts'],
+		conclusions: ['finite coproducts'],
+	},
+	{
+		assumptions: ['additive'],
+		conclusions: ['disjoint finite coproducts'],
+	},
+	{
+		assumptions: ['Grothendieck abelian'],
+		conclusions: ['disjoint coproducts'],
+	},
+	{
+		assumptions: ['disjoint finite coproducts', 'thin'],
+		conclusions: ['trivial'],
 	},
 	{
 		assumptions: ['essentially small'],

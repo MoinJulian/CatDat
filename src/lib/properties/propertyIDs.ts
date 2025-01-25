@@ -53,6 +53,8 @@ export const PROPERTY_IDs = [
 	'cogenerator',
 	'filtered colimits that commute with finite limits',
 	'Grothendieck abelian',
+	'disjoint finite coproducts',
+	'disjoint coproducts',
 ] as const
 
 export type PropertyID = (typeof PROPERTY_IDs)[number]

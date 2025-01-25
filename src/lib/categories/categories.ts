@@ -42,6 +42,7 @@ export const categories: Category[] = [
 			'well-copowered',
 			'infinitary distributive',
 			'generator',
+			'disjoint coproducts',
 		],
 		non_properties: [
 			'cartesian closed',
@@ -62,7 +63,7 @@ export const categories: Category[] = [
 		objects: 'groups',
 		morphisms: 'group homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/Grp',
-		properties: ['pointed', 'finitary algebraic', 'balanced'],
+		properties: ['pointed', 'finitary algebraic', 'balanced', 'disjoint coproducts'],
 		non_properties: [
 			'preadditive',
 			'self-dual',
@@ -89,6 +90,7 @@ export const categories: Category[] = [
 			'subobject classifier',
 			'balanced',
 			'cogenerator',
+			'disjoint finite coproducts',
 		],
 		related: ['CRing', 'Rng'],
 	},
@@ -109,6 +111,7 @@ export const categories: Category[] = [
 			'subobject classifier',
 			'balanced',
 			'cogenerator',
+			'disjoint finite coproducts',
 		],
 		related: ['Ring', 'Rng'],
 	},
@@ -119,7 +122,7 @@ export const categories: Category[] = [
 		objects: 'rngs, that is, non-unital rings',
 		morphisms: 'maps that preserve addition and multiplication',
 		nlab_link: 'https://ncatlab.org/nlab/show/Rng',
-		properties: ['finitary algebraic', 'pointed'],
+		properties: ['finitary algebraic', 'pointed', 'disjoint coproducts'],
 		non_properties: [
 			'thin',
 			'groupoid',
@@ -180,6 +183,7 @@ export const categories: Category[] = [
 			'finitary algebraic',
 			'subobject classifier',
 			'cogenerator',
+			'disjoint coproducts',
 		],
 		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
 	},
@@ -201,7 +205,7 @@ export const categories: Category[] = [
 		objects: 'monoids',
 		morphisms: 'monoid homomorphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/category+of+monoids',
-		properties: ['pointed', 'finitary algebraic'],
+		properties: ['pointed', 'finitary algebraic', 'disjoint coproducts'],
 		non_properties: [
 			'cartesian closed',
 			'preadditive',
@@ -220,7 +224,12 @@ export const categories: Category[] = [
 		objects: 'partial orders / posets',
 		morphisms: 'order-preserving functions',
 		nlab_link: 'https://ncatlab.org/nlab/show/Pos',
-		properties: ['locally finitely presentable', 'cartesian closed', 'cogenerator'],
+		properties: [
+			'locally finitely presentable',
+			'cartesian closed',
+			'cogenerator',
+			'disjoint coproducts',
+		],
 		non_properties: [
 			'zero morphisms',
 			'subobject classifier',
@@ -357,6 +366,7 @@ export const categories: Category[] = [
 			'infinitary distributive',
 			'generator',
 			'cogenerator',
+			'disjoint coproducts',
 		],
 		non_properties: [
 			'essentially small',
@@ -384,6 +394,7 @@ export const categories: Category[] = [
 			'well-copowered',
 			'distributive',
 			'generator',
+			'disjoint finite coproducts',
 		],
 		non_properties: [
 			'essentially small',
@@ -416,6 +427,7 @@ export const categories: Category[] = [
 			'infinitary distributive',
 			'generator',
 			'cogenerator',
+			'disjoint coproducts',
 		],
 		non_properties: [
 			'pointed',
@@ -452,7 +464,11 @@ export const categories: Category[] = [
 		description:
 			'This is the category of small categories and functors between them. It is the prototype of a 2-category, but here we only treat it as a 1-category.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Cat',
-		properties: ['cartesian closed', 'locally finitely presentable'],
+		properties: [
+			'cartesian closed',
+			'locally finitely presentable',
+			'disjoint coproducts',
+		],
 		non_properties: [
 			'pointed',
 			'thin',
@@ -494,6 +510,7 @@ export const categories: Category[] = [
 			'well-powered',
 			'well-copowered',
 			'infinitary distributive',
+			'disjoint coproducts',
 		],
 		non_properties: ['pointed', 'thin', 'cartesian closed', 'strict terminal object'],
 		related: ['Sch'],
@@ -509,6 +526,7 @@ export const categories: Category[] = [
 			'finitely complete',
 			'well-powered',
 			'infinitary distributive',
+			'disjoint coproducts',
 		],
 		non_properties: [
 			'pointed',
@@ -558,12 +576,12 @@ export const categories: Category[] = [
 		morphisms: 'group homomorphisms',
 		properties: [
 			'additive',
-			'coproducts',
 			'well-powered',
 			'well-copowered',
 			'equalizers',
 			'generator',
 			'cogenerator',
+			'disjoint coproducts',
 		],
 		non_properties: [
 			'essentially small',
@@ -589,6 +607,7 @@ export const categories: Category[] = [
 			'balanced',
 			'infinitary distributive',
 			'filtered colimits that commute with finite limits',
+			'disjoint coproducts',
 		],
 		non_properties: [
 			'locally small',
