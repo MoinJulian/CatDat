@@ -1,6 +1,7 @@
 <script lang="ts">
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import Implication from '$lib/components/Implication.svelte'
+	import ImplicationList from '$lib/components/ImplicationList.svelte'
 	import { implications_with_duals } from '$lib/implications/implications.duals'
 	import { get_property_url } from '$lib/properties/properties.utils'
 
@@ -66,17 +67,9 @@
 	</ul>
 {/if}
 
-{#if relevant_implications.length}
-	<h3>Relevant implications</h3>
+<h3>Relevant implications</h3>
 
-	<ul>
-		{#each relevant_implications as implication}
-			<li>
-				<Implication {implication} />
-			</li>
-		{/each}
-	</ul>
-{/if}
+<ImplicationList items={relevant_implications} />
 
 <h3>Examples</h3>
 

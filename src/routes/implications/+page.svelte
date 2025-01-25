@@ -1,5 +1,5 @@
 <script>
-	import Implication from '$lib/components/Implication.svelte'
+	import ImplicationList from '$lib/components/ImplicationList.svelte'
 	import { implications } from '$lib/implications/implications'
 
 	const sorted_implications = implications.toSorted((a, b) =>
@@ -13,18 +13,12 @@
 
 <h2>List of Implications</h2>
 
-<p>The following {implications.length} implications and equivalences are available.</p>
+<p>The following {implications.length} implications and equivalences are available*.</p>
 
-<ul>
-	{#each sorted_implications as implication}
-		<li>
-			<Implication {implication} />
-		</li>
-	{/each}
-</ul>
+<ImplicationList items={sorted_implications} />
 
 <p>
-	Deductions from these implications are automatically incorporated into each category
+	*Deductions from these implications are automatically incorporated into each category
 	whenever applicable. For instance, if a category is identified as complete, the
 	property of having a terminal object is automatically inferred and added.
 </p>
