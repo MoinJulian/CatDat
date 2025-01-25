@@ -135,9 +135,3 @@
 		? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"
 		: undefined,
 )}
-
-<style>
-	ul {
-		padding-left: 1.5rem;
-	}
-</style>

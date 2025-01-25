@@ -41,12 +41,13 @@
 		width: 100%;
 		max-width: 800px;
 		margin: 0 auto;
-		margin-bottom: 1.5rem;
+		margin-block: 0.5rem 1.5rem;
 	}
 
 	.container {
-		min-height: 100vh;
+		min-height: 100dvh;
 		display: grid;
 		grid-template-rows: auto auto 1fr auto;
+		padding-inline: 0.5rem;
 	}
 </style>

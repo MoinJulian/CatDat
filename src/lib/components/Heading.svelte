@@ -23,6 +23,7 @@
 <style>
 	header {
 		text-align: center;
+		padding-block: 1.5rem;
 	}
 
 	h1 {
