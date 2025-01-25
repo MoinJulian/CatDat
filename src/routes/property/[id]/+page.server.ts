@@ -23,9 +23,14 @@ export const load: PageServerLoad = (event) => {
 		category.non_properties.some((p) => p.id === property.id),
 	)
 
+	const unknown_categories = categories_detailed.filter((category) =>
+		category.unknown_properties.some((p) => p.id === property.id),
+	)
+
 	return {
 		property: render_formulas_in_object(property, ['description']),
 		categories_with_this_property,
 		categories_without_this_property,
+		unknown_categories,
 	}
 }

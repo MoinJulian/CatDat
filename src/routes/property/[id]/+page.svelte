@@ -7,6 +7,7 @@
 	let property = $derived(data.property)
 	let categories_with_this_property = $derived(data.categories_with_this_property)
 	let categories_without_this_property = $derived(data.categories_without_this_property)
+	let unknown_categories = $derived(data.unknown_categories)
 
 	let relevant_implications = $derived(
 		implications_with_duals.filter(
@@ -87,6 +88,25 @@
 		</li>
 	{/each}
 </ul>
+
+{#if unknown_categories.length}
+	<h3>Unknown</h3>
+
+	<p class="hint">
+		For these categories the database has no info if they satisfy this property or
+		not.
+	</p>
+
+	<ul>
+		{#each unknown_categories as category}
+			<li>
+				<a href="/category/{category.id}">
+					{category.name}
+				</a>
+			</li>
+		{/each}
+	</ul>
+{/if}
 
 {#if relevant_implications.length}
 	<h3>Relevant implications</h3>
