@@ -115,6 +115,10 @@ input[type='text']:focus-visible {
 	background-color: var(--secondary-bg-color);
 }
 
+input[type='text'][aria-invalid='true'] {
+	border-color: red;
+}
+
 button {
 	cursor: pointer;
 }

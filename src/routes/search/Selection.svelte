@@ -62,11 +62,6 @@
 		gap: 2rem;
 	}
 
-	input[aria-invalid='true'] {
-		border-color: var(--negative-color);
-		outline: 1px solid var(--negative-color);
-	}
-
 	@media (min-width: 600px) {
 		.inputs {
 			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
