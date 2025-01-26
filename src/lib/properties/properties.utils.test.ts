@@ -3,8 +3,8 @@ import {
 	decode_property_ID,
 	get_dual_property,
 	get_property_url,
+	get_dual_properties,
 } from './properties.utils'
-import { properties_dictionary } from './property.dict'
 
 describe('encode_property_ID', () => {
 	it("should return 'locally_small' for 'locally small'", () => {
@@ -47,5 +47,18 @@ describe('get_dual_property', () => {
 
 	it("should return null for 'cartesian closed'", () => {
 		expect(get_dual_property('cartesian closed')).toBe(null)
+	})
+})
+
+describe('get_dual_properties', () => {
+	it('should return null when a property has no dual', () => {
+		expect(get_dual_properties(['small', 'cartesian closed'])).toBe(null)
+	})
+
+	it('should return small,complete for small,cocomplete', () => {
+		expect(get_dual_properties(['small', 'cocomplete'])).toEqual([
+			'small',
+			'complete',
+		])
 	})
 })

@@ -1,8 +1,10 @@
 <script lang="ts">
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import { properties } from '$lib/properties/properties'
+	import { get_dual_properties } from '$lib/properties/properties.utils'
 	import { is_valid_property, type PropertyID } from '$lib/properties/propertyIDs'
 	import { get_suitable_categories } from '$lib/search'
+	import type { CategoryDetailed } from '$lib/types'
 
 	import Selection from './Selection.svelte'
 
@@ -17,8 +19,21 @@
 		selected_non_properties.filter(is_valid_property),
 	)
 
-	let suitable_categories = $derived(
+	let suitable_categories: CategoryDetailed[] = $derived(
 		get_suitable_categories(valid_properties, valid_non_properties),
+	)
+
+	let dualized_properties: PropertyID[] | null = $derived(
+		get_dual_properties(valid_properties),
+	)
+	let dualized_non_properties: PropertyID[] | null = $derived(
+		get_dual_properties(valid_non_properties),
+	)
+
+	let dual_suitable_categories: CategoryDetailed[] = $derived(
+		dualized_properties && dualized_non_properties
+			? get_suitable_categories(dualized_properties, dualized_non_properties)
+			: [],
 	)
 </script>
 
@@ -59,3 +74,14 @@
 <h2>Results</h2>
 
 <CategoryList items={suitable_categories} />
+
+{#if dual_suitable_categories.length}
+	<h2>Results for dual search</h2>
+
+	<p class="hint">
+		These categories satisfy the dual properties ({dualized_properties?.join(', ')})
+		resp. non-properties ({dualized_non_properties?.join(', ')}).
+	</p>
+
+	<CategoryList items={dual_suitable_categories} />
+{/if}

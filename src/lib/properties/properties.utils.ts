@@ -1,4 +1,3 @@
-import type { Property } from '$lib/types'
 import { properties_dictionary } from './property.dict'
 import type { PropertyID } from './propertyIDs'
 
@@ -18,4 +17,10 @@ export function get_property_url(id: PropertyID) {
 export function get_dual_property(id: PropertyID): null | PropertyID {
 	const property = properties_dictionary[id]
 	return property.dual ?? null
+}
+
+export function get_dual_properties(ids: PropertyID[]): null | PropertyID[] {
+	const duals = ids.map(get_dual_property)
+	if (duals.includes(null)) return null
+	return duals as PropertyID[]
 }

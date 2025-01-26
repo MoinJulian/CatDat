@@ -1,29 +1,20 @@
 import type { PropertyID } from '$lib/properties/propertyIDs'
 import type { Implication } from '$lib/types'
-import { get_dual_property } from '$lib/properties/properties.utils'
+import { get_dual_properties, get_dual_property } from '$lib/properties/properties.utils'
 import { properties_dictionary } from '$lib/properties/property.dict'
 
 export function get_dual_implication(implication: Implication): Implication | null {
-	const dual_implication: Implication = {
-		assumptions: [],
-		conclusions: [],
-	}
-	for (const assumption of implication.assumptions) {
-		const dual_assumption = get_dual_property(assumption)
-		if (!dual_assumption) return null
-		dual_implication.assumptions.push(dual_assumption)
-	}
-	for (const conclusion of implication.conclusions) {
-		const dual_conclusion = get_dual_property(conclusion)
-		if (!dual_conclusion) return null
-		dual_implication.conclusions.push(dual_conclusion)
-	}
+	const dual_assumptions = get_dual_properties(implication.assumptions)
+	if (!dual_assumptions) return null
 
-	if (implication.equivalent) {
-		dual_implication.equivalent = true
-	}
+	const dual_conclusions = get_dual_properties(implication.conclusions)
+	if (!dual_conclusions) return null
 
-	return dual_implication
+	return {
+		assumptions: dual_assumptions,
+		conclusions: dual_conclusions,
+		equivalent: implication.equivalent,
+	}
 }
 
 export function get_new_dual_implication(implication: Implication): Implication | null {
