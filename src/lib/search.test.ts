@@ -13,7 +13,7 @@ describe('get_suitable_categories', () => {
 
 	it('should return only the category of finite abelian groups', () => {
 		const results = get_suitable_categories(
-			['abelian', 'essentially small'],
+			['abelian', 'essentially small', 'self-dual'],
 			['groupoid'],
 		)
 		expect(results).toHaveLength(1)
