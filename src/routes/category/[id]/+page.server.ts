@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types'
 
 import { is_valid_category } from '$lib/categories/categoryIDs'
 import { categories_dictionary_detailed } from '$lib/categories/categories.dict'
-import { math_example } from '$lib/rendering'
+import { render_formulas_in_object } from '$lib/rendering'
 
 export const load: PageServerLoad = (event) => {
 	const id = event.params.id
@@ -13,7 +13,13 @@ export const load: PageServerLoad = (event) => {
 
 	const category = categories_dictionary_detailed[id]
 
-	console.log(math_example)
-
-	return { category, math_example }
+	return {
+		category: render_formulas_in_object(category, [
+			'name',
+			'notation',
+			'description',
+			'objects',
+			'morphisms',
+		]),
+	}
 }
