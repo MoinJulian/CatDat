@@ -67,3 +67,7 @@ Create a pull request and follow the guidelines below.
 - Do not add negated properties to the database of properties. For example, "large" (as the negation of "small") is not allowed. When a category should be registered as large, simply add "small" to its list of non-properties. As a rule of thumb, every registered property should be satisfied by the trivial category `1`.
 
 - In your pull request, provide proofs for the non-obvious new claims, in particular with regards to the properties of very special categories.
+
+## Similar project
+
+The _catabase_ at https://catabase.fly.dev/ is a similar project, but it has been abandoned. See also the announcement in the [nforum](https://nforum.ncatlab.org/discussion/13419/catabase-a-database-of-categories/). It is much more ambitious when it comes to the available types of data, but it is less complete even for basic categories, the UI is not very intuitive, and there is no integrated deduction system.
