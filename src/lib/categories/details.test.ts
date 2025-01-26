@@ -15,7 +15,7 @@ describe('add_details', () => {
 		const Set = categories_dictionary.Set
 		const SetDetailed = add_details(Set)
 
-		expect(SetDetailed.non_properties).toContain('thin')
+		expect(SetDetailed.non_properties).toContain('strict terminal object')
 		expect(SetDetailed.deduced_non_properties).toContain('small')
 	})
 
@@ -44,6 +44,15 @@ describe('category_deduction_system', () => {
 			const has_redundancy = category_deduction_system.check_redundancy(
 				new Set(category.properties),
 			)
+			expect(has_redundancy).toBe(false)
+		})
+
+		it(`should have no redundancy for the non-properties of: ${category.name}`, () => {
+			const has_redundancy =
+				category_deduction_system.check_redundancy_of_negations(
+					new Set(category.properties),
+					new Set(category.non_properties),
+				)
 			expect(has_redundancy).toBe(false)
 		})
 	}

@@ -89,6 +89,28 @@ export class DeductionSystem<T> {
 		return false
 	}
 
+	check_redundancy_of_negations(assumptions: Set<T>, negations: Set<T>): boolean {
+		const deduced_assumptions = this.get_deductions(assumptions)
+		const deduced_negations = this.get_deduced_negations(
+			deduced_assumptions,
+			negations,
+		)
+		for (const negation of negations) {
+			const reduced_negations = new Set(
+				[...negations].filter((a) => a !== negation),
+			)
+			const reduced_deduced_negations = this.get_deduced_negations(
+				deduced_assumptions,
+				reduced_negations,
+			)
+			if (reduced_deduced_negations.size === deduced_negations.size) {
+				console.warn(`${negation} is redundant`)
+				return true
+			}
+		}
+		return false
+	}
+
 	get_deduced_negations(assumptions: Set<T>, negations: Set<T>): Set<T> {
 		let done = false
 		const deduced_negations = new Set(negations)

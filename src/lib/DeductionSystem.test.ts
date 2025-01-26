@@ -1,5 +1,11 @@
 import { DeductionSystem } from './DeductionSystem'
 
+const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+beforeEach(() => {
+	consoleSpy.mockClear()
+})
+
 describe('Deduction systems', () => {
 	describe('get_deductions', () => {
 		const deductionSystem = new DeductionSystem<string>([
@@ -157,13 +163,7 @@ describe('Deduction systems', () => {
 		})
 	})
 
-	describe('check_redunancy', () => {
-		const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
-
-		beforeEach(() => {
-			consoleSpy.mockClear()
-		})
-
+	describe('check_redundancy', () => {
 		const deductionSystem = new DeductionSystem<string>([
 			{ assumptions: ['a'], conclusions: ['b'] },
 			{ assumptions: ['b'], conclusions: ['c'] },
@@ -198,6 +198,32 @@ describe('Deduction systems', () => {
 			const result = deductionSystem.check_redundancy(new Set(['a', 'e']))
 			expect(result).toBe(false)
 			expect(consoleSpy).not.toHaveBeenCalled()
+		})
+	})
+
+	describe('check_redundancy_of_negations', () => {
+		const deductionSystem = new DeductionSystem<string>([
+			{ assumptions: ['a'], conclusions: ['b'] },
+			{ assumptions: ['b'], conclusions: ['c'] },
+			{ assumptions: ['d'], conclusions: ['e'] },
+		])
+
+		it("should return false for 'a' and 'not e'", () => {
+			const result = deductionSystem.check_redundancy_of_negations(
+				new Set(['a']),
+				new Set(['e']),
+			)
+			expect(result).toBe(false)
+			expect(consoleSpy).not.toHaveBeenCalled()
+		})
+
+		it("should return false for 'a' and 'not e' and 'not d'", () => {
+			const result = deductionSystem.check_redundancy_of_negations(
+				new Set(['a']),
+				new Set(['d', 'e']),
+			)
+			expect(result).toBe(true)
+			expect(consoleSpy).toHaveBeenCalledWith('d is redundant')
 		})
 	})
 })
