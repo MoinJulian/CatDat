@@ -3,6 +3,7 @@ export const CATEGORY_IDs = [
 	'Ab',
 	'Top',
 	'Grp',
+	'Vect',
 	'Ring',
 	'CRing',
 	'Rng',
