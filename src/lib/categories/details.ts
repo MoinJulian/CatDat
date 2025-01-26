@@ -1,57 +1,39 @@
-import type { PropertyID } from '$lib/properties/propertyIDs'
+import { PROPERTY_IDs, type PropertyID } from '$lib/properties/propertyIDs'
 import type { Category, CategoryDetailed } from '$lib/types'
-
 import { DeductionSystem } from '$lib/DeductionSystem'
 import { implications_with_duals } from '$lib/implications/implications.duals'
-import { properties_dictionary } from '$lib/properties/property.dict'
-import { properties } from '../properties/properties'
 
 export const category_deduction_system = new DeductionSystem<PropertyID>(
 	implications_with_duals,
 )
 
-/**
- * Adds the actual properties (not just their names) and
- * all their deductions to a given category. Same with non-properties.
- */
 export function add_details(category: Category): CategoryDetailed {
-	const deduced_properties = category_deduction_system.get_deductions(
-		new Set(category.properties),
+	const property_set = new Set(category.properties)
+	const non_property_set = new Set(category.non_properties)
+
+	const all_properties = category_deduction_system.get_deductions(property_set)
+
+	const all_non_properties = category_deduction_system.get_deduced_negations(
+		all_properties,
+		non_property_set,
 	)
 
-	const deduced_non_properties = category_deduction_system.get_deduced_negations(
-		deduced_properties,
-		new Set(category.non_properties),
-	)
+	const deduced_properties = Array.from(
+		all_properties.difference(property_set),
+	).toSorted()
 
-	const property_objects = Array.from(deduced_properties)
-		.map((name) => ({
-			...properties_dictionary[name],
-			deduced: !category.properties.includes(name),
-		}))
-		.toSorted((p, q) => p.id.localeCompare(q.id))
+	const deduced_non_properties = Array.from(
+		all_non_properties.difference(non_property_set),
+	).toSorted()
 
-	const non_property_objects = Array.from(deduced_non_properties)
-		.map((name) => ({
-			...properties_dictionary[name],
-			deduced: !category.non_properties.includes(name),
-		}))
-		.toSorted((p, q) => p.id.localeCompare(q.id))
-
-	const { properties: _, non_properties: __, ...rest } = category
-
-	const unknown_properties = properties
-		.filter(
-			(property) =>
-				!deduced_properties.has(property.id) &&
-				!deduced_non_properties.has(property.id),
-		)
-		.toSorted((p, q) => p.id.localeCompare(q.id))
+	const unknown_properties = PROPERTY_IDs.filter(
+		(property) => !all_properties.has(property) && !all_non_properties.has(property),
+	).toSorted()
 
 	return {
-		...rest,
-		properties: property_objects,
-		non_properties: non_property_objects,
+		...category,
+		deduced_properties,
+		deduced_non_properties,
 		unknown_properties,
 	}
 }

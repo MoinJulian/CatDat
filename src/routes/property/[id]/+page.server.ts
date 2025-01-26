@@ -16,15 +16,17 @@ export const load: PageServerLoad = (event) => {
 	const property = properties_dictionary[id]
 
 	const categories_with_this_property = categories_detailed.filter((category) =>
-		category.properties.some((p) => p.id === property.id),
+		category.properties.concat(category.deduced_properties).includes(property.id),
 	)
 
 	const categories_without_this_property = categories_detailed.filter((category) =>
-		category.non_properties.some((p) => p.id === property.id),
+		category.non_properties
+			.concat(category.deduced_non_properties)
+			.includes(property.id),
 	)
 
 	const unknown_categories = categories_detailed.filter((category) =>
-		category.unknown_properties.some((p) => p.id === property.id),
+		category.unknown_properties.includes(property.id),
 	)
 
 	return {

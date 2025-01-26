@@ -1,10 +1,11 @@
 <script lang="ts">
-	import type { Property } from '$lib/types'
 	import { get_property_url } from '$lib/properties/properties.utils'
 	import { negate_prefix } from '$lib/properties/prefix'
+	import type { PropertyID } from '$lib/properties/propertyIDs'
+	import { properties_dictionary } from '$lib/properties/property.dict'
 
 	type Props = {
-		items: Property[]
+		items: PropertyID[]
 		description?: string
 		with_prefix?: boolean
 		negated?: boolean
@@ -24,10 +25,11 @@
 		{#each items as property}
 			<li>
 				{#if with_prefix}
-					{negated ? negate_prefix(property.prefix) : property.prefix}
+					{@const property_data = properties_dictionary[property]}
+					{negated ? negate_prefix(property_data.prefix) : property_data.prefix}
 				{/if}
-				<a href={get_property_url(property.id)}>
-					{property.id}
+				<a href={get_property_url(property)}>
+					{property}
 				</a>
 			</li>
 		{/each}

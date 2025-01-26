@@ -33,10 +33,10 @@ export type Category = {
 	tags: NonEmptyArray<CategoryTag>
 }
 
-export type CategoryDetailed = Omit<Category, 'properties' | 'non_properties'> & {
-	properties: (Property & { deduced: boolean })[]
-	non_properties: (Property & { deduced: boolean })[]
-	unknown_properties: Property[]
+export type CategoryDetailed = Category & {
+	deduced_properties: PropertyID[]
+	deduced_non_properties: PropertyID[]
+	unknown_properties: PropertyID[]
 }
 
 export type Property = {

@@ -11,10 +11,14 @@ const consistent_basic_combinations: Combination[] =
 	category_deduction_system.get_basic_consistent_combinations()
 
 function combination_is_present(combination: Combination): boolean {
-	return categories_detailed.some((catergory) => {
+	return categories_detailed.some((category) => {
 		return (
-			catergory.properties.some((p) => p.id === combination.assumption) &&
-			catergory.non_properties.some((q) => q.id === combination.negation)
+			category.properties
+				.concat(category.deduced_properties)
+				.includes(combination.assumption) &&
+			category.non_properties
+				.concat(category.deduced_non_properties)
+				.includes(combination.negation)
 		)
 	})
 }

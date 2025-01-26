@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { categories_dictionary } from '$lib/categories/categories.dict'
 	import { get_category_detail_level } from '../../settings/+page.svelte'
+	import type { CategoryDetailed } from '$lib/types'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
 
 	let { data } = $props()
-	let category = $derived(data.category)
+	let category: CategoryDetailed = $derived(data.category)
 
 	const category_detail_level = get_category_detail_level()
 </script>
@@ -55,19 +56,18 @@
 
 {#if category_detail_level === 'all'}
 	<PropertyList
-		items={category.properties.filter((p) => !p.deduced)}
+		items={category.properties}
 		description="Properties from the database"
 	/>
 
-	<PropertyList
-		items={category.properties.filter((p) => p.deduced)}
-		description="Deduced properties"
-	/>
+	<PropertyList items={category.deduced_properties} description="Deduced properties" />
 {:else if category_detail_level === 'merged'}
-	<PropertyList items={category.properties} />
+	<PropertyList
+		items={category.properties.concat(category.deduced_properties).toSorted()}
+	/>
 {:else if category_detail_level === 'basic'}
 	<PropertyList
-		items={category.properties.filter((p) => !p.deduced)}
+		items={category.properties}
 		description="Properties from the database. Further properties can be deduced."
 	/>
 {/if}
@@ -76,21 +76,24 @@
 
 {#if category_detail_level === 'all'}
 	<PropertyList
-		items={category.non_properties.filter((p) => !p.deduced)}
+		items={category.non_properties}
 		description="Non-Properties from the database"
 		negated={true}
 	/>
 	<PropertyList
-		items={category.non_properties.filter((p) => p.deduced)}
+		items={category.deduced_non_properties}
 		description="Deduced Non-Properties*"
 		negated={true}
 	/>
 	<p class="hint">*This also uses the deduced properties.</p>
 {:else if category_detail_level === 'merged'}
-	<PropertyList items={category.non_properties} negated={true} />
+	<PropertyList
+		items={category.non_properties.concat(category.deduced_non_properties).toSorted()}
+		negated={true}
+	/>
 {:else if category_detail_level === 'basic'}
 	<PropertyList
-		items={category.non_properties.filter((p) => !p.deduced)}
+		items={category.non_properties}
 		description="Non-Properties from the database. Further non-properties can be deduced."
 		negated={true}
 	/>

@@ -7,24 +7,16 @@ describe('add_details', () => {
 		const FinAb = categories_dictionary.FinAb
 		const FinAbTransformed = add_details(FinAb)
 
-		expect(
-			FinAbTransformed.properties.some((p) => p.id === 'self-dual' && !p.deduced),
-		).toBe(true)
-
-		expect(
-			FinAbTransformed.properties.some(
-				(p) => p.id === 'initial object' && p.deduced,
-			),
-		).toBe(true)
+		expect(FinAbTransformed.properties).toContain('self-dual')
+		expect(FinAbTransformed.deduced_properties).toContain('initial object')
 	})
 
 	it('adds the non-properties and their deductions', () => {
 		const Set = categories_dictionary.Set
 		const SetDetailed = add_details(Set)
 
-		expect(
-			SetDetailed.non_properties.some((p) => p.id === 'small' && p.deduced),
-		).toBe(true)
+		expect(SetDetailed.non_properties).toContain('thin')
+		expect(SetDetailed.deduced_non_properties).toContain('small')
 	})
 
 	it('removes any missing properties for the category of Sets', () => {
