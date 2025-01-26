@@ -57,6 +57,8 @@ export const PROPERTY_IDs = [
 	'disjoint coproducts',
 	'left cancellative',
 	'right cancellative',
+	'wide pullbacks',
+	'wide pushouts',
 ] as const
 
 export type PropertyID = (typeof PROPERTY_IDs)[number]

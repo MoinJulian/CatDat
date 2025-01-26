@@ -362,15 +362,16 @@ export const properties: Property[] = [
 		id: 'pullbacks',
 		prefix: 'has',
 		description:
-			'A category has <i>pullbacks</i> if every cospan of morphisms $A \\rightarrow C \\leftarrow B$ has a pullback $A \\times_C B$. This is also known as a fiber product.',
+			'A category $\\mathcal{C}$ has <i>pullbacks</i> if every cospan of morphisms $A \\rightarrow S \\leftarrow B$ has a pullback $A \\times_S B$. This is also known as a fiber product. Equivalently, the slice category $\\mathcal{C}/S$ has binary products.',
 		dual: 'pushouts',
+		related: ['wide pullbacks'],
 		nlab_link: 'https://ncatlab.org/nlab/show/pullback',
 	},
 	{
 		id: 'pushouts',
 		prefix: 'has',
 		description:
-			'A category has <i>pushouts</i> if every span of morphisms $A \\leftarrow C \\rightarrow B$ has a pushout $A \\sqcup_C B$. This is also known as a fiber coproduct.',
+			'A category $\\mathcal{C}$ has <i>pushouts</i> if every span of morphisms $A \\leftarrow S \\rightarrow B$ has a pushout $A \\sqcup_S B$. This is also known as a fiber coproduct. Equivalently, the coslice category $S/\\mathcal{C}$ has binary coproducts.',
 		dual: 'pullbacks',
 		nlab_link: 'https://ncatlab.org/nlab/show/pushout',
 	},
@@ -490,5 +491,23 @@ export const properties: Property[] = [
 			'A category is <i>right cancellative</i> if for every morphism $f : A \\to B$ and every parallel pair of morphisms $g,h : C \\to A$ with $g \\circ f = h \\circ f$ we have $g = h$. Equivalently, every morphism is an epimorphism.',
 		dual: 'left cancellative',
 		nlab_link: 'https://ncatlab.org/nlab/show/cancellative+category',
+	},
+	{
+		id: 'wide pullbacks',
+		prefix: 'has',
+		description:
+			'A category $\\mathcal{C}$ has <i>wide pullbacks</i> if for every object $S$ the slice category $\\mathcal{C}/S$ has arbitrary products.',
+		related: ['pullbacks'],
+		dual: 'wide pushouts',
+		nlab_link: 'https://ncatlab.org/nlab/show/wide+pullback',
+	},
+	{
+		id: 'wide pushouts',
+		prefix: 'has',
+		description:
+			'A category $\\mathcal{C}$ has <i>wide pushouts</i> if for every object $S$ the coslice category $S/\\mathcal{C}$ has arbitrary coproducts.',
+		related: ['pushouts'],
+		dual: 'wide pullbacks',
+		nlab_link: 'https://ncatlab.org/nlab/show/wide+pushout',
 	},
 ]

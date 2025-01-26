@@ -327,4 +327,23 @@ export const implications: Implication[] = [
 		assumptions: ['left cancellative', 'coequalizers'],
 		conclusions: ['thin'],
 	},
+	{
+		assumptions: ['complete'],
+		conclusions: ['wide pullbacks'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['wide pullbacks', 'terminal object'],
+		conclusions: ['complete'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['wide pullbacks'],
+		conclusions: ['pullbacks', 'filtered limits'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['connected limits'],
+		conclusions: ['wide pullbacks', 'equalizers'],
+	},
 ]
