@@ -1,4 +1,4 @@
-import { group_items } from './utils'
+import { group_items, type NonEmptyArray } from './utils'
 
 describe('group_items', () => {
 	it('should group items by id', () => {
@@ -19,5 +19,18 @@ describe('group_items', () => {
 		const items: { id: string; value: number }[] = []
 		const result = group_items(items)
 		expect(result).toEqual({})
+	})
+})
+
+describe('non-empty array type', () => {
+	it('should accept an array with more than one element', () => {
+		const arr: NonEmptyArray<number> = [1, 2]
+		expect(arr).toEqual([1, 2])
+	})
+
+	it('should not accept an empty array', () => {
+		// @ts-expect-error - this is the purpose of the type
+		const arr: NonEmptyArray<number> = []
+		expect(arr).toEqual([])
 	})
 })

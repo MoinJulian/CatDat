@@ -13,6 +13,7 @@ export const categories: Category[] = [
 		properties: ['Grothendieck topos', 'finitary algebraic'],
 		non_properties: ['zero morphisms', 'strict terminal object', 'thin'],
 		related: ['FinSet'],
+		tags: ['basic', 'set theory', 'well-behaved'],
 	},
 	{
 		id: 'Ab',
@@ -25,6 +26,7 @@ export const categories: Category[] = [
 		properties: ['abelian', 'finitary algebraic'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 		related: ['Grp', 'R-Mod'],
+		tags: ['basic', 'algebra', 'well-behaved'],
 	},
 	{
 		id: 'Top',
@@ -55,6 +57,7 @@ export const categories: Category[] = [
 			'cogenerator',
 			'filtered colimits that commute with finite limits',
 		],
+		tags: ['basic', 'topology', 'well-behaved'],
 	},
 	{
 		id: 'Grp',
@@ -72,6 +75,7 @@ export const categories: Category[] = [
 			'cogenerator',
 		],
 		related: ['Ab', 'Mon'],
+		tags: ['basic', 'algebra', 'well-behaved'],
 	},
 	{
 		id: 'Ring',
@@ -93,6 +97,7 @@ export const categories: Category[] = [
 			'disjoint finite coproducts',
 		],
 		related: ['CRing', 'Rng'],
+		tags: ['basic', 'algebra', 'well-behaved'],
 	},
 	{
 		id: 'CRing',
@@ -114,6 +119,7 @@ export const categories: Category[] = [
 			'disjoint finite coproducts',
 		],
 		related: ['Ring', 'Rng'],
+		tags: ['basic', 'algebra', 'well-behaved'],
 	},
 	{
 		id: 'Rng',
@@ -133,6 +139,7 @@ export const categories: Category[] = [
 			'cogenerator',
 		],
 		related: ['Ring', 'CRing'],
+		tags: ['basic', 'algebra', 'well-behaved'],
 	},
 	{
 		id: 'FinSet',
@@ -150,6 +157,7 @@ export const categories: Category[] = [
 		],
 		non_properties: ['small', 'zero morphisms', 'strict terminal object', 'thin'],
 		related: ['Set'],
+		tags: ['basic', 'set theory', 'well-behaved'],
 	},
 	{
 		id: 'FinAb',
@@ -168,6 +176,7 @@ export const categories: Category[] = [
 			'generator',
 		],
 		related: ['Ab'],
+		tags: ['basic', 'algebra', 'badly-behaved'],
 	},
 	{
 		id: 'Set*',
@@ -186,6 +195,7 @@ export const categories: Category[] = [
 			'disjoint coproducts',
 		],
 		non_properties: ['cartesian closed', 'preadditive', 'self-dual', 'thin'],
+		tags: ['basic', 'set theory', 'well-behaved'],
 	},
 	{
 		id: 'sSet',
@@ -197,6 +207,7 @@ export const categories: Category[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/SimpSet',
 		properties: ['Grothendieck topos', 'locally finitely presentable'],
 		non_properties: ['thin', 'strict terminal object'],
+		tags: ['basic', 'topology', 'well-behaved'],
 	},
 	{
 		id: 'Mon',
@@ -216,6 +227,7 @@ export const categories: Category[] = [
 			'cogenerator',
 		],
 		related: ['Grp'],
+		tags: ['basic', 'algebra', 'well-behaved'],
 	},
 	{
 		id: 'Pos',
@@ -238,6 +250,7 @@ export const categories: Category[] = [
 			'finitary algebraic',
 			'balanced',
 		],
+		tags: ['basic', 'order theory', 'well-behaved'],
 	},
 	{
 		id: '0',
@@ -250,6 +263,7 @@ export const categories: Category[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/empty+category',
 		properties: ['preadditive', 'discrete', 'binary products', 'finite'],
 		non_properties: ['inhabited'],
+		tags: ['basic', 'badly-behaved'],
 	},
 	{
 		id: '1',
@@ -263,6 +277,7 @@ export const categories: Category[] = [
 		properties: ['trivial', 'finite', 'discrete'],
 		non_properties: [],
 		related: ['2'],
+		tags: ['basic', 'well-behaved'],
 	},
 	{
 		id: '2',
@@ -275,6 +290,7 @@ export const categories: Category[] = [
 		properties: ['discrete', 'finite', 'inhabited'],
 		non_properties: ['connected'],
 		related: ['1'],
+		tags: ['basic', 'badly-behaved'],
 	},
 	{
 		id: 'I',
@@ -287,6 +303,7 @@ export const categories: Category[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/interval+category',
 		properties: ['finitary algebraic', 'self-dual', 'finite', 'cartesian closed'],
 		non_properties: ['pointed', 'groupoid', 'subobject classifier'],
+		tags: ['basic', 'well-behaved'],
 	},
 	{
 		id: 'M-Set',
@@ -300,6 +317,7 @@ export const categories: Category[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/MSet',
 		properties: ['Grothendieck topos', 'finitary algebraic'],
 		non_properties: ['pointed', 'thin', 'strict terminal object'],
+		tags: ['basic', 'algebra', 'geometry', 'well-behaved'],
 	},
 	{
 		id: 'R-Mod',
@@ -313,6 +331,7 @@ export const categories: Category[] = [
 		properties: ['abelian', 'finitary algebraic'],
 		non_properties: ['self-dual', 'thin', 'subobject classifier'],
 		related: ['Ab'],
+		tags: ['basic', 'algebra', 'well-behaved'],
 	},
 	{
 		id: 'Met',
@@ -345,6 +364,7 @@ export const categories: Category[] = [
 			'cartesian closed',
 		],
 		related: ['Met_oo'],
+		tags: ['basic', 'geometry', 'badly-behaved'],
 	},
 	{
 		id: 'Met_oo',
@@ -378,6 +398,7 @@ export const categories: Category[] = [
 			'cartesian closed',
 		],
 		related: ['Met'],
+		tags: ['basic', 'geometry', 'well-behaved'],
 	},
 	{
 		id: 'Man',
@@ -408,6 +429,7 @@ export const categories: Category[] = [
 			'strict terminal object',
 			'balanced',
 		],
+		tags: ['geometry', 'topology', 'badly-behaved'],
 	},
 	{
 		id: 'Meas',
@@ -436,6 +458,7 @@ export const categories: Category[] = [
 			'strict terminal object',
 			'balanced',
 		],
+		tags: ['basic', 'measure theory', 'well-behaved'],
 	},
 	{
 		id: 'N',
@@ -454,6 +477,7 @@ export const categories: Category[] = [
 		],
 		non_properties: ['cocomplete', 'terminal object', 'cartesian closed', 'finite'],
 		related: ['On'],
+		tags: ['basic'],
 	},
 	{
 		id: 'Cat',
@@ -478,6 +502,7 @@ export const categories: Category[] = [
 			'balanced',
 			'cogenerator',
 		],
+		tags: ['intermediate', 'category theory', 'well-behaved'],
 	},
 	{
 		id: 'On',
@@ -496,6 +521,7 @@ export const categories: Category[] = [
 		],
 		non_properties: ['essentially small', 'terminal object', 'well-copowered'],
 		related: ['N'],
+		tags: ['intermediate', 'artificial', 'set theory'],
 	},
 	{
 		id: 'LRS',
@@ -514,6 +540,7 @@ export const categories: Category[] = [
 		],
 		non_properties: ['pointed', 'thin', 'cartesian closed', 'strict terminal object'],
 		related: ['Sch'],
+		tags: ['intermediate', 'algebraic geometry', 'well-behaved'],
 	},
 	{
 		id: 'Sch',
@@ -538,6 +565,7 @@ export const categories: Category[] = [
 			'strict terminal object',
 		],
 		related: ['LRS', 'Z'],
+		tags: ['intermediate', 'algebraic geometry', 'badly-behaved'],
 	},
 	{
 		id: 'Fld',
@@ -569,6 +597,7 @@ export const categories: Category[] = [
 			'cogenerator',
 			'right cancellative',
 		],
+		tags: ['basic', 'algebra', 'badly-behaved'],
 	},
 	{
 		id: 'FreeAb',
@@ -594,6 +623,7 @@ export const categories: Category[] = [
 			'filtered colimits',
 		],
 		related: ['Ab'],
+		tags: ['artificial', 'basic', 'algebra', 'badly-behaved'],
 	},
 	{
 		id: 'Z',
@@ -619,6 +649,7 @@ export const categories: Category[] = [
 			'strict terminal object',
 		],
 		related: ['Sch', 'Set'],
+		tags: ['intermediate', 'algebraic geometry', 'well-behaved'],
 	},
 	{
 		id: 'BG',
@@ -631,6 +662,7 @@ export const categories: Category[] = [
 			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. When $G$ is trivial, then $BG$ is the trivial category. However, in the non-properties below, we refer to the case that $G$ is non-trivial. The non-property "finite" refers to the case that $G$ is "generic" and hence infinite.',
 		properties: ['small', 'groupoid', 'connected', 'generator'],
 		non_properties: ['trivial', 'finite', 'thin', 'zero morphisms'],
+		tags: ['basic', 'algebra', 'category theory', 'badly-behaved'],
 	},
 	{
 		id: 'BN',
@@ -660,6 +692,7 @@ export const categories: Category[] = [
 			'filtered colimits',
 		],
 		related: ['BG'],
+		tags: ['basic', 'algebra', 'category theory', 'badly-behaved'],
 	},
 	{
 		id: 'walking_pair',
@@ -689,6 +722,7 @@ export const categories: Category[] = [
 			'equalizers',
 			'pullbacks',
 		],
+		tags: ['artificial', 'category theory', 'badly-behaved'],
 	},
 	{
 		id: 'walking_isomorphism',
@@ -703,6 +737,7 @@ export const categories: Category[] = [
 		related: ['I', '1'],
 		properties: ['trivial', 'finite'],
 		non_properties: ['discrete'],
+		tags: ['artificial', 'category theory', 'badly-behaved'],
 	},
 	{
 		id: 'Setne',
@@ -735,5 +770,6 @@ export const categories: Category[] = [
 			'strict terminal object',
 			'filtered limits',
 		],
+		tags: ['artificial', 'set theory', 'badly-behaved'],
 	},
 ]

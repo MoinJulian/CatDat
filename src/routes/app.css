@@ -11,6 +11,7 @@
 		--text-color: #111;
 		--secondary-text-color: #666;
 		--outline-color: #666;
+		--secondary-outline-color: #aaa;
 		--accent-color: #3388ad;
 		--heading-color: #3f76b6;
 		--button-color: #728aa7;
@@ -22,6 +23,7 @@
 		--text-color: #fff;
 		--secondary-text-color: #999;
 		--outline-color: #aaa;
+		--secondary-outline-color: #444;
 		--accent-color: #f0dd4a;
 		--heading-color: #87ceeb;
 		--button-color: #375886;

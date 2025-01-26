@@ -1,6 +1,23 @@
 import type { CategoryID } from './categories/categoryIDs'
 import type { Prefix } from './properties/prefix'
 import type { PropertyID } from './properties/propertyIDs'
+import type { NonEmptyArray } from './utils'
+
+type CategoryTag =
+	| 'basic'
+	| 'intermediate'
+	| 'advanced'
+	| 'well-behaved'
+	| 'badly-behaved'
+	| 'artificial'
+	| 'algebra'
+	| 'algebraic geometry'
+	| 'topology'
+	| 'order theory'
+	| 'measure theory'
+	| 'geometry'
+	| 'set theory'
+	| 'category theory'
 
 export type Category = {
 	id: CategoryID
@@ -13,6 +30,7 @@ export type Category = {
 	properties: PropertyID[]
 	non_properties: PropertyID[]
 	related?: CategoryID[]
+	tags: NonEmptyArray<CategoryTag>
 }
 
 export type CategoryDetailed = Omit<Category, 'properties' | 'non_properties'> & {

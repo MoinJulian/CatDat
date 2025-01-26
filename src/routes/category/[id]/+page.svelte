@@ -2,6 +2,7 @@
 	import { categories_dictionary } from '$lib/categories/categories.dict'
 	import { get_category_detail_level } from '../../settings/+page.svelte'
 	import PropertyList from '$lib/components/PropertyList.svelte'
+	import Tags from '$lib/components/Tags.svelte'
 
 	let { data } = $props()
 	let category = $derived(data.category)
@@ -14,6 +15,8 @@
 </svelte:head>
 
 <h2>{category.name}</h2>
+
+<Tags tags={category.tags} />
 
 <ul class="dashed-list">
 	<li>

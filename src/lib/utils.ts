@@ -8,3 +8,5 @@ export function group_items<S extends string, T extends { id: S }>(
 	}
 	return acc
 }
+
+export type NonEmptyArray<T> = [T, ...T[]]
