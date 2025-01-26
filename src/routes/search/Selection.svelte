@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { properties } from '$lib/properties/properties'
 	import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
+	import { tick } from 'svelte'
 	import Fa from 'svelte-fa'
 
 	type Props = {
@@ -11,13 +12,18 @@
 
 	let { aria_label, name, values = $bindable() }: Props = $props()
 
-	function add() {
+	let input_elements = $state<HTMLInputElement[]>([])
+
+	async function add() {
 		values.push('')
+		await tick()
+		input_elements[values.length - 1]?.focus()
 	}
 
 	function remove() {
 		if (values.length === 0) return
 		values.pop()
+		input_elements.pop()
 	}
 </script>
 
@@ -31,9 +37,11 @@
 				aria-label="{name} {i + 1}"
 				aria-invalid={values[i].length > 0 &&
 					properties.every((p) => p.id != values[i])}
+				bind:this={input_elements[i]}
 			/>
 		{/each}
 	</div>
+
 	<div class="controls">
 		<button class="button" onclick={add}>
 			<Fa icon={faPlus} />
