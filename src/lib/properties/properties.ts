@@ -510,4 +510,13 @@ export const properties: Property[] = [
 		dual: 'wide pullbacks',
 		nlab_link: 'https://ncatlab.org/nlab/show/wide+pushout',
 	},
+	{
+		id: 'split abelian',
+		prefix: 'is',
+		description:
+			'A category is <i>split abelian</i> if it is abelian and every short exact sequence splits. Equivalently, every object is projective. Equivalently, every object is injective.',
+		related: ['abelian'],
+		dual: 'split abelian',
+		nlab_link: 'https://ncatlab.org/nlab/show/split+exact+sequence',
+	},
 ]

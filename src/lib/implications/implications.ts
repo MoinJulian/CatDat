@@ -214,7 +214,7 @@ export const implications: Implication[] = [
 			'essentially small',
 			'finitary algebraic',
 			'Grothendieck topos',
-			'abelian',
+			'split abelian',
 			'self-dual',
 		],
 	},
@@ -350,5 +350,9 @@ export const implications: Implication[] = [
 		// https://math.stackexchange.com/questions/4086192
 		assumptions: ['additive', 'pullbacks', 'subobject classifier'],
 		conclusions: ['trivial'],
+	},
+	{
+		assumptions: ['split abelian'],
+		conclusions: ['abelian'],
 	},
 ]
