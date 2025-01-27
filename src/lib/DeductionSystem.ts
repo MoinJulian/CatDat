@@ -61,10 +61,9 @@ export class DeductionSystem<T> {
 		while (!done) {
 			done = true
 			for (const rule of this.normalized_rules) {
-				const found =
-					rule.assumptions.isSubsetOf(deductions) &&
-					!deductions.has(rule.conclusion)
-				if (found) {
+				const rule_applies = rule.assumptions.isSubsetOf(deductions)
+				const is_new = !deductions.has(rule.conclusion)
+				if (rule_applies && is_new) {
 					done = false
 					deductions.add(rule.conclusion)
 				}
@@ -72,43 +71,6 @@ export class DeductionSystem<T> {
 		}
 
 		return deductions
-	}
-
-	check_redundancy(assumptions: Set<T>): boolean {
-		const deductions = this.get_deductions(assumptions)
-		for (const assumption of assumptions) {
-			const reduced_assumptions = new Set(
-				[...assumptions].filter((a) => a !== assumption),
-			)
-			const reduced_deductions = this.get_deductions(reduced_assumptions)
-			if (reduced_deductions.size === deductions.size) {
-				console.warn(`${assumption} is redundant`)
-				return true
-			}
-		}
-		return false
-	}
-
-	check_redundancy_of_negations(assumptions: Set<T>, negations: Set<T>): boolean {
-		const deduced_assumptions = this.get_deductions(assumptions)
-		const deduced_negations = this.get_deduced_negations(
-			deduced_assumptions,
-			negations,
-		)
-		for (const negation of negations) {
-			const reduced_negations = new Set(
-				[...negations].filter((a) => a !== negation),
-			)
-			const reduced_deduced_negations = this.get_deduced_negations(
-				deduced_assumptions,
-				reduced_negations,
-			)
-			if (reduced_deduced_negations.size === deduced_negations.size) {
-				console.warn(`${negation} is redundant`)
-				return true
-			}
-		}
-		return false
 	}
 
 	get_deduced_negations(assumptions: Set<T>, negations: Set<T>): Set<T> {
@@ -133,6 +95,41 @@ export class DeductionSystem<T> {
 		return deduced_negations
 	}
 
+	check_redundancy(assumptions: Set<T>): boolean {
+		const deductions = this.get_deductions(assumptions)
+		for (const assumption of assumptions) {
+			const reduced_assumptions = new Set(assumptions)
+			reduced_assumptions.delete(assumption)
+			const reduced_deductions = this.get_deductions(reduced_assumptions)
+			if (reduced_deductions.size === deductions.size) {
+				console.warn(`${assumption} is redundant`)
+				return true
+			}
+		}
+		return false
+	}
+
+	check_redundancy_of_negations(assumptions: Set<T>, negations: Set<T>): boolean {
+		const deduced_assumptions = this.get_deductions(assumptions)
+		const deduced_negations = this.get_deduced_negations(
+			deduced_assumptions,
+			negations,
+		)
+		for (const negation of negations) {
+			const reduced_negations = new Set(negations)
+			reduced_negations.delete(negation)
+			const reduced_deduced_negations = this.get_deduced_negations(
+				deduced_assumptions,
+				reduced_negations,
+			)
+			if (reduced_deduced_negations.size === deduced_negations.size) {
+				console.warn(`${negation} is redundant`)
+				return true
+			}
+		}
+		return false
+	}
+
 	has_contradiction(assumptions: Set<T>, negations: Set<T>): boolean {
 		const deductions = this.get_deductions(assumptions)
 		const deduced_negations = this.get_deduced_negations(assumptions, negations)
@@ -141,13 +138,11 @@ export class DeductionSystem<T> {
 
 	get_basic_consistent_combinations(): { assumption: T; negation: T }[] {
 		const combinations: { assumption: T; negation: T }[] = []
-		for (const p of this.properties) {
-			const deductions = this.get_deductions(new Set([p]))
-			for (const q of this.properties) {
-				if (deductions.has(q)) {
-					continue
-				}
-				combinations.push({ assumption: p, negation: q })
+		for (const property of this.properties) {
+			const deductions = this.get_deductions(new Set([property]))
+			for (const negation of this.properties) {
+				if (deductions.has(negation)) continue
+				combinations.push({ assumption: property, negation: negation })
 			}
 		}
 		return combinations
