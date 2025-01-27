@@ -1,5 +1,16 @@
 import type { Property } from '$lib/types'
 
+/**
+ * Each property must have the following properties:
+ * - id (must be defined in propertyIDs.ts)
+ * - prefix (is, has, etc.)
+ * - description (includes a definition in particular)
+ * - dual (optional, the ID of the dual property in case it is registered)
+ * - related (optional list of related properties, referred to by their IDs)
+ * - invariant_under_equivalences (optional boolean, set to false if applicable)
+ * - nlab_link (optional)
+ */
+
 export const properties: Property[] = [
 	{
 		id: 'small',

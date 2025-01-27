@@ -1,5 +1,20 @@
 import type { Category } from '$lib/types'
 
+/**
+ * Each category has the following data:
+ * - id (must be defined in categoryIDs.ts)
+ * - name
+ * - notation (LaTeX)
+ * - objects (description of the objects, may contain LaTeX)
+ * - morphisms (description of the morphisms, may contain LaTeX)
+ * - description (optional, keep it short)
+ * - nlab_link (optional, add only if available)
+ * - properties (list of essential properties, non-redundant, must be registered)
+ * - non_properties (list of essential non-properties, non-redundant, must be registered)
+ * - related (optional list of related categories, referred to by their IDs)
+ * - tags (required, must have only allowed tags)
+ */
+
 export const categories: Category[] = [
 	{
 		id: 'Set',

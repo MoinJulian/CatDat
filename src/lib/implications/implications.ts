@@ -1,5 +1,12 @@
 import type { Implication } from '$lib/types'
 
+/**
+ * Each implication must have the following properties:
+ * - assumptions: a list of registered properties
+ * - conclusions: a list of registered properties
+ * - equivalent (optional boolean value for equivalences)
+ */
+
 export const implications: Implication[] = [
 	{
 		assumptions: ['small'],
