@@ -7,7 +7,7 @@ export const category_deduction_system = new DeductionSystem<PropertyID>(
 	implications_with_duals,
 )
 
-export function add_details(category: Category): CategoryDetailed {
+export function get_details(category: Category): CategoryDetailed {
 	const property_set = new Set(category.properties)
 	const non_property_set = new Set(category.non_properties)
 
