@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { type CategoryDetailed } from '$lib/categories/categories.utils'
-	import { get_category_detail_level } from '../../settings/+page.svelte'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
+	import { category_detail_level } from '$lib/settings/detail_level.svelte'
 	import type { RelatedCategory } from '$lib/types'
 
 	let { data } = $props()
@@ -12,8 +12,6 @@
 	let related_categories: RelatedCategory[] | undefined = $derived(
 		data.related_categories,
 	)
-
-	const category_detail_level = get_category_detail_level()
 </script>
 
 <svelte:head>
@@ -59,16 +57,16 @@
 
 <h3>Properties</h3>
 
-{#if category_detail_level === 'all'}
+{#if category_detail_level.value === 'all'}
 	<PropertyList
 		items={category.properties}
 		description="Properties from the database"
 	/>
 
 	<PropertyList items={category.deduced_properties} description="Deduced properties" />
-{:else if category_detail_level === 'merged'}
+{:else if category_detail_level.value === 'merged'}
 	<PropertyList items={category.all_properties} />
-{:else if category_detail_level === 'basic'}
+{:else if category_detail_level.value === 'basic'}
 	<PropertyList
 		items={category.properties}
 		description="Properties from the database. Further properties can be deduced."
@@ -77,7 +75,7 @@
 
 <h3>Non-Properties</h3>
 
-{#if category_detail_level === 'all'}
+{#if category_detail_level.value === 'all'}
 	<PropertyList
 		items={category.non_properties}
 		description="Non-Properties from the database"
@@ -89,9 +87,9 @@
 		negated={true}
 	/>
 	<p class="hint">*This also uses the deduced properties.</p>
-{:else if category_detail_level === 'merged'}
+{:else if category_detail_level.value === 'merged'}
 	<PropertyList items={category.all_non_properties} negated={true} />
-{:else if category_detail_level === 'basic'}
+{:else if category_detail_level.value === 'basic'}
 	<PropertyList
 		items={category.non_properties}
 		description="Non-Properties from the database. Further non-properties can be deduced."
