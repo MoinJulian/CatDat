@@ -17,7 +17,7 @@ import type { Category } from '$lib/commons/types'
 export const categories: readonly Readonly<Category>[] = [
 	{
 		id: 'Set',
-		name: 'The category of sets',
+		name: 'category of sets',
 		notation: '$\\mathbf{Set}$',
 		objects: 'sets',
 		morphisms: 'maps',
@@ -31,7 +31,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Ab',
-		name: 'The category of abelian groups',
+		name: 'category of abelian groups',
 		notation: '$\\mathbf{Ab}$',
 		objects: 'abelian groups',
 		morphisms: 'group homomorphisms',
@@ -44,7 +44,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Top',
-		name: 'The category of topological spaces',
+		name: 'category of topological spaces',
 		notation: '$\\mathbf{Top}$',
 		objects: 'topological spaces',
 		morphisms: 'continuous functions',
@@ -72,7 +72,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Grp',
-		name: 'The category of groups',
+		name: 'category of groups',
 		notation: '$\\mathbf{Grp}$',
 		objects: 'groups',
 		morphisms: 'group homomorphisms',
@@ -84,7 +84,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Vect',
-		name: 'The category of vector spaces',
+		name: 'category of vector spaces',
 		notation: '$\\mathbf{Vect}_K$',
 		objects: 'vector spaces over a field $K$',
 		morphisms: 'linear maps',
@@ -98,7 +98,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Ring',
-		name: 'The category of rings',
+		name: 'category of rings',
 		notation: '$\\mathbf{Ring}$',
 		objects: 'rings',
 		morphisms: 'ring homomorphisms',
@@ -116,7 +116,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'CRing',
-		name: 'The category of commutative rings',
+		name: 'category of commutative rings',
 		notation: '$\\mathbf{CRing}$',
 		objects: 'commutative rings',
 		morphisms: 'ring homomorphisms',
@@ -133,7 +133,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Rng',
-		name: 'The category of rngs',
+		name: 'category of rngs',
 		notation: '$\\mathbf{Rng}$',
 		objects: 'rngs, that is, non-unital rings',
 		morphisms: 'maps that preserve addition and multiplication',
@@ -145,7 +145,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'FinSet',
-		name: 'The category of finite sets',
+		name: 'category of finite sets',
 		notation: '$\\mathbf{FinSet}$',
 		objects: 'finite sets',
 		morphisms: 'functions / maps',
@@ -163,7 +163,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'FinAb',
-		name: 'The category of finite abelian groups',
+		name: 'category of finite abelian groups',
 		notation: '$\\mathbf{FinAb}$',
 		objects: 'finite abelian groups',
 		morphisms: 'group homomorphisms',
@@ -175,7 +175,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Abfg',
-		name: 'The category of finitely generated abelian groups',
+		name: 'category of finitely generated abelian groups',
 		notation: '$\\mathbf{Ab}_{\\mathrm{fg}}$',
 		objects: 'finitely generated abelian groups',
 		morphisms: 'group homomorphisms',
@@ -187,7 +187,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Set*',
-		name: 'The category of pointed sets',
+		name: 'category of pointed sets',
 		notation: '$\\mathbf{Set}_*$',
 		objects: 'pointed sets',
 		morphisms: 'pointed functions',
@@ -206,7 +206,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'sSet',
-		name: 'The category of simplicial sets',
+		name: 'category of simplicial sets',
 		notation: '$\\mathbf{sSet}$',
 		objects:
 			'simplicial sets, i.e. functors $\\Delta^{\\mathrm{op}} \\to \\mathbf{Set}$',
@@ -218,7 +218,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Mon',
-		name: 'The category of monoids',
+		name: 'category of monoids',
 		notation: '$\\mathbf{Mon}$',
 		objects: 'monoids',
 		morphisms: 'monoid homomorphisms',
@@ -230,7 +230,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Pos',
-		name: 'The category of posets',
+		name: 'category of posets',
 		notation: '$\\mathbf{Pos}$',
 		objects: 'partial orders / posets',
 		morphisms: 'order-preserving functions',
@@ -246,7 +246,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: '0',
-		name: 'The empty category',
+		name: 'empty category',
 		notation: '$0$',
 		objects: 'no objects',
 		morphisms: 'no morphisms',
@@ -259,7 +259,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: '1',
-		name: 'The trivial category',
+		name: 'trivial category',
 		notation: '$\\mathbf{1}$',
 		objects: 'a single object',
 		morphisms: 'only the identity morphism',
@@ -273,7 +273,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: '2',
-		name: 'The discrete category on two objects',
+		name: 'discrete category on two objects',
 		notation: '$\\mathbf{2}$',
 		objects: 'two objects',
 		morphisms: 'only the identity morphisms',
@@ -286,7 +286,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'I',
-		name: 'The interval category',
+		name: 'interval category',
 		notation: '$I$',
 		objects: '0,1',
 		morphisms: 'a single morphism from 0 to 1',
@@ -299,7 +299,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'M-Set',
-		name: 'The category of M-sets',
+		name: 'category of M-sets',
 		notation: '$M{-}\\mathbf{Set}$',
 		objects: 'sets with a left action of a monoid $M$',
 		morphisms:
@@ -313,7 +313,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'R-Mod',
-		name: 'The category of left R-modules',
+		name: 'category of left R-modules',
 		notation: '$R{-}\\mathbf{Mod}$',
 		objects: 'left $R$-modules',
 		morphisms: '$R$-linear maps',
@@ -327,7 +327,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Met',
-		name: 'The category of metric spaces',
+		name: 'category of metric spaces',
 		notation: '$\\mathbf{Met}$',
 		objects: 'metric spaces',
 		morphisms:
@@ -358,7 +358,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Met_oo',
-		name: 'A complete category of metric spaces',
+		name: 'complete category of metric spaces',
 		notation: '$\\mathbf{Met}_{\\infty}$',
 		objects:
 			'metric spaces, where the metric is allowed to assume the value $\\infty$',
@@ -389,7 +389,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Man',
-		name: 'The category of smooth manifolds',
+		name: 'category of smooth manifolds',
 		notation: '$\\mathbf{Man}$',
 		objects: 'smooth manifolds',
 		morphisms: 'smooth maps',
@@ -418,7 +418,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Meas',
-		name: 'The category of measurable spaces',
+		name: 'category of measurable spaces',
 		notation: '$\\mathbf{Meas}$',
 		objects: 'measurable spaces',
 		morphisms: 'measurable maps',
@@ -441,7 +441,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'N',
-		name: 'The partial order of natural numbers',
+		name: 'partial order of natural numbers',
 		notation: '$(\\mathbb{N},\\leq)$',
 		objects: 'natural numbers $0, 1, 2, \\dotsc$',
 		morphisms: 'a unique morphism $n \\to m$ if $n \\leq m$',
@@ -460,7 +460,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Cat',
-		name: 'The category of small categories',
+		name: 'category of small categories',
 		notation: '$\\mathbf{Cat}$',
 		objects: 'small categories',
 		morphisms: 'functors',
@@ -482,7 +482,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'On',
-		name: 'The partial order of ordinal numbers',
+		name: 'partial order of ordinal numbers',
 		notation: '$(\\mathbf{On},\\leq)$',
 		objects: 'ordinal numbers',
 		morphisms: 'a unique morphism $\\alpha \\to \\beta$ if $\\alpha \\leq \\beta$',
@@ -501,7 +501,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'LRS',
-		name: 'The category of locally ringed spaces',
+		name: 'category of locally ringed spaces',
 		notation: '$\\mathbf{LRS}$',
 		objects: 'locally ringed spaces',
 		morphisms: 'morphism of locally ringed spaces',
@@ -520,7 +520,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Sch',
-		name: 'The category of schemes',
+		name: 'category of schemes',
 		notation: '$\\mathbf{Sch}$',
 		objects: 'schemes',
 		morphisms: 'morphism of schemes',
@@ -543,7 +543,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Fld',
-		name: 'The category of fields',
+		name: 'category of fields',
 		notation: '$\\mathbf{Fld}$',
 		objects: 'fields',
 		morphisms: 'field homomorphisms (i.e., ring homomorphisms)',
@@ -569,7 +569,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'FreeAb',
-		name: 'The category of free abelian groups',
+		name: 'category of free abelian groups',
 		notation: '$\\mathbf{FreeAb}$',
 		objects: 'free abelian groups',
 		morphisms: 'group homomorphisms',
@@ -593,7 +593,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Z',
-		name: 'The category of Z-functors',
+		name: 'category of Z-functors',
 		notation: '$[\\mathbf{CRing}, \\mathbf{Set}]$',
 		objects: 'Z-functors, i.e. functors from commutative rings to sets',
 		morphisms: 'natural transformations',
@@ -646,7 +646,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'walking_pair',
-		name: 'The walking parallel pair of morphisms',
+		name: 'walking parallel pair of morphisms',
 		notation: '$\\{0 \\rightrightarrows 1 \\}$',
 		objects: 'two objects $0$ and $1$',
 		morphisms: 'identities and two parallel morphisms from $0$ to $1$',
@@ -673,7 +673,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'walking_isomorphism',
-		name: 'The walking isomorphism',
+		name: 'walking isomorphism',
 		notation: '$\\{0 \\rightleftarrows 1\\}$',
 		objects: 'two objects $0$ and $1$',
 		morphisms:
@@ -688,7 +688,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'Setne',
-		name: 'The category of non-empty sets',
+		name: 'category of non-empty sets',
 		notation: '$\\mathbf{Set}_{\\neq \\emptyset}$',
 		objects: 'non-empty sets',
 		morphisms: 'maps',
@@ -718,7 +718,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'B',
-		name: 'The category of finite sets and bijections',
+		name: 'category of finite sets and bijections',
 		notation: '$\\mathbb{B}$',
 		objects: 'finite sets',
 		morphisms: 'bijective maps',
@@ -732,7 +732,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'FI',
-		name: 'The category of finite sets and injections',
+		name: 'category of finite sets and injections',
 		notation: '$\\mathrm{FI}$',
 		objects: 'finite sets',
 		morphisms: 'injective maps',
@@ -759,7 +759,7 @@ export const categories: readonly Readonly<Category>[] = [
 	},
 	{
 		id: 'FS',
-		name: 'The category of finite sets and surjections',
+		name: 'category of finite sets and surjections',
 		notation: '$\\mathrm{FS}$',
 		objects: 'finite sets',
 		morphisms: 'surjective maps',
