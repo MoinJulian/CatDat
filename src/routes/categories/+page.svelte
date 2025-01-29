@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Category } from '$lib/types'
+	import type { Category } from '$lib/commons/types'
 	import { categories } from '$lib/categories/categories'
 	import CategoryList from '$lib/components/CategoryList.svelte'
 </script>

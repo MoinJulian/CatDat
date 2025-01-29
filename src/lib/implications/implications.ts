@@ -1,4 +1,4 @@
-import type { Implication } from '$lib/types'
+import type { Implication } from '$lib/commons/types'
 
 /**
  * Each implication must have the following properties:

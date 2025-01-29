@@ -1,4 +1,4 @@
-import type { Property } from '$lib/types'
+import type { Property } from '$lib/commons/types'
 
 /**
  * Each property must have the following properties:

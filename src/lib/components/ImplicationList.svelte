@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PropertyID } from '$lib/properties/propertyIDs'
-	import type { Implication as ImplicationType } from '$lib/types'
+	import type { Implication as ImplicationType } from '$lib/commons/types'
 	import Implication from './Implication.svelte'
 
 	type Props = {

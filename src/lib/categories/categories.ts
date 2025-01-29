@@ -1,4 +1,4 @@
-import type { Category } from '$lib/types'
+import type { Category } from '$lib/commons/types'
 
 /**
  * Each category has the following data:

@@ -3,7 +3,7 @@
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
 	import { category_detail_level } from '$lib/settings/detail_level.svelte'
-	import type { RelatedCategory } from '$lib/types'
+	import type { RelatedCategory } from '$lib/commons/types'
 
 	let { data } = $props()
 

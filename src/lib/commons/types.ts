@@ -1,7 +1,7 @@
-import type { CategoryID } from './categories/categoryIDs'
-import type { Prefix } from './properties/properties.utils'
-import type { PropertyID } from './properties/propertyIDs'
-import type { NonEmptyArray } from './utils'
+import type { CategoryID } from '$lib/categories/categoryIDs'
+import type { Prefix } from '$lib/properties/properties.utils'
+import type { PropertyID } from '$lib/properties/propertyIDs'
+import type { NonEmptyArray } from '$lib/commons/utils'
 
 type CategoryTag =
 	| 'basic'

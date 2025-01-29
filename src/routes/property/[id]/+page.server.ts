@@ -8,7 +8,7 @@ import {
 	implications_with_duals,
 	properties_dictionary,
 } from '$lib/properties/properties.utils'
-import { render_formulas_in_object } from '$lib/rendering'
+import { render_formulas_in_object } from '$lib/commons/rendering'
 
 export const load: PageServerLoad = (event) => {
 	const id = decode_property_ID(event.params.id)
