@@ -1,8 +1,9 @@
 <script>
 	import ImplicationList from '$lib/components/ImplicationList.svelte'
 
-	const { data } = $props()
-	const { sorted_implications } = data
+	let { data } = $props()
+	let implications = $derived(data.implications)
+	let show_all = $derived(data.show_all)
 </script>
 
 <svelte:head>
@@ -12,8 +13,8 @@
 <h2>List of Implications</h2>
 
 <ImplicationList
-	items={sorted_implications}
-	description="The following {sorted_implications.length} implications and equivalences are available*."
+	items={implications}
+	description="The following {implications.length} implications and equivalences are available*."
 />
 
 <p class="hint">
@@ -22,10 +23,18 @@
 	property of having a terminal object is automatically inferred and added.
 </p>
 
-<p class="hint">
-	Moreover, implications are automatically dualized when the corresponding dual
-	properties exist. For example, the statement that finitely complete categories with
-	filtered limits are complete automatically implies that finitely cocomplete categories
-	with filtered colimits are cocomplete. Similarly, if a category is self-dual and, for
-	example, complete, it is automatically inferred to be cocomplete as well.
-</p>
+{#if !show_all}
+	<p class="hint">
+		Moreover, implications are automatically dualized when the corresponding dual
+		properties exist. For example, the statement that finitely complete categories
+		with filtered limits are complete automatically implies that finitely cocomplete
+		categories with filtered colimits are cocomplete. Similarly, if a category is
+		self-dual and, for example, complete, it is automatically inferred to be
+		cocomplete as well. Click <a href="/implications?show_all">here</a> to see all implications,
+		including the dualizations.
+	</p>
+{:else}
+	<p class="hint">
+		Click <a href="/implications">here</a> to hide the dualizations.
+	</p>
+{/if}
