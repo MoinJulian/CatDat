@@ -14,6 +14,10 @@
 	}
 
 	let { items, description, with_prefix = true, negated = false }: Props = $props()
+
+	let sorted_properties = $derived(
+		items.toSorted((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())),
+	)
 </script>
 
 {#if description}
@@ -24,7 +28,7 @@
 
 {#if items.length}
 	<ul>
-		{#each items as property}
+		{#each sorted_properties as property}
 			<li>
 				{#if with_prefix}
 					{@const property_data = properties_dictionary[property]}
