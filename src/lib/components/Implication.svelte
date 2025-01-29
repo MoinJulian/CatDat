@@ -20,16 +20,16 @@
 		>{assumption}</a
 	>
 	{#if i < implication.assumptions.length - 1}
-		<Fa icon={faPlus} />
+		<Fa icon={faPlus} class="operator" />
 		<span class="visually-hidden">and &nbsp;</span>
 	{/if}
 {/each}
 
 <span aria-hidden="true">
 	{#if implication.equivalent}
-		<Fa icon={faArrowsLeftRight} />
+		<Fa icon={faArrowsLeftRight} class="operator" />
 	{:else}
-		<Fa icon={faArrowRight} />
+		<Fa icon={faArrowRight} class="operator" />
 	{/if}
 </span>
 
@@ -46,7 +46,7 @@
 		>{conclusion}</a
 	>
 	{#if i < implication.conclusions.length - 1}
-		<Fa icon={faPlus} />
+		<Fa icon={faPlus} class="operator" />
 		<span class="visually-hidden">and &nbsp;</span>
 	{/if}
 {/each}
@@ -59,5 +59,10 @@
 	a.highlighted {
 		text-decoration-style: dashed;
 		text-underline-offset: 4px;
+	}
+
+	:global(.operator) {
+		margin-inline: 0.25rem;
+		color: var(--secondary-text-color);
 	}
 </style>
