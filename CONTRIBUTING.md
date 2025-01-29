@@ -2,6 +2,10 @@
 
 There are three options to contribute.
 
+- [Create an issue](#option-1-create-an-issue)
+- [Create a pull request](#option-2-create-a-pull-request)
+- [Submit our Google form](#option-3-submit-our-google-form)
+
 ## Option 1: Create an issue
 
 In case you want to report an issue with _CatDat_, or want to add some data but don't feel comfortable with providing a pull request, you may [**create an issue**](https://github.com/ScriptRaccoon/CatDat/issues). For this, you need a GitHub account.
@@ -48,4 +52,6 @@ Follow these guidelines:
 
 ## Option 3: Submit our Google Form
 
-TBA
+The Google Form is the least technical way to submit new categories, properties, and implications. Issues can feature request may be submitted as well. This option does not require any knowledge of GitHub or coding, making it accessible to everyone.
+
+[**Link to the Google Form**](https://forms.gle/8LBmro5FfSa43pD2A)
