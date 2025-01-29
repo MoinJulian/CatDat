@@ -7,6 +7,8 @@
 	}
 
 	let { description, items }: Props = $props()
+
+	let sorted_items = $derived(items.toSorted((a, b) => a.name.localeCompare(b.name)))
 </script>
 
 {#if description}
@@ -17,7 +19,7 @@
 
 {#if items.length}
 	<ul>
-		{#each items as item}
+		{#each sorted_items as item}
 			<li>
 				<a href="/category/{item.id}">
 					{item.name}
