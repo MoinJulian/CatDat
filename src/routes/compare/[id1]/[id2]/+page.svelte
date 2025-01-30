@@ -35,10 +35,14 @@
 </script>
 
 <svelte:head>
-	<title>Comparison of two categories</title>
+	<title>Comparison of categories</title>
 </svelte:head>
 
-<h2 bind:this={heading_element}>Comparison: {category_1.name} vs. {category_2.name}</h2>
+<h2>Comparison of categories</h2>
+
+<p class="hint">
+	Compare the {category_1.name} with the {category_2.name}.
+</p>
 
 {#snippet ValueCell(value: null | boolean)}
 	<td
