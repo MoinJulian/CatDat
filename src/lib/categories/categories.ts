@@ -641,7 +641,7 @@ export const categories: readonly Readonly<Category>[] = [
 			'left cancellative',
 		],
 		non_properties: ['finite', 'zero morphisms', 'equalizers', 'filtered colimits'],
-		related: ['BG'],
+		related: ['BG', 'On+'],
 		tags: ['basic', 'algebra', 'category theory', 'badly-behaved'],
 	},
 	{
@@ -783,5 +783,34 @@ export const categories: readonly Readonly<Category>[] = [
 			'pullbacks',
 		],
 		tags: ['basic', 'set theory', 'representation theory', 'badly-behaved'],
+	},
+	{
+		id: 'On+',
+		name: 'delooping of the additive monoid of ordinal numbers',
+		notation: '$B(\\mathbf{On},+)$',
+		objects: 'a single object',
+		morphisms: 'ordinal numbers, with addition as composition',
+		description:
+			'Every monoid $M$ induces a one-object category $BM$. This also works when $M$ is large, in which case $BM$ is not locally small. In this example, we apply this construction to the large monoid of ordinal numbers with respect to addition.',
+		related: ['BN'],
+		properties: [
+			'connected',
+			'generator',
+			'cogenerator',
+			'left cancellative',
+			'well-copowered', // https://math.stackexchange.com/questions/5029605
+		],
+		non_properties: [
+			'locally small',
+			'initial object',
+			'terminal object',
+			'right cancellative',
+			'zero morphisms',
+			'balanced',
+			'binary products',
+			'binary coproducts',
+			'well-powered',
+		],
+		tags: ['intermediate', 'set theory', 'badly-behaved', 'artificial'],
 	},
 ]
