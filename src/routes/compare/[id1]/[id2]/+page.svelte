@@ -25,7 +25,10 @@
 <h2>Comparison: {category_1.name} vs. {category_2.name}</h2>
 
 {#snippet ValueCell(value: null | boolean)}
-	<td class={JSON.stringify(value)}>
+	<td
+		class={JSON.stringify(value)}
+		aria-label={value === null ? 'Unknown' : value ? 'Yes' : 'No'}
+	>
 		<Fa icon={icon_config[JSON.stringify(value)]} />
 	</td>
 {/snippet}
