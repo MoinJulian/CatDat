@@ -26,8 +26,12 @@ export function get_search_results(url: URL) {
 	const dualized_properties = get_dual_properties(properties)
 	const dualized_non_properties = get_dual_properties(non_properties)
 
+	const self_dual_request =
+		JSON.stringify(properties) === JSON.stringify(dualized_properties) &&
+		JSON.stringify(non_properties) === JSON.stringify(dualized_non_properties)
+
 	const dual_found_categories =
-		dualized_properties && dualized_non_properties
+		!self_dual_request && dualized_properties && dualized_non_properties
 			? category_system.search(dualized_properties, dualized_non_properties)
 			: []
 
