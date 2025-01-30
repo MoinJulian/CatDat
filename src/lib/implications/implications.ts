@@ -24,10 +24,7 @@ export const implications: readonly Readonly<Implication>[] = [
 	},
 	{
 		assumptions: ['locally finitely presentable'],
-		conclusions: [
-			'locally presentable',
-			'filtered colimits that commute with finite limits',
-		],
+		conclusions: ['locally presentable', 'exact filtered colimits'],
 	},
 	{
 		assumptions: ['locally presentable', 'self-dual'],
@@ -52,7 +49,7 @@ export const implications: readonly Readonly<Implication>[] = [
 		conclusions: ['finitely complete', 'filtered limits'],
 	},
 	{
-		assumptions: ['filtered colimits that commute with finite limits'],
+		assumptions: ['exact filtered colimits'],
 		conclusions: ['filtered colimits', 'finitely complete'],
 	},
 	{
@@ -70,12 +67,7 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		equivalent: true,
 		assumptions: ['Grothendieck abelian'],
-		conclusions: [
-			'abelian',
-			'coproducts',
-			'generator',
-			'filtered colimits that commute with finite limits',
-		],
+		conclusions: ['abelian', 'coproducts', 'generator', 'exact filtered colimits'],
 	},
 	{
 		assumptions: ['Grothendieck abelian'],
@@ -96,7 +88,7 @@ export const implications: readonly Readonly<Implication>[] = [
 			'elementary topos',
 			'locally presentable',
 			'cogenerator',
-			'filtered colimits that commute with finite limits',
+			'exact filtered colimits',
 			'disjoint coproducts',
 		],
 	},

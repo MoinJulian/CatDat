@@ -51,7 +51,7 @@ export const PROPERTY_IDs = [
 	'distributive',
 	'generator',
 	'cogenerator',
-	'filtered colimits that commute with finite limits',
+	'exact filtered colimits',
 	'Grothendieck abelian',
 	'disjoint finite coproducts',
 	'disjoint coproducts',
