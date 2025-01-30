@@ -3,21 +3,24 @@
 </svelte:head>
 
 <p>
-	<i>CatDat</i> is a searchable database of
+	<i>CatDat</i> is a comprehensive and searchable database of
 	<a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank">categories</a>
 	and their properties.
 </p>
 
 <p>
-	Discover categories based on specific properties or non-properties, and explore the
-	properties of your favorite categories.
+	Explore a growing collection of categories, each with detailed descriptions,
+	properties, and non-properties. Our powerful deduction system is based on a list of
+	implications, allowing you to search for categories with specific properties or
+	non-properties. Additionally, you can compare two categories to see how their
+	properties align or differ.
 </p>
 
 <p>
-	This is a community-driven project. If you notice a category with missing information
-	or a combination of properties that hasn't been observed yet (see <a href="/missing"
-		>Missing data</a
-	>), you're welcome to contribute! Head over to our
+	This community-driven project welcomes contributions to fill in <a href="/missing"
+		>missing information</a
+	>
+	or observe new combinations of properties. Head over to our
 	<a href="https://github.com/ScriptRaccoon/catdat" target="_blank">GitHub repository</a
 	> and help us make this resource even better.
 </p>
