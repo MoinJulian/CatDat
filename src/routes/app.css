@@ -17,6 +17,7 @@
 		--button-color: #728aa7;
 		--success-color: #079307;
 		--error-color: #ff0000;
+		--shadow-color: #0004;
 	}
 
 	body[data-theme='dark'] {
@@ -31,6 +32,7 @@
 		--button-color: #375886;
 		--success-color: #31cd31;
 		--error-color: #ed3e2b;
+		--shadow-color: #000a;
 	}
 }
 

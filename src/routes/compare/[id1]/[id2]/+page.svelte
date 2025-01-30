@@ -16,13 +16,29 @@
 		false: faXmark,
 		null: faQuestion,
 	}
+
+	let heading_element = $state<HTMLElement | null>(null)
+	let show_header_outline = $state(false)
+
+	$effect(() => {
+		if (!heading_element) return
+
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				show_header_outline = entry.intersectionRatio == 0
+			},
+			{ threshold: [0] },
+		)
+
+		observer.observe(heading_element)
+	})
 </script>
 
 <svelte:head>
 	<title>Comparison of two categories</title>
 </svelte:head>
 
-<h2>Comparison: {category_1.name} vs. {category_2.name}</h2>
+<h2 bind:this={heading_element}>Comparison: {category_1.name} vs. {category_2.name}</h2>
 
 {#snippet ValueCell(value: null | boolean)}
 	<td
@@ -34,7 +50,7 @@
 {/snippet}
 
 <table>
-	<thead>
+	<thead class:outlined={show_header_outline}>
 		<tr>
 			<th>Property</th>
 			<th>
@@ -72,6 +88,19 @@
 	table {
 		border-spacing: 0;
 		margin-inline: auto;
+	}
+
+	thead {
+		top: 1px;
+		position: sticky;
+		background-color: var(--bg-color);
+		outline: 1px solid transparent;
+		transition: outline-color 200ms;
+	}
+
+	thead.outlined {
+		outline: 1px solid var(--outline-color);
+		box-shadow: 0px 10px 30px var(--shadow-color);
 	}
 
 	th:first-child {
