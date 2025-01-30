@@ -24,6 +24,12 @@
 
 <h2>Comparison: {category_1.name} vs. {category_2.name}</h2>
 
+{#snippet ValueCell(value: null | boolean)}
+	<td class={JSON.stringify(value)}>
+		<Fa icon={icon_config[JSON.stringify(value)]} />
+	</td>
+{/snippet}
+
 <table>
 	<thead>
 		<tr>
@@ -51,13 +57,9 @@
 					<a href={get_property_url(property)}>{property}</a>
 				</td>
 
-				<td class={JSON.stringify(value_1)}>
-					<Fa icon={icon_config[JSON.stringify(value_1)]} />
-				</td>
+				{@render ValueCell(value_1)}
 
-				<td class={JSON.stringify(value_2)}>
-					<Fa icon={icon_config[JSON.stringify(value_2)]} />
-				</td>
+				{@render ValueCell(value_2)}
 			</tr>
 		{/each}
 	</tbody>
