@@ -2,6 +2,7 @@
 	import { page } from '$app/state'
 	import {
 		faArrowsSplitUpAndLeft,
+		faCodeCompare,
 		faDatabase,
 		faHome,
 		faList,
@@ -27,6 +28,7 @@
 		},
 		{ href: '/properties', text: 'Properties', nested: '/property', icon: faList },
 		{ href: '/implications', text: 'Implications', icon: faArrowsSplitUpAndLeft },
+		{ href: '/compare', text: 'Compare', icon: faCodeCompare },
 		{ href: '/search', text: 'Search', icon: faSearch },
 	]
 </script>
