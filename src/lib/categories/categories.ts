@@ -616,10 +616,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'connected limits',
 			'inhabited',
 			'left cancellative',
+			'well-powered',
 		],
 		non_properties: [
 			'connected',
-			'well-powered',
 			'well-copowered',
 			'pushouts',
 			'balanced',
