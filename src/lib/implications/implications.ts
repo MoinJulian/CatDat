@@ -4,13 +4,192 @@ import type { Implication } from '$lib/commons/types'
  * Each implication must have the following properties:
  * - assumptions: a list of registered properties
  * - conclusions: a list of registered properties
- * - equivalent (optional boolean value for equivalences)
+ * - equivalent (optional, set to "true" for equivalences)
  */
 export const implications: readonly Readonly<Implication>[] = [
+	// size constraints
 	{
 		assumptions: ['small'],
 		conclusions: ['locally small', 'essentially small'],
 	},
+	{
+		assumptions: ['essentially small'],
+		conclusions: ['well-powered', 'well-copowered'],
+	},
+	{
+		assumptions: ['essentially small', 'complete'],
+		conclusions: ['thin'],
+	},
+	{
+		assumptions: ['finite'],
+		conclusions: ['small'],
+	},
+	// trivialish categories
+	{
+		assumptions: ['discrete'],
+		conclusions: [
+			'thin',
+			'groupoid',
+			'locally small',
+			'well-powered',
+			'connected limits',
+		],
+	},
+	{
+		assumptions: ['discrete', 'connected'],
+		conclusions: ['trivial'],
+	},
+	{
+		assumptions: ['trivial'],
+		conclusions: [
+			'essentially small',
+			'finitary algebraic',
+			'Grothendieck topos',
+			'split abelian',
+			'self-dual',
+		],
+	},
+	{
+		assumptions: ['thin'],
+		conclusions: ['equalizers', 'left cancellative'],
+	},
+	{
+		assumptions: ['thin', 'inhabited'],
+		conclusions: ['generator'],
+	},
+	{
+		assumptions: ['left cancellative', 'coequalizers'],
+		conclusions: ['thin'],
+	},
+	// limits and colimits
+	{
+		equivalent: true,
+		assumptions: ['complete'],
+		conclusions: ['products', 'equalizers'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['finitely complete'],
+		conclusions: ['finite products', 'equalizers'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['complete'],
+		conclusions: ['finitely complete', 'filtered limits'],
+	},
+	{
+		assumptions: ['products'],
+		conclusions: ['finite products'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['finite products'],
+		conclusions: ['terminal object', 'binary products'],
+	},
+	{
+		assumptions: ['finite products', 'filtered limits'],
+		conclusions: ['products'],
+	},
+	{
+		assumptions: ['binary products', 'equalizers'],
+		conclusions: ['pullbacks'],
+	},
+	{
+		assumptions: ['binary products', 'pullbacks'],
+		conclusions: ['equalizers'],
+	},
+	{
+		assumptions: ['pullbacks', 'terminal object'],
+		conclusions: ['binary products'],
+	},
+	{
+		assumptions: ['terminal object'],
+		conclusions: ['connected'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['pointed'],
+		conclusions: ['zero morphisms', 'initial object'],
+	},
+	{
+		assumptions: ['pointed', 'cartesian closed'],
+		conclusions: ['trivial'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['disjoint coproducts'],
+		conclusions: ['coproducts', 'disjoint finite coproducts'],
+	},
+	{
+		assumptions: ['disjoint finite coproducts'],
+		conclusions: ['finite coproducts'],
+	},
+	{
+		assumptions: ['disjoint finite coproducts', 'thin'],
+		conclusions: ['trivial'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['connected limits'],
+		conclusions: ['wide pullbacks', 'equalizers'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['wide pullbacks', 'terminal object'],
+		conclusions: ['complete'],
+	},
+	{
+		equivalent: true,
+		assumptions: ['wide pullbacks'],
+		conclusions: ['pullbacks', 'filtered limits'],
+	},
+
+	{
+		assumptions: ['binary products', 'inhabited'],
+		conclusions: ['connected'],
+	},
+	{
+		assumptions: ['strict initial object'],
+		conclusions: ['initial object'],
+	},
+	{
+		assumptions: ['strict initial object', 'pointed'],
+		conclusions: ['trivial'],
+	},
+	{
+		assumptions: ['left cancellative', 'initial object'],
+		conclusions: ['strict initial object'],
+	},
+	{
+		assumptions: ['right cancellative', 'initial object'],
+		conclusions: ['strict initial object'],
+	},
+	// interchanging limits with colimits
+	{
+		assumptions: ['exact filtered colimits'],
+		conclusions: ['filtered colimits', 'finitely complete'],
+	},
+	{
+		assumptions: ['infinitary distributive'],
+		conclusions: ['finite products', 'coproducts', 'distributive'],
+	},
+	{
+		assumptions: ['distributive'],
+		conclusions: ['finite products', 'finite coproducts', 'strict initial object'],
+	},
+	{
+		assumptions: ['cartesian closed', 'finite coproducts'],
+		conclusions: ['distributive'],
+	},
+	{
+		assumptions: ['cartesian closed', 'coproducts'],
+		conclusions: ['infinitary distributive'],
+	},
+	{
+		assumptions: ['zero morphisms', 'inhabited'],
+		conclusions: ['connected'],
+	},
+	// locally presentable categories
 	{
 		assumptions: ['locally presentable'],
 		conclusions: [
@@ -31,6 +210,11 @@ export const implications: readonly Readonly<Implication>[] = [
 		conclusions: ['thin'],
 	},
 	{
+		assumptions: ['finitary algebraic'],
+		conclusions: ['locally finitely presentable'],
+	},
+	// topos theory
+	{
 		equivalent: true,
 		assumptions: ['elementary topos'],
 		conclusions: ['cartesian closed', 'finitely complete', 'subobject classifier'],
@@ -44,43 +228,12 @@ export const implications: readonly Readonly<Implication>[] = [
 		conclusions: ['well-powered', 'well-copowered'],
 	},
 	{
-		equivalent: true,
-		assumptions: ['complete'],
-		conclusions: ['finitely complete', 'filtered limits'],
-	},
-	{
-		assumptions: ['exact filtered colimits'],
-		conclusions: ['filtered colimits', 'finitely complete'],
-	},
-	{
-		assumptions: ['preadditive'],
-		conclusions: ['locally small', 'zero morphisms'],
-	},
-	{
-		assumptions: ['preadditive', 'finite coproducts'],
+		assumptions: ['cartesian closed'],
 		conclusions: ['finite products'],
 	},
 	{
-		assumptions: ['abelian'],
-		conclusions: ['additive', 'finitely cocomplete', 'finitely complete', 'balanced'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['Grothendieck abelian'],
-		conclusions: ['abelian', 'coproducts', 'generator', 'exact filtered colimits'],
-	},
-	{
-		assumptions: ['Grothendieck abelian'],
-		conclusions: ['locally presentable', 'cogenerator', 'complete'],
-	},
-	{
-		assumptions: ['Grothendieck abelian', 'self-dual'],
-		conclusions: ['trivial'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['additive'],
-		conclusions: ['preadditive', 'finite products'],
+		assumptions: ['cartesian closed', 'initial object'],
+		conclusions: ['strict initial object'],
 	},
 	{
 		assumptions: ['Grothendieck topos'],
@@ -93,172 +246,54 @@ export const implications: readonly Readonly<Implication>[] = [
 		],
 	},
 	{
-		assumptions: ['products'],
-		conclusions: ['finite products'],
+		assumptions: ['subobject classifier'],
+		conclusions: ['finitely complete', 'balanced'],
+	},
+	// additive categories
+	{
+		assumptions: ['preadditive'],
+		conclusions: ['locally small', 'zero morphisms'],
 	},
 	{
-		assumptions: ['finite products', 'filtered limits'],
-		conclusions: ['products'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['finite products'],
-		conclusions: ['terminal object', 'binary products'],
-	},
-	{
-		assumptions: ['terminal object'],
-		conclusions: ['inhabited'],
-	},
-	{
-		assumptions: ['cartesian closed'],
+		assumptions: ['preadditive', 'finite coproducts'],
 		conclusions: ['finite products'],
 	},
 	{
 		equivalent: true,
-		assumptions: ['finite products', 'equalizers'],
-		conclusions: ['finitely complete'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['products', 'equalizers'],
-		conclusions: ['complete'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['disjoint coproducts'],
-		conclusions: ['coproducts', 'disjoint finite coproducts'],
-	},
-	{
-		assumptions: ['disjoint finite coproducts'],
-		conclusions: ['finite coproducts'],
+		assumptions: ['additive'],
+		conclusions: ['preadditive', 'finite products'],
 	},
 	{
 		assumptions: ['additive'],
 		conclusions: ['disjoint finite coproducts'],
 	},
 	{
+		assumptions: ['abelian'],
+		conclusions: ['additive', 'finitely cocomplete', 'finitely complete', 'balanced'],
+	},
+	{
+		equivalent: true,
 		assumptions: ['Grothendieck abelian'],
-		conclusions: ['disjoint coproducts'],
+		conclusions: ['abelian', 'coproducts', 'generator', 'exact filtered colimits'],
 	},
 	{
-		assumptions: ['disjoint finite coproducts', 'thin'],
+		assumptions: ['Grothendieck abelian'],
+		conclusions: ['locally presentable', 'cogenerator'],
+	},
+	{
+		assumptions: ['Grothendieck abelian', 'self-dual'],
 		conclusions: ['trivial'],
 	},
 	{
-		assumptions: ['essentially small'],
-		conclusions: ['well-powered', 'well-copowered'],
-	},
-	{
-		assumptions: ['essentially small', 'complete'],
-		conclusions: ['thin'],
-	},
-	{
-		assumptions: ['thin'],
-		conclusions: ['equalizers', 'coequalizers'],
-	},
-	{
-		assumptions: ['discrete'],
-		conclusions: [
-			'thin',
-			'groupoid',
-			'locally small',
-			'well-powered',
-			'connected limits',
-		],
-	},
-	{
-		assumptions: ['discrete', 'connected'],
+		// https://math.stackexchange.com/questions/4086192
+		assumptions: ['additive', 'pullbacks', 'subobject classifier'],
 		conclusions: ['trivial'],
 	},
 	{
-		assumptions: ['discrete', 'preadditive', 'inhabited'],
-		conclusions: ['trivial'],
+		assumptions: ['split abelian'],
+		conclusions: ['abelian'],
 	},
-	{
-		assumptions: ['finitary algebraic'],
-		conclusions: ['locally finitely presentable'],
-	},
-	{
-		assumptions: ['finite'],
-		conclusions: ['small'],
-	},
-	{
-		assumptions: ['binary products', 'equalizers'],
-		conclusions: ['pullbacks'],
-	},
-	{
-		assumptions: ['binary products', 'pullbacks'],
-		conclusions: ['equalizers'],
-	},
-	{
-		assumptions: ['pullbacks', 'terminal object'],
-		conclusions: ['binary products'],
-	},
-	{
-		assumptions: ['initial object'],
-		conclusions: ['connected'],
-	},
-	{
-		assumptions: ['binary products', 'inhabited'],
-		conclusions: ['connected'],
-	},
-	{
-		assumptions: ['connected'],
-		conclusions: ['inhabited'],
-	},
-	{
-		assumptions: ['trivial'],
-		conclusions: [
-			'essentially small',
-			'finitary algebraic',
-			'Grothendieck topos',
-			'split abelian',
-			'self-dual',
-		],
-	},
-	{
-		equivalent: true,
-		assumptions: ['pointed'],
-		conclusions: ['zero morphisms', 'initial object'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['pointed', 'cartesian closed'],
-		conclusions: ['trivial'],
-	},
-	{
-		assumptions: ['subobject classifier'],
-		conclusions: ['finitely complete'],
-	},
-	{
-		assumptions: ['strict initial object'],
-		conclusions: ['initial object'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['strict initial object', 'pointed'],
-		conclusions: ['trivial'],
-	},
-	{
-		assumptions: ['cartesian closed', 'initial object'],
-		conclusions: ['strict initial object'],
-	},
-	{
-		assumptions: ['left cancellative', 'initial object'],
-		conclusions: ['strict initial object'],
-	},
-	{
-		assumptions: ['right cancellative', 'initial object'],
-		conclusions: ['strict initial object'],
-	},
-	{
-		assumptions: ['subobject classifier'],
-		conclusions: ['balanced'],
-	},
-	{
-		assumptions: ['left cancellative', 'right cancellative', 'balanced'],
-		conclusions: ['groupoid'],
-	},
+	// groupoids
 	{
 		assumptions: ['groupoid'],
 		conclusions: [
@@ -268,6 +303,10 @@ export const implications: readonly Readonly<Implication>[] = [
 			'filtered limits',
 			'left cancellative',
 		],
+	},
+	{
+		assumptions: ['left cancellative', 'right cancellative', 'balanced'],
+		conclusions: ['groupoid'],
 	},
 	{
 		assumptions: ['groupoid', 'equalizers'],
@@ -281,76 +320,13 @@ export const implications: readonly Readonly<Implication>[] = [
 		assumptions: ['groupoid', 'initial object'],
 		conclusions: ['trivial'],
 	},
+	// MISC
 	{
-		assumptions: ['infinitary distributive'],
-		conclusions: ['finite products', 'coproducts', 'distributive'],
-	},
-	{
-		assumptions: ['distributive'],
-		conclusions: ['finite products', 'finite coproducts', 'strict initial object'],
-	},
-	{
-		assumptions: ['cartesian closed', 'finite coproducts'],
-		conclusions: ['distributive'],
-	},
-	{
-		assumptions: ['cartesian closed', 'coproducts'],
-		conclusions: ['infinitary distributive'],
-	},
-	{
-		assumptions: ['complete'],
-		conclusions: ['connected limits'],
-	},
-	{
-		assumptions: ['connected limits'],
-		conclusions: ['filtered limits', 'pullbacks', 'equalizers'],
+		assumptions: ['connected'],
+		conclusions: ['inhabited'],
 	},
 	{
 		assumptions: ['generator'],
 		conclusions: ['inhabited'],
-	},
-	{
-		assumptions: ['thin', 'inhabited'],
-		conclusions: ['generator'],
-	},
-	{
-		assumptions: ['zero morphisms', 'inhabited'],
-		conclusions: ['connected'],
-	},
-	{
-		assumptions: ['thin'],
-		conclusions: ['left cancellative'],
-	},
-	{
-		assumptions: ['left cancellative', 'coequalizers'],
-		conclusions: ['thin'],
-	},
-	{
-		assumptions: ['complete'],
-		conclusions: ['wide pullbacks'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['wide pullbacks', 'terminal object'],
-		conclusions: ['complete'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['wide pullbacks'],
-		conclusions: ['pullbacks', 'filtered limits'],
-	},
-	{
-		equivalent: true,
-		assumptions: ['connected limits'],
-		conclusions: ['wide pullbacks', 'equalizers'],
-	},
-	{
-		// https://math.stackexchange.com/questions/4086192
-		assumptions: ['additive', 'pullbacks', 'subobject classifier'],
-		conclusions: ['trivial'],
-	},
-	{
-		assumptions: ['split abelian'],
-		conclusions: ['abelian'],
 	},
 ]

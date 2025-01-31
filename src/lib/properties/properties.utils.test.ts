@@ -114,15 +114,15 @@ describe('implications_with_duals', () => {
 	it('should contain dual implications', () => {
 		const implication = {
 			equivalent: true,
-			assumptions: ['products', 'equalizers'],
-			conclusions: ['complete'],
+			assumptions: ['complete'],
+			conclusions: ['products', 'equalizers'],
 		}
 		expect(implications_with_duals).toContainEqual(implication)
 
 		const dual_implication = {
 			equivalent: true,
-			assumptions: ['coproducts', 'coequalizers'],
-			conclusions: ['cocomplete'],
+			assumptions: ['cocomplete'],
+			conclusions: ['coproducts', 'coequalizers'],
 		}
 		expect(implications_with_duals).toContainEqual(dual_implication)
 	})
