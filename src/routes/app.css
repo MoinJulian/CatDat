@@ -7,13 +7,13 @@
 body {
 	--bg-color: #fff;
 	--secondary-bg-color: #eee;
-	--text-color: #111;
+	--text-color: #000;
 	--secondary-text-color: #666;
 	--outline-color: #666;
 	--secondary-outline-color: #aaa;
-	--accent-color: #3388ad;
-	--heading-color: #3f76b6;
-	--button-color: #728aa7;
+	--accent-color: #3265a8;
+	--heading-color: black;
+	--button-color: black;
 	--success-color: #079307;
 	--error-color: #ff0000;
 	--shadow-color: #0004;
