@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>Property: {property.id}</title>
+	<title>{property.id}</title>
 </svelte:head>
 
 <h2>{property.id}</h2>
