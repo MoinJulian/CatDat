@@ -16,12 +16,12 @@ export function render_formulas(txt: string): string {
 
 export function render_formulas_in_object<T extends Record<string, unknown>>(
 	obj: T,
-	keys: string[],
+	renderable_keys: string[],
 ): T {
 	return Object.fromEntries(
 		Object.entries(obj).map(([key, value]) => [
 			key,
-			keys.includes(key) && typeof value === 'string'
+			renderable_keys.includes(key) && typeof value === 'string'
 				? render_formulas(value)
 				: value,
 		]),
