@@ -20,8 +20,10 @@ export function get_search_results(url: URL) {
 		? non_properties_query.split(separator).map(decode_property_ID)
 		: []
 
-	if (!properties.every(is_valid_property) || !non_properties.every(is_valid_property))
-		return error(404, 'Invalid query')
+	const is_valid =
+		properties.every(is_valid_property) && non_properties.every(is_valid_property)
+
+	if (!is_valid) return error(404, 'Invalid query')
 
 	const found_categories = category_system.search(properties, non_properties)
 
