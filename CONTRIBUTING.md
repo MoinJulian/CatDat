@@ -42,7 +42,7 @@ For new data, follow these guidelines:
 
 - When a new property is added, you have to make sure that at least one category does not satisfy it (otherwise, it would not be interesting). This is enforced with a unit test, actually. If none of the existing categories fits, you need to add a new category that does not have the new property.
 
-- Try to reduce the unknown properties of the categories in the database. Use the script `pnpm unknowns` or the UI to detect these.
+- Try to reduce the unknown properties of the categories in the database. Use the page with missing data to detect these.
 
 - When a new implication is added, check if it simplifies existing implications, and also if it makes some properties and non-properties in the list of categories redundant.
 

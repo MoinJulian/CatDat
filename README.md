@@ -35,10 +35,6 @@ To continuously run the tests, run
 
 Every commit runs the tests once and the svelte check, which includes a type check.
 
-To find the categories with unknown properties, run
-
-`pnpm unknowns`
-
 ## Similar project
 
 The _catabase_ at https://catabase.fly.dev/ is a similar project, but it has been abandoned. See also the announcement in the [nforum](https://nforum.ncatlab.org/discussion/13419/catabase-a-database-of-categories/). It is much more ambitious when it comes to the available types of data, but it is less complete even for basic categories, the UI is not very intuitive, and there is no integrated deduction system.
