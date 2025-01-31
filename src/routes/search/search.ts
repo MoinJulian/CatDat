@@ -15,10 +15,7 @@ export function get_search_results(url: URL) {
 		? non_properties_query.split(separator).map(decode_property_ID)
 		: []
 
-	const properties_are_valid = properties.every(is_valid_property)
-	const non_properties_are_valid = non_properties.every(is_valid_property)
-
-	if (!properties_are_valid || !non_properties_are_valid)
+	if (!properties.every(is_valid_property) || !non_properties.every(is_valid_property))
 		return error(404, 'Invalid query')
 
 	const found_categories = category_system.search(properties, non_properties)
@@ -26,12 +23,14 @@ export function get_search_results(url: URL) {
 	const dualized_properties = get_dual_properties(properties)
 	const dualized_non_properties = get_dual_properties(non_properties)
 
-	const self_dual_request =
+	const is_self_dual_request =
 		JSON.stringify(properties) === JSON.stringify(dualized_properties) &&
 		JSON.stringify(non_properties) === JSON.stringify(dualized_non_properties)
 
 	const dual_found_categories =
-		!self_dual_request && dualized_properties && dualized_non_properties
+		!is_self_dual_request &&
+		dualized_properties != null &&
+		dualized_non_properties != null
 			? category_system.search(dualized_properties, dualized_non_properties)
 			: []
 

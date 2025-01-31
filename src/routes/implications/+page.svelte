@@ -2,8 +2,6 @@
 	import ImplicationList from '$lib/components/ImplicationList.svelte'
 
 	let { data } = $props()
-	let implications = $derived(data.implications)
-	let show_all = $derived(data.show_all)
 </script>
 
 <svelte:head>
@@ -13,8 +11,9 @@
 <h2>List of Implications</h2>
 
 <ImplicationList
-	items={implications}
-	description="The following {implications.length} implications and equivalences are available*."
+	items={data.implications}
+	description="The following {data.implications
+		.length} implications and equivalences are available*."
 />
 
 <p class="hint">
@@ -23,7 +22,7 @@
 	property of having a terminal object is automatically inferred and added.
 </p>
 
-{#if !show_all}
+{#if !data.show_all_implications}
 	<p class="hint">
 		Moreover, implications are automatically dualized when the corresponding dual
 		properties exist. For example, the statement that finitely complete categories

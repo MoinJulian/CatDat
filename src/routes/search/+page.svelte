@@ -5,9 +5,8 @@
 	import { properties } from '$lib/properties/properties'
 	import { encode_property_ID } from '$lib/properties/properties.utils'
 	import { is_valid_property } from '$lib/properties/propertyIDs'
+	import PropertySelection from '$lib/components/PropertySelection.svelte'
 	import { separator } from './search.config'
-
-	import Selection from './Selection.svelte'
 
 	let { data } = $props()
 
@@ -58,7 +57,7 @@
 <div class="form">
 	<p>Looking for categories with these properties:</p>
 
-	<Selection
+	<PropertySelection
 		aria_label="selection of properties"
 		bind:values={selected_properties}
 		name="property"
@@ -66,7 +65,7 @@
 
 	<p>... and <i>not</i> with these properties:</p>
 
-	<Selection
+	<PropertySelection
 		aria_label="selection of non-properties"
 		bind:values={selected_non_properties}
 		name="non-property"

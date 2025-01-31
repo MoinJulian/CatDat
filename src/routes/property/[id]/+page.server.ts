@@ -5,8 +5,8 @@ import { category_system } from '$lib/categories/categories.utils'
 import { is_valid_property } from '$lib/properties/propertyIDs'
 import {
 	decode_property_ID,
-	implications_with_duals,
 	properties_dictionary,
+	property_deduction_system,
 } from '$lib/properties/properties.utils'
 import { render_formulas_in_object } from '$lib/commons/rendering'
 
@@ -23,11 +23,7 @@ export const load: PageServerLoad = (event) => {
 
 	const property = properties_dictionary[id]
 
-	const relevant_implications = implications_with_duals.filter(
-		(implication) =>
-			implication.conclusions.includes(property.id) ||
-			implication.assumptions.includes(property.id),
-	)
+	const relevant_implications = property_deduction_system.get_relevant_rules(id)
 
 	return {
 		property: render_formulas_in_object(property, ['description']),

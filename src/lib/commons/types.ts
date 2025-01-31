@@ -2,7 +2,8 @@ import type { CategoryID } from '$lib/categories/categoryIDs'
 import type { Prefix } from '$lib/properties/properties.utils'
 import type { PropertyID } from '$lib/properties/propertyIDs'
 import type { NonEmptyArray } from '$lib/commons/utils'
-import type { EntityWithAllProperties } from '$lib/logic/EntitySystem'
+import type { Rule } from '$lib/logic/DeductionSystem'
+import type { EntityDetailed } from '$lib/logic/EntitySystem'
 
 type CategoryTag =
 	| 'basic'
@@ -22,7 +23,7 @@ type CategoryTag =
 	| 'combinatorics'
 	| 'category theory'
 
-export type Category = {
+export type PreCategory = {
 	id: CategoryID
 	name: string
 	notation: string
@@ -36,12 +37,12 @@ export type Category = {
 	tags: NonEmptyArray<CategoryTag>
 }
 
-export type CategoryImproved = Omit<Category, 'properties' | 'non_properties'> & {
+export type Category = Omit<PreCategory, 'properties' | 'non_properties'> & {
 	properties: Set<PropertyID>
 	non_properties: Set<PropertyID>
 }
 
-export type CategoryDetailed = EntityWithAllProperties<CategoryImproved, PropertyID>
+export type CategoryDetailed = EntityDetailed<Category, PropertyID>
 
 export type RelatedCategory = { id: CategoryID; name: string }
 
@@ -55,8 +56,4 @@ export type Property = {
 	nlab_link?: string
 }
 
-export type Implication = {
-	equivalent?: boolean
-	assumptions: PropertyID[]
-	conclusions: PropertyID[]
-}
+export type Implication = Rule<PropertyID>

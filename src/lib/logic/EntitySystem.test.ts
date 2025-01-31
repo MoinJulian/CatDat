@@ -41,35 +41,29 @@ describe('EntitySystem', () => {
 		})
 
 		it('should add all the deduced properties and non-properties (1)', () => {
-			expect(entity_1).toBeDefined()
-			if (entity_1) {
-				expect(entity_1).toEqual({
-					id: '1',
-					all_non_properties: new Set([]),
-					all_properties: new Set(['a', 'b', 'c', 'd']),
-					deduced_non_properties: new Set([]),
-					deduced_properties: new Set(['b', 'c', 'd']),
-					non_properties: new Set([]),
-					properties: new Set(['a']),
-					unknown_properties: new Set([]),
-				})
-			}
+			expect(entity_1).toEqual({
+				id: '1',
+				all_non_properties: new Set([]),
+				all_properties: new Set(['a', 'b', 'c', 'd']),
+				deduced_non_properties: new Set([]),
+				deduced_properties: new Set(['b', 'c', 'd']),
+				non_properties: new Set([]),
+				properties: new Set(['a']),
+				unknown_properties: new Set([]),
+			})
 		})
 
 		it('should add all the deduced properties and non-properties (3)', () => {
-			expect(entity_3).toBeDefined()
-			if (entity_3) {
-				expect(entity_3).toEqual({
-					id: '3',
-					all_non_properties: new Set(['a', 'b']),
-					all_properties: new Set(['c']),
-					deduced_non_properties: new Set(['a']),
-					deduced_properties: new Set([]),
-					non_properties: new Set(['b']),
-					properties: new Set(['c']),
-					unknown_properties: new Set(['d']),
-				})
-			}
+			expect(entity_3).toEqual({
+				id: '3',
+				all_non_properties: new Set(['a', 'b']),
+				all_properties: new Set(['c']),
+				deduced_non_properties: new Set(['a']),
+				deduced_properties: new Set([]),
+				non_properties: new Set(['b']),
+				properties: new Set(['c']),
+				unknown_properties: new Set(['d']),
+			})
 		})
 	})
 
@@ -128,7 +122,7 @@ describe('EntitySystem', () => {
 		})
 	})
 
-	describe('get_comparison', () => {
+	describe('get_comparison_table', () => {
 		it('return a table with true/false/null for the corresponding properties', () => {
 			expect(entity_1.all_properties).toEqual(new Set(['a', 'b', 'c', 'd']))
 			expect(entity_3.all_properties).toEqual(new Set(['c']))
@@ -138,7 +132,7 @@ describe('EntitySystem', () => {
 				['c', true, true],
 				['d', true, null],
 			]
-			expect(entity_system.get_comparison([entity_1, entity_3])).toEqual(
+			expect(entity_system.get_comparison_table([entity_1, entity_3])).toEqual(
 				comparison_result,
 			)
 		})
@@ -154,7 +148,7 @@ describe('EntitySystem', () => {
 				properties: new Set([]),
 				unknown_properties: new Set([]),
 			}
-			expect(entity_system.get_comparison([entity_1, entity_4])).toEqual(null)
+			expect(entity_system.get_comparison_table([entity_1, entity_4])).toEqual(null)
 		})
 	})
 })

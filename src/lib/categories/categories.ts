@@ -1,4 +1,4 @@
-import type { Category } from '$lib/commons/types'
+import type { PreCategory } from '$lib/commons/types'
 
 /**
  * Each category has the following data:
@@ -14,7 +14,7 @@ import type { Category } from '$lib/commons/types'
  * - related (optional list of related categories, referred to by their IDs)
  * - tags (required, must have only allowed tags)
  */
-export const categories: readonly Readonly<Category>[] = [
+export const categories: readonly Readonly<PreCategory>[] = [
 	{
 		id: 'Set',
 		name: 'category of sets',

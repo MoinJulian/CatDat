@@ -29,14 +29,13 @@
 
 <section class="selection" aria-label={aria_label}>
 	<div class="inputs">
-		{#each { length: values.length } as _, i}
+		{#each values as value, i}
 			<input
 				type="text"
 				list="property-list"
 				bind:value={values[i]}
 				aria-label="{name} {i + 1}"
-				aria-invalid={values[i].length > 0 &&
-					properties.every((p) => p.id != values[i])}
+				aria-invalid={value.length > 0 && properties.every((p) => p.id != value)}
 				bind:this={input_elements[i]}
 			/>
 		{/each}

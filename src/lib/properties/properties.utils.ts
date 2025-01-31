@@ -18,13 +18,11 @@ export function decode_property_ID(str: string): string {
 }
 
 export function get_property_url(id: PropertyID) {
-	const encoded_ID = encode_property_ID(id)
-	return `/property/${encoded_ID}`
+	return `/property/${encode_property_ID(id)}`
 }
 
 export function get_dual_property(id: PropertyID): null | PropertyID {
-	const property = properties_dictionary[id]
-	return property.dual ?? null
+	return properties_dictionary[id].dual ?? null
 }
 
 export function get_dual_properties(ids: PropertyID[]): null | PropertyID[] {
@@ -56,4 +54,4 @@ export const property_deduction_system = new DeductionSystemWithDuals<PropertyID
 
 property_deduction_system.init_with_duals()
 
-export const implications_with_duals = property_deduction_system.all_rules
+export const implications_with_duals = property_deduction_system.rules

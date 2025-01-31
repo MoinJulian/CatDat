@@ -1,6 +1,6 @@
 import { DeductionSystem } from './DeductionSystem'
 
-export type EntityWithAllProperties<
+export type EntityDetailed<
 	S extends { properties: Set<T>; non_properties: Set<T> },
 	T extends string,
 > = S & {
@@ -15,7 +15,7 @@ export class EntitySystem<
 	S extends { properties: Set<T>; non_properties: Set<T> },
 	T extends string,
 > {
-	public readonly entities: EntityWithAllProperties<S, T>[] = []
+	public readonly entities: EntityDetailed<S, T>[] = []
 	private deduction_system: DeductionSystem<T>
 
 	constructor(deduction_system: DeductionSystem<T>, entities: S[] = []) {
@@ -26,18 +26,14 @@ export class EntitySystem<
 		}
 	}
 
-	public add(data: S): EntityWithAllProperties<S, T> {
-		const properties = new Set(data.properties)
-		const non_properties = new Set(data.non_properties)
-
-		const all_properties = this.deduction_system.get_deductions(properties)
-
+	public add(data: S): EntityDetailed<S, T> {
+		const all_properties = this.deduction_system.get_deductions(data.properties)
 		const all_non_properties = this.deduction_system.get_deduced_negations(
 			all_properties,
-			non_properties,
+			data.non_properties,
 		)
-		const deduced_properties = all_properties.difference(properties)
-		const deduced_non_properties = all_non_properties.difference(non_properties)
+		const deduced_properties = all_properties.difference(data.properties)
+		const deduced_non_properties = all_non_properties.difference(data.non_properties)
 		const unknown_properties = this.deduction_system.properties
 			.difference(all_properties)
 			.difference(all_non_properties)
@@ -60,7 +56,7 @@ export class EntitySystem<
 		properties: T[],
 		non_properties: T[],
 		unknown_properties: T[] = [],
-	): EntityWithAllProperties<S, T>[] {
+	): EntityDetailed<S, T>[] {
 		if (
 			properties.length === 0 &&
 			non_properties.length === 0 &&
@@ -73,6 +69,7 @@ export class EntitySystem<
 			const has_all_properties = new Set(properties).isSubsetOf(
 				entity.all_properties,
 			)
+
 			const has_all_non_properties = new Set(non_properties).isSubsetOf(
 				entity.all_non_properties,
 			)
@@ -87,7 +84,7 @@ export class EntitySystem<
 		})
 	}
 
-	get missing_basic_combinations(): { assumption: T; negation: T }[] {
+	public get missing_basic_combinations(): { assumption: T; negation: T }[] {
 		return this.deduction_system.basic_consistent_combinations.filter(
 			(combination) =>
 				!this.entities.some(
@@ -98,20 +95,20 @@ export class EntitySystem<
 		)
 	}
 
-	get entities_with_unknown_properties() {
+	public get entities_with_unknown_properties(): EntityDetailed<S, T>[] {
 		return this.entities.filter((entity) => entity.unknown_properties.size > 0)
 	}
 
 	private get_comparison_value(
-		entity: EntityWithAllProperties<S, T>,
+		entity: EntityDetailed<S, T>,
 		property: T,
 	): boolean | null {
 		if (entity.unknown_properties.has(property)) return null
 		return entity.all_properties.has(property)
 	}
 
-	get_comparison(
-		entities: EntityWithAllProperties<S, T>[],
+	public get_comparison_table(
+		entities: EntityDetailed<S, T>[],
 	): null | [T, ...(boolean | null)[]][] {
 		const is_valid = entities.every((entity) => this.entities.includes(entity))
 		if (!is_valid) return null

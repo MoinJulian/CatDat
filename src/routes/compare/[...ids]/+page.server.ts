@@ -14,15 +14,14 @@ export const load: PageServerLoad = (event) => {
 	if (!is_valid) throw error(404, 'Invalid query')
 
 	const compared_categories = ids.map((id) => categories_dictionary_detailed[id])
+	const comparison_table = category_system.get_comparison_table(compared_categories)
 
-	const comparison_result = category_system.get_comparison(compared_categories)
-
-	if (!comparison_result) {
+	if (!comparison_table) {
 		return error(404, 'Invalid query')
 	}
 
 	return {
 		compared_categories,
-		comparison_result,
+		comparison_table,
 	}
 }

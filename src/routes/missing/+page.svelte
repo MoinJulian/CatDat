@@ -17,7 +17,7 @@
 <h2>Categories with unknown properties</h2>
 
 There are {categories_with_unknown_properties.length} categories that have some unknown properties.
-Please help us fill in the gaps by contributing to the GitHub repository.
+Please help us fill in the gaps by contributing to this project.
 
 <CategoryList items={categories_with_unknown_properties} />
 
@@ -25,9 +25,9 @@ Please help us fill in the gaps by contributing to the GitHub repository.
 
 Among the consistent combinations of the form "property P, but not property Q", the
 following combinations are currently not yet witnessed by an example category in our
-database. Please help us fill in the gaps by contributing to the GitHub repository. Please
-also report in case some combination is inconsistent. This means that an implication is
-missing in the database.
+database. Please help us fill in the gaps by contributing to this project. Please also
+report in case some combination is inconsistent. This means that an implication is missing
+in the database.
 
 <p>
 	Number of missing basic combinations: {missing_basic_combinations.length}

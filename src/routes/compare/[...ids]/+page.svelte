@@ -9,7 +9,7 @@
 	import Fa from 'svelte-fa'
 
 	let { data } = $props()
-	let { compared_categories, comparison_result } = data
+	let { compared_categories, comparison_table } = data
 
 	const icon_config: Record<string, IconDefinition> = {
 		true: faCheck,
@@ -18,14 +18,14 @@
 	}
 
 	let paragraph_element = $state<HTMLElement | null>(null)
-	let show_header_outline = $state(false)
+	let show_thead_outline = $state(false)
 
 	$effect(() => {
 		if (!paragraph_element) return
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
-				show_header_outline = entry.intersectionRatio == 0
+				show_thead_outline = entry.intersectionRatio == 0
 			},
 			{ threshold: [0] },
 		)
@@ -46,7 +46,7 @@
 </p>
 
 <table>
-	<thead class:outlined={show_header_outline}>
+	<thead class:outlined={show_thead_outline}>
 		<tr>
 			<th>Property</th>
 			{#each compared_categories as category}
@@ -59,7 +59,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		{#each comparison_result as [property, ...values]}
+		{#each comparison_table as [property, ...values]}
 			{@const is_different = new Set(values).size > 1}
 			<tr class:highlight={is_different}>
 				<td>

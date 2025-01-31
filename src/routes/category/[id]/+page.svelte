@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { CategoryDetailed, RelatedCategory } from '$lib/commons/types'
+	import { category_detail_level } from '$lib/settings/detail_level.svelte'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
-	import { category_detail_level } from '$lib/settings/detail_level.svelte'
 
 	let { data } = $props()
 

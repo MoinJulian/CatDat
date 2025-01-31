@@ -6,22 +6,18 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 	constructor(
 		properties: Set<T>,
 		rules: Rule<T>[],
-		dual_property_accessor: (p: T) => T | null,
+		dual_property_accessor: (property: T) => T | null,
 	) {
 		super(properties, rules)
 		this.get_dual_property = dual_property_accessor
 	}
 
-	public init_with_duals() {
+	public init_with_duals(): void {
 		if (this.initialized) return
 		this.add_dualized_rules()
 		this.add_self_dual_rules()
 		this.compute_normalized_rules()
 		this.initialized = true
-	}
-
-	public get all_rules() {
-		return this.rules
 	}
 
 	private get_dual_properties(properties: T[]): null | T[] {
@@ -64,14 +60,13 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 	private add_self_dual_rules(): void {
 		for (const property of this.properties) {
 			const dual_property = this.get_dual_property(property)
-			if (!dual_property) continue
-			if (dual_property === property) continue
 
-			const new_rule: Rule<T> = {
+			if (!dual_property || dual_property === property) continue
+
+			this.rules.push({
 				assumptions: ['self-dual' as T, property],
 				conclusions: [dual_property],
-			}
-			this.rules.push(new_rule)
+			})
 		}
 	}
 }

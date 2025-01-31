@@ -221,7 +221,7 @@ describe('check_redundancy', () => {
 	})
 
 	it("should return false for 'a' and 'd'", () => {
-		const result = deductionSystem.check_redundancy(new Set(['a', 'e']))
+		const result = deductionSystem.check_redundancy(new Set(['a', 'd']))
 		expect(result).toBe(false)
 		expect(consoleSpy).not.toHaveBeenCalled()
 	})
@@ -255,5 +255,28 @@ describe('check_redundancy_of_negations', () => {
 		)
 		expect(result).toBe(true)
 		expect(consoleSpy).toHaveBeenCalledWith('d is redundant')
+	})
+})
+describe('relevant rules', () => {
+	const deductionSystem = new DeductionSystem<string>(
+		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
+		[
+			{ assumptions: ['a'], conclusions: ['b', 'f'] },
+			{ assumptions: ['b'], conclusions: ['c'] },
+			{ assumptions: ['d', 'f'], conclusions: ['e'] },
+		],
+	)
+
+	it('should return one rule', () => {
+		const rules = deductionSystem.get_relevant_rules('d')
+		expect(rules).toHaveLength(1)
+		expect(rules).toContainEqual({ assumptions: ['d', 'f'], conclusions: ['e'] })
+	})
+
+	it('should return two rules', () => {
+		const rules = deductionSystem.get_relevant_rules('b')
+		expect(rules).toHaveLength(2)
+		expect(rules).toContainEqual({ assumptions: ['a'], conclusions: ['b', 'f'] })
+		expect(rules).toContainEqual({ assumptions: ['b'], conclusions: ['c'] })
 	})
 })
