@@ -2,18 +2,16 @@
 	<title>CatDat</title>
 </svelte:head>
 
-<p>
-	<i>CatDat</i> is a comprehensive and searchable database of
-	<a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank">categories</a>
-	and their properties.
-</p>
+<h2>A comprehensive database of categories and their properties</h2>
 
 <p>
-	Explore a growing collection of categories, each with detailed descriptions,
-	properties, and non-properties. Our powerful deduction system is based on a list of
-	implications, allowing you to search for categories with specific properties or
-	non-properties. Additionally, you can compare categories to see how their properties
-	align or differ.
+	Explore a growing collection of <a
+		href="https://en.wikipedia.org/wiki/Category_theory"
+		target="_blank">categories</a
+	>, each with detailed descriptions, properties, and non-properties. Our powerful
+	deduction system is based on a list of implications, allowing you to search for
+	categories with specific properties or non-properties. Additionally, you can compare
+	categories to see how their properties align or differ.
 </p>
 
 <p>
