@@ -2,12 +2,11 @@
 	import { goto } from '$app/navigation'
 	import { categories } from '$lib/categories/categories'
 	import Controls from '$lib/components/Controls.svelte'
+	import { max_categories } from './compare.config'
 
 	const category_names = categories.map((category) => category.name)
 
 	const selected_category_names = $state(['', ''])
-
-	const max_categories = 10
 
 	function compare_categories() {
 		const chosen_categories = selected_category_names
