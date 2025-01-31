@@ -1,3 +1,4 @@
+import type { Implication } from '$lib/commons/types'
 import { implications } from './implications'
 
 describe('implications', () => {
@@ -30,6 +31,16 @@ describe('implications', () => {
 		for (const implication of implications) {
 			expect(implication.assumptions.length).toBeGreaterThan(0)
 			expect(implication.conclusions.length).toBeGreaterThan(0)
+		}
+	})
+
+	it('should have all properties in the same order', () => {
+		for (const implication of implications) {
+			const keys = Object.keys(implication)
+			const expected_keys = implication.equivalent
+				? ['equivalent', 'assumptions', 'conclusions']
+				: ['assumptions', 'conclusions']
+			expect(keys).toEqual(expected_keys)
 		}
 	})
 })

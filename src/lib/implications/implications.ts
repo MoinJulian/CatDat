@@ -2,9 +2,9 @@ import type { Implication } from '$lib/commons/types'
 
 /**
  * Each implication must have the following properties:
+ * - equivalent (optional, set to "true" for equivalences)
  * - assumptions: a list of registered properties
  * - conclusions: a list of registered properties
- * - equivalent (optional, set to "true" for equivalences)
  */
 export const implications: readonly Readonly<Implication>[] = [
 	// size constraints
