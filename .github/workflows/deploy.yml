@@ -12,19 +12,24 @@ jobs:
     deploy:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         runs-on: ubuntu-latest
-        steps:
-            - name: Repository Checkout
-              uses: actions/checkout@v4
 
-            - name: Setup NodeJS
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 22.13.0
+        strategy:
+            matrix:
+                node-version: [22.13.0]
+
+        steps:
+            - uses: actions/checkout@v4
 
             - name: Install pnpm
               uses: pnpm/action-setup@v4
               with:
                   version: 10
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
 
             - name: Install Netlify CLI
               run: pnpm install netlify-cli@18.0.3 -g
@@ -44,3 +49,6 @@ jobs:
                     --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} \
                     --message "Deploy from GitHub Action" \
                     --prod
+
+            # For this to work, in the Netlify UI you also have to set
+            # AWS_LAMBDA_JS_RUNTIME = nodejs22.x
