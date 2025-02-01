@@ -932,4 +932,29 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		monomorphisms: 'injective order-preserving maps',
 		epimorphisms: 'surjective order-preserving maps',
 	},
+	{
+		id: 'Rel',
+		name: 'category of sets and relations',
+		notation: '$\\mathbf{Rel}$',
+		nlab_link: 'https://ncatlab.org/nlab/show/Rel',
+		objects: 'sets',
+		morphisms:
+			'A morphism from $A$ to $B$ is a relation, i.e. a subset of $A \\times B$.',
+		description:
+			'This category is self-dual as it can be: There is an isomorphism $\\mathbf{Rel} \\cong \\mathbf{Rel}^{\\mathrm{op}}$ that is the identity on objects and maps a relation to its opposite relation. It is the prototype of a dagger-category.',
+		related: ['Set'],
+		tags: ['basic', 'set theory', 'well-behaved'],
+		properties: [
+			'locally small',
+			'self-dual',
+			'pointed',
+			'generator',
+			'disjoint coproducts',
+		],
+		non_properties: ['essentially small', 'preadditive', 'equalizers'],
+		monomorphisms:
+			'A relation $R : A \\to B$ is a monomorphism iff the map $R_* : P(A) \\to P(B)$ defined by $T \\mapsto \\{b \\in B : \\exists \\, a \\in T: (a,b) \\in R \\}$ is injective.',
+		epimorphisms:
+			'A relation $R : A \\to B$ is an epimorphism iff the map $R^* : P(B) \\to P(A)$ defined by $S \\mapsto \\{a \\in A : \\exists \\, b \\in S: (a,b) \\in R \\}$ is injective.',
+	},
 ]
