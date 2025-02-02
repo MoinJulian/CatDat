@@ -26,9 +26,18 @@ export const properties: readonly Readonly<Property>[] = [
 		prefix: 'is',
 		nlab_link: 'https://ncatlab.org/nlab/show/locally+small+category',
 		description:
-			'A category is <i>locally small</i> when for every pair of objects $A,B$ the collection of morphisms $A \\to B$ is a set, i.e. small.',
+			'A category is <i>locally small</i> when for every pair of objects $A,B$ the collection of morphisms $A \\to B$ is a set. (Here, we work with a set-theoretic foundation in which there are sets and collections. Categories are based on collections of objects and morphisms.)',
 		dual: 'locally small',
+		related: ['locally essentially small'],
 		invariant_under_equivalences: false,
+	},
+	{
+		id: 'locally essentially small',
+		prefix: 'is',
+		description:
+			'A category is <i>locally essentially small</i> when for every pair of objects $A,B$ the collection of morphisms $A \\to B$ is isomorphic to a set. (Here, we work with a set-theoretic foundation in which there are sets and collections. Categories are based on collections of objects and morphisms.) Equivalently, the category is equivalent to a locally small category. In contrast to being locally small, this condition is invariant under equivalences of categories. This is why we have added it to the database. For instance, every algebraic category is locally essentially small, but not necessarily locally small. This indicates that this is the "right" notion to work with.',
+		dual: 'locally essentially small',
+		related: ['locally small'],
 	},
 	{
 		id: 'complete',
@@ -68,7 +77,7 @@ export const properties: readonly Readonly<Property>[] = [
 		prefix: 'is',
 		nlab_link: 'https://ncatlab.org/nlab/show/Ab-enriched+category',
 		description:
-			"A category is <i>preadditive</i> when it is locally small and each hom-set carries the structure of an abelian group such that the composition is bilinear. Notice that 'preadditive' is an extra structure. The property here just says that some preadditive structure exists.",
+			'A category is <i>preadditive</i> when it is locally essentially small* and each hom-set carries the structure of an abelian group such that the composition is bilinear. Notice that "preadditive" is an extra structure. The property here just says that some preadditive structure exists.<br>*We demand this instead of the more common "locall small" to ensure that preadditive categories are invariant under equivalences of categories.',
 		dual: 'preadditive',
 		related: ['additive'],
 	},
@@ -122,7 +131,7 @@ export const properties: readonly Readonly<Property>[] = [
 		prefix: 'is',
 		nlab_link: 'https://ncatlab.org/nlab/show/locally+finitely+presentable+category',
 		description:
-			'A category is <i>locally finitely presentable</i> if it is locally small, cocomplete, and there is a set $S$ of finitely presentable objects such that every object is a filtered colimit of objects in $S$. This is the same as being locally $\\aleph_0$-presentable.',
+			'A category is <i>locally finitely presentable</i> if it is locally essentially small*, cocomplete, and there is a set $S$ of finitely presentable objects such that every object is a filtered colimit of objects in $S$. This is the same as being locally $\\aleph_0$-presentable.<br>*Many authors assume the category to be locally small, but this is inconvenient since then locally finitely presentable categories would not be invariant under equivalences of categories.',
 		related: ['locally presentable'],
 	},
 	{
@@ -130,7 +139,7 @@ export const properties: readonly Readonly<Property>[] = [
 		prefix: 'is',
 		nlab_link: 'https://ncatlab.org/nlab/show/locally+presentable+category',
 		description:
-			'Let $\\kappa$ be a regular cardinal. A category is <i>locally $\\kappa$-presentable</i> if it is locally small, cocomplete, and there is a set of $\\kappa$-presentable objects $S$ such that every object is a $\\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\\kappa$-presentable for some regular cardinal $\\kappa$.',
+			'Let $\\kappa$ be a regular cardinal. A category is <i>locally $\\kappa$-presentable</i> if it is locally essentially small*, cocomplete, and there is a set of $\\kappa$-presentable objects $S$ such that every object is a $\\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\\kappa$-presentable for some regular cardinal $\\kappa$.<br>*Many authors assume the category to be locally small, but this is inconvenient since then locally presentable categories would not be invariant under equivalences of categories.',
 		related: ['locally finitely presentable'],
 	},
 	{
@@ -342,7 +351,17 @@ export const properties: readonly Readonly<Property>[] = [
 		description:
 			'A category is <i>discrete</i> when every morphism is an identity morphism. Thus, a discrete category is merely a collection of objects.',
 		dual: 'discrete',
+		related: ['essentially discrete'],
 		invariant_under_equivalences: false,
+	},
+	{
+		id: 'essentially discrete',
+		prefix: 'is',
+		nlab_link: 'https://ncatlab.org/nlab/show/discrete+category',
+		description:
+			'A category is <i>essentially discrete</i> if it is equivalent to a discrete category. Equivalently, it is a thin groupoid. Notice that the nLab calls this property simply "discrete". In contrast to being discrete, clearly this property is invariant under equivalences of categories. An essentially discrete category is the same as a <i>setoid</i> (a set equipped with an equivalence relation).',
+		dual: 'essentially discrete',
+		related: ['discrete'],
 	},
 	{
 		id: 'finitary algebraic',
@@ -358,7 +377,16 @@ export const properties: readonly Readonly<Property>[] = [
 		description:
 			'A category is <i>finite</i> if it has finitely many objects and morphisms.',
 		dual: 'finite',
+		related: ['essentially finite'],
 		invariant_under_equivalences: false,
+	},
+	{
+		id: 'essentially finite',
+		prefix: 'is',
+		description:
+			'A category is <i>essentially finite</i> if it is equivalent to a finite category. Equivalently, there are only finitely many objects up to isomorphism, and the collection of morphisms between any two objects is isomorphic to a finite set. In contrast to being finite, this property is invariant under equivalences of categories.',
+		dual: 'essentially finite',
+		related: ['finite'],
 	},
 	{
 		id: 'connected',

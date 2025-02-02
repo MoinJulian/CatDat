@@ -14,7 +14,7 @@ export const implications: readonly Readonly<Implication>[] = [
 	},
 	{
 		assumptions: ['essentially small'],
-		conclusions: ['well-powered', 'well-copowered'],
+		conclusions: ['well-powered', 'well-copowered', 'locally essentially small'],
 	},
 	{
 		assumptions: ['essentially small', 'complete'],
@@ -22,31 +22,43 @@ export const implications: readonly Readonly<Implication>[] = [
 	},
 	{
 		assumptions: ['finite'],
-		conclusions: ['small'],
+		conclusions: ['small', 'essentially finite'],
+	},
+	{
+		assumptions: ['essentially finite'],
+		conclusions: ['essentially small'],
+	},
+	{
+		assumptions: ['locally small'],
+		conclusions: ['locally essentially small'],
 	},
 	// trivialish categories
 	{
 		assumptions: ['discrete'],
-		conclusions: [
-			'thin',
-			'groupoid',
-			'locally small',
-			'well-powered',
-			'connected limits',
-		],
+		conclusions: ['essentially discrete', 'locally small'],
 	},
 	{
-		assumptions: ['discrete', 'connected'],
+		equivalent: true,
+		assumptions: ['essentially discrete'],
+		conclusions: ['thin', 'groupoid'],
+	},
+	{
+		assumptions: ['essentially discrete'],
+		conclusions: ['locally essentially small', 'connected limits'],
+	},
+	{
+		assumptions: ['essentially discrete', 'connected'],
 		conclusions: ['trivial'],
 	},
 	{
 		assumptions: ['trivial'],
 		conclusions: [
-			'essentially small',
 			'finitary algebraic',
 			'Grothendieck topos',
 			'split abelian',
 			'self-dual',
+			'essentially discrete',
+			'essentially finite',
 		],
 	},
 	{
@@ -201,7 +213,7 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['locally presentable'],
 		conclusions: [
-			'locally small',
+			'locally essentially small',
 			'well-powered',
 			'well-copowered',
 			'complete',
@@ -232,7 +244,7 @@ export const implications: readonly Readonly<Implication>[] = [
 		conclusions: ['finitely cocomplete', 'disjoint finite coproducts'],
 	},
 	{
-		assumptions: ['elementary topos', 'locally small'],
+		assumptions: ['elementary topos', 'locally essentially small'],
 		conclusions: ['well-powered', 'well-copowered'],
 	},
 	{
@@ -260,7 +272,7 @@ export const implications: readonly Readonly<Implication>[] = [
 	// additive categories
 	{
 		assumptions: ['preadditive'],
-		conclusions: ['locally small', 'zero morphisms'],
+		conclusions: ['locally essentially small', 'zero morphisms'],
 	},
 	{
 		assumptions: ['preadditive', 'finite coproducts'],
@@ -310,6 +322,7 @@ export const implications: readonly Readonly<Implication>[] = [
 			'pullbacks',
 			'filtered limits',
 			'left cancellative',
+			'well-powered',
 		],
 	},
 	{

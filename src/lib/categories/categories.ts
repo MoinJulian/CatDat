@@ -28,7 +28,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
 		related: ['FinSet'],
 		tags: ['basic', 'set theory', 'well-behaved'],
-		properties: ['Grothendieck topos', 'finitary algebraic'],
+		properties: ['locally small', 'Grothendieck topos', 'finitary algebraic'],
 		non_properties: ['strict terminal object'],
 		special_morphisms: {
 			isomorphisms: 'bijective maps',
@@ -46,7 +46,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		description: 'This is the prototype of an abelian category.',
 		related: ['Grp', 'R-Mod'],
 		tags: ['basic', 'algebra', 'well-behaved'],
-		properties: ['abelian', 'finitary algebraic'],
+		properties: ['locally small', 'abelian', 'finitary algebraic'],
 		non_properties: ['split abelian'],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
@@ -96,7 +96,13 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: 'group homomorphisms',
 		related: ['Ab', 'Mon'],
 		tags: ['basic', 'algebra', 'well-behaved'],
-		properties: ['pointed', 'finitary algebraic', 'balanced', 'disjoint coproducts'],
+		properties: [
+			'locally small',
+			'pointed',
+			'finitary algebraic',
+			'balanced',
+			'disjoint coproducts',
+		],
 		non_properties: ['preadditive', 'subobject classifier', 'cogenerator'],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
@@ -115,7 +121,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'This is a special case of the category of modules over a ring, where the ring is a field. It is the prototype of a split abelian category.',
 		related: ['R-Mod'],
 		tags: ['basic', 'algebra', 'well-behaved'],
-		properties: ['split abelian', 'finitary algebraic'],
+		properties: ['locally small', 'split abelian', 'finitary algebraic'],
 		non_properties: ['trivial'],
 		special_morphisms: {
 			isomorphisms: 'bijective linear maps',
@@ -133,7 +139,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		description: 'Here, rings always have a unit, and homomorphisms preserve them.',
 		related: ['CRing', 'Rng'],
 		tags: ['basic', 'algebra', 'well-behaved'],
-		properties: ['finitary algebraic', 'strict terminal object'],
+		properties: ['locally small', 'finitary algebraic', 'strict terminal object'],
 		non_properties: [
 			'strict initial object',
 			'balanced',
@@ -155,7 +161,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: 'ring homomorphisms',
 		related: ['Ring', 'Rng'],
 		tags: ['basic', 'algebra', 'well-behaved'],
-		properties: ['finitary algebraic', 'strict terminal object'],
+		properties: ['locally small', 'finitary algebraic', 'strict terminal object'],
 		non_properties: [
 			'strict initial object',
 			'balanced',
@@ -177,7 +183,12 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: 'maps that preserve addition and multiplication',
 		related: ['Ring', 'CRing'],
 		tags: ['basic', 'algebra', 'well-behaved'],
-		properties: ['finitary algebraic', 'pointed', 'disjoint coproducts'],
+		properties: [
+			'locally small',
+			'finitary algebraic',
+			'pointed',
+			'disjoint coproducts',
+		],
 		non_properties: ['preadditive', 'balanced', 'cogenerator'],
 		special_morphisms: {
 			isomorphisms: 'bijective rng homomorphisms',
@@ -201,7 +212,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'generator',
 			'cogenerator',
 		],
-		non_properties: ['small', 'strict terminal object'],
+		non_properties: ['small', 'strict terminal object', 'essentially finite'],
 		special_morphisms: {
 			isomorphisms: 'bijective maps',
 			monomorphisms: 'injective maps',
@@ -217,8 +228,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: 'group homomorphisms',
 		related: ['Ab', 'Abfg'],
 		tags: ['basic', 'algebra', 'badly-behaved'],
-		properties: ['essentially small', 'abelian', 'self-dual'],
-		non_properties: ['small', 'generator', 'split abelian'],
+		properties: ['locally small', 'essentially small', 'abelian', 'self-dual'],
+		non_properties: ['small', 'generator', 'split abelian', 'essentially finite'],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
 			monomorphisms: 'injective homomorphisms',
@@ -234,8 +245,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: 'group homomorphisms',
 		related: ['Ab', 'FinAb'],
 		tags: ['basic', 'algebra', 'badly-behaved'],
-		properties: ['essentially small', 'abelian', 'generator'],
-		non_properties: ['small', 'cogenerator', 'split abelian'],
+		properties: ['locally small', 'essentially small', 'abelian', 'generator'],
+		non_properties: ['small', 'cogenerator', 'split abelian', 'essentially finite'],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
 			monomorphisms: 'injective homomorphisms',
@@ -253,6 +264,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'This is the category of sets with a distinguished element, often called the base point. A map is called pointed when it preserves the base point.',
 		tags: ['basic', 'set theory', 'well-behaved'],
 		properties: [
+			'locally small',
 			'pointed',
 			'finitary algebraic',
 			'subobject classifier',
@@ -275,7 +287,11 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'simplicial sets, i.e. functors $\\Delta^{\\mathrm{op}} \\to \\mathbf{Set}$',
 		morphisms: 'natural transformations',
 		tags: ['basic', 'topology', 'well-behaved'],
-		properties: ['Grothendieck topos', 'locally finitely presentable'],
+		properties: [
+			'locally small',
+			'Grothendieck topos',
+			'locally finitely presentable',
+		],
 		non_properties: ['strict terminal object'],
 		special_morphisms: {
 			isomorphisms: 'natural isomorphisms',
@@ -292,7 +308,12 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: 'monoid homomorphisms',
 		related: ['Grp'],
 		tags: ['basic', 'algebra', 'well-behaved'],
-		properties: ['pointed', 'finitary algebraic', 'disjoint coproducts'],
+		properties: [
+			'locally small',
+			'pointed',
+			'finitary algebraic',
+			'disjoint coproducts',
+		],
 		non_properties: ['preadditive', 'balanced', 'cogenerator'],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
@@ -309,6 +330,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: 'order-preserving functions',
 		tags: ['basic', 'order theory', 'well-behaved'],
 		properties: [
+			'locally small',
 			'locally finitely presentable',
 			'cartesian closed',
 			'cogenerator',
@@ -405,7 +427,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		description:
 			'Here, $M$ can be any monoid. But the most important special case is that of a group.',
 		tags: ['basic', 'algebra', 'geometry', 'well-behaved'],
-		properties: ['Grothendieck topos', 'finitary algebraic'],
+		properties: ['locally small', 'Grothendieck topos', 'finitary algebraic'],
 		non_properties: ['strict terminal object'],
 		special_morphisms: {
 			isomorphisms: 'bijective $M$-maps',
@@ -424,7 +446,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			"This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial, since for the trivial ring we get a trivial category which has all properties anyway. The category $R{-}\\mathbf{Mod}$ is split abelian iff $R$ is a semisimple ring, so usually it isn't the case, which is why we have negated this property here.",
 		related: ['Ab'],
 		tags: ['basic', 'algebra', 'well-behaved'],
-		properties: ['abelian', 'finitary algebraic'],
+		properties: ['locally small', 'abelian', 'finitary algebraic'],
 		non_properties: ['split abelian'],
 		special_morphisms: {
 			isomorphisms: 'bijective $R$-linear maps',
@@ -585,7 +607,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'thin',
 			'wide pullbacks',
 		],
-		non_properties: ['cocomplete', 'terminal object', 'finite'],
+		non_properties: ['cocomplete', 'terminal object', 'essentially finite'],
 		special_morphisms: {
 			isomorphisms: 'only the identity morphisms',
 			monomorphisms: 'every morphism',
@@ -603,6 +625,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'This is the category of small categories and functors between them. It is the prototype of a 2-category, but here we only treat it as a 1-category.',
 		tags: ['intermediate', 'category theory', 'well-behaved'],
 		properties: [
+			'locally small',
 			'cartesian closed',
 			'locally finitely presentable',
 			'disjoint coproducts',
@@ -625,7 +648,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		name: 'partial order of ordinal numbers',
 		notation: '$(\\mathbf{On},\\leq)$',
 		objects: 'ordinal numbers',
-		morphisms: 'a unique morphism $\\alpha \\to \\beta$ if $\\alpha \\leq \\beta$',
+		morphisms:
+			'a unique morphism $\\alpha \\to \\beta$, say $(\\alpha,\\beta)$, if $\\alpha \\leq \\beta$',
 		description: 'This is a large variant of the partial order of natural numbers.',
 		related: ['N'],
 		tags: ['intermediate', 'artificial', 'set theory'],
@@ -736,6 +760,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		related: ['Ab'],
 		tags: ['artificial', 'basic', 'algebra', 'badly-behaved'],
 		properties: [
+			'locally small',
 			'additive',
 			'well-powered',
 			'well-copowered',
@@ -775,7 +800,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'exact filtered colimits',
 			'disjoint coproducts',
 		],
-		non_properties: ['locally small', 'strict terminal object'],
+		non_properties: ['locally essentially small', 'strict terminal object'],
 		special_morphisms: {
 			isomorphisms: 'natural isomorphisms',
 			monomorphisms: 'objectwise injective natural transformations',
@@ -784,16 +809,16 @@ export const categories: readonly Readonly<PreCategory>[] = [
 	},
 	{
 		id: 'BG',
-		name: 'delooping of a group',
+		name: 'delooping of a group', // TODO: need to distinguish between finite and infinite groups. also write that G is non-trivial here.
 		notation: '$BG$',
 		nlab_link: 'https://ncatlab.org/nlab/show/delooping',
 		objects: 'a single object',
 		morphisms: 'the elements of a group $G$',
 		description:
-			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. When $G$ is trivial, then $BG$ is the trivial category. However, in the non-properties below, we refer to the case that $G$ is non-trivial. The non-property "finite" refers to the case that $G$ is "generic" and hence infinite.',
+			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. When $G$ is trivial, then $BG$ is the trivial category. However, in the non-properties below, we refer to the case that $G$ is non-trivial.',
 		tags: ['basic', 'algebra', 'category theory', 'badly-behaved'],
 		properties: ['small', 'groupoid', 'connected', 'generator'],
-		non_properties: ['finite', 'thin', 'zero morphisms'],
+		non_properties: ['zero morphisms'],
 		special_morphisms: {
 			isomorphisms: 'every morphism',
 			monomorphisms: 'every morphism',
@@ -818,7 +843,12 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'pullbacks',
 			'left cancellative',
 		],
-		non_properties: ['finite', 'zero morphisms', 'equalizers', 'filtered colimits'],
+		non_properties: [
+			'essentially finite',
+			'zero morphisms',
+			'equalizers',
+			'filtered colimits',
+		],
 		special_morphisms: {
 			isomorphisms: 'only the number $0$',
 			monomorphisms: 'every morphism',
@@ -924,7 +954,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		related: ['FI', 'FS'],
 		tags: ['basic', 'set theory', 'combinatorics', 'badly-behaved'],
 		properties: ['locally small', 'essentially small', 'groupoid', 'inhabited'],
-		non_properties: ['small', 'connected', 'generator'],
+		non_properties: ['small', 'connected', 'generator', 'essentially finite'],
 		special_morphisms: {
 			isomorphisms: 'every morphism',
 			monomorphisms: 'every morphism',
@@ -956,6 +986,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cogenerator',
 			'binary products',
 			'filtered colimits',
+			'essentially finite',
 		],
 		special_morphisms: {
 			isomorphisms: 'bijective maps',
@@ -988,6 +1019,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'generator',
 			'filtered limits',
 			'pullbacks',
+			'essentially finite',
 		],
 		special_morphisms: {
 			isomorphisms: 'bijective maps',
@@ -1014,7 +1046,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'equalizers',
 		],
 		non_properties: [
-			'locally small',
+			'locally essentially small',
 			'initial object',
 			'terminal object',
 			'right cancellative',
@@ -1058,6 +1090,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'subobject classifier',
 			'cartesian closed',
 			'filtered colimits',
+			'essentially finite',
 		],
 		special_morphisms: {
 			isomorphisms: 'bijective order-preserving maps',

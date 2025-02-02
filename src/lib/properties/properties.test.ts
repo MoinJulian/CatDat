@@ -43,6 +43,8 @@ describe('properties of categories', () => {
 		for (const property of properties) {
 			const keys = Object.keys(property)
 			const sorted_keys = property_keys.filter((key) => keys.includes(key))
+			const are_same = keys.every((key, index) => key === sorted_keys[index])
+			if (!are_same) console.warn(property.id)
 			expect(keys).toEqual(sorted_keys)
 		}
 	})

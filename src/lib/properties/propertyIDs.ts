@@ -1,6 +1,7 @@
 export const PROPERTY_IDs = [
 	'small',
 	'locally small',
+	'locally essentially small',
 	'complete',
 	'cocomplete',
 	'cartesian closed',
@@ -38,8 +39,10 @@ export const PROPERTY_IDs = [
 	'essentially small',
 	'thin',
 	'discrete',
+	'essentially discrete',
 	'finitary algebraic',
 	'finite',
+	'essentially finite',
 	'connected',
 	'pullbacks',
 	'pushouts',
