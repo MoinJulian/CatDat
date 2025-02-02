@@ -6,7 +6,7 @@ export type Theme = (typeof THEMES)[number]
 
 export const theme = $state<{ value: Theme }>({ value: get_saved_theme() })
 
-function get_saved_theme(): Theme {
+export function get_saved_theme(): Theme {
 	if (!browser) return 'dark'
 
 	const saved_theme = document.body.getAttribute('data-theme')
