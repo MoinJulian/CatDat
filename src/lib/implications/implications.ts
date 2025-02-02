@@ -164,6 +164,14 @@ export const implications: readonly Readonly<Implication>[] = [
 		assumptions: ['right cancellative', 'initial object'],
 		conclusions: ['strict initial object'],
 	},
+	{
+		assumptions: ['equalizers'],
+		conclusions: ['Cauchy complete'],
+	},
+	{
+		assumptions: ['left cancellative'],
+		conclusions: ['Cauchy complete'],
+	},
 	// interchanging limits with colimits
 	{
 		assumptions: ['exact filtered colimits'],

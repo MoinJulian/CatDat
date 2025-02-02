@@ -521,6 +521,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'distributive',
 			'generator',
 			'disjoint finite coproducts',
+			'Cauchy complete',
 		],
 		non_properties: [
 			'essentially small',
@@ -1083,7 +1084,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'generator',
 			'disjoint coproducts',
 		],
-		non_properties: ['essentially small', 'preadditive', 'equalizers'],
+		non_properties: ['essentially small', 'preadditive', 'Cauchy complete'],
 		special_morphisms: {
 			isomorphisms: 'bijective functions',
 			monomorphisms:

@@ -524,4 +524,13 @@ export const properties: readonly Readonly<Property>[] = [
 		dual: 'split abelian',
 		related: ['abelian'],
 	},
+	{
+		id: 'Cauchy complete',
+		prefix: 'is',
+		nlab_link: 'https://ncatlab.org/nlab/show/Cauchy+complete+category',
+		description:
+			'A category is <i>Cauchy complete</i> if every idempotent splits. That is, every idempotent endomorphism $e : X \\to X$ (that is, $e^2 = e$) may be written as $e = i \\circ p$ for some morphisms $p : X \\to Y$ and $i : Y \\to X$ with $p \\circ i = \\mathrm{id}_Y$. Equivalently, the pair $e,\\mathrm{id}_X : X \\rightrightarrows X$ has an equalizer (or coequalizer).',
+		dual: 'Cauchy complete',
+		related: ['finitely complete'],
+	},
 ]
