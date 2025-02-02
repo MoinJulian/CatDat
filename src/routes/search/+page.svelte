@@ -7,11 +7,13 @@
 	import { is_valid_property } from '$lib/properties/propertyIDs'
 	import PropertySelection from '$lib/components/PropertySelection.svelte'
 	import { separator } from '$lib/categories/search.js'
+	import Warning from '$lib/components/Warning.svelte'
 
 	let { data } = $props()
 
 	let found_categories = $derived(data.found_categories)
 	let dual_found_categories = $derived(data.dual_found_categories)
+	let contradiction = $derived(data.contradiction)
 
 	let selected_properties = $state<string[]>(
 		data.properties.length ? data.properties : [''],
@@ -86,6 +88,12 @@
 {#if found_categories}
 	<h2>Results</h2>
 	<CategoryList items={found_categories} />
+	{#if contradiction}
+		<Warning>
+			The properties and non-properties contradict each other according to the
+			<a href="/implications">implications</a>. There cannot be any search results.
+		</Warning>
+	{/if}
 {/if}
 
 {#if dual_found_categories?.length}

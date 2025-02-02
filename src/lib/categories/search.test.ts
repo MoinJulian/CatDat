@@ -37,14 +37,29 @@ describe('search', () => {
 		expect(result.dualized_non_properties).toEqual(['cocomplete'])
 	})
 
+	it('returns a contradiction when the URL contains contradictory properties and non-properties (1)', () => {
+		const url = new URL(
+			'http://localhost?properties=complete&non_properties=terminal_object',
+		)
+		const result = get_search_results(url)
+		expect(result.contradiction).toBe(true)
+	})
+
+	it('returns a contradiction when the URL contains contradictory properties and non-properties (2)', () => {
+		const url = new URL(
+			'http://localhost?properties=equalizers--products&non_properties=complete',
+		)
+		const result = get_search_results(url)
+		expect(result.contradiction).toBe(true)
+	})
+
 	it('finds appropriate categories', () => {
 		const url = new URL(
 			'http://localhost?properties=initial_object--terminal_object&non_properties=complete',
 		)
 		const result = get_search_results(url)
-
-		expect(result.found_categories.length).toBeGreaterThan(0)
-
+		expect(result.contradiction).toBe(false)
+		expect(result.found_categories?.length).toBeGreaterThan(0)
 		expect(result.found_categories).toContainEqual({
 			id: 'FinSet',
 			name: 'category of finite sets',
@@ -57,19 +72,20 @@ describe('search', () => {
 		)
 		const result = get_search_results(url)
 
-		expect(result.dual_found_categories.length).toBeGreaterThan(0)
-
+		expect(result.contradiction).toBe(false)
+		expect(result.dual_found_categories?.length).toBeGreaterThan(0)
 		expect(result.dual_found_categories).toContainEqual({
 			id: 'Fld',
 			name: 'category of fields',
 		})
 	})
 
-	it("does return null for dual properties and dual non-properties when they're the same as the original", () => {
+	it('does return no dual categories when the dualized properties are the same as the original', () => {
 		const url = new URL(
 			'http://localhost?properties=abelian&non_properties=essentially_small',
 		)
 		const result = get_search_results(url)
+		expect(result.contradiction).toBe(false)
 		expect(result.dual_found_categories).toEqual([])
 	})
 })

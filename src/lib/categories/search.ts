@@ -1,4 +1,8 @@
-import { decode_property_ID, get_dual_properties } from '$lib/properties/properties.utils'
+import {
+	decode_property_ID,
+	get_dual_properties,
+	property_deduction_system,
+} from '$lib/properties/properties.utils'
 import { is_valid_property } from '$lib/properties/propertyIDs'
 import { error } from '@sveltejs/kit'
 
@@ -25,6 +29,23 @@ export function get_search_results(url: URL) {
 
 	if (!is_valid) return error(404, 'Invalid query')
 
+	const has_contradiction = property_deduction_system.has_contradiction(
+		new Set(properties),
+		new Set(non_properties),
+	)
+
+	if (has_contradiction) {
+		return {
+			contradiction: true,
+			found_categories: [],
+			properties,
+			non_properties,
+			dual_found_categories: [],
+			dualized_properties: null,
+			dualized_non_properties: null,
+		}
+	}
+
 	const found_categories = category_system
 		.search(properties, non_properties)
 		.map(shorten_category)
@@ -46,6 +67,7 @@ export function get_search_results(url: URL) {
 			: []
 
 	return {
+		contradiction: false,
 		found_categories,
 		properties,
 		non_properties,
