@@ -20,7 +20,7 @@ export const category_detail_level = $state<{ value: CategoryDetailLevel }>({
 	value: get_saved_category_detail_level(),
 })
 
-function get_saved_category_detail_level(): CategoryDetailLevel {
+export function get_saved_category_detail_level(): CategoryDetailLevel {
 	if (!browser) return DEFAULT_CATEGORY_DETAIL_LEVEL
 	const saved_category_detail_level = localStorage.getItem('category_detail_level')
 
