@@ -1,5 +1,9 @@
 import { properties } from '$lib/properties/properties'
-import { categories_detailed } from './categories.utils'
+import {
+	categories_detailed,
+	categories_dictionary_detailed,
+	shorten_category,
+} from './categories.utils'
 
 describe('categories detailed', () => {
 	for (const category of categories_detailed) {
@@ -18,4 +22,12 @@ describe('categories detailed', () => {
 			expect(counterexample).toBeDefined()
 		})
 	}
+})
+
+describe('shorten_category', () => {
+	it('returns only ID and name', () => {
+		const Set = categories_dictionary_detailed.Set
+		const shortened = shorten_category(Set)
+		expect(shortened).toEqual({ id: 'Set', name: 'category of sets' })
+	})
 })

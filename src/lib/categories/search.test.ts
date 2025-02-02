@@ -45,11 +45,10 @@ describe('search', () => {
 
 		expect(result.found_categories.length).toBeGreaterThan(0)
 
-		for (const category of result.found_categories) {
-			expect(category.all_properties).toContain('initial object')
-			expect(category.all_properties).toContain('terminal object')
-			expect(category.all_non_properties).toContain('complete')
-		}
+		expect(result.found_categories).toContainEqual({
+			id: 'FinSet',
+			name: 'category of finite sets',
+		})
 	})
 
 	it('finds appropriate dual categories', () => {
@@ -60,10 +59,10 @@ describe('search', () => {
 
 		expect(result.dual_found_categories.length).toBeGreaterThan(0)
 
-		for (const category of result.dual_found_categories) {
-			expect(category.all_properties).toContain('well-powered')
-			expect(category.all_non_properties).toContain('well-copowered')
-		}
+		expect(result.dual_found_categories).toContainEqual({
+			id: 'Fld',
+			name: 'category of fields',
+		})
 	})
 
 	it("does return null for dual properties and dual non-properties when they're the same as the original", () => {

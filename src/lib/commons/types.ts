@@ -42,14 +42,17 @@ export type PreCategory = {
 	}
 }
 
+// same as PreCategory, but with properties and non-properties as sets
 export type Category = Omit<PreCategory, 'properties' | 'non_properties'> & {
 	properties: Set<PropertyID>
 	non_properties: Set<PropertyID>
 }
 
+// includes all deduces properties and non-properties
 export type CategoryDetailed = EntityDetailed<Category, PropertyID>
 
-export type RelatedCategory = { id: CategoryID; name: string }
+// contains only what is relevant for lists of categories
+export type CategoryShort = Pick<Category, 'id' | 'name'>
 
 export type Property = {
 	id: PropertyID

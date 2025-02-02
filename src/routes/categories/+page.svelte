@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { PreCategory } from '$lib/commons/types'
-	import { categories } from '$lib/categories/categories'
 	import CategoryList from '$lib/components/CategoryList.svelte'
+
+	let { data } = $props()
 </script>
 
 <svelte:head>
@@ -11,6 +11,6 @@
 <h2>List of categories</h2>
 
 <CategoryList
-	items={categories as PreCategory[]}
-	description="The following {categories.length} categories are available."
+	items={data.categories}
+	description="The following {data.categories.length} categories are available."
 />

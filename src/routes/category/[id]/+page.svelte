@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { CategoryDetailed, RelatedCategory } from '$lib/commons/types'
+	import type { CategoryDetailed, CategoryShort } from '$lib/commons/types'
 	import { category_detail_level } from '$lib/settings/detail_level.svelte'
 	import PropertyList from '$lib/components/PropertyList.svelte'
 	import Tags from '$lib/components/Tags.svelte'
@@ -8,7 +8,7 @@
 
 	let category: CategoryDetailed = $derived(data.category)
 
-	let related_categories: RelatedCategory[] | undefined = $derived(
+	let related_categories: CategoryShort[] | undefined = $derived(
 		data.related_categories,
 	)
 </script>

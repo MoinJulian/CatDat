@@ -2,7 +2,7 @@ import { decode_property_ID, get_dual_properties } from '$lib/properties/propert
 import { is_valid_property } from '$lib/properties/propertyIDs'
 import { error } from '@sveltejs/kit'
 
-import { category_system } from '$lib/categories/categories.utils'
+import { category_system, shorten_category } from '$lib/categories/categories.utils'
 
 /**
  * This is used to separate property IDs in the query string.
@@ -25,7 +25,9 @@ export function get_search_results(url: URL) {
 
 	if (!is_valid) return error(404, 'Invalid query')
 
-	const found_categories = category_system.search(properties, non_properties)
+	const found_categories = category_system
+		.search(properties, non_properties)
+		.map(shorten_category)
 
 	const dualized_properties = get_dual_properties(properties)
 	const dualized_non_properties = get_dual_properties(non_properties)
@@ -38,7 +40,9 @@ export function get_search_results(url: URL) {
 		!is_self_dual_request &&
 		dualized_properties != null &&
 		dualized_non_properties != null
-			? category_system.search(dualized_properties, dualized_non_properties)
+			? category_system
+					.search(dualized_properties, dualized_non_properties)
+					.map(shorten_category)
 			: []
 
 	return {

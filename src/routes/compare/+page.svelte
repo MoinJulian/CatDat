@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
 	import { goto } from '$app/navigation'
-	import { categories } from '$lib/categories/categories'
-	import { max_categories } from './compare.config'
+	import { max_categories, storage_key } from './compare.config'
 	import Controls from '$lib/components/Controls.svelte'
 
+	let { data } = $props()
+	const categories = data.categories
+
 	const category_names = categories.map((category) => category.name)
-	const storage_key = 'selected_category_names'
 
 	function get_saved_category_names(): string[] {
 		const default_names = ['', '']

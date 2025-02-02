@@ -10,6 +10,9 @@
 
 	let { data } = $props()
 
+	let found_categories = $derived(data.found_categories)
+	let dual_found_categories = $derived(data.dual_found_categories)
+
 	let selected_properties = $state<string[]>(
 		data.properties.length ? data.properties : [''],
 	)
@@ -80,12 +83,12 @@
 	<button class="button" onclick={request_search_results}>Search</button>
 </div>
 
-{#if data.found_categories}
+{#if found_categories}
 	<h2>Results</h2>
-	<CategoryList items={data.found_categories} />
+	<CategoryList items={found_categories} />
 {/if}
 
-{#if data.dual_found_categories?.length}
+{#if dual_found_categories?.length}
 	<h2>Results for dual search</h2>
 
 	<p class="hint">
@@ -94,7 +97,7 @@
 		)}) resp. non-properties ({data.dualized_non_properties?.join(', ')}).
 	</p>
 
-	<CategoryList items={data.dual_found_categories} />
+	<CategoryList items={dual_found_categories} />
 {/if}
 
 <style>

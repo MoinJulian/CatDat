@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-import { category_system } from '$lib/categories/categories.utils'
+import { category_system, shorten_category } from '$lib/categories/categories.utils'
 import { is_valid_property } from '$lib/properties/propertyIDs'
 import {
 	decode_property_ID,
@@ -17,11 +17,15 @@ export const load: PageServerLoad = (event) => {
 
 	if (!valid) return error(404, 'Property not found')
 
-	const categories_with_this_property = category_system.search([id], [])
-	const categories_without_this_property = category_system.search([], [id])
-	const unknown_categories = category_system.search([], [], [id])
-
 	const property = properties_dictionary[id]
+
+	const categories_with_this_property = category_system
+		.search([id], [])
+		.map(shorten_category)
+	const categories_without_this_property = category_system
+		.search([], [id])
+		.map(shorten_category)
+	const unknown_categories = category_system.search([], [], [id]).map(shorten_category)
 
 	const relevant_implications = property_deduction_system.get_relevant_rules(id)
 

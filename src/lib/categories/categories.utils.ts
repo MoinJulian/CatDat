@@ -1,5 +1,10 @@
 import type { CategoryID } from './categoryIDs'
-import type { PreCategory, CategoryDetailed, Category } from '$lib/commons/types'
+import type {
+	PreCategory,
+	CategoryDetailed,
+	Category,
+	CategoryShort,
+} from '$lib/commons/types'
 import type { PropertyID } from '$lib/properties/propertyIDs'
 
 import { categories } from './categories'
@@ -30,3 +35,10 @@ export const categories_detailed: CategoryDetailed[] = category_system.entities
 export const categories_dictionary_detailed = group_items<CategoryID, CategoryDetailed>(
 	categories_detailed,
 )
+
+export function shorten_category(
+	category: PreCategory | Category | CategoryDetailed,
+): CategoryShort {
+	const { id, name } = category
+	return { id, name }
+}
