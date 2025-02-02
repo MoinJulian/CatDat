@@ -2,9 +2,9 @@
 
 Currently, _CatDat_ does not work with a classical database. Instead, the data comes from these three TypeScript files:
 
-- Categories: [categories.ts](src/lib/categories/categories.ts)
-- Properties: [properties.ts](src/lib/properties/properties.ts)
-- Implications: [implications.ts](src/lib/implications/implications.ts)
+- Categories: [categories.ts](../src/lib/categories/categories.ts)
+- Properties: [properties.ts](../src/lib//properties/properties.ts)
+- Implications: [implications.ts](../src/lib//implications/implications.ts)
 
 ## Advantages of using TypeScript files for the data
 
