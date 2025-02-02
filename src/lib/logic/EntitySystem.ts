@@ -85,14 +85,18 @@ export class EntitySystem<
 	}
 
 	public get missing_basic_combinations(): { assumption: T; negation: T }[] {
-		return this.deduction_system.basic_consistent_combinations.filter(
-			(combination) =>
-				!this.entities.some(
-					(entity) =>
-						entity.all_properties.has(combination.assumption) &&
-						entity.all_non_properties.has(combination.negation),
-				),
-		)
+		const missing_combinations: { assumption: T; negation: T }[] = []
+		const combinations = this.deduction_system.basic_consistent_combinations
+
+		for (const { assumption, negation } of combinations) {
+			const entities = this.search([assumption], [negation])
+
+			if (entities.length === 0) {
+				missing_combinations.push({ assumption, negation })
+			}
+		}
+
+		return missing_combinations
 	}
 
 	public get entities_with_unknown_properties(): EntityDetailed<S, T>[] {
