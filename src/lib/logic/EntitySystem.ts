@@ -1,4 +1,4 @@
-import { DeductionSystem } from './DeductionSystem'
+import type { DeductionSystem } from './DeductionSystem'
 
 export type EntityDetailed<
 	S extends { properties: Set<T>; non_properties: Set<T> },
@@ -16,7 +16,7 @@ export class EntitySystem<
 	T extends string,
 > {
 	public readonly entities: EntityDetailed<S, T>[] = []
-	private deduction_system: DeductionSystem<T>
+	protected deduction_system: DeductionSystem<T>
 
 	constructor(deduction_system: DeductionSystem<T>, entities: S[] = []) {
 		this.deduction_system = deduction_system

@@ -10,7 +10,7 @@ import type { PropertyID } from '$lib/properties/propertyIDs'
 import { categories } from './categories'
 import { group_items } from '$lib/commons/utils'
 import { property_deduction_system } from '$lib/properties/properties.utils'
-import { EntitySystem } from '$lib/logic/EntitySystem'
+import { EntitySystemWithDuals } from '$lib/logic/EntitySystemWithDuals'
 
 /**
  * Converts the lists of properties and non-properties to sets.
@@ -25,7 +25,7 @@ function make_sets(category: PreCategory): Category {
 	}
 }
 
-export const category_system = new EntitySystem<Category, PropertyID>(
+export const category_system = new EntitySystemWithDuals<Category, PropertyID>(
 	property_deduction_system,
 	categories.map(make_sets),
 )

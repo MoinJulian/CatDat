@@ -1,7 +1,7 @@
 import { DeductionSystem, type Rule } from './DeductionSystem'
 
 export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<T> {
-	private get_dual_property: (property: T) => T | null
+	public readonly get_dual_property: (property: T) => T | null
 
 	constructor(
 		properties: Set<T>,
