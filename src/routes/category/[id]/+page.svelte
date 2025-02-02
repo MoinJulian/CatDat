@@ -31,16 +31,6 @@
 	<li>
 		morphisms: {@html category.morphisms}
 	</li>
-	{#if category.monomorphisms}
-		<li>
-			monomorphisms: {@html category.monomorphisms}
-		</li>
-	{/if}
-	{#if category.epimorphisms}
-		<li>
-			epimorphisms: {@html category.epimorphisms}
-		</li>
-	{/if}
 	{#if category.nlab_link}
 		<li>
 			<a href={category.nlab_link} target="_blank">nLab Link</a>
@@ -115,3 +105,14 @@
 		? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"
 		: undefined}
 />
+
+<h3>Special morphisms</h3>
+
+<ul>
+	<li>
+		Monomorphisms: {category.special_morphisms.monomorphisms ?? '?'}
+	</li>
+	<li>
+		Epimorphisms: {category.special_morphisms.epimorphisms ?? '?'}
+	</li>
+</ul>

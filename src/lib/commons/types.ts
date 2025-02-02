@@ -35,8 +35,11 @@ export type PreCategory = {
 	tags: NonEmptyArray<CategoryTag>
 	properties: PropertyID[]
 	non_properties: PropertyID[]
-	monomorphisms?: string
-	epimorphisms?: string
+	special_morphisms: {
+		isomorphisms?: string
+		monomorphisms?: string
+		epimorphisms?: string
+	}
 }
 
 export type Category = Omit<PreCategory, 'properties' | 'non_properties'> & {

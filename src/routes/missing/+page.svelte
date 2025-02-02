@@ -10,8 +10,7 @@
 	const {
 		missing_basic_combinations,
 		categories_with_unknown_properties,
-		categories_with_unknown_monomorphisms,
-		categories_with_unknown_epimorphisms,
+		categories_with_unknown_special_morphisms,
 	} = data
 </script>
 
@@ -30,13 +29,9 @@ There are {categories_with_unknown_properties.length} categories that have some 
 
 <CategoryList items={categories_with_unknown_properties} />
 
-<h3>Categories with unknown monomorphisms</h3>
+<h3>Categories with unknown special morphisms</h3>
 
-<CategoryList items={categories_with_unknown_monomorphisms} />
-
-<h3>Categories with unknown epimorphisms</h3>
-
-<CategoryList items={categories_with_unknown_epimorphisms} />
+<CategoryList items={categories_with_unknown_special_morphisms} />
 
 <h3>Missing property combinations</h3>
 

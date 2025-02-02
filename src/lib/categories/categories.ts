@@ -30,8 +30,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'set theory', 'well-behaved'],
 		properties: ['Grothendieck topos', 'finitary algebraic'],
 		non_properties: ['strict terminal object'],
-		monomorphisms: 'injective maps',
-		epimorphisms: 'surjective maps',
+		special_morphisms: {
+			monomorphisms: 'injective maps',
+			epimorphisms: 'surjective maps',
+		},
 	},
 	{
 		id: 'Ab',
@@ -45,8 +47,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'well-behaved'],
 		properties: ['abelian', 'finitary algebraic'],
 		non_properties: ['split abelian'],
-		monomorphisms: 'injective homomorphisms',
-		epimorphisms: 'surjective homomorphisms',
+		special_morphisms: {
+			monomorphisms: 'injective homomorphisms',
+			epimorphisms: 'surjective homomorphisms',
+		},
 	},
 	{
 		id: 'Top',
@@ -75,8 +79,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cogenerator',
 			'exact filtered colimits',
 		],
-		monomorphisms: 'injective continuous maps',
-		epimorphisms: 'surjective continuous maps',
+		special_morphisms: {
+			monomorphisms: 'injective continuous maps',
+			epimorphisms: 'surjective continuous maps',
+		},
 	},
 	{
 		id: 'Grp',
@@ -89,8 +95,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'well-behaved'],
 		properties: ['pointed', 'finitary algebraic', 'balanced', 'disjoint coproducts'],
 		non_properties: ['preadditive', 'subobject classifier', 'cogenerator'],
-		monomorphisms: 'injective homomorphisms',
-		epimorphisms: 'surjective homomorphisms',
+		special_morphisms: {
+			monomorphisms: 'injective homomorphisms',
+			epimorphisms: 'surjective homomorphisms',
+		},
 	},
 	{
 		id: 'Vect',
@@ -105,8 +113,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'well-behaved'],
 		properties: ['split abelian', 'finitary algebraic'],
 		non_properties: ['trivial'],
-		monomorphisms: 'injective linear maps',
-		epimorphisms: 'surjective linear maps',
+		special_morphisms: {
+			monomorphisms: 'injective linear maps',
+			epimorphisms: 'surjective linear maps',
+		},
 	},
 	{
 		id: 'Ring',
@@ -125,8 +135,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cogenerator',
 			'disjoint finite coproducts',
 		],
-		monomorphisms: 'injective ring homomorphisms',
-		epimorphisms: 'are not necessarily surjective',
+		special_morphisms: {
+			monomorphisms: 'injective ring homomorphisms',
+			epimorphisms: 'are not necessarily surjective',
+		},
 	},
 	{
 		id: 'CRing',
@@ -144,8 +156,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cogenerator',
 			'disjoint finite coproducts',
 		],
-		monomorphisms: 'injective ring homomorphisms',
-		epimorphisms: 'are not necessarily surjective',
+		special_morphisms: {
+			monomorphisms: 'injective ring homomorphisms',
+			epimorphisms: 'are not necessarily surjective',
+		},
 	},
 	{
 		id: 'Rng',
@@ -158,8 +172,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'well-behaved'],
 		properties: ['finitary algebraic', 'pointed', 'disjoint coproducts'],
 		non_properties: ['preadditive', 'balanced', 'cogenerator'],
-		monomorphisms: 'injective ring homomorphisms',
-		epimorphisms: 'are not necessarily surjective',
+		special_morphisms: {
+			monomorphisms: 'injective ring homomorphisms',
+			epimorphisms: 'are not necessarily surjective',
+		},
 	},
 	{
 		id: 'FinSet',
@@ -178,8 +194,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cogenerator',
 		],
 		non_properties: ['small', 'strict terminal object'],
-		monomorphisms: 'injective maps',
-		epimorphisms: 'surjective maps',
+		special_morphisms: {
+			monomorphisms: 'injective maps',
+			epimorphisms: 'surjective maps',
+		},
 	},
 	{
 		id: 'FinAb',
@@ -192,8 +210,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'badly-behaved'],
 		properties: ['essentially small', 'abelian', 'self-dual'],
 		non_properties: ['small', 'generator', 'split abelian'],
-		monomorphisms: 'injective homomorphisms',
-		epimorphisms: 'surjective homomorphisms',
+		special_morphisms: {
+			monomorphisms: 'injective homomorphisms',
+			epimorphisms: 'surjective homomorphisms',
+		},
 	},
 	{
 		id: 'Abfg',
@@ -206,8 +226,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'badly-behaved'],
 		properties: ['essentially small', 'abelian', 'generator'],
 		non_properties: ['small', 'cogenerator', 'split abelian'],
-		monomorphisms: 'injective homomorphisms',
-		epimorphisms: 'surjective homomorphisms',
+		special_morphisms: {
+			monomorphisms: 'injective homomorphisms',
+			epimorphisms: 'surjective homomorphisms',
+		},
 	},
 	{
 		id: 'Set*',
@@ -227,8 +249,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'disjoint coproducts',
 		],
 		non_properties: ['preadditive'],
-		monomorphisms: 'injective maps',
-		epimorphisms: 'surjective maps',
+		special_morphisms: {
+			monomorphisms: 'injective maps',
+			epimorphisms: 'surjective maps',
+		},
 	},
 	{
 		id: 'sSet',
@@ -241,8 +265,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'topology', 'well-behaved'],
 		properties: ['Grothendieck topos', 'locally finitely presentable'],
 		non_properties: ['strict terminal object'],
-		monomorphisms: 'pointwise injective transformations',
-		epimorphisms: 'pointwise surjective transformations',
+		special_morphisms: {
+			monomorphisms: 'pointwise injective transformations',
+			epimorphisms: 'pointwise surjective transformations',
+		},
 	},
 	{
 		id: 'Mon',
@@ -255,8 +281,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'well-behaved'],
 		properties: ['pointed', 'finitary algebraic', 'disjoint coproducts'],
 		non_properties: ['preadditive', 'balanced', 'cogenerator'],
-		monomorphisms: 'injective homomorphisms',
-		epimorphisms: 'are not necessarily surjective',
+		special_morphisms: {
+			monomorphisms: 'injective homomorphisms',
+			epimorphisms: 'are not necessarily surjective',
+		},
 	},
 	{
 		id: 'Pos',
@@ -273,8 +301,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'disjoint coproducts',
 		],
 		non_properties: ['strict terminal object', 'finitary algebraic', 'balanced'],
-		monomorphisms: 'injective order-preserving functions',
-		epimorphisms: 'surjective order-preserving functions',
+		special_morphisms: {
+			monomorphisms: 'injective order-preserving functions',
+			epimorphisms: 'surjective order-preserving functions',
+		},
 	},
 	{
 		id: '0',
@@ -288,8 +318,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'badly-behaved'],
 		properties: ['preadditive', 'discrete', 'binary products', 'finite'],
 		non_properties: ['inhabited'],
-		monomorphisms: "there aren't any",
-		epimorphisms: "there aren't any",
+		special_morphisms: {
+			monomorphisms: "there aren't any",
+			epimorphisms: "there aren't any",
+		},
 	},
 	{
 		id: '1',
@@ -304,8 +336,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'well-behaved'],
 		properties: ['trivial', 'finite', 'discrete'],
 		non_properties: [],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: '2',
@@ -319,8 +353,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'badly-behaved'],
 		properties: ['discrete', 'finite', 'inhabited'],
 		non_properties: ['connected'],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'I',
@@ -334,8 +370,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'well-behaved'],
 		properties: ['finitary algebraic', 'self-dual', 'finite', 'cartesian closed'],
 		non_properties: ['subobject classifier'],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'M-Set',
@@ -350,8 +388,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'geometry', 'well-behaved'],
 		properties: ['Grothendieck topos', 'finitary algebraic'],
 		non_properties: ['strict terminal object'],
-		monomorphisms: 'injective $M$-maps',
-		epimorphisms: 'surjective $M$-maps',
+		special_morphisms: {
+			monomorphisms: 'injective $M$-maps',
+			epimorphisms: 'surjective $M$-maps',
+		},
 	},
 	{
 		id: 'R-Mod',
@@ -366,8 +406,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'well-behaved'],
 		properties: ['abelian', 'finitary algebraic'],
 		non_properties: ['split abelian'],
-		monomorphisms: 'injective $R$-linear maps',
-		epimorphisms: 'surjective $R$-linear maps',
+		special_morphisms: {
+			monomorphisms: 'injective $R$-linear maps',
+			epimorphisms: 'surjective $R$-linear maps',
+		},
 	},
 	{
 		id: 'Met',
@@ -399,8 +441,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cartesian closed',
 			'essentially small',
 		],
-		monomorphisms: 'injective non-expansive maps',
-		epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
+		special_morphisms: {
+			monomorphisms: 'injective non-expansive maps',
+			epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
+		},
 	},
 	{
 		id: 'Met_oo',
@@ -432,8 +476,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'finitary algebraic',
 			'cartesian closed',
 		],
-		monomorphisms: 'injective non-expansive maps',
-		epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
+		special_morphisms: {
+			monomorphisms: 'injective non-expansive maps',
+			epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
+		},
 	},
 	{
 		id: 'Man',
@@ -463,8 +509,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'strict terminal object',
 			'balanced',
 		],
-		monomorphisms: 'injective smooth maps',
-		epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
+		special_morphisms: {
+			monomorphisms: 'injective smooth maps',
+			epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
+		},
 	},
 	{
 		id: 'Meas',
@@ -488,8 +536,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'disjoint coproducts',
 		],
 		non_properties: ['cartesian closed', 'strict terminal object', 'balanced'],
-		monomorphisms: 'injective measurable maps',
-		epimorphisms: 'surjective measurable maps',
+		special_morphisms: {
+			monomorphisms: 'injective measurable maps',
+			epimorphisms: 'surjective measurable maps',
+		},
 	},
 	{
 		id: 'N',
@@ -509,8 +559,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'wide pullbacks',
 		],
 		non_properties: ['cocomplete', 'terminal object', 'finite'],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'Cat',
@@ -533,9 +585,11 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'balanced',
 			'cogenerator',
 		],
-		monomorphisms: 'faithful functors that are injective on objects',
-		epimorphisms:
-			"are surjective on objects, but not necessarily on morphisms. Isbell's zigzag theorem gives a precise characterization.",
+		special_morphisms: {
+			monomorphisms: 'faithful functors that are injective on objects',
+			epimorphisms:
+				"are surjective on objects, but not necessarily on morphisms. Isbell's zigzag theorem gives a precise characterization.",
+		},
 	},
 	{
 		id: 'On',
@@ -555,8 +609,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'well-powered',
 		],
 		non_properties: ['terminal object', 'well-copowered'],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'LRS',
@@ -577,6 +633,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'disjoint coproducts',
 		],
 		non_properties: ['cartesian closed', 'strict terminal object'],
+		special_morphisms: {},
 	},
 	{
 		id: 'Sch',
@@ -600,7 +657,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cartesian closed',
 			'strict terminal object',
 		],
-		monomorphisms: 'cf. EGA IV, 17.2.6',
+		special_morphisms: { monomorphisms: 'cf. EGA IV, 17.2.6' },
 	},
 	{
 		id: 'Fld',
@@ -627,8 +684,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'generator',
 			'cogenerator',
 		],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'purely inseparable homomorphisms',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'purely inseparable homomorphisms',
+		},
 	},
 	{
 		id: 'FreeAb',
@@ -653,9 +712,11 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'balanced',
 			'filtered colimits',
 		],
-		monomorphisms: 'injective homomorphisms',
-		epimorphisms:
-			'homomorphisms $f : A \\to B$ with the property that $f(A)$ is not contained in a proper direct summand of $B$.',
+		special_morphisms: {
+			monomorphisms: 'injective homomorphisms',
+			epimorphisms:
+				'homomorphisms $f : A \\to B$ with the property that $f(A)$ is not contained in a proper direct summand of $B$.',
+		},
 	},
 	{
 		id: 'Z',
@@ -676,8 +737,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'disjoint coproducts',
 		],
 		non_properties: ['locally small', 'strict terminal object'],
-		monomorphisms: 'objectwise injective natural transformations',
-		epimorphisms: 'objectwise surjective natural transformations',
+		special_morphisms: {
+			monomorphisms: 'objectwise injective natural transformations',
+			epimorphisms: 'objectwise surjective natural transformations',
+		},
 	},
 	{
 		id: 'BG',
@@ -691,8 +754,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'algebra', 'category theory', 'badly-behaved'],
 		properties: ['small', 'groupoid', 'connected', 'generator'],
 		non_properties: ['finite', 'thin', 'zero morphisms'],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'BN',
@@ -713,8 +778,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'left cancellative',
 		],
 		non_properties: ['finite', 'zero morphisms', 'equalizers', 'filtered colimits'],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'walking_pair',
@@ -742,8 +809,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'equalizers',
 			'pullbacks',
 		],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'walking_isomorphism',
@@ -759,8 +828,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['artificial', 'category theory', 'badly-behaved'],
 		properties: ['trivial', 'finite'],
 		non_properties: ['discrete'],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'Setne',
@@ -791,8 +862,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'strict terminal object',
 			'filtered limits',
 		],
-		monomorphisms: 'injective maps',
-		epimorphisms: 'surjective maps',
+		special_morphisms: {
+			monomorphisms: 'injective maps',
+			epimorphisms: 'surjective maps',
+		},
 	},
 	{
 		id: 'B',
@@ -807,8 +880,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'set theory', 'combinatorics', 'badly-behaved'],
 		properties: ['locally small', 'essentially small', 'groupoid', 'inhabited'],
 		non_properties: ['small', 'connected', 'generator'],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'FI',
@@ -836,8 +911,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'binary products',
 			'filtered colimits',
 		],
-		monomorphisms: 'every morphism',
-		epimorphisms: 'bijective maps',
+		special_morphisms: {
+			monomorphisms: 'every morphism',
+			epimorphisms: 'bijective maps',
+		},
 	},
 	{
 		id: 'FS',
@@ -865,8 +942,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'filtered limits',
 			'pullbacks',
 		],
-		monomorphisms: 'bijective maps',
-		epimorphisms: 'every morphism',
+		special_morphisms: {
+			monomorphisms: 'bijective maps',
+			epimorphisms: 'every morphism',
+		},
 	},
 	{
 		id: 'On+',
@@ -897,8 +976,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'binary coproducts',
 			'well-powered',
 		],
-		monomorphisms: 'every ordinal number',
-		epimorphisms: 'finite ordinal numbers',
+		special_morphisms: {
+			monomorphisms: 'every ordinal number',
+			epimorphisms: 'finite ordinal numbers',
+		},
 	},
 	{
 		id: 'FinOrd',
@@ -929,8 +1010,10 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cartesian closed',
 			'filtered colimits',
 		],
-		monomorphisms: 'injective order-preserving maps',
-		epimorphisms: 'surjective order-preserving maps',
+		special_morphisms: {
+			monomorphisms: 'injective order-preserving maps',
+			epimorphisms: 'surjective order-preserving maps',
+		},
 	},
 	{
 		id: 'Rel',
@@ -952,9 +1035,11 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'disjoint coproducts',
 		],
 		non_properties: ['essentially small', 'preadditive', 'equalizers'],
-		monomorphisms:
-			'A relation $R : A \\to B$ is a monomorphism iff the map $R_* : P(A) \\to P(B)$ defined by $T \\mapsto \\{b \\in B : \\exists \\, a \\in T: (a,b) \\in R \\}$ is injective.',
-		epimorphisms:
-			'A relation $R : A \\to B$ is an epimorphism iff the map $R^* : P(B) \\to P(A)$ defined by $S \\mapsto \\{a \\in A : \\exists \\, b \\in S: (a,b) \\in R \\}$ is injective.',
+		special_morphisms: {
+			monomorphisms:
+				'A relation $R : A \\to B$ is a monomorphism iff the map $R_* : P(A) \\to P(B)$ defined by $T \\mapsto \\{b \\in B : \\exists \\, a \\in T: (a,b) \\in R \\}$ is injective.',
+			epimorphisms:
+				'A relation $R : A \\to B$ is an epimorphism iff the map $R^* : P(B) \\to P(A)$ defined by $S \\mapsto \\{a \\in A : \\exists \\, b \\in S: (a,b) \\in R \\}$ is injective.',
+		},
 	},
 ]

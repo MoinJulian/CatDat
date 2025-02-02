@@ -45,8 +45,7 @@ describe('categories list', () => {
 			'tags',
 			'properties',
 			'non_properties',
-			'monomorphisms',
-			'epimorphisms',
+			'special_morphisms',
 		] satisfies CategoryKey[]
 
 		for (const category of categories) {
