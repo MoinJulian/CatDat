@@ -15,9 +15,15 @@ Currently, _CatDat_ does not work with a classical database. Instead, the data c
 - Local development is much easier.
 - No need to connect to an external service.
 - Autocompletion for various fields in your IDE. For example, when you add a property to a category and start typing `com`, you get already suggestions for properties like `complete` and `cocomplete`.
+
+<img width="600" alt="autocompletion feature" src="https://github.com/user-attachments/assets/038029d1-fe39-420a-a3b3-727d1d8e6336" />
+
 - Currently, the application doesn't require complex database queries.
 - AHA-principle: Right now, the data doesn't need to be in the database. When it becomes necessary, we can do that.
 - Unit tests can validate the data easily.
+
+<img width="600" alt="failing unit test since properties are contradictory" src="https://github.com/user-attachments/assets/4feac54b-dda6-4640-8c76-af5d97cb2dfc" />
+
 - TypeScript is doing most of the work for us when it comes to data integrity. The rest is done via unit tests.
 - This repository is the single source of truth for the whole application.
 
