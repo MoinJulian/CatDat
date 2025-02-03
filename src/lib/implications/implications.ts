@@ -17,7 +17,11 @@ export const implications: readonly Readonly<Implication>[] = [
 		conclusions: ['well-powered', 'well-copowered', 'locally essentially small'],
 	},
 	{
-		assumptions: ['essentially small', 'complete'],
+		assumptions: ['essentially small', 'products'],
+		conclusions: ['thin'],
+	},
+	{
+		assumptions: ['essentially finite', 'finite products'],
 		conclusions: ['thin'],
 	},
 	{

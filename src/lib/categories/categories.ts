@@ -212,7 +212,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'generator',
 			'cogenerator',
 		],
-		non_properties: ['small', 'strict terminal object', 'essentially finite'],
+		non_properties: ['small', 'strict terminal object'],
 		special_morphisms: {
 			isomorphisms: 'bijective maps',
 			monomorphisms: 'injective maps',
@@ -229,7 +229,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		related: ['Ab', 'Abfg'],
 		tags: ['basic', 'algebra', 'badly-behaved'],
 		properties: ['locally small', 'essentially small', 'abelian', 'self-dual'],
-		non_properties: ['small', 'generator', 'split abelian', 'essentially finite'],
+		non_properties: ['small', 'generator', 'split abelian'],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
 			monomorphisms: 'injective homomorphisms',
@@ -246,7 +246,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		related: ['Ab', 'FinAb'],
 		tags: ['basic', 'algebra', 'badly-behaved'],
 		properties: ['locally small', 'essentially small', 'abelian', 'generator'],
-		non_properties: ['small', 'cogenerator', 'split abelian', 'essentially finite'],
+		non_properties: ['small', 'cogenerator', 'split abelian'],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
 			monomorphisms: 'injective homomorphisms',
@@ -547,7 +547,6 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'strict terminal object',
 			'balanced',
 			'cartesian closed',
-			'essentially small',
 		],
 		special_morphisms: {
 			isomorphisms: 'homeomorphisms',
@@ -737,7 +736,6 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'disjoint coproducts',
 		],
 		non_properties: [
-			'essentially small',
 			'coequalizers',
 			'products',
 			'cartesian closed',
@@ -798,12 +796,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cogenerator',
 			'disjoint coproducts',
 		],
-		non_properties: [
-			'essentially small',
-			'products',
-			'balanced',
-			'filtered colimits',
-		],
+		non_properties: ['products', 'balanced', 'filtered colimits'],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
 			monomorphisms: 'injective homomorphisms',
@@ -980,7 +973,6 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cartesian closed',
 		],
 		non_properties: [
-			'essentially small',
 			'binary coproducts',
 			'strict terminal object',
 			'filtered limits',
@@ -1139,7 +1131,6 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'subobject classifier',
 			'cartesian closed',
 			'filtered colimits',
-			'essentially finite',
 		],
 		special_morphisms: {
 			isomorphisms: 'bijective order-preserving maps',
@@ -1166,7 +1157,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'generator',
 			'disjoint coproducts',
 		],
-		non_properties: ['essentially small', 'preadditive', 'Cauchy complete'],
+		non_properties: ['preadditive', 'Cauchy complete'],
 		special_morphisms: {
 			isomorphisms: 'bijective functions',
 			monomorphisms:
@@ -1188,7 +1179,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		related: ['B', 'FinSet'],
 		tags: ['intermediate', 'combinatorics'],
 		properties: ['elementary topos', 'essentially small'],
-		non_properties: ['locally small', 'essentially finite', 'strict terminal object'],
+		non_properties: ['locally small', 'strict terminal object'],
 		special_morphisms: {
 			isomorphisms: 'natural isomorphisms',
 			monomorphisms: 'pointwise injective natural transformations',
