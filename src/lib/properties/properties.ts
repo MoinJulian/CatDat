@@ -242,6 +242,22 @@ export const properties: readonly Readonly<Property>[] = [
 		related: ['finite coproducts'],
 	},
 	{
+		id: 'countable products',
+		prefix: 'has',
+		description:
+			'A category has <i>countable products</i> if it has products for countable families of objects.',
+		dual: 'countable coproducts',
+		related: ['products', 'finite products'],
+	},
+	{
+		id: 'countable coproducts',
+		prefix: 'has',
+		description:
+			'A category has <i>countable coproducts</i> if it has coproducts for countable families of objects.',
+		dual: 'countable products',
+		related: ['coproducts', 'finite coproducts'],
+	},
+	{
 		id: 'equalizers',
 		prefix: 'has',
 		nlab_link: 'https://ncatlab.org/nlab/show/equalizer',
@@ -274,6 +290,24 @@ export const properties: readonly Readonly<Property>[] = [
 			'A category has <i>filtered colimits</i> if it has colimits of diagrams indexed by filtered categories.',
 		dual: 'filtered limits',
 		related: ['cocomplete'],
+	},
+	{
+		id: 'sequential limits', // TODO: fill cat data
+		prefix: 'has',
+		nlab_link: 'https://ncatlab.org/nlab/show/sequential+limit',
+		description:
+			'A category has <i>sequential limits</i> if it has limits of diagrams of the following form: $\\cdots \\bullet \\to \\bullet \\to \\bullet$',
+		dual: 'sequential colimits',
+		related: ['filtered limits'],
+	},
+	{
+		id: 'sequential colimits', // TODO: fill cat data
+		prefix: 'has',
+		nlab_link: 'https://ncatlab.org/nlab/show/sequential+colimit',
+		description:
+			'A category has <i>sequential colimits</i> if it has colimits of diagrams of the following form: $\\bullet \\to \\bullet \\to \\bullet \\to \\cdots$',
+		dual: 'sequential limits',
+		related: ['filtered colimits'],
 	},
 	{
 		id: 'connected limits',

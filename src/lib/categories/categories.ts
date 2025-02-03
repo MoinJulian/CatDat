@@ -212,7 +212,12 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'generator',
 			'cogenerator',
 		],
-		non_properties: ['small', 'strict terminal object'],
+		non_properties: [
+			'small',
+			'strict terminal object',
+			'sequential limits',
+			'sequential colimits',
+		],
 		special_morphisms: {
 			isomorphisms: 'bijective maps',
 			monomorphisms: 'injective maps',
@@ -229,7 +234,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		related: ['Ab', 'Abfg'],
 		tags: ['basic', 'algebra', 'badly-behaved'],
 		properties: ['locally small', 'essentially small', 'abelian', 'self-dual'],
-		non_properties: ['small', 'generator', 'split abelian'],
+		non_properties: ['small', 'generator', 'split abelian', 'sequential limits'],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
 			monomorphisms: 'injective homomorphisms',
@@ -246,7 +251,13 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		related: ['Ab', 'FinAb'],
 		tags: ['basic', 'algebra', 'badly-behaved'],
 		properties: ['locally small', 'essentially small', 'abelian', 'generator'],
-		non_properties: ['small', 'cogenerator', 'split abelian'],
+		non_properties: [
+			'small',
+			'cogenerator',
+			'split abelian',
+			'countable products',
+			'countable coproducts',
+		],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
 			monomorphisms: 'injective homomorphisms',
@@ -477,7 +488,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cogenerator',
 		],
 		non_properties: [
-			'products',
+			'sequential limits',
 			'finite coproducts',
 			'strict terminal object',
 			'balanced',
@@ -541,7 +552,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'generator',
 			'cogenerator',
 			'infinitary distributive',
-		], // TODO: add property "countable products"
+			'countable products',
+		],
 		non_properties: [
 			'products',
 			'strict terminal object',
@@ -571,11 +583,12 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'distributive',
 			'generator',
 			'disjoint finite coproducts',
+			'countable coproducts',
 			'Cauchy complete',
 		],
 		non_properties: [
 			'essentially small',
-			'products',
+			'countable products',
 			'coproducts',
 			'cartesian closed',
 			'coequalizers',
@@ -635,7 +648,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'thin',
 			'wide pullbacks',
 		],
-		non_properties: ['cocomplete', 'terminal object', 'essentially finite'],
+		non_properties: ['countable coproducts', 'terminal object', 'essentially finite'],
 		special_morphisms: {
 			isomorphisms: 'only the identity morphisms',
 			monomorphisms: 'every morphism',
@@ -737,7 +750,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		],
 		non_properties: [
 			'coequalizers',
-			'products',
+			'countable products',
 			'cartesian closed',
 			'strict terminal object',
 		],
@@ -796,7 +809,11 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'cogenerator',
 			'disjoint coproducts',
 		],
-		non_properties: ['products', 'balanced', 'filtered colimits'],
+		non_properties: [
+			'countable products',
+			'balanced',
+			'filtered colimits', // https://math.stackexchange.com/questions/5025660
+		],
 		special_morphisms: {
 			isomorphisms: 'bijective homomorphisms',
 			monomorphisms: 'injective homomorphisms',
@@ -889,7 +906,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'essentially finite',
 			'zero morphisms',
 			'equalizers',
-			'filtered colimits',
+			'sequential limits',
 		],
 		special_morphisms: {
 			isomorphisms: 'only the number $0$',
@@ -975,7 +992,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		non_properties: [
 			'binary coproducts',
 			'strict terminal object',
-			'filtered limits',
+			'sequential limits',
 		],
 		special_morphisms: {
 			isomorphisms: 'bijective maps',
@@ -1026,7 +1043,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'small',
 			'cogenerator',
 			'binary products',
-			'filtered colimits',
+			'sequential colimits',
 			'essentially finite',
 		],
 		special_morphisms: {
@@ -1058,7 +1075,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'small',
 			'connected',
 			'generator',
-			'filtered limits',
+			'sequential limits',
 			'pullbacks',
 			'essentially finite',
 		],
@@ -1130,7 +1147,8 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'strict terminal object',
 			'subobject classifier',
 			'cartesian closed',
-			'filtered colimits',
+			'sequential colimits',
+			'countable products',
 		],
 		special_morphisms: {
 			isomorphisms: 'bijective order-preserving maps',
@@ -1179,7 +1197,12 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		related: ['B', 'FinSet'],
 		tags: ['intermediate', 'combinatorics'],
 		properties: ['elementary topos', 'essentially small'],
-		non_properties: ['locally small', 'strict terminal object'],
+		non_properties: [
+			'locally small',
+			'strict terminal object',
+			'countable products',
+			'countable coproducts',
+		],
 		special_morphisms: {
 			isomorphisms: 'natural isomorphisms',
 			monomorphisms: 'pointwise injective natural transformations',

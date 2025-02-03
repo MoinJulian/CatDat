@@ -188,6 +188,26 @@ export const implications: readonly Readonly<Implication>[] = [
 		assumptions: ['left cancellative'],
 		conclusions: ['Cauchy complete'],
 	},
+	{
+		assumptions: ['products'],
+		conclusions: ['countable products'],
+	},
+	{
+		assumptions: ['countable products'],
+		conclusions: ['finite products'],
+	},
+	{
+		assumptions: ['equalizers', 'countable products'],
+		conclusions: ['sequential limits'],
+	},
+	{
+		assumptions: ['finite products', 'sequential limits'],
+		conclusions: ['countable products'],
+	},
+	{
+		assumptions: ['filtered limits'],
+		conclusions: ['sequential limits'],
+	},
 	// interchanging limits with colimits
 	{
 		assumptions: ['exact filtered colimits'],
