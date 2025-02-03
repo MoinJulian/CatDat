@@ -462,7 +462,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		objects: 'metric spaces',
 		morphisms:
 			'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
-		related: ['Met_oo'],
+		related: ['Met_oo', 'Met_c'],
 		tags: ['basic', 'geometry', 'badly-behaved'],
 		properties: [
 			'locally small',
@@ -502,7 +502,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
 		description:
 			'The fact that we allow $\\infty$ means that universal constructions work much better.',
-		related: ['Met'],
+		related: ['Met', 'Met_c'],
 		tags: ['basic', 'geometry', 'well-behaved'],
 		properties: [
 			'locally small',
@@ -521,6 +521,38 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			isomorphisms: 'bijective isometries',
 			monomorphisms: 'injective non-expansive maps',
 			epimorphisms: 'are not necessarily surjective. TODO: make this more precise',
+		},
+	},
+	{
+		id: 'Met_c',
+		name: 'category of metric spaces with continuous maps',
+		notation: '$\\mathbf{Met}_c$',
+		objects: 'metric spaces',
+		morphisms: 'continuous maps',
+		description:
+			'This category is equivalent to the subcategory of $\\mathbf{Top}$ (or $\\mathbf{Haus}$) that consists of metrizable topological spaces.',
+		related: ['Met', 'Met_oo', 'Top'],
+		tags: ['basic', 'geometry', 'badly-behaved'],
+		properties: [
+			'locally small',
+			'equalizers',
+			'disjoint coproducts',
+			'well-powered',
+			'generator',
+			'cogenerator',
+			'infinitary distributive',
+		], // TODO: add property "countable products"
+		non_properties: [
+			'products',
+			'strict terminal object',
+			'balanced',
+			'cartesian closed',
+			'essentially small',
+		],
+		special_morphisms: {
+			isomorphisms: 'homeomorphisms',
+			monomorphisms: 'injective continuous maps',
+			epimorphisms: 'are not necessarily surjective. TODO: make this more precise', // probably maps with dense image
 		},
 	},
 	{

@@ -22,6 +22,7 @@ export const CATEGORY_IDs = [
 	'R-Mod',
 	'Met',
 	'Met_oo',
+	'Met_c',
 	'Man',
 	'Meas',
 	'N',
