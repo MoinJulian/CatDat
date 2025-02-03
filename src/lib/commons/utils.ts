@@ -14,3 +14,5 @@ export type NonEmptyArray<T> = [T, ...T[]]
 export function is_object(obj: unknown): obj is Record<string, unknown> {
 	return obj != null && obj.constructor.name === 'Object'
 }
+
+export const sum = (arr: number[]) => arr.reduce((a, b) => a + b, 0)

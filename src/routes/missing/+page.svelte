@@ -11,6 +11,7 @@
 		missing_basic_combinations,
 		categories_with_unknown_properties,
 		categories_with_unknown_special_morphisms,
+		total_number_unknown_properties,
 	} = data
 </script>
 
@@ -28,6 +29,8 @@ This page lists some missing data in the database. Please help us fill in the ga
 There are {categories_with_unknown_properties.length} categories that have some unknown properties.
 
 <CategoryList items={categories_with_unknown_properties} />
+
+In total, there are {total_number_unknown_properties} unknown properties of categories.
 
 <h3>Categories with unknown special morphisms</h3>
 

@@ -1,4 +1,4 @@
-import { group_items, is_object, type NonEmptyArray } from './utils'
+import { group_items, is_object, sum, type NonEmptyArray } from './utils'
 
 describe('group_items', () => {
 	it('should group items by id', () => {
@@ -56,5 +56,14 @@ describe('is_object', () => {
 		expect(is_object(new Error('foo'))).toBe(false)
 		expect(is_object(new Map())).toBe(false)
 		expect(is_object(new Set())).toBe(false)
+	})
+})
+
+describe('sum', () => {
+	it('returns the sum of the numbers', () => {
+		expect(sum([])).toBe(0)
+		expect(sum([1])).toBe(1)
+		expect(sum([1, 2])).toBe(3)
+		expect(sum([1, 2, 3])).toBe(6)
 	})
 })

@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types'
 import { category_system, shorten_category } from '$lib/categories/categories.utils'
 import { categories } from '$lib/categories/categories'
+import { sum } from '$lib/commons/utils'
 
 const has_todo = (entry: string | undefined) => !entry || entry.includes('TODO')
 
@@ -17,5 +18,10 @@ export const load: PageServerLoad = () => {
 					has_todo(category.special_morphisms.epimorphisms),
 			)
 			.map(shorten_category),
+		total_number_unknown_properties: sum(
+			category_system.entities_with_unknown_properties.map(
+				(category) => category.unknown_properties.size,
+			),
+		),
 	}
 }
