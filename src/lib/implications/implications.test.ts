@@ -43,4 +43,10 @@ describe('implications', () => {
 			expect(keys).toEqual(expected_keys)
 		}
 	})
+
+	it(`should have a reason for each implication`, () => {
+		for (const implication of implications) {
+			expect(implication.reason.length).toBeGreaterThan(1)
+		}
+	})
 })

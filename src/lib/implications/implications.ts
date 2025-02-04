@@ -5,6 +5,7 @@ import type { Implication } from '$lib/commons/types'
  * - equivalent (optional, set to "true" for equivalences)
  * - assumptions: a list of registered properties
  * - conclusions: a list of registered properties
+ * - reason: either a proof or a reference to a proof, may contain HTML and LaTeX
  */
 export const implications: readonly Readonly<Implication>[] = [
 	// size constraints
@@ -21,12 +22,12 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['essentially small', 'products'],
 		conclusions: ['thin'],
-		reason: '',
+		reason: '<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof works for any category with products.',
 	},
 	{
 		assumptions: ['essentially finite', 'finite products'],
 		conclusions: ['thin'],
-		reason: '',
+		reason: '<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof can easily be adapted to this case.',
 	},
 	{
 		assumptions: ['finite'],
@@ -90,26 +91,30 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['left cancellative', 'coequalizers'],
 		conclusions: ['thin'],
-		reason: 'If $f,g : A \\rightrightarrows B$ are two parallel morphisms, then their coequalizer is a regular epimorphism, but also a monmorphism by assumption, so it must be an isomorphism. But this means that $f = g$.',
+		reason: 'If $f,g$ are two parallel morphisms, then their coequalizer is a regular epimorphism, but also a monomorphism by assumption, so it must be an isomorphism. But this means that $f = g$.',
 	},
 	// limits and colimits
+	{
+		assumptions: ['complete'],
+		conclusions: [
+			'finitely complete',
+			'filtered limits',
+			'wide pullbacks',
+			'connected limits',
+		],
+		reason: 'trivial',
+	},
 	{
 		equivalent: true,
 		assumptions: ['complete'],
 		conclusions: ['products', 'equalizers'],
-		reason: '',
+		reason: '<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Cor. 2',
 	},
 	{
 		equivalent: true,
 		assumptions: ['finitely complete'],
 		conclusions: ['finite products', 'equalizers'],
-		reason: '',
-	},
-	{
-		equivalent: true,
-		assumptions: ['complete'],
-		conclusions: ['finitely complete', 'filtered limits'],
-		reason: '',
+		reason: '<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Cor. 1',
 	},
 	{
 		assumptions: ['products'],
@@ -120,49 +125,49 @@ export const implications: readonly Readonly<Implication>[] = [
 		equivalent: true,
 		assumptions: ['finite products'],
 		conclusions: ['terminal object', 'binary products'],
-		reason: 'trivial',
+		reason: 'The non-trivial direction follows since finite products can be constructed recursively via $X_1 \\times \\cdots \\times X_{n+1} = (X_1 \\times \\cdots \\times X_n) \\times X_{n+1}$.',
 	},
 	{
 		assumptions: ['finite products', 'filtered limits'],
 		conclusions: ['products'],
-		reason: '',
+		reason: 'The product $\\prod_{i \\in I} X_i$ is the filtered limit of the finite partial products $\\prod_{i \\in E} X_i$ where $E$ ranges over the finite subsets of $I$.',
 	},
 	{
 		assumptions: ['binary products', 'equalizers'],
 		conclusions: ['pullbacks'],
-		reason: '',
+		reason: 'The pullback of $f : X \\to S$ and $g : Y \\to S$ is the equalizer of $p_1 \\circ f, \\, p_2 \\circ g : X \\times Y \\rightrightarrows S$.',
 	},
 	{
 		assumptions: ['binary products', 'pullbacks'],
 		conclusions: ['equalizers'],
-		reason: 'The equalizer of $f,g : A \\rightrightarrows B$ is the pullback of $(f,g) : A \\to B \\times B$ with the diagonal $B \\to B \\times B$.',
+		reason: 'The equalizer of $f,g : X \\rightrightarrows Y$ is the pullback of $(f,g) : X \\to Y \\times Y$ with the diagonal $Y \\to Y \\times Y$.',
 	},
 	{
 		assumptions: ['pullbacks', 'terminal object'],
 		conclusions: ['binary products'],
-		reason: 'This is because $X \\times_1 Y = X \\times Y$.',
+		reason: 'If $1$ is a terminal object, then $X \\times_1 Y = X \\times Y$.',
 	},
 	{
 		assumptions: ['terminal object'],
 		conclusions: ['connected'],
-		reason: 'trivial',
+		reason: 'If $1$ denotes the terminal object, then for any two objects $A,B$ we have the zig-zag $A \\to 1 \\leftarrow B$.',
 	},
 	{
 		equivalent: true,
 		assumptions: ['pointed'],
 		conclusions: ['zero morphisms', 'initial object'],
-		reason: 'trivial',
+		reason: 'easy',
 	},
 	{
 		assumptions: ['pointed', 'cartesian closed'],
 		conclusions: ['trivial'],
-		reason: '',
+		reason: 'We have $X \\cong X \\times 1 \\cong X \\times 0 \\cong 0$ for every object $X$.',
 	},
 	{
 		equivalent: true,
 		assumptions: ['disjoint coproducts'],
 		conclusions: ['coproducts', 'disjoint finite coproducts'],
-		reason: 'trivial',
+		reason: 'easy',
 	},
 	{
 		assumptions: ['disjoint finite coproducts'],
@@ -172,25 +177,24 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['disjoint finite coproducts', 'thin'],
 		conclusions: ['trivial'],
-		reason: '',
+		reason: 'For every object $A$ the two inclusions $A \\rightrightarrows A + A$ must be equal, so their equalizer is $A$, but also $0$ since the coproduct is disjoint. Hence $A = 0$.',
 	},
 	{
 		equivalent: true,
 		assumptions: ['connected limits'],
 		conclusions: ['wide pullbacks', 'equalizers'],
-		reason: '',
+		reason: 'The direction $\\Rightarrow$ is trivial. The direction $\\Leftarrow$ can be found at the <a href="https://ncatlab.org/nlab/show/connected+limit" target="_blank">nLab</a>.',
 	},
 	{
-		equivalent: true,
 		assumptions: ['wide pullbacks', 'terminal object'],
 		conclusions: ['complete'],
-		reason: '',
+		reason: 'See the <a href="https://ncatlab.org/nlab/show/wide+pullback" target="_blank">nLab</a>.',
 	},
 	{
 		equivalent: true,
 		assumptions: ['wide pullbacks'],
 		conclusions: ['pullbacks', 'filtered limits'],
-		reason: '',
+		reason: 'To prove $\\Leftarrow$, a wide pullback can be constructed as a filtered limit of finite pullbacks, and finite pullbacks can be reduced to binary products (the empty-indexed pullback always exists). Conversely, assume that wide pullbacks exist in $\\mathcal{C}$. For every object $A$ then the slice category $\\mathcal{C} / A$ has wide pullbacks and a terminal object, hence is complete. Since a filtered limit can be finally reduced to such a slice, we are done.', // book reference would be nice. the nlab only mentions this without proof
 	},
 
 	{
@@ -211,12 +215,12 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['left cancellative', 'initial object'],
 		conclusions: ['strict initial object'],
-		reason: '',
+		reason: 'It suffices to prove that in general any monomorphism $f : A \\to 0$ into an initial object is an isomorphism. If $g : 0 \\to A$ is the unique morphism, then $f \\circ g = \\mathrm{id}_0$ since $0$ is initial. But then $f$ is a split epimorphism and a monomorphism, hence an isomorphism.',
 	},
 	{
 		assumptions: ['right cancellative', 'initial object'],
 		conclusions: ['strict initial object'],
-		reason: '',
+		reason: 'Let $f : A \\to 0$ be a morphism. Let $g : 0 \\to A$ be the unique morphism. It is an epimorphism by assumption. Also, $f \\circ g = \\mathrm{id}_0$ since $0$ is initial. But then $g$ is a split monomorphism and an epimorphism, hence an isomorphism.',
 	},
 	{
 		assumptions: ['equalizers'],
@@ -241,12 +245,12 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['equalizers', 'countable products'],
 		conclusions: ['sequential limits'],
-		reason: '', // same as the other one
+		reason: '<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof can easily be adapted to this case. Namely, the limit of $\\cdots \\to X_2 \\to X_1 \\to X_0$ is the equalizer of two suitable endomorphisms of $\\prod_{n \\geq 0} X_n$.',
 	},
 	{
 		assumptions: ['finite products', 'sequential limits'],
 		conclusions: ['countable products'],
-		reason: 'If $X_1,X_2,\\dotsc$ is a sequence of objects, then their product is the limit of the sequence $\\cdots \\to X_2 \\times X_1 \\to X_1$.',
+		reason: 'If $X_1,X_2,\\dotsc$ is an infinite sequence of objects, then their product is the limit of the sequence $\\cdots \\to X_2 \\times X_1 \\to X_1$.',
 	},
 	{
 		assumptions: ['filtered limits'],
@@ -261,23 +265,28 @@ export const implications: readonly Readonly<Implication>[] = [
 	},
 	{
 		assumptions: ['infinitary distributive'],
-		conclusions: ['finite products', 'coproducts', 'distributive'],
+		conclusions: ['finite products', 'coproducts'],
+		reason: 'by definition',
+	},
+	{
+		assumptions: ['infinitary distributive'],
+		conclusions: ['distributive'],
 		reason: 'trivial',
 	},
 	{
 		assumptions: ['distributive'],
 		conclusions: ['finite products', 'finite coproducts'],
-		reason: 'trivial',
+		reason: 'by definition',
 	},
 	{
 		assumptions: ['distributive'],
 		conclusions: ['strict initial object'],
-		reason: '',
+		reason: 'See the <a href="https://ncatlab.org/nlab/show/distributive+category" target="_blank">nLab</a>.',
 	},
 	{
 		assumptions: ['cartesian closed', 'finite coproducts'],
 		conclusions: ['distributive'],
-		reason: '',
+		reason: 'Each functor $A \\times -$ is left adjoint and hence preserves finite coproducts (in fact, all colimits).',
 	},
 	{
 		assumptions: ['cartesian closed', 'coproducts'],
@@ -300,27 +309,27 @@ export const implications: readonly Readonly<Implication>[] = [
 			'cocomplete',
 			'generator',
 		],
-		reason: '',
+		reason: 'For the non-trivial conclusions see <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Thm. 1.20, Cor. 1.28, Rem. 1.56, Thm. 1.58.',
 	},
 	{
 		assumptions: ['locally finitely presentable'],
 		conclusions: ['locally presentable'],
-		reason: 'trivial',
+		reason: 'Locally finitely presentable categories are by definition the locally $\\aleph_0$-presentable categories.',
 	},
 	{
 		assumptions: ['locally finitely presentable'],
 		conclusions: ['exact filtered colimits'],
-		reason: '',
+		reason: 'Special case of <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Prop. 1.59 with $\\lambda = \\aleph_0$.',
 	},
 	{
 		assumptions: ['locally presentable', 'self-dual'],
 		conclusions: ['thin'],
-		reason: '',
+		reason: 'This follows from <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Thm. 1.64.',
 	},
 	{
 		assumptions: ['finitary algebraic'],
 		conclusions: ['locally finitely presentable'],
-		reason: '',
+		reason: '<a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Cor. 3.7',
 	},
 	// topos theory
 	{
@@ -332,12 +341,17 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['elementary topos'],
 		conclusions: ['finitely cocomplete', 'disjoint finite coproducts'],
-		reason: '',
+		reason: '<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Cor. IV.5.4 and Cor. IV.10.5',
+	},
+	{
+		assumptions: ['subobject classifier', 'locally essentially small'],
+		conclusions: ['well-powered'],
+		reason: '<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Prop. I.3.1',
 	},
 	{
 		assumptions: ['elementary topos', 'locally essentially small'],
-		conclusions: ['well-powered', 'well-copowered'],
-		reason: '',
+		conclusions: ['well-copowered'],
+		reason: 'This follows from <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Theorem IV.7.8 (and Prop. I.3.1).',
 	},
 	{
 		assumptions: ['cartesian closed'],
@@ -347,18 +361,23 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['cartesian closed', 'initial object'],
 		conclusions: ['strict initial object'],
-		reason: '',
+		reason: 'See the <a href="https://ncatlab.org/nlab/show/strict+initial+object" target="_blank">nLab</a>.',
 	},
 	{
+		equivalent: true,
 		assumptions: ['Grothendieck topos'],
 		conclusions: [
 			'elementary topos',
-			'locally presentable',
-			'cogenerator',
-			'exact filtered colimits',
-			'disjoint coproducts',
+			'coproducts',
+			'generator',
+			'locally essentially small',
 		],
-		reason: '',
+		reason: '<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Appendix, Prop. 4.4',
+	},
+	{
+		assumptions: ['Grothendieck topos'],
+		conclusions: ['locally presentable', 'cogenerator'],
+		reason: 'For "locally presentable" see Prop. 3.4.16 in <a href="https://www.cambridge.org/core/books/handbook-of-categorical-algebra/5033A02442342401E7BCC26A042DAB94" target="_blank">Handbook of Categorical Algebra Vol. 3</a>. For "cogenerator" see the <a href="https://ncatlab.org/nlab/show/cogenerator" target="_blank">nLab</a>.',
 	},
 	{
 		assumptions: ['subobject classifier'],
@@ -374,7 +393,7 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['preadditive', 'finite coproducts'],
 		conclusions: ['finite products'],
-		reason: '',
+		reason: '<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, VIII.2., Theorem 2',
 	},
 	{
 		equivalent: true,
@@ -385,7 +404,7 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['additive'],
 		conclusions: ['disjoint finite coproducts'],
-		reason: '',
+		reason: 'If $f : T \\to A + B$ is a morphism that factors through $A$ and $B$, then $p_B f = 0$ and $p_A f = 0$, so $f = 0$.',
 	},
 	{
 		assumptions: ['abelian'],
@@ -395,7 +414,7 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['abelian'],
 		conclusions: ['balanced'],
-		reason: '',
+		reason: 'See the discussion after the definition of an abelian category in <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, VIII.3',
 	},
 	{
 		equivalent: true,
@@ -405,13 +424,18 @@ export const implications: readonly Readonly<Implication>[] = [
 	},
 	{
 		assumptions: ['Grothendieck abelian'],
-		conclusions: ['locally presentable', 'cogenerator'],
-		reason: '',
+		conclusions: ['locally presentable'],
+		reason: 'See <a href="https://arxiv.org/abs/1409.7051" target="_blank">Deriving Auslander\'s formula</a>, Cor. 5.2, or <a href="https://arxiv.org/abs/math/0102087" target="_blank">Sheafifiable homotopy model categories</a>, Prop. 3.10.',
+	},
+	{
+		assumptions: ['Grothendieck abelian'],
+		conclusions: ['cogenerator'],
+		reason: '<a href="https://ncatlab.org/nlab/show/Categories+and+Sheaves" target="_blank">Kashiwara-Schapira</a>, Thm. 9.6.3',
 	},
 	{
 		assumptions: ['Grothendieck abelian', 'self-dual'],
 		conclusions: ['trivial'],
-		reason: '',
+		reason: 'This follows since the dual of a non-trivial Grothendieck abelian category cannot be Grothendieck abelian. See Peter Freyd, <i>Abelian categories</i>, p. 116.',
 	},
 	{
 		assumptions: ['additive', 'pullbacks', 'subobject classifier'],
@@ -449,14 +473,14 @@ export const implications: readonly Readonly<Implication>[] = [
 	{
 		assumptions: ['groupoid', 'binary products', 'inhabited'],
 		conclusions: ['trivial'],
-		reason: '',
+		reason: 'Let $\\mathcal{C}$ be an inhabited groupoid with binary products. Then it is connected, so we may assume $\\mathcal{C}=BG$ for a group $G$ with unique object $*$. But then $* \\times * = *$, so there are $p,q \\in G$ such that $G \\to G \\times G$, $x \\mapsto (px,qx)$ is bijective. From here it is an easy exercise to deduce $G=1$.',
 	},
 	{
 		assumptions: ['groupoid', 'initial object'],
 		conclusions: ['trivial'],
 		reason: 'easy',
 	},
-	// MISC
+	// miscellaneous stuff
 	{
 		assumptions: ['connected'],
 		conclusions: ['inhabited'],
