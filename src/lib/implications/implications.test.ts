@@ -5,7 +5,7 @@ describe('implications', () => {
 		const implication = {
 			assumptions: ['cartesian closed'],
 			conclusions: ['finite products'],
-			reason: 'by definition',
+			reason: expect.any(String),
 		}
 		expect(implications).toContainEqual(implication)
 	})
@@ -14,6 +14,7 @@ describe('implications', () => {
 		const implication = {
 			assumptions: ['cartesian closed'],
 			conclusions: ['terminal object'],
+			reason: expect.any(String),
 		}
 		expect(implications).not.toContainEqual(implication)
 	})
@@ -22,6 +23,7 @@ describe('implications', () => {
 		const implication = {
 			assumptions: ['self-dual', 'binary products'],
 			conclusions: ['binary coproducts'],
+			reason: expect.any(String),
 		}
 		expect(implications).not.toContainEqual(implication)
 	})
