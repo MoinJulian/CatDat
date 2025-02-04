@@ -8,13 +8,30 @@ import { PROPERTY_IDs, type PropertyID } from './propertyIDs'
 export const properties_dictionary = group_items<PropertyID, Property>(
 	properties as Property[],
 )
+const ENCODE_MAP: Record<string, string> = {
+	' ': '_',
+	'ℵ₁': 'aleph1',
+}
 
-export function encode_property_ID(id: PropertyID): string {
-	return id.replaceAll(' ', '_')
+const DECODE_MAP: Record<string, string> = {
+	_: ' ',
+	aleph1: 'ℵ₁',
+}
+
+export function encode_property_ID(id: string): string {
+	let encoded = id
+	for (const key in ENCODE_MAP) {
+		encoded = encoded.replaceAll(key, ENCODE_MAP[key])
+	}
+	return encoded
 }
 
 export function decode_property_ID(str: string): string {
-	return str.replaceAll('_', ' ')
+	let decoded = str
+	for (const key in DECODE_MAP) {
+		decoded = decoded.replaceAll(key, DECODE_MAP[key])
+	}
+	return decoded
 }
 
 export function get_property_url(id: PropertyID) {

@@ -132,7 +132,7 @@ export const properties: readonly Readonly<Property>[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/locally+finitely+presentable+category',
 		description:
 			'A category is <i>locally finitely presentable</i> if it is locally essentially small*, cocomplete, and there is a set $S$ of finitely presentable objects such that every object is a filtered colimit of objects in $S$. This is the same as being locally $\\aleph_0$-presentable.<br>*Many authors assume the category to be locally small, but this is inconvenient since then locally finitely presentable categories would not be invariant under equivalences of categories.',
-		related: ['locally presentable'],
+		related: ['locally presentable', 'locally ℵ₁-presentable'],
 	},
 	{
 		id: 'locally presentable',
@@ -140,7 +140,15 @@ export const properties: readonly Readonly<Property>[] = [
 		nlab_link: 'https://ncatlab.org/nlab/show/locally+presentable+category',
 		description:
 			'Let $\\kappa$ be a regular cardinal. A category is <i>locally $\\kappa$-presentable</i> if it is locally essentially small*, cocomplete, and there is a set of $\\kappa$-presentable objects $S$ such that every object is a $\\kappa$-filtered colimit of objects in $S$. A category is <i>locally presentable</i> if it is locally $\\kappa$-presentable for some regular cardinal $\\kappa$.<br>*Many authors assume the category to be locally small, but this is inconvenient since then locally presentable categories would not be invariant under equivalences of categories.',
-		related: ['locally finitely presentable'],
+		related: ['locally finitely presentable', 'locally ℵ₁-presentable'],
+	},
+	{
+		id: 'locally ℵ₁-presentable',
+		prefix: 'is',
+		nlab_link: 'https://ncatlab.org/nlab/show/locally+presentable+category',
+		description:
+			'This is the special case of the notion of a locally $\\kappa$-presentable, where $\\kappa = \\aleph_1$ is the first uncountable cardinal.',
+		related: ['locally finitely presentable', 'locally presentable'],
 	},
 	{
 		id: 'elementary topos',

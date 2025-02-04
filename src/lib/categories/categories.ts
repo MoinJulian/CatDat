@@ -517,7 +517,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		tags: ['basic', 'geometry', 'well-behaved'],
 		properties: [
 			'locally small',
-			'locally presentable', // locally aleph_1-presentable, 4.5 in https://arxiv.org/abs/1504.02660
+			'locally ℵ₁-presentable', // 4.5 in https://arxiv.org/abs/1504.02660
 			'infinitary distributive',
 			'cogenerator',
 			'disjoint coproducts',

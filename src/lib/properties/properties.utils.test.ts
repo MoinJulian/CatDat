@@ -27,6 +27,12 @@ describe('encode_property_ID', () => {
 	it("should return 'abelian' for 'abelian'", () => {
 		expect(encode_property_ID('abelian')).toBe('abelian')
 	})
+
+	it("should return 'locally aleph1-presentable'", () => {
+		expect(encode_property_ID('locally ℵ₁-presentable')).toBe(
+			'locally_aleph1-presentable',
+		)
+	})
 })
 
 describe('decode_property_ID', () => {
@@ -36,6 +42,12 @@ describe('decode_property_ID', () => {
 
 	it("should return 'abelian' for 'abelian'", () => {
 		expect(decode_property_ID('abelian')).toBe('abelian')
+	})
+
+	it("should return 'locally ℵ₁-presentable'", () => {
+		expect(decode_property_ID('locally_aleph1-presentable')).toBe(
+			'locally ℵ₁-presentable',
+		)
 	})
 })
 

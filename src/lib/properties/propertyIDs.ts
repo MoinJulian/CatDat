@@ -14,6 +14,7 @@ export const PROPERTY_IDs = [
 	'pointed',
 	'locally finitely presentable',
 	'locally presentable',
+	'locally ℵ₁-presentable',
 	'elementary topos',
 	'Grothendieck topos',
 	'well-powered',

@@ -327,6 +327,16 @@ export const implications: readonly Readonly<Implication>[] = [
 		reason: 'This follows from <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Thm. 1.64.',
 	},
 	{
+		assumptions: ['locally finitely presentable'],
+		conclusions: ['locally ℵ₁-presentable'],
+		reason: 'trivial',
+	},
+	{
+		assumptions: ['locally ℵ₁-presentable'],
+		conclusions: ['locally presentable'],
+		reason: 'trivial',
+	},
+	{
 		assumptions: ['finitary algebraic'],
 		conclusions: ['locally finitely presentable'],
 		reason: '<a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Cor. 3.7',
