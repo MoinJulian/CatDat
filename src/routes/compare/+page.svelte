@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment'
 	import { goto } from '$app/navigation'
 	import { max_categories, storage_key } from './compare.config'
-	import Controls from '$lib/components/Controls.svelte'
+	import CategoriesInput from '$lib/components/CategoriesInput.svelte'
 
 	let { data } = $props()
 	const categories = data.categories
@@ -10,12 +10,10 @@
 	const category_names = categories.map((category) => category.name)
 
 	function get_saved_category_names(): string[] {
-		const default_names = ['', '']
-
-		if (!browser) return default_names
+		if (!browser) return []
 
 		const names_string = window.sessionStorage.getItem(storage_key)
-		if (!names_string) return default_names
+		if (!names_string) return []
 
 		try {
 			const parsed_names: unknown = JSON.parse(names_string)
@@ -23,13 +21,13 @@
 				Array.isArray(parsed_names) &&
 				parsed_names.every((name) => typeof name === 'string')
 
-			return is_valid ? parsed_names : default_names
+			return is_valid ? parsed_names : []
 		} catch {
-			return default_names
+			return []
 		}
 	}
 
-	const selected_category_names: string[] = $state(get_saved_category_names())
+	let selected_category_names: string[] = $state(get_saved_category_names())
 
 	$effect(() => {
 		if (!browser) return
@@ -51,16 +49,6 @@
 
 		goto(`/compare/${path}`)
 	}
-
-	function add_name() {
-		if (selected_category_names.length === max_categories) return
-		selected_category_names.push('')
-	}
-
-	function remove_name() {
-		if (selected_category_names.length <= 1) return
-		selected_category_names.pop()
-	}
 </script>
 
 <svelte:head>
@@ -69,48 +57,12 @@
 
 <h2>Choose categories for comparison</h2>
 
-{#each selected_category_names as name, i}
-	<div class="input-group">
-		<label for="name_{i + 1}">Category {i + 1}</label>
-		<input
-			id="name_{i + 1}"
-			type="text"
-			list="category-list"
-			bind:value={selected_category_names[i]}
-			required
-			aria-invalid={name.length > 0 && !category_names.includes(name)}
-		/>
-	</div>
-{/each}
-
-<datalist id="category-list">
-	{#each categories as category}
-		<option value={category.name}>{category.name}</option>
-	{/each}
-</datalist>
-
-<Controls
-	add={add_name}
-	remove={remove_name}
-	add_disabled={selected_category_names.length === max_categories}
-	remove_disabled={selected_category_names.length <= 1}
+<CategoriesInput
+	{category_names}
+	aria_label="categories to conpare"
+	bind:selected_category_names
 />
 
 <p>
 	<button class="button" onclick={compare_categories}>Compare</button>
 </p>
-
-<style>
-	label {
-		display: block;
-		margin-bottom: 0.25rem;
-	}
-
-	input {
-		width: min(100%, 25rem);
-	}
-
-	.input-group {
-		margin-block: 1.5rem;
-	}
-</style>
