@@ -134,7 +134,7 @@ input[type='text']:focus-visible {
 }
 
 input[type='text'][aria-invalid='true'] {
-	border-color: var(-error-color);
+	border-color: var(--error-color);
 }
 
 button {
