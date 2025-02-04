@@ -15,6 +15,7 @@ type CategoryTag =
 	| 'algebra'
 	| 'algebraic geometry'
 	| 'topology'
+	| 'analysis'
 	| 'order theory'
 	| 'measure theory'
 	| 'geometry'

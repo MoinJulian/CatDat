@@ -567,6 +567,31 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		},
 	},
 	{
+		id: 'Ban',
+		name: 'category of Banach spaces with linear contractions',
+		notation: '$\\mathbf{Ban}$',
+		nlab_link: 'https://ncatlab.org/nlab/show/Banach+space',
+		objects: 'Banach spaces over $\\mathbb{C}$',
+		morphisms: 'linear contractions, i.e. linear maps of norm $\\leq 1$',
+		description:
+			'The choice of morphisms is similar to that of $\\mathbf{Met}$ which yields the best categorical properties.',
+		related: ['Met'],
+		tags: ['intermediate', 'analysis', 'well-behaved'],
+		properties: [
+			'locally small',
+			'pointed',
+			'locally ℵ₁-presentable', // Example 1.48 in Adamek-Rosicky
+			'disjoint coproducts',
+			'cogenerator', // Hahn-Banach shows that IC is one
+		],
+		non_properties: ['preadditive', 'balanced', 'exact filtered colimits'],
+		special_morphisms: {
+			isomorphisms: 'bijective linear isometries',
+			monomorphisms: 'injective linear contractions',
+			epimorphisms: 'linear contractions with dense image',
+		},
+	},
+	{
 		id: 'Man',
 		name: 'category of smooth manifolds',
 		notation: '$\\mathbf{Man}$',
