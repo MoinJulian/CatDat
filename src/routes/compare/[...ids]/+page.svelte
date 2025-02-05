@@ -52,7 +52,7 @@
 			{#each compared_categories as category}
 				<th>
 					<a href="/category/{category.id}">
-						{category.id}
+						{@html category.notation}
 					</a>
 				</th>
 			{/each}
