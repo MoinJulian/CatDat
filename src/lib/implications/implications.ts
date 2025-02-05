@@ -303,6 +303,11 @@ export const implications: readonly Readonly<Implication>[] = [
 		conclusions: ['cocomplete'],
 		reason: 'The supremum of a subset in a (small) partial order is the infimum of the set of upper bounds.',
 	},
+	{
+		assumptions: ['essentially small', 'thin', 'complete', 'distributive'],
+		conclusions: ['cartesian closed'],
+		reason: 'This is an application of the adjoint functor theorem. Specifically, if $P$ is a complete lattice in which $\\sup_i \\inf(t,x_i) = \\inf(t, \\sup_i y_i)$ always holds, then the functor $\\int(t,-)$ is a left adjoint because it preserves all suprema.',
+	},
 	// locally presentable categories
 	{
 		assumptions: ['locally presentable'],
