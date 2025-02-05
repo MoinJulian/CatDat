@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
 	import { goto } from '$app/navigation'
+	import Selection from '$lib/components/Selection.svelte'
 	import { max_categories, storage_key } from './compare.config'
-	import CategoriesInput from '$lib/components/CategoriesInput.svelte'
 
 	let { data } = $props()
 	const categories = data.categories
@@ -57,10 +57,11 @@
 
 <h2>Choose categories for comparison</h2>
 
-<CategoriesInput
-	{category_names}
-	aria_label="categories to conpare"
-	bind:selected_category_names
+<Selection
+	allowed_items={category_names}
+	section_label="selected categories"
+	item_label="category"
+	bind:selected_items={selected_category_names}
 />
 
 <p>

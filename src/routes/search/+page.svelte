@@ -3,16 +3,21 @@
 
 	import CategoryList from '$lib/components/CategoryList.svelte'
 	import { encode_property_ID } from '$lib/properties/properties.utils'
-	import { is_valid_property, type PropertyID } from '$lib/properties/propertyIDs'
+	import {
+		is_valid_property,
+		PROPERTY_IDs,
+		type PropertyID,
+	} from '$lib/properties/propertyIDs'
+
 	import {
 		separator,
 		storage_key_non_properties,
 		storage_key_properties,
 	} from '$lib/categories/search'
 	import Warning from '$lib/components/Warning.svelte'
-	import PropertiesInput from '$lib/components/PropertiesInput.svelte'
 	import { concatenate_info } from '$lib/commons/utils'
 	import { browser } from '$app/environment'
+	import Selection from '$lib/components/Selection.svelte'
 
 	function get_saved_search(): [PropertyID[], PropertyID[]] {
 		if (!browser) return [[], []]
@@ -107,16 +112,20 @@
 </p>
 
 <div class="form">
-	<PropertiesInput
+	<Selection
 		title="Looking for categories with these properties:"
-		bind:selected_properties
-		aria_label="Properties"
+		bind:selected_items={selected_properties}
+		allowed_items={PROPERTY_IDs}
+		section_label="Properties"
+		item_label="Property"
 	/>
 
-	<PropertiesInput
+	<Selection
 		title="... and <i>not</i> with these properties:"
-		bind:selected_properties={selected_non_properties}
-		aria_label="Non-properties"
+		bind:selected_items={selected_non_properties}
+		allowed_items={PROPERTY_IDs}
+		section_label="Non-properties"
+		item_label="Non-property"
 	/>
 
 	<button type="button" class="button" onclick={request_search_results}>Search</button>

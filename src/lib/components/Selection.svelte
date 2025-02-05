@@ -1,51 +1,54 @@
 <script lang="ts">
-	import {
-		is_valid_property,
-		PROPERTY_IDs,
-		type PropertyID,
-	} from '$lib/properties/propertyIDs'
 	import { faPlus } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
 
 	type Props = {
 		title?: string
-		selected_properties: PropertyID[]
-		aria_label: string
+		allowed_items: readonly string[]
+		selected_items: string[]
+		section_label: string
+		item_label: string
 	}
 
-	let { title, selected_properties = $bindable(), aria_label }: Props = $props()
+	let {
+		title,
+		allowed_items,
+		selected_items: selected_items = $bindable(),
+		section_label,
+		item_label,
+	}: Props = $props()
 
-	let value: string = $state('')
-	let is_valid_value = $derived(
-		value.length === 0 ||
-			(is_valid_property(value) &&
-				!selected_properties.includes(value as PropertyID)),
+	let item: string = $state('')
+
+	let is_valid = $derived(
+		item.length === 0 ||
+			(allowed_items.includes(item) && !selected_items.includes(item)),
 	)
 
 	function handle_submit(e: SubmitEvent) {
 		e.preventDefault()
-		if (!value || !is_valid_value) return
-		selected_properties.push(value as PropertyID)
-		value = ''
+		if (!item || !is_valid) return
+		selected_items.push(item)
+		item = ''
 	}
 
-	function remove_property(property: PropertyID) {
-		selected_properties = selected_properties.filter((p) => p !== property)
+	function remove_item(item: string) {
+		selected_items = selected_items.filter((_item) => _item !== item)
 	}
 </script>
 
-<section aria-label={aria_label}>
+<section aria-label={section_label}>
 	{#if title}
 		<p>{@html title}</p>
 	{/if}
 
 	<form onsubmit={handle_submit}>
 		<input
-			aria-label="property"
-			aria-invalid={!is_valid_value}
+			aria-label={item_label}
+			aria-invalid={!is_valid}
 			type="text"
-			bind:value
-			list="property-list"
+			bind:value={item}
+			list="list-{item_label}"
 		/>
 		<button type="submit" class="button">
 			<Fa icon={faPlus} />
@@ -53,17 +56,17 @@
 	</form>
 
 	<div class="chips">
-		{#each selected_properties as property}
-			<button class="chip" onclick={() => remove_property(property)}>
-				{property}
+		{#each selected_items as selected_item}
+			<button class="chip" onclick={() => remove_item(selected_item)}>
+				{selected_item}
 			</button>
 		{/each}
 	</div>
 </section>
 
-<datalist id="property-list">
-	{#each PROPERTY_IDs as property}
-		<option value={property}>{property}</option>
+<datalist id="list-{item_label}">
+	{#each allowed_items as item}
+		<option value={item}>{item}</option>
 	{/each}
 </datalist>
 
