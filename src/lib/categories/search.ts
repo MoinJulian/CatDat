@@ -17,9 +17,14 @@ export function get_search_results(url: URL) {
 	const properties_query = url.searchParams.get('properties')
 	const non_properties_query = url.searchParams.get('non_properties')
 
+	if (!properties_query && !non_properties_query) {
+		return { is_search: false }
+	}
+
 	const properties = properties_query
 		? properties_query.split(separator).map(decode_property_ID)
 		: []
+
 	const non_properties = non_properties_query
 		? non_properties_query.split(separator).map(decode_property_ID)
 		: []
@@ -36,13 +41,8 @@ export function get_search_results(url: URL) {
 
 	if (has_contradiction) {
 		return {
+			is_search: true,
 			contradiction: true,
-			found_categories: [],
-			properties,
-			non_properties,
-			dual_found_categories: [],
-			dualized_properties: null,
-			dualized_non_properties: null,
 		}
 	}
 
@@ -53,26 +53,23 @@ export function get_search_results(url: URL) {
 	const dualized_properties = get_dual_properties(properties)
 	const dualized_non_properties = get_dual_properties(non_properties)
 
-	const is_self_dual_request =
-		JSON.stringify(properties) === JSON.stringify(dualized_properties) &&
-		JSON.stringify(non_properties) === JSON.stringify(dualized_non_properties)
+	const is_dual_search = dualized_properties != null && dualized_non_properties != null
 
-	const dual_found_categories =
-		!is_self_dual_request &&
-		dualized_properties != null &&
-		dualized_non_properties != null
-			? category_system
-					.search(dualized_properties, dualized_non_properties)
-					.map(shorten_category)
-			: []
+	const found_dualized_categories = is_dual_search
+		? category_system
+				.search(dualized_properties, dualized_non_properties)
+				.map(shorten_category)
+		: []
 
 	return {
+		is_search: true,
 		contradiction: false,
-		found_categories,
 		properties,
 		non_properties,
-		dual_found_categories,
+		found_categories,
+		is_dual_search,
 		dualized_properties,
 		dualized_non_properties,
+		found_dualized_categories,
 	}
 }

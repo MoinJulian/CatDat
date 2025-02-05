@@ -1,4 +1,10 @@
-import { group_items, is_object, sum, type NonEmptyArray } from './utils'
+import {
+	concatenate_info,
+	group_items,
+	is_object,
+	sum,
+	type NonEmptyArray,
+} from './utils'
 
 describe('group_items', () => {
 	it('should group items by id', () => {
@@ -65,5 +71,23 @@ describe('sum', () => {
 		expect(sum([1])).toBe(1)
 		expect(sum([1, 2])).toBe(3)
 		expect(sum([1, 2, 3])).toBe(6)
+	})
+})
+
+describe('concatenate_info', () => {
+	it('should return a comma-separated string for a non-empty array', () => {
+		expect(concatenate_info(['a', 'b', 'c'])).toBe('a, b, c')
+	})
+
+	it('should return "-" for an empty array', () => {
+		expect(concatenate_info([])).toBe('-')
+	})
+
+	it('should return "-" for undefined', () => {
+		expect(concatenate_info(undefined)).toBe('-')
+	})
+
+	it('should return "-" for null', () => {
+		expect(concatenate_info(null)).toBe('-')
 	})
 })

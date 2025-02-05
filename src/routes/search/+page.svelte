@@ -7,12 +7,9 @@
 	import { separator } from '$lib/categories/search.js'
 	import Warning from '$lib/components/Warning.svelte'
 	import PropertiesInput from '$lib/components/PropertiesInput.svelte'
+	import { concatenate_info } from '$lib/commons/utils.js'
 
 	let { data } = $props()
-
-	let found_categories = $derived(data.found_categories)
-	let dual_found_categories = $derived(data.dual_found_categories)
-	let contradiction = $derived(data.contradiction)
 
 	let selected_properties = $state<PropertyID[]>(data.properties ?? [])
 	let selected_non_properties = $state<PropertyID[]>(data.non_properties ?? [])
@@ -74,38 +71,37 @@
 	<button type="button" class="button" onclick={request_search_results}>Search</button>
 </div>
 
-{#if contradiction}
+{#if data.contradiction}
 	<Warning>
 		The properties and non-properties contradict each other according to the
 		<a href="/implications">implications</a>. There cannot be any search results.
 	</Warning>
 {/if}
 
-{#if found_categories}
+{#if data.is_search}
 	<section>
 		<h2>Results</h2>
 
 		<p class="hint">
-			These categories satisfy the properties ({data.properties?.join(', ') || '-'})
-			resp. non-properties ({data.non_properties?.join(', ') || '-'}).
+			These categories satisfy the properties ({concatenate_info(data.properties)})
+			resp. non-properties ({concatenate_info(data.non_properties)}).
 		</p>
 
-		<CategoryList items={found_categories} />
+		<CategoryList items={data.found_categories ?? []} />
 	</section>
 {/if}
 
-{#if dual_found_categories?.length}
+{#if data.is_dual_search}
 	<section>
 		<h2>Results for dual search</h2>
 
 		<p class="hint">
-			These categories satisfy the dual properties ({data.dualized_properties?.join(
-				', ',
-			) || '-'}) resp. non-properties ({data.dualized_non_properties?.join(', ') ||
-				'-'}).
+			These categories satisfy the dual properties ({concatenate_info(
+				data.dualized_properties,
+			)}) resp. non-properties ({concatenate_info(data.dualized_non_properties)}).
 		</p>
 
-		<CategoryList items={dual_found_categories} />
+		<CategoryList items={data.found_dualized_categories ?? []} />
 	</section>
 {/if}
 

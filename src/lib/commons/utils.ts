@@ -16,3 +16,7 @@ export function is_object(obj: unknown): obj is Record<string, unknown> {
 }
 
 export const sum = (arr: number[]) => arr.reduce((a, b) => a + b, 0)
+
+export function concatenate_info(items: string[] | undefined | null) {
+	return items?.join(', ') || '-'
+}
