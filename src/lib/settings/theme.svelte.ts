@@ -1,6 +1,6 @@
 import { browser } from '$app/environment'
 
-export const THEMES = ['light', 'dark'] as const
+export const THEMES = ['light', 'dark', 'pink'] as const
 
 export type Theme = (typeof THEMES)[number]
 
@@ -11,7 +11,7 @@ export function get_saved_theme(): Theme {
 
 	const saved_theme = document.body.getAttribute('data-theme')
 
-	if (saved_theme === 'light' || saved_theme === 'dark') {
+	if (saved_theme === 'light' || saved_theme === 'dark' || saved_theme === 'pink') {
 		return saved_theme
 	}
 
