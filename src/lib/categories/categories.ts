@@ -666,7 +666,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 		morphisms: 'a unique morphism $(n,m) : n \\to m$ if $n \\leq m$',
 		description:
 			'This can also be seen as the path category of the infinite linear graph $\\bullet \\to \\bullet \\to \\bullet \\to \\cdots$.',
-		related: ['On'],
+		related: ['On', 'real_interval'],
 		tags: ['basic'],
 		properties: [
 			'small',
@@ -1240,6 +1240,30 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			isomorphisms: 'natural isomorphisms',
 			monomorphisms: 'pointwise injective natural transformations',
 			epimorphisms: 'pointwise surjective natural transformations',
+		},
+	},
+	{
+		id: 'real_interval',
+		name: 'partial order [0,1]',
+		notation: '$([0,1],\\leq)$',
+		nlab_link: 'https://ncatlab.org/nlab/show/interval',
+		objects: 'real numbers between $0$ and $1$',
+		morphisms: 'a unique morphism $(s,t) : s \\to t$ when $s \\leq t$',
+		description:
+			'Every partial order can be regarded as a thin category. This is a specific example. This category is locally $\\aleph_1$-presentable (in fact, <i>every</i> object is $\\aleph_1$-presentable), but not locally finitely presentable (in fact, only $0$ is finitely presentable).',
+		related: ['N'],
+		tags: ['basic', 'analysis', 'well-behaved'],
+		properties: [
+			'small',
+			'self-dual', // take x -> 1-x
+			'distributive',
+			'locally ℵ₁-presentable', // https://math.stackexchange.com/questions/4481902/locally-presentable-vs-compactly-presentable-categories#comment9399784_4482185
+		],
+		non_properties: ['essentially finite', 'locally finitely presentable'],
+		special_morphisms: {
+			isomorphisms: 'only the identity morphisms',
+			monomorphisms: 'every morphism',
+			epimorphisms: 'every morphism',
 		},
 	},
 ]
