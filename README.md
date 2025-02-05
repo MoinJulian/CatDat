@@ -13,7 +13,7 @@ _A comprehensive and searchable database of categories and their properties_
 
 ## 🚀 Features
 
-- 🔍 **Searchable Database**: Easily find categories based on properties and non-properties.
+- 🔍 **Searchable Database**: Easily find [categories](https://en.wikipedia.org/wiki/Category_theory) based on properties and non-properties.
 - 🧠 **Deduction System**: Automatically infers properties from existing ones, powered by a database of implications.
 - 📝 **Reason/Reference for Implications**: Each implication has a reason/reference, providing a data-based knowledge base of category theory.
 - 🔄 **Automatic Dualization**: Automatically dualizes implications.
