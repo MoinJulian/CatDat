@@ -1,11 +1,5 @@
 import { DeductionSystem } from './DeductionSystem'
 
-const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
-
-beforeEach(() => {
-	consoleSpy.mockClear()
-})
-
 describe('constructor', () => {
 	it('should throw an error when an unknown property appears in a rule', () => {
 		expect(() => {
@@ -205,7 +199,7 @@ describe('get_basic_consistent_combinations', () => {
 	})
 })
 
-describe('check_redundancy', () => {
+describe('get_redundancy', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 		[
@@ -217,38 +211,33 @@ describe('check_redundancy', () => {
 
 	deductionSystem.init()
 
-	it('should return false for the empty set', () => {
-		const result = deductionSystem.check_redundancy(new Set([]))
-		expect(result).toBe(false)
-		expect(consoleSpy).not.toHaveBeenCalled()
+	it('should return null for the empty set', () => {
+		const result = deductionSystem.get_redundancy(new Set([]))
+		expect(result).toBe(null)
 	})
 
-	it("should return false for 'a'", () => {
-		const result = deductionSystem.check_redundancy(new Set(['a']))
-		expect(result).toBe(false)
-		expect(consoleSpy).not.toHaveBeenCalled()
+	it("should return null for 'a'", () => {
+		const result = deductionSystem.get_redundancy(new Set(['a']))
+		expect(result).toBe(null)
 	})
 
-	it("should return true for 'a' and 'b'", () => {
-		const result = deductionSystem.check_redundancy(new Set(['a', 'b']))
-		expect(result).toBe(true)
-		expect(consoleSpy).toHaveBeenCalledWith('b is redundant')
+	it("should return 'b' for 'a' and 'b'", () => {
+		const result = deductionSystem.get_redundancy(new Set(['a', 'b']))
+		expect(result).toBe('b')
 	})
 
-	it("should return true for 'a' and 'c'", () => {
-		const result = deductionSystem.check_redundancy(new Set(['a', 'c']))
-		expect(result).toBe(true)
-		expect(consoleSpy).toHaveBeenCalledWith('c is redundant')
+	it("should return 'c' for 'a' and 'c'", () => {
+		const result = deductionSystem.get_redundancy(new Set(['a', 'c']))
+		expect(result).toBe('c')
 	})
 
-	it("should return false for 'a' and 'd'", () => {
-		const result = deductionSystem.check_redundancy(new Set(['a', 'd']))
-		expect(result).toBe(false)
-		expect(consoleSpy).not.toHaveBeenCalled()
+	it("should return null for 'a' and 'd'", () => {
+		const result = deductionSystem.get_redundancy(new Set(['a', 'd']))
+		expect(result).toBe(null)
 	})
 })
 
-describe('check_redundancy_of_negations', () => {
+describe('get_redundancy_of_negations', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
 		[
@@ -260,22 +249,20 @@ describe('check_redundancy_of_negations', () => {
 
 	deductionSystem.init()
 
-	it("should return false for 'a' and 'not e'", () => {
-		const result = deductionSystem.check_redundancy_of_negations(
+	it("should return null for 'a' and 'not e'", () => {
+		const result = deductionSystem.get_redundancy_of_negations(
 			new Set(['a']),
 			new Set(['e']),
 		)
-		expect(result).toBe(false)
-		expect(consoleSpy).not.toHaveBeenCalled()
+		expect(result).toBe(null)
 	})
 
-	it("should return false for 'a' and 'not e' and 'not d'", () => {
-		const result = deductionSystem.check_redundancy_of_negations(
+	it("should return 'd' for 'a' and 'not e' and 'not d'", () => {
+		const result = deductionSystem.get_redundancy_of_negations(
 			new Set(['a']),
 			new Set(['d', 'e']),
 		)
-		expect(result).toBe(true)
-		expect(consoleSpy).toHaveBeenCalledWith('d is redundant')
+		expect(result).toBe('d')
 	})
 })
 describe('relevant rules', () => {

@@ -104,7 +104,7 @@ export class DeductionSystem<T extends string> {
 		return deduced_negations
 	}
 
-	public check_redundancy(assumptions: Set<T>): boolean {
+	public get_redundancy(assumptions: Set<T>): T | null {
 		const deductions = this.get_deductions(assumptions)
 
 		for (const assumption of assumptions) {
@@ -113,18 +113,14 @@ export class DeductionSystem<T extends string> {
 			const reduced_deductions = this.get_deductions(reduced_assumptions)
 
 			if (reduced_deductions.size === deductions.size) {
-				console.warn(`${assumption} is redundant`)
-				return true
+				return assumption
 			}
 		}
 
-		return false
+		return null
 	}
 
-	public check_redundancy_of_negations(
-		assumptions: Set<T>,
-		negations: Set<T>,
-	): boolean {
+	public get_redundancy_of_negations(assumptions: Set<T>, negations: Set<T>): T | null {
 		const deduced_assumptions = this.get_deductions(assumptions)
 		const deduced_negations = this.get_deduced_negations(
 			deduced_assumptions,
@@ -139,11 +135,10 @@ export class DeductionSystem<T extends string> {
 				reduced_negations,
 			)
 			if (reduced_deduced_negations.size === deduced_negations.size) {
-				console.warn(`${negation} is redundant`)
-				return true
+				return negation
 			}
 		}
-		return false
+		return null
 	}
 
 	public has_contradiction(assumptions: Set<T>, negations: Set<T>): boolean {

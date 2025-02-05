@@ -97,19 +97,18 @@ describe('negate_prefix', () => {
 describe('property_deduction_system', () => {
 	for (const category of categories) {
 		it(`should have no redundancy for the properties of: ${category.name}`, () => {
-			const has_redundancy = property_deduction_system.check_redundancy(
+			const redundancy = property_deduction_system.get_redundancy(
 				new Set(category.properties),
 			)
-			expect(has_redundancy).toBe(false)
+			expect(redundancy).toBe(null)
 		})
 
 		it(`should have no redundancy for the non-properties of: ${category.name}`, () => {
-			const has_redundancy =
-				property_deduction_system.check_redundancy_of_negations(
-					new Set(category.properties),
-					new Set(category.non_properties),
-				)
-			expect(has_redundancy).toBe(false)
+			const redundancy = property_deduction_system.get_redundancy_of_negations(
+				new Set(category.properties),
+				new Set(category.non_properties),
+			)
+			expect(redundancy).toBe(null)
 		})
 	}
 })
