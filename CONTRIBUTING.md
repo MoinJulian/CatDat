@@ -1,60 +1,71 @@
-# How to contribute
+# 🤝 How to Contribute
 
-There are three options to contribute.
+There are three ways to contribute:
 
-- [Create an issue](#option-1-create-an-issue)
-- [Create a pull request](#option-2-create-a-pull-request)
-- [Submit our Google form](#option-3-submit-our-google-form)
+- [🐛 Create an Issue](#option-1-create-an-issue)
+- [🛠️ Create a Pull Request](#option-2-create-a-pull-request)
+- [📩 Submit Our Google Form](#option-3-submit-our-google-form)
 
-## Option 1: Create an issue
+## Option 1: Create an Issue 🐛
 
-In case you want to report an issue with _CatDat_, or want to add some data but don't feel comfortable with providing a pull request, you may [**create an issue**](https://github.com/ScriptRaccoon/CatDat/issues). For this, you need a GitHub account.
+If you want to report an issue with _CatDat_ or add data but don't feel comfortable creating a pull request, you can [**create an issue**](https://github.com/ScriptRaccoon/CatDat/issues). You will need a GitHub account for this.
 
-1. In case you want add a [**category**](https://catdat.netlify.app/categories), include its defintion (objects, morphisms), and make sure to specify as many properties and as many non-properties of this category as possible. For this you may use the [list of available properties](https://catdat.netlify.app/properties).
+1. **Adding a Category**: Include its definition (objects, morphisms) and specify as many properties and non-properties of this category as possible. You can use the [list of available properties](https://catdat.netlify.app/properties) for reference.
 
-2. In case you want to add a new [**property**](https://catdat.netlify.app/properties), include its definition, and if possible indicate which of the existing categories have this property, and which ones do not. Also try to list the implications that involve this property (for example, when adding the property `abelian`, you need to add `abelian => additive`, etc.)
+2. **Adding a Property**: Include its definition and, if possible, indicate which existing categories have this property and which do not. Also, list the implications involving this property (e.g., when adding the property `abelian`, include `abelian => additive`, etc.).
 
-3. In case you want to add a new [**implication**](https://catdat.netlify.app/implications), make sure that it cannot be deduced from existing implications. In case an implication uses properties that are not yet in the database, add these properties as well (see item 2).
+3. **Adding an Implication**: Ensure that the implication cannot be deduced from existing implications. If the implication involves properties not yet in the database, add these properties as well (see item 2).
 
 For any non-trivial results, please provide a proof or a reference.
 
-## Option 2: Create a pull request
+## Option 2: Create a Pull Request 🛠️
 
-Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). For this, you need a GitHub account.
+Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You will need a GitHub account for this.
 
-- To add a new category, edit the file [categories.ts](src/lib/categories/categories.ts). Check out the [example commit](https://github.com/ScriptRaccoon/CatDat/commit/236eeb033b0f78bafc5a58c1e84989b2c7767399).
-- To add a new property, edit the file [properties.ts](src/lib/properties/properties.ts). Check out the [example commit](https://github.com/ScriptRaccoon/CatDat/commit/43ba7f544fd3b1c8d76e9700fccaccc5ed21b0b3).
-- To add a new implication, edit the file [implications.ts](src/lib/implications/implications.ts). Check out the [example commit](https://github.com/ScriptRaccoon/CatDat/commit/44f023dd0b6946a11256bf6b0aeb6d7c20c0da90).
+### Adding a New Category
 
-See [this documentation](/docs/database.md) why we don't use a database.
+- Edit the file [categories.ts](src/lib/categories/categories.ts).
+- Refer to this [example commit](https://github.com/ScriptRaccoon/CatDat/commit/236eeb033b0f78bafc5a58c1e84989b2c7767399) for guidance.
 
-For new data, follow these guidelines:
+### Adding a New Property
 
-- When adding new data (categories, properties, implications), stick to the format indicated by the existing data. This is also enforced by the types and tests.
+- Edit the file [properties.ts](src/lib/properties/properties.ts).
+- Refer to this [example commit](https://github.com/ScriptRaccoon/CatDat/commit/43ba7f544fd3b1c8d76e9700fccaccc5ed21b0b3) for guidance.
 
-- Only "atomic" implications are allowed. Do not add implications that can be deduced from others (like "complete => finite products", using the two implications "complete => finitely complete => finite products"). They are deduced automatically. Also, implications are dualized automatically when applicable, which means you don't need to add them.
+### Adding a New Implication
 
-- When a new property is added, add all the implications that involve this new property alongside the existing properties. For example, by adding the property "countable products", please add the implication "countable products => finite products". If possible, refactor the existing implications with it. When done properly, for most categories it will then be inferred if the property holds or not.
+- Edit the file [implications.ts](src/lib/implications/implications.ts).
+- Refer to this [example commit](https://github.com/ScriptRaccoon/CatDat/commit/44f023dd0b6946a11256bf6b0aeb6d7c20c0da90) for guidance.
 
-- Only add those properties and non-properties to a category which cannot be deduced from the other ones. This is enforced with a unit test. For example, when a category is complete, add the property 'complete', but don't add the property 'terminal object'. The deduction system inside of _CatDat_ does this automatically.
+For more information on why we don't use a traditional database, see [this documentation](/docs/database.md).
 
-- When a new property is added, for every existing category try to find a proof if that category has this new property or not, but only in case it cannot be deduced from existing ones.
+### Guidelines for Adding New Data
 
-- When a new property is added, you have to make sure that at least one category does not satisfy it (otherwise, it would not be interesting). This is enforced with a unit test, actually. If none of the existing categories fits, you need to add a new category that does not have the new property.
+When contributing new data (categories, properties, implications), please follow these guidelines:
 
-- Try to reduce the unknown properties of the categories in the database. Use the page with missing data to detect these.
+- **Consistency**: Stick to the format indicated by the existing data. This is enforced by the types and tests.
 
-- When a new implication is added, check if it simplifies existing implications, and also if it makes some properties and non-properties in the list of categories redundant.
+- **Atomic Implications**: Only add "atomic" implications. Do not add implications that can be deduced from others. For example, do not add "complete => finite products" if it can be deduced from "complete => finitely complete" and "finitely complete => finite products". These are deduced automatically. Implications are also dualized automatically when applicable.
 
-- Try to add new categories that satisfy combinations of properties and non-properties which are not in the database yet. For example (in case it's not there yet), you might add a category which is abelian, but neither cocomplete nor essentially small.
+- **New Properties**: When adding a new property, include all implications involving this property and existing properties. For example, when adding "countable products", also add "countable products => finite products". Refactor existing implications if necessary. Ensure that for most categories, it will be inferred if the property holds or not.
 
-- Do not add negated properties to the database of properties. For example, "large" (as the negation of "small") is not allowed. When a category should be registered as large, simply add "small" to its list of non-properties. As a rule of thumb, every registered property should be satisfied by the trivial category.
+- **Non-Deducible Properties**: Only add properties and non-properties to a category that cannot be deduced from other properties. This is enforced with a unit test. For example, if a category is complete, add the property 'complete', but do not add 'terminal object'. The deduction system handles this automatically.
 
-- In your pull request, provide proofs for the non-obvious new claims, in particular with regards to the properties of very special categories.
+- **Proofs for New Properties**: For every new property, try to find a proof for whether each existing category has this property or not, unless it can be deduced from existing properties.
 
-For feature requests and issues, please be as detailed as possible.
+- **Counterexamples**: Ensure that at least one category does not satisfy any new property added. This is enforced with a unit test. If no existing category fits, add a new category that does not have the new property.
 
-## Option 3: Submit our Google Form
+- **Reduce Unknowns**: Aim to reduce the number of unknown properties of categories in the database. Use the page with missing data to identify these.
+
+- **Simplify Implications**: When adding a new implication, check if it simplifies existing implications and if it makes some properties and non-properties in the list of categories redundant.
+
+- **New Categories**: Add new categories that satisfy combinations of properties and non-properties not yet in the database. For example, you may add a category that is abelian but neither cocomplete nor essentially small if it is not already present.
+
+- **Positive Properties**: Do not add negated properties to the database. For example, do not add "large" as the negation of "small". Instead, add "small" to the list of non-properties for a category. As a rule of thumb, every registered property should be satisfied by the trivial category.
+
+- **Proofs for Claims**: Provide proofs for non-obvious new claims, especially regarding the properties of very special categories, in your pull request.
+
+## Option 3: Submit our Google Form 📩
 
 The Google Form is the least technical way to submit new categories, properties, and implications. Issues and feature request may be submitted as well. This option does not require any knowledge of GitHub or coding, making it accessible to everyone.
 
