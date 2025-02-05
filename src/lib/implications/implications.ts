@@ -298,6 +298,11 @@ export const implications: readonly Readonly<Implication>[] = [
 		conclusions: ['connected'],
 		reason: 'trivial',
 	},
+	{
+		assumptions: ['essentially small', 'thin', 'complete'],
+		conclusions: ['cocomplete'],
+		reason: 'The supremum of a subset in a (small) partial order is the infimum of the set of upper bounds.',
+	},
 	// locally presentable categories
 	{
 		assumptions: ['locally presentable'],

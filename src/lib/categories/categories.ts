@@ -675,7 +675,7 @@ export const categories: readonly Readonly<PreCategory>[] = [
 			'thin',
 			'wide pullbacks',
 		],
-		non_properties: ['countable coproducts', 'terminal object', 'essentially finite'],
+		non_properties: ['countable coproducts', 'essentially finite'],
 		special_morphisms: {
 			isomorphisms: 'only the identity morphisms',
 			monomorphisms: 'every morphism',
