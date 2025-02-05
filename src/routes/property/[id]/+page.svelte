@@ -27,7 +27,7 @@
 </p>
 
 {#if property.dual || property.related || property.nlab_link}
-	<ul class="dashed-list">
+	<ul>
 		{#if property.dual}
 			<li>
 				Dual property: <a href={get_property_url(property.dual)}

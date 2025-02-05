@@ -22,7 +22,7 @@
 <Tags tags={category.tags} />
 
 <section aria-label="main info">
-	<ul class="dashed-list">
+	<ul>
 		<li>
 			notation: {@html category.notation}
 		</li>
