@@ -1,11 +1,11 @@
 import type { Prefix } from './prefix.data'
 
-type Property = {
+export type Property = {
 	id: string
 	prefix: Prefix
 	nlab_link?: string
 	description: string
-	invariant: boolean
+	invariant: boolean // invariant under equivalences of categories
 }
 
 export const properties = [

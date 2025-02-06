@@ -1,9 +1,10 @@
+import type { NonEmptyArray } from '$lib/commons/utils'
 import type { PropertyID } from './properties.data'
 
 export type Implication = {
 	equivalent?: boolean
-	assumptions: PropertyID[]
-	conclusions: PropertyID[]
+	assumptions: NonEmptyArray<PropertyID>
+	conclusions: NonEmptyArray<PropertyID>
 	reason: string
 }
 
