@@ -2,10 +2,10 @@ import { categories } from '$lib/data/categories.data'
 import { category_non_properties } from '$lib/data/category-non-properties.data'
 import { category_properties } from '$lib/data/category-properties.data'
 import { implications } from '$lib/data/implications.data'
+import { PREFIXES } from '$lib/data/prefix.data'
 import { properties } from '$lib/data/properties.data'
 import { property_duals } from '$lib/data/property-duals.data'
 import { tags } from '$lib/data/tags.data'
-import { PREFIX_CONFIG } from '$lib/properties/properties.utils'
 
 describe('tags', () => {
 	it('are unique', () => {
@@ -159,11 +159,12 @@ describe('properties of categories', () => {
 		expect(ids).toEqual([...new Set(ids)])
 	})
 
-	it('should have IDs without prefixes', () => {
+	it('should have IDs without prefixes and underscores', () => {
 		const ids = properties.map((property) => property.id)
-		for (const name of ids) {
-			for (const prefix in Object.keys(PREFIX_CONFIG)) {
-				expect(name.startsWith(prefix)).toBe(false)
+		for (const id of ids) {
+			expect(id).not.toContain('_')
+			for (const prefix in Object.keys(PREFIXES)) {
+				expect(id.startsWith(prefix)).toBe(false)
 			}
 		}
 	})
