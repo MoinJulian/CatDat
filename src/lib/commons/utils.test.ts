@@ -2,6 +2,7 @@ import {
 	concatenate_info,
 	group_items,
 	is_object,
+	select,
 	sum,
 	type NonEmptyArray,
 } from './utils'
@@ -89,5 +90,28 @@ describe('concatenate_info', () => {
 
 	it('should return "-" for null', () => {
 		expect(concatenate_info(null)).toBe('-')
+	})
+})
+
+describe('select', () => {
+	it('should select specified properties from objects', () => {
+		const data = [
+			{ id: 1, name: 'Alice', age: 30 },
+			{ id: 2, name: 'Bob', age: 25 },
+		]
+		const result = select(data, ['id', 'name'])
+		expect(result).toEqual([
+			{ id: 1, name: 'Alice' },
+			{ id: 2, name: 'Bob' },
+		])
+	})
+
+	it('should return empty objects when no properties are specified', () => {
+		const data = [
+			{ id: 1, name: 'Alice', age: 30 },
+			{ id: 2, name: 'Bob', age: 25 },
+		]
+		const result = select(data, [])
+		expect(result).toEqual([{}, {}])
 	})
 })
