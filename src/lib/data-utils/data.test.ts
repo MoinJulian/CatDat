@@ -1,3 +1,6 @@
+// This file is testing all the files in the data folder.
+// We put it here to not clutter the data folder with test files.
+
 import { categories } from '$lib/data/categories.data'
 import { category_non_properties } from '$lib/data/category-non-properties.data'
 import { category_properties } from '$lib/data/category-properties.data'
