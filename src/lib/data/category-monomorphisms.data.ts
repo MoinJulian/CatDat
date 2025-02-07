@@ -1,7 +1,7 @@
 import type { CategoryID } from './categories.data'
 import type { DescriptionWithReason } from './category-isomorphisms.data'
 
-export const category_monomorphisms: Readonly<
+export const CATEGORY_MONOMORPHISMS: Readonly<
 	Partial<Record<CategoryID, DescriptionWithReason>>
 > = {
 	'0': {

@@ -8,7 +8,7 @@ export type Implication = {
 	reason: string
 }
 
-export const implications: Implication[] = [
+export const IMPLICATIONS: Implication[] = [
 	// size constraints
 	{
 		assumptions: ['small'],

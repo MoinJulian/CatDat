@@ -3,17 +3,17 @@ import type { PageServerLoad } from './$types'
 
 import { render_formulas_in_object } from '$lib/commons/rendering'
 import { type CategoryID } from '$lib/data/categories.data'
-import { category_relations } from '$lib/data/category-relations.data'
+import { CATEGORY_RELATIONS } from '$lib/data/category-relations.data'
 import {
 	categories_dictionary,
 	is_valid_category,
 	properties_dictionary,
 } from '$lib/utils/data.helpers'
 import { select } from '$lib/commons/utils'
-import { category_tags } from '$lib/data/category-tags.data'
-import { category_monomorphisms } from '$lib/data/category-monomorphisms.data'
-import { category_epimorphisms } from '$lib/data/category-epimorphisms.data'
-import { category_isomorphisms } from '$lib/data/category-isomorphisms.data'
+import { CATEGORY_TAGS } from '$lib/data/category-tags.data'
+import { CATEGORY_MONOMORPHISMS } from '$lib/data/category-monomorphisms.data'
+import { CATEGORY_EPIMORPHISMS } from '$lib/data/category-epimorphisms.data'
+import { CATEGORY_ISOMORPHISMS } from '$lib/data/category-isomorphisms.data'
 import { categories_with_deduced_properties_dictionary } from '$lib/utils/deductions'
 
 export const load: PageServerLoad = (event) => {
@@ -23,9 +23,9 @@ export const load: PageServerLoad = (event) => {
 	if (!is_valid) return error(404, 'Invalid category ID')
 
 	const category = categories_dictionary[id]
-	const tags = category_tags[id]
+	const tags = CATEGORY_TAGS[id]
 
-	const related_category_ids = category_relations[id] ?? []
+	const related_category_ids = CATEGORY_RELATIONS[id] ?? []
 
 	const related_categories = select(
 		related_category_ids.map((related_id) => categories_dictionary[related_id]),
@@ -34,9 +34,9 @@ export const load: PageServerLoad = (event) => {
 
 	const deductions = categories_with_deduced_properties_dictionary[id]
 
-	const isomorphisms = category_isomorphisms[id as CategoryID]
-	const monomorphisms = category_monomorphisms[id as CategoryID]
-	const epimorphisms = category_epimorphisms[id as CategoryID]
+	const isomorphisms = CATEGORY_ISOMORPHISMS[id as CategoryID]
+	const monomorphisms = CATEGORY_MONOMORPHISMS[id as CategoryID]
+	const epimorphisms = CATEGORY_EPIMORPHISMS[id as CategoryID]
 
 	return {
 		category: render_formulas_in_object(category),

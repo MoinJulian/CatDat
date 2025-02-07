@@ -1,6 +1,6 @@
 import type { PropertyID } from './properties.data'
 
-export const property_relations: Partial<Record<PropertyID, PropertyID[]>> = {
+export const PROPERTY_RELATIONS: Partial<Record<PropertyID, PropertyID[]>> = {
 	'small': ['essentially small'],
 	'locally small': ['locally essentially small'],
 	'locally essentially small': ['locally small'],

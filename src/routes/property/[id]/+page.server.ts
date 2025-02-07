@@ -2,8 +2,8 @@ import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 import { render_formulas_in_object } from '$lib/commons/rendering'
-import { property_relations } from '$lib/data/property-relations.data'
-import { property_duals } from '$lib/data/property-duals.data'
+import { PROPERTY_RELATIONS } from '$lib/data/property-relations.data'
+import { PROPERTY_DUALS } from '$lib/data/property-duals.data'
 import { decode_property_ID } from '$lib/commons/property.url'
 import {
 	categories_dictionary,
@@ -20,8 +20,8 @@ export const load: PageServerLoad = (event) => {
 	if (!is_valid) return error(404, 'Property not found')
 
 	const property = properties_dictionary[id]
-	const dual_property = property_duals[id] ?? null
-	const related_properties = property_relations[id] ?? []
+	const dual_property = PROPERTY_DUALS[id] ?? null
+	const related_properties = PROPERTY_RELATIONS[id] ?? []
 
 	const categories_with_this_property = category_system
 		.search([id], [])

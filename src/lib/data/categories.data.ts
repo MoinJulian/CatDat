@@ -8,9 +8,9 @@ export type Category = {
 	description?: string
 }
 
-export type CategoryID = (typeof categories)[number]['id']
+export type CategoryID = (typeof CATEGORIES)[number]['id']
 
-export const categories = [
+export const CATEGORIES = [
 	{
 		id: 'Set',
 		name: 'category of sets',

@@ -2,7 +2,7 @@ import type { NonEmptyArray } from '$lib/commons/utils'
 import type { CategoryID } from './categories.data'
 import type { Tag } from './tags.data'
 
-export const category_tags: Record<CategoryID, NonEmptyArray<Tag>> = {
+export const CATEGORY_TAGS: Record<CategoryID, NonEmptyArray<Tag>> = {
 	'0': ['basic', 'badly-behaved'],
 	'1': ['basic', 'well-behaved'],
 	'2': ['basic', 'badly-behaved'],

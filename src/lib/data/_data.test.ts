@@ -1,34 +1,34 @@
 // This file is testing all the files in the present data folder.
 
-import { categories } from '$lib/data/categories.data'
-import { category_non_properties } from '$lib/data/category-non-properties.data'
-import { category_properties } from '$lib/data/category-properties.data'
-import { implications } from '$lib/data/implications.data'
+import { CATEGORIES } from '$lib/data/categories.data'
+import { CATEGORY_NON_PROPERTIES } from '$lib/data/category-non-properties.data'
+import { CATEGORY_PROPERTIES } from '$lib/data/category-properties.data'
+import { IMPLICATIONS } from '$lib/data/implications.data'
 import { PREFIXES } from '$lib/data/prefix.data'
-import { properties } from '$lib/data/properties.data'
-import { property_duals } from '$lib/data/property-duals.data'
-import { tags } from '$lib/data/tags.data'
+import { PROPERTIES } from '$lib/data/properties.data'
+import { PROPERTY_DUALS } from '$lib/data/property-duals.data'
+import { TAGS } from '$lib/data/tags.data'
 
 describe('tags', () => {
 	it('are unique', () => {
-		expect(tags).toEqual([...new Set(tags)])
+		expect(TAGS).toEqual([...new Set(TAGS)])
 	})
 })
 
 describe('list of categories', () => {
 	it('should have unique IDs', () => {
-		const ids = categories.map((category) => category.id)
+		const ids = CATEGORIES.map((category) => category.id)
 		expect(ids).toEqual([...new Set(ids)])
 	})
 
 	it('should have only IDs without spaces', () => {
-		for (const category of categories) {
+		for (const category of CATEGORIES) {
 			expect(category.id).not.toContain(' ')
 		}
 	})
 
 	it('should have unique names', () => {
-		const names = categories.map((category) => category.name)
+		const names = CATEGORIES.map((category) => category.name)
 		expect(names).toEqual([...new Set(names)])
 	})
 
@@ -43,7 +43,7 @@ describe('list of categories', () => {
 			'description',
 		]
 
-		for (const category of categories) {
+		for (const category of CATEGORIES) {
 			const keys = Object.keys(category)
 			const sorted_keys = category_keys.filter((key) => keys.includes(key))
 			expect(keys).toEqual(sorted_keys)
@@ -55,7 +55,7 @@ describe('list of satisfied properties per category', () => {
 	it('should have at most one entry per category-property pair', () => {
 		const seen = new Set<string>()
 
-		for (const { category, property } of category_properties) {
+		for (const { category, property } of CATEGORY_PROPERTIES) {
 			const pair = `${category}-${property}`
 			expect(seen.has(pair)).toBe(false)
 			seen.add(pair)
@@ -63,7 +63,7 @@ describe('list of satisfied properties per category', () => {
 	})
 
 	it('should have categories grouped together', () => {
-		const categories = category_properties.map((item) => item.category)
+		const categories = CATEGORY_PROPERTIES.map((item) => item.category)
 		const seen = new Set<string>()
 		let current = categories[0]
 
@@ -82,7 +82,7 @@ describe('list of non-satisfied properties per category', () => {
 	it('should have at most one entry per category-property pair', () => {
 		const seen = new Set<string>()
 
-		for (const { category, property } of category_non_properties) {
+		for (const { category, property } of CATEGORY_NON_PROPERTIES) {
 			const pair = `${category}-${property}`
 			expect(seen.has(pair)).toBe(false)
 			seen.add(pair)
@@ -90,7 +90,7 @@ describe('list of non-satisfied properties per category', () => {
 	})
 
 	it('should have categories grouped together', () => {
-		const categories = category_non_properties.map((item) => item.category)
+		const categories = CATEGORY_NON_PROPERTIES.map((item) => item.category)
 		const seen = new Set<string>()
 		let current = categories[0]
 
@@ -112,7 +112,7 @@ describe('implications', () => {
 			conclusions: ['finite products'],
 			reason: expect.any(String),
 		}
-		expect(implications).toContainEqual(implication)
+		expect(IMPLICATIONS).toContainEqual(implication)
 	})
 
 	it('should contain not deductions of the implications', () => {
@@ -121,7 +121,7 @@ describe('implications', () => {
 			conclusions: ['terminal object'],
 			reason: expect.any(String),
 		}
-		expect(implications).not.toContainEqual(implication)
+		expect(IMPLICATIONS).not.toContainEqual(implication)
 	})
 
 	it('should not contain basic self-dual implications', () => {
@@ -130,11 +130,11 @@ describe('implications', () => {
 			conclusions: ['binary coproducts'],
 			reason: expect.any(String),
 		}
-		expect(implications).not.toContainEqual(implication)
+		expect(IMPLICATIONS).not.toContainEqual(implication)
 	})
 
 	it('should have all properties in the same order', () => {
-		for (const implication of implications) {
+		for (const implication of IMPLICATIONS) {
 			const keys = Object.keys(implication)
 			const expected_keys =
 				'equivalent' in implication
@@ -145,7 +145,7 @@ describe('implications', () => {
 	})
 
 	it('for equivalences, the assumptions should be shorter than the conclusions', () => {
-		for (const implication of implications) {
+		for (const implication of IMPLICATIONS) {
 			if ('equivalent' in implication) {
 				expect(implication.assumptions.length).toBeLessThanOrEqual(
 					implication.conclusions.length,
@@ -157,12 +157,12 @@ describe('implications', () => {
 
 describe('properties of categories', () => {
 	it('should have unique IDs', () => {
-		const ids = properties.map((property) => property.id)
+		const ids = PROPERTIES.map((property) => property.id)
 		expect(ids).toEqual([...new Set(ids)])
 	})
 
 	it('should have IDs without prefixes and underscores', () => {
-		const ids = properties.map((property) => property.id)
+		const ids = PROPERTIES.map((property) => property.id)
 		for (const id of ids) {
 			expect(id).not.toContain('_')
 			for (const prefix in Object.keys(PREFIXES)) {
@@ -182,7 +182,7 @@ describe('properties of categories', () => {
 			'invariant',
 		]
 
-		for (const property of properties) {
+		for (const property of PROPERTIES) {
 			const keys = Object.keys(property)
 			const sorted_keys = property_keys.filter((key) => keys.includes(key))
 			const are_same = keys.every((key, index) => key === sorted_keys[index])
@@ -194,9 +194,9 @@ describe('properties of categories', () => {
 
 describe('dual properties', () => {
 	it('should dualize mutually', () => {
-		for (const key in property_duals) {
-			const dual = (property_duals as any)[key]
-			expect((property_duals as any)[dual]).toBe(key)
+		for (const key in PROPERTY_DUALS) {
+			const dual = (PROPERTY_DUALS as any)[key]
+			expect((PROPERTY_DUALS as any)[dual]).toBe(key)
 		}
 	})
 })

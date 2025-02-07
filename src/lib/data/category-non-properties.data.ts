@@ -1,6 +1,6 @@
 import type { CategoryPropertyMatch } from './category-properties.data'
 
-export const category_non_properties: CategoryPropertyMatch[] = [
+export const CATEGORY_NON_PROPERTIES: CategoryPropertyMatch[] = [
 	{ category: 'Set', property: 'strict terminal object', reason: '' },
 	{ category: 'Ab', property: 'split abelian', reason: '' },
 	{ category: 'Top', property: 'cartesian closed', reason: '' },

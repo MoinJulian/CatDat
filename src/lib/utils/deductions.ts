@@ -1,9 +1,9 @@
-import { implications } from '$lib/data/implications.data'
+import { IMPLICATIONS } from '$lib/data/implications.data'
 import type { PropertyID } from '$lib/data/properties.data'
 import { DeductionSystemWithDuals } from '$lib/logic/DeductionSystemWithDuals'
 import { get_dual_property, propertyIDs } from '$lib/utils/data.helpers'
 
-import { categories, type Category } from '$lib/data/categories.data'
+import { CATEGORIES, type Category } from '$lib/data/categories.data'
 import {
 	get_non_properties_of_category,
 	get_properties_of_category,
@@ -14,7 +14,7 @@ import type { EntityDetailed } from '$lib/logic/EntitySystem'
 
 export const property_deduction_system = new DeductionSystemWithDuals<PropertyID>(
 	new Set(propertyIDs),
-	Array.from(implications),
+	Array.from(IMPLICATIONS),
 	get_dual_property,
 )
 
@@ -28,7 +28,7 @@ export const category_system = new EntitySystemWithDuals<Category, PropertyID>(
 
 export type CategoryWithDeducedProperties = EntityDetailed<Category, PropertyID>
 
-for (const category of categories) {
+for (const category of CATEGORIES) {
 	category_system.add(
 		category,
 		new Set(get_properties_of_category(category.id)),

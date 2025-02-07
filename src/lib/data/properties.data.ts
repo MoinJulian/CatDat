@@ -8,9 +8,9 @@ export type Property = {
 	invariant?: false // invariant under equivalences of categories
 }
 
-export type PropertyID = (typeof properties)[number]['id']
+export type PropertyID = (typeof PROPERTIES)[number]['id']
 
-export const properties = [
+export const PROPERTIES = [
 	{
 		id: 'small',
 		prefix: 'is',

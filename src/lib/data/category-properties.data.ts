@@ -7,7 +7,7 @@ export type CategoryPropertyMatch = {
 	reason: string
 }
 
-export const category_properties: CategoryPropertyMatch[] = [
+export const CATEGORY_PROPERTIES: CategoryPropertyMatch[] = [
 	{ category: 'Set', property: 'locally small', reason: '' },
 	{ category: 'Set', property: 'Grothendieck topos', reason: '' },
 	{ category: 'Set', property: 'finitary algebraic', reason: '' },

@@ -1,18 +1,18 @@
 import { group_items } from '$lib/commons/utils'
-import { categories, type Category, type CategoryID } from '$lib/data/categories.data'
-import { category_non_properties } from '$lib/data/category-non-properties.data'
-import { category_properties } from '$lib/data/category-properties.data'
+import { CATEGORIES, type Category, type CategoryID } from '$lib/data/categories.data'
+import { CATEGORY_NON_PROPERTIES } from '$lib/data/category-non-properties.data'
+import { CATEGORY_PROPERTIES } from '$lib/data/category-properties.data'
 import { PREFIXES, type Prefix } from '$lib/data/prefix.data'
-import { properties, type Property, type PropertyID } from '$lib/data/properties.data'
-import { property_duals } from '$lib/data/property-duals.data'
+import { PROPERTIES, type Property, type PropertyID } from '$lib/data/properties.data'
+import { PROPERTY_DUALS } from '$lib/data/property-duals.data'
 
-export const propertyIDs = properties.map((property) => property.id)
+export const propertyIDs = PROPERTIES.map((property) => property.id)
 
-const categoryIDs = categories.map((category) => category.id)
+const categoryIDs = CATEGORIES.map((category) => category.id)
 
-export const properties_dictionary: Record<PropertyID, Property> = group_items(properties)
+export const properties_dictionary: Record<PropertyID, Property> = group_items(PROPERTIES)
 
-export const categories_dictionary: Record<CategoryID, Category> = group_items(categories)
+export const categories_dictionary: Record<CategoryID, Category> = group_items(CATEGORIES)
 
 export function negate_prefix(prefix: Prefix) {
 	return PREFIXES[prefix]
@@ -27,19 +27,19 @@ export function is_valid_property(id: string): id is PropertyID {
 }
 
 export function get_properties_of_category(id: CategoryID): PropertyID[] {
-	return category_properties
-		.filter((entry) => entry.category === id)
-		.map((entry) => entry.property)
+	return CATEGORY_PROPERTIES.filter((entry) => entry.category === id).map(
+		(entry) => entry.property,
+	)
 }
 
 export function get_non_properties_of_category(id: CategoryID): PropertyID[] {
-	return category_non_properties
-		.filter((entry) => entry.category === id)
-		.map((entry) => entry.property)
+	return CATEGORY_NON_PROPERTIES.filter((entry) => entry.category === id).map(
+		(entry) => entry.property,
+	)
 }
 
 export function get_dual_property(id: PropertyID): null | PropertyID {
-	return property_duals[id] ?? null
+	return PROPERTY_DUALS[id] ?? null
 }
 
 export function get_dual_properties(ids: PropertyID[]): null | PropertyID[] {

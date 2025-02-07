@@ -1,7 +1,7 @@
 import type { CategoryID } from './categories.data'
 import type { NonEmptyArray } from '$lib/commons/utils'
 
-export const category_relations: Partial<Record<CategoryID, NonEmptyArray<CategoryID>>> =
+export const CATEGORY_RELATIONS: Partial<Record<CategoryID, NonEmptyArray<CategoryID>>> =
 	{
 		'1': ['2'],
 		'2': ['1'],

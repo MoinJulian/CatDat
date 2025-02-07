@@ -1,4 +1,6 @@
-export const tags = [
+export type Tag = (typeof TAGS)[number]
+
+export const TAGS = [
 	'basic',
 	'intermediate',
 	'advanced',
@@ -17,5 +19,3 @@ export const tags = [
 	'combinatorics',
 	'category theory',
 ] as const
-
-export type Tag = (typeof tags)[number]

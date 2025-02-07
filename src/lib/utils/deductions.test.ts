@@ -1,5 +1,5 @@
-import { categories } from '$lib/data/categories.data'
-import { properties } from '$lib/data/properties.data'
+import { CATEGORIES } from '$lib/data/categories.data'
+import { PROPERTIES } from '$lib/data/properties.data'
 import {
 	get_non_properties_of_category,
 	get_properties_of_category,
@@ -11,22 +11,21 @@ import {
 } from './deductions'
 
 describe('property_deduction_system', () => {
-	for (const category of categories) {
-		const cat_properties = get_properties_of_category(category.id)
-		const cat_non_properties = get_non_properties_of_category(category.id)
+	for (const category of CATEGORIES) {
+		const properties = get_properties_of_category(category.id)
+		const non_properties = get_non_properties_of_category(category.id)
 
 		it(`should have no redundancy for the properties of: ${category.name}`, () => {
-			const cat_properties = get_properties_of_category(category.id)
 			const redundancy = property_deduction_system.get_redundancy(
-				new Set(cat_properties),
+				new Set(properties),
 			)
 			expect(redundancy).toBe(null)
 		})
 
 		it(`should have no redundancy for the non-properties of: ${category.name}`, () => {
 			const redundancy = property_deduction_system.get_redundancy_of_negations(
-				new Set(cat_properties),
-				new Set(cat_non_properties),
+				new Set(properties),
+				new Set(non_properties),
 			)
 			expect(redundancy).toBe(null)
 		})
@@ -98,7 +97,7 @@ describe('categories with deduced properties', () => {
 		})
 	}
 
-	for (const property of properties) {
+	for (const property of PROPERTIES) {
 		it(`should have at least one counterexample for: ${property.id}`, () => {
 			const counterexample = categories_with_deduced_properties.find((category) =>
 				category.all_non_properties.has(property.id),
