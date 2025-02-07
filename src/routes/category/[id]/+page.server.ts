@@ -2,7 +2,6 @@ import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 import { render_formulas_in_object } from '$lib/commons/rendering'
-import { type CategoryID } from '$lib/data/categories.data'
 import { CATEGORY_RELATIONS } from '$lib/data/category-relations.data'
 import {
 	categories_dictionary,
@@ -34,9 +33,9 @@ export const load: PageServerLoad = (event) => {
 
 	const deductions = categories_with_deduced_properties_dictionary[id]
 
-	const isomorphisms = CATEGORY_ISOMORPHISMS[id as CategoryID]
-	const monomorphisms = CATEGORY_MONOMORPHISMS[id as CategoryID]
-	const epimorphisms = CATEGORY_EPIMORPHISMS[id as CategoryID]
+	const isomorphisms = CATEGORY_ISOMORPHISMS[id]
+	const monomorphisms = CATEGORY_MONOMORPHISMS[id]
+	const epimorphisms = CATEGORY_EPIMORPHISMS[id]
 
 	return {
 		category: render_formulas_in_object(category),

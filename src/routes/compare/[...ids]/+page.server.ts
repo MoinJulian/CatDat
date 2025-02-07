@@ -8,7 +8,6 @@ import {
 	categories_with_deduced_properties_dictionary,
 	category_system,
 } from '$lib/utils/deductions'
-import type { CategoryID } from '$lib/data/categories.data'
 
 export const load: PageServerLoad = (event) => {
 	const ids = event.params.ids.split('/')
@@ -31,7 +30,7 @@ export const load: PageServerLoad = (event) => {
 	}
 
 	const compared_categories = compared_categories_with_properties.map((category) => {
-		const { id, name, notation } = categories_dictionary[category.id as CategoryID]
+		const { id, name, notation } = categories_dictionary[category.id]
 		return {
 			id,
 			name,

@@ -1,5 +1,5 @@
 export function group_items<S extends string, T extends { id: S }>(
-	array: T[],
+	array: T[] | readonly T[],
 ): Record<S, T> {
 	// @ts-expect-error will build up the object
 	const acc: Record<S, T> = {}
@@ -22,7 +22,7 @@ export function concatenate_info(items: string[] | undefined | null) {
 }
 
 export function select<T extends Record<string, any>, K extends keyof T>(
-	array: T[],
+	array: T[] | readonly T[],
 	properties: K[],
 ): Pick<T, K>[] {
 	return array.map((item) => {

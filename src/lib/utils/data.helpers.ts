@@ -19,11 +19,11 @@ export function negate_prefix(prefix: Prefix) {
 }
 
 export function is_valid_category(id: string): id is CategoryID {
-	return (categoryIDs as readonly string[]).includes(id)
+	return (categoryIDs as string[]).includes(id)
 }
 
 export function is_valid_property(id: string): id is PropertyID {
-	return (propertyIDs as readonly string[]).includes(id)
+	return (propertyIDs as string[]).includes(id)
 }
 
 export function get_properties_of_category(id: CategoryID): PropertyID[] {

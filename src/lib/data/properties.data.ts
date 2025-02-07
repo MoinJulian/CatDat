@@ -1,16 +1,16 @@
 import type { Prefix } from './prefix.data'
 
 export type Property = {
-	id: string
+	id: PropertyID
 	prefix: Prefix
 	nlab_link?: string
 	description: string
 	invariant?: false // invariant under equivalences of categories
 }
 
-export type PropertyID = (typeof PROPERTIES)[number]['id']
+export type PropertyID = (typeof PROPERTIES_INDEX)[number]['id']
 
-export const PROPERTIES = [
+const PROPERTIES_INDEX = [
 	{
 		id: 'small',
 		prefix: 'is',
@@ -515,4 +515,6 @@ export const PROPERTIES = [
 		description:
 			'A category is <i>epi-regular</i> when every epimorphism is regular, i.e. the coequalizer of a pair of morphisms. Notice that this is not standard terminology, apparently the literature has no name for this yet. A <i>preadditive</i> category is epi-regular iff every epimorphism is a cokernel, and this type of category is commonly known as a <i>conormal category</i>. We avoid this terminology here since it only applies to a certain type of categories, but epi-regular applies to all categories.', // https://math.stackexchange.com/questions/5031588
 	},
-] as const satisfies Property[]
+] as const
+
+export const PROPERTIES: readonly Property[] = PROPERTIES_INDEX

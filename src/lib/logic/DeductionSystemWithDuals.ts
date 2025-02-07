@@ -21,24 +21,20 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 		this.initialized = true
 	}
 
-	private get_dual_properties(properties: T[]): null | T[] {
+	private get_dual_properties(properties: T[]): null | NonEmptyArray<T> {
 		const dual_properties = properties.map((property) =>
 			this.get_dual_property(property),
 		)
 		if (dual_properties.includes(null)) return null
-		return dual_properties as T[]
+		return dual_properties as NonEmptyArray<T>
 	}
 
 	private add_dualized_rules(): void {
 		const dual_rules: Rule<T>[] = []
 
 		for (const rule of this.rules) {
-			const dual_assumptions = this.get_dual_properties(
-				rule.assumptions,
-			) as NonEmptyArray<T> | null
-			const dual_conclusions = this.get_dual_properties(
-				rule.conclusions,
-			) as NonEmptyArray<T> | null
+			const dual_assumptions = this.get_dual_properties(rule.assumptions)
+			const dual_conclusions = this.get_dual_properties(rule.conclusions)
 
 			if (!dual_assumptions || !dual_conclusions) continue
 

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import CategoryList from '$components/CategoryList.svelte'
 	import ImplicationList from '$components/ImplicationList.svelte'
-	import type { PropertyID } from '$lib/data/properties.data'
 	import { get_property_url } from '$lib/commons/property.url'
 
 	let { data } = $props()
@@ -64,7 +63,7 @@
 
 <h3>Relevant implications</h3>
 
-<ImplicationList items={relevant_implications} highlighted={property.id as PropertyID} />
+<ImplicationList items={relevant_implications} highlighted={property.id} />
 
 <h3>Examples</h3>
 

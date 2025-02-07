@@ -1,5 +1,5 @@
 export type Category = {
-	id: string
+	id: CategoryID
 	name: string
 	notation: string
 	objects: string
@@ -8,9 +8,9 @@ export type Category = {
 	description?: string
 }
 
-export type CategoryID = (typeof CATEGORIES)[number]['id']
+export type CategoryID = (typeof CATEGORIES_INDEX)[number]['id']
 
-export const CATEGORIES = [
+const CATEGORIES_INDEX = [
 	{
 		id: 'Set',
 		name: 'category of sets',
@@ -468,4 +468,6 @@ export const CATEGORIES = [
 		description:
 			'Every partial order can be regarded as a thin category. This is a specific example. This category is locally $\\aleph_1$-presentable (in fact, <i>every</i> object is $\\aleph_1$-presentable), but not locally finitely presentable (in fact, only $0$ is finitely presentable).',
 	},
-] as const satisfies Category[]
+] as const
+
+export const CATEGORIES: readonly Category[] = CATEGORIES_INDEX
