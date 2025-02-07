@@ -1,9 +1,9 @@
 import { DeductionSystemWithDuals } from '$lib/logic/DeductionSystemWithDuals'
-import { implications } from '$lib/implications/implications'
 import type { Property } from '$lib/commons/types'
 import { group_items } from '$lib/commons/utils'
 import { properties } from './properties'
 import { PROPERTY_IDs, type PropertyID } from './propertyIDs'
+import { implications } from '$lib/data/implications.data'
 
 /**
  * @deprecated
