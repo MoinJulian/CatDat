@@ -3,12 +3,12 @@ import type { PropertyID } from './properties.data'
 
 export type Implication = {
 	equivalent?: true
-	readonly assumptions: NonEmptyArray<PropertyID>
-	readonly conclusions: NonEmptyArray<PropertyID>
-	readonly reason: string
+	assumptions: NonEmptyArray<PropertyID>
+	conclusions: NonEmptyArray<PropertyID>
+	reason: string
 }
 
-export const implications: Readonly<Implication[]> = [
+export const implications: Implication[] = [
 	// size constraints
 	{
 		assumptions: ['small'],

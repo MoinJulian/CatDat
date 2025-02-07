@@ -1,8 +1,7 @@
 import type { CategoryID } from './categories.data'
+import type { DescriptionWithReason } from './category-isomorphisms.data'
 
-export const category_epimorphisms: Readonly<
-	Partial<Record<CategoryID, { description: string; reason: string }>>
-> = {
+export const category_epimorphisms: Partial<Record<CategoryID, DescriptionWithReason>> = {
 	'0': {
 		description: "there aren't any",
 		reason: '',

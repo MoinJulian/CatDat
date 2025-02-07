@@ -2,12 +2,12 @@ import type { CategoryID } from './categories.data'
 import type { PropertyID } from './properties.data'
 
 export type CategoryPropertyMatch = {
-	readonly category: CategoryID
-	readonly property: PropertyID
-	readonly reason: string
+	category: CategoryID
+	property: PropertyID
+	reason: string
 }
 
-export const category_properties: Readonly<CategoryPropertyMatch[]> = [
+export const category_properties: CategoryPropertyMatch[] = [
 	{ category: 'Set', property: 'locally small', reason: '' },
 	{ category: 'Set', property: 'Grothendieck topos', reason: '' },
 	{ category: 'Set', property: 'finitary algebraic', reason: '' },

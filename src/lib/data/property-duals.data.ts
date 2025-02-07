@@ -1,6 +1,6 @@
 import type { PropertyID } from './properties.data'
 
-export const property_duals: Readonly<Partial<Record<PropertyID, PropertyID>>> = {
+export const property_duals: Partial<Record<PropertyID, PropertyID>> = {
 	'small': 'small',
 	'locally small': 'locally small',
 	'locally essentially small': 'locally essentially small',

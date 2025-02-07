@@ -1,11 +1,11 @@
 import type { Prefix } from './prefix.data'
 
 export type Property = {
-	readonly id: string
-	readonly prefix: Prefix
-	readonly nlab_link?: string
-	readonly description: string
-	readonly invariant?: false // invariant under equivalences of categories
+	id: string
+	prefix: Prefix
+	nlab_link?: string
+	description: string
+	invariant?: false // invariant under equivalences of categories
 }
 
 export type PropertyID = (typeof properties)[number]['id']
