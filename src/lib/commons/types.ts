@@ -5,6 +5,9 @@ import type { NonEmptyArray } from '$lib/commons/utils'
 import type { Rule } from '$lib/logic/DeductionSystem'
 import type { EntityDetailed } from '$lib/logic/EntitySystem'
 
+/**
+ * @deprecated
+ */
 type CategoryTag =
 	| 'basic'
 	| 'intermediate'
@@ -24,6 +27,9 @@ type CategoryTag =
 	| 'combinatorics'
 	| 'category theory'
 
+/**
+ * @deprecated
+ */
 export type PreCategory = {
 	id: CategoryID
 	name: string
@@ -44,12 +50,18 @@ export type PreCategory = {
 }
 
 // same as PreCategory, but with properties and non-properties as sets
+/**
+ * @deprecated
+ */
 export type Category = Omit<PreCategory, 'properties' | 'non_properties'> & {
 	properties: Set<PropertyID>
 	non_properties: Set<PropertyID>
 }
 
 // includes all deduces properties and non-properties
+/**
+ * @deprecated
+ */
 export type CategoryDetailed = EntityDetailed<Category, PropertyID>
 
 // contains only what is relevant for lists of categories
@@ -58,6 +70,9 @@ export type CategoryDetailed = EntityDetailed<Category, PropertyID>
  */
 export type CategoryShort = Pick<Category, 'id' | 'name'>
 
+/**
+ * @deprecated
+ */
 export type Property = {
 	id: PropertyID
 	prefix: Prefix
@@ -68,4 +83,7 @@ export type Property = {
 	invariant_under_equivalences?: false
 }
 
+/**
+ * @deprecated
+ */
 export type Implication = Rule<PropertyID>
