@@ -58,9 +58,6 @@ body {
 	background-color: var(--bg-color);
 	color: var(--text-color);
 	line-height: 1.5;
-	transition:
-		background-color 300ms,
-		color 300ms;
 }
 
 html,
