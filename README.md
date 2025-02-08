@@ -31,7 +31,6 @@ This project is a **community effort**. See our [contribution guidelines](CONTRI
 ## 📄 Documentation
 
 - [The "database" of _CatDat_](docs/database.md)
-- [Types](docs/types.md)
 
 ## 🛠️ Development
 
