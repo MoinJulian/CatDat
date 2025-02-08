@@ -22,6 +22,14 @@ export function get_property(id: PropertyID): Property {
 	return properties_dictionary[id]
 }
 
+export function is_valid_category(id: string): id is CategoryID {
+	return id in categories_dictionary
+}
+
+export function is_valid_property(id: string): id is PropertyID {
+	return (propertyIDs as string[]).includes(id)
+}
+
 export function get_monos(id: CategoryID) {
 	const entry = CATEGORY_MONOMORPHISMS[id]
 	return { description: entry[0], reason: entry[1] }
@@ -39,14 +47,6 @@ export function get_isos(id: CategoryID) {
 
 export function negate_prefix(prefix: Prefix) {
 	return PREFIXES[prefix]
-}
-
-export function is_valid_category(id: string): id is CategoryID {
-	return id in categories_dictionary
-}
-
-export function is_valid_property(id: string): id is PropertyID {
-	return (propertyIDs as string[]).includes(id)
 }
 
 export function get_properties_of_category(id: CategoryID): PropertyID[] {

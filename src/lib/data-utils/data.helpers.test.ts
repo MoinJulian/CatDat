@@ -5,7 +5,11 @@ import {
 	get_epis,
 	get_isos,
 	get_monos,
+	get_non_properties_of_category,
+	get_properties_of_category,
 	get_property,
+	is_valid_category,
+	is_valid_property,
 	negate_prefix,
 } from './data.helpers'
 
@@ -25,9 +29,59 @@ describe('get_property', () => {
 	})
 })
 
+describe('is_valid_category', () => {
+	it('should return true for FinAb', () => {
+		expect(is_valid_category('FinAb')).toBe(true)
+	})
+	it('should return false for CompAbTop', () => {
+		expect(is_valid_category('CompAbTop')).toBe(false)
+	})
+})
+
+describe('is_valid_property', () => {
+	it('should return true for small', () => {
+		expect(is_valid_property('small')).toBe(true)
+	})
+	it('should return false for minimalistic', () => {
+		expect(is_valid_property('minimalistic')).toBe(false)
+	})
+})
+
+describe('get_monos, get_epis, get_isos', () => {
+	it('should return the correct info about monos, epis, isos', () => {
+		const id = 'FinAb'
+		const monos = get_monos(id)
+		const epis = get_epis(id)
+		const isos = get_isos(id)
+		expect(monos.description).toContain('injective')
+		expect(epis.description).toContain('surjective')
+		expect(isos.description).toContain('bijective')
+	})
+})
+
 describe('negate_prefix', () => {
 	it("negates 'has a' to 'does not have a'", () => {
 		expect(negate_prefix('has a')).toBe('does not have a')
+	})
+})
+
+describe('get_properties_of_category', () => {
+	it("should contain 'locally small' for 'Grp'", () => {
+		expect(get_properties_of_category('Grp')).toContain('locally small')
+	})
+
+	it("should not contain 'pointed' for 'Set'", () => {
+		expect(get_properties_of_category('Set')).not.toContain('pointed')
+	})
+})
+
+describe('get_non_properties_of_category', () => {
+	it("should contain 'pointed' for 'Ring'", () => {
+		expect(get_non_properties_of_category('Rng')).toContain('balanced')
+	})
+
+	it("should contain 'inhabited' for '0'", () => {
+		expect(get_non_properties_of_category('0')).toContain('inhabited')
 	})
 })
 
@@ -55,17 +109,5 @@ describe('get_dual_properties', () => {
 			'small',
 			'complete',
 		])
-	})
-})
-
-describe('get_monos, get_epis, get_isos', () => {
-	it('should return the correct info about monos, epis, isos', () => {
-		const id = 'FinAb'
-		const monos = get_monos(id)
-		const epis = get_epis(id)
-		const isos = get_isos(id)
-		expect(monos.description).toContain('injective')
-		expect(epis.description).toContain('surjective')
-		expect(isos.description).toContain('bijective')
 	})
 })
