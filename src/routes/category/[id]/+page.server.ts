@@ -32,9 +32,9 @@ export const load: PageServerLoad = (event) => {
 
 	const deductions = categories_with_deduced_properties_dictionary[id]
 
-	const isomorphisms = render_formulas_in_object(get_monos(id))
-	const monomorphisms = render_formulas_in_object(get_epis(id))
-	const epimorphisms = render_formulas_in_object(get_isos(id))
+	const isomorphisms = render_formulas_in_object(get_isos(id))
+	const monomorphisms = render_formulas_in_object(get_monos(id))
+	const epimorphisms = render_formulas_in_object(get_epis(id))
 
 	return {
 		category: render_formulas_in_object(category),
