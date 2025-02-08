@@ -1,8 +1,9 @@
 import type { CategoryID } from './categories.data'
 import type { PropertyID } from './properties.data'
 
-export const CATEGORY_NON_PROPERTIES: Partial<Record<CategoryID, [PropertyID, string][]>> = {
+export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 	'0': [['inhabited', '']],
+	'1': [],
 	'2': [['connected', '']],
 	'Set': [
 		['strict terminal object', ''],

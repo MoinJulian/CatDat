@@ -1,7 +1,7 @@
 import type { CategoryID } from './categories.data'
 import type { PropertyID } from './properties.data'
 
-export const CATEGORY_PROPERTIES: Partial<Record<CategoryID, [PropertyID, string][]>> = {
+export const CATEGORY_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 	'0': [
 		['preadditive', ''],
 		['discrete', ''],
