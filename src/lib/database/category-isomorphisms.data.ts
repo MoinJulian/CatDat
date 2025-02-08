@@ -1,6 +1,8 @@
 import type { CategoryID } from './categories.data'
 import type { DescriptionWithReason } from './category-epimorphisms.data'
 
+// format: { category_id: [description of the isomorphisms, reason why this is so] }
+
 export const CATEGORY_ISOMORPHISMS: Record<CategoryID, DescriptionWithReason> = {
 	'0': ["there aren't any", ''],
 	'1': ['every morphism', ''],

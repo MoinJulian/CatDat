@@ -1,11 +1,11 @@
 export type Category = {
-	id: CategoryID
-	name: string
-	notation: string
-	objects: string
-	morphisms: string
-	nlab_link?: string
-	description?: string
+	id: CategoryID // short id used for reference and in URLs
+	name: string // full name of the category
+	notation: string // LaTeX notation
+	objects: string // short description of objects
+	morphisms: string // short description of morphisms
+	nlab_link?: string // link to the nLab article (optional)
+	description?: string // additional description (optional)
 }
 
 export type CategoryID = (typeof CATEGORIES_INDEX)[number]['id']

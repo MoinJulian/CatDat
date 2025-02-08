@@ -2,6 +2,8 @@ import type { CategoryID } from './categories.data'
 
 export type DescriptionWithReason = [string, string]
 
+// format: { category_id: [description of the epimorphisms, reason why this is so] }
+
 export const CATEGORY_EPIMORPHISMS: Record<CategoryID, DescriptionWithReason> = {
 	'0': ["there aren't any", ''],
 	'1': ['every morphism', ''],

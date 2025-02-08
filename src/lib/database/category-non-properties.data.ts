@@ -1,6 +1,8 @@
 import type { CategoryID } from './categories.data'
 import type { PropertyID } from './properties.data'
 
+// format: {category_id: [[property_id, reason why the property is not safisfied], ...]}
+
 export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 	'0': [['inhabited', '']],
 	'1': [],
