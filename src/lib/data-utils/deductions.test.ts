@@ -99,7 +99,7 @@ describe('categories with deduced properties', () => {
 	for (const category of categories_with_deduced_properties) {
 		it(`should not have any contradictory properties for: ${category.id}`, () => {
 			const property_set = category.all_properties
-			const non_property_set = category.non_properties
+			const non_property_set = category.all_non_properties
 			expect(property_set.intersection(non_property_set)).toHaveLength(0)
 		})
 	}
