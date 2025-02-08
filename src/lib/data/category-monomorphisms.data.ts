@@ -2,201 +2,53 @@ import type { CategoryID } from './categories.data'
 import type { DescriptionWithReason } from './category-isomorphisms.data'
 
 export const CATEGORY_MONOMORPHISMS: Record<CategoryID, DescriptionWithReason> = {
-	'0': {
-		description: "there aren't any",
-		reason: '',
-	},
-	'1': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'2': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'Set': {
-		description: 'injective maps',
-		reason: '',
-	},
-	'Ab': {
-		description: 'injective homomorphisms',
-		reason: '',
-	},
-	'Top': {
-		description: 'injective continuous maps',
-		reason: '',
-	},
-	'Grp': {
-		description: 'injective homomorphisms',
-		reason: '',
-	},
-	'Vect': {
-		description: 'injective linear maps',
-		reason: '',
-	},
-	'Ring': {
-		description: 'injective ring homomorphisms',
-		reason: '',
-	},
-	'CRing': {
-		description: 'injective ring homomorphisms',
-		reason: '',
-	},
-	'Rng': {
-		description: 'injective rng homomorphisms',
-		reason: '',
-	},
-	'FinSet': {
-		description: 'injective maps',
-		reason: '',
-	},
-	'FinAb': {
-		description: 'injective homomorphisms',
-		reason: '',
-	},
-	'Abfg': {
-		description: 'injective homomorphisms',
-		reason: '',
-	},
-	'Set*': {
-		description: 'injective pointed maps',
-		reason: '',
-	},
-	'sSet': {
-		description: 'pointwise injective transformations',
-		reason: '',
-	},
-	'Mon': {
-		description: 'injective homomorphisms',
-		reason: '',
-	},
-	'Pos': {
-		description: 'injective order-preserving functions',
-		reason: '',
-	},
-	'I': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'M-Set': {
-		description: 'injective $M$-maps',
-		reason: '',
-	},
-	'R-Mod': {
-		description: 'injective $R$-linear maps',
-		reason: '',
-	},
-	'Met': {
-		description: 'injective non-expansive maps',
-		reason: '',
-	},
-	'Met_oo': {
-		description: 'injective non-expansive maps',
-		reason: '',
-	},
-	'Met_c': {
-		description: 'injective continuous maps',
-		reason: '',
-	},
-	'Ban': {
-		description: 'injective linear contractions',
-		reason: '',
-	},
-	'Man': {
-		description: 'injective smooth maps',
-		reason: '',
-	},
-	'Meas': {
-		description: 'injective measurable maps',
-		reason: '',
-	},
-	'N': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'Cat': {
-		description: 'faithful functors that are injective on objects',
-		reason: '',
-	},
-	'On': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'Sch': {
-		description: 'cf. EGA IV, 17.2.6',
-		reason: '',
-	},
-	'Fld': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'FreeAb': {
-		description: 'injective homomorphisms',
-		reason: '',
-	},
-	'Z': {
-		description: 'objectwise injective natural transformations',
-		reason: '',
-	},
-	'BG': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'BGf': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'BN': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'walking_pair': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'walking_isomorphism': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'Setne': {
-		description: 'injective maps',
-		reason: '',
-	},
-	'B': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'FI': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'FS': {
-		description: 'bijective maps',
-		reason: '',
-	},
-	'On+': {
-		description: 'every ordinal number',
-		reason: '',
-	},
-	'FinOrd': {
-		description: 'injective order-preserving maps',
-		reason: '',
-	},
-	'Rel': {
-		description:
-			'A relation $R : A \\to B$ is a monomorphism iff the map $R_* : P(A) \\to P(B)$ defined by $T \\mapsto \\{b \\in B : \\exists \\, a \\in T: (a,b) \\in R \\}$ is injective.',
-		reason: '',
-	},
-	'Sp': {
-		description: 'pointwise injective natural transformations',
-		reason: '',
-	},
-	'real_interval': {
-		description: 'every morphism',
-		reason: '',
-	},
-	'LRS': {
-		description: '',
-		reason: '',
-	},
+	'0': { description: "there aren't any", reason: '' },
+	'1': { description: 'every morphism', reason: '' },
+	'2': { description: 'every morphism', reason: '' },
+	'Ab': { description: 'injective homomorphisms', reason: '' },
+	'Abfg': { description: 'injective homomorphisms', reason: '' },
+	'B': { description: 'every morphism', reason: '' },
+	'Ban': { description: 'injective linear contractions', reason: '' },
+	'BG': { description: 'every morphism', reason: '' },
+	'BGf': { description: 'every morphism', reason: '' },
+	'BN': { description: 'every morphism', reason: '' },
+	'Cat': { description: 'faithful functors that are injective on objects', reason: '' },
+	'CRing': { description: 'injective ring homomorphisms', reason: '' },
+	'FI': { description: 'every morphism', reason: '' },
+	'FinAb': { description: 'injective homomorphisms', reason: '' },
+	'FinOrd': { description: 'injective order-preserving maps', reason: '' },
+	'FinSet': { description: 'injective maps', reason: '' },
+	'Fld': { description: 'every morphism', reason: '' },
+	'FreeAb': { description: 'injective homomorphisms', reason: '' },
+	'FS': { description: 'bijective maps', reason: '' },
+	'Grp': { description: 'injective homomorphisms', reason: '' },
+	'I': { description: 'every morphism', reason: '' },
+	'LRS': { description: '', reason: '' },
+	'M-Set': { description: 'injective $M$-maps', reason: '' },
+	'Man': { description: 'injective smooth maps', reason: '' },
+	'Meas': { description: 'injective measurable maps', reason: '' },
+	'Met': { description: 'injective non-expansive maps', reason: '' },
+	'Met_c': { description: 'injective continuous maps', reason: '' },
+	'Met_oo': { description: 'injective non-expansive maps', reason: '' },
+	'Mon': { description: 'injective homomorphisms', reason: '' },
+	'N': { description: 'every morphism', reason: '' },
+	'On': { description: 'every morphism', reason: '' },
+	'On+': { description: 'every ordinal number', reason: '' },
+	'Pos': { description: 'injective order-preserving functions', reason: '' },
+	'R-Mod': { description: 'injective $R$-linear maps', reason: '' },
+	'real_interval': { description: 'every morphism', reason: '' },
+	'Rel': { description: 'A relation $R : A \\to B$ is a monomorphism iff the map $R_* : P(A) \\to P(B)$ defined by $T \\mapsto \\{b \\in B : \\exists \\, a \\in T: (a,b) \\in R \\}$ is injective.', reason: '' },
+	'Ring': { description: 'injective ring homomorphisms', reason: '' },
+	'Rng': { description: 'injective rng homomorphisms', reason: '' },
+	'Sch': { description: 'cf. EGA IV, 17.2.6', reason: '' },
+	'Set': { description: 'injective maps', reason: '' },
+	'Set*': { description: 'injective pointed maps', reason: '' },
+	'Setne': { description: 'injective maps', reason: '' },
+	'Sp': { description: 'pointwise injective natural transformations', reason: '' },
+	'sSet': { description: 'pointwise injective transformations', reason: '' },
+	'Top': { description: 'injective continuous maps', reason: '' },
+	'Vect': { description: 'injective linear maps', reason: '' },
+	'walking_isomorphism': { description: 'every morphism', reason: '' },
+	'walking_pair': { description: 'every morphism', reason: '' },
+	'Z': { description: 'objectwise injective natural transformations', reason: '' },
 }

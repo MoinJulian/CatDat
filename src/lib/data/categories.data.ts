@@ -18,8 +18,7 @@ const CATEGORIES_INDEX = [
 		objects: 'sets',
 		morphisms: 'maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/Set',
-		description:
-			'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
+		description: 'The category of sets plays a fundamental role in category theory. Due to the Yoneda embedding, many results about general categories can be reduced to the category of sets. It is also usually the first example of a category that one encounters.',
 	},
 	{
 		id: 'Ab',
@@ -54,8 +53,7 @@ const CATEGORIES_INDEX = [
 		objects: 'vector spaces over a field $K$',
 		morphisms: 'linear maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/Vect',
-		description:
-			'This is a special case of the category of modules over a ring, where the ring is a field. It is the prototype of a split abelian category.',
+		description: 'This is a special case of the category of modules over a ring, where the ring is a field. It is the prototype of a split abelian category.',
 	},
 	{
 		id: 'Ring',
@@ -113,15 +111,13 @@ const CATEGORIES_INDEX = [
 		objects: 'pointed sets',
 		morphisms: 'pointed maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/pointed+set',
-		description:
-			'This is the category of sets with a distinguished element, often called the base point. A map is called pointed when it preserves the base point.',
+		description: 'This is the category of sets with a distinguished element, often called the base point. A map is called pointed when it preserves the base point.',
 	},
 	{
 		id: 'sSet',
 		name: 'category of simplicial sets',
 		notation: '$\\mathbf{sSet}$',
-		objects:
-			'simplicial sets, i.e. functors $\\Delta^{\\mathrm{op}} \\to \\mathbf{Set}$',
+		objects: 'simplicial sets, i.e. functors $\\Delta^{\\mathrm{op}} \\to \\mathbf{Set}$',
 		morphisms: 'natural transformations',
 		nlab_link: 'https://ncatlab.org/nlab/show/SimpSet',
 	},
@@ -148,8 +144,7 @@ const CATEGORIES_INDEX = [
 		objects: 'no objects',
 		morphisms: 'no morphisms',
 		nlab_link: 'https://ncatlab.org/nlab/show/empty+category',
-		description:
-			'This is the category with no objects and no morphisms. It is the initial object in the category of small categories.',
+		description: 'This is the category with no objects and no morphisms. It is the initial object in the category of small categories.',
 	},
 	{
 		id: '1',
@@ -158,8 +153,7 @@ const CATEGORIES_INDEX = [
 		objects: 'a single object',
 		morphisms: 'only the identity morphism',
 		nlab_link: 'https://ncatlab.org/nlab/show/terminal+category',
-		description:
-			'This is the simplest category, consisting of a single object and only the identity morphism. It is the terminal object in the category of small categories.',
+		description: 'This is the simplest category, consisting of a single object and only the identity morphism. It is the terminal object in the category of small categories.',
 	},
 	{
 		id: '2',
@@ -167,8 +161,7 @@ const CATEGORIES_INDEX = [
 		notation: '$\\mathbf{2}$',
 		objects: 'two objects',
 		morphisms: 'only the two identity morphisms',
-		description:
-			'For a more concrete representation, this is the subcategory of $\\mathbf{CRing}$ of the two fields $\\mathbb{F}_2$ and $\\mathbb{F}_3$.',
+		description: 'For a more concrete representation, this is the subcategory of $\\mathbf{CRing}$ of the two fields $\\mathbb{F}_2$ and $\\mathbb{F}_3$.',
 	},
 	{
 		id: 'I',
@@ -177,19 +170,16 @@ const CATEGORIES_INDEX = [
 		objects: '0,1',
 		morphisms: 'the two identities and a single morphism from 0 to 1',
 		nlab_link: 'https://ncatlab.org/nlab/show/interval+category',
-		description:
-			'This is the category with two objects and a single non-identity morphism between them. It has the property that functors out of this category are the same as morphisms.',
+		description: 'This is the category with two objects and a single non-identity morphism between them. It has the property that functors out of this category are the same as morphisms.',
 	},
 	{
 		id: 'M-Set',
 		name: 'category of M-sets',
 		notation: '$M{-}\\mathbf{Set}$',
 		objects: 'sets with a left action of a monoid $M$',
-		morphisms:
-			'maps that are compatible with the $M$-action, meaning $f(m \\cdot x)=m \\cdot f(x)$, also called $M$-maps',
+		morphisms: 'maps that are compatible with the $M$-action, meaning $f(m \\cdot x)=m \\cdot f(x)$, also called $M$-maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/MSet',
-		description:
-			'Here, $M$ can be any monoid. But the most important special case is that of a group.',
+		description: 'Here, $M$ can be any monoid. But the most important special case is that of a group.',
 	},
 	{
 		id: 'R-Mod',
@@ -198,29 +188,24 @@ const CATEGORIES_INDEX = [
 		objects: 'left $R$-modules',
 		morphisms: '$R$-linear maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/module',
-		description:
-			"This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial, since for the trivial ring we get a trivial category which has all properties anyway. The category $R{-}\\mathbf{Mod}$ is split abelian iff $R$ is a semisimple ring, so usually it isn't the case, which is why we have negated this property here.",
+		description: "This is the category of left modules over a ring $R$. It is the prototype of an abelian category. The category of right modules is the same with the opposite ring $R^{\\mathrm{op}}$, hence not listed here. The non-properties refer to the case that the ring is non-trivial, since for the trivial ring we get a trivial category which has all properties anyway. The category $R{-}\\mathbf{Mod}$ is split abelian iff $R$ is a semisimple ring, so usually it isn't the case, which is why we have negated this property here.",
 	},
 	{
 		id: 'Met',
 		name: 'category of metric spaces with non-expansive maps',
 		notation: '$\\mathbf{Met}$',
 		objects: 'metric spaces',
-		morphisms:
-			'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
+		morphisms: 'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
 		nlab_link: 'https://ncatlab.org/nlab/show/Met',
 	},
 	{
 		id: 'Met_oo',
 		name: 'category of metric spaces with ∞ allowed',
 		notation: '$\\mathbf{Met}_{\\infty}$',
-		objects:
-			'metric spaces, where the metric is allowed to assume the value $\\infty$',
-		morphisms:
-			'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
+		objects: 'metric spaces, where the metric is allowed to assume the value $\\infty$',
+		morphisms: 'non-expansive maps $f$, meaning $d(f(x),f(y)) \\leq d(x,y)$ for all $x,y$',
 		nlab_link: 'https://ncatlab.org/nlab/show/Met',
-		description:
-			'The fact that we allow $\\infty$ means that universal constructions work much better.',
+		description: 'The fact that we allow $\\infty$ means that universal constructions work much better.',
 	},
 	{
 		id: 'Met_c',
@@ -228,8 +213,7 @@ const CATEGORIES_INDEX = [
 		notation: '$\\mathbf{Met}_c$',
 		objects: 'metric spaces',
 		morphisms: 'continuous maps',
-		description:
-			'This category is equivalent to the subcategory of $\\mathbf{Top}$ (or $\\mathbf{Haus}$) that consists of metrizable topological spaces.',
+		description: 'This category is equivalent to the subcategory of $\\mathbf{Top}$ (or $\\mathbf{Haus}$) that consists of metrizable topological spaces.',
 	},
 	{
 		id: 'Ban',
@@ -238,8 +222,7 @@ const CATEGORIES_INDEX = [
 		objects: 'Banach spaces over $\\mathbb{C}$',
 		morphisms: 'linear contractions, i.e. linear maps of norm $\\leq 1$',
 		nlab_link: 'https://ncatlab.org/nlab/show/Banach+space',
-		description:
-			'The choice of morphisms is similar to that of $\\mathbf{Met}$ which yields the best categorical properties.',
+		description: 'The choice of morphisms is similar to that of $\\mathbf{Met}$ which yields the best categorical properties.',
 	},
 	{
 		id: 'Man',
@@ -248,8 +231,7 @@ const CATEGORIES_INDEX = [
 		objects: 'smooth manifolds',
 		morphisms: 'smooth maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/Diff',
-		description:
-			'Here, a smooth manifold is assumed to be finite-dimensional, Hausdorff, and second-countable.',
+		description: 'Here, a smooth manifold is assumed to be finite-dimensional, Hausdorff, and second-countable.',
 	},
 	{
 		id: 'Meas',
@@ -258,8 +240,7 @@ const CATEGORIES_INDEX = [
 		objects: 'measurable spaces',
 		morphisms: 'measurable maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/Meas',
-		description:
-			'Limits and colimits can be constructed in the same way as for topological spaces.',
+		description: 'Limits and colimits can be constructed in the same way as for topological spaces.',
 	},
 	{
 		id: 'N',
@@ -267,8 +248,7 @@ const CATEGORIES_INDEX = [
 		notation: '$(\\mathbb{N},\\leq)$',
 		objects: 'natural numbers $0, 1, 2, \\dotsc$',
 		morphisms: 'a unique morphism $(n,m) : n \\to m$ if $n \\leq m$',
-		description:
-			'This can also be seen as the path category of the infinite linear graph $\\bullet \\to \\bullet \\to \\bullet \\to \\cdots$.',
+		description: 'This can also be seen as the path category of the infinite linear graph $\\bullet \\to \\bullet \\to \\bullet \\to \\cdots$.',
 	},
 	{
 		id: 'Cat',
@@ -277,16 +257,14 @@ const CATEGORIES_INDEX = [
 		objects: 'small categories',
 		morphisms: 'functors',
 		nlab_link: 'https://ncatlab.org/nlab/show/Cat',
-		description:
-			'This is the category of small categories and functors between them. It is the prototype of a 2-category, but here we only treat it as a 1-category.',
+		description: 'This is the category of small categories and functors between them. It is the prototype of a 2-category, but here we only treat it as a 1-category.',
 	},
 	{
 		id: 'On',
 		name: 'partial order of ordinal numbers',
 		notation: '$(\\mathbf{On},\\leq)$',
 		objects: 'ordinal numbers',
-		morphisms:
-			'a unique morphism $(\\alpha,\\beta): \\alpha \\to \\beta$ if $\\alpha \\leq \\beta$',
+		morphisms: 'a unique morphism $(\\alpha,\\beta): \\alpha \\to \\beta$ if $\\alpha \\leq \\beta$',
 		description: 'This is a large variant of the partial order of natural numbers.',
 	},
 	{
@@ -294,8 +272,7 @@ const CATEGORIES_INDEX = [
 		name: 'category of locally ringed spaces',
 		notation: '$\\mathbf{LRS}$',
 		objects: 'locally ringed spaces',
-		morphisms:
-			'morphisms of locally ringed spaces, thus consisting of a continuous map and a homomorphism of sheaves that induces local ring homomorphisms in the stalks',
+		morphisms: 'morphisms of locally ringed spaces, thus consisting of a continuous map and a homomorphism of sheaves that induces local ring homomorphisms in the stalks',
 	},
 	{
 		id: 'Sch',
@@ -326,8 +303,7 @@ const CATEGORIES_INDEX = [
 		notation: '$[\\mathbf{CRing}, \\mathbf{Set}]$',
 		objects: 'Z-functors, i.e. functors from commutative rings to sets',
 		morphisms: 'natural transformations',
-		description:
-			'This category is used in functorial algebraic geometry. It also provides a typical example of a functor category that is not locally small, but nevertheless relevant. Most of its properties are directly derived from the category of sets, so other functor categories $[\\mathbf{C}, \\mathbf{Set}]$ for large categories $\\mathbf{C}$ will be similar.',
+		description: 'This category is used in functorial algebraic geometry. It also provides a typical example of a functor category that is not locally small, but nevertheless relevant. Most of its properties are directly derived from the category of sets, so other functor categories $[\\mathbf{C}, \\mathbf{Set}]$ for large categories $\\mathbf{C}$ will be similar.',
 	},
 	{
 		id: 'BG',
@@ -336,8 +312,7 @@ const CATEGORIES_INDEX = [
 		objects: 'a single object',
 		morphisms: 'the elements of an infinite group $G$',
 		nlab_link: 'https://ncatlab.org/nlab/show/delooping',
-		description:
-			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of an infinite group $G$.',
+		description: 'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of an infinite group $G$.',
 	},
 	{
 		id: 'BGf',
@@ -346,8 +321,7 @@ const CATEGORIES_INDEX = [
 		objects: 'a single object',
 		morphisms: 'the elements of a non-trivial finite group $G$',
 		nlab_link: 'https://ncatlab.org/nlab/show/delooping',
-		description:
-			'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of a non-trivial finite group $G$ (such as $G = C_2$).',
+		description: 'Every group $G$ yields a groupoid $BG$ with a single object, morphisms given by the elements of $G$, and composition given by the group operation. In this example, we consider the case of a non-trivial finite group $G$ (such as $G = C_2$).',
 	},
 	{
 		id: 'BN',
@@ -355,8 +329,7 @@ const CATEGORIES_INDEX = [
 		notation: '$B\\mathbb{N}$',
 		objects: 'a single object',
 		morphisms: 'the natural numbers, with addition serving as composition',
-		description:
-			'Every monoid $M$ induces a one-object category $BM$ with morphisms given by the elements of $M$, and composition given by the monoid operation. Some of the properties of this category depend on the specific monoid. In this example, we take the commutative monoid $M = (\\mathbb{N},+,0)$.',
+		description: 'Every monoid $M$ induces a one-object category $BM$ with morphisms given by the elements of $M$, and composition given by the monoid operation. Some of the properties of this category depend on the specific monoid. In this example, we take the commutative monoid $M = (\\mathbb{N},+,0)$.',
 	},
 	{
 		id: 'walking_pair',
@@ -365,19 +338,16 @@ const CATEGORIES_INDEX = [
 		objects: 'two objects $0$ and $1$',
 		morphisms: 'the two identities and two parallel morphisms from $0$ to $1$',
 		nlab_link: 'https://ncatlab.org/nlab/show/walking+structure',
-		description:
-			"This is the 'walking parallel pair' of morphisms. The name comes from the fact that it consists of two parallel morphisms, and a functor out of this category is the same as a parallel pair of morphisms in the target category.",
+		description: "This is the 'walking parallel pair' of morphisms. The name comes from the fact that it consists of two parallel morphisms, and a functor out of this category is the same as a parallel pair of morphisms in the target category.",
 	},
 	{
 		id: 'walking_isomorphism',
 		name: 'walking isomorphism',
 		notation: '$\\{0 \\rightleftarrows 1\\}$',
 		objects: 'two objects $0$ and $1$',
-		morphisms:
-			'identities, and two morphisms $0 \\to 1$ and $1 \\to 0$ that are mutually inverse',
+		morphisms: 'identities, and two morphisms $0 \\to 1$ and $1 \\to 0$ that are mutually inverse',
 		nlab_link: 'https://ncatlab.org/nlab/show/walking+isomorphism',
-		description:
-			"This is the 'walking isomorphism' category. The name comes from the fact that it consists of two objects and an isomorphism between them, and a functor out of this category is the same as an isomorphism in the target category. The walking isomorphism is actually equivalent to the trivial category.",
+		description: "This is the 'walking isomorphism' category. The name comes from the fact that it consists of two objects and an isomorphism between them, and a functor out of this category is the same as an isomorphism in the target category. The walking isomorphism is actually equivalent to the trivial category.",
 	},
 	{
 		id: 'Setne',
@@ -386,8 +356,7 @@ const CATEGORIES_INDEX = [
 		objects: 'non-empty sets',
 		morphisms: 'maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/inhabited+set',
-		description:
-			'This entry demonstrates that removing an object (the empty set) can drastically change the properties of a category. In particular, this category is neither complete nor cocomplete.',
+		description: 'This entry demonstrates that removing an object (the empty set) can drastically change the properties of a category. In particular, this category is neither complete nor cocomplete.',
 	},
 	{
 		id: 'B',
@@ -396,8 +365,7 @@ const CATEGORIES_INDEX = [
 		objects: 'finite sets',
 		morphisms: 'bijective maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/permutation+groupoid',
-		description:
-			'This category is also known as the permutation groupoid. It appears in the definition of a combinatorial species.',
+		description: 'This category is also known as the permutation groupoid. It appears in the definition of a combinatorial species.',
 	},
 	{
 		id: 'FI',
@@ -405,8 +373,7 @@ const CATEGORIES_INDEX = [
 		notation: '$\\mathrm{FI}$',
 		objects: 'finite sets',
 		morphisms: 'injective maps',
-		description:
-			'This category is badly-behaved in itself, but plays an important role in representation theory.',
+		description: 'This category is badly-behaved in itself, but plays an important role in representation theory.',
 	},
 	{
 		id: 'FS',
@@ -414,8 +381,7 @@ const CATEGORIES_INDEX = [
 		notation: '$\\mathrm{FS}$',
 		objects: 'finite sets',
 		morphisms: 'surjective maps',
-		description:
-			'This category is badly-behaved in itself, but it appears in representation theory. It has two connected components, consisting of the empty set and the non-empty finite sets.',
+		description: 'This category is badly-behaved in itself, but it appears in representation theory. It has two connected components, consisting of the empty set and the non-empty finite sets.',
 	},
 	{
 		id: 'On+',
@@ -423,8 +389,7 @@ const CATEGORIES_INDEX = [
 		notation: '$B(\\mathbf{On},+)$',
 		objects: 'a single object',
 		morphisms: 'ordinal numbers, with addition as composition',
-		description:
-			'Every monoid $M$ induces a one-object category $BM$. This also works when $M$ is large, in which case $BM$ is not locally small. In this example, we apply this construction to the large monoid of ordinal numbers with respect to addition.',
+		description: 'Every monoid $M$ induces a one-object category $BM$. This also works when $M$ is large, in which case $BM$ is not locally small. In this example, we apply this construction to the large monoid of ordinal numbers with respect to addition.',
 	},
 	{
 		id: 'FinOrd',
@@ -433,30 +398,25 @@ const CATEGORIES_INDEX = [
 		objects: 'finite totally ordered sets',
 		morphisms: 'order-preserving maps',
 		nlab_link: 'https://ncatlab.org/nlab/show/augmented+simplex+category',
-		description:
-			'This is also known as the augmented simplex category. The finite orders of the form $\\{0,1,\\dotsc,n-1\\}$ for $n \\in \\mathbb{N}$ provide a skeleton (for $n = 0$ this includes the empty set), and the category is often presented in this way.',
+		description: 'This is also known as the augmented simplex category. The finite orders of the form $\\{0,1,\\dotsc,n-1\\}$ for $n \\in \\mathbb{N}$ provide a skeleton (for $n = 0$ this includes the empty set), and the category is often presented in this way.',
 	},
 	{
 		id: 'Rel',
 		name: 'category of sets and relations',
 		notation: '$\\mathbf{Rel}$',
 		objects: 'sets',
-		morphisms:
-			'A morphism from $A$ to $B$ is a relation, i.e. a subset of $A \\times B$.',
+		morphisms: 'A morphism from $A$ to $B$ is a relation, i.e. a subset of $A \\times B$.',
 		nlab_link: 'https://ncatlab.org/nlab/show/Rel',
-		description:
-			'This category is self-dual as it can be: There is an isomorphism $\\mathbf{Rel} \\cong \\mathbf{Rel}^{\\mathrm{op}}$ that is the identity on objects and maps a relation to its opposite relation. It is the prototype of a dagger-category.',
+		description: 'This category is self-dual as it can be: There is an isomorphism $\\mathbf{Rel} \\cong \\mathbf{Rel}^{\\mathrm{op}}$ that is the identity on objects and maps a relation to its opposite relation. It is the prototype of a dagger-category.',
 	},
 	{
 		id: 'Sp',
 		name: 'category of combinatorial species',
 		notation: '$\\mathbf{Sp}$',
-		objects:
-			'combinatorial species, defined as functors $\\mathbb{B} \\to \\mathbf{FinSet}$, where $\\mathbb{B}$ is the category of finite sets and bijections',
+		objects: 'combinatorial species, defined as functors $\\mathbb{B} \\to \\mathbf{FinSet}$, where $\\mathbb{B}$ is the category of finite sets and bijections',
 		morphisms: 'natural transformations',
 		nlab_link: 'https://ncatlab.org/nlab/show/species',
-		description:
-			'Most categorical properties are immediately inferred from $\\mathbf{FinSet}$. Notice that this category is not locally small; it is just equivalent to a locally small category.',
+		description: 'Most categorical properties are immediately inferred from $\\mathbf{FinSet}$. Notice that this category is not locally small; it is just equivalent to a locally small category.',
 	},
 	{
 		id: 'real_interval',
@@ -465,8 +425,7 @@ const CATEGORIES_INDEX = [
 		objects: 'real numbers between $0$ and $1$',
 		morphisms: 'a unique morphism $(s,t) : s \\to t$ when $s \\leq t$',
 		nlab_link: 'https://ncatlab.org/nlab/show/interval',
-		description:
-			'Every partial order can be regarded as a thin category. This is a specific example. This category is locally $\\aleph_1$-presentable (in fact, <i>every</i> object is $\\aleph_1$-presentable), but not locally finitely presentable (in fact, only $0$ is finitely presentable).',
+		description: 'Every partial order can be regarded as a thin category. This is a specific example. This category is locally $\\aleph_1$-presentable (in fact, <i>every</i> object is $\\aleph_1$-presentable), but not locally finitely presentable (in fact, only $0$ is finitely presentable).',
 	},
 ] as const
 

@@ -13,6 +13,12 @@
 			"options": {
 				"parser": "svelte"
 			}
+		},
+		{
+			"files": "src/lib/data/*.data.ts",
+			"options": {
+				"printWidth": 2000
+			}
 		}
 	]
 }

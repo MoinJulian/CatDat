@@ -40,12 +40,7 @@ export const PROPERTY_RELATIONS: Partial<Record<PropertyID, PropertyID[]>> = {
 	'infinitary distributive': ['distributive'],
 	'distributive': ['infinitary distributive'],
 	'exact filtered colimits': ['filtered colimits', 'finitely complete'],
-	'Grothendieck abelian': [
-		'abelian',
-		'cocomplete',
-		'generator',
-		'exact filtered colimits',
-	],
+	'Grothendieck abelian': ['abelian', 'cocomplete', 'generator', 'exact filtered colimits'],
 	'disjoint finite coproducts': ['finite coproducts', 'disjoint coproducts'],
 	'disjoint coproducts': ['coproducts', 'disjoint finite coproducts'],
 	'wide pullbacks': ['pullbacks'],
