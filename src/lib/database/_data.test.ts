@@ -1,8 +1,6 @@
 // This file is testing all the files in the present data folder.
 
 import { CATEGORIES } from '$lib/database/categories.data'
-import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
-import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
 import { IMPLICATIONS } from '$lib/database/implications.data'
 import { PREFIXES } from '$lib/database/prefix.data'
 import { PROPERTIES } from '$lib/database/properties.data'
@@ -47,60 +45,6 @@ describe('list of categories', () => {
 			const keys = Object.keys(category)
 			const sorted_keys = category_keys.filter((key) => keys.includes(key))
 			expect(keys).toEqual(sorted_keys)
-		}
-	})
-})
-
-describe('list of satisfied properties per category', () => {
-	it('should have at most one entry per category-property pair', () => {
-		const seen = new Set<string>()
-
-		for (const [category, property] of CATEGORY_PROPERTIES) {
-			const pair = `${category}-${property}`
-			expect(seen.has(pair)).toBe(false)
-			seen.add(pair)
-		}
-	})
-
-	it('should have categories grouped together', () => {
-		const categories = CATEGORY_PROPERTIES.map((item) => item[0])
-		const seen = new Set<string>()
-		let current = categories[0]
-
-		for (const category of categories) {
-			if (category == current) continue
-			if (seen.has(category)) {
-				throw new Error(`Category ${category} is not grouped together`)
-			}
-			seen.add(current)
-			current = category
-		}
-	})
-})
-
-describe('list of non-satisfied properties per category', () => {
-	it('should have at most one entry per category-property pair', () => {
-		const seen = new Set<string>()
-
-		for (const [category, property] of CATEGORY_NON_PROPERTIES) {
-			const pair = `${category}-${property}`
-			expect(seen.has(pair)).toBe(false)
-			seen.add(pair)
-		}
-	})
-
-	it('should have categories grouped together', () => {
-		const categories = CATEGORY_NON_PROPERTIES.map((item) => item[0])
-		const seen = new Set<string>()
-		let current = categories[0]
-
-		for (const category of categories) {
-			if (category == current) continue
-			if (seen.has(category)) {
-				throw new Error(`Category ${category} is not grouped together`)
-			}
-			seen.add(current)
-			current = category
 		}
 	})
 })
