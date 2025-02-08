@@ -19,6 +19,12 @@
 			"options": {
 				"printWidth": 2000
 			}
+		},
+		{
+			"files": "src/lib/database/tags.data.ts",
+			"options": {
+				"printWidth": 90
+			}
 		}
 	]
 }
