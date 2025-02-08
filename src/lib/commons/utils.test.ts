@@ -1,5 +1,6 @@
 import {
 	concatenate_info,
+	equal_up_to_order,
 	group_items,
 	is_object,
 	select,
@@ -113,5 +114,31 @@ describe('select', () => {
 		]
 		const result = select().from(data)
 		expect(result).toEqual([{}, {}])
+	})
+})
+
+describe('equal_up_to_order', () => {
+	it('should return true for arrays with the same elements in the same order', () => {
+		const a = ['s', 'a', 't']
+		const b = ['s', 'a', 't']
+		expect(equal_up_to_order(a, b)).toBe(true)
+	})
+
+	it('should return true for arrays with the same elements in different order', () => {
+		const a = ['s', 'a', 't']
+		const b = ['t', 'a', 's']
+		expect(equal_up_to_order(a, b)).toBe(true)
+	})
+
+	it('should return false for arrays with different elements', () => {
+		const a = ['s', 'a', 't']
+		const b = ['s', 'a', 'c']
+		expect(equal_up_to_order(a, b)).toBe(false)
+	})
+
+	it('should return false for arrays with different lengths', () => {
+		const a = ['s', 'a', 't']
+		const b = ['s', 'a']
+		expect(equal_up_to_order(a, b)).toBe(false)
 	})
 })

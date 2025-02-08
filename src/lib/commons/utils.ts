@@ -31,3 +31,10 @@ export function select<T extends Record<string, any>, K extends keyof T>(...keys
 		},
 	}
 }
+
+export function equal_up_to_order(a: string[], b: string[]): boolean {
+	return (
+		a.length === b.length &&
+		JSON.stringify(a.toSorted()) === JSON.stringify(b.toSorted())
+	)
+}

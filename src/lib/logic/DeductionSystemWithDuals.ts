@@ -1,4 +1,4 @@
-import type { NonEmptyArray } from '$lib/commons/utils'
+import { equal_up_to_order, type NonEmptyArray } from '$lib/commons/utils'
 import { DeductionSystem, type Rule } from './DeductionSystem'
 
 export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<T> {
@@ -38,8 +38,9 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 			if (!dual_assumptions || !dual_conclusions) continue
 
 			const not_new =
-				JSON.stringify(dual_assumptions) === JSON.stringify(rule.assumptions) &&
-				JSON.stringify(dual_conclusions) === JSON.stringify(rule.conclusions)
+				equal_up_to_order(dual_assumptions, rule.assumptions) &&
+				equal_up_to_order(dual_conclusions, rule.conclusions)
+
 			if (not_new) continue
 
 			const dualized_rule: Rule<T> = rule.equivalent
