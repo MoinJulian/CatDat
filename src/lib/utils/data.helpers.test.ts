@@ -1,4 +1,26 @@
-import { get_dual_properties, get_dual_property, negate_prefix } from './data.helpers'
+import {
+	get_category,
+	get_dual_properties,
+	get_dual_property,
+	get_property,
+	negate_prefix,
+} from './data.helpers'
+
+describe('get_category', () => {
+	it('returns the category with the given ID', () => {
+		const FinAb = get_category('FinAb')
+		expect(FinAb.id).toBe('FinAb')
+		expect(FinAb.name).toBe('category of finite abelian groups')
+	})
+})
+
+describe('get_property', () => {
+	it('returns the property with the given ID', () => {
+		const small = get_property('small')
+		expect(small.id).toBe('small')
+		expect(small.prefix).toBe('is')
+	})
+})
 
 describe('negate_prefix', () => {
 	it("negates 'has a' to 'does not have a'", () => {

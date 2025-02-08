@@ -5,13 +5,8 @@ import { render_formulas_in_object } from '$lib/commons/rendering'
 import { PROPERTY_RELATIONS } from '$lib/data/property-relations.data'
 import { PROPERTY_DUALS } from '$lib/data/property-duals.data'
 import { decode_property_ID } from '$lib/commons/property.url'
-import {
-	categories_dictionary,
-	is_valid_property,
-	properties_dictionary,
-} from '$lib/utils/data.helpers'
+import { get_category, get_property, is_valid_property } from '$lib/utils/data.helpers'
 import { category_system, property_deduction_system } from '$lib/utils/deductions'
-import type { CategoryID } from '$lib/data/categories.data'
 
 export const load: PageServerLoad = (event) => {
 	const id = decode_property_ID(event.params.id)
@@ -19,21 +14,21 @@ export const load: PageServerLoad = (event) => {
 	const is_valid = is_valid_property(id)
 	if (!is_valid) return error(404, 'Property not found')
 
-	const property = properties_dictionary[id]
+	const property = get_property(id)
 	const dual_property = PROPERTY_DUALS[id] ?? null
 	const related_properties = PROPERTY_RELATIONS[id] ?? []
 
 	const categories_with_this_property = category_system
 		.search([id], [])
-		.map((result) => categories_dictionary[result.id as CategoryID])
+		.map((result) => get_category(result.id))
 
 	const categories_without_this_property = category_system
 		.search([], [id])
-		.map((result) => categories_dictionary[result.id as CategoryID])
+		.map((result) => get_category(result.id))
 
 	const unknown_categories = category_system
 		.search([], [], [id])
-		.map((result) => categories_dictionary[result.id as CategoryID])
+		.map((result) => get_category(result.id))
 
 	const relevant_implications = property_deduction_system
 		.get_relevant_rules(id)

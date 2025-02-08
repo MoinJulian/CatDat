@@ -3,7 +3,7 @@ import { error } from '@sveltejs/kit'
 
 import { max_categories } from '../compare.config'
 import { render_formulas } from '$lib/commons/rendering'
-import { categories_dictionary, is_valid_category } from '$lib/utils/data.helpers'
+import { get_category, is_valid_category } from '$lib/utils/data.helpers'
 import {
 	categories_with_deduced_properties_dictionary,
 	category_system,
@@ -30,7 +30,7 @@ export const load: PageServerLoad = (event) => {
 	}
 
 	const compared_categories = compared_categories_with_properties.map((category) => {
-		const { id, name, notation } = categories_dictionary[category.id]
+		const { id, name, notation } = get_category(category.id)
 		return {
 			id,
 			name,

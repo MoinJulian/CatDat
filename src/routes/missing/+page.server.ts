@@ -5,7 +5,7 @@ import { CATEGORIES, type Category } from '$lib/data/categories.data'
 import { CATEGORY_MONOMORPHISMS } from '$lib/data/category-monomorphisms.data'
 import { CATEGORY_EPIMORPHISMS } from '$lib/data/category-epimorphisms.data'
 import { CATEGORY_ISOMORPHISMS } from '$lib/data/category-isomorphisms.data'
-import { properties_dictionary } from '$lib/utils/data.helpers'
+import { get_property } from '$lib/utils/data.helpers'
 
 const has_todo = (entry: string) => !entry || entry.includes('TODO')
 
@@ -15,8 +15,8 @@ export const load: PageServerLoad = () => {
 		({ assumption, negation }) => ({
 			assumption,
 			negation,
-			assumption_prefix: properties_dictionary[assumption].prefix,
-			negation_prefix: properties_dictionary[negation].prefix,
+			assumption_prefix: get_property(assumption).prefix,
+			negation_prefix: get_property(negation).prefix,
 		}),
 	)
 

@@ -8,18 +8,23 @@ import { PROPERTY_DUALS } from '$lib/data/property-duals.data'
 
 export const propertyIDs = PROPERTIES.map((property) => property.id)
 
-const categoryIDs = CATEGORIES.map((category) => category.id)
+const properties_dictionary: Record<PropertyID, Property> = group_items(PROPERTIES)
+const categories_dictionary: Record<CategoryID, Category> = group_items(CATEGORIES)
 
-export const properties_dictionary: Record<PropertyID, Property> = group_items(PROPERTIES)
+export function get_category(id: CategoryID): Category {
+	return categories_dictionary[id]
+}
 
-export const categories_dictionary: Record<CategoryID, Category> = group_items(CATEGORIES)
+export function get_property(id: PropertyID): Property {
+	return properties_dictionary[id]
+}
 
 export function negate_prefix(prefix: Prefix) {
 	return PREFIXES[prefix]
 }
 
 export function is_valid_category(id: string): id is CategoryID {
-	return (categoryIDs as string[]).includes(id)
+	return id in categories_dictionary
 }
 
 export function is_valid_property(id: string): id is PropertyID {
