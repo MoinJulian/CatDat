@@ -10,6 +10,7 @@ import { PROPERTIES, type Property, type PropertyID } from '$lib/database/proper
 import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
 
 export const propertyIDs = PROPERTIES.map((property) => property.id)
+export const categoryIDs = CATEGORIES.map((category) => category.id)
 
 export type CategorySimple = Pick<Category, 'id' | 'name'>
 
