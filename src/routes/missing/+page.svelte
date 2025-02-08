@@ -1,6 +1,6 @@
 <script>
 	import CategoryList from '$components/CategoryList.svelte'
-	import { negate_prefix } from '$lib/data-utils/data.helpers.js'
+	import { negate_prefix } from '$lib/data-utils/data.helpers'
 
 	const { data } = $props()
 

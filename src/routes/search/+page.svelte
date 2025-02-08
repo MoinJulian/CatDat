@@ -12,7 +12,7 @@
 	import { concatenate_info } from '$lib/commons/utils'
 	import { browser } from '$app/environment'
 	import Selection from '$components/Selection.svelte'
-	import { is_valid_property, propertyIDs } from '$lib/data-utils/data.helpers.js'
+	import { is_valid_property, propertyIDs } from '$lib/data-utils/data.helpers'
 	import type { PropertyID } from '$lib/database/properties.data'
 	import { encode_property_ID } from '$lib/commons/property.url'
 
