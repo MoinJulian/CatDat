@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Category } from '$lib/database/categories.data'
+	import type { CategorySimple } from '$lib/data-utils/data.helpers'
 
 	type Props = {
-		items: Pick<Category, 'id' | 'name'>[]
+		items: CategorySimple[]
 		description?: string
 	}
 

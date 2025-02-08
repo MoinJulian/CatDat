@@ -99,7 +99,7 @@ describe('select', () => {
 			{ id: 1, name: 'Alice', age: 30 },
 			{ id: 2, name: 'Bob', age: 25 },
 		]
-		const result = select(data, ['id', 'name'])
+		const result = select('id', 'name').from(data)
 		expect(result).toEqual([
 			{ id: 1, name: 'Alice' },
 			{ id: 2, name: 'Bob' },
@@ -111,7 +111,7 @@ describe('select', () => {
 			{ id: 1, name: 'Alice', age: 30 },
 			{ id: 2, name: 'Bob', age: 25 },
 		]
-		const result = select(data, [])
+		const result = select().from(data)
 		expect(result).toEqual([{}, {}])
 	})
 })

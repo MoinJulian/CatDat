@@ -26,10 +26,9 @@ export const load: PageServerLoad = (event) => {
 
 	const related_category_ids = CATEGORY_RELATIONS[id] ?? []
 
-	const related_categories = select(related_category_ids.map(get_category), [
-		'id',
-		'name',
-	])
+	const related_categories = select('id', 'name').from(
+		related_category_ids.map(get_category),
+	)
 
 	const deductions = categories_with_deduced_properties_dictionary[id]
 

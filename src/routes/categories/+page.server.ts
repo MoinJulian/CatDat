@@ -1,8 +1,7 @@
-import type { PageServerLoad } from './$types'
 import { select } from '$lib/commons/utils'
 import { CATEGORIES } from '$lib/database/categories.data'
+import type { PageServerLoad } from '../missing/$types'
 
 export const load: PageServerLoad = () => {
-	const simplified_categories = select(CATEGORIES, ['id', 'name'])
-	return { categories: simplified_categories }
+	return { categories: select('id', 'name').from(CATEGORIES) }
 }

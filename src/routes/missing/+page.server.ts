@@ -1,8 +1,14 @@
 import type { PageServerLoad } from './$types'
 import { select, sum } from '$lib/commons/utils'
 import { category_system } from '$lib/data-utils/deductions'
-import { CATEGORIES, type Category } from '$lib/database/categories.data'
-import { get_epis, get_isos, get_monos, get_property } from '$lib/data-utils/data.helpers'
+import { CATEGORIES } from '$lib/database/categories.data'
+import {
+	get_epis,
+	get_isos,
+	get_monos,
+	get_property,
+	type CategorySimple,
+} from '$lib/data-utils/data.helpers'
 
 const has_todo = (entry: string) => !entry || entry.includes('TODO')
 
@@ -21,25 +27,26 @@ export const load: PageServerLoad = () => {
 	const entities_with_unknown_properties =
 		category_system.get_entities_with_unknown_properties()
 
-	const categories_with_unknown_properties: Pick<Category, 'id' | 'name'>[] = select(
-		entities_with_unknown_properties,
-		['id', 'name'],
-	)
+	const categories_with_unknown_properties: CategorySimple[] = select(
+		'id',
+		'name',
+	).from(entities_with_unknown_properties)
 
-	const categories_with_unknown_special_morphisms: Pick<Category, 'id' | 'name'>[] =
-		select(
-			CATEGORIES.filter((category) => {
-				const monomorphisms = get_monos(category.id)
-				const epimorphisms = get_epis(category.id)
-				const isomorphisms = get_isos(category.id)
-				return (
-					has_todo(monomorphisms.description) ||
-					has_todo(epimorphisms.description) ||
-					has_todo(isomorphisms.description)
-				)
-			}),
-			['id', 'name'],
-		)
+	const categories_with_unknown_special_morphisms: CategorySimple[] = select(
+		'id',
+		'name',
+	).from(
+		CATEGORIES.filter((category) => {
+			const monomorphisms = get_monos(category.id)
+			const epimorphisms = get_epis(category.id)
+			const isomorphisms = get_isos(category.id)
+			return (
+				has_todo(monomorphisms.description) ||
+				has_todo(epimorphisms.description) ||
+				has_todo(isomorphisms.description)
+			)
+		}),
+	)
 
 	const total_number_unknown_properties = sum(
 		entities_with_unknown_properties.map(

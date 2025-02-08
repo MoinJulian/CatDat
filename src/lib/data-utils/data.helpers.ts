@@ -11,6 +11,8 @@ import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
 
 export const propertyIDs = PROPERTIES.map((property) => property.id)
 
+export type CategorySimple = Pick<Category, 'id' | 'name'>
+
 const properties_dictionary: Record<PropertyID, Property> = group_items(PROPERTIES)
 const categories_dictionary: Record<CategoryID, Category> = group_items(CATEGORIES)
 
