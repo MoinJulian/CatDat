@@ -32,11 +32,11 @@
 </ul>
 
 <p>
-	In any case, please follow the
+	Make sure to follow the
 	<a
 		href="https://github.com/ScriptRaccoon/CatDat/blob/main/CONTRIBUTING.md"
 		target="_blank">contribution guidelines</a
-	>!
+	>.
 </p>
 
 <p>
