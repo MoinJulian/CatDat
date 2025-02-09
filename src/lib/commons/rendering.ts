@@ -15,23 +15,24 @@ export function render_formulas(txt: string): string {
 	})
 }
 
-export function render_formulas_in_object<T extends Record<string, unknown>>(obj: T): T {
-	const result: Record<string, unknown> = {}
-	for (const key in obj) {
-		const value = obj[key]
-		if (typeof value === 'string') {
-			const has_math = math_regex.test(value)
-			result[key] = has_math ? render_formulas(value) : value
-		} else if (is_object(value)) {
-			result[key] = render_formulas_in_object(value)
-		} else {
-			result[key] = value
-		}
-	}
-	return result as T
-}
+export function render_nested_formulas<T>(obj: T): T {
+	if (!obj) return obj
 
-// currently not used
-export function render_formulas_in_array(arr: string[]): string[] {
-	return arr.map(render_formulas)
+	if (typeof obj === 'string') {
+		return render_formulas(obj) as T
+	}
+
+	if (Array.isArray(obj)) {
+		return obj.map(render_nested_formulas) as T
+	}
+
+	if (is_object(obj)) {
+		const result: Record<string, unknown> = {}
+		for (const key in obj) {
+			result[key] = render_nested_formulas(obj[key])
+		}
+		return result as T
+	}
+
+	return obj
 }

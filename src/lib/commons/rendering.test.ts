@@ -1,8 +1,4 @@
-import {
-	render_formulas,
-	render_formulas_in_array,
-	render_formulas_in_object,
-} from './rendering'
+import { render_formulas, render_nested_formulas } from './rendering'
 
 describe('render_formulas', () => {
 	it('renders formulas in a text', () => {
@@ -20,25 +16,37 @@ describe('render_formulas', () => {
 	})
 })
 
-describe('render_formulas_in_object', () => {
-	it('should render formulas in direct fields', () => {
+describe('render_nested_formulas', () => {
+	it('should not change nullish values', () => {
+		expect(render_nested_formulas(null)).toBe(null)
+		expect(render_nested_formulas(undefined)).toBe(undefined)
+	})
+
+	it('should not change numbers', () => {
+		expect(render_nested_formulas(34)).toBe(34)
+	})
+
+	it('should render formulas in strings', () => {
+		const rendered_formula = render_nested_formulas('This is just $x = y$.')
+		expect(rendered_formula).toMatch(/This is just <span class="katex">.*<\/span>\./)
+	})
+
+	it('should render formulas in direct fields of objects', () => {
 		const obj = {
 			id: '123',
 			notation: '$\\sqcup$',
 			description: 'The coproduct $X \\sqcup Y$ of two objects always exists.',
-			related: ['a', 'b'],
-		}
+		} as const
 
-		const rendered_object = render_formulas_in_object(obj)
+		const rendered_object = render_nested_formulas(obj)
 		expect(rendered_object.id).toBe('123')
 		expect(rendered_object.notation).toMatch(/<span class="katex">.*<\/span>/)
 		expect(rendered_object.description).toMatch(
 			/The coproduct <span class="katex">.*<\/span> of two objects always exists\./,
 		)
-		expect(rendered_object.related).toEqual(['a', 'b'])
 	})
 
-	it('should render formulas in nested fields', () => {
+	it('should render formulas in nested fields of objects', () => {
 		const obj = {
 			id: 'Grph',
 			notation: `$\\mathbf{Grph}$`,
@@ -46,8 +54,10 @@ describe('render_formulas_in_object', () => {
 				isomorphisms: 'pairs $(f,g)$ with $f$ and $g$ isomorphisms',
 			},
 			properties: new Set(['x', 'y', 'z']),
-		}
-		const rendered_object = render_formulas_in_object(obj)
+		} as const
+
+		const rendered_object = render_nested_formulas(obj)
+
 		expect(rendered_object.id).toBe('Grph')
 		expect(rendered_object.notation).toMatch(/<span class="katex">.*<\/span>/)
 		expect(rendered_object.special_morphisms.isomorphisms).toMatch(
@@ -55,15 +65,30 @@ describe('render_formulas_in_object', () => {
 		)
 		expect(rendered_object.properties).toEqual(new Set(['x', 'y', 'z']))
 	})
-})
 
-describe('render_formulas_in_array', () => {
-	it('should render formulas in each entry', () => {
-		const arr = ['$a$', '$b$', '$c$']
-		const rendered_arr = render_formulas_in_array(arr)
+	it('should render formulas in an array', () => {
+		const arr = ['$a$', '$b$', '$c$'] as const
+		const rendered_arr = render_nested_formulas(arr)
+
 		expect(rendered_arr).toHaveLength(3)
 		expect(rendered_arr[0]).toMatch(/<span class="katex">.*<\/span>/)
 		expect(rendered_arr[1]).toMatch(/<span class="katex">.*<\/span>/)
 		expect(rendered_arr[2]).toMatch(/<span class="katex">.*<\/span>/)
+	})
+
+	it('should recursively render formulas in nested objects and arrays', () => {
+		const obj = {
+			a: 'a',
+			b: `$x=y$`,
+			c: ['This is $z$', { d: '$w$' }],
+		} as const
+
+		const rendered_obj = render_nested_formulas(obj)
+
+		expect(rendered_obj.a).toBe('a')
+		expect(rendered_obj.b).toMatch(/<span class="katex">.*<\/span>/)
+		expect(rendered_obj.c).toHaveLength(2)
+		expect(rendered_obj.c[0]).toMatch(/This is <span class="katex">.*<\/span>/)
+		expect(rendered_obj.c[1].d).toMatch(/<span class="katex">.*<\/span>/)
 	})
 })

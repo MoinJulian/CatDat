@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-import { render_formulas, render_formulas_in_object } from '$lib/commons/rendering'
+import { render_formulas, render_nested_formulas } from '$lib/commons/rendering'
 import { CATEGORY_RELATIONS } from '$lib/database/category-relations.data'
 import {
 	get_category,
@@ -31,13 +31,13 @@ export const load: PageServerLoad = (event) => {
 
 	const related_categories = select('id', 'notation')
 		.from(related_category_ids.map(get_category))
-		.map(render_formulas_in_object)
+		.map(render_nested_formulas)
 
 	const deductions = categories_with_deduced_properties_dictionary[id]
 
-	const isomorphisms = render_formulas_in_object(get_isos(id))
-	const monomorphisms = render_formulas_in_object(get_monos(id))
-	const epimorphisms = render_formulas_in_object(get_epis(id))
+	const isomorphisms = render_nested_formulas(get_isos(id))
+	const monomorphisms = render_nested_formulas(get_monos(id))
+	const epimorphisms = render_nested_formulas(get_epis(id))
 
 	const reasons = CATEGORY_PROPERTIES[id]
 
@@ -66,7 +66,7 @@ export const load: PageServerLoad = (event) => {
 	)
 
 	return {
-		category: render_formulas_in_object(category),
+		category: render_nested_formulas(category),
 		tags,
 		related_categories,
 		properties_with_reasons,

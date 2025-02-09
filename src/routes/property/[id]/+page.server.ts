@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-import { render_formulas_in_object } from '$lib/commons/rendering'
+import { render_nested_formulas } from '$lib/commons/rendering'
 import { PROPERTY_RELATIONS } from '$lib/database/property-relations.data'
 import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
 import { decode_property_ID } from '$lib/commons/property.url'
@@ -36,10 +36,10 @@ export const load: PageServerLoad = (event) => {
 
 	const relevant_implications = property_deduction_system
 		.get_relevant_rules(id)
-		.map(render_formulas_in_object)
+		.map(render_nested_formulas)
 
 	return {
-		property: render_formulas_in_object(property),
+		property: render_nested_formulas(property),
 		dual_property,
 		related_properties,
 		categories_with_this_property,
