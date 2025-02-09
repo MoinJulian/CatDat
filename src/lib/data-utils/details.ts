@@ -1,7 +1,3 @@
-/* v8 ignore start */
-
-// TODO: find a way to test this file properly without coupling to the db values
-
 import { select } from '$lib/commons/utils'
 import type { CategoryID } from '$lib/database/categories.data'
 import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
@@ -68,5 +64,3 @@ export function get_detailed_category(id: CategoryID) {
 		unknown_properties: Array.from(unknown_properties).map(with_empty_reason),
 	}
 }
-
-/* v8 ignore stop */
