@@ -92,7 +92,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['balanced', ''],
 		['cogenerator', ''],
 		['skeletal', 'trivial'],
-		['Malcev', 'Consider the submonoid $\\{(a,b) : a \\leq b \}$ of $\\mathbb{N}^2$.'],
+		['Malcev', 'Consider the submonoid $\\{(a,b) : a \\leq b \\}$ of $\\mathbb{N}^2$.'],
 	],
 	'Pos': [
 		['strict terminal object', ''],
@@ -118,7 +118,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['balanced', ''],
 		['cartesian closed', ''],
 		['essentially small', ''],
-		['exact filtered colimits', '2.7 in https://arxiv.org/abs/2006.01399'],
+		['exact filtered colimits', '2.7 in <a href="https://arxiv.org/abs/2006.01399" target="_blank">this paper</a>'],
 		['skeletal', 'trivial'],
 		['Malcev', ''],
 	],
@@ -126,7 +126,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 		['strict terminal object', ''],
 		['balanced', ''],
 		['cartesian closed', ''],
-		['exact filtered colimits', '2.7 in https://arxiv.org/abs/2006.01399'],
+		['exact filtered colimits', '2.7 in <a href="https://arxiv.org/abs/2006.01399" target="_blank">this paper</a>'],
 		['skeletal', 'trivial'],
 		['Malcev', ''],
 	],
@@ -204,7 +204,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, [PropertyID, string][]>
 	'FreeAb': [
 		['countable products', ''],
 		['balanced', ''],
-		['filtered colimits', 'https://math.stackexchange.com/questions/5025660'],
+		['filtered colimits', 'See <a href="https://math.stackexchange.com/questions/5025660" target="_blank">this post</a>'],
 		['skeletal', 'trivial'],
 	],
 	'Z': [

@@ -150,7 +150,7 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 	],
 	'Met_oo': [
 		['locally small', ''],
-		['locally ℵ₁-presentable', '4.5 in https://arxiv.org/abs/1504.02660'],
+		['locally ℵ₁-presentable', 'Example 4.5 in <a href="https://arxiv.org/abs/1504.02660" target="_blank">this preprint</a>'],
 		['infinitary distributive', ''],
 		['cogenerator', ''],
 		['disjoint coproducts', ''],
@@ -371,20 +371,20 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, [PropertyID, string][]> = {
 		['small', ''],
 		['self-dual', ''],
 		['distributive', ''],
-		['locally ℵ₁-presentable', 'https://math.stackexchange.com/questions/4481902/locally-presentable-vs-compactly-presentable-categories#comment9399784_4482185'],
+		['locally ℵ₁-presentable', 'See <a href="https://math.stackexchange.com/questions/4481902/locally-presentable-vs-compactly-presentable-categories#comment9399784_4482185" target="_blank">here</a>.'],
 		['skeletal', 'The relation $\\leq$ is antisymmetric.'],
 	],
 	'Zdiv': [
 		['small', 'trivial'],
 		['products', 'Take the $\\gcd$ of a subset.'],
-		['distributive', 'Using prime factorizations, one can prove that $\\mathrm{lcm}(a, \\gcd \\{b_i \\}) = \\gcd \\{ \\mathrm{lcm}(a, b_i) \\}$ for finitely many $b_i$.'],
-		['locally ℵ₁-presentable', 'Every $$\\aleph_1$-directed diagramm is eventually constant.'],
+		['distributive', 'Using prime factorizations, one can prove that $\\gcd(a, \\mathrm{lcm} \\{b_i \\}) = \\mathrm{lcm} \\{ \\gcd(a, b_i) \\}$ for finitely many $b_i$.'],
+		['locally ℵ₁-presentable', 'Every $\\aleph_1$-directed diagram is eventually constant.'],
 	],
 	'Noo': [
 		['small', 'trivial'],
 		['coproducts', 'Take the supremum.'],
 		['skeletal', 'The relation $\\leq$ is antisymmetric'],
-		['infinitary distributive', 'One can show that $\\sup_i \\min(a,b_i) = \min(a, \\sup_i b_i)$.'],
+		['infinitary distributive', 'One can show that $\\sup_i \\min(a,b_i) = \\min(a, \\sup_i b_i)$.'],
 		['locally finitely presentable', 'Every natural number is finitely presentable, and $\\infty$ is the colimit of all $n < \\infty$.'],
 	],
 }
