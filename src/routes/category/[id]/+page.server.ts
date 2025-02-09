@@ -14,7 +14,10 @@ import {
 import { select } from '$lib/commons/utils'
 import { CATEGORY_TAGS } from '$lib/database/category-tags.data'
 import { categories_with_deduced_properties_dictionary } from '$lib/data-utils/deductions'
+import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
+import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
 
+// TODO: clean this load function, separate out the logic
 export const load: PageServerLoad = (event) => {
 	const id = event.params.id
 
@@ -36,12 +39,38 @@ export const load: PageServerLoad = (event) => {
 	const monomorphisms = render_formulas_in_object(get_monos(id))
 	const epimorphisms = render_formulas_in_object(get_epis(id))
 
+	const reasons = CATEGORY_PROPERTIES[id]
+
+	// TODO: clean this code up later
+	const properties_with_reasons = Array.from(deductions.properties).map(
+		(property_id) => {
+			const property = get_property(property_id)
+			const reason = render_formulas(
+				reasons.find((entry) => entry[0] === property_id)?.[1] ?? '',
+			)
+			return { property, reason }
+		},
+	)
+
+	// TODO: clean this code up later
+	const non_properties_with_reasons = Array.from(deductions.non_properties).map(
+		(property_id) => {
+			const property = get_property(property_id)
+			const reason = render_formulas(
+				CATEGORY_NON_PROPERTIES[id].find(
+					(entry) => entry[0] === property_id,
+				)?.[1] ?? '',
+			)
+			return { property, reason }
+		},
+	)
+
 	return {
 		category: render_formulas_in_object(category),
 		tags,
 		related_categories,
-		properties: Array.from(deductions.properties).map(get_property),
-		non_properties: Array.from(deductions.non_properties).map(get_property),
+		properties_with_reasons,
+		non_properties_with_reasons,
 		deduced_properties: Array.from(deductions.deduced_properties).map(get_property),
 		deduced_non_properties: Array.from(deductions.deduced_non_properties).map(
 			get_property,

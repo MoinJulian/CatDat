@@ -1,28 +1,26 @@
 <script lang="ts">
 	import { negate_prefix } from '$lib/data-utils/data.helpers'
-	import type { Property, PropertyID } from '$lib/database/properties.data'
+	import type { Property } from '$lib/database/properties.data'
 	import { get_property_url } from '$lib/commons/property.url'
-	// TODO: remove this serverside import
+	import Tooltip from './Tooltip.svelte'
 
 	type Props = {
-		items: Pick<Property, 'id' | 'prefix'>[]
-		reasons?: Partial<Record<PropertyID, string>>
+		items: {
+			property: Pick<Property, 'id' | 'prefix'>
+			reason: string
+		}[]
 		description?: string
 		with_prefix?: boolean
 		negated?: boolean
 	}
 
-	let {
-		items,
-		reasons,
-		description,
-		with_prefix = true,
-		negated = false,
-	}: Props = $props()
+	let { items, description, with_prefix = true, negated = false }: Props = $props()
 
 	// TODO: sort on server side
 	let sorted_properties = $derived(
-		items.toSorted((a, b) => a.id.toLowerCase().localeCompare(b.id.toLowerCase())),
+		items.toSorted((a, b) =>
+			a.property.id.toLowerCase().localeCompare(b.property.id.toLowerCase()),
+		),
 	)
 </script>
 
@@ -34,7 +32,7 @@
 
 {#if items.length}
 	<ul>
-		{#each sorted_properties as property}
+		{#each sorted_properties as { property, reason }}
 			<li>
 				{#if with_prefix}
 					{negated ? negate_prefix(property.prefix) : property.prefix}
@@ -43,8 +41,10 @@
 					{property.id}
 				</a>
 
-				{#if reasons && reasons[property.id]}
-					<p>{reasons[property.id]}</p>
+				{#if reason}
+					<Tooltip>
+						{@html reason}
+					</Tooltip>
 				{/if}
 			</li>
 		{/each}
@@ -52,3 +52,9 @@
 {:else}
 	<p>&mdash;</p>
 {/if}
+
+<style>
+	li {
+		position: relative;
+	}
+</style>

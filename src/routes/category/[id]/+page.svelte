@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { category_detail_level } from '$lib/settings/detail_level.svelte'
 	import PropertyList from '$components/PropertyList.svelte'
+	import PropertyReasonList from '$components/PropertyReasonList.svelte'
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'
 	import MorphismInfo from '$components/MorphismInfo.svelte'
@@ -11,9 +12,9 @@
 	let tags = $derived(data.tags)
 	let related_categories = $derived(data.related_categories)
 
-	// TODO: also render the reasons for the properties and non-properties
-	let properties = $derived(data.properties)
-	let non_properties = $derived(data.non_properties)
+	let properties_with_reasons = $derived(data.properties_with_reasons)
+	let non_properties_with_reasons = $derived(data.non_properties_with_reasons)
+
 	let deduced_properties = $derived(data.deduced_properties)
 	let deduced_non_properties = $derived(data.deduced_non_properties)
 	let all_properties = $derived(data.all_properties)
@@ -78,8 +79,8 @@
 			<h3>Properties</h3>
 
 			{#if category_detail_level.value === 'all'}
-				<PropertyList
-					items={properties}
+				<PropertyReasonList
+					items={properties_with_reasons}
 					description="Properties from the database"
 				/>
 
@@ -90,8 +91,8 @@
 			{:else if category_detail_level.value === 'merged'}
 				<PropertyList items={all_properties} />
 			{:else if category_detail_level.value === 'basic'}
-				<PropertyList
-					items={properties}
+				<PropertyReasonList
+					items={properties_with_reasons}
 					description="Properties from the database. Further properties can be deduced."
 				/>
 			{/if}
@@ -101,8 +102,8 @@
 			<h3>Non-Properties</h3>
 
 			{#if category_detail_level.value === 'all'}
-				<PropertyList
-					items={non_properties}
+				<PropertyReasonList
+					items={non_properties_with_reasons}
 					description="Non-Properties from the database"
 					negated={true}
 				/>
@@ -115,8 +116,8 @@
 			{:else if category_detail_level.value === 'merged'}
 				<PropertyList items={all_non_properties} negated={true} />
 			{:else if category_detail_level.value === 'basic'}
-				<PropertyList
-					items={non_properties}
+				<PropertyReasonList
+					items={non_properties_with_reasons}
 					description="Non-Properties from the database. Further non-properties can be deduced."
 					negated={true}
 				/>
