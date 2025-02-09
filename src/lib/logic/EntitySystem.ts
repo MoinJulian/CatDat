@@ -10,6 +10,16 @@ export type EntityDetailed<S, T extends string> = S & {
 	all_non_properties: Set<T>
 }
 
+export type EntityTransformed<S, T extends string> = S & {
+	properties: T[]
+	non_properties: T[]
+	deduced_properties: T[]
+	deduced_non_properties: T[]
+	unknown_properties: T[]
+	all_properties: T[]
+	all_non_properties: T[]
+}
+
 export class EntitySystem<S, T extends string> {
 	public readonly entities: EntityDetailed<S, T>[] = []
 	protected deduction_system: DeductionSystem<T>
@@ -115,5 +125,28 @@ export class EntitySystem<S, T extends string> {
 				property,
 				...entities.map((entity) => this.get_comparison_value(entity, property)),
 			])
+	}
+
+	public get_transformed_entities(): EntityTransformed<S, T>[] {
+		return this.entities.map((entity) => {
+			const properties = Array.from(entity.properties)
+			const non_properties = Array.from(entity.non_properties)
+			const deduced_properties = Array.from(entity.deduced_properties)
+			const deduced_non_properties = Array.from(entity.deduced_non_properties)
+			const unknown_properties = Array.from(entity.unknown_properties)
+			const all_properties = Array.from(entity.all_properties)
+			const all_non_properties = Array.from(entity.all_non_properties)
+
+			return {
+				...entity,
+				properties,
+				non_properties,
+				deduced_properties,
+				deduced_non_properties,
+				unknown_properties,
+				all_properties,
+				all_non_properties,
+			}
+		})
 	}
 }

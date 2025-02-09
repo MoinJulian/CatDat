@@ -133,4 +133,20 @@ describe('EntitySystem', () => {
 			expect(entity_system.get_comparison_table([entity_1, entity_4])).toEqual(null)
 		})
 	})
+
+	describe('transformed entities', () => {
+		it('should have arrays instead of sets', () => {
+			const entity_1_transformed = entity_system.get_transformed_entities()[0]
+			expect(entity_1_transformed).toEqual({
+				id: '1',
+				all_non_properties: [],
+				all_properties: ['a', 'b', 'c', 'd'],
+				deduced_non_properties: [],
+				deduced_properties: ['b', 'c', 'd'],
+				non_properties: [],
+				properties: ['a'],
+				unknown_properties: [],
+			})
+		})
+	})
 })

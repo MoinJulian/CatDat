@@ -74,6 +74,15 @@ This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction)
 
 The deployment is handled by a GitHub workflow (`deploy.yml`) that triggers the deployment on [Netlify](https://netlify.com) from the `main` branch when the tests have passed.
 
+## 🌐 API endpoints
+
+### `/api/categories`
+
+- `https://catdat.netlify.app/api/categories` provides basic information about the categories in the database.
+- `https://catdat.netlify.app/api/categories?all` includes all deduced properties and non-properties.
+
+Additional endpoints may be introduced in the future.
+
 ## 🔗 Similar projects
 
 - **[Catabase](https://catabase.fly.dev)**: A similar project that appears to be abandoned. It is more ambitious in terms of available data types but less complete for basic categories. The UI is not very intuitive, and it lacks an integrated deduction system between properties. See the [nForum announcement](https://nforum.ncatlab.org/discussion/13419/catabase-a-database-of-categories/).
