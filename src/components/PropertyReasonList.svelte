@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { negate_prefix } from '$lib/data-utils/data.helpers'
-	import type { Property } from '$lib/database/properties.data'
+	import type { PropertyID } from '$lib/database/properties.data'
 	import { get_property_url } from '$lib/commons/property.url'
 	import Tooltip from './Tooltip.svelte'
+	import type { Prefix } from '$lib/database/prefix.data'
 
 	type Props = {
 		items: {
-			property: Pick<Property, 'id' | 'prefix'>
+			id: PropertyID
+			prefix: Prefix
 			reason: string
 		}[]
 		description?: string
@@ -17,10 +19,8 @@
 	let { items, description, with_prefix = true, negated = false }: Props = $props()
 
 	// TODO: sort on server side
-	let sorted_properties = $derived(
-		items.toSorted((a, b) =>
-			a.property.id.toLowerCase().localeCompare(b.property.id.toLowerCase()),
-		),
+	let sorted_items = $derived(
+		items.toSorted((a, b) => a.id.toLowerCase().localeCompare(b.id.toLowerCase())),
 	)
 </script>
 
@@ -32,13 +32,13 @@
 
 {#if items.length}
 	<ul>
-		{#each sorted_properties as { property, reason }}
+		{#each sorted_items as { id, prefix, reason }}
 			<li>
 				{#if with_prefix}
-					{negated ? negate_prefix(property.prefix) : property.prefix}
+					{negated ? negate_prefix(prefix) : prefix}
 				{/if}
-				<a href={get_property_url(property.id)}>
-					{property.id}
+				<a href={get_property_url(id)}>
+					{id}
 				</a>
 
 				{#if reason}

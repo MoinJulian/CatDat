@@ -1,3 +1,8 @@
+<!--
+@component
+@deprecated Use the PropertyReasonList instead
+-->
+
 <script lang="ts">
 	import { negate_prefix } from '$lib/data-utils/data.helpers'
 	import type { Property, PropertyID } from '$lib/database/properties.data'
