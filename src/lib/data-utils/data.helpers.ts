@@ -25,6 +25,10 @@ export function get_property(id: PropertyID): Property {
 	return properties_dictionary[id]
 }
 
+export function get_prefix(id: PropertyID): Prefix {
+	return properties_dictionary[id].prefix
+}
+
 export function is_valid_category(id: string): id is CategoryID {
 	return id in categories_dictionary
 }

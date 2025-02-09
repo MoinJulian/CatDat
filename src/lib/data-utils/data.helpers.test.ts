@@ -6,6 +6,7 @@ import {
 	get_isos,
 	get_monos,
 	get_non_properties_of_category,
+	get_prefix,
 	get_properties_of_category,
 	get_property,
 	is_valid_category,
@@ -26,6 +27,15 @@ describe('get_property', () => {
 		const small = get_property('small')
 		expect(small.id).toBe('small')
 		expect(small.prefix).toBe('is')
+	})
+})
+
+describe('get_prefix', () => {
+	it("returns 'is' for 'small", () => {
+		expect(get_prefix('small')).toBe('is')
+	})
+	it("returns 'has' for 'finite products'", () => {
+		expect(get_prefix('finite products')).toBe('has')
 	})
 })
 
