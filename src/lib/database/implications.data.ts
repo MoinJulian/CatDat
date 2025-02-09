@@ -288,6 +288,11 @@ export const IMPLICATIONS: Implication[] = [
 		reason: 'Each functor $A \\times -$ is left adjoint and hence preserves coproducts (in fact, all colimits).',
 	},
 	{
+		assumptions: ['distributive', 'exact filtered colimits', 'coproducts'],
+		conclusions: ['infinitary distributive'],
+		reason: 'Each functor $A \\times -$ preserves finite coproducts and filtered colimits, hence all coproducts.',
+	},
+	{
 		assumptions: ['zero morphisms', 'inhabited'],
 		conclusions: ['connected'],
 		reason: 'trivial',
