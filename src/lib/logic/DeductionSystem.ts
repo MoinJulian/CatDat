@@ -1,8 +1,9 @@
 import type { NonEmptyArray } from '$lib/commons/utils'
+import type { Prefix } from '$lib/database/prefix.data'
 
 export type DetailedProperty<T extends string> = {
 	id: T
-	prefix: string
+	prefix: Prefix
 	reason: string
 }
 
@@ -22,13 +23,13 @@ export class DeductionSystem<T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
 	public readonly property_ids: Set<T>
-	public readonly get_prefix: (id: T) => string
+	public readonly get_prefix: (id: T) => Prefix
 
 	constructor(
 		property_ids: Set<T>,
 		rules: Rule<T>[],
 		initialize = true,
-		get_prefix: (id: T) => string = () => 'is',
+		get_prefix: (id: T) => Prefix = () => 'is',
 	) {
 		this.property_ids = property_ids
 		this.rules = rules

@@ -17,11 +17,6 @@
 	}
 
 	let { items, description, with_prefix = true, negated = false }: Props = $props()
-
-	// TODO: sort on server side
-	let sorted_items = $derived(
-		items.toSorted((a, b) => a.id.toLowerCase().localeCompare(b.id.toLowerCase())),
-	)
 </script>
 
 {#if description}
@@ -32,7 +27,7 @@
 
 {#if items.length}
 	<ul>
-		{#each sorted_items as { id, prefix, reason }}
+		{#each items as { id, prefix, reason }}
 			<li>
 				{#if with_prefix}
 					{negated ? negate_prefix(prefix) : prefix}

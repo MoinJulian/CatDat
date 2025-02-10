@@ -1,4 +1,4 @@
-import { DeductionSystem } from './DeductionSystem'
+import { DeductionSystem, type DetailedProperty } from './DeductionSystem'
 
 describe('constructor', () => {
 	it('should throw an error when an unknown property appears in a rule', () => {
@@ -85,11 +85,13 @@ describe('get_detailed_deductions', () => {
 	)
 
 	it('should explain why the properties follow', () => {
-		const assumptions = [
+		const assumptions: DetailedProperty<string>[] = [
 			{ id: 'a', prefix: 'has', reason: 'clear' },
 			{ id: 'b', prefix: 'has', reason: 'easy' },
 		]
+
 		const detailed_deductions = deductionSystem.get_detailed_deductions(assumptions)
+
 		expect(detailed_deductions).toEqual([
 			{
 				id: 'a',
@@ -162,8 +164,13 @@ describe('get_detailed_deduced_negations', () => {
 	)
 
 	it('should explain why the non-properties follow, and take default prefix "is"', () => {
-		const assumptions = [{ id: 'e', prefix: 'has', reason: 'clear' }]
-		const negations = [{ id: 'd', prefix: 'has', reason: 'clear' }]
+		const assumptions: DetailedProperty<string>[] = [
+			{ id: 'e', prefix: 'has', reason: 'clear' },
+		]
+		const negations: DetailedProperty<string>[] = [
+			{ id: 'd', prefix: 'has', reason: 'clear' },
+		]
+
 		const detailed_deduced_negations = deductionSystem.get_detailed_deduced_negations(
 			assumptions,
 			negations,

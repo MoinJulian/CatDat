@@ -2,7 +2,11 @@ import type { PageServerLoad } from './$types'
 import { select, sum } from '$lib/commons/utils'
 import { category_system } from '$lib/data-utils/deductions'
 import { CATEGORIES } from '$lib/database/categories.data'
-import { get_property, type CategorySimple } from '$lib/data-utils/data.helpers'
+import {
+	get_category,
+	get_prefix,
+	type CategorySimple,
+} from '$lib/data-utils/data.helpers'
 import { CATEGORY_MONOMORPHISMS } from '$lib/database/category-monomorphisms.data'
 import { CATEGORY_EPIMORPHISMS } from '$lib/database/category-epimorphisms.data'
 import { CATEGORY_ISOMORPHISMS } from '$lib/database/category-isomorphisms.data'
@@ -16,18 +20,25 @@ export const load: PageServerLoad = () => {
 		({ assumption, negation }) => ({
 			assumption,
 			negation,
-			assumption_prefix: get_property(assumption).prefix,
-			negation_prefix: get_property(negation).prefix,
+			assumption_prefix: get_prefix(assumption),
+			negation_prefix: get_prefix(negation),
 		}),
 	)
 
 	const entities_with_unknown_properties =
 		category_system.get_entities_with_unknown_properties()
 
-	const categories_with_unknown_properties: CategorySimple[] = select(
-		'id',
-		'name',
-	).from(entities_with_unknown_properties)
+	const categories_with_unknown_properties: CategorySimple[] =
+		entities_with_unknown_properties.map((category) => ({
+			id: category.id,
+			name: get_category(category.id).name,
+		}))
+
+	const total_number_unknown_properties = sum(
+		entities_with_unknown_properties.map(
+			(category) => category.unknown_properties.length,
+		),
+	)
 
 	const categories_with_unknown_special_morphisms: CategorySimple[] = select(
 		'id',
@@ -45,16 +56,10 @@ export const load: PageServerLoad = () => {
 		}),
 	)
 
-	const total_number_unknown_properties = sum(
-		entities_with_unknown_properties.map(
-			(category) => category.unknown_properties.size,
-		),
-	)
-
 	return {
 		missing_basic_combinations_with_prefixes,
 		categories_with_unknown_properties,
-		categories_with_unknown_special_morphisms,
 		total_number_unknown_properties,
+		categories_with_unknown_special_morphisms,
 	}
 }

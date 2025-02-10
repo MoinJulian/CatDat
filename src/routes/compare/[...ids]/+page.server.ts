@@ -10,14 +10,23 @@ import {
 } from '$lib/data-utils/deductions'
 
 export const load: PageServerLoad = (event) => {
-	const ids = event.params.ids.split('/')
-	const is_valid = ids.every(is_valid_category)
+	const compared_ids = event.params.ids.split('/')
+	const is_valid = compared_ids.every(is_valid_category)
 
 	if (!is_valid) throw error(404, 'Invalid query')
 
-	if (ids.length > max_categories) throw error(404, 'Too many categories')
+	if (compared_ids.length > max_categories) throw error(404, 'Too many categories')
 
-	const compared_categories_with_properties = ids.map(
+	const compared_categories = compared_ids.map((id) => {
+		const { name, notation } = get_category(id)
+		return {
+			id,
+			name,
+			notation: render_formulas(notation),
+		}
+	})
+
+	const compared_categories_with_properties = compared_ids.map(
 		(id) => categories_with_deduced_properties_dictionary[id],
 	)
 
@@ -28,15 +37,6 @@ export const load: PageServerLoad = (event) => {
 	if (!comparison_table) {
 		return error(404, 'Invalid query')
 	}
-
-	const compared_categories = compared_categories_with_properties.map((category) => {
-		const { id, name, notation } = get_category(category.id)
-		return {
-			id,
-			name,
-			notation: render_formulas(notation),
-		}
-	})
 
 	return {
 		compared_categories,

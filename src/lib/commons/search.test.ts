@@ -101,10 +101,9 @@ describe('search', () => {
 		expect(result.is_search).toBe(true)
 		expect(result.contradiction).toBe(false)
 		expect(result.found_categories?.length).toBeGreaterThan(0)
-		expect(result.found_categories).toContainEqual({
-			id: 'FinSet',
-			name: 'category of finite sets',
-		})
+		expect(
+			result.found_categories?.some((category) => category.id === 'FinSet'),
+		).toBe(true)
 	})
 
 	it('finds appropriate dual categories', () => {
@@ -117,10 +116,9 @@ describe('search', () => {
 		expect(result.contradiction).toBe(false)
 		expect(result.is_dual_search).toBe(true)
 		expect(result.found_dualized_categories?.length).toBeGreaterThan(0)
-		expect(result.found_dualized_categories).toContainEqual({
-			id: 'Fld',
-			name: 'category of fields',
-		})
+		expect(
+			result.found_dualized_categories?.some((category) => category.id === 'Fld'),
+		).toBe(true)
 	})
 
 	it('does not find appropriate dual categories when the property has no dual', () => {

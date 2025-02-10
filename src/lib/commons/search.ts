@@ -1,13 +1,13 @@
 import { error } from '@sveltejs/kit'
 
 import {
+	get_category,
 	get_dual_properties,
 	is_valid_property,
-	type CategorySimple,
 } from '$lib/data-utils/data.helpers'
 import { decode_property_ID } from '$lib/commons/property.url'
 import { category_system, property_deduction_system } from '$lib/data-utils/deductions'
-import { select } from '$lib/commons/utils'
+import type { Category } from '$lib/database/categories.data'
 
 export const separator_in_url = '--'
 
@@ -47,19 +47,19 @@ export function get_search_results(url: URL) {
 		}
 	}
 
-	const found_categories: CategorySimple[] = select('id', 'name').from(
-		category_system.search(properties, non_properties),
-	)
+	const found_categories: Category[] = category_system
+		.search(properties, non_properties, [])
+		.map((category) => get_category(category.id))
 
 	const dualized_properties = get_dual_properties(properties)
 	const dualized_non_properties = get_dual_properties(non_properties)
 
 	const is_dual_search = dualized_properties != null && dualized_non_properties != null
 
-	const found_dualized_categories: CategorySimple[] = is_dual_search
-		? select('id', 'name').from(
-				category_system.search(dualized_properties, dualized_non_properties),
-			)
+	const found_dualized_categories: Category[] = is_dual_search
+		? category_system
+				.search(dualized_properties, dualized_non_properties, [])
+				.map((category) => get_category(category.id))
 		: []
 
 	return {

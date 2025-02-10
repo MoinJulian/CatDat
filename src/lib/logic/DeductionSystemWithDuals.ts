@@ -1,4 +1,5 @@
 import { equal_up_to_order, type NonEmptyArray } from '$lib/commons/utils'
+import type { Prefix } from '$lib/database/prefix.data'
 import { DeductionSystem, type Rule } from './DeductionSystem'
 
 export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<T> {
@@ -8,7 +9,7 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 		property_ids: Set<T>,
 		rules: Rule<T>[],
 		dual_property_accessor: (id: T) => T | null,
-		get_prefix: (id: T) => string = () => 'is',
+		get_prefix: (id: T) => Prefix = () => 'is',
 	) {
 		super(property_ids, rules, false, get_prefix)
 		this.get_dual_property = dual_property_accessor

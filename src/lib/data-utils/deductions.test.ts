@@ -1,8 +1,9 @@
 import { CATEGORIES, type CategoryID } from '$lib/database/categories.data'
-import { PROPERTIES, type PropertyID } from '$lib/database/properties.data'
+import { type PropertyID } from '$lib/database/properties.data'
 import {
 	get_non_properties_of_category,
 	get_properties_of_category,
+	propertyIDs,
 } from './data.helpers'
 import {
 	categories_with_deduced_properties,
@@ -103,16 +104,18 @@ describe('implications_with_duals', () => {
 describe('categories with deduced properties', () => {
 	for (const category of categories_with_deduced_properties) {
 		it(`should not have any contradictory properties for: ${category.id}`, () => {
-			const property_set = category.all_properties
-			const non_property_set = category.all_non_properties
-			expect(property_set.intersection(non_property_set)).toHaveLength(0)
+			const property_ids = new Set(category.all_properties.map((prop) => prop.id))
+			const non_property_ids = new Set(
+				category.all_non_properties.map((prop) => prop.id),
+			)
+			expect(property_ids.intersection(non_property_ids)).toHaveLength(0)
 		})
 	}
 
-	for (const property of PROPERTIES) {
-		it(`should have at least one counterexample for: ${property.id}`, () => {
+	for (const id of propertyIDs) {
+		it(`should have at least one counterexample for: ${id}`, () => {
 			const counterexample = categories_with_deduced_properties.find((category) =>
-				category.all_non_properties.has(property.id),
+				category.all_non_properties.some((property) => property.id === id),
 			)
 			expect(counterexample).toBeDefined()
 		})

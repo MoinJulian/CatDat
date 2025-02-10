@@ -23,11 +23,11 @@ export const load: PageServerLoad = (event) => {
 	const related_properties = PROPERTY_RELATIONS[id] ?? []
 
 	const categories_with_this_property = category_system
-		.search([id], [])
+		.search([id], [], [])
 		.map((result) => get_category(result.id))
 
 	const categories_without_this_property = category_system
-		.search([], [id])
+		.search([], [id], [])
 		.map((result) => get_category(result.id))
 
 	const unknown_categories = category_system

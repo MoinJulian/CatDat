@@ -1,3 +1,4 @@
+import type { DetailedProperty } from './DeductionSystem'
 import { DeductionSystemWithDuals } from './DeductionSystemWithDuals'
 
 describe('all rules', () => {
@@ -84,8 +85,12 @@ describe('get_detailed_deductions', () => {
 	)
 
 	it('should take the prefix "is" as default', () => {
-		const assumptions = [{ id: 'a', prefix: 'has', reason: 'clear' }]
-		const detailed_deductions = deductionSystem.get_detailed_deductions(assumptions)
+		const assumptions: DetailedProperty<string>[] = [
+			{ id: 'a', prefix: 'has', reason: 'clear' },
+		]
+		const detailed_deductions: DetailedProperty<string>[] =
+			deductionSystem.get_detailed_deductions(assumptions)
+
 		expect(detailed_deductions).toContainEqual({
 			id: 'b',
 			prefix: 'is',

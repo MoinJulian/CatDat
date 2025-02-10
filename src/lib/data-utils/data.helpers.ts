@@ -1,8 +1,5 @@
 import { group_items } from '$lib/commons/utils'
 import { CATEGORIES, type Category, type CategoryID } from '$lib/database/categories.data'
-import { CATEGORY_EPIMORPHISMS } from '$lib/database/category-epimorphisms.data'
-import { CATEGORY_ISOMORPHISMS } from '$lib/database/category-isomorphisms.data'
-import { CATEGORY_MONOMORPHISMS } from '$lib/database/category-monomorphisms.data'
 import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
 import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
 import { PREFIXES, type Prefix } from '$lib/database/prefix.data'
@@ -41,10 +38,16 @@ export function negate_prefix(prefix: Prefix) {
 	return PREFIXES[prefix]
 }
 
+/**
+ * @deprecated
+ */
 export function get_properties_of_category(id: CategoryID): PropertyID[] {
 	return CATEGORY_PROPERTIES[id].map((entry) => entry.id)
 }
 
+/**
+ * @deprecated
+ */
 export function get_non_properties_of_category(id: CategoryID): PropertyID[] {
 	return CATEGORY_NON_PROPERTIES[id].map((entry) => entry.id)
 }

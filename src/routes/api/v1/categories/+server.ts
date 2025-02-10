@@ -6,6 +6,6 @@ export const GET: RequestHandler = async (event) => {
 	const show_all = event.url.searchParams.has('all')
 	if (!show_all) return json(CATEGORIES)
 	const { category_system } = await import('$lib/data-utils/deductions')
-	const data = category_system.get_transformed_entities()
+	const data = category_system.entities
 	return json(data)
 }
