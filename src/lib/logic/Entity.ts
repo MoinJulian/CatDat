@@ -29,18 +29,18 @@ export class Entity<S extends string, T extends string> {
 		)
 
 		this.deduced_properties = this.all_properties.filter((property) =>
-			this.properties.every((_property) => _property.id !== property.id),
+			this.properties.every((p) => p.id !== property.id),
 		)
 
 		this.deduced_non_properties = this.all_non_properties.filter((property) =>
-			this.non_properties.every((_property) => _property.id !== property.id),
+			this.non_properties.every((p) => p.id !== property.id),
 		)
 
-		this.unknown_properties = Array.from(deduction_system.properties)
+		this.unknown_properties = Array.from(deduction_system.property_ids)
 			.filter(
 				(id) =>
 					this.all_properties.every((property) => property.id !== id) &&
-					this.all_non_properties.every((_property) => _property.id !== id),
+					this.all_non_properties.every((property) => property.id !== id),
 			)
 			.map((id) => ({
 				id,
@@ -50,27 +50,27 @@ export class Entity<S extends string, T extends string> {
 	}
 
 	public satisfies(
-		properties: T[],
-		non_properties: T[],
-		unknown_properties: T[],
+		property_ids: T[],
+		non_property_ids: T[],
+		unknown_property_ids: T[],
 	): boolean {
 		return (
-			properties.every((id) =>
+			property_ids.every((id) =>
 				this.all_properties.some((property) => property.id === id),
 			) &&
-			non_properties.every((id) =>
+			non_property_ids.every((id) =>
 				this.all_non_properties.some((property) => property.id === id),
 			) &&
-			unknown_properties.every((id) =>
+			unknown_property_ids.every((id) =>
 				this.unknown_properties.some((property) => property.id === id),
 			)
 		)
 	}
 
-	public get_comparison_value(property_id: T): boolean | null {
-		if (this.unknown_properties.some((property) => property.id === property_id)) {
+	public get_comparison_value(id: T): boolean | null {
+		if (this.unknown_properties.some((property) => property.id === id)) {
 			return null
 		}
-		return this.all_properties.some((property) => property.id === property_id)
+		return this.all_properties.some((property) => property.id === id)
 	}
 }

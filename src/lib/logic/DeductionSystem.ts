@@ -1,5 +1,11 @@
 import type { NonEmptyArray } from '$lib/commons/utils'
 
+export type DetailedProperty<T extends string> = {
+	id: T
+	prefix: string
+	reason: string
+}
+
 export type Rule<T> = {
 	readonly equivalent?: true
 	readonly assumptions: NonEmptyArray<T>
@@ -12,25 +18,19 @@ type NormalizedRule<T> = {
 	readonly conclusion: T
 }
 
-export type DetailedProperty<T extends string> = {
-	id: T
-	prefix: string
-	reason: string
-}
-
 export class DeductionSystem<T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
-	public readonly properties: Set<T>
+	public readonly property_ids: Set<T>
 	public readonly get_prefix: (id: T) => string
 
 	constructor(
-		properties: Set<T>,
+		property_ids: Set<T>,
 		rules: Rule<T>[],
 		initialize = true,
 		get_prefix: (id: T) => string = () => 'is',
 	) {
-		this.properties = properties
+		this.property_ids = property_ids
 		this.rules = rules
 		this.validate_rules()
 		this.get_prefix = get_prefix
@@ -40,8 +40,8 @@ export class DeductionSystem<T extends string> {
 	private validate_rules(): void {
 		for (const rule of this.rules) {
 			const is_valid =
-				new Set(rule.assumptions).isSubsetOf(this.properties) &&
-				new Set(rule.conclusions).isSubsetOf(this.properties)
+				new Set(rule.assumptions).isSubsetOf(this.property_ids) &&
+				new Set(rule.conclusions).isSubsetOf(this.property_ids)
 			if (!is_valid) throw new Error(`Invalid rule: ${JSON.stringify(rule)}`)
 		}
 	}
@@ -111,8 +111,8 @@ export class DeductionSystem<T extends string> {
 	): DetailedProperty<T>[] {
 		let done = false
 
-		const detailed_deductions = Array.from(assumptions)
-		const deduced_ids: Set<T> = new Set(assumptions.map((entry) => entry.id))
+		const deductions = Array.from(assumptions)
+		const deduced_ids = new Set(assumptions.map((entry) => entry.id))
 
 		while (!done) {
 			done = true
@@ -126,7 +126,7 @@ export class DeductionSystem<T extends string> {
 
 				done = false
 
-				detailed_deductions.push({
+				deductions.push({
 					id: rule.conclusion,
 					prefix: this.get_prefix(rule.conclusion),
 					reason: this.reason_rule(rule),
@@ -136,7 +136,7 @@ export class DeductionSystem<T extends string> {
 			}
 		}
 
-		return detailed_deductions
+		return deductions
 	}
 
 	/**
@@ -148,7 +148,7 @@ export class DeductionSystem<T extends string> {
 
 		while (!done) {
 			done = true
-			for (const property of this.properties) {
+			for (const property of this.property_ids) {
 				const not_new = deduced_negations.has(property)
 				if (not_new) continue
 				const new_assumptions = assumptions.union(new Set([property]))
@@ -178,16 +178,16 @@ export class DeductionSystem<T extends string> {
 
 		while (!done) {
 			done = true
-			for (const property of this.properties) {
-				const not_new = deduced_negation_ids.has(property)
+			for (const id of this.property_ids) {
+				const not_new = deduced_negation_ids.has(id)
 				if (not_new) continue
 
-				const prefix = this.get_prefix(property)
+				const prefix = this.get_prefix(id)
 
-				const new_assumptions: DetailedProperty<T>[] = [
+				const new_assumptions = [
 					...assumptions,
 					{
-						id: property,
+						id,
 						prefix,
 						reason: '-',
 					},
@@ -195,7 +195,7 @@ export class DeductionSystem<T extends string> {
 
 				const new_deductions = this.get_detailed_deductions(new_assumptions)
 
-				let message = `Assume for a contradiction that it ${prefix} ${property}. `
+				let reason = `Assume for a contradiction that it ${prefix} ${id}. `
 
 				let has_contradiction = false
 
@@ -205,22 +205,22 @@ export class DeductionSystem<T extends string> {
 					)
 					if (is_irrelevant) continue
 
-					message += `${deduction.reason} `
+					reason += `${deduction.reason} `
 
 					if (deduced_negation_ids.has(deduction.id)) {
 						has_contradiction = true
 						done = false
-						message += `This is a contradiction since we already know that "${deduction.id}" is not satisfied.`
+						reason += `This is a contradiction since we already know that "${deduction.id}" is not satisfied.`
 						break
 					}
 				}
 
 				if (has_contradiction) {
-					deduced_negation_ids.add(property)
+					deduced_negation_ids.add(id)
 					deduced_negations.push({
-						id: property,
-						prefix: this.get_prefix(property),
-						reason: message,
+						id,
+						prefix: this.get_prefix(id),
+						reason,
 					})
 				}
 			}
@@ -274,9 +274,9 @@ export class DeductionSystem<T extends string> {
 
 	public get_basic_consistent_combinations(): { assumption: T; negation: T }[] {
 		const combinations: { assumption: T; negation: T }[] = []
-		for (const assumption of this.properties) {
+		for (const assumption of this.property_ids) {
 			const deductions = this.get_deductions(new Set([assumption]))
-			for (const negation of this.properties) {
+			for (const negation of this.property_ids) {
 				if (!deductions.has(negation)) {
 					combinations.push({ assumption, negation })
 				}
@@ -285,17 +285,15 @@ export class DeductionSystem<T extends string> {
 		return combinations
 	}
 
-	public get_sorted_properties(): T[] {
-		return Array.from(this.properties).toSorted((a, b) =>
+	public get_sorted_property_ids(): T[] {
+		return Array.from(this.property_ids).toSorted((a, b) =>
 			a.toLowerCase().localeCompare(b.toLowerCase()),
 		)
 	}
 
-	public get_relevant_rules(property: T): Rule<T>[] {
+	public get_relevant_rules(id: T): Rule<T>[] {
 		return this.rules.filter(
-			(rule) =>
-				rule.conclusions.includes(property) ||
-				rule.assumptions.includes(property),
+			(rule) => rule.conclusions.includes(id) || rule.assumptions.includes(id),
 		)
 	}
 }

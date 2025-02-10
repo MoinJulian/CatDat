@@ -58,7 +58,7 @@ export class EntitySystem<S extends string, T extends string> {
 		if (!is_valid) return null
 
 		return this.deduction_system
-			.get_sorted_properties()
+			.get_sorted_property_ids()
 			.map((property) => [
 				property,
 				...entities.map((entity) => entity.get_comparison_value(property)),

@@ -5,12 +5,12 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 	public readonly get_dual_property: (id: T) => T | null
 
 	constructor(
-		properties: Set<T>,
+		property_ids: Set<T>,
 		rules: Rule<T>[],
 		dual_property_accessor: (id: T) => T | null,
 		get_prefix: (id: T) => string = () => 'is',
 	) {
-		super(properties, rules, false, get_prefix)
+		super(property_ids, rules, false, get_prefix)
 		this.get_dual_property = dual_property_accessor
 		this.init_with_duals()
 	}
@@ -21,10 +21,8 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 		this.compute_normalized_rules()
 	}
 
-	private get_dual_properties(properties: T[]): null | NonEmptyArray<T> {
-		const dual_properties = properties.map((property) =>
-			this.get_dual_property(property),
-		)
+	private get_dual_properties(ids: NonEmptyArray<T>): NonEmptyArray<T> | null {
+		const dual_properties = ids.map((property) => this.get_dual_property(property))
 		if (dual_properties.includes(null)) return null
 		return dual_properties as NonEmptyArray<T>
 	}
@@ -38,11 +36,11 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 
 			if (!dual_assumptions || !dual_conclusions) continue
 
-			const not_new =
+			const is_same =
 				equal_up_to_order(dual_assumptions, rule.assumptions) &&
 				equal_up_to_order(dual_conclusions, rule.conclusions)
 
-			if (not_new) continue
+			if (is_same) continue
 
 			const dualized_rule: Rule<T> = rule.equivalent
 				? {
@@ -64,14 +62,14 @@ export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<
 	}
 
 	private add_self_dual_rules(): void {
-		for (const property of this.properties) {
-			const dual_property = this.get_dual_property(property)
+		for (const id of this.property_ids) {
+			const dual_id = this.get_dual_property(id)
 
-			if (!dual_property || dual_property === property) continue
+			if (!dual_id || dual_id === id) continue
 
 			this.rules.push({
-				assumptions: ['self-dual' as T, property],
-				conclusions: [dual_property],
+				assumptions: ['self-dual' as T, id],
+				conclusions: [dual_id],
 				reason: 'trivial by self-duality',
 			})
 		}
