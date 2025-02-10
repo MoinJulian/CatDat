@@ -22,7 +22,7 @@ export class DeductionSystem<T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
 	public readonly properties: Set<T>
-	private get_prefix: (id: T) => string
+	public readonly get_prefix: (id: T) => string
 
 	constructor(
 		properties: Set<T>,
@@ -72,6 +72,9 @@ export class DeductionSystem<T extends string> {
 		}
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public get_deductions(assumptions: Set<T>): Set<T> {
 		let done = false
 		const deductions = new Set(assumptions)
@@ -136,6 +139,9 @@ export class DeductionSystem<T extends string> {
 		return detailed_deductions
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public get_deduced_negations(assumptions: Set<T>, negations: Set<T>): Set<T> {
 		let done = false
 		const deduced_negations = new Set(negations)

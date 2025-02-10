@@ -1,27 +1,8 @@
-import type { DeductionSystem } from './DeductionSystem'
+import type { DeductionSystem, DetailedProperty } from './DeductionSystem'
+import { Entity } from './Entity'
 
-export type EntityDetailed<S, T extends string> = S & {
-	properties: Set<T>
-	non_properties: Set<T>
-	deduced_properties: Set<T>
-	deduced_non_properties: Set<T>
-	unknown_properties: Set<T>
-	all_properties: Set<T>
-	all_non_properties: Set<T>
-}
-
-export type EntityTransformed<S, T extends string> = S & {
-	properties: T[]
-	non_properties: T[]
-	deduced_properties: T[]
-	deduced_non_properties: T[]
-	unknown_properties: T[]
-	all_properties: T[]
-	all_non_properties: T[]
-}
-
-export class EntitySystem<S, T extends string> {
-	public readonly entities: EntityDetailed<S, T>[] = []
+export class EntitySystem<S extends string, T extends string> {
+	public readonly entities: Entity<S, T>[] = []
 	protected deduction_system: DeductionSystem<T>
 
 	constructor(deduction_system: DeductionSystem<T>) {
@@ -29,92 +10,49 @@ export class EntitySystem<S, T extends string> {
 	}
 
 	public add(
-		entity: S,
-		properties: Set<T>,
-		non_properties: Set<T>,
-	): EntityDetailed<S, T> {
-		const all_properties = this.deduction_system.get_deductions(properties)
-		const all_non_properties = this.deduction_system.get_deduced_negations(
-			all_properties,
-			non_properties,
-		)
-		const deduced_properties = all_properties.difference(properties)
-		const deduced_non_properties = all_non_properties.difference(non_properties)
-		const unknown_properties = this.deduction_system.properties
-			.difference(all_properties)
-			.difference(all_non_properties)
-
-		const entity_detailed = {
-			...entity,
-			properties,
-			non_properties,
-			deduced_properties,
-			deduced_non_properties,
-			unknown_properties,
-			all_properties,
-			all_non_properties,
-		}
-
-		this.entities.push(entity_detailed)
-
-		return entity_detailed
+		id: S,
+		properties: DetailedProperty<T>[],
+		non_properties: DetailedProperty<T>[],
+	): Entity<S, T> {
+		const new_entity = new Entity(id, properties, non_properties)
+		new_entity.deduce_properties(this.deduction_system)
+		this.entities.push(new_entity)
+		return new_entity
 	}
 
 	public search(
-		properties: T[] | Set<T>,
-		non_properties: T[] | Set<T>,
-		unknown_properties: T[] | Set<T> = new Set<T>(),
-	): EntityDetailed<S, T>[] {
-		const properties_set = new Set(properties)
-		const non_properties_set = new Set(non_properties)
-		const unknown_properties_set = new Set(unknown_properties)
+		properties: T[],
+		non_properties: T[],
+		unknown_properties: T[],
+	): Entity<S, T>[] {
+		const is_empty_search =
+			properties.length === 0 &&
+			non_properties.length === 0 &&
+			unknown_properties.length === 0
 
-		if (
-			properties_set.size === 0 &&
-			non_properties_set.size === 0 &&
-			unknown_properties_set.size === 0
-		) {
-			return []
-		}
+		if (is_empty_search) return []
 
-		return this.entities.filter((entity) => {
-			return (
-				properties_set.isSubsetOf(entity.all_properties) &&
-				non_properties_set.isSubsetOf(entity.all_non_properties) &&
-				unknown_properties_set.isSubsetOf(entity.unknown_properties)
-			)
-		})
+		return this.entities.filter((entity) =>
+			entity.satisfies(properties, non_properties, unknown_properties),
+		)
 	}
 
 	public get_missing_basic_combinations(): { assumption: T; negation: T }[] {
-		const missing_combinations: { assumption: T; negation: T }[] = []
-		const combinations = this.deduction_system.get_basic_consistent_combinations()
+		const basic_combinations =
+			this.deduction_system.get_basic_consistent_combinations()
 
-		for (const { assumption, negation } of combinations) {
-			const entities = this.search([assumption], [negation])
-
-			if (entities.length === 0) {
-				missing_combinations.push({ assumption, negation })
-			}
-		}
-
-		return missing_combinations
+		return basic_combinations.filter(
+			({ assumption, negation }) =>
+				this.search([assumption], [negation], []).length === 0,
+		)
 	}
 
-	public get_entities_with_unknown_properties(): EntityDetailed<S, T>[] {
-		return this.entities.filter((entity) => entity.unknown_properties.size > 0)
-	}
-
-	private get_comparison_value(
-		entity: EntityDetailed<S, T>,
-		property: T,
-	): boolean | null {
-		if (entity.unknown_properties.has(property)) return null
-		return entity.all_properties.has(property)
+	public get_entities_with_unknown_properties(): Entity<S, T>[] {
+		return this.entities.filter((entity) => entity.unknown_properties.length > 0)
 	}
 
 	public get_comparison_table(
-		entities: EntityDetailed<S, T>[],
+		entities: Entity<S, T>[],
 	): null | [T, ...(boolean | null)[]][] {
 		const is_valid = entities.every((entity) => this.entities.includes(entity))
 		if (!is_valid) return null
@@ -123,30 +61,7 @@ export class EntitySystem<S, T extends string> {
 			.get_sorted_properties()
 			.map((property) => [
 				property,
-				...entities.map((entity) => this.get_comparison_value(entity, property)),
+				...entities.map((entity) => entity.get_comparison_value(property)),
 			])
-	}
-
-	public get_transformed_entities(): EntityTransformed<S, T>[] {
-		return this.entities.map((entity) => {
-			const properties = Array.from(entity.properties)
-			const non_properties = Array.from(entity.non_properties)
-			const deduced_properties = Array.from(entity.deduced_properties)
-			const deduced_non_properties = Array.from(entity.deduced_non_properties)
-			const unknown_properties = Array.from(entity.unknown_properties)
-			const all_properties = Array.from(entity.all_properties)
-			const all_non_properties = Array.from(entity.all_non_properties)
-
-			return {
-				...entity,
-				properties,
-				non_properties,
-				deduced_properties,
-				deduced_non_properties,
-				unknown_properties,
-				all_properties,
-				all_non_properties,
-			}
-		})
 	}
 }
