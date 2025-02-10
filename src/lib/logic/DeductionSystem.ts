@@ -121,6 +121,8 @@ export class DeductionSystem<T extends string> {
 				const rule_applies = rule.assumptions.isSubsetOf(deduced_ids)
 				if (!rule_applies) continue
 
+				done = false
+
 				detailed_deductions.push({
 					id: rule.conclusion,
 					prefix: this.get_prefix(rule.conclusion),
