@@ -72,6 +72,44 @@ describe('get_deductions', () => {
 	})
 })
 
+describe('get_detailed_deductions', () => {
+	const deductionSystem = new DeductionSystem<string>(
+		new Set(['a', 'b', 'c', 'd', 'e']),
+		[
+			{ assumptions: ['a', 'b'], conclusions: ['c'], reason: '' },
+			{ assumptions: ['d', 'c'], conclusions: ['e'], reason: '' },
+			{ assumptions: ['c'], conclusions: ['a'], reason: '' },
+		],
+		true,
+		() => 'has',
+	)
+
+	it('should explain why the properties follow', () => {
+		const assumptions = [
+			{ id: 'a', prefix: 'has', reason: 'clear' },
+			{ id: 'b', prefix: 'has', reason: 'easy' },
+		]
+		const detailed_deductions = deductionSystem.get_detailed_deductions(assumptions)
+		expect(detailed_deductions).toEqual([
+			{
+				id: 'a',
+				prefix: 'has',
+				reason: 'clear',
+			},
+			{
+				id: 'b',
+				prefix: 'has',
+				reason: 'easy',
+			},
+			{
+				id: 'c',
+				prefix: 'has',
+				reason: 'Since it has a and has b, we deduce that it has c.',
+			},
+		])
+	})
+})
+
 describe('get_deduced_negations', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e', 'f']),

@@ -12,15 +12,28 @@ type NormalizedRule<T> = {
 	readonly conclusion: T
 }
 
+export type DetailedProperty<T extends string> = {
+	id: T
+	prefix: string
+	reason: string
+}
+
 export class DeductionSystem<T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
 	public readonly properties: Set<T>
+	private get_prefix: (id: T) => string
 
-	constructor(properties: Set<T>, rules: Rule<T>[], initialize = true) {
+	constructor(
+		properties: Set<T>,
+		rules: Rule<T>[],
+		initialize = true,
+		get_prefix: (id: T) => string = () => 'is',
+	) {
 		this.properties = properties
 		this.rules = rules
 		this.validate_rules()
+		this.get_prefix = get_prefix
 		if (initialize) this.init()
 	}
 
@@ -77,6 +90,48 @@ export class DeductionSystem<T extends string> {
 		}
 
 		return deductions
+	}
+
+	private reason_rule(rule: NormalizedRule<T>) {
+		const assumption_string = Array.from(rule.assumptions)
+			.map((id) => `${this.get_prefix(id)} ${id}`)
+			.join(' and ')
+
+		const conclusion_string = `${this.get_prefix(rule.conclusion)} ${rule.conclusion}`
+
+		return `Since it ${assumption_string}, we deduce that it ${conclusion_string}.`
+	}
+
+	// NEW METHOD, TODO: use it for the categories
+	public get_detailed_deductions(
+		assumptions: DetailedProperty<T>[],
+	): DetailedProperty<T>[] {
+		let done = false
+
+		const detailed_deductions = Array.from(assumptions)
+		const deduced_ids: Set<T> = new Set(assumptions.map((entry) => entry.id))
+
+		while (!done) {
+			done = true
+
+			for (const rule of this.normalized_rules) {
+				const not_new = deduced_ids.has(rule.conclusion)
+				if (not_new) continue
+
+				const rule_applies = rule.assumptions.isSubsetOf(deduced_ids)
+				if (!rule_applies) continue
+
+				detailed_deductions.push({
+					id: rule.conclusion,
+					prefix: this.get_prefix(rule.conclusion),
+					reason: this.reason_rule(rule),
+				})
+
+				deduced_ids.add(rule.conclusion)
+			}
+		}
+
+		return detailed_deductions
 	}
 
 	public get_deduced_negations(assumptions: Set<T>, negations: Set<T>): Set<T> {

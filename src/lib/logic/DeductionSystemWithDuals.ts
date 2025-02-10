@@ -2,14 +2,15 @@ import { equal_up_to_order, type NonEmptyArray } from '$lib/commons/utils'
 import { DeductionSystem, type Rule } from './DeductionSystem'
 
 export class DeductionSystemWithDuals<T extends string> extends DeductionSystem<T> {
-	public readonly get_dual_property: (property: T) => T | null
+	public readonly get_dual_property: (id: T) => T | null
 
 	constructor(
 		properties: Set<T>,
 		rules: Rule<T>[],
-		dual_property_accessor: (property: T) => T | null,
+		dual_property_accessor: (id: T) => T | null,
+		get_prefix: (id: T) => string = () => 'is',
 	) {
-		super(properties, rules, false)
+		super(properties, rules, false, get_prefix)
 		this.get_dual_property = dual_property_accessor
 		this.init_with_duals()
 	}
