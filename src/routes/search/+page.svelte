@@ -15,6 +15,7 @@
 	import { is_valid_property, propertyIDs } from '$lib/data-utils/data.helpers'
 	import type { PropertyID } from '$lib/database/properties.data'
 	import { encode_property_ID } from '$lib/commons/property.url'
+	import { fade } from 'svelte/transition'
 
 	function get_saved_search(): [PropertyID[], PropertyID[]] {
 		if (!browser) return [[], []]
@@ -136,7 +137,11 @@
 {/if}
 
 {#if data.is_search}
-	<section>
+	<section
+		transition:fade={{
+			duration: 150,
+		}}
+	>
 		<h2>Results</h2>
 
 		<p class="hint">
@@ -149,7 +154,11 @@
 {/if}
 
 {#if data.is_dual_search}
-	<section>
+	<section
+		transition:fade={{
+			duration: 150,
+		}}
+	>
 		<h2>Results for dual search</h2>
 
 		<p class="hint">
