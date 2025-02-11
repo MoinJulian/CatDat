@@ -140,34 +140,6 @@ export class DeductionSystem<T extends string> {
 		return deductions
 	}
 
-	/**
-	 * @deprecated
-	 */
-	public get_deduced_negations(assumptions: Set<T>, negations: Set<T>): Set<T> {
-		let done = false
-		const deduced_negations = new Set(negations)
-
-		while (!done) {
-			done = true
-			for (const property of this.property_ids) {
-				const not_new = deduced_negations.has(property)
-				if (not_new) continue
-				const new_assumptions = assumptions.union(new Set([property]))
-				const deductions = this.get_deductions(new_assumptions)
-				const has_contradiction =
-					deductions.intersection(deduced_negations).size > 0
-
-				if (has_contradiction) {
-					done = false
-					deduced_negations.add(property)
-				}
-			}
-		}
-
-		return deduced_negations
-	}
-
-	// NEW METHOD #2, TODO: use it for the categories
 	public get_detailed_deduced_negations(
 		assumptions: DetailedProperty<T>[],
 		negations: DetailedProperty<T>[],

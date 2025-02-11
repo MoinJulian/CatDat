@@ -112,47 +112,6 @@ describe('get_detailed_deductions', () => {
 	})
 })
 
-describe('get_deduced_negations', () => {
-	const deductionSystem = new DeductionSystem<string>(
-		new Set(['a', 'b', 'c', 'd', 'e', 'f']),
-		[
-			{ assumptions: ['a', 'b'], conclusions: ['c'], reason: 'trivial' },
-			{ assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
-			{ assumptions: ['e'], conclusions: ['f'], reason: 'trivial' },
-		],
-	)
-
-	it("should deduce 'not a' from 'not a'", () => {
-		expect(
-			deductionSystem.get_deduced_negations(new Set([]), new Set(['a'])),
-		).toEqual(new Set(['a']))
-	})
-
-	it("should deduce everything from 'a' and 'not a'", () => {
-		expect(
-			deductionSystem.get_deduced_negations(new Set(['a']), new Set(['a'])),
-		).toEqual(new Set(['a', 'b', 'c', 'd', 'e', 'f']))
-	})
-
-	it("should deduce 'not e' from 'not f'", () => {
-		expect(
-			deductionSystem.get_deduced_negations(new Set([]), new Set(['f'])),
-		).toEqual(new Set(['e', 'f']))
-	})
-
-	it("should deduce 'not b' from 'a' and 'not c'", () => {
-		expect(
-			deductionSystem.get_deduced_negations(new Set(['a']), new Set(['c'])),
-		).toContain('b')
-	})
-
-	it("should deduce 'not d' from 'a,b' and 'not e'", () => {
-		expect(
-			deductionSystem.get_deduced_negations(new Set(['a', 'b']), new Set(['e'])),
-		).toContain('d')
-	})
-})
-
 describe('get_detailed_deduced_negations', () => {
 	const deductionSystem = new DeductionSystem<string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
