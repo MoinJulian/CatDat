@@ -273,10 +273,29 @@ export class DeductionSystem<T extends string> {
 		return null
 	}
 
-	public has_contradiction(assumptions: Set<T>, negations: Set<T>): boolean {
-		const deductions = this.get_deductions(assumptions)
-		const deduced_negations = this.get_deduced_negations(assumptions, negations)
-		return deductions.intersection(deduced_negations).size > 0
+	public has_contradiction(assumptions: T[], negations: T[]): boolean {
+		const assumptions_detailed: DetailedProperty<T>[] = assumptions.map((id) => ({
+			id,
+			prefix: 'is',
+			reason: 'by assumption',
+		}))
+
+		const negations_detailed: DetailedProperty<T>[] = negations.map((id) => ({
+			id,
+			prefix: 'is',
+			reason: 'by assumption',
+		}))
+
+		const deductions = this.get_detailed_deductions(assumptions_detailed)
+		const deduced_negations = this.get_detailed_deduced_negations(
+			assumptions_detailed,
+			negations_detailed,
+		)
+
+		const deduction_ids = new Set(deductions.map((entry) => entry.id))
+		const deduced_negation_ids = new Set(deduced_negations.map((entry) => entry.id))
+
+		return deduction_ids.intersection(deduced_negation_ids).size > 0
 	}
 
 	public get_basic_consistent_combinations(): { assumption: T; negation: T }[] {

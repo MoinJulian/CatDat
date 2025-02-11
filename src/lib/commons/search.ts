@@ -36,8 +36,8 @@ export function get_search_results(url: URL) {
 	if (!is_valid) return error(404, 'Invalid query')
 
 	const has_contradiction = property_deduction_system.has_contradiction(
-		new Set(properties),
-		new Set(non_properties),
+		properties,
+		non_properties,
 	)
 
 	if (has_contradiction) {

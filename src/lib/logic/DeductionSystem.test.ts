@@ -211,43 +211,31 @@ describe('has_contradiction', () => {
 	)
 
 	it("should return true for 'a' and 'not a'", () => {
-		expect(deductionSystem.has_contradiction(new Set(['a']), new Set(['a']))).toBe(
-			true,
-		)
+		expect(deductionSystem.has_contradiction(['a'], ['a'])).toBe(true)
 	})
 
 	it("should return true for 'a' and 'not c'", () => {
-		expect(deductionSystem.has_contradiction(new Set(['a']), new Set(['c']))).toBe(
-			true,
-		)
+		expect(deductionSystem.has_contradiction(['a'], ['c'])).toBe(true)
 	})
 
 	it("should return true for 'a', 'd' and 'not f'", () => {
-		expect(
-			deductionSystem.has_contradiction(new Set(['a', 'd']), new Set(['f'])),
-		).toBe(true)
+		expect(deductionSystem.has_contradiction(['a', 'd'], ['f'])).toBe(true)
 	})
 
 	it("should return false for 'a' and 'b'", () => {
-		expect(deductionSystem.has_contradiction(new Set(['a', 'b']), new Set([]))).toBe(
-			false,
-		)
+		expect(deductionSystem.has_contradiction(['a', 'b'], [])).toBe(false)
 	})
 
 	it("should return false for 'a' and 'c'", () => {
-		expect(deductionSystem.has_contradiction(new Set(['a', 'c']), new Set([]))).toBe(
-			false,
-		)
+		expect(deductionSystem.has_contradiction(['a', 'c'], [])).toBe(false)
 	})
 
 	it("should return false for 'a' and 'b', and not 'f'", () => {
-		expect(
-			deductionSystem.has_contradiction(new Set(['a', 'b']), new Set(['f'])),
-		).toBe(false)
+		expect(deductionSystem.has_contradiction(['a', 'b'], ['f'])).toBe(false)
 	})
 
 	it("should return false for not 'f'", () => {
-		expect(deductionSystem.has_contradiction(new Set([]), new Set(['f']))).toBe(false)
+		expect(deductionSystem.has_contradiction([], ['f'])).toBe(false)
 	})
 })
 
