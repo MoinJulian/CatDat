@@ -1,7 +1,8 @@
-import { group_items } from '$lib/commons/utils'
+import { group_items, select } from '$lib/commons/utils'
 import { CATEGORIES, type Category, type CategoryID } from '$lib/database/categories.data'
 import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
 import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
+import { CATEGORY_RELATIONS } from '$lib/database/category-relations.data'
 import { PREFIXES, type Prefix } from '$lib/database/prefix.data'
 import { PROPERTIES, type Property, type PropertyID } from '$lib/database/properties.data'
 import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
@@ -36,6 +37,10 @@ export function is_valid_property(id: string): id is PropertyID {
 
 export function negate_prefix(prefix: Prefix) {
 	return PREFIXES[prefix]
+}
+
+export function get_related_categories(id: CategoryID) {
+	return select('id', 'name', 'notation').from(CATEGORY_RELATIONS[id].map(get_category))
 }
 
 /**

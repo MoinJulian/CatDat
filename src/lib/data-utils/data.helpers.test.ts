@@ -6,6 +6,7 @@ import {
 	get_prefix,
 	get_properties_of_category,
 	get_property,
+	get_related_categories,
 	is_valid_category,
 	is_valid_property,
 	negate_prefix,
@@ -57,6 +58,23 @@ describe('is_valid_property', () => {
 describe('negate_prefix', () => {
 	it("negates 'has a' to 'does not have a'", () => {
 		expect(negate_prefix('has a')).toBe('does not have a')
+	})
+})
+
+describe('get_related_categories', () => {
+	it('should list id, name, and notation of related categories', () => {
+		const related_categories = get_related_categories('FinAb')
+		expect(related_categories).toContainEqual({
+			id: 'Ab',
+			name: 'category of abelian groups',
+			notation: expect.any(String),
+		})
+
+		expect(related_categories).toContainEqual({
+			id: 'Abfg',
+			name: 'category of finitely generated abelian groups',
+			notation: expect.any(String),
+		})
 	})
 })
 
