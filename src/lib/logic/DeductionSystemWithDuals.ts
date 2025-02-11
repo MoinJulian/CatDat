@@ -10,13 +10,13 @@ export class DeductionSystemWithDuals<
 	constructor(
 		property_ids: Set<T>,
 		rules: Rule<T>[],
-		dual_property_accessor: (id: T) => T | null,
+		get_dual_property: (id: T) => T | null,
 		get_prefix: (id: T) => PrefixType,
 		negate_prefix: (prefix: PrefixType) => string,
 		initialize = true,
 	) {
 		super(property_ids, rules, get_prefix, negate_prefix, false)
-		this.get_dual_property = dual_property_accessor
+		this.get_dual_property = get_dual_property
 		if (initialize) this.init_with_duals()
 	}
 
