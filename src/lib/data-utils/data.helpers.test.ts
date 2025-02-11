@@ -2,7 +2,9 @@ import {
 	get_category,
 	get_dual_properties,
 	get_dual_property,
+	get_non_properties,
 	get_prefix,
+	get_properties,
 	get_property,
 	get_related_categories,
 	is_valid_category,
@@ -32,6 +34,28 @@ describe('get_prefix', () => {
 	})
 	it("returns 'has' for 'finite products'", () => {
 		expect(get_prefix('finite products')).toBe('has')
+	})
+})
+
+describe('get_properties', () => {
+	it('gets the properties of a category including the prefixes', () => {
+		const properties = get_properties('FinAb')
+		expect(properties).toContainEqual({
+			id: 'essentially small',
+			prefix: 'is',
+			reason: expect.any(String),
+		})
+	})
+})
+
+describe('get_non_properties', () => {
+	it('gets the non-properties of a category including the prefixes', () => {
+		const non_properties = get_non_properties('FinAb')
+		expect(non_properties).toContainEqual({
+			id: 'split abelian',
+			prefix: 'is',
+			reason: expect.any(String),
+		})
 	})
 })
 

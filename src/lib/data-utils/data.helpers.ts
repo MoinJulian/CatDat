@@ -27,6 +27,20 @@ export function get_prefix(id: PropertyID): Prefix {
 	return properties_dictionary[id].prefix
 }
 
+export function get_properties(id: CategoryID) {
+	return CATEGORY_PROPERTIES[id].map((property) => ({
+		...property,
+		prefix: get_prefix(property.id),
+	}))
+}
+
+export function get_non_properties(id: CategoryID) {
+	return CATEGORY_NON_PROPERTIES[id].map((property) => ({
+		...property,
+		prefix: get_prefix(property.id),
+	}))
+}
+
 export function is_valid_category(id: string): id is CategoryID {
 	return id in categories_dictionary
 }
