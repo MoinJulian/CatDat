@@ -18,7 +18,7 @@
 	This community-driven project welcomes <a class="accent" href="/contribute"
 		>contributions</a
 	>
-	to fill in <a class="accent" href="/missing">missing information</a>
+	to fill in <a class="accent" href="/missing">missing data</a>
 	or observe new combinations of properties.
 </p>
 
