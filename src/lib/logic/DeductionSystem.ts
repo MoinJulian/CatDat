@@ -1,4 +1,5 @@
 import type { NonEmptyArray } from '$lib/commons/utils'
+import { negate_prefix } from '$lib/data-utils/data.helpers'
 import type { Prefix } from '$lib/database/prefix.data'
 
 export type DetailedProperty<T extends string> = {
@@ -159,7 +160,8 @@ export class DeductionSystem<T extends string> {
 					if (deduced_negation_ids.has(deduction.id)) {
 						has_contradiction = true
 						done = false
-						reason += `This is a contradiction since we already know that "${deduction.id}" is not satisfied.`
+						const negated_prefix = negate_prefix(deduction.prefix)
+						reason += `This is a contradiction since we already know that it ${negated_prefix} ${deduction.id}.`
 						break
 					}
 				}

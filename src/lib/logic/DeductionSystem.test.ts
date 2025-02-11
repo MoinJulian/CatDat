@@ -98,12 +98,12 @@ describe('get_detailed_deduced_negations', () => {
 			{
 				id: 'b',
 				prefix: 'is',
-				reason: 'Assume for a contradiction that it is b. Since it is b, we deduce that it is c. Since it is c, we deduce that it is d. This is a contradiction since we already know that "d" is not satisfied.',
+				reason: 'Assume for a contradiction that it is b. Since it is b, we deduce that it is c. Since it is c, we deduce that it is d. This is a contradiction since we already know that it is not d.',
 			},
 			{
 				id: 'c',
 				prefix: 'is',
-				reason: 'Assume for a contradiction that it is c. Since it is c, we deduce that it is d. This is a contradiction since we already know that "d" is not satisfied.',
+				reason: 'Assume for a contradiction that it is c. Since it is c, we deduce that it is d. This is a contradiction since we already know that it is not d.',
 			},
 		])
 	})
