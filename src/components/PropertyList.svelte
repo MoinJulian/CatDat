@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { negate_prefix } from '$lib/data-utils/data.helpers'
 	import type { PropertyID } from '$lib/database/properties.data'
+	import type { Prefix } from '$lib/database/prefix.data'
+	import { negate_prefix } from '$lib/data-utils/data.helpers'
 	import { get_property_url } from '$lib/commons/property.url'
 	import Tooltip from './Tooltip.svelte'
-	import type { Prefix } from '$lib/database/prefix.data'
 
 	type Props = {
 		items: {
 			id: PropertyID
 			prefix: Prefix
-			reason: string
+			reason?: string
 		}[]
 		description?: string
 		with_prefix?: boolean

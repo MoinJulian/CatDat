@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { category_detail_level } from '$lib/settings/detail_level.svelte'
-	import PropertyReasonList from '$components/PropertyReasonList.svelte'
+	import PropertyList from '$components/PropertyList.svelte'
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'
 	import MorphismInfo from '$components/MorphismInfo.svelte'
@@ -63,21 +63,21 @@
 			<h3>Properties</h3>
 
 			{#if category_detail_level.value === 'all'}
-				<PropertyReasonList
+				<PropertyList
 					items={category.properties}
 					description="Properties from the database"
 				/>
 
-				<PropertyReasonList
+				<PropertyList
 					items={category.deduced_properties}
 					description="Deduced properties"
 				/>
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyReasonList
+				<PropertyList
 					items={[...category.properties, ...category.deduced_properties]}
 				/>
 			{:else if category_detail_level.value === 'basic'}
-				<PropertyReasonList
+				<PropertyList
 					items={category.properties}
 					description="Properties from the database. Further properties can be deduced."
 				/>
@@ -88,19 +88,19 @@
 			<h3>Non-Properties</h3>
 
 			{#if category_detail_level.value === 'all'}
-				<PropertyReasonList
+				<PropertyList
 					items={category.non_properties}
 					description="Non-Properties from the database"
 					negated={true}
 				/>
-				<PropertyReasonList
+				<PropertyList
 					items={category.deduced_non_properties}
 					description="Deduced Non-Properties*"
 					negated={true}
 				/>
 				<p class="hint">*This also uses the deduced properties.</p>
 			{:else if category_detail_level.value === 'merged'}
-				<PropertyReasonList
+				<PropertyList
 					items={[
 						...category.non_properties,
 						...category.deduced_non_properties,
@@ -108,7 +108,7 @@
 					negated={true}
 				/>
 			{:else if category_detail_level.value === 'basic'}
-				<PropertyReasonList
+				<PropertyList
 					items={category.non_properties}
 					description="Non-Properties from the database. Further non-properties can be deduced."
 					negated={true}
@@ -120,7 +120,7 @@
 	<section>
 		<h3>Unknown properties</h3>
 
-		<PropertyReasonList
+		<PropertyList
 			items={category.unknown_properties}
 			negated={false}
 			description={category.unknown_properties.length
