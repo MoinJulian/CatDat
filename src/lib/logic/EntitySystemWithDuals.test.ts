@@ -12,7 +12,7 @@ describe('Entity system with duals', () => {
 
 	const deduction_system = new DeductionSystemWithDuals<string, string>(
 		new Set(['a', 'b', 'a*', 'b*', 'c']),
-		[{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' }],
+		[{ id: '', assumptions: ['a'], conclusions: ['c'], reason: 'trivial' }],
 		(p: string) => dual_map[p],
 	)
 

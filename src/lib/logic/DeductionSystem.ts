@@ -7,6 +7,7 @@ export type DetailedProperty<PrefixType extends string, T extends string> = {
 }
 
 export type Rule<T> = {
+	readonly id: string
 	readonly equivalent?: true
 	readonly assumptions: NonEmptyArray<T>
 	readonly conclusions: NonEmptyArray<T>
@@ -14,6 +15,7 @@ export type Rule<T> = {
 }
 
 type NormalizedRule<T> = {
+	readonly id: string
 	readonly assumptions: Set<T>
 	readonly conclusion: T
 }
@@ -57,16 +59,20 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		for (const rule of this.rules) {
 			const { conclusions, assumptions, equivalent } = rule
 
-			for (const conclusion of conclusions) {
+			for (let i = 0; i < conclusions.length; i++) {
+				const conclusion = conclusions[i]
 				this.normalized_rules.push({
+					id: `${rule.id}_${i}`,
 					assumptions: new Set(assumptions),
 					conclusion,
 				})
 			}
 
 			if (equivalent) {
-				for (const assumption of assumptions) {
+				for (let j = 0; j < assumptions.length; j++) {
+					const assumption = assumptions[j]
 					this.normalized_rules.push({
+						id: `${rule.id}_inv_${j}`,
 						assumptions: new Set(conclusions),
 						conclusion: assumption,
 					})

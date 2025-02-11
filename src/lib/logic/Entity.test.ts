@@ -4,8 +4,8 @@ import { Entity } from './Entity'
 const deduction_system = new DeductionSystem<string, string>(
 	new Set(['a', 'b', 'c', 'd', 'e']),
 	[
-		{ assumptions: ['a'], conclusions: ['b'], reason: '' },
-		{ assumptions: ['b'], conclusions: ['c', 'd'], reason: '' },
+		{ id: '', assumptions: ['a'], conclusions: ['b'], reason: '' },
+		{ id: '', assumptions: ['b'], conclusions: ['c', 'd'], reason: '' },
 	],
 )
 

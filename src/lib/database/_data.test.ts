@@ -50,8 +50,14 @@ describe('list of categories', () => {
 })
 
 describe('implications', () => {
+	it('should have unique IDs', () => {
+		const ids = IMPLICATIONS.map((implication) => implication.id)
+		expect(ids).toEqual([...new Set(ids)])
+	})
+
 	it('should contain basic implications', () => {
 		const implication = {
+			id: expect.any(String),
 			assumptions: ['cartesian closed'],
 			conclusions: ['finite products'],
 			reason: expect.any(String),
@@ -61,6 +67,7 @@ describe('implications', () => {
 
 	it('should contain not deductions of the implications', () => {
 		const implication = {
+			id: expect.any(String),
 			assumptions: ['cartesian closed'],
 			conclusions: ['terminal object'],
 			reason: expect.any(String),
@@ -70,6 +77,7 @@ describe('implications', () => {
 
 	it('should not contain basic self-dual implications', () => {
 		const implication = {
+			id: expect.any(String),
 			assumptions: ['self-dual', 'binary products'],
 			conclusions: ['binary coproducts'],
 			reason: expect.any(String),
@@ -82,8 +90,8 @@ describe('implications', () => {
 			const keys = Object.keys(implication)
 			const expected_keys =
 				'equivalent' in implication
-					? ['equivalent', 'assumptions', 'conclusions', 'reason']
-					: ['assumptions', 'conclusions', 'reason']
+					? ['id', 'equivalent', 'assumptions', 'conclusions', 'reason']
+					: ['id', 'assumptions', 'conclusions', 'reason']
 			expect(keys).toEqual(expected_keys)
 		}
 	})

@@ -42,6 +42,7 @@ describe('property_deduction_system', () => {
 describe('implications_with_duals', () => {
 	it('should contain the existing implications', () => {
 		const implication = {
+			id: expect.any(String),
 			assumptions: ['small'],
 			conclusions: ['locally small', 'essentially small'],
 			reason: expect.any(String),
@@ -51,6 +52,7 @@ describe('implications_with_duals', () => {
 
 	it('should contain dual implications', () => {
 		const implication = {
+			id: expect.any(String),
 			equivalent: true,
 			assumptions: ['complete'],
 			conclusions: ['products', 'equalizers'],
@@ -59,6 +61,7 @@ describe('implications_with_duals', () => {
 		expect(implications_with_duals).toContainEqual(implication)
 
 		const dual_implication = {
+			id: expect.any(String),
 			equivalent: true,
 			assumptions: ['cocomplete'],
 			conclusions: ['coproducts', 'coequalizers'],
@@ -69,6 +72,7 @@ describe('implications_with_duals', () => {
 
 	it('should contain basic self-dual implications (1)', () => {
 		const implication = {
+			id: expect.any(String),
 			assumptions: ['self-dual', 'binary products'],
 			conclusions: ['binary coproducts'],
 			reason: 'trivial by self-duality',
@@ -78,6 +82,7 @@ describe('implications_with_duals', () => {
 
 	it('should contain basic self-dual implications (2)', () => {
 		const implication = {
+			id: expect.any(String),
 			assumptions: ['self-dual', 'equalizers'],
 			conclusions: ['coequalizers'],
 			reason: 'trivial by self-duality',
@@ -87,6 +92,7 @@ describe('implications_with_duals', () => {
 
 	it('should not contain trivial self-dual implications', () => {
 		const implication = {
+			id: expect.any(String),
 			assumptions: ['self-dual', 'thin'],
 			conclusions: ['thin'],
 			reason: expect.any(String),

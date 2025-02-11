@@ -15,9 +15,10 @@ describe('all rules', () => {
 		// prettier-ignore
 		new Set(['a','b','c','d','e','f','x','y','self-dual','c^op','d^op','e^op']),
 		[
-			{ assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
-			{ assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
+			{ id: 'ac', assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
+			{ id: 'cde', assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
 			{
+				id: 'xy',
 				equivalent: true,
 				assumptions: ['x'],
 				conclusions: ['y'],
@@ -29,18 +30,21 @@ describe('all rules', () => {
 
 	it('should have all given and all dualized rules', () => {
 		expect(deductionSystem.rules).toContainEqual({
+			id: 'ac',
 			assumptions: ['a'],
 			conclusions: ['c'],
 			reason: 'trivial',
 		})
 
 		expect(deductionSystem.rules).toContainEqual({
+			id: 'cde',
 			assumptions: ['c', 'd'],
 			conclusions: ['e'],
 			reason: 'trivial',
 		})
 
 		expect(deductionSystem.rules).toContainEqual({
+			id: 'xy',
 			equivalent: true,
 			assumptions: ['x'],
 			conclusions: ['y'],
@@ -48,6 +52,7 @@ describe('all rules', () => {
 		})
 
 		expect(deductionSystem.rules).toContainEqual({
+			id: 'cde_dual',
 			assumptions: ['c^op', 'd^op'],
 			conclusions: ['e^op'],
 			reason: '[dualized] trivial',
@@ -56,6 +61,7 @@ describe('all rules', () => {
 
 	it('should not contain rules that cannot be dualized', () => {
 		expect(deductionSystem.rules).not.toContainEqual({
+			id: expect.any(String),
 			assumptions: ['a^op'],
 			conclusions: ['c^op'],
 			reason: 'trivial',
@@ -64,12 +70,14 @@ describe('all rules', () => {
 
 	it('should contain all self-dual rules', () => {
 		expect(deductionSystem.rules).toContainEqual({
+			id: 'c_selfdual',
 			assumptions: ['self-dual', 'c'],
 			conclusions: ['c^op'],
 			reason: 'trivial by self-duality',
 		})
 
 		expect(deductionSystem.rules).not.toContainEqual({
+			id: expect.any(String),
 			assumptions: ['self-dual', 'x'],
 			conclusions: ['x'],
 			reason: 'trivial',
@@ -80,7 +88,7 @@ describe('all rules', () => {
 describe('get_detailed_deductions', () => {
 	const deductionSystem = new DeductionSystemWithDuals<string, string>(
 		new Set(['a', 'b']),
-		[{ assumptions: ['a'], conclusions: ['b'], reason: '' }],
+		[{ id: '', assumptions: ['a'], conclusions: ['b'], reason: '' }],
 		() => null,
 	)
 

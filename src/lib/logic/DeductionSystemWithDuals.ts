@@ -48,12 +48,14 @@ export class DeductionSystemWithDuals<
 
 			const dualized_rule: Rule<T> = rule.equivalent
 				? {
+						id: `${rule.id}_dual`,
 						equivalent: true,
 						assumptions: dual_assumptions,
 						conclusions: dual_conclusions,
 						reason: `[dualized] ${rule.reason}`,
 					}
 				: {
+						id: `${rule.id}_dual`,
 						assumptions: dual_assumptions,
 						conclusions: dual_conclusions,
 						reason: `[dualized] ${rule.reason}`,
@@ -72,6 +74,7 @@ export class DeductionSystemWithDuals<
 			if (!dual_id || dual_id === id) continue
 
 			this.rules.push({
+				id: `${id}_selfdual`,
 				assumptions: ['self-dual' as T, id],
 				conclusions: [dual_id],
 				reason: 'trivial by self-duality',
