@@ -21,7 +21,6 @@
 <h2>{property.id}</h2>
 
 <p>
-	<strong>Definition:</strong>
 	{@html property.description}
 	{#if property.invariant === false}
 		Warning: This property is not invariant under equivalences.
