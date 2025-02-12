@@ -131,64 +131,96 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		return deductions
 	}
 
+	private get_contradiction(
+		assumptions: DetailedProperty<PrefixType, T>[],
+		negated_ids: Set<T>,
+	): null | { reason: string } {
+		const new_deductions = this.get_detailed_deductions(assumptions)
+		let reason = ''
+		let has_contradiction = false
+
+		for (const deduction of new_deductions) {
+			const is_irrelevant = assumptions.some(
+				(assumption) => assumption.id === deduction.id,
+			)
+			if (is_irrelevant) continue
+
+			reason += `${deduction.reason} `
+
+			if (negated_ids.has(deduction.id)) {
+				has_contradiction = true
+				const negated_prefix = this.negate_prefix(deduction.prefix)
+				reason += `This is a contradiction since we already know that it ${negated_prefix} ${deduction.id}.`
+				break
+			}
+		}
+
+		if (has_contradiction) {
+			return { reason }
+		}
+
+		return null
+	}
+
+	private get_new_negations(
+		assumptions: DetailedProperty<PrefixType, T>[],
+		deduced_negation_ids: Set<T>,
+	): DetailedProperty<PrefixType, T>[] {
+		const new_negations: DetailedProperty<PrefixType, T>[] = []
+
+		for (const id of this.property_ids) {
+			const not_new = deduced_negation_ids.has(id)
+			if (not_new) continue
+
+			const prefix = this.get_prefix(id)
+
+			const new_assumptions = [
+				...assumptions,
+				{
+					id,
+					prefix,
+					reason: '-',
+				},
+			]
+
+			const contradiction = this.get_contradiction(
+				new_assumptions,
+				deduced_negation_ids,
+			)
+			if (!contradiction) continue
+
+			const reason = contradiction.reason
+
+			const complete_reason = `Assume for a contradiction that it ${prefix} ${id}. ${reason}`
+
+			const new_negation = {
+				id,
+				prefix: this.get_prefix(id),
+				reason: complete_reason,
+			}
+
+			new_negations.push(new_negation)
+		}
+
+		return new_negations
+	}
+
 	public get_detailed_deduced_negations(
 		assumptions: DetailedProperty<PrefixType, T>[],
 		negations: DetailedProperty<PrefixType, T>[],
 	) {
-		let done = false
-
 		const deduced_negations = Array.from(negations)
 		const deduced_negation_ids = new Set(negations.map((entry) => entry.id))
 
-		while (!done) {
-			done = true
-			for (const id of this.property_ids) {
-				const not_new = deduced_negation_ids.has(id)
-				if (not_new) continue
+		while (true) {
+			const new_negations = this.get_new_negations(
+				assumptions,
+				deduced_negation_ids,
+			)
+			if (new_negations.length === 0) break
 
-				const prefix = this.get_prefix(id)
-
-				const new_assumptions = [
-					...assumptions,
-					{
-						id,
-						prefix,
-						reason: '-',
-					},
-				]
-
-				const new_deductions = this.get_detailed_deductions(new_assumptions)
-
-				let reason = `Assume for a contradiction that it ${prefix} ${id}. `
-
-				let has_contradiction = false
-
-				for (const deduction of new_deductions) {
-					const is_irrelevant = new_assumptions.some(
-						(assumption) => assumption.id === deduction.id,
-					)
-					if (is_irrelevant) continue
-
-					reason += `${deduction.reason} `
-
-					if (deduced_negation_ids.has(deduction.id)) {
-						has_contradiction = true
-						done = false
-						const negated_prefix = this.negate_prefix(deduction.prefix)
-						reason += `This is a contradiction since we already know that it ${negated_prefix} ${deduction.id}.`
-						break
-					}
-				}
-
-				if (has_contradiction) {
-					deduced_negation_ids.add(id)
-					deduced_negations.push({
-						id,
-						prefix: this.get_prefix(id),
-						reason,
-					})
-				}
-			}
+			deduced_negations.push(...new_negations)
+			new_negations.forEach((negation) => deduced_negation_ids.add(negation.id))
 		}
 
 		return deduced_negations
