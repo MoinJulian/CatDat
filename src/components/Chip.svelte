@@ -2,12 +2,12 @@
 	import type { Snippet } from 'svelte'
 
 	type Props = {
-		handle_remove?: () => void // undefined if not removable
+		handle_click?: () => void // undefined if not removable
 		children: Snippet
 		size?: 'small' | 'medium'
 	}
 
-	let { handle_remove, children, size = 'medium' }: Props = $props()
+	let { handle_click: handle_remove, children, size = 'medium' }: Props = $props()
 </script>
 
 {#if handle_remove !== undefined}

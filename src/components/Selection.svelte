@@ -59,7 +59,7 @@
 
 	<ChipGroup>
 		{#each selected_items as selected_item}
-			<Chip handle_remove={() => remove_item(selected_item)}>
+			<Chip handle_click={() => remove_item(selected_item)}>
 				{selected_item}
 			</Chip>
 		{/each}
