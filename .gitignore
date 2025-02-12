@@ -25,4 +25,6 @@ vite.config.ts.timestamp-*
 # Vitest
 coverage
 
+# Notes for developer
 todo.txt
+thoughts.txt
