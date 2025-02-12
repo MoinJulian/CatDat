@@ -3,9 +3,9 @@
 
 	let { data } = $props()
 
-	let title = data.tag
-		? `List of categories tagged as "${data.tag}"`
-		: `List of categories`
+	let title = $derived(
+		data.tag ? `List of categories tagged as "${data.tag}"` : `List of categories`,
+	)
 
 	let description = $derived(
 		data.tag
@@ -20,4 +20,4 @@
 
 <h2>{title}</h2>
 
-<CategoryList items={data.categories} {description} />
+<CategoryList categories={data.categories} {description} />

@@ -15,7 +15,7 @@
 	let {
 		title,
 		allowed_items,
-		selected_items: selected_items = $bindable(),
+		selected_items = $bindable(),
 		section_label,
 		item_label,
 	}: Props = $props()

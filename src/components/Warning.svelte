@@ -4,14 +4,15 @@
 	import Fa from 'svelte-fa'
 
 	type Props = {
-		children?: Snippet
+		children: Snippet
 	}
+
 	let { children }: Props = $props()
 </script>
 
 <div>
 	<Fa scale={1.25} icon={faWarning} />&nbsp;
-	{@render children?.()}
+	{@render children()}
 </div>
 
 <style>

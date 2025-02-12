@@ -6,12 +6,13 @@
 
 <p>
 	<i>CatDat</i> is developed within an open-source
-	<a href="https://github.com/ScriptRaccoon/catdat" target="_blank">GitHub repository</a
-	>
+	<a href="https://github.com/ScriptRaccoon/catdat" target="_blank">
+		GitHub repository
+	</a>
 	owned by
 	<a href="https://ncatlab.org/nlab/show/Martin+Brandenburg" target="_blank"
-		>Martin Brandenburg</a
-	>. It welcomes contributions from the community to fill in missing information, or
+		>Martin Brandenburg
+	</a>. It welcomes contributions from the community to fill in missing information, or
 	observe new combinations of properties.
 </p>
 

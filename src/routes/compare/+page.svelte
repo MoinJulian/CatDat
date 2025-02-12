@@ -3,29 +3,12 @@
 	import { goto } from '$app/navigation'
 	import Selection from '$components/Selection.svelte'
 	import { max_categories, storage_key } from './compare.config'
+	import { get_saved_category_names } from './compare.utils'
 
 	let { data } = $props()
+
 	const categories = data.categories
-
 	const category_names = categories.map((category) => category.name)
-
-	function get_saved_category_names(): string[] {
-		if (!browser) return []
-
-		const names_string = window.sessionStorage.getItem(storage_key)
-		if (!names_string) return []
-
-		try {
-			const parsed_names: unknown = JSON.parse(names_string)
-			const is_valid =
-				Array.isArray(parsed_names) &&
-				parsed_names.every((name) => typeof name === 'string')
-
-			return is_valid ? parsed_names : []
-		} catch {
-			return []
-		}
-	}
 
 	let selected_category_names: string[] = $state(get_saved_category_names())
 
@@ -46,7 +29,6 @@
 			return
 
 		const path = chosen_categories.map((category) => category.id).join('/')
-
 		goto(`/compare/${path}`)
 	}
 </script>

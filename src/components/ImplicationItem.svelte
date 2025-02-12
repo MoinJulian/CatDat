@@ -11,16 +11,16 @@
 	import Tooltip from './Tooltip.svelte'
 	import { get_property_url } from '$lib/commons/property.url'
 
-	type Props = { implication: Implication; highlighted?: PropertyID }
+	type Props = { implication: Implication; highlighted_property?: PropertyID }
 
-	let { implication, highlighted }: Props = $props()
+	let { implication, highlighted_property }: Props = $props()
 </script>
 
 <div class="implication">
 	{#each implication.assumptions as assumption, i}
 		<a
 			href={get_property_url(assumption)}
-			class:highlighted={assumption === highlighted}>{assumption}</a
+			class:highlighted={assumption === highlighted_property}>{assumption}</a
 		>
 		{#if i < implication.assumptions.length - 1}
 			<Fa icon={faPlus} class="operator" />
@@ -47,7 +47,7 @@
 	{#each implication.conclusions as conclusion, i}
 		<a
 			href={get_property_url(conclusion)}
-			class:highlighted={conclusion === highlighted}>{conclusion}</a
+			class:highlighted={conclusion === highlighted_property}>{conclusion}</a
 		>
 		{#if i < implication.conclusions.length - 1}
 			<Fa icon={faPlus} class="operator" />

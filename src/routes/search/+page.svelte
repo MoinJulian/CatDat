@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
-
+	import { fade } from 'svelte/transition'
+	import { browser } from '$app/environment'
 	import CategoryList from '$components/CategoryList.svelte'
-
 	import {
 		separator_in_url,
 		storage_key_non_properties,
@@ -10,38 +10,11 @@
 	} from '$lib/commons/search'
 	import Warning from '$components/Warning.svelte'
 	import { concatenate_info } from '$lib/commons/utils'
-	import { browser } from '$app/environment'
 	import Selection from '$components/Selection.svelte'
 	import { is_valid_property, propertyIDs } from '$lib/data-utils/data.helpers'
 	import type { PropertyID } from '$lib/database/properties.data'
 	import { encode_property_ID } from '$lib/commons/property.url'
-	import { fade } from 'svelte/transition'
-
-	function get_saved_search(): [PropertyID[], PropertyID[]] {
-		if (!browser) return [[], []]
-
-		const properties_string = window.sessionStorage.getItem(storage_key_properties)
-		const non_properties_string = window.sessionStorage.getItem(
-			storage_key_non_properties,
-		)
-
-		if (!properties_string || !non_properties_string) return [[], []]
-
-		try {
-			const parsed_properties: unknown = JSON.parse(properties_string)
-			const parsed_non_properties: unknown = JSON.parse(non_properties_string)
-
-			const is_valid =
-				Array.isArray(parsed_properties) &&
-				parsed_properties.every(is_valid_property) &&
-				Array.isArray(parsed_non_properties) &&
-				parsed_non_properties.every(is_valid_property)
-
-			return is_valid ? [parsed_properties, parsed_non_properties] : [[], []]
-		} catch {
-			return [[], []]
-		}
-	}
+	import { get_saved_search } from './search.utils'
 
 	$effect(() => {
 		if (!browser) return
@@ -105,8 +78,8 @@
 <p class="hint">
 	Search for categories that satisfy a specific set of properties while simultaneously
 	not satisfying another set of properties. For example, you can
-	<a href={sample_search_url} target="_blank">look</a> for categories that are finitely complete
-	and pointed but not complete.
+	<a href={sample_search_url} target="_blank">look</a>
+	for categories that are finitely complete and pointed but not complete.
 </p>
 
 <div class="form">
@@ -149,7 +122,7 @@
 			resp. non-properties ({concatenate_info(data.non_properties)}).
 		</p>
 
-		<CategoryList items={data.found_categories ?? []} />
+		<CategoryList categories={data.found_categories ?? []} />
 	</section>
 {/if}
 
@@ -167,7 +140,7 @@
 			)}) resp. non-properties ({concatenate_info(data.dualized_non_properties)}).
 		</p>
 
-		<CategoryList items={data.found_dualized_categories ?? []} />
+		<CategoryList categories={data.found_dualized_categories ?? []} />
 	</section>
 {/if}
 

@@ -11,6 +11,6 @@
 <h2>List of Properties</h2>
 
 <PropertyList
-	items={data.properties}
+	properties={data.properties}
 	description="The following {data.properties.length} properties are available."
 />

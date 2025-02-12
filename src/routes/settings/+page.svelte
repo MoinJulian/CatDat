@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+	import Fa from 'svelte-fa'
+
 	import Chip from '$components/Chip.svelte'
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import {
@@ -7,8 +10,6 @@
 		update_category_detail_level,
 	} from '$lib/settings/detail_level.svelte'
 	import { theme, THEMES, update_theme } from '$lib/settings/theme.svelte'
-	import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
-	import Fa from 'svelte-fa'
 
 	$effect(() => update_theme(theme.value))
 	$effect(() => update_category_detail_level(category_detail_level.value))

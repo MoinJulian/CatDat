@@ -11,7 +11,7 @@
 <h2>List of Implications</h2>
 
 <ImplicationList
-	items={data.implications}
+	implications={data.implications}
 	description="The following {data.implications
 		.length} implications and equivalences are available*."
 />

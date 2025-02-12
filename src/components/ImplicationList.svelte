@@ -4,12 +4,12 @@
 	import ImplicationItem from './ImplicationItem.svelte'
 
 	type Props = {
-		items: Implication[]
+		implications: Implication[]
 		description?: string
-		highlighted?: PropertyID
+		highlighted_property?: PropertyID
 	}
 
-	let { items, description, highlighted }: Props = $props()
+	let { implications, description, highlighted_property }: Props = $props()
 </script>
 
 {#if description}
@@ -18,11 +18,11 @@
 	</p>
 {/if}
 
-{#if items.length}
+{#if implications.length}
 	<ul>
-		{#each items as implication}
+		{#each implications as implication}
 			<li>
-				<ImplicationItem {implication} {highlighted} />
+				<ImplicationItem {implication} {highlighted_property} />
 			</li>
 		{/each}
 	</ul>

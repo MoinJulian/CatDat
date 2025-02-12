@@ -8,10 +8,10 @@
 	let property = $derived(data.property)
 	let dual_property = $derived(data.dual_property)
 	let related_properties = $derived(data.related_properties)
+	let relevant_implications = $derived(data.relevant_implications)
 	let categories_with_this_property = $derived(data.categories_with_this_property)
 	let categories_without_this_property = $derived(data.categories_without_this_property)
 	let unknown_categories = $derived(data.unknown_categories)
-	let relevant_implications = $derived(data.relevant_implications)
 </script>
 
 <svelte:head>
@@ -62,20 +62,23 @@
 
 <h3>Relevant implications</h3>
 
-<ImplicationList items={relevant_implications} highlighted={property.id} />
+<ImplicationList
+	implications={relevant_implications}
+	highlighted_property={property.id}
+/>
 
 <h3>Examples</h3>
 
-<CategoryList items={categories_with_this_property} />
+<CategoryList categories={categories_with_this_property} />
 
 <h3>Counterexamples</h3>
 
-<CategoryList items={categories_without_this_property} />
+<CategoryList categories={categories_without_this_property} />
 
 <h3>Unknown</h3>
 
 <CategoryList
-	items={unknown_categories}
+	categories={unknown_categories}
 	description="For these categories the database has no info if they satisfy this property or
 		not."
 />

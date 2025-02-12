@@ -30,7 +30,7 @@
 	properties.
 </p>
 
-<CategoryList items={categories_with_unknown_properties} />
+<CategoryList categories={categories_with_unknown_properties} />
 
 <p class="hint">
 	In total, there are {total_number_unknown_properties} unknown properties of categories.
@@ -38,7 +38,7 @@
 
 <h3>Categories with unknown special morphisms</h3>
 
-<CategoryList items={categories_with_unknown_special_morphisms} />
+<CategoryList categories={categories_with_unknown_special_morphisms} />
 
 <h3>Missing combinations</h3>
 

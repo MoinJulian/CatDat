@@ -69,21 +69,21 @@
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					items={category.properties}
+					properties={category.properties}
 					description="Properties from the database"
 				/>
 
 				<PropertyList
-					items={category.deduced_properties}
+					properties={category.deduced_properties}
 					description="Deduced properties"
 				/>
 			{:else if category_detail_level.value === 'merged'}
 				<PropertyList
-					items={[...category.properties, ...category.deduced_properties]}
+					properties={[...category.properties, ...category.deduced_properties]}
 				/>
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					items={category.properties}
+					properties={category.properties}
 					description="Properties from the database. Further properties can be deduced."
 				/>
 			{/if}
@@ -94,19 +94,19 @@
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					items={category.non_properties}
+					properties={category.non_properties}
 					description="Non-Properties from the database"
 					negated={true}
 				/>
 				<PropertyList
-					items={category.deduced_non_properties}
+					properties={category.deduced_non_properties}
 					description="Deduced Non-Properties*"
 					negated={true}
 				/>
 				<p class="hint">*This also uses the deduced properties.</p>
 			{:else if category_detail_level.value === 'merged'}
 				<PropertyList
-					items={[
+					properties={[
 						...category.non_properties,
 						...category.deduced_non_properties,
 					]}
@@ -114,7 +114,7 @@
 				/>
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					items={category.non_properties}
+					properties={category.non_properties}
 					description="Non-Properties from the database. Further non-properties can be deduced."
 					negated={true}
 				/>
@@ -126,7 +126,7 @@
 		<h3>Unknown properties</h3>
 
 		<PropertyList
-			items={category.unknown_properties}
+			properties={category.unknown_properties}
 			negated={false}
 			description={category.unknown_properties.length
 				? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"

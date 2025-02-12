@@ -2,13 +2,15 @@
 	import type { CategorySimple } from '$lib/data-utils/data.helpers'
 
 	type Props = {
-		items: CategorySimple[]
+		categories: CategorySimple[]
 		description?: string
 	}
 
-	let { description, items }: Props = $props()
+	let { description, categories }: Props = $props()
 
-	let sorted_items = $derived(items.toSorted((a, b) => a.name.localeCompare(b.name)))
+	let sorted_categories = $derived(
+		categories.toSorted((a, b) => a.name.localeCompare(b.name)),
+	)
 </script>
 
 {#if description}
@@ -17,9 +19,9 @@
 	</p>
 {/if}
 
-{#if items.length}
+{#if categories.length}
 	<ul>
-		{#each sorted_items as item}
+		{#each sorted_categories as item}
 			<li>
 				<a href="/category/{item.id}">
 					{item.name}

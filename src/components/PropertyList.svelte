@@ -6,7 +6,7 @@
 	import Tooltip from './Tooltip.svelte'
 
 	type Props = {
-		items: {
+		properties: {
 			id: PropertyID
 			prefix: Prefix
 			reason?: string
@@ -16,7 +16,7 @@
 		negated?: boolean
 	}
 
-	let { items, description, with_prefix = true, negated = false }: Props = $props()
+	let { properties, description, with_prefix = true, negated = false }: Props = $props()
 </script>
 
 {#if description}
@@ -25,9 +25,9 @@
 	</p>
 {/if}
 
-{#if items.length}
+{#if properties.length}
 	<ul>
-		{#each items as { id, prefix, reason }}
+		{#each properties as { id, prefix, reason }}
 			<li>
 				{#if with_prefix}
 					{negated ? negate_prefix(prefix) : prefix}
