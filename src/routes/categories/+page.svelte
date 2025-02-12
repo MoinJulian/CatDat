@@ -2,15 +2,22 @@
 	import CategoryList from '$components/CategoryList.svelte'
 
 	let { data } = $props()
+
+	let title = data.tag
+		? `List of categories tagged as "${data.tag}"`
+		: `List of categories`
+
+	let description = $derived(
+		data.tag
+			? `The following ${data.categories.length} categories are tagged as "${data.tag}".`
+			: `The following ${data.categories.length} categories are available.`,
+	)
 </script>
 
 <svelte:head>
-	<title>List of categories</title>
+	<title>{title}</title>
 </svelte:head>
 
-<h2>List of categories</h2>
+<h2>{title}</h2>
 
-<CategoryList
-	items={data.categories}
-	description="The following {data.categories.length} categories are available."
-/>
+<CategoryList items={data.categories} {description} />

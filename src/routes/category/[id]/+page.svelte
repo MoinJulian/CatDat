@@ -4,10 +4,15 @@
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'
 	import MorphismInfo from '$components/MorphismInfo.svelte'
+	import { goto } from '$app/navigation'
 
 	let { data } = $props()
 
 	let category = $derived(data.category)
+
+	function filter_by_tag(tag: string) {
+		goto(`/categories?tag=${tag}`)
+	}
 </script>
 
 <svelte:head>
@@ -18,7 +23,7 @@
 
 <ChipGroup>
 	{#each category.tags as tag}
-		<Chip size="small">{tag}</Chip>
+		<Chip size="small" handle_click={() => filter_by_tag(tag)}>{tag}</Chip>
 	{/each}
 </ChipGroup>
 

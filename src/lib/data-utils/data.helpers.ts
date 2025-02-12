@@ -3,6 +3,7 @@ import { CATEGORIES, type Category, type CategoryID } from '$lib/database/catego
 import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
 import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
 import { CATEGORY_RELATIONS } from '$lib/database/category-relations.data'
+import { CATEGORY_TAGS } from '$lib/database/category-tags.data'
 import { PREFIXES, type Prefix } from '$lib/database/prefix.data'
 import { PROPERTIES, type Property, type PropertyID } from '$lib/database/properties.data'
 import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
@@ -65,4 +66,8 @@ export function get_dual_properties(ids: PropertyID[]): null | PropertyID[] {
 	const duals = ids.map(get_dual_property)
 	if (duals.includes(null)) return null
 	return duals as PropertyID[]
+}
+
+export function get_tags(id: CategoryID): string[] {
+	return CATEGORY_TAGS[id]
 }

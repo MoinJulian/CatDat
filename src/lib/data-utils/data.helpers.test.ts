@@ -7,6 +7,7 @@ import {
 	get_properties,
 	get_property,
 	get_related_categories,
+	get_tags,
 	is_valid_category,
 	is_valid_property,
 	negate_prefix,
@@ -124,5 +125,13 @@ describe('get_dual_properties', () => {
 			'small',
 			'complete',
 		])
+	})
+})
+
+describe('get_tags', () => {
+	it('returns a list of tags for a given category ID', () => {
+		const tags = get_tags('FinAb')
+		expect(tags.length).toBeGreaterThan(0)
+		expect(tags).toContain('algebra')
 	})
 })
