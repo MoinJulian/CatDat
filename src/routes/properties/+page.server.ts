@@ -3,7 +3,9 @@ import { PROPERTIES } from '$lib/database/properties.data'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = () => {
-	const properties = select('id', 'prefix').from(PROPERTIES)
+	const sorted_properties = PROPERTIES.toSorted((a, b) =>
+		a.id.toLowerCase().localeCompare(b.id.toLowerCase()),
+	)
 
-	return { properties }
+	return { properties: select('id', 'prefix').from(sorted_properties) }
 }
