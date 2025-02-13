@@ -1,24 +1,24 @@
-import { DeductionSystem, type DetailedProperty } from './DeductionSystem'
+import { DeductionSystem } from './DeductionSystem'
+import { ReasonHandler } from './ReasonHandler'
+
+const default_reason_handler = new ReasonHandler<string, string>(
+	() => 'is',
+	() => 'is not',
+)
 
 describe('constructor', () => {
 	it('should throw an error when an unknown property appears in a rule', () => {
 		expect(() => {
-			new DeductionSystem<string, string>(
-				new Set(['a']),
-				[{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
-				() => 'is',
-				() => 'is not',
-			)
+			new DeductionSystem<string, string>(new Set(['a']), [
+				{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
+			])
 		}).toThrow()
 	})
 
 	it('should initialize by default by computing the normalized rules', () => {
-		const deductionSystem = new DeductionSystem<string, string>(
-			new Set(['a', 'b']),
-			[{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
-			() => 'is',
-			() => 'is not',
-		)
+		const deductionSystem = new DeductionSystem<string, string>(new Set(['a', 'b']), [
+			{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
+		])
 		expect(deductionSystem.normalized_rules).not.toEqual([])
 	})
 
@@ -26,15 +26,14 @@ describe('constructor', () => {
 		const deductionSystem = new DeductionSystem<string, string>(
 			new Set(['a', 'b']),
 			[{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' }],
-			() => 'is',
-			() => 'is not',
+
 			false,
 		)
 		expect(deductionSystem.normalized_rules).toEqual([])
 	})
 })
 
-describe('get_detailed_deductions', () => {
+describe('get_conclusions_with_reasons', () => {
 	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
 		[
@@ -42,70 +41,42 @@ describe('get_detailed_deductions', () => {
 			{ id: '', assumptions: ['d', 'c'], conclusions: ['e'], reason: '' },
 			{ id: '', assumptions: ['c'], conclusions: ['a'], reason: '' },
 		],
-		() => 'has',
-		() => 'does not have',
-		true,
 	)
 
 	it('should explain why the properties follow', () => {
-		const assumptions: DetailedProperty<string, string>[] = [
-			{ id: 'a', prefix: 'has', reason: 'clear' },
-			{ id: 'b', prefix: 'has', reason: 'easy' },
-		]
+		const deductions = deductionSystem.get_conclusions_with_reasons(
+			new Set(['a', 'b']),
+			default_reason_handler,
+		)
 
-		const detailed_deductions = deductionSystem.get_detailed_deductions(assumptions)
-
-		expect(detailed_deductions).toEqual([
-			{
-				id: 'a',
-				prefix: 'has',
-				reason: 'clear',
-			},
-			{
-				id: 'b',
-				prefix: 'has',
-				reason: 'easy',
-			},
+		expect(deductions).toEqual([
 			{
 				id: 'c',
-				prefix: 'has',
-				reason: 'Since it has a and has b, we deduce that it has c.',
+				prefix: 'is',
+				reason: 'Since it is a and is b, we deduce that it is c.',
 			},
 		])
 	})
 })
 
-describe('get_detailed_deduced_negations', () => {
+describe('get_concluded_negations_with_reasons', () => {
 	const deductionSystem = new DeductionSystem<string, string>(
 		new Set(['a', 'b', 'c', 'd', 'e']),
 		[
 			{ id: '', assumptions: ['b'], conclusions: ['c'], reason: '' },
 			{ id: '', assumptions: ['c'], conclusions: ['d'], reason: '' },
 		],
-		() => 'is',
-		() => 'is not',
-		true,
 	)
 
 	it('should explain why the non-properties follow"', () => {
-		const assumptions: DetailedProperty<string, string>[] = [
-			{ id: 'e', prefix: 'has', reason: 'clear' },
-		]
-		const negations: DetailedProperty<string, string>[] = [
-			{ id: 'd', prefix: 'has', reason: 'clear' },
-		]
-
-		const detailed_deduced_negations = deductionSystem.get_detailed_deduced_negations(
-			assumptions,
-			negations,
-		)
+		const detailed_deduced_negations =
+			deductionSystem.get_concluded_negations_with_reasons(
+				new Set(['e']),
+				new Set(['d']),
+				default_reason_handler,
+			)
 
 		expect(detailed_deduced_negations).toEqual([
-			{
-				id: 'd',
-				prefix: 'has',
-				reason: 'clear',
-			},
 			{
 				id: 'b',
 				prefix: 'is',
@@ -133,36 +104,76 @@ describe('has_contradiction', () => {
 				reason: 'trivial',
 			},
 		],
-		() => 'is',
-		() => 'is not',
 	)
 
 	it("should return true for 'a' and 'not a'", () => {
-		expect(deductionSystem.has_contradiction(['a'], ['a'])).toBe(true)
+		expect(
+			deductionSystem.has_contradiction(
+				new Set(['a']),
+				new Set(['a']),
+				default_reason_handler,
+			),
+		).toBe(true)
 	})
 
 	it("should return true for 'a' and 'not c'", () => {
-		expect(deductionSystem.has_contradiction(['a'], ['c'])).toBe(true)
+		expect(
+			deductionSystem.has_contradiction(
+				new Set(['a']),
+				new Set(['c']),
+				default_reason_handler,
+			),
+		).toBe(true)
 	})
 
 	it("should return true for 'a', 'd' and 'not f'", () => {
-		expect(deductionSystem.has_contradiction(['a', 'd'], ['f'])).toBe(true)
+		expect(
+			deductionSystem.has_contradiction(
+				new Set(['a', 'd']),
+				new Set(['f']),
+				default_reason_handler,
+			),
+		).toBe(true)
 	})
 
 	it("should return false for 'a' and 'b'", () => {
-		expect(deductionSystem.has_contradiction(['a', 'b'], [])).toBe(false)
+		expect(
+			deductionSystem.has_contradiction(
+				new Set(['a', 'b']),
+				new Set([]),
+				default_reason_handler,
+			),
+		).toBe(false)
 	})
 
 	it("should return false for 'a' and 'c'", () => {
-		expect(deductionSystem.has_contradiction(['a', 'c'], [])).toBe(false)
+		expect(
+			deductionSystem.has_contradiction(
+				new Set(['a', 'c']),
+				new Set([]),
+				default_reason_handler,
+			),
+		).toBe(false)
 	})
 
 	it("should return false for 'a' and 'b', and not 'f'", () => {
-		expect(deductionSystem.has_contradiction(['a', 'b'], ['f'])).toBe(false)
+		expect(
+			deductionSystem.has_contradiction(
+				new Set(['a', 'b']),
+				new Set(['f']),
+				default_reason_handler,
+			),
+		).toBe(false)
 	})
 
 	it("should return false for not 'f'", () => {
-		expect(deductionSystem.has_contradiction([], ['f'])).toBe(false)
+		expect(
+			deductionSystem.has_contradiction(
+				new Set([]),
+				new Set(['f']),
+				default_reason_handler,
+			),
+		).toBe(false)
 	})
 })
 
@@ -173,8 +184,6 @@ describe('get_basic_consistent_combinations', () => {
 			{ id: '', assumptions: ['a'], conclusions: ['c'], reason: 'trivial' },
 			{ id: '', assumptions: ['c', 'd'], conclusions: ['e'], reason: 'trivial' },
 		],
-		() => 'is',
-		() => 'is not',
 	)
 
 	it('should work as expected', () => {
@@ -207,43 +216,30 @@ describe('get_redundancy', () => {
 			{ id: '', assumptions: ['b'], conclusions: ['c'], reason: 'trivial' },
 			{ id: '', assumptions: ['d'], conclusions: ['e'], reason: 'trivial' },
 		],
-		() => 'is',
-		() => 'is not',
 	)
 
 	it('should return null for the empty set', () => {
-		const result = deductionSystem.get_redundancy([])
+		const result = deductionSystem.get_redundancy(new Set())
 		expect(result).toBe(null)
 	})
 
 	it("should return null for 'a'", () => {
-		const result = deductionSystem.get_redundancy([
-			{ id: 'a', prefix: 'is', reason: '-' },
-		])
+		const result = deductionSystem.get_redundancy(new Set(['a']))
 		expect(result).toBe(null)
 	})
 
 	it("should return 'b' for 'a' and 'b'", () => {
-		const result = deductionSystem.get_redundancy([
-			{ id: 'a', prefix: 'is', reason: '-' },
-			{ id: 'b', prefix: 'is', reason: '-' },
-		])
+		const result = deductionSystem.get_redundancy(new Set(['a', 'b']))
 		expect(result).toBe('b')
 	})
 
 	it("should return 'c' for 'a' and 'c'", () => {
-		const result = deductionSystem.get_redundancy([
-			{ id: 'a', prefix: 'is', reason: '-' },
-			{ id: 'c', prefix: 'is', reason: '-' },
-		])
+		const result = deductionSystem.get_redundancy(new Set(['a', 'c']))
 		expect(result).toBe('c')
 	})
 
 	it("should return null for 'a' and 'd'", () => {
-		const result = deductionSystem.get_redundancy([
-			{ id: 'a', prefix: 'is', reason: '-' },
-			{ id: 'd', prefix: 'is', reason: '-' },
-		])
+		const result = deductionSystem.get_redundancy(new Set(['a', 'd']))
 		expect(result).toBe(null)
 	})
 })
@@ -256,25 +252,22 @@ describe('get_redundancy_of_negations', () => {
 			{ id: '', assumptions: ['b'], conclusions: ['c'], reason: 'trivial' },
 			{ id: '', assumptions: ['d'], conclusions: ['e'], reason: 'trivial' },
 		],
-		() => 'is',
-		() => 'is not',
 	)
 
 	it("should return null for 'a' and 'not e'", () => {
 		const result = deductionSystem.get_redundancy_of_negations(
-			[{ id: 'a', prefix: 'is', reason: '-' }],
-			[{ id: 'e', prefix: 'is', reason: '-' }],
+			new Set(['a']),
+			new Set(['e']),
+			default_reason_handler,
 		)
 		expect(result).toBe(null)
 	})
 
 	it("should return 'd' for 'a' and 'not e' and 'not d'", () => {
 		const result = deductionSystem.get_redundancy_of_negations(
-			[{ id: 'a', prefix: 'is', reason: '-' }],
-			[
-				{ id: 'd', prefix: 'is', reason: '-' },
-				{ id: 'e', prefix: 'is', reason: '-' },
-			],
+			new Set(['a']),
+			new Set(['d', 'e']),
+			default_reason_handler,
 		)
 		expect(result).toBe('d')
 	})
@@ -297,8 +290,6 @@ describe('relevant rules', () => {
 				reason: 'trivial',
 			},
 		],
-		() => 'is',
-		() => 'is not',
 	)
 
 	it('should return one rule', () => {

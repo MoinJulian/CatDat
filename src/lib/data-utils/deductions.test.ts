@@ -6,6 +6,7 @@ import {
 	categories_with_deduced_properties_dictionary,
 	implications_with_duals,
 	property_deduction_system,
+	reason_handler,
 } from './deductions'
 
 describe('property_deduction_system', () => {
@@ -21,7 +22,9 @@ describe('property_deduction_system', () => {
 		const non_properties = get_non_properties(category.id)
 
 		it(`should have no redundancy for the properties of: ${category.name}`, () => {
-			const redundancy = property_deduction_system.get_redundancy(properties)
+			const redundancy = property_deduction_system.get_redundancy(
+				new Set<PropertyID>(properties.map((p) => p.id)),
+			)
 			const is_exception = redundancy_exceptions.some(
 				(entry) => entry[0] === category.id && entry[1] === redundancy,
 			)
@@ -32,8 +35,9 @@ describe('property_deduction_system', () => {
 
 		it(`should have no redundancy for the non-properties of: ${category.name}`, () => {
 			const redundancy = property_deduction_system.get_redundancy_of_negations(
-				properties,
-				non_properties,
+				new Set<PropertyID>(properties.map((p) => p.id)),
+				new Set<PropertyID>(non_properties.map((p) => p.id)),
+				reason_handler,
 			)
 			expect(redundancy).toBe(null)
 		})

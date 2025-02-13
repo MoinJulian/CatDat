@@ -6,7 +6,11 @@ import {
 	get_dual_properties,
 	is_valid_property,
 } from '$lib/data-utils/data.helpers'
-import { category_system, property_deduction_system } from '$lib/data-utils/deductions'
+import {
+	category_system,
+	property_deduction_system,
+	reason_handler,
+} from '$lib/data-utils/deductions'
 import type { Category } from '$lib/database/categories.data'
 
 export const separator_in_url = '--'
@@ -36,8 +40,9 @@ export function get_search_results(url: URL) {
 	if (!is_valid) return error(404, 'Invalid query')
 
 	const has_contradiction = property_deduction_system.has_contradiction(
-		properties,
-		non_properties,
+		new Set(properties),
+		new Set(non_properties),
+		reason_handler,
 	)
 
 	if (has_contradiction) {

@@ -1,4 +1,5 @@
-import type { DeductionSystem, DetailedProperty } from './DeductionSystem'
+import type { DeductionSystem } from './DeductionSystem'
+import type { PropertyWithReason, ReasonHandler } from './ReasonHandler'
 import { Entity } from './Entity'
 
 export class EntitySystem<PrefixType extends string, S extends string, T extends string> {
@@ -11,11 +12,12 @@ export class EntitySystem<PrefixType extends string, S extends string, T extends
 
 	public add(
 		id: S,
-		properties: DetailedProperty<PrefixType, T>[],
-		non_properties: DetailedProperty<PrefixType, T>[],
+		properties: PropertyWithReason<PrefixType, T>[],
+		non_properties: PropertyWithReason<PrefixType, T>[],
+		reason_handler: ReasonHandler<PrefixType, T>,
 	): Entity<PrefixType, S, T> {
-		const new_entity = new Entity(id, properties, non_properties)
-		new_entity.deduce_properties(this.deduction_system)
+		const new_entity = new Entity<PrefixType, S, T>(id, properties, non_properties)
+		new_entity.deduce_properties(this.deduction_system, reason_handler)
 		this.entities.push(new_entity)
 		return new_entity
 	}

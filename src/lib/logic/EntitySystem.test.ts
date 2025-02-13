@@ -1,6 +1,7 @@
 import { DeductionSystem } from './DeductionSystem'
 import { Entity } from './Entity'
 import { EntitySystem } from './EntitySystem'
+import { default_reason_handler } from './ReasonHandler'
 
 describe('EntitySystem', () => {
 	const deduction_system = new DeductionSystem<string, string>(
@@ -9,8 +10,6 @@ describe('EntitySystem', () => {
 			{ id: '', assumptions: ['a'], conclusions: ['b'], reason: 'trivial' },
 			{ id: '', assumptions: ['b'], conclusions: ['c', 'd'], reason: 'trivial' },
 		],
-		() => 'is',
-		() => 'is not',
 	)
 
 	const entity_system = new EntitySystem<string, string, string>(deduction_system)
@@ -19,17 +18,20 @@ describe('EntitySystem', () => {
 		'1',
 		[{ id: 'a', prefix: 'is', reason: 'clear' }],
 		[],
+		default_reason_handler,
 	)
 	entity_system.add(
 		'2',
 		[{ id: 'b', prefix: 'is', reason: 'clear' }],
 		[{ id: 'a', prefix: 'is', reason: 'easy' }],
+		default_reason_handler,
 	)
 
 	const entity_3 = entity_system.add(
 		'3',
 		[{ id: 'c', prefix: 'is', reason: 'clear' }],
 		[{ id: 'b', prefix: 'is', reason: 'easy' }],
+		default_reason_handler,
 	)
 
 	describe('add', () => {

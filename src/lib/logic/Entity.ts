@@ -1,17 +1,18 @@
-import type { DeductionSystem, DetailedProperty } from './DeductionSystem'
+import type { DeductionSystem } from './DeductionSystem'
+import type { PropertyWithReason, ReasonHandler } from './ReasonHandler'
 
 export class Entity<PrefixType extends string, S extends string, T extends string> {
 	public readonly id: S
-	public properties: DetailedProperty<PrefixType, T>[]
-	public non_properties: DetailedProperty<PrefixType, T>[]
-	public deduced_properties: DetailedProperty<PrefixType, T>[] = []
-	public deduced_non_properties: DetailedProperty<PrefixType, T>[] = []
-	public unknown_properties: DetailedProperty<PrefixType, T>[] = []
+	public properties: PropertyWithReason<PrefixType, T>[]
+	public non_properties: PropertyWithReason<PrefixType, T>[]
+	public deduced_properties: PropertyWithReason<PrefixType, T>[] = []
+	public deduced_non_properties: PropertyWithReason<PrefixType, T>[] = []
+	public unknown_properties: PropertyWithReason<PrefixType, T>[] = []
 
 	constructor(
 		id: S,
-		properties: DetailedProperty<PrefixType, T>[],
-		non_properties: DetailedProperty<PrefixType, T>[],
+		properties: PropertyWithReason<PrefixType, T>[],
+		non_properties: PropertyWithReason<PrefixType, T>[],
 	) {
 		this.id = id
 		this.properties = properties
@@ -26,21 +27,28 @@ export class Entity<PrefixType extends string, S extends string, T extends strin
 		return [...this.non_properties, ...this.deduced_non_properties]
 	}
 
-	public deduce_properties(deduction_system: DeductionSystem<PrefixType, T>) {
-		const all_properties = deduction_system.get_detailed_deductions(this.properties)
-
-		const all_non_properties = deduction_system.get_detailed_deduced_negations(
-			all_properties,
-			this.non_properties,
+	public deduce_properties(
+		deduction_system: DeductionSystem<PrefixType, T>,
+		reason_handler: ReasonHandler<PrefixType, T>,
+	) {
+		this.deduced_properties = deduction_system.get_conclusions_with_reasons(
+			new Set(this.properties.map((p) => p.id)),
+			reason_handler,
 		)
 
-		this.deduced_properties = all_properties.filter((property) =>
-			this.properties.every((p) => p.id !== property.id),
-		)
+		const all_properties = [...this.properties, ...this.deduced_properties]
 
-		this.deduced_non_properties = all_non_properties.filter((property) =>
-			this.non_properties.every((p) => p.id !== property.id),
-		)
+		this.deduced_non_properties =
+			deduction_system.get_concluded_negations_with_reasons(
+				new Set(all_properties.map((p) => p.id)),
+				new Set(this.non_properties.map((p) => p.id)),
+				reason_handler,
+			)
+
+		const all_non_properties = [
+			...this.non_properties,
+			...this.deduced_non_properties,
+		]
 
 		this.unknown_properties = Array.from(deduction_system.all_property_ids)
 			.filter(
@@ -50,7 +58,7 @@ export class Entity<PrefixType extends string, S extends string, T extends strin
 			)
 			.map((id) => ({
 				id,
-				prefix: deduction_system.get_prefix(id),
+				prefix: reason_handler.get_prefix(id),
 				reason: '',
 			}))
 	}

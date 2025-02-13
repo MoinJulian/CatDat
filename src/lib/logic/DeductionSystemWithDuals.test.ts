@@ -1,4 +1,3 @@
-import type { DetailedProperty } from './DeductionSystem'
 import { DeductionSystemWithDuals } from './DeductionSystemWithDuals'
 
 describe('all rules', () => {
@@ -26,8 +25,6 @@ describe('all rules', () => {
 			},
 		],
 		(property) => dual_config[property] ?? null,
-		() => 'is',
-		() => 'is not',
 	)
 
 	it('should have all given and all dualized rules', () => {

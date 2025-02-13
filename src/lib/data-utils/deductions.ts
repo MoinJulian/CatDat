@@ -14,15 +14,17 @@ import type { PropertyID } from '$lib/database/properties.data'
 import { DeductionSystemWithDuals } from '$lib/logic/DeductionSystemWithDuals'
 import type { Entity } from '$lib/logic/Entity'
 import { EntitySystemWithDuals } from '$lib/logic/EntitySystemWithDuals'
+import { ReasonHandler } from '$lib/logic/ReasonHandler'
 
-console.time('deductions')
+export const reason_handler = new ReasonHandler<Prefix, PropertyID>(
+	get_prefix,
+	negate_prefix,
+)
 
 export const property_deduction_system = new DeductionSystemWithDuals<Prefix, PropertyID>(
 	new Set(propertyIDs),
 	Array.from(IMPLICATIONS),
 	get_dual_property,
-	get_prefix,
-	negate_prefix,
 )
 
 export const implications_with_duals = property_deduction_system.rules
@@ -38,6 +40,7 @@ for (const category of CATEGORIES) {
 		category.id,
 		get_properties(category.id),
 		get_non_properties(category.id),
+		reason_handler,
 	)
 }
 
@@ -47,5 +50,3 @@ export const categories_with_deduced_properties: CategoryWithDeducedProperties[]
 export const categories_with_deduced_properties_dictionary = group_items(
 	categories_with_deduced_properties,
 )
-
-console.timeEnd('deductions')

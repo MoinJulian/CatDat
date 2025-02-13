@@ -1,5 +1,6 @@
 import { DeductionSystemWithDuals } from './DeductionSystemWithDuals'
 import { EntitySystemWithDuals } from './EntitySystemWithDuals'
+import { default_reason_handler } from './ReasonHandler'
 
 describe('Entity system with duals', () => {
 	const dual_map: Record<string, string | null> = {
@@ -14,8 +15,6 @@ describe('Entity system with duals', () => {
 		new Set(['a', 'b', 'a*', 'b*', 'c']),
 		[{ id: '', assumptions: ['a'], conclusions: ['c'], reason: 'trivial' }],
 		(p: string) => dual_map[p],
-		() => 'is',
-		() => 'is not',
 	)
 
 	const entity_system = new EntitySystemWithDuals<string, string, string>(
@@ -26,6 +25,7 @@ describe('Entity system with duals', () => {
 		'1',
 		[{ id: 'a', prefix: 'is', reason: 'clear' }],
 		[{ id: 'b', prefix: 'is', reason: 'clear' }],
+		default_reason_handler,
 	)
 
 	describe('missing combinations', () => {

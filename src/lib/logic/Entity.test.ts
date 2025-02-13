@@ -1,5 +1,6 @@
 import { DeductionSystem } from './DeductionSystem'
 import { Entity } from './Entity'
+import { default_reason_handler } from './ReasonHandler'
 
 const deduction_system = new DeductionSystem<string, string>(
 	new Set(['a', 'b', 'c', 'd', 'e']),
@@ -7,8 +8,6 @@ const deduction_system = new DeductionSystem<string, string>(
 		{ id: '', assumptions: ['a'], conclusions: ['b'], reason: '' },
 		{ id: '', assumptions: ['b'], conclusions: ['c', 'd'], reason: '' },
 	],
-	() => 'is',
-	() => 'is not',
 )
 
 describe('constructor', () => {
@@ -32,7 +31,7 @@ describe('deduce_properties', () => {
 			[],
 		)
 
-		entity.deduce_properties(deduction_system)
+		entity.deduce_properties(deduction_system, default_reason_handler)
 
 		expect(entity.properties).toEqual([{ id: 'a', prefix: 'is', reason: 'clear' }])
 
@@ -57,7 +56,7 @@ describe('deduce_properties', () => {
 			[{ id: 'd', prefix: 'is', reason: 'clear' }],
 		)
 
-		entity.deduce_properties(deduction_system)
+		entity.deduce_properties(deduction_system, default_reason_handler)
 
 		expect(entity.non_properties).toEqual([
 			{ id: 'd', prefix: 'is', reason: 'clear' },
@@ -77,7 +76,7 @@ describe('deduce_properties', () => {
 			[],
 		)
 
-		entity.deduce_properties(deduction_system)
+		entity.deduce_properties(deduction_system, default_reason_handler)
 
 		expect(entity.unknown_properties).toEqual([
 			{ id: 'a', prefix: 'is', reason: '' },
@@ -95,7 +94,7 @@ describe('satisfies', () => {
 		[{ id: 'a', prefix: 'is', reason: 'easy' }],
 	)
 
-	entity.deduce_properties(deduction_system)
+	entity.deduce_properties(deduction_system, default_reason_handler)
 
 	it('returns "true" when all properties, non-properties and unknown properties are satisfied', () => {
 		expect(entity.satisfies(['b'], [], [])).toBe(true)
@@ -123,7 +122,7 @@ describe('get_comparison_value', () => {
 		[{ id: 'a', prefix: 'is', reason: 'easy' }],
 	)
 
-	entity.deduce_properties(deduction_system)
+	entity.deduce_properties(deduction_system, default_reason_handler)
 
 	it('returns "null" for unknown properties', () => {
 		expect(entity.get_comparison_value('e')).toBe(null)

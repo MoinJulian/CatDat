@@ -1,10 +1,5 @@
 import type { NonEmptyArray } from '$lib/commons/utils'
-
-export type DetailedProperty<PrefixType extends string, T extends string> = {
-	id: T
-	prefix: PrefixType
-	reason: string
-}
+import type { PropertyWithReason, ReasonHandler } from './ReasonHandler'
 
 export type Rule<T> = {
 	readonly id: string
@@ -14,7 +9,7 @@ export type Rule<T> = {
 	readonly reason: string
 }
 
-type NormalizedRule<T> = {
+export type NormalizedRule<T> = {
 	readonly id: string
 	readonly assumptions: Set<T>
 	readonly conclusion: T
@@ -28,22 +23,12 @@ type NormalizedRule<T> = {
 export class DeductionSystem<PrefixType extends string, T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
-	public readonly all_property_ids: Set<T> // all available properties
-	public readonly get_prefix: (id: T) => PrefixType
-	public readonly negate_prefix: (prefix: PrefixType) => string
+	public readonly all_property_ids: Set<T>
 
-	constructor(
-		all_property_ids: Set<T>,
-		rules: Rule<T>[],
-		get_prefix: (id: T) => PrefixType,
-		negate_prefix: (prefix: PrefixType) => string,
-		initialize = true,
-	) {
+	constructor(all_property_ids: Set<T>, rules: Rule<T>[], initialize = true) {
 		this.all_property_ids = all_property_ids
 		this.rules = rules
 		this.validate_rules()
-		this.get_prefix = get_prefix
-		this.negate_prefix = negate_prefix
 		if (initialize) this.init()
 	}
 
@@ -101,49 +86,60 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	}
 
 	/**
-	 * Returns the list of all deductions that can be recursively made
-	 * from a list of assumptions, using the rules of the deduction system.
+	 * Returns the list of all properties that can be deduced from a list of assumptions.
 	 * The reasons are given in natural language.
 	 */
-	public get_detailed_deductions(
-		assumptions: DetailedProperty<PrefixType, T>[],
-	): DetailedProperty<PrefixType, T>[] {
-		const deductions = [...assumptions]
-		const deduced_ids = new Set(deductions.map((entry) => entry.id))
-
-		while (true) {
-			const new_deductions = this.get_new_deductions(deduced_ids)
-			if (new_deductions.length === 0) break
-			deductions.push(...new_deductions)
-		}
-
-		return deductions
+	public get_conclusions_with_reasons(
+		ids: Set<T>,
+		reason_handler: ReasonHandler<PrefixType, T>,
+	): PropertyWithReason<PrefixType, T>[] {
+		const rules = this.get_rules_for_deductions(ids)
+		return rules.map((rule) =>
+			reason_handler.create_property_with_reason_from_rule(rule),
+		)
 	}
 
 	/**
-	 * Returns the list of new deductions that can be made from a set
-	 * of property IDs by looping *once* over all rules.
-	 *
-	 * Caution: This method is not pure.
-	 * For performance reasons, we change the IDs in place.
+	 * Returns the list of all rules that can be applied to deduce new properties
+	 * from a set of assumptions.
 	 */
-	private get_new_deductions(ids: Set<T>) {
-		const new_deductions: DetailedProperty<PrefixType, T>[] = []
+	private get_rules_for_deductions(ids: Set<T>): NormalizedRule<T>[] {
+		const deduced_ids = new Set(ids)
+
+		const rules_for_deductions = []
+
+		while (true) {
+			const new_rules = this.get_new_rules(deduced_ids)
+			if (new_rules.length === 0) break
+			rules_for_deductions.push(...new_rules)
+		}
+
+		return rules_for_deductions
+	}
+
+	/**
+	 * Returns the set of all properties that can be deduced from a list of assumptions.
+	 * The reasons are not included in this method.
+	 */
+	private get_pure_deductions(ids: Set<T>): Set<T> {
+		return new Set(this.get_rules_for_deductions(ids).map((rule) => rule.conclusion))
+	}
+
+	/**
+	 * Returns the list of all properties that can be deduced from a set of assumptions,
+	 * by running *once* through the list of normalized rules.
+	 */
+	private get_new_rules(ids: Set<T>): NormalizedRule<T>[] {
+		const new_rules: NormalizedRule<T>[] = []
 
 		for (const rule of this.normalized_rules) {
 			if (!this.is_rule_applicable(rule, ids)) continue
 
-			const new_deduction = {
-				id: rule.conclusion,
-				prefix: this.get_prefix(rule.conclusion),
-				reason: this.get_rule_as_string(rule),
-			}
-
-			new_deductions.push(new_deduction)
+			new_rules.push(rule)
 			ids.add(rule.conclusion)
 		}
 
-		return new_deductions
+		return new_rules
 	}
 
 	/**
@@ -154,34 +150,22 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	}
 
 	/**
-	 * Returns a string representation of a rule in natural language.
+	 * Returns the list of all negations that can be deduced from a set of properties
+	 * and negated properties. The reasons are given in natural language.
 	 */
-	private get_rule_as_string(rule: NormalizedRule<T>) {
-		const assumption_string = Array.from(rule.assumptions)
-			.map((id) => `${this.get_prefix(id)} ${id}`)
-			.join(' and ')
-
-		const conclusion_string = `${this.get_prefix(rule.conclusion)} ${rule.conclusion}`
-
-		return `Since it ${assumption_string}, we deduce that it ${conclusion_string}.`
-	}
-
-	/**
-	 * Returns the list of all negations that can be recursively deduced
-	 * from a list of assumptions and negations, using the rules of the deduction system.
-	 * The reasons are given in natural language.
-	 */
-	public get_detailed_deduced_negations(
-		assumptions: DetailedProperty<PrefixType, T>[],
-		negations: DetailedProperty<PrefixType, T>[],
-	) {
-		const deduced_negations = Array.from(negations)
-		const deduced_negation_ids = new Set(negations.map((entry) => entry.id))
+	public get_concluded_negations_with_reasons(
+		assumed_ids: Set<T>,
+		negated_ids: Set<T>,
+		reason_handler: ReasonHandler<PrefixType, T>,
+	): PropertyWithReason<PrefixType, T>[] {
+		const deduced_negations = []
+		const deduced_negation_ids = new Set(negated_ids)
 
 		while (true) {
 			const new_negations = this.get_new_negations(
-				assumptions.map((assumption) => assumption.id),
+				assumed_ids,
 				deduced_negation_ids,
+				reason_handler,
 			)
 			if (new_negations.length === 0) break
 
@@ -193,55 +177,83 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	}
 
 	/**
-	 * Returns the list of new negations that can be deduced from a set of
-	 * assumptions and negations by looping *once* over properties.
-	 * The idea is to assume a property and check if it leads to a contradiction.
-	 * If yes, we register this property as a new negation.
+	 * Returns the list of all negations that can be deduced from a set of properties
+	 * and negated properties, by running *once* through the list of all properties.
 	 */
 	private get_new_negations(
-		assumed_ids: T[],
-		deduced_negation_ids: Set<T>,
-	): DetailedProperty<PrefixType, T>[] {
-		const new_negations: DetailedProperty<PrefixType, T>[] = []
+		assumed_ids: Set<T>,
+		negated_ids: Set<T>,
+		reason_handler: ReasonHandler<PrefixType, T>,
+	): PropertyWithReason<PrefixType, T>[] {
+		const new_negations: PropertyWithReason<PrefixType, T>[] = []
 
 		for (const id of this.all_property_ids) {
-			const not_new = deduced_negation_ids.has(id)
+			const not_new = negated_ids.has(id)
 			if (not_new) continue
 
-			const prefix = this.get_prefix(id)
+			// TODO: move this to the method in reason_handler
+			const prefix = reason_handler.get_prefix(id)
 
-			const contradiction = this.get_contradiction(
-				[...assumed_ids, id],
-				deduced_negation_ids,
+			const contradiction = this.get_contradiction_with_reason(
+				assumed_ids.union(new Set([id])),
+				negated_ids,
+				reason_handler,
 			)
 			if (!contradiction) continue
 
 			const { proof } = contradiction
+			// TODO: move this to the method in reason_handler
 			const prelude = `Assume for a contradiction that it ${prefix} ${id}.`
 			const reason = `${prelude} ${proof}`
 
-			const new_negation = {
+			const new_negation = reason_handler.create_property_with_given_reason(
 				id,
-				prefix: this.get_prefix(id),
 				reason,
-			}
+			)
 
 			new_negations.push(new_negation)
+			negated_ids.add(id)
 		}
 
 		return new_negations
 	}
 
 	/**
-	 * Returns a contradiction proof if a contradiction can be deduced
-	 * from a set of assumptions and negations. It loops over all rules
-	 * and stops when no new conclusions can be made or a contradiction is found.
-	 * The proof is given in natural language.
-	 *
-	 * TODO: refactor this method
-	 * TODO: find a shorter proof that removes unnecessary paths
+	 * Returns a human-readable proof of a contradiction, given a set of properties
+	 * and negated properties. If no contradiction is found, null is returned.
 	 */
-	private get_contradiction(assumed_ids: T[], negated_ids: Set<T>) {
+	private get_contradiction_with_reason(
+		assumed_ids: Set<T>,
+		negated_ids: Set<T>,
+		reason_handler: ReasonHandler<PrefixType, T>,
+	): null | { proof: string } {
+		const contradiction = this.get_contradiction_rules(assumed_ids, negated_ids)
+
+		if (!contradiction) return null
+
+		const { contradictory_id, used_rules } = contradiction
+
+		const proof = reason_handler.build_contradiction_proof(
+			contradictory_id,
+			used_rules,
+		)
+
+		return { proof }
+	}
+
+	/**
+	 * Returns the ID of a property that contradicts a set of properties and negated
+	 * properties, in case a contradiction can be deduced, along with the list of
+	 * rules that lead to the contradiction. In this method, some rules may not
+	 * be necessary for the proof. If no contradiction is found, null is returned.
+	 */
+	private get_contradiction_rules(
+		assumed_ids: Set<T>,
+		negated_ids: Set<T>,
+	): null | {
+		contradictory_id: T
+		used_rules: NormalizedRule<T>[]
+	} {
 		const deduced_ids = new Set(assumed_ids)
 		const used_rules: NormalizedRule<T>[] = []
 
@@ -266,25 +278,7 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 			}
 		}
 
-		return contradictory_id
-			? this.build_contradiction_proof(contradictory_id, used_rules)
-			: null
-	}
-
-	/**
-	 * Builds a contradiction proof in natural language.
-	 */
-	private build_contradiction_proof(
-		contradictory_id: T,
-		used_rules: NormalizedRule<T>[],
-	) {
-		const negated_prefix = this.negate_prefix(this.get_prefix(contradictory_id))
-		const main_proof = used_rules
-			.map((rule) => this.get_rule_as_string(rule))
-			.join(' ')
-		const finale = `This is a contradiction since we already know that it ${negated_prefix} ${contradictory_id}.`
-		const proof = `${main_proof} ${finale}`
-		return { proof }
+		return contradictory_id ? { contradictory_id, used_rules: used_rules } : null
 	}
 
 	/**
@@ -293,17 +287,16 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	 *
 	 * This method is only used for testing purposes. It is not called in the app.
 	 */
-	public get_redundancy(assumptions: DetailedProperty<PrefixType, T>[]): T | null {
-		const deductions = this.get_detailed_deductions(assumptions)
+	public get_redundancy(assumed_ids: Set<T>): T | null {
+		const deductions = this.get_pure_deductions(assumed_ids).union(assumed_ids)
 
-		for (const assumption of assumptions) {
-			const reduced_assumptions = assumptions.filter(
-				(_assumption) => _assumption.id !== assumption.id,
-			)
-			const reduced_deductions = this.get_detailed_deductions(reduced_assumptions)
+		for (const id of assumed_ids) {
+			const reduced_ids = assumed_ids.difference(new Set([id]))
+			const reduced_deductions =
+				this.get_pure_deductions(reduced_ids).union(reduced_ids)
 
-			if (reduced_deductions.length === deductions.length) {
-				return assumption.id
+			if (reduced_deductions.size === deductions.size) {
+				return id
 			}
 		}
 
@@ -317,62 +310,63 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	 * This method is only used for testing purposes. It is not called in the app.
 	 */
 	public get_redundancy_of_negations(
-		assumptions: DetailedProperty<PrefixType, T>[],
-		negations: DetailedProperty<PrefixType, T>[],
+		assumed_ids: Set<T>,
+		negated_ids: Set<T>,
+		reason_handler: ReasonHandler<PrefixType, T>,
 	): T | null {
-		const deduced_assumptions = this.get_detailed_deductions(assumptions)
-		const deduced_negations = this.get_detailed_deduced_negations(
-			deduced_assumptions,
-			negations,
+		const deduced_assumptions =
+			this.get_pure_deductions(assumed_ids).union(assumed_ids)
+		const deduced_negations = this.get_concluded_negations_with_reasons(
+			assumed_ids,
+			negated_ids,
+			reason_handler,
+		)
+		const all_negated_ids = new Set(deduced_negations.map((p) => p.id)).union(
+			negated_ids,
 		)
 
-		for (const negation of negations) {
-			const reduced_negations = negations.filter(
-				(_negation) => _negation.id !== negation.id,
-			)
-
-			const reduced_deduced_negations = this.get_detailed_deduced_negations(
+		for (const id of negated_ids) {
+			const reduced_negated_ids = negated_ids.difference(new Set([id]))
+			const reduced_deduced_negations = this.get_concluded_negations_with_reasons(
 				deduced_assumptions,
-				reduced_negations,
+				reduced_negated_ids,
+				reason_handler,
 			)
-			if (reduced_deduced_negations.length === deduced_negations.length) {
-				return negation.id
+			const all_reduced_negated_ids = new Set(
+				reduced_deduced_negations.map((p) => p.id),
+			).union(reduced_negated_ids)
+
+			if (all_reduced_negated_ids.size === all_negated_ids.size) {
+				return id
 			}
 		}
+
 		return null
 	}
 
 	/**
 	 * Returns true if a contradiction can be deduced from a list of assumptions
 	 * and negations, using the rules of the deduction system.
+	 *
+	 * @deprecated as long as we have the reason_handler here, which should go away
 	 */
-	public has_contradiction(assumptions: T[], negations: T[]): boolean {
-		const assumptions_detailed: DetailedProperty<PrefixType, T>[] = assumptions.map(
-			(id) => ({
-				id,
-				prefix: 'is' as PrefixType,
-				reason: 'by assumption',
-			}),
+	public has_contradiction(
+		assumed_ids: Set<T>,
+		negated_ids: Set<T>,
+		reason_handler: ReasonHandler<PrefixType, T>,
+	): boolean {
+		const deduced_ids = this.get_pure_deductions(assumed_ids)
+		const deduced_negated_properties = this.get_concluded_negations_with_reasons(
+			assumed_ids,
+			negated_ids,
+			reason_handler,
 		)
+		const all_deduced_ids = new Set(deduced_ids).union(assumed_ids)
+		const all_deduced_negated_ids = new Set(
+			deduced_negated_properties.map((p) => p.id),
+		).union(negated_ids)
 
-		const negations_detailed: DetailedProperty<PrefixType, T>[] = negations.map(
-			(id) => ({
-				id,
-				prefix: 'is' as PrefixType,
-				reason: 'by assumption',
-			}),
-		)
-
-		const deductions = this.get_detailed_deductions(assumptions_detailed)
-		const deduced_negations = this.get_detailed_deduced_negations(
-			assumptions_detailed,
-			negations_detailed,
-		)
-
-		const deduction_ids = new Set(deductions.map((entry) => entry.id))
-		const deduced_negation_ids = new Set(deduced_negations.map((entry) => entry.id))
-
-		return deduction_ids.intersection(deduced_negation_ids).size > 0
+		return all_deduced_negated_ids.intersection(all_deduced_ids).size > 0
 	}
 
 	/**
@@ -383,11 +377,11 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	public get_basic_consistent_combinations(): { assumption: T; negation: T }[] {
 		const combinations: { assumption: T; negation: T }[] = []
 		for (const assumption of this.all_property_ids) {
-			const deductions = this.get_detailed_deductions([
-				{ id: assumption, prefix: 'is' as PrefixType, reason: '-' },
-			])
+			const deduced_ids = this.get_pure_deductions(new Set([assumption])).union(
+				new Set([assumption]),
+			)
 			for (const negation of this.all_property_ids) {
-				if (deductions.every((deduction) => deduction.id !== negation)) {
+				if (!deduced_ids.has(negation)) {
 					combinations.push({ assumption, negation })
 				}
 			}

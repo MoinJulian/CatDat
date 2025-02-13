@@ -11,11 +11,9 @@ export class DeductionSystemWithDuals<
 		all_property_ids: Set<T>,
 		rules: Rule<T>[],
 		get_dual_property: (id: T) => T | null,
-		get_prefix: (id: T) => PrefixType,
-		negate_prefix: (prefix: PrefixType) => string,
 		initialize = true,
 	) {
-		super(all_property_ids, rules, get_prefix, negate_prefix, false)
+		super(all_property_ids, rules, false)
 		this.get_dual_property = get_dual_property
 		if (initialize) this.init_with_duals()
 	}
