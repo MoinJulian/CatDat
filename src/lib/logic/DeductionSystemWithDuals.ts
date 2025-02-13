@@ -8,14 +8,14 @@ export class DeductionSystemWithDuals<
 	public readonly get_dual_property: (id: T) => T | null
 
 	constructor(
-		property_ids: Set<T>,
+		all_property_ids: Set<T>,
 		rules: Rule<T>[],
 		get_dual_property: (id: T) => T | null,
 		get_prefix: (id: T) => PrefixType,
 		negate_prefix: (prefix: PrefixType) => string,
 		initialize = true,
 	) {
-		super(property_ids, rules, get_prefix, negate_prefix, false)
+		super(all_property_ids, rules, get_prefix, negate_prefix, false)
 		this.get_dual_property = get_dual_property
 		if (initialize) this.init_with_duals()
 	}
@@ -69,7 +69,7 @@ export class DeductionSystemWithDuals<
 	}
 
 	private add_self_dual_rules(): void {
-		for (const id of this.property_ids) {
+		for (const id of this.all_property_ids) {
 			const dual_id = this.get_dual_property(id)
 
 			if (!dual_id || dual_id === id) continue

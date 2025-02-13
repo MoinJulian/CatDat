@@ -28,18 +28,18 @@ type NormalizedRule<T> = {
 export class DeductionSystem<PrefixType extends string, T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
-	public readonly property_ids: Set<T> // all available properties
+	public readonly all_property_ids: Set<T> // all available properties
 	public readonly get_prefix: (id: T) => PrefixType
 	public readonly negate_prefix: (prefix: PrefixType) => string
 
 	constructor(
-		property_ids: Set<T>,
+		all_property_ids: Set<T>,
 		rules: Rule<T>[],
 		get_prefix: (id: T) => PrefixType,
 		negate_prefix: (prefix: PrefixType) => string,
 		initialize = true,
 	) {
-		this.property_ids = property_ids
+		this.all_property_ids = all_property_ids
 		this.rules = rules
 		this.validate_rules()
 		this.get_prefix = get_prefix
@@ -54,8 +54,8 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	private validate_rules(): void {
 		for (const rule of this.rules) {
 			const is_valid =
-				new Set(rule.assumptions).isSubsetOf(this.property_ids) &&
-				new Set(rule.conclusions).isSubsetOf(this.property_ids)
+				new Set(rule.assumptions).isSubsetOf(this.all_property_ids) &&
+				new Set(rule.conclusions).isSubsetOf(this.all_property_ids)
 			if (!is_valid) throw new Error(`Invalid rule: ${JSON.stringify(rule)}`)
 		}
 	}
@@ -204,7 +204,7 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	): DetailedProperty<PrefixType, T>[] {
 		const new_negations: DetailedProperty<PrefixType, T>[] = []
 
-		for (const id of this.property_ids) {
+		for (const id of this.all_property_ids) {
 			const not_new = deduced_negation_ids.has(id)
 			if (not_new) continue
 
@@ -382,11 +382,11 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	 */
 	public get_basic_consistent_combinations(): { assumption: T; negation: T }[] {
 		const combinations: { assumption: T; negation: T }[] = []
-		for (const assumption of this.property_ids) {
+		for (const assumption of this.all_property_ids) {
 			const deductions = this.get_detailed_deductions([
 				{ id: assumption, prefix: 'is' as PrefixType, reason: '-' },
 			])
-			for (const negation of this.property_ids) {
+			for (const negation of this.all_property_ids) {
 				if (deductions.every((deduction) => deduction.id !== negation)) {
 					combinations.push({ assumption, negation })
 				}
@@ -399,7 +399,7 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	 * Returns the list of all properties in the system, sorted by ID.
 	 */
 	public get_sorted_property_ids(): T[] {
-		return Array.from(this.property_ids).toSorted((a, b) =>
+		return Array.from(this.all_property_ids).toSorted((a, b) =>
 			a.toLowerCase().localeCompare(b.toLowerCase()),
 		)
 	}

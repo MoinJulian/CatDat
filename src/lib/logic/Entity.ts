@@ -42,7 +42,7 @@ export class Entity<PrefixType extends string, S extends string, T extends strin
 			this.non_properties.every((p) => p.id !== property.id),
 		)
 
-		this.unknown_properties = Array.from(deduction_system.property_ids)
+		this.unknown_properties = Array.from(deduction_system.all_property_ids)
 			.filter(
 				(id) =>
 					all_properties.every((property) => property.id !== id) &&
