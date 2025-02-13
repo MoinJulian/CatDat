@@ -217,7 +217,6 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 
 		return new_negations
 	}
-
 	/**
 	 * Returns a human-readable proof of a contradiction, given a set of properties
 	 * and negated properties. If no contradiction is found, null is returned.
@@ -227,7 +226,10 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		negated_ids: Set<T>,
 		reason_handler: ReasonHandler<PrefixType, T>,
 	): null | { proof: string } {
-		const contradiction = this.get_contradiction_rules(assumed_ids, negated_ids)
+		const contradiction = this.get_optimal_contradiction_rules(
+			assumed_ids,
+			negated_ids,
+		)
 
 		if (!contradiction) return null
 
@@ -244,10 +246,35 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	/**
 	 * Returns the ID of a property that contradicts a set of properties and negated
 	 * properties, in case a contradiction can be deduced, along with the list of
+	 * optimal rules that lead to the contradiction. If no contradiction is found,
+	 * null is returned.
+	 */
+	private get_optimal_contradiction_rules(
+		assumed_ids: Set<T>,
+		negated_ids: Set<T>,
+	): null | {
+		contradictory_id: T
+		used_rules: NormalizedRule<T>[]
+	} {
+		const contradiction = this.get_lengthy_contradiction_rules(
+			assumed_ids,
+			negated_ids,
+		)
+
+		if (!contradiction) return null
+
+		const { contradictory_id, used_rules } = contradiction
+
+		return this.shorten_contradiction_rules(assumed_ids, contradictory_id, used_rules)
+	}
+
+	/**
+	 * Returns the ID of a property that contradicts a set of properties and negated
+	 * properties, in case a contradiction can be deduced, along with the list of
 	 * rules that lead to the contradiction. In this method, some rules may not
 	 * be necessary for the proof. If no contradiction is found, null is returned.
 	 */
-	private get_contradiction_rules(
+	private get_lengthy_contradiction_rules(
 		assumed_ids: Set<T>,
 		negated_ids: Set<T>,
 	): null | {
@@ -279,6 +306,45 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		}
 
 		return contradictory_id ? { contradictory_id, used_rules: used_rules } : null
+	}
+
+	/**
+	 * Makes a proof of a contradiction more concise by removing rules that
+	 * are not necessary for the proof.
+	 */
+	private shorten_contradiction_rules(
+		assumed_ids: Set<T>,
+		contradictory_id: T,
+		used_rules: NormalizedRule<T>[],
+	): {
+		contradictory_id: T
+		used_rules: NormalizedRule<T>[]
+	} | null {
+		const open_conclusions = new Set<T>([contradictory_id])
+
+		const n = used_rules.length
+		const relevant_rules = []
+
+		for (let index = n - 1; index >= 0; index--) {
+			const rule = used_rules[index]
+			const is_relevant = open_conclusions.has(rule.conclusion)
+			if (!is_relevant) continue
+
+			open_conclusions.delete(rule.conclusion)
+			relevant_rules.unshift(rule)
+
+			for (const assumption of rule.assumptions) {
+				if (!assumed_ids.has(assumption)) {
+					open_conclusions.add(assumption)
+				}
+			}
+
+			if (open_conclusions.size === 0) break
+		}
+
+		if (open_conclusions.size > 0) return null
+
+		return { contradictory_id, used_rules: relevant_rules }
 	}
 
 	/**
