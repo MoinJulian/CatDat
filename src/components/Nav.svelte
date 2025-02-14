@@ -70,4 +70,8 @@
 		color: var(--accent-color);
 		text-decoration-color: var(--accent-color);
 	}
+
+	li:not(.current) :global(svg) {
+		color: var(--heading-color);
+	}
 </style>
