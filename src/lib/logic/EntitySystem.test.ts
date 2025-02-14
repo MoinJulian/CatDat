@@ -130,10 +130,11 @@ describe('Entity system with duals', () => {
 		'a*': 'a',
 		'b*': 'b',
 		'c': null,
+		'self-dual': 'self-dual',
 	}
 
 	const deduction_system = new DeductionSystem<string, string>(
-		new Set(['a', 'b', 'a*', 'b*', 'c']),
+		new Set(['a', 'b', 'a*', 'b*', 'c', 'self-dual']),
 		[{ id: '', assumptions: ['a'], conclusions: ['c'], reason: 'trivial' }],
 		(p: string) => dual_map[p],
 	)

@@ -28,8 +28,8 @@ export class DeductionSystem<P extends string, T extends string> {
 		public readonly rules: Rule<T>[],
 		public readonly get_dual_property?: (id: T) => T | null,
 	) {
-		this.validate_rules()
 		this.init()
+		this.validate_rules()
 	}
 
 	/**
