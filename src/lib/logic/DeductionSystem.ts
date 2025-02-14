@@ -63,8 +63,7 @@ export class DeductionSystem<P extends string, T extends string> {
 	 * If any property does not have a dual, null is returned.
 	 */
 	private get_dual_properties(ids: NonEmptyArray<T>): NonEmptyArray<T> | null {
-		if (!this.get_dual_property) return null
-		const dual_properties = ids.map((id) => this.get_dual_property!(id))
+		const dual_properties = ids.map((id) => this.get_dual_property?.(id) ?? null)
 		if (dual_properties.includes(null)) return null
 		return dual_properties as NonEmptyArray<T>
 	}
@@ -112,9 +111,8 @@ export class DeductionSystem<P extends string, T extends string> {
 	 * Adds self-dual rules to the list of rules.
 	 */
 	private add_self_dual_rules(): void {
-		if (!this.get_dual_property) return
 		for (const id of this.all_property_ids) {
-			const dual_id = this.get_dual_property(id)
+			const dual_id = this.get_dual_property?.(id)
 
 			if (!dual_id || dual_id === id) continue
 
