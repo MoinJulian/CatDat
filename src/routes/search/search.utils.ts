@@ -1,7 +1,7 @@
 import { browser } from '$app/environment'
 import { storage_key_non_properties, storage_key_properties } from '$lib/commons/search'
 import { is_valid_property } from '$lib/data-utils/data.helpers'
-import type { PropertyID } from '$lib/database/properties.data'
+import type { PropertyID } from '$lib/database/categories/properties.data'
 
 export function get_saved_search(): [PropertyID[], PropertyID[]] {
 	if (!browser) return [[], []]

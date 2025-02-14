@@ -1,6 +1,6 @@
 import { select } from '$lib/commons/utils'
 import { get_tags } from '$lib/data-utils/data.helpers'
-import { CATEGORIES } from '$lib/database/categories.data'
+import { CATEGORIES } from '$lib/database/categories/categories.data'
 import type { PageServerLoad } from '../missing/$types'
 
 export const load: PageServerLoad = (event) => {

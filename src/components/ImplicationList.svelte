@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Implication } from '$lib/database/implications.data'
-	import type { PropertyID } from '$lib/database/properties.data'
+	import type { Implication } from '$lib/database/categories/implications.data'
+	import type { PropertyID } from '$lib/database/categories/properties.data'
 	import ImplicationItem from './ImplicationItem.svelte'
 
 	type Props = {

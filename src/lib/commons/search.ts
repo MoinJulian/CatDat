@@ -7,7 +7,7 @@ import {
 	is_valid_property,
 } from '$lib/data-utils/data.helpers'
 import { category_system, property_deduction_system } from '$lib/data-utils/deductions'
-import type { Category } from '$lib/database/categories.data'
+import type { Category } from '$lib/database/categories/categories.data'
 
 export const separator_in_url = '--'
 

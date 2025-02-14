@@ -1,5 +1,8 @@
 import { render_nested_formulas } from '$lib/commons/rendering'
-import { IMPLICATIONS, type Implication } from '$lib/database/implications.data'
+import {
+	IMPLICATIONS,
+	type Implication,
+} from '$lib/database/categories/implications.data'
 import { implications_with_duals } from '$lib/data-utils/deductions'
 import type { PageServerLoad } from './$types'
 
