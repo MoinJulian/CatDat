@@ -34,22 +34,22 @@ describe('constructor', () => {
 })
 
 describe('get_deductions_with_reasons', () => {
-	const deductionSystem = new DeductionSystem<string, string>(
-		new Set(['a', 'b', 'c', 'd', 'e']),
-		[
-			{ id: '', assumptions: ['a', 'b'], conclusions: ['c'], reason: '' },
-			{ id: '', assumptions: ['d', 'c'], conclusions: ['e'], reason: '' },
-			{ id: '', assumptions: ['c'], conclusions: ['a'], reason: '' },
-		],
-	)
-
 	it('should explain why the properties follow', () => {
-		const deductions = deductionSystem.get_deductions_with_reasons(
+		const deductionSystem = new DeductionSystem<string, string>(
+			new Set(['a', 'b', 'c', 'd', 'e']),
+			[
+				{ id: '', assumptions: ['a', 'b'], conclusions: ['c'], reason: '' },
+				{ id: '', assumptions: ['d', 'c'], conclusions: ['e'], reason: '' },
+				{ id: '', assumptions: ['c'], conclusions: ['a'], reason: '' },
+			],
+		)
+
+		const deductions_with_reasons = deductionSystem.get_deductions_with_reasons(
 			new Set(['a', 'b']),
 			default_reason_handler,
 		)
 
-		expect(deductions).toEqual([
+		expect(deductions_with_reasons).toEqual([
 			{
 				id: 'c',
 				prefix: 'is',
@@ -57,26 +57,85 @@ describe('get_deductions_with_reasons', () => {
 			},
 		])
 	})
+
+	it('should check all rules', () => {
+		const deductionSystem = new DeductionSystem<string, string>(
+			new Set(['a', 'b', 'c', 'd', 'e']),
+			[
+				{ id: '', assumptions: ['a', 'b'], conclusions: ['c'], reason: '' },
+				{ id: '', assumptions: ['d', 'c'], conclusions: ['e'], reason: '' },
+			],
+		)
+
+		const deductions_with_reasons = deductionSystem.get_deductions_with_reasons(
+			new Set(['a', 'b', 'd']),
+			default_reason_handler,
+		)
+
+		expect(deductions_with_reasons).toEqual([
+			{
+				id: 'c',
+				prefix: 'is',
+				reason: 'Since it is a and is b, we deduce that it is c.',
+			},
+			{
+				id: 'e',
+				prefix: 'is',
+				reason: 'Since it is d and is c, we deduce that it is e.',
+			},
+		])
+	})
+
+	it("should run over the rules as many times as needed to deduce all properties'", () => {
+		const deductionSystem = new DeductionSystem<string, string>(
+			new Set(['a', 'b', 'c', 'd', 'e', 'f']),
+			[
+				{ id: '', assumptions: ['a'], conclusions: ['e'], reason: '' },
+				{ id: '', assumptions: ['b', 'c'], conclusions: ['a'], reason: '' },
+				{ id: '', assumptions: ['d', 'e'], conclusions: ['f'], reason: '' },
+			],
+		)
+		const deductions_with_reasons = deductionSystem.get_deductions_with_reasons(
+			new Set(['b', 'c', 'd']),
+			default_reason_handler,
+		)
+		expect(deductions_with_reasons).toEqual([
+			{
+				id: 'a',
+				prefix: 'is',
+				reason: 'Since it is b and is c, we deduce that it is a.',
+			},
+			{
+				id: 'e',
+				prefix: 'is',
+				reason: 'Since it is a, we deduce that it is e.',
+			},
+			{
+				id: 'f',
+				prefix: 'is',
+				reason: 'Since it is d and is e, we deduce that it is f.',
+			},
+		])
+	})
 })
 
 describe('get_deduced_negations_with_reasons', () => {
-	const deductionSystem = new DeductionSystem<string, string>(
-		new Set(['a', 'b', 'c', 'd', 'e']),
-		[
-			{ id: '', assumptions: ['b'], conclusions: ['c'], reason: '' },
-			{ id: '', assumptions: ['c'], conclusions: ['d'], reason: '' },
-		],
-	)
-
 	it('should explain why the non-properties follow"', () => {
-		const detailed_deduced_negations =
-			deductionSystem.get_deduced_negations_with_reasons(
-				new Set(['e']),
-				new Set(['d']),
-				default_reason_handler,
-			)
+		const deductionSystem = new DeductionSystem<string, string>(
+			new Set(['a', 'b', 'c', 'd', 'e']),
+			[
+				{ id: '', assumptions: ['b'], conclusions: ['c'], reason: '' },
+				{ id: '', assumptions: ['c'], conclusions: ['d'], reason: '' },
+			],
+		)
 
-		expect(detailed_deduced_negations).toEqual([
+		const negations_with_reasons = deductionSystem.get_deduced_negations_with_reasons(
+			new Set(['e']),
+			new Set(['d']),
+			default_reason_handler,
+		)
+
+		expect(negations_with_reasons).toEqual([
 			{
 				id: 'b',
 				prefix: 'is',
@@ -88,6 +147,28 @@ describe('get_deduced_negations_with_reasons', () => {
 				reason: 'Assume for a contradiction that it is c. Since it is c, we deduce that it is d. This is a contradiction since we already know that it is not d.',
 			},
 		])
+	})
+
+	it.only('should run over the rules as many times as needed to deduce all non-properties', () => {
+		const deductionSystem = new DeductionSystem<string, string>(
+			new Set(['a', 'b', 'c', 'd', 'e', 'f']),
+			[
+				{ id: '', assumptions: ['b', 'd'], conclusions: ['f'], reason: '' },
+				{ id: '', assumptions: ['c', 'b'], conclusions: ['d'], reason: '' },
+			],
+		)
+
+		const negations_with_reasons = deductionSystem.get_deduced_negations_with_reasons(
+			new Set(['c', 'e']),
+			new Set(['f']),
+			default_reason_handler,
+		)
+
+		expect(negations_with_reasons).toContainEqual({
+			id: 'b',
+			prefix: 'is',
+			reason: 'Assume for a contradiction that it is b. Since it is c and is b, we deduce that it is d. Since it is b and is d, we deduce that it is f. This is a contradiction since we already know that it is not f.',
+		})
 	})
 })
 
