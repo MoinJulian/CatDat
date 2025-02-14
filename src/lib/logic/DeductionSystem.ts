@@ -316,8 +316,6 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 			if (open_conclusions.size === 0) break
 		}
 
-		if (open_conclusions.size > 0) return null
-
 		return { contradictory_id, used_rules: relevant_rules }
 	}
 

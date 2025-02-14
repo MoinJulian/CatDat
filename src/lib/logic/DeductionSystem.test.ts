@@ -149,7 +149,7 @@ describe('get_deduced_negations_with_reasons', () => {
 		])
 	})
 
-	it.only('should run over the rules as many times as needed to deduce all non-properties', () => {
+	it('should run over the rules as many times as needed to deduce all non-properties', () => {
 		const deductionSystem = new DeductionSystem<string, string>(
 			new Set(['a', 'b', 'c', 'd', 'e', 'f']),
 			[
