@@ -1,18 +1,18 @@
 import type { DeductionSystem } from './DeductionSystem'
 import type { PropertyWithReason, ReasonHandler } from './ReasonHandler'
 
-export class Entity<PrefixType extends string, S extends string, T extends string> {
+export class Entity<P extends string, S extends string, T extends string> {
 	public readonly id: S
-	public properties: PropertyWithReason<PrefixType, T>[]
-	public non_properties: PropertyWithReason<PrefixType, T>[]
-	public deduced_properties: PropertyWithReason<PrefixType, T>[] = []
-	public deduced_non_properties: PropertyWithReason<PrefixType, T>[] = []
-	public unknown_properties: PropertyWithReason<PrefixType, T>[] = []
+	public properties: PropertyWithReason<P, T>[]
+	public non_properties: PropertyWithReason<P, T>[]
+	public deduced_properties: PropertyWithReason<P, T>[] = []
+	public deduced_non_properties: PropertyWithReason<P, T>[] = []
+	public unknown_properties: PropertyWithReason<P, T>[] = []
 
 	constructor(
 		id: S,
-		properties: PropertyWithReason<PrefixType, T>[],
-		non_properties: PropertyWithReason<PrefixType, T>[],
+		properties: PropertyWithReason<P, T>[],
+		non_properties: PropertyWithReason<P, T>[],
 	) {
 		this.id = id
 		this.properties = properties
@@ -28,8 +28,8 @@ export class Entity<PrefixType extends string, S extends string, T extends strin
 	}
 
 	public deduce_properties(
-		deduction_system: DeductionSystem<PrefixType, T>,
-		reason_handler: ReasonHandler<PrefixType, T>,
+		deduction_system: DeductionSystem<P, T>,
+		reason_handler: ReasonHandler<P, T>,
 	) {
 		this.deduced_properties = deduction_system.get_deductions_with_reasons(
 			new Set(this.properties.map((p) => p.id)),

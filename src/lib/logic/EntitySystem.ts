@@ -2,21 +2,21 @@ import type { DeductionSystem } from './DeductionSystem'
 import type { PropertyWithReason, ReasonHandler } from './ReasonHandler'
 import { Entity } from './Entity'
 
-export class EntitySystem<PrefixType extends string, S extends string, T extends string> {
-	public readonly entities: Entity<PrefixType, S, T>[] = []
-	protected deduction_system: DeductionSystem<PrefixType, T>
+export class EntitySystem<P extends string, S extends string, T extends string> {
+	public readonly entities: Entity<P, S, T>[] = []
+	protected deduction_system: DeductionSystem<P, T>
 
-	constructor(deduction_system: DeductionSystem<PrefixType, T>) {
+	constructor(deduction_system: DeductionSystem<P, T>) {
 		this.deduction_system = deduction_system
 	}
 
 	public add(
 		id: S,
-		properties: PropertyWithReason<PrefixType, T>[],
-		non_properties: PropertyWithReason<PrefixType, T>[],
-		reason_handler: ReasonHandler<PrefixType, T>,
-	): Entity<PrefixType, S, T> {
-		const new_entity = new Entity<PrefixType, S, T>(id, properties, non_properties)
+		properties: PropertyWithReason<P, T>[],
+		non_properties: PropertyWithReason<P, T>[],
+		reason_handler: ReasonHandler<P, T>,
+	): Entity<P, S, T> {
+		const new_entity = new Entity<P, S, T>(id, properties, non_properties)
 		new_entity.deduce_properties(this.deduction_system, reason_handler)
 		this.entities.push(new_entity)
 		return new_entity
@@ -26,7 +26,7 @@ export class EntitySystem<PrefixType extends string, S extends string, T extends
 		properties: T[],
 		non_properties: T[],
 		unknown_properties: T[],
-	): Entity<PrefixType, S, T>[] {
+	): Entity<P, S, T>[] {
 		const is_empty_search =
 			properties.length === 0 &&
 			non_properties.length === 0 &&
@@ -49,12 +49,12 @@ export class EntitySystem<PrefixType extends string, S extends string, T extends
 		)
 	}
 
-	public get_entities_with_unknown_properties(): Entity<PrefixType, S, T>[] {
+	public get_entities_with_unknown_properties(): Entity<P, S, T>[] {
 		return this.entities.filter((entity) => entity.unknown_properties.length > 0)
 	}
 
 	public get_comparison_table(
-		entities: Entity<PrefixType, S, T>[],
+		entities: Entity<P, S, T>[],
 	): null | [T, ...(boolean | null)[]][] {
 		const is_valid = entities.every((entity) => this.entities.includes(entity))
 		if (!is_valid) return null

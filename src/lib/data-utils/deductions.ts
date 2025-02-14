@@ -16,11 +16,6 @@ import type { Entity } from '$lib/logic/Entity'
 import { EntitySystemWithDuals } from '$lib/logic/EntitySystemWithDuals'
 import { ReasonHandler } from '$lib/logic/ReasonHandler'
 
-export const reason_handler = new ReasonHandler<Prefix, PropertyID>(
-	get_prefix,
-	negate_prefix,
-)
-
 export const property_deduction_system = new DeductionSystemWithDuals<Prefix, PropertyID>(
 	new Set(propertyIDs),
 	Array.from(IMPLICATIONS),
@@ -34,6 +29,8 @@ export const category_system = new EntitySystemWithDuals<Prefix, CategoryID, Pro
 )
 
 export type CategoryWithDeducedProperties = Entity<Prefix, CategoryID, PropertyID>
+
+const reason_handler = new ReasonHandler<Prefix, PropertyID>(get_prefix, negate_prefix)
 
 for (const category of CATEGORIES) {
 	category_system.add(

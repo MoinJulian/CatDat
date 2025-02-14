@@ -60,6 +60,6 @@ export class ReasonHandler<P extends string, T extends string> {
 }
 
 export const default_reason_handler = new ReasonHandler<string, string>(
-	(id) => 'is',
-	(prefix) => 'is not',
+	() => 'is',
+	() => 'is not',
 )

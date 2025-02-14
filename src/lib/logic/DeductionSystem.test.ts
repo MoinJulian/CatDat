@@ -1,10 +1,5 @@
 import { DeductionSystem } from './DeductionSystem'
-import { ReasonHandler } from './ReasonHandler'
-
-const default_reason_handler = new ReasonHandler<string, string>(
-	() => 'is',
-	() => 'is not',
-)
+import { default_reason_handler } from './ReasonHandler'
 
 describe('constructor', () => {
 	it('should throw an error when an unknown property appears in a rule', () => {

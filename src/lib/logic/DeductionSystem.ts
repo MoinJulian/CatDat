@@ -20,7 +20,7 @@ export type NormalizedRule<T> = {
  * a set of assumptions, likewise for negations of properties.
  * Reasons are given in natural language.
  */
-export class DeductionSystem<PrefixType extends string, T extends string> {
+export class DeductionSystem<P extends string, T extends string> {
 	public readonly rules: Rule<T>[]
 	public readonly normalized_rules: NormalizedRule<T>[] = []
 	public readonly all_property_ids: Set<T>
@@ -91,8 +91,8 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	 */
 	public get_deductions_with_reasons(
 		ids: Set<T>,
-		reason_handler: ReasonHandler<PrefixType, T>,
-	): PropertyWithReason<PrefixType, T>[] {
+		reason_handler: ReasonHandler<P, T>,
+	): PropertyWithReason<P, T>[] {
 		const rules = this.get_rules_for_deductions(ids)
 		return rules.map((rule) =>
 			reason_handler.create_property_with_reason_from_rule(rule),
@@ -156,8 +156,8 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	public get_deduced_negations_with_reasons(
 		assumed_ids: Set<T>,
 		negated_ids: Set<T>,
-		reason_handler: ReasonHandler<PrefixType, T>,
-	): PropertyWithReason<PrefixType, T>[] {
+		reason_handler: ReasonHandler<P, T>,
+	): PropertyWithReason<P, T>[] {
 		const deduced_negations = []
 		const deduced_negation_ids = new Set(negated_ids)
 
@@ -184,9 +184,9 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 	private get_new_negations_with_reasons(
 		assumed_ids: Set<T>,
 		negated_ids: Set<T>,
-		reason_handler: ReasonHandler<PrefixType, T>,
-	): PropertyWithReason<PrefixType, T>[] {
-		const new_negations: PropertyWithReason<PrefixType, T>[] = []
+		reason_handler: ReasonHandler<P, T>,
+	): PropertyWithReason<P, T>[] {
+		const new_negations: PropertyWithReason<P, T>[] = []
 
 		for (const id of this.all_property_ids) {
 			const not_new = negated_ids.has(id)

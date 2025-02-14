@@ -7,7 +7,7 @@ import { PROPERTIES } from '$lib/database/properties.data'
 import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
 import { TAGS } from '$lib/database/tags.data'
 
-describe('tags', () => {
+describe('list of tags', () => {
 	it('are unique', () => {
 		expect(TAGS).toEqual([...new Set(TAGS)])
 	})
@@ -49,7 +49,54 @@ describe('list of categories', () => {
 	})
 })
 
-describe('implications', () => {
+describe('list of properties', () => {
+	it('should have unique IDs', () => {
+		const ids = PROPERTIES.map((property) => property.id)
+		expect(ids).toEqual([...new Set(ids)])
+	})
+
+	it('should have IDs without prefixes and underscores', () => {
+		const ids = PROPERTIES.map((property) => property.id)
+		for (const id of ids) {
+			expect(id).not.toContain('_')
+			for (const prefix in Object.keys(PREFIXES)) {
+				expect(id.startsWith(prefix)).toBe(false)
+			}
+		}
+	})
+
+	it('should have all properties in the same order', () => {
+		const property_keys = [
+			'id',
+			'prefix',
+			'nlab_link',
+			'description',
+			'dual',
+			'related',
+			'invariant',
+		]
+
+		for (const property of PROPERTIES) {
+			const keys = Object.keys(property)
+			const sorted_keys = property_keys.filter((key) => keys.includes(key))
+			const are_same = keys.every((key, index) => key === sorted_keys[index])
+			if (!are_same) console.warn(property.id)
+			expect(keys).toEqual(sorted_keys)
+		}
+	})
+})
+
+describe('list of dual properties', () => {
+	it('should dualize mutually', () => {
+		for (const key in PROPERTY_DUALS) {
+			const dual = (PROPERTY_DUALS as any)[key]
+			if (!dual) continue
+			expect((PROPERTY_DUALS as any)[dual]).toBe(key)
+		}
+	})
+})
+
+describe('list of implications', () => {
 	it('should have unique IDs', () => {
 		const ids = IMPLICATIONS.map((implication) => implication.id)
 		expect(ids).toEqual([...new Set(ids)])
@@ -103,53 +150,6 @@ describe('implications', () => {
 					implication.conclusions.length,
 				)
 			}
-		}
-	})
-})
-
-describe('properties of categories', () => {
-	it('should have unique IDs', () => {
-		const ids = PROPERTIES.map((property) => property.id)
-		expect(ids).toEqual([...new Set(ids)])
-	})
-
-	it('should have IDs without prefixes and underscores', () => {
-		const ids = PROPERTIES.map((property) => property.id)
-		for (const id of ids) {
-			expect(id).not.toContain('_')
-			for (const prefix in Object.keys(PREFIXES)) {
-				expect(id.startsWith(prefix)).toBe(false)
-			}
-		}
-	})
-
-	it('should have all properties in the same order', () => {
-		const property_keys = [
-			'id',
-			'prefix',
-			'nlab_link',
-			'description',
-			'dual',
-			'related',
-			'invariant',
-		]
-
-		for (const property of PROPERTIES) {
-			const keys = Object.keys(property)
-			const sorted_keys = property_keys.filter((key) => keys.includes(key))
-			const are_same = keys.every((key, index) => key === sorted_keys[index])
-			if (!are_same) console.warn(property.id)
-			expect(keys).toEqual(sorted_keys)
-		}
-	})
-})
-
-describe('dual properties', () => {
-	it('should dualize mutually', () => {
-		for (const key in PROPERTY_DUALS) {
-			const dual = (PROPERTY_DUALS as any)[key]
-			if (!dual) continue
-			expect((PROPERTY_DUALS as any)[dual]).toBe(key)
 		}
 	})
 })

@@ -3,7 +3,7 @@
 /**
  * This script sorts various dictionaries in the database folder.
  * It does not touch the lists of categories, properties, and implications.
- * But it adapt the remaining data to these lists.
+ * It just adapts the remaining data to these lists.
  */
 
 import { CATEGORY_EPIMORPHISMS } from '$lib/database/category-epimorphisms.data'

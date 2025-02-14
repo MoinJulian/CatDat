@@ -2,9 +2,9 @@ import { equal_up_to_order, type NonEmptyArray } from '$lib/commons/utils'
 import { DeductionSystem, type Rule } from './DeductionSystem'
 
 export class DeductionSystemWithDuals<
-	PrefixType extends string,
+	P extends string,
 	T extends string,
-> extends DeductionSystem<PrefixType, T> {
+> extends DeductionSystem<P, T> {
 	public readonly get_dual_property: (id: T) => T | null
 
 	constructor(
