@@ -191,20 +191,18 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 			const not_new = negated_ids.has(id)
 			if (not_new) continue
 
-			// TODO: move this to the method in reason_handler
-			const prefix = reason_handler.get_prefix(id)
-
-			const contradiction = this.get_contradiction_with_reason(
+			const contradiction = this.get_optimal_contradiction_rules(
 				assumed_ids.union(new Set([id])),
 				negated_ids,
-				reason_handler,
 			)
+
 			if (!contradiction) continue
 
-			const { proof } = contradiction
-			// TODO: move this to the method in reason_handler
-			const prelude = `Assume for a contradiction that it ${prefix} ${id}.`
-			const reason = `${prelude} ${proof}`
+			const reason = reason_handler.build_contradiction_proof(
+				id,
+				contradiction.contradictory_id,
+				contradiction.used_rules,
+			)
 
 			const new_negation = reason_handler.create_property_with_given_reason(
 				id,
@@ -216,31 +214,6 @@ export class DeductionSystem<PrefixType extends string, T extends string> {
 		}
 
 		return new_negations
-	}
-	/**
-	 * Returns a human-readable proof of a contradiction, given a set of properties
-	 * and negated properties. If no contradiction is found, null is returned.
-	 */
-	private get_contradiction_with_reason(
-		assumed_ids: Set<T>,
-		negated_ids: Set<T>,
-		reason_handler: ReasonHandler<PrefixType, T>,
-	): null | { proof: string } {
-		const contradiction = this.get_optimal_contradiction_rules(
-			assumed_ids,
-			negated_ids,
-		)
-
-		if (!contradiction) return null
-
-		const { contradictory_id, used_rules } = contradiction
-
-		const proof = reason_handler.build_contradiction_proof(
-			contradictory_id,
-			used_rules,
-		)
-
-		return { proof }
 	}
 
 	/**

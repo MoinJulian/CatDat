@@ -42,9 +42,11 @@ export class ReasonHandler<P extends string, T extends string> {
 	}
 
 	public build_contradiction_proof(
+		id: T,
 		contradictory_id: T,
 		used_rules: NormalizedRule<T>[],
 	): string {
+		const prelude = `Assume for a contradiction that it ${this.get_prefix(id)} ${id}.`
 		const negated_prefix = this.get_negated_prefix(contradictory_id)
 
 		const main_proof = used_rules
@@ -53,7 +55,7 @@ export class ReasonHandler<P extends string, T extends string> {
 
 		const finale = `This is a contradiction since we already know that it ${negated_prefix} ${contradictory_id}.`
 
-		return `${main_proof} ${finale}`
+		return `${prelude} ${main_proof} ${finale}`
 	}
 }
 
