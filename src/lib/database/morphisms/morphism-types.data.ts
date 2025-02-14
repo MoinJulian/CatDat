@@ -9,7 +9,7 @@ export type MorphismTypeID = (typeof MORPHISM_TYPES_INDEX)[number]['id']
 
 export const MORPHISM_TYPES_INDEX = [
 	{
-		id: 'isomorphism', //
+		id: 'isomorphism',
 		nlab_link: 'https://ncatlab.org/nlab/show/isomorphism',
 		description: 'A morphism $f : X \\to Y$ is an <i>isomorphism</i> when it has an inverse $g : Y \\to X$, meaning $g \\circ f = \\mathrm{id}_X$ and $f \\circ g = \\mathrm{id}_Y$.',
 		dual: 'isomorphism',
@@ -77,13 +77,13 @@ export const MORPHISM_TYPES_INDEX = [
 	{
 		id: 'strong monomorphism',
 		nlab_link: 'https://ncatlab.org/nlab/show/strong+monomorphism',
-		description: 'A <i>strong monomorphism</i> is a monomorphism that is left orthogonal to every epimorphism.',
+		description: 'A <i>strong monomorphism</i> is a monomorphism that is right orthogonal to every epimorphism. This means a monomorphism $g : A \\to B$ is strong if for every epimorphism $f : X \\to Y$ and morphisms $u : X \\to A$, $v : B \\to Y$ with $v \\circ f = g \\circ u$, there exists a unique morphism $w : Y \\to A$ such that $w \\circ f = u$ and $g \\circ w = v$.',
 		dual: 'strong epimorphism',
 	},
 	{
 		id: 'strong epimorphism',
 		nlab_link: 'https://ncatlab.org/nlab/show/strong+epimorphism',
-		description: 'A <i>strong epimorphism</i> is an epimorphism that is right orthogonal to every monomorphism.',
+		description: 'A <i>strong epimorphism</i> is an epimorphism that is left orthogonal to every monomorphism. This means an epimorphism $f : X \\to Y$ is strong if for every monomorphism $g : A \\to B$ and morphisms $u : X \\to A$, $v : Y \\to B$ with $v \\circ f = g \\circ u$, there exists a unique morphism $w : Y \\to A$ such that $w \\circ f = u$ and $g \\circ w = v$.',
 		dual: 'strong monomorphism',
 	},
 	{
