@@ -5,7 +5,7 @@ export type MorphismType = {
 	dual: MorphismTypeID
 }
 
-type MorphismTypeID = (typeof MORPHISM_TYPES_INDEX)[number]['id']
+export type MorphismTypeID = (typeof MORPHISM_TYPES_INDEX)[number]['id']
 
 export const MORPHISM_TYPES_INDEX = [
 	{
@@ -25,6 +25,18 @@ export const MORPHISM_TYPES_INDEX = [
 		nlab_link: 'https://ncatlab.org/nlab/show/epimorphism',
 		description: 'A morphism $f : X \\to Y$ is an <i>epimorphism</i> if for all objects $Z$ and all morphisms $g, h : Y \\to Z$, $g \\circ f = h \\circ f$ implies $g = h$.',
 		dual: 'monomorphism',
+	},
+	{
+		id: 'split monomorphism',
+		nlab_link: 'https://ncatlab.org/nlab/show/split+monomorphism',
+		description: 'A morphism $f : X \\to Y$ is a <i>split monomorphism</i> if there exists a morphism $g : Y \\to X$ such that $g \\circ f = \\mathrm{id}_X$. It is necessarily a monomorphism.',
+		dual: 'split epimorphism',
+	},
+	{
+		id: 'split epimorphism',
+		nlab_link: 'https://ncatlab.org/nlab/show/split+epimorphism',
+		description: 'A morphism $f : X \\to Y$ is a <i>split epimorphism</i> if there exists a morphism $g : Y \\to X$ such that $f \\circ g = \\mathrm{id}_Y$. It is necessarily an epimorphism.',
+		dual: 'split monomorphism',
 	},
 	{
 		id: 'extremal monomorphism',
