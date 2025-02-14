@@ -12,10 +12,10 @@ export type MorphismImplication = {
 // will be automatically dualized later
 export const MORPHISM_IMPLICATIONS: MorphismImplication[] = [
 	{
-		id: 'isoismono',
+		id: 'isoissplit',
 		assumptions: ['isomorphism'],
-		conclusions: ['monomorphism'],
-		reason: 'easy',
+		conclusions: ['split monomorphism'],
+		reason: 'trivial',
 	},
 	{
 		id: 'regepiiso',
@@ -73,6 +73,7 @@ export const MORPHISM_IMPLICATIONS: MorphismImplication[] = [
 		conclusions: ['effective epimorphism'],
 		reason: 'See Prop 3.2 <a href="https://ncatlab.org/nlab/show/regular+epimorphism" target="_blank">here</a>',
 	},
+
 	{
 		id: 'extmonoepiiso',
 		assumptions: ['extremal monomorphism', 'epimorphism'],
@@ -92,5 +93,11 @@ export const MORPHISM_IMPLICATIONS: MorphismImplication[] = [
 		assumptions: ['morphism'],
 		conclusions: ['monomorphism'],
 		reason: 'by definition of a left-cancellative category',
+	},
+	{
+		id: 'trivmon',
+		assumptions: ['monomorphism'],
+		conclusions: ['morphism'],
+		reason: 'trivial',
 	},
 ]
