@@ -1,0 +1,2 @@
+- GitHub: <https://github.com/ScriptRaccoon/catdat>
+- Netlify: <https://app.netlify.com/sites/catdat/overview>
