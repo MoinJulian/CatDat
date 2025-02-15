@@ -11,28 +11,28 @@ _A comprehensive and searchable database of categories and their properties_
 
 \*The domain might change in the near future.
 
-## 🚀 Features
+## Features
 
-- 🔍 **Searchable Database**: Easily find [categories](https://en.wikipedia.org/wiki/Category_theory) based on properties and non-properties.
-- 🧠 **Deduction System**: Automatically infers properties from existing ones, powered by a database of implications.
-- 📝 **Reason/Reference for Implications**: Each implication has a reason/reference, providing a data-based knowledge base of category theory.
-- 🔄 **Automatic Dualization**: Automatically dualizes implications.
-- 📖 **Comprehensive Definitions**: Detailed definitions of properties and categories.
-- ⚖️ **Comparison Feature**: Compare multiple categories to see their differences.
-- 🔗 **Find Related Categories**: Discover categories related to your search.
-- 🎨 **Customizable Display**: Light/dark mode, show/hide deduced properties.
-- 📘 **References to nLab**: Links to the [nLab](https://ncatlab.org) for detailed information.
-- 🖥️ **Intuitive User Interface**: Easy to use on both mobile and desktop.
+- **Searchable Database**: Easily find [categories](https://en.wikipedia.org/wiki/Category_theory) based on properties and non-properties.
+- **Deduction System**: Automatically infers properties from existing ones, powered by a database of implications.
+- **Reason/Reference for Implications**: Each implication has a reason/reference, providing a data-based knowledge base of category theory.
+- **Automatic Dualization**: Automatically dualizes implications.
+- **Comprehensive Definitions**: Detailed definitions of properties and categories.
+- **Comparison Feature**: Compare multiple categories to see their differences.
+- **Find Related Categories**: Discover categories related to your search.
+- **Customizable Display**: Light/dark mode, show/hide deduced properties.
+- **References to nLab**: Links to the [nLab](https://ncatlab.org) for detailed information.
+- **Intuitive User Interface**: Easy to use on both mobile and desktop.
 
-## 🤝 How to contribute
+## How to contribute
 
 This project is a **community effort**. See our [contribution guidelines](CONTRIBUTING.md) for more information
 
-## 📄 Documentation
+## Documentation
 
 - [The "database" of _CatDat_](docs/database.md)
 
-## 🛠️ Development
+## Development
 
 This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction) and [TypeScript](https://www.typescriptlang.org).
 
@@ -70,11 +70,11 @@ This project is built with [SvelteKit](https://svelte.dev/docs/kit/introduction)
 
 - Every commit runs the tests and performs a Svelte check, which includes a type check.
 
-## 🧱 Deployment
+## Deployment
 
 The deployment is handled by a GitHub workflow (`deploy.yml`) that triggers the deployment on [Netlify](https://netlify.com) from the `main` branch when the tests have passed.
 
-## 🌐 API endpoints
+## API endpoints
 
 > **Note:** The API is currently in beta and not stable. Changes may occur without notice. Also, additional endpoints may be introduced in the future.
 
@@ -89,7 +89,7 @@ The deployment is handled by a GitHub workflow (`deploy.yml`) that triggers the 
 
 For example, `GET https://catdat.netlify.app/api/v1/category/FinAb`returns all the information about the category of finite abelian groups.
 
-## 🔗 Similar projects
+## Similar projects
 
 - **[Catabase](https://catabase.fly.dev)**: A similar project that appears to be abandoned. It is more ambitious in terms of available data types but less complete for basic categories. The UI is not very intuitive, and it lacks an integrated deduction system between properties. See the [nForum announcement](https://nforum.ncatlab.org/discussion/13419/catabase-a-database-of-categories/).
 - **[nLab](https://ncatlab.org)**: A wiki for (higher) category theory. _CatDat_ refers to nLab pages for detailed information on its entries.

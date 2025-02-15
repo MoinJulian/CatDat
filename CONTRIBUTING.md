@@ -1,12 +1,12 @@
-# 🤝 How to Contribute
+# How to Contribute
 
 There are three ways to contribute:
 
-- [🐛 Create an Issue](#option-1-create-an-issue)
-- [🛠️ Create a Pull Request](#option-2-create-a-pull-request)
-- [📩 Submit Our Google Form](#option-3-submit-our-google-form)
+- [Create an Issue](#option-1-create-an-issue)
+- [Create a Pull Request](#option-2-create-a-pull-request)
+- [Submit Our Google Form](#option-3-submit-our-google-form)
 
-## Option 1: Create an Issue 🐛
+## Option 1: Create an Issue
 
 If you want to report an issue with _CatDat_ or add data but don't feel comfortable creating a pull request, you can [**create an issue**](https://github.com/ScriptRaccoon/CatDat/issues). You will need a GitHub account for this.
 
@@ -18,7 +18,7 @@ If you want to report an issue with _CatDat_ or add data but don't feel comforta
 
 For any non-trivial results, please provide a proof or a reference.
 
-## Option 2: Create a Pull Request 🛠️
+## Option 2: Create a Pull Request
 
 Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You will need a GitHub account for this.
 
@@ -69,7 +69,7 @@ When contributing new data (categories, properties, implications), please follow
 
 - **Proofs for Claims**: Provide proofs for all new claims (properties and implications). (We are currently working on filling in the existing ones and also display them in the UI.)
 
-## Option 3: Submit our Google Form 📩
+## Option 3: Submit our Google Form
 
 The Google Form is the least technical way to submit new categories, properties, and implications. Issues and feature request may be submitted as well. This option does not require any knowledge of GitHub or coding, making it accessible to everyone.
 
