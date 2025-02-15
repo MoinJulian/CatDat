@@ -7,9 +7,7 @@
 
 _A comprehensive and searchable database of categories and their properties_
 
-<https://catdat.netlify.app>\*
-
-\*The domain might change in the near future.
+<https://catdat.info>
 
 ## Features
 
@@ -80,14 +78,14 @@ The deployment is handled by a GitHub workflow (`deploy.yml`) that triggers the 
 
 ### `/api/v1/categories`
 
-- `GET https://catdat.netlify.app/api/v1/categories` provides basic information about the categories in the database.
-- `GET https://catdat.netlify.app/api/v1/categories?all` provides all the deduced information about the categories in the database (deduced properties, deduced non-properties, special morphisms, etc.)
+- `GET https://catdat.info/api/v1/categories` provides basic information about the categories in the database.
+- `GET https://catdat.info/api/v1/categories?all` provides all the deduced information about the categories in the database (deduced properties, deduced non-properties, special morphisms, etc.)
 
 ### `/api/v1/category/[id]`
 
-- `GET https://catdat.netlify.app/api/v1/category/{ID}` returns all the information about a category with a given ID.
+- `GET https://catdat.info/api/v1/category/{ID}` returns all the information about a category with a given ID.
 
-For example, `GET https://catdat.netlify.app/api/v1/category/FinAb`returns all the information about the category of finite abelian groups.
+For example, `GET https://catdat.info/api/v1/category/FinAb`returns all the information about the category of finite abelian groups.
 
 ## Similar projects
 

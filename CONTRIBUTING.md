@@ -10,7 +10,7 @@ There are three ways to contribute:
 
 If you want to report an issue with _CatDat_ or add data but don't feel comfortable creating a pull request, you can [**create an issue**](https://github.com/ScriptRaccoon/CatDat/issues). You will need a GitHub account for this.
 
-1. **Adding a Category**: Include its definition (objects, morphisms) and specify as many properties and non-properties of this category as possible. You can use the [list of available properties](https://catdat.netlify.app/properties) for reference.
+1. **Adding a Category**: Include its definition (objects, morphisms) and specify as many properties and non-properties of this category as possible. You can use the [list of available properties](https://catdat.info/properties) for reference.
 
 2. **Adding a Property**: Include its definition and, if possible, indicate which existing categories have this property and which do not. Also, list the implications involving this property (e.g., when adding the property `abelian`, include `abelian => additive`, etc.).
 
@@ -59,7 +59,7 @@ When contributing new data (categories, properties, implications), please follow
 
 - **Counterexamples**: Ensure that at least one category does not satisfy any new property added. This is enforced with a unit test. If no existing category fits, add a new category that does not have the new property.
 
-- **Reduce Unknowns**: Aim to reduce the number of unknown properties of categories in the database. Use the [page with missing data](https://catdat.netlify.app/missing) to identify these.
+- **Reduce Unknowns**: Aim to reduce the number of unknown properties of categories in the database. Use the [page with missing data](https://catdat.info/missing) to identify these.
 
 - **Simplify Implications**: When adding a new implication, check if it simplifies existing implications and if it makes some properties and non-properties in the list of categories redundant.
 

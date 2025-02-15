@@ -30,7 +30,7 @@
 		property="og:description"
 		content="A searchable database of categories and their properties"
 	/>
-	<meta property="og:url" content="https://catdat.netlify.app/" />
+	<meta property="og:url" content="https://catdat.info/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="CatDat" />
 

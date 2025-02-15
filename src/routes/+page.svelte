@@ -22,9 +22,3 @@
 	to fill in <a class="accent" href="/missing">missing data</a>
 	or observe new combinations of properties.
 </p>
-
-<p>
-	<strong>Notice:</strong> This project is still in its early stages. In particular, the
-	domain and URLs to specific pages might change in the near future. Please keep that in
-	mind when linking to <i>CatDat</i>.
-</p>
