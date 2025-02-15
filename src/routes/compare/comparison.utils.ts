@@ -1,5 +1,5 @@
 import { browser } from '$app/environment'
-import { storage_key } from './compare.config'
+import { storage_key } from '$lib/commons/comparison.config'
 
 export function get_saved_category_names(): string[] {
 	if (!browser) return []
