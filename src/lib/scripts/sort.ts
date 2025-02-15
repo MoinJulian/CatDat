@@ -1,5 +1,3 @@
-/* v8 ignore start */
-
 /**
  * This script sorts various dictionaries in the database folder.
  * It does not touch the lists of categories, properties, and implications.
@@ -98,5 +96,3 @@ sort_dictionary(
 	'PROPERTY_RELATIONS',
 	true,
 )
-
-/* v8 ignore stop */

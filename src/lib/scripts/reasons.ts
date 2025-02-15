@@ -1,5 +1,3 @@
-/* v8 ignore start */
-
 /**
  * This script is used to count the amount of empty reasons in the category properties
  * and non-properties. It also calculates the fill rate of the reasons.
@@ -32,5 +30,3 @@ for (let i = 0; i < names.length; i++) {
 	console.info(`Amount of ${name} with filled reasons:`, amount_filled_reasons)
 	console.info(`Fill rate:`, `${percentage}%\n`)
 }
-
-/* v8 ignore stop */
