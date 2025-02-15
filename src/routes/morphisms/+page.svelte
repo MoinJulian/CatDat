@@ -23,6 +23,10 @@
 <section>
 	<h2>Types of morphisms</h2>
 
+	<p class="hint">
+		The following {data.morphisms.length} types of morphisms are defined in the database.
+	</p>
+
 	<div class="cards">
 		{#each data.morphisms as morphism}
 			<MorphismCard {morphism} />
@@ -32,6 +36,10 @@
 
 <section>
 	<h2>Implications of morphisms</h2>
+	<p class="hint">
+		Of course, these implications may be dualized in the usual way. The brackets
+		[property] mean that the ambient category needs to satisfy this property.
+	</p>
 	<ul>
 		{#each data.morphism_implications as implication}
 			<li>
