@@ -18,12 +18,6 @@ export const MORPHISM_IMPLICATIONS: MorphismImplication[] = [
 		reason: 'trivial',
 	},
 	{
-		id: 'regepiiso',
-		assumptions: ['regular epimorphism', 'monomorphism'],
-		conclusions: ['isomorphism'],
-		reason: 'If $p : B \\to Q$ is the coequalizer of $f, g : A \\rightrightarrows B$ that is also a monomorphism, then $p \\circ f = p \\circ g$ implies $f = g$, so that $p$ is an isomorphism.',
-	},
-	{
 		id: 'splitreg',
 		assumptions: ['split monomorphism'],
 		conclusions: ['regular monomorphism'],
@@ -54,6 +48,18 @@ export const MORPHISM_IMPLICATIONS: MorphismImplication[] = [
 		reason: 'by definition',
 	},
 	{
+		id: 'trivmon',
+		assumptions: ['monomorphism'],
+		conclusions: ['morphism'],
+		reason: 'trivial',
+	},
+	{
+		id: 'extmonoepiiso',
+		assumptions: ['extremal monomorphism', 'epimorphism'],
+		conclusions: ['isomorphism'],
+		reason: 'trivial',
+	},
+	{
 		id: 'extstrong',
 		requirements: ['pushouts'],
 		assumptions: ['extremal monomorphism'],
@@ -75,12 +81,6 @@ export const MORPHISM_IMPLICATIONS: MorphismImplication[] = [
 	},
 
 	{
-		id: 'extmonoepiiso',
-		assumptions: ['extremal monomorphism', 'epimorphism'],
-		conclusions: ['isomorphism'],
-		reason: 'trivial',
-	},
-	{
 		id: 'monoreg',
 		requirements: ['mono-regular'],
 		assumptions: ['monomorphism'],
@@ -93,11 +93,5 @@ export const MORPHISM_IMPLICATIONS: MorphismImplication[] = [
 		assumptions: ['morphism'],
 		conclusions: ['monomorphism'],
 		reason: 'by definition of a left-cancellative category',
-	},
-	{
-		id: 'trivmon',
-		assumptions: ['monomorphism'],
-		conclusions: ['morphism'],
-		reason: 'trivial',
 	},
 ]
