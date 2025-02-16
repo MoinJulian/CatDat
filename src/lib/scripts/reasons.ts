@@ -4,7 +4,7 @@
  */
 
 import { CATEGORY_NON_PROPERTIES } from '$lib/database/categories/category-non-properties.data'
-import { CATEGORY_PROPERTIES } from '../database/categories/category-properties.data'
+import { CATEGORY_PROPERTIES } from '$lib/database/categories/category-properties.data'
 
 const names = ['properties', 'non-properties']
 const dictionaries = [CATEGORY_PROPERTIES, CATEGORY_NON_PROPERTIES]

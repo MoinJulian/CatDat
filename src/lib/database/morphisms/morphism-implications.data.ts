@@ -1,4 +1,4 @@
-import type { PropertyID } from '../categories/properties.data'
+import type { PropertyID } from '$lib/database/categories/properties.data'
 import type { MorphismTypeID } from './morphism-types.data'
 
 export type MorphismImplication = {

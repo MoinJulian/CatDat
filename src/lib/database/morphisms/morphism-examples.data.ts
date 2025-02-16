@@ -1,4 +1,4 @@
-import type { CategoryID } from '../categories/categories.data'
+import type { CategoryID } from '$lib/database/categories/categories.data'
 import type { MorphismTypeID } from './morphism-types.data'
 
 export type MorphismExample = {

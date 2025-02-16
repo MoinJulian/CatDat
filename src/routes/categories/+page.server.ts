@@ -1,4 +1,4 @@
-import type { PageServerLoad } from '../missing/$types'
+import type { PageServerLoad } from './$types'
 
 import { get_categories_with_tag } from '$lib/data-utils/data.helpers'
 
