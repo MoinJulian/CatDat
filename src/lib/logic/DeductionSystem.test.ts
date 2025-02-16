@@ -351,8 +351,11 @@ describe('relevant rules', () => {
 describe('DeductionSystem with duals and self-duality', () => {
 	const dual_config: Record<string, string> = {
 		'c': 'c^op',
+		'c^op': 'c',
 		'd': 'd^op',
+		'd^op': 'd',
 		'e': 'e^op',
+		'e^op': 'e',
 		'x': 'x',
 		'y': 'y',
 		'self-dual': 'self-dual',
@@ -420,6 +423,13 @@ describe('DeductionSystem with duals and self-duality', () => {
 			id: 'c_selfdual',
 			assumptions: ['self-dual', 'c'],
 			conclusions: ['c^op'],
+			reason: 'trivial by self-duality',
+		})
+
+		expect(deductionSystem.rules).toContainEqual({
+			id: 'c^op_selfdual',
+			assumptions: ['self-dual', 'c^op'],
+			conclusions: ['c'],
 			reason: 'trivial by self-duality',
 		})
 
