@@ -15,6 +15,7 @@ export function get_saved_category_names(): string[] {
 
 		return is_valid ? parsed_names : []
 	} catch {
+		console.error('Error parsing category names from sessionStorage')
 		return []
 	}
 }

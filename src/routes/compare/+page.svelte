@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation'
 	import Selection from '$components/Selection.svelte'
 	import { max_categories, storage_key } from '$lib/commons/comparison.config'
-	import { get_saved_category_names } from './comparison.utils'
+	import { get_saved_category_names } from '$lib/commons/comparison.utils.js'
 
 	let { data } = $props()
 
