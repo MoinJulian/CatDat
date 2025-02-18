@@ -26,8 +26,6 @@
 	}
 </script>
 
-<MetaData />
-
 <svelte:head>
 	<link
 		rel="stylesheet"
