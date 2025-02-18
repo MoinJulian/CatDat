@@ -50,7 +50,7 @@ export const CATEGORY_EPIMORPHISMS: Record<CategoryID, DescriptionWithReason> = 
 	'B': { description: 'every morphism', reason: 'it is a groupoid' },
 	'FI': { description: 'bijective maps', reason: '' },
 	'FS': { description: 'every morphism', reason: '' },
-	'On+': { description: 'finite ordinal numbers', reason: 'See <a href="https://math.stackexchange.com/questions/5029605" target="_blank">MO/5029605</a>.' },
+	'BOn': { description: 'finite ordinal numbers', reason: 'See <a href="https://math.stackexchange.com/questions/5029605" target="_blank">MO/5029605</a>.' },
 	'FinOrd': { description: 'surjective order-preserving maps', reason: '' },
 	'Rel': { description: 'A relation $R : A \\to B$ is an epimorphism iff the map $R^* : P(B) \\to P(A)$ defined by $S \\mapsto \\{a \\in A : \\exists \\, b \\in S: (a,b) \\in R \\}$ is injective.', reason: '' },
 	'Sp': { description: 'pointwise surjective natural transformations', reason: 'This holds in every functor category $[\\mathcal{C},\\mathbf{Set}]$.' },

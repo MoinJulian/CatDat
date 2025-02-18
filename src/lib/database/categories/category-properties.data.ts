@@ -338,7 +338,7 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, PropertyWithReason[]> = {
 		{ id: 'mono-regular', reason: '' },
 		{ id: 'epi-regular', reason: '' },
 	],
-	'On+': [
+	'BOn': [
 		{ id: 'connected', reason: '' },
 		{ id: 'generator', reason: '' },
 		{ id: 'cogenerator', reason: '' },

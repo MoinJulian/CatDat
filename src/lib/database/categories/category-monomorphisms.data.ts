@@ -46,7 +46,7 @@ export const CATEGORY_MONOMORPHISMS: Record<CategoryID, DescriptionWithReason> =
 	'B': { description: 'every morphism', reason: '' },
 	'FI': { description: 'every morphism', reason: '' },
 	'FS': { description: 'bijective maps', reason: '' },
-	'On+': { description: 'every ordinal number', reason: '' },
+	'BOn': { description: 'every ordinal number', reason: '' },
 	'FinOrd': { description: 'injective order-preserving maps', reason: '' },
 	'Rel': { description: 'A relation $R : A \\to B$ is a monomorphism iff the map $R_* : P(A) \\to P(B)$ defined by $T \\mapsto \\{b \\in B : \\exists \\, a \\in T: (a,b) \\in R \\}$ is injective.', reason: '' },
 	'Sp': { description: 'pointwise injective natural transformations', reason: '' },

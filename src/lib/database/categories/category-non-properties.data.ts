@@ -262,7 +262,7 @@ export const CATEGORY_NON_PROPERTIES: Record<CategoryID, PropertyWithReason[]> =
 		{ id: 'essentially finite', reason: '' },
 		{ id: 'skeletal', reason: 'trivial' },
 	],
-	'On+': [
+	'BOn': [
 		{ id: 'locally essentially small', reason: '' },
 		{ id: 'initial object', reason: '' },
 		{ id: 'terminal object', reason: '' },

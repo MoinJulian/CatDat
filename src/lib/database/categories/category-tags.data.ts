@@ -47,7 +47,7 @@ export const CATEGORY_TAGS: Record<CategoryID, NonEmptyArray<Tag>> = {
 	'B': ['basic', 'set theory', 'combinatorics', 'badly-behaved'],
 	'FI': ['basic', 'set theory', 'representation theory', 'badly-behaved'],
 	'FS': ['basic', 'set theory', 'representation theory', 'badly-behaved'],
-	'On+': ['intermediate', 'set theory', 'badly-behaved', 'artificial'],
+	'BOn': ['intermediate', 'set theory', 'badly-behaved', 'artificial'],
 	'FinOrd': ['basic', 'topology', 'order theory', 'badly-behaved'],
 	'Rel': ['basic', 'set theory', 'well-behaved'],
 	'Sp': ['intermediate', 'combinatorics'],

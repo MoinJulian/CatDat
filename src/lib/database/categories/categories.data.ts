@@ -384,7 +384,7 @@ const CATEGORIES_INDEX = [
 		description: 'This category is badly-behaved in itself, but it appears in representation theory. It has two connected components, consisting of the empty set and the non-empty finite sets.',
 	},
 	{
-		id: 'On+',
+		id: 'BOn',
 		name: 'delooping of the additive monoid of ordinal numbers',
 		notation: '$B(\\mathbf{On},+)$',
 		objects: 'a single object',
