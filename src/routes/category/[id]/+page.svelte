@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { category_detail_level } from '$lib/settings/detail_level.svelte'
+	import { category_detail_level } from '$lib/states/detail_level.svelte.js'
 	import PropertyList from '$components/PropertyList.svelte'
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'

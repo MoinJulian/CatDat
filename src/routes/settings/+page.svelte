@@ -8,8 +8,8 @@
 		category_detail_level,
 		CATEGORY_DETAIL_LEVELS,
 		update_category_detail_level,
-	} from '$lib/settings/detail_level.svelte'
-	import { theme, THEMES, update_theme } from '$lib/settings/theme.svelte'
+	} from '$lib/states/detail_level.svelte'
+	import { theme, THEMES, update_theme } from '$lib/states/theme.svelte'
 
 	$effect(() => update_theme(theme.value))
 	$effect(() => update_category_detail_level(category_detail_level.value))
