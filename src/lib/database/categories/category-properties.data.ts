@@ -374,7 +374,7 @@ export const CATEGORY_PROPERTIES: Record<CategoryID, PropertyWithReason[]> = {
 		{ id: 'small', reason: '' },
 		{ id: 'self-dual', reason: '' },
 		{ id: 'distributive', reason: '' },
-		{ id: 'locally ℵ₁-presentable', reason: 'See <a href="https://math.stackexchange.com/questions/4481902/locally-presentable-vs-compactly-presentable-categories#comment9399784_4482185" target="_blank">here</a>.' },
+		{ id: 'locally ℵ₁-presentable', reason: 'See <a href="https://math.stackexchange.com/questions/4481902/locally-presentable-vs-compactly-presentable-categories#comment9399784_4482185" target="_blank">MSE/4481902</a>.' },
 		{ id: 'skeletal', reason: 'The relation $\\leq$ is antisymmetric.' },
 	],
 	'Zdiv': [

@@ -77,7 +77,7 @@ export const MORPHISM_IMPLICATIONS: MorphismImplication[] = [
 		requirements: ['pullbacks'],
 		assumptions: ['regular epimorphism'],
 		conclusions: ['effective epimorphism'],
-		reason: 'See Prop 3.2 <a href="https://ncatlab.org/nlab/show/regular+epimorphism" target="_blank">here</a>',
+		reason: 'See Prop 3.2 at the <a href="https://ncatlab.org/nlab/show/regular+epimorphism" target="_blank">nLab</a>.',
 	},
 
 	{

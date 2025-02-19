@@ -31,11 +31,11 @@
 		with filtered limits are complete automatically implies that finitely cocomplete
 		categories with filtered colimits are cocomplete. Similarly, if a category is
 		self-dual and, for example, complete, it is automatically inferred to be
-		cocomplete as well. Click <a href="/implications?show_all">here</a> to see all implications,
+		cocomplete as well. Use <a href="/implications?show_all">this link</a> to see all implications,
 		including the dualizations.
 	</p>
 {:else}
 	<p class="hint">
-		Click <a href="/implications">here</a> to hide the dualizations.
+		Use <a href="/implications">this link</a> to hide the dualizations.
 	</p>
 {/if}
