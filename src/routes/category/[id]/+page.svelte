@@ -48,8 +48,8 @@
 		{/if}
 		{#if category.related_categories.length}
 			<li>
-				Related categories: {#each category.related_categories as { id, notation }, i}
-					<a href={`/category/${id}`}>
+				Related categories: {#each category.related_categories as { id, name, notation }, i}
+					<a href={`/category/${id}`} aria-label={name}>
 						{@html notation}
 					</a>{#if i < category.related_categories.length - 1}
 						,&nbsp;
