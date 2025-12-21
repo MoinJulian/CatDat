@@ -1,5 +1,5 @@
 import { select } from '$lib/commons/utils'
-import { PROPERTIES } from '$lib/database/categories/properties.data'
+import { PROPERTIES } from '$lib/database/properties.data'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = () => {

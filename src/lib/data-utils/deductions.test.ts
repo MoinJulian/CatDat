@@ -1,5 +1,5 @@
-import { CATEGORIES, type CategoryID } from '$lib/database/categories/categories.data'
-import { type PropertyID } from '$lib/database/categories/properties.data'
+import { CATEGORIES, type CategoryID } from '$lib/database/categories.data'
+import { type PropertyID } from '$lib/database/properties.data'
 import { get_non_properties, get_properties, propertyIDs } from './data.helpers'
 import {
 	categories_with_deduced_properties,

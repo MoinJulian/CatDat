@@ -2,8 +2,8 @@ import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 import { render_nested_formulas } from '$lib/commons/rendering'
-import { PROPERTY_RELATIONS } from '$lib/database/categories/property-relations.data'
-import { PROPERTY_DUALS } from '$lib/database/categories/property-duals.data'
+import { PROPERTY_RELATIONS } from '$lib/database/property-relations.data'
+import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
 import { decode_property_ID } from '$lib/commons/property.url'
 import {
 	get_category,

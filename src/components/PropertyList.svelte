@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { PropertyID } from '$lib/database/categories/properties.data'
-	import type { Prefix } from '$lib/database/categories/prefix.data'
+	import type { PropertyID } from '$lib/database/properties.data'
+	import type { Prefix } from '$lib/database/prefix.data'
 	import { negate_prefix } from '$lib/data-utils/data.helpers'
 	import { get_property_url } from '$lib/commons/property.url'
 	import LabelWithReason from './LabelWithReason.svelte'

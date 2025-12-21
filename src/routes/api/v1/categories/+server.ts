@@ -1,5 +1,5 @@
 import { get_detailed_category } from '$lib/data-utils/details'
-import { CATEGORIES } from '$lib/database/categories/categories.data'
+import { CATEGORIES } from '$lib/database/categories.data'
 import { json, type RequestHandler } from '@sveltejs/kit'
 
 export const GET: RequestHandler = async (event) => {

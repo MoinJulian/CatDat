@@ -1,7 +1,7 @@
-import type { CategoryID } from '$lib/database/categories/categories.data'
-import { CATEGORY_EPIMORPHISMS } from '$lib/database/categories/category-epimorphisms.data'
-import { CATEGORY_ISOMORPHISMS } from '$lib/database/categories/category-isomorphisms.data'
-import { CATEGORY_MONOMORPHISMS } from '$lib/database/categories/category-monomorphisms.data'
+import type { CategoryID } from '$lib/database/categories.data'
+import { CATEGORY_EPIMORPHISMS } from '$lib/database/category-epimorphisms.data'
+import { CATEGORY_ISOMORPHISMS } from '$lib/database/category-isomorphisms.data'
+import { CATEGORY_MONOMORPHISMS } from '$lib/database/category-monomorphisms.data'
 import { get_category, get_related_categories, get_tags } from './data.helpers'
 import { categories_with_deduced_properties_dictionary } from './deductions'
 

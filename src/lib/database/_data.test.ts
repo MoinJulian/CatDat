@@ -1,15 +1,12 @@
 // This file is testing all the files in the present data folder.
 
 import { render_formulas, render_nested_formulas } from '$lib/commons/rendering'
-import { CATEGORIES } from '$lib/database/categories/categories.data'
-import { IMPLICATIONS } from '$lib/database/categories/implications.data'
-import { PREFIXES } from '$lib/database/categories/prefix.data'
-import { PROPERTIES } from '$lib/database/categories/properties.data'
-import { PROPERTY_DUALS } from '$lib/database/categories/property-duals.data'
-import { TAGS } from '$lib/database/categories/tags.data'
-import { CATEGORY_EPIMORPHISMS } from './category-epimorphisms.data'
-import { CATEGORY_ISOMORPHISMS } from './category-isomorphisms.data'
-import { CATEGORY_MONOMORPHISMS } from './category-monomorphisms.data'
+import { CATEGORIES } from '$lib/database/categories.data'
+import { IMPLICATIONS } from '$lib/database/implications.data'
+import { PREFIXES } from '$lib/database/prefix.data'
+import { PROPERTIES } from '$lib/database/properties.data'
+import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
+import { TAGS } from '$lib/database/tags.data'
 import { CATEGORY_NON_PROPERTIES } from './category-non-properties.data'
 import { CATEGORY_PROPERTIES } from './category-properties.data'
 
@@ -179,22 +176,6 @@ describe('list of implications', () => {
 		for (const implication of IMPLICATIONS) {
 			expect(() => {
 				render_formulas(implication.reason)
-			}).not.toThrow()
-		}
-	})
-})
-
-describe('special morphisms (mono, epi, iso)', () => {
-	it('should have no errors in LaTeX', () => {
-		const special_morphisms = [
-			...Object.values(CATEGORY_EPIMORPHISMS),
-			...Object.values(CATEGORY_ISOMORPHISMS),
-			...Object.values(CATEGORY_MONOMORPHISMS),
-		]
-
-		for (const entry of special_morphisms) {
-			expect(() => {
-				render_nested_formulas(entry)
 			}).not.toThrow()
 		}
 	})

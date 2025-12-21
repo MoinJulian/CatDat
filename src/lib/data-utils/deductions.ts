@@ -7,10 +7,10 @@ import {
 	negate_prefix,
 	propertyIDs,
 } from '$lib/data-utils/data.helpers'
-import { CATEGORIES, type CategoryID } from '$lib/database/categories/categories.data'
-import { IMPLICATIONS } from '$lib/database/categories/implications.data'
-import type { Prefix } from '$lib/database/categories/prefix.data'
-import type { PropertyID } from '$lib/database/categories/properties.data'
+import { CATEGORIES, type CategoryID } from '$lib/database/categories.data'
+import { IMPLICATIONS } from '$lib/database/implications.data'
+import type { Prefix } from '$lib/database/prefix.data'
+import type { PropertyID } from '$lib/database/properties.data'
 import { DeductionSystem } from '$lib/logic/DeductionSystem'
 import type { Entity } from '$lib/logic/Entity'
 import { EntitySystem } from '$lib/logic/EntitySystem'

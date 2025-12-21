@@ -24,22 +24,22 @@ Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You 
 
 ### Adding a New Category
 
-- Add the basic info of the category to the file [categories.data.ts](src/lib/database/categories/categories.data.ts).
-- Add a list of related categories to [category-relations.data.ts](src/lib/database/categories/category-relations.data.ts). Can be an empty list.
-- Add a list of tags to [category-tags.data.ts](src/lib/database/categories/category-tags.data.ts).
-- To add properties of the category, edit the file [category-properties.data.ts](src/lib/database/categories/category-properties.data.ts).
-- To add non-properties of the category, edit the file [category-non-properties.data.ts](src/lib/database/categories/category-non-properties.data.ts).
-- Add the descriptions (including proofs) of special morphisms in to [category-monomorphisms.data.ts](src/lib/database/categories/category-monomorphisms.data.ts), [category-epimorphisms.data.ts](src/lib/database/categories/category-epimorphisms.data.ts), and [category-isomorphisms.data.ts](src/lib/database/categories/category-isomorphisms.data.ts). Can be empty strings in case it's not known.
+- Add the basic info of the category to the file [categories.data.ts](src/lib/database/categories.data.ts).
+- Add a list of related categories to [category-relations.data.ts](src/lib/database/category-relations.data.ts). Can be an empty list.
+- Add a list of tags to [category-tags.data.ts](src/lib/database/category-tags.data.ts).
+- To add properties of the category, edit the file [category-properties.data.ts](src/lib/database/category-properties.data.ts).
+- To add non-properties of the category, edit the file [category-non-properties.data.ts](src/lib/database/category-non-properties.data.ts).
+- Add the descriptions (including proofs) of special morphisms in to [category-monomorphisms.data.ts](src/lib/database/category-monomorphisms.data.ts), [category-epimorphisms.data.ts](src/lib/database/category-epimorphisms.data.ts), and [category-isomorphisms.data.ts](src/lib/database/category-isomorphisms.data.ts). Can be empty strings in case it's not known.
 
 ### Adding a New Property
 
-- Add the basic info of the property to [properties.data.ts](src/lib/database/categories/properties.data.ts).
-- Add a list of related properties to [property-relations.data.ts](src/lib/database/categories/property-relations.data.ts). Can be an empty list.
-- If applicable, add its dual property to [property-duals.data.ts](src/lib/database/categories/property-duals.data.ts).
+- Add the basic info of the property to [properties.data.ts](src/lib/database/properties.data.ts).
+- Add a list of related properties to [property-relations.data.ts](src/lib/database/property-relations.data.ts). Can be an empty list.
+- If applicable, add its dual property to [property-duals.data.ts](src/lib/database/property-duals.data.ts).
 
 ### Adding a New Implication
 
-- Edit the file [implications.data.ts](src/lib/database/categories/implications.data.ts).
+- Edit the file [implications.data.ts](src/lib/database/implications.data.ts).
 
 For more information on why we don't use a traditional database, see [this documentation](/docs/database.md).
 

@@ -2,9 +2,9 @@
 
 Currently, _CatDat_ does not work with a classical database. Instead, the data comes from various static TypeScript files in the `database` folder, for example:
 
-- Categories: [categories.data.ts](../src/lib/database/categories/categories.data.ts)
-- Properties: [properties.data.ts](../src/lib/database/categories/properties.data.ts)
-- Implications: [implications.data.ts](../src/lib/database/categories/implications.data.ts)
+- Categories: [categories.data.ts](../src/lib/database/categories.data.ts)
+- Properties: [properties.data.ts](../src/lib/database/properties.data.ts)
+- Implications: [implications.data.ts](../src/lib/database/implications.data.ts)
 
 ## Advantages of using TypeScript files for the data
 
@@ -27,7 +27,7 @@ Currently, _CatDat_ does not work with a classical database. Instead, the data c
 <img width="600" alt="failing unit test" src="https://github.com/user-attachments/assets/5f4a6bb4-1d60-4226-8edb-032cd0a25aff" />
  
 - TypeScript is doing most of the work for us when it comes to data integrity. The rest is done via unit tests.
-- More flexible data structures (not just rows in a table) are easy to integrate. For example, the [property duals](../src/lib/database/categories/property-duals.data.ts) use a fully-typed dictionary.
+- More flexible data structures (not just rows in a table) are easy to integrate. For example, the [property duals](../src/lib/database/property-duals.data.ts) use a fully-typed dictionary.
 
 ## Disadvantage of using TypeScript files for the data
 
@@ -36,4 +36,4 @@ Currently, _CatDat_ does not work with a classical database. Instead, the data c
 
 ## Further remarks
 
-Normalization of the data has already been taken care of within the TypeScript files, for that no classical database is necessary. For example, one file for the basic information about categories, [one file](../src/lib/database/categories/category-properties.data.ts) for their properties, [one file](../src/lib/database/categories/category-non-properties.data.ts) for their non-properties, etc.
+Normalization of the data has already been taken care of within the TypeScript files, for that no classical database is necessary. For example, one file for the basic information about categories, [one file](../src/lib/database/category-properties.data.ts) for their properties, [one file](../src/lib/database/category-non-properties.data.ts) for their non-properties, etc.

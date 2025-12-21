@@ -6,8 +6,8 @@
 	} from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
 
-	import type { PropertyID } from '$lib/database/categories/properties.data'
-	import type { Implication } from '$lib/database/categories/implications.data'
+	import type { PropertyID } from '$lib/database/properties.data'
+	import type { Implication } from '$lib/database/implications.data'
 	import { get_property_url } from '$lib/commons/property.url'
 	import LabelWithReason from './LabelWithReason.svelte'
 

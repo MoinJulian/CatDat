@@ -1,20 +1,12 @@
 import { group_items, select } from '$lib/commons/utils'
-import {
-	CATEGORIES,
-	type Category,
-	type CategoryID,
-} from '$lib/database/categories/categories.data'
-import { CATEGORY_NON_PROPERTIES } from '$lib/database/categories/category-non-properties.data'
-import { CATEGORY_PROPERTIES } from '$lib/database/categories/category-properties.data'
-import { CATEGORY_RELATIONS } from '$lib/database/categories/category-relations.data'
-import { CATEGORY_TAGS } from '$lib/database/categories/category-tags.data'
-import { PREFIXES, type Prefix } from '$lib/database/categories/prefix.data'
-import {
-	PROPERTIES,
-	type Property,
-	type PropertyID,
-} from '$lib/database/categories/properties.data'
-import { PROPERTY_DUALS } from '$lib/database/categories/property-duals.data'
+import { CATEGORIES, type Category, type CategoryID } from '$lib/database/categories.data'
+import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
+import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
+import { CATEGORY_RELATIONS } from '$lib/database/category-relations.data'
+import { CATEGORY_TAGS } from '$lib/database/category-tags.data'
+import { PREFIXES, type Prefix } from '$lib/database/prefix.data'
+import { PROPERTIES, type Property, type PropertyID } from '$lib/database/properties.data'
+import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
 
 export const propertyIDs = PROPERTIES.map((property) => property.id)
 export const categoryIDs = CATEGORIES.map((category) => category.id)

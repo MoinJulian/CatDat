@@ -1,15 +1,15 @@
 import type { PageServerLoad } from './$types'
 import { select, sum } from '$lib/commons/utils'
 import { category_system } from '$lib/data-utils/deductions'
-import { CATEGORIES } from '$lib/database/categories/categories.data'
+import { CATEGORIES } from '$lib/database/categories.data'
 import {
 	get_category,
 	get_prefix,
 	type CategorySimple,
 } from '$lib/data-utils/data.helpers'
-import { CATEGORY_MONOMORPHISMS } from '$lib/database/categories/category-monomorphisms.data'
-import { CATEGORY_EPIMORPHISMS } from '$lib/database/categories/category-epimorphisms.data'
-import { CATEGORY_ISOMORPHISMS } from '$lib/database/categories/category-isomorphisms.data'
+import { CATEGORY_MONOMORPHISMS } from '$lib/database/category-monomorphisms.data'
+import { CATEGORY_EPIMORPHISMS } from '$lib/database/category-epimorphisms.data'
+import { CATEGORY_ISOMORPHISMS } from '$lib/database/category-isomorphisms.data'
 
 export const load: PageServerLoad = () => {
 	const missing_basic_combinations = category_system.get_missing_basic_combinations()

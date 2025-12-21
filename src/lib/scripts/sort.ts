@@ -8,15 +8,15 @@ import fs from 'fs'
 import path from 'path'
 
 import { categoryIDs, propertyIDs } from '$lib/data-utils/data.helpers'
-import { CATEGORY_EPIMORPHISMS } from '$lib/database/categories/category-epimorphisms.data'
-import { CATEGORY_ISOMORPHISMS } from '$lib/database/categories/category-isomorphisms.data'
-import { CATEGORY_MONOMORPHISMS } from '$lib/database/categories/category-monomorphisms.data'
-import { CATEGORY_NON_PROPERTIES } from '$lib/database/categories/category-non-properties.data'
-import { CATEGORY_PROPERTIES } from '$lib/database/categories/category-properties.data'
-import { CATEGORY_RELATIONS } from '$lib/database/categories/category-relations.data'
-import { CATEGORY_TAGS } from '$lib/database/categories/category-tags.data'
-import { PROPERTY_DUALS } from '$lib/database/categories/property-duals.data'
-import { PROPERTY_RELATIONS } from '$lib/database/categories/property-relations.data'
+import { CATEGORY_EPIMORPHISMS } from '$lib/database/category-epimorphisms.data'
+import { CATEGORY_ISOMORPHISMS } from '$lib/database/category-isomorphisms.data'
+import { CATEGORY_MONOMORPHISMS } from '$lib/database/category-monomorphisms.data'
+import { CATEGORY_NON_PROPERTIES } from '$lib/database/category-non-properties.data'
+import { CATEGORY_PROPERTIES } from '$lib/database/category-properties.data'
+import { CATEGORY_RELATIONS } from '$lib/database/category-relations.data'
+import { CATEGORY_TAGS } from '$lib/database/category-tags.data'
+import { PROPERTY_DUALS } from '$lib/database/property-duals.data'
+import { PROPERTY_RELATIONS } from '$lib/database/property-relations.data'
 
 function sort_dictionary(
 	keys: string[],
@@ -31,7 +31,7 @@ function sort_dictionary(
 		sorted_obj[key] = obj[key] ?? null
 	}
 
-	const filepath = path.resolve(`src/lib/database/categories/${file}`)
+	const filepath = path.resolve(`src/lib/database/${file}`)
 	const content = fs.readFileSync(filepath, 'utf8')
 	const exportIndex = content.indexOf(`export const ${name}`)
 	const curlyBracketIndex = content.indexOf('{', exportIndex)

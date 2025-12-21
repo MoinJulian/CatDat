@@ -21,7 +21,7 @@
 			}
 		},
 		{
-			"files": "src/lib/database/categories/tags.data.ts",
+			"files": "src/lib/database/tags.data.ts",
 			"options": {
 				"printWidth": 90
 			}
