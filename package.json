@@ -17,7 +17,9 @@
 		"coverage": "vitest run --coverage",
 		"prepare": "husky",
 		"data:sort": "tsx src/lib/scripts/sort.ts && prettier --write src/lib/database/**/*.ts",
-		"data:reasons": "tsx src/lib/scripts/reasons.ts"
+		"data:reasons": "tsx src/lib/scripts/reasons.ts",
+		"db:shell": "sqlite3 database/local.db",
+		"db:seed": "./scripts/seed.sh"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.0",

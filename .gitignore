@@ -28,3 +28,6 @@ coverage
 # Notes for developer
 todo.txt
 thoughts.txt
+
+# Local database
+local.db
