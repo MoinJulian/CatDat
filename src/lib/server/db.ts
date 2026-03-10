@@ -14,9 +14,9 @@ db.execute('PRAGMA foreign_keys = ON')
  * Small wrapper around db.execute to handle errors,
  * use sql templates, and specify the type of the result.
  */
-export async function query<T>(query: Sql) {
+export async function query<T>(stmt: Sql) {
 	try {
-		const { rows } = await db.execute(query.sql, query.values as any[])
+		const { rows } = await db.execute(stmt.sql, stmt.values as any[])
 		return { rows: rows as T[], err: null }
 	} catch (err) {
 		console.error(err)
