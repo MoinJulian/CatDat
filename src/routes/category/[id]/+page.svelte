@@ -6,15 +6,15 @@
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'
 	import LabelWithReason from '$components/LabelWithReason.svelte'
-	import { category_detail_level } from '$lib/states/detail_level.svelte.js'
+	import { category_detail_level } from '$lib/states/detail_level.svelte'
 
 	let { data } = $props()
-
-	let category = $derived(data.category)
 
 	function filter_by_tag(tag: string) {
 		goto(`/categories?tag=${tag}`)
 	}
+
+	let category = $derived(data.category)
 </script>
 
 <MetaData
@@ -25,7 +25,7 @@
 <h2>{category.name}</h2>
 
 <ChipGroup>
-	{#each category.tags as tag}
+	{#each data.tags as tag}
 		<Chip size="small" handle_click={() => filter_by_tag(tag)}>{tag}</Chip>
 	{/each}
 </ChipGroup>
@@ -46,12 +46,12 @@
 				<a href={category.nlab_link} target="_blank">nLab Link</a>
 			</li>
 		{/if}
-		{#if category.related_categories.length}
+		{#if data.related_categories.length}
 			<li>
-				Related categories: {#each category.related_categories as { id, name, notation }, i}
+				Related categories: {#each data.related_categories as { id, name, notation }, i}
 					<a href={`/category/${id}`} aria-label={name}>
 						{@html notation}
-					</a>{#if i < category.related_categories.length - 1}
+					</a>{#if i < data.related_categories.length - 1}
 						,&nbsp;
 					{/if}
 				{/each}
@@ -64,8 +64,10 @@
 	{/if}
 </section>
 
+<!-- TODO: bring back list of properties -->
+
 <!-- The key fixes a weird rerendering bug when category page is changed -->
-{#key category.id}
+<!-- {#key category.id}
 	<div class="two-columns">
 		<section>
 			<h3>Properties</h3>
@@ -136,26 +138,32 @@
 				: undefined}
 		/>
 	</section>
-{/key}
+{/key} -->
 
 <section>
 	<h3>Special morphisms</h3>
 	<ul>
-		<li>
-			<LabelWithReason reason={category.isomorphisms.reason}>
-				Isomorphisms: {@html category.isomorphisms.description}
-			</LabelWithReason>
-		</li>
-		<li>
-			<LabelWithReason reason={category.monomorphisms.reason}>
-				Monomorphisms: {@html category.monomorphisms.description}
-			</LabelWithReason>
-		</li>
-		<li>
-			<LabelWithReason reason={category.epimorphisms.reason}>
-				Epimorphisms: {@html category.epimorphisms.description}
-			</LabelWithReason>
-		</li>
+		{#if data.isomorphisms}
+			<li>
+				<LabelWithReason reason={data.isomorphisms.reason}>
+					Isomorphisms: {@html data.isomorphisms.description}
+				</LabelWithReason>
+			</li>
+		{/if}
+		{#if data.monomorphisms}
+			<li>
+				<LabelWithReason reason={data.monomorphisms.reason}>
+					Monomorphisms: {@html data.monomorphisms.description}
+				</LabelWithReason>
+			</li>
+		{/if}
+		{#if data.epimorphisms}
+			<li>
+				<LabelWithReason reason={data.epimorphisms.reason}>
+					Epimorphisms: {@html data.epimorphisms.description}
+				</LabelWithReason>
+			</li>
+		{/if}
 	</ul>
 </section>
 
@@ -164,11 +172,11 @@
 		margin-top: 1.5rem;
 	}
 
-	@media (min-width: 720px) {
+	/* @media (min-width: 720px) {
 		.two-columns {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			gap: 0.5rem;
 		}
-	}
+	} */
 </style>

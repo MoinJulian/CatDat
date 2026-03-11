@@ -4,6 +4,18 @@ export type Arrayed<T extends readonly unknown[]> = {
 
 type Replace<T, R extends Partial<Record<keyof T, any>>> = Omit<T, keyof R> & R
 
+export type CategoryDisplay = {
+	id: string
+	name: string
+	notation: string
+	objects: string
+	morphisms: string
+	description: string
+	nlab_link: string | null
+}
+
+export type RelatedCategory = Pick<CategoryDisplay, 'id' | 'name' | 'notation'>
+
 export type ImplicationDB = {
 	id: string
 	is_equivalence: number
@@ -34,3 +46,8 @@ export type PropertyDisplay = Replace<
 	PropertyDB,
 	{ invariant_under_equivalences: boolean }
 >
+
+export type DescriptionWithReason = {
+	description: string
+	reason: string
+}
