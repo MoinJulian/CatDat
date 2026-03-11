@@ -60,3 +60,5 @@ export type CategoryPropertyDB = {
 }
 
 export type CategoryProperty = Replace<CategoryPropertyDB, { is_deduced: boolean }>
+
+export type UnknownCategoryProperty = Pick<PropertyDB, 'id' | 'prefix'>

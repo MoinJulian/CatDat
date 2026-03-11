@@ -8,6 +8,7 @@ import type {
 	CategoryPropertyDB,
 	DescriptionWithReason,
 	RelatedCategory,
+	UnknownCategoryProperty,
 } from '$lib/commons/types'
 
 export const load = async (event) => {
@@ -23,6 +24,7 @@ export const load = async (event) => {
 			DescriptionWithReason,
 			CategoryPropertyDB,
 			CategoryPropertyDB,
+			UnknownCategoryProperty,
 		]
 	>([
 		sql`
@@ -84,6 +86,21 @@ export const load = async (event) => {
 			WHERE cnp.category_id = ${id}
 			ORDER BY cnp.non_property_id
 		`,
+		sql`
+			SELECT
+				p.id,
+				p.prefix
+			FROM properties p
+			WHERE NOT EXISTS (
+				SELECT 1 FROM category_properties
+				WHERE property_id = p.id AND category_id = ${id}
+			)
+			AND NOT EXISTS (
+				SELECT 1 FROM category_non_properties
+				WHERE non_property_id = p.id AND category_id = ${id}
+			)
+			ORDER BY lower(p.id)
+		`,
 	])
 
 	if (err) error(500, 'Could not load category')
@@ -97,6 +114,7 @@ export const load = async (event) => {
 		mono_rows,
 		properties_db,
 		non_properties_db,
+		unknown_properties,
 	] = results
 
 	if (!categories.length) error(404, `Could not find category with ID '${id}'`)
@@ -130,5 +148,6 @@ export const load = async (event) => {
 		monomorphisms,
 		properties,
 		non_properties,
+		unknown_properties,
 	})
 }

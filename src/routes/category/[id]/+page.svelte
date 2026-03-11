@@ -116,18 +116,16 @@
 		</section>
 	</div>
 
-	<!-- TODO: show unknown properties -->
-
-	<!-- <section>
+	<section>
 		<h3>Unknown properties</h3>
 
 		<PropertyList
-			properties={category.unknown_properties}
-			description={category.unknown_properties.length
+			properties={data.unknown_properties}
+			description={data.unknown_properties.length
 				? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"
 				: undefined}
 		/>
-	</section> -->
+	</section>
 {/key}
 
 <section>
