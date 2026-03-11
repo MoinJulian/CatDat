@@ -52,8 +52,11 @@ export type DescriptionWithReason = {
 	reason: string
 }
 
-export type CategoryProperty = {
+export type CategoryPropertyDB = {
 	id: string
 	reason: string
 	prefix: string
+	is_deduced: number
 }
+
+export type CategoryProperty = Replace<CategoryPropertyDB, { is_deduced: boolean }>

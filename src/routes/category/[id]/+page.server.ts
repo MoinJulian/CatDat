@@ -5,14 +5,13 @@ import sql from 'sql-template-tag'
 import type {
 	CategoryDisplay,
 	CategoryProperty,
+	CategoryPropertyDB,
 	DescriptionWithReason,
 	RelatedCategory,
 } from '$lib/commons/types'
 
 export const load = async (event) => {
 	const id = event.params.id
-
-	// TODO: load deduced properties and non-properties of given category
 
 	const { results, err } = await batch<
 		[
@@ -22,8 +21,8 @@ export const load = async (event) => {
 			DescriptionWithReason,
 			DescriptionWithReason,
 			DescriptionWithReason,
-			CategoryProperty,
-			CategoryProperty,
+			CategoryPropertyDB,
+			CategoryPropertyDB,
 		]
 	>([
 		sql`
@@ -66,6 +65,7 @@ export const load = async (event) => {
 			SELECT
 				cp.property_id AS id,
 				cp.reason,
+				cp.is_deduced,
 				p.prefix
 			FROM category_properties cp
 			INNER JOIN properties p ON p.id = cp.property_id
@@ -74,14 +74,15 @@ export const load = async (event) => {
 		`,
 		sql`
 			SELECT
-				cp.non_property_id AS id,
-				cp.reason,
+				cnp.non_property_id AS id,
+				cnp.reason,
+				cnp.is_deduced,
 				pf.negation as prefix
-			FROM category_non_properties cp
-			INNER JOIN properties p ON p.id = cp.non_property_id
+			FROM category_non_properties cnp
+			INNER JOIN properties p ON p.id = cnp.non_property_id
 			INNER JOIN prefixes pf ON pf.prefix = p.prefix
-			WHERE cp.category_id = ${id}
-			ORDER BY cp.non_property_id
+			WHERE cnp.category_id = ${id}
+			ORDER BY cnp.non_property_id
 		`,
 	])
 
@@ -94,8 +95,8 @@ export const load = async (event) => {
 		iso_rows,
 		epi_rows,
 		mono_rows,
-		direct_properties,
-		direct_non_properties,
+		properties_db,
+		non_properties_db,
 	] = results
 
 	if (!categories.length) error(404, `Could not find category with ID '${id}'`)
@@ -106,6 +107,20 @@ export const load = async (event) => {
 	const epimorphisms = epi_rows.at(0)
 	const monomorphisms = mono_rows.at(0)
 
+	const properties: CategoryProperty[] = properties_db.map((p) => ({
+		id: p.id,
+		reason: p.reason,
+		prefix: p.prefix,
+		is_deduced: Boolean(p.is_deduced),
+	}))
+
+	const non_properties: CategoryProperty[] = non_properties_db.map((p) => ({
+		id: p.id,
+		reason: p.reason,
+		prefix: p.prefix,
+		is_deduced: Boolean(p.is_deduced),
+	}))
+
 	return render_nested_formulas({
 		category,
 		related_categories,
@@ -113,7 +128,7 @@ export const load = async (event) => {
 		isomorphisms,
 		epimorphisms,
 		monomorphisms,
-		direct_properties,
-		direct_non_properties,
+		properties,
+		non_properties,
 	})
 }

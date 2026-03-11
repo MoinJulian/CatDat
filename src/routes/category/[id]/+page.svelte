@@ -72,24 +72,19 @@
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					properties={data.direct_properties}
+					properties={data.properties.filter((p) => !p.is_deduced)}
 					description="Properties from the database"
 				/>
 
-				<!-- TODO: bring back deduced properties -->
-
-				<!--
 				<PropertyList
-					properties={category.deduced_properties}
+					properties={data.properties.filter((p) => p.is_deduced)}
 					description="Deduced properties"
-				/> -->
+				/>
 			{:else if category_detail_level.value === 'merged'}
-				<!-- <PropertyList
-					properties={[...category.properties, ...category.deduced_properties]}
-				/> -->
+				<PropertyList properties={data.properties} />
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					properties={data.direct_properties}
+					properties={data.properties.filter((p) => !p.is_deduced)}
 					description="Properties from the database. Further properties can be deduced."
 				/>
 			{/if}
@@ -100,34 +95,28 @@
 
 			{#if category_detail_level.value === 'all'}
 				<PropertyList
-					properties={data.direct_non_properties}
+					properties={data.non_properties.filter((p) => !p.is_deduced)}
 					description="Non-Properties from the database"
 				/>
 
-				<!-- TODO: bring back deduced non-properties -->
-
-				<!-- <PropertyList
-					properties={category.deduced_non_properties}
+				<PropertyList
+					properties={data.non_properties.filter((p) => p.is_deduced)}
 					description="Deduced Non-Properties*"
-					negated={true}
-				/> -->
+				/>
+
 				<p class="hint">*This also uses the deduced properties.</p>
 			{:else if category_detail_level.value === 'merged'}
-				<!-- <PropertyList
-					properties={[
-						...category.non_properties,
-						...category.deduced_non_properties,
-					]}
-					negated={true}
-				/> -->
+				<PropertyList properties={data.non_properties} />
 			{:else if category_detail_level.value === 'basic'}
 				<PropertyList
-					properties={data.direct_non_properties}
+					properties={data.non_properties.filter((p) => !p.is_deduced)}
 					description="Non-Properties from the database. Further non-properties can be deduced."
 				/>
 			{/if}
 		</section>
 	</div>
+
+	<!-- TODO: show unknown properties -->
 
 	<!-- <section>
 		<h3>Unknown properties</h3>
