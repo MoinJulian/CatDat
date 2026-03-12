@@ -1,9 +1,8 @@
-import type { PageServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 
 import { get_comparison } from '$lib/commons/comparison'
 
-export const load: PageServerLoad = (event) => {
+export const load = (event) => {
 	const compared_ids = event.params.ids.split('/')
 
 	try {
