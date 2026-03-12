@@ -65,7 +65,7 @@ CREATE TABLE properties (
     prefix TEXT NOT NULL,
     description TEXT NOT NULL,
     nlab_link TEXT,
-    invariant_under_equivalences INTEGER NOT NULL DEFAULT 1,
+    invariant_under_equivalences INTEGER NOT NULL DEFAULT TRUE,
     dual_property_id TEXT,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,

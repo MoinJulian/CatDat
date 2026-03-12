@@ -92,6 +92,7 @@ async function create_dualized_implications() {
             p.dual_property_id IS NOT NULL
             AND p.id != 'self-dual'
             AND p.id != p.dual_property_id
+            AND p.invariant_under_equivalences = TRUE
         RETURNING id
     `)
 
