@@ -1,5 +1,6 @@
 DROP VIEW IF EXISTS implications_view;
 
+-- user-friendly view of implications
 CREATE VIEW implications_view AS
 SELECT
     i.id,
@@ -24,8 +25,10 @@ SELECT
     ) AS conclusions
 FROM implications i;
 
+
 DROP VIEW IF EXISTS implication_input;
 
+-- view that is used to insert implications via a trigger
 CREATE VIEW implication_input AS
 SELECT
     NULL AS id,

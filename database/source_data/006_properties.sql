@@ -1,12 +1,12 @@
 DELETE FROM properties;
 
 INSERT INTO properties (
-	id,
-	prefix,
-	description,
-	nlab_link,
-	dual_property_id,
-	invariant_under_equivalences
+	id, 						 -- Name of the property
+	prefix, 					 -- prefix (is, has, ...)
+	description,				 -- contains the definition of the property
+	nlab_link, 					 -- nlab_link (optional)
+	dual_property_id,			 -- ID of dual property (if applicable)
+	invariant_under_equivalences -- TRUE/FALSE 
 )
 VALUES
 	(

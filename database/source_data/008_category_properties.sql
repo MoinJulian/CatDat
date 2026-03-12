@@ -1,6 +1,10 @@
 DELETE FROM category_properties;
 
-INSERT INTO category_properties (category_id, property_id, reason)
+INSERT INTO category_properties (
+	category_id, -- ID of the category
+	property_id, -- ID of the property
+	reason		 -- proof or reference why the category satisfies the property
+)
 VALUES
 	(
 		'0',

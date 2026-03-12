@@ -9,7 +9,7 @@ DROP TRIGGER IF EXISTS trg_implication_input_insert;
 DROP TRIGGER IF EXISTS trg_prevent_contradictory_property;
 DROP TRIGGER IF EXISTS trg_prevent_contradictory_non_property;
 
-
+-- updates 'updated_at'
 CREATE TRIGGER trg_update_category
 AFTER UPDATE ON categories
 FOR EACH ROW
@@ -20,7 +20,7 @@ BEGIN
     WHERE id = NEW.id;
 END;
 
-
+-- updates 'updated_at'
 CREATE TRIGGER trg_update_property
 AFTER UPDATE ON properties
 FOR EACH ROW
@@ -31,7 +31,7 @@ BEGIN
     WHERE id = NEW.id;
 END;
 
-
+-- updates 'updated_at'
 CREATE TRIGGER trg_update_category_property
 AFTER UPDATE ON category_properties
 FOR EACH ROW
@@ -42,7 +42,7 @@ BEGIN
     WHERE id = NEW.id;
 END;
 
-
+-- updates 'updated_at'
 CREATE TRIGGER trg_update_implication
 AFTER UPDATE ON implications
 FOR EACH ROW
@@ -53,7 +53,7 @@ BEGIN
     WHERE id = NEW.id;
 END;
 
-
+-- updates 'updated_at'
 CREATE TRIGGER trg_update_category_isomorphism
 AFTER UPDATE ON category_isomorphisms
 FOR EACH ROW
@@ -64,7 +64,7 @@ BEGIN
     WHERE id = NEW.id;
 END;
 
-
+-- updates 'updated_at'
 CREATE TRIGGER trg_update_category_epimorphism
 AFTER UPDATE ON category_epimorphisms
 FOR EACH ROW
@@ -75,7 +75,7 @@ BEGIN
     WHERE id = NEW.id;
 END;
 
-
+-- updates 'updated_at'
 CREATE TRIGGER trg_update_category_monomorphism
 AFTER UPDATE ON category_monomorphisms
 FOR EACH ROW
@@ -86,7 +86,8 @@ BEGIN
     WHERE id = NEW.id;
 END;
 
-
+-- uses the 'implication_input' view to insert implications
+-- together with assumptions and conclusions
 CREATE TRIGGER trg_implication_input_insert
 INSTEAD OF INSERT ON implication_input
 BEGIN
@@ -108,6 +109,7 @@ BEGIN
 END;
 
 
+-- checks that no new property for a category is already a non-property
 CREATE TRIGGER trg_prevent_contradictory_property
 BEFORE INSERT ON category_properties
 FOR EACH ROW
@@ -121,7 +123,7 @@ BEGIN
     SELECT RAISE(ABORT, 'Cannot insert property since it is already marked as a non-property.');
 END;
 
-
+-- checks that no new non-property for a category is already a property
 CREATE TRIGGER trg_prevent_contradictory_non_property
 BEFORE INSERT ON category_non_properties
 FOR EACH ROW

@@ -1,6 +1,10 @@
 DELETE FROM category_epimorphisms;
 
-INSERT INTO category_epimorphisms (category_id, description, reason)
+INSERT INTO category_epimorphisms (
+	category_id, -- ID of the category
+	description, -- description of its epimorphisms
+	reason		 -- proof or reference of this description
+)
 VALUES
 	(
 		'0',

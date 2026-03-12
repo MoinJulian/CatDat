@@ -1,5 +1,6 @@
 PRAGMA foreign_keys = OFF;
 
+-- delete all tables
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS related_categories;
 DROP TABLE IF EXISTS tags;
@@ -18,6 +19,7 @@ DROP TABLE IF EXISTS implication_assumptions;
 
 PRAGMA foreign_keys = ON;
 
+-- categories
 CREATE TABLE categories (
     id TEXT PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
@@ -30,6 +32,7 @@ CREATE TABLE categories (
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+-- categories related to other categories
 CREATE TABLE related_categories (
     category_id TEXT NOT NULL,
     related_category_id TEXT NOT NULL,
@@ -39,12 +42,14 @@ CREATE TABLE related_categories (
     FOREIGN KEY (related_category_id) REFERENCES categories (id) ON DELETE CASCADE
 );
 
+-- tags
 CREATE TABLE tags (
     tag TEXT PRIMARY KEY,
     description TEXT NOT NULL DEFAULT '',
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+-- tags associated to categories
 CREATE TABLE category_tags (
     category_id TEXT NOT NULL,
     tag TEXT NOT NULL,
@@ -54,12 +59,14 @@ CREATE TABLE category_tags (
     FOREIGN KEY (tag) REFERENCES tags (tag) ON DELETE CASCADE
 );
 
+-- prefixes of properties
 CREATE TABLE prefixes (
     prefix TEXT PRIMARY KEY,
     negation TEXT NOT NULL,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+-- properties of categories
 CREATE TABLE properties (
     id TEXT PRIMARY KEY,
     prefix TEXT NOT NULL,
@@ -73,6 +80,7 @@ CREATE TABLE properties (
     FOREIGN KEY (dual_property_id) REFERENCES properties (id) ON DELETE RESTRICT
 );
 
+-- properties related to other properties
 CREATE TABLE related_properties (
     property_id TEXT NOT NULL,
     related_property_id TEXT NOT NULL,
@@ -82,12 +90,13 @@ CREATE TABLE related_properties (
     FOREIGN KEY (related_property_id) REFERENCES properties (id) ON DELETE CASCADE
 );
 
+-- properties satisfied by categories
 CREATE TABLE category_properties (
     category_id TEXT NOT NULL,
     property_id TEXT NOT NULL,
     reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
     is_deduced INTEGER NOT NULL DEFAULT FALSE,
-    position INTEGER NOT NULL DEFAULT 0,
+    position INTEGER NOT NULL DEFAULT FALSE,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (category_id, property_id),
@@ -95,6 +104,7 @@ CREATE TABLE category_properties (
     FOREIGN KEY (property_id) REFERENCES properties (id) ON DELETE CASCADE
 );
 
+-- properties not satisfied by categories
 CREATE TABLE category_non_properties (
     category_id TEXT NOT NULL,
     non_property_id TEXT NOT NULL,
@@ -108,6 +118,7 @@ CREATE TABLE category_non_properties (
     FOREIGN KEY (non_property_id) REFERENCES properties (id) ON DELETE CASCADE
 );
 
+-- isomorphism descriptions of categories
 CREATE TABLE category_isomorphisms (
     category_id TEXT PRIMARY KEY,
     description TEXT NOT NULL,
@@ -117,6 +128,7 @@ CREATE TABLE category_isomorphisms (
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
 );
 
+-- epimorphism descriptions of categories
 CREATE TABLE category_epimorphisms (
     category_id TEXT PRIMARY KEY,
     description TEXT NOT NULL,
@@ -126,6 +138,7 @@ CREATE TABLE category_epimorphisms (
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
 );
 
+-- monomorphism descriptions of categories
 CREATE TABLE category_monomorphisms (
     category_id TEXT PRIMARY KEY,
     description TEXT NOT NULL,
@@ -135,6 +148,7 @@ CREATE TABLE category_monomorphisms (
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
 );
 
+-- implications between properties of categories
 CREATE TABLE implications (
     id TEXT PRIMARY KEY,
     reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
@@ -144,6 +158,7 @@ CREATE TABLE implications (
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+-- assumptions of a given implication
 CREATE TABLE implication_assumptions (
     implication_id TEXT NOT NULL,
     property_id TEXT NOT NULL,
@@ -153,6 +168,7 @@ CREATE TABLE implication_assumptions (
     FOREIGN KEY (property_id) REFERENCES properties (id) ON DELETE CASCADE
 );
 
+-- conclusions of a given implication
 CREATE TABLE implication_conclusions (
     implication_id TEXT NOT NULL,
     property_id TEXT NOT NULL,

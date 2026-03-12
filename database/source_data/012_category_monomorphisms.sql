@@ -1,6 +1,10 @@
 DELETE FROM category_monomorphisms;
 
-INSERT INTO category_monomorphisms (category_id, description, reason)
+INSERT INTO category_monomorphisms (
+	category_id, -- ID of the category
+	description, -- description of its monomorphisms
+	reason		 -- proof or reference of this description
+)
 VALUES
 	(
 		'0',

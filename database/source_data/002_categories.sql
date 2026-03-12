@@ -1,7 +1,14 @@
 DELETE FROM categories;
 
-INSERT INTO CATEGORIES
-	(id, name, notation, objects, morphisms, description, nlab_link)
+INSERT INTO CATEGORIES (
+	id, 			-- ID used in URLs
+	name, 			-- short descriptive name
+	notation, 		-- LaTeX code
+	objects, 		-- short description of objects
+	morphisms, 		-- short description of morphisms
+	description, 	-- longer description (optional)
+	nlab_link 		-- nlab link (optional)
+)
 VALUES
 	(
 		'Set',

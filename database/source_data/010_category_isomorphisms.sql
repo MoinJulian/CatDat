@@ -1,6 +1,10 @@
 DELETE FROM category_isomorphisms;
 
-INSERT INTO category_isomorphisms (category_id, description, reason)
+INSERT INTO category_isomorphisms (
+	category_id, -- ID of the category
+	description, -- description of its isomorphisms
+	reason		 -- proof or reference of this description
+)
 VALUES
 	(
 		'0',

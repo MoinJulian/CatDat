@@ -3,11 +3,11 @@ DELETE FROM implication_assumptions;
 DELETE FROM implication_conclusions;
 
 INSERT INTO implication_input (
-	id,
-	assumptions,
-	conclusions,
-	reason,
-	is_equivalence
+	id,				-- ID of the implication, for internal use only
+	assumptions,	-- list of assumptions
+	conclusions,	-- list of conclusions
+	reason,			-- proof or reference
+	is_equivalence	-- TRUE/FALSE
 )
 VALUES
 	(
