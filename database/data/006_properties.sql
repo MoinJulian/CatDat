@@ -1,6 +1,13 @@
 DELETE FROM properties;
 
-INSERT INTO properties (id, prefix, description, nlab_link, dual_property_id, invariant_under_equivalences)
+INSERT INTO properties (
+	id,
+	prefix,
+	description,
+	nlab_link,
+	dual_property_id,
+	invariant_under_equivalences
+)
 VALUES
 	(
 		'small',

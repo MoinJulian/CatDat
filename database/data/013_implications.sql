@@ -2,8 +2,13 @@ DELETE FROM implications;
 DELETE FROM implication_assumptions;
 DELETE FROM implication_conclusions;
 
-INSERT INTO implication_input
-	(id, assumptions, conclusions, reason, is_equivalence)
+INSERT INTO implication_input (
+	id,
+	assumptions,
+	conclusions,
+	reason,
+	is_equivalence
+)
 VALUES
 	(
 		'small_consequence',
