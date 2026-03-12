@@ -63,7 +63,7 @@ CREATE TABLE prefixes (
 CREATE TABLE properties (
     id TEXT PRIMARY KEY,
     prefix TEXT NOT NULL,
-    description TEXT NOT NULL DEFAULT '',
+    description TEXT NOT NULL,
     nlab_link TEXT,
     invariant_under_equivalences INTEGER NOT NULL DEFAULT 1,
     dual_property_id TEXT,
@@ -85,8 +85,8 @@ CREATE TABLE related_properties (
 CREATE TABLE category_properties (
     category_id TEXT NOT NULL,
     property_id TEXT NOT NULL,
-    reason TEXT NOT NULL DEFAULT '',
-    is_deduced INTEGER NOT NULL DEFAULT 0,
+    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
+    is_deduced INTEGER NOT NULL DEFAULT FALSE,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (category_id, property_id),
@@ -97,8 +97,8 @@ CREATE TABLE category_properties (
 CREATE TABLE category_non_properties (
     category_id TEXT NOT NULL,
     non_property_id TEXT NOT NULL,
-    reason TEXT NOT NULL DEFAULT '',
-    is_deduced INTEGER NOT NULL DEFAULT 0,
+    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
+    is_deduced INTEGER NOT NULL DEFAULT FALSE,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (category_id, non_property_id),
@@ -109,7 +109,7 @@ CREATE TABLE category_non_properties (
 CREATE TABLE category_isomorphisms (
     category_id TEXT PRIMARY KEY,
     description TEXT NOT NULL,
-    reason TEXT NOT NULL DEFAULT '',
+    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
@@ -118,7 +118,7 @@ CREATE TABLE category_isomorphisms (
 CREATE TABLE category_epimorphisms (
     category_id TEXT PRIMARY KEY,
     description TEXT NOT NULL,
-    reason TEXT NOT NULL DEFAULT '',
+    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
@@ -127,7 +127,7 @@ CREATE TABLE category_epimorphisms (
 CREATE TABLE category_monomorphisms (
     category_id TEXT PRIMARY KEY,
     description TEXT NOT NULL,
-    reason TEXT NOT NULL DEFAULT '',
+    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
@@ -135,9 +135,9 @@ CREATE TABLE category_monomorphisms (
 
 CREATE TABLE implications (
     id TEXT PRIMARY KEY,
-    is_equivalence INTEGER NOT NULL DEFAULT 0,
-    reason TEXT NOT NULL DEFAULT '',
-    is_deduced INTEGER NOT NULL DEFAULT 0,
+    reason TEXT CHECK (reason IS NULL OR length(reason) > 0),
+    is_equivalence INTEGER NOT NULL DEFAULT FALSE,
+    is_deduced INTEGER NOT NULL DEFAULT FALSE,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

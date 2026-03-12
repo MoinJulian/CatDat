@@ -6,7 +6,7 @@
 		properties: {
 			id: string
 			prefix: string
-			reason?: string
+			reason?: string | null
 		}[]
 		description?: string
 	}

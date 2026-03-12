@@ -15,7 +15,7 @@ export type CategoryDisplay = {
 	notation: string
 	objects: string
 	morphisms: string
-	description: string
+	description: string | null
 	nlab_link: string | null
 }
 
@@ -24,7 +24,7 @@ export type RelatedCategory = Pick<CategoryDisplay, 'id' | 'name' | 'notation'>
 export type ImplicationDB = {
 	id: string
 	is_equivalence: number
-	reason: string
+	reason: string | null
 	assumptions: string
 	conclusions: string
 }
@@ -54,12 +54,12 @@ export type PropertyDisplay = Replace<
 
 export type DescriptionWithReason = {
 	description: string
-	reason: string
+	reason: string | null
 }
 
 export type CategoryPropertyDB = {
 	id: string
-	reason: string
+	reason: string | null
 	prefix: string
 	is_deduced: number
 }

@@ -588,7 +588,7 @@ VALUES
 		'abelian_malcev_consequence',
 		'["abelian"]',
 		'["Malcev"]',
-		'',
+		NULL,
 		FALSE
 	),
 	(

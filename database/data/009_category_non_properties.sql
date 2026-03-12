@@ -5,17 +5,17 @@ VALUES
 	(
 		'0',
 		'inhabited',
-		''
+		NULL
 	),
 	(
 		'2',
 		'connected',
-		''
+		NULL
 	),
 	(
 		'Set',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Set',
@@ -30,7 +30,7 @@ VALUES
 	(
 		'Ab',
 		'split abelian',
-		''
+		NULL
 	),
 	(
 		'Ab',
@@ -40,32 +40,32 @@ VALUES
 	(
 		'Top',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Top',
 		'locally presentable',
-		''
+		NULL
 	),
 	(
 		'Top',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Top',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Top',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Top',
 		'exact filtered colimits',
-		''
+		NULL
 	),
 	(
 		'Top',
@@ -75,17 +75,17 @@ VALUES
 	(
 		'Top',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'Grp',
 		'subobject classifier',
-		''
+		NULL
 	),
 	(
 		'Grp',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Grp',
@@ -95,7 +95,7 @@ VALUES
 	(
 		'Vect',
 		'trivial',
-		''
+		NULL
 	),
 	(
 		'Vect',
@@ -105,22 +105,22 @@ VALUES
 	(
 		'Ring',
 		'strict initial object',
-		''
+		NULL
 	),
 	(
 		'Ring',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Ring',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Ring',
 		'disjoint finite coproducts',
-		''
+		NULL
 	),
 	(
 		'Ring',
@@ -130,22 +130,22 @@ VALUES
 	(
 		'CRing',
 		'strict initial object',
-		''
+		NULL
 	),
 	(
 		'CRing',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'CRing',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'CRing',
 		'disjoint finite coproducts',
-		''
+		NULL
 	),
 	(
 		'CRing',
@@ -155,17 +155,17 @@ VALUES
 	(
 		'Rng',
 		'preadditive',
-		''
+		NULL
 	),
 	(
 		'Rng',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Rng',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Rng',
@@ -175,22 +175,22 @@ VALUES
 	(
 		'FinSet',
 		'small',
-		''
+		NULL
 	),
 	(
 		'FinSet',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'FinSet',
 		'sequential limits',
-		''
+		NULL
 	),
 	(
 		'FinSet',
 		'sequential colimits',
-		''
+		NULL
 	),
 	(
 		'FinSet',
@@ -210,7 +210,7 @@ VALUES
 	(
 		'FinAb',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'FinAb',
@@ -220,7 +220,7 @@ VALUES
 	(
 		'FinAb',
 		'sequential limits',
-		''
+		NULL
 	),
 	(
 		'FinAb',
@@ -230,27 +230,27 @@ VALUES
 	(
 		'Abfg',
 		'small',
-		''
+		NULL
 	),
 	(
 		'Abfg',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Abfg',
 		'split abelian',
-		''
+		NULL
 	),
 	(
 		'Abfg',
 		'countable products',
-		''
+		NULL
 	),
 	(
 		'Abfg',
 		'countable coproducts',
-		''
+		NULL
 	),
 	(
 		'Abfg',
@@ -265,12 +265,12 @@ VALUES
 	(
 		'Set*',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'sSet',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'sSet',
@@ -280,22 +280,22 @@ VALUES
 	(
 		'sSet',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'Mon',
 		'preadditive',
-		''
+		NULL
 	),
 	(
 		'Mon',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Mon',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Mon',
@@ -310,17 +310,17 @@ VALUES
 	(
 		'Pos',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Pos',
 		'finitary algebraic',
-		''
+		NULL
 	),
 	(
 		'Pos',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Pos',
@@ -330,17 +330,17 @@ VALUES
 	(
 		'Pos',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'walking_morphism',
 		'subobject classifier',
-		''
+		NULL
 	),
 	(
 		'M-Set',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'M-Set',
@@ -350,12 +350,12 @@ VALUES
 	(
 		'M-Set',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'R-Mod',
 		'split abelian',
-		''
+		NULL
 	),
 	(
 		'R-Mod',
@@ -365,32 +365,32 @@ VALUES
 	(
 		'Met',
 		'sequential limits',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'finite coproducts',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'essentially small',
-		''
+		NULL
 	),
 	(
 		'Met',
@@ -405,22 +405,22 @@ VALUES
 	(
 		'Met',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'Met_oo',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Met_oo',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Met_oo',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Met_oo',
@@ -435,27 +435,27 @@ VALUES
 	(
 		'Met_oo',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'products',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Met_c',
@@ -465,22 +465,22 @@ VALUES
 	(
 		'Met_c',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'Ban',
 		'preadditive',
-		''
+		NULL
 	),
 	(
 		'Ban',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Ban',
 		'exact filtered colimits',
-		''
+		NULL
 	),
 	(
 		'Ban',
@@ -495,42 +495,42 @@ VALUES
 	(
 		'Man',
 		'essentially small',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'countable products',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'coproducts',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'coequalizers',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'equalizers',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Man',
@@ -540,17 +540,17 @@ VALUES
 	(
 		'Meas',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Meas',
@@ -560,37 +560,37 @@ VALUES
 	(
 		'Meas',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'N',
 		'countable coproducts',
-		''
+		NULL
 	),
 	(
 		'N',
 		'essentially finite',
-		''
+		NULL
 	),
 	(
 		'Cat',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Cat',
 		'finitary algebraic',
-		''
+		NULL
 	),
 	(
 		'Cat',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Cat',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Cat',
@@ -600,27 +600,27 @@ VALUES
 	(
 		'Cat',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'On',
 		'terminal object',
-		''
+		NULL
 	),
 	(
 		'On',
 		'well-copowered',
-		''
+		NULL
 	),
 	(
 		'LRS',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'LRS',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'LRS',
@@ -635,22 +635,22 @@ VALUES
 	(
 		'Sch',
 		'coequalizers',
-		''
+		NULL
 	),
 	(
 		'Sch',
 		'countable products',
-		''
+		NULL
 	),
 	(
 		'Sch',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Sch',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Sch',
@@ -665,32 +665,32 @@ VALUES
 	(
 		'Fld',
 		'connected',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'well-copowered',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'pushouts',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Fld',
@@ -700,12 +700,12 @@ VALUES
 	(
 		'FreeAb',
 		'countable products',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
@@ -720,12 +720,12 @@ VALUES
 	(
 		'Z',
 		'locally essentially small',
-		''
+		NULL
 	),
 	(
 		'Z',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Z',
@@ -735,67 +735,67 @@ VALUES
 	(
 		'Z',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'BG',
 		'zero morphisms',
-		''
+		NULL
 	),
 	(
 		'BG',
 		'essentially finite',
-		''
+		NULL
 	),
 	(
 		'BGf',
 		'zero morphisms',
-		''
+		NULL
 	),
 	(
 		'BN',
 		'essentially finite',
-		''
+		NULL
 	),
 	(
 		'BN',
 		'zero morphisms',
-		''
+		NULL
 	),
 	(
 		'BN',
 		'equalizers',
-		''
+		NULL
 	),
 	(
 		'BN',
 		'sequential limits',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'initial object',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'zero morphisms',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'binary products',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'equalizers',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'pullbacks',
-		''
+		NULL
 	),
 	(
 		'walking_isomorphism',
@@ -805,17 +805,17 @@ VALUES
 	(
 		'Setne',
 		'binary coproducts',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'sequential limits',
-		''
+		NULL
 	),
 	(
 		'Setne',
@@ -825,22 +825,22 @@ VALUES
 	(
 		'B',
 		'small',
-		''
+		NULL
 	),
 	(
 		'B',
 		'connected',
-		''
+		NULL
 	),
 	(
 		'B',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'B',
 		'essentially finite',
-		''
+		NULL
 	),
 	(
 		'B',
@@ -850,32 +850,32 @@ VALUES
 	(
 		'FI',
 		'binary coproducts',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'small',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'binary products',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'sequential colimits',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'essentially finite',
-		''
+		NULL
 	),
 	(
 		'FI',
@@ -885,32 +885,32 @@ VALUES
 	(
 		'FS',
 		'small',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'connected',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'sequential limits',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'pullbacks',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'essentially finite',
-		''
+		NULL
 	),
 	(
 		'FS',
@@ -920,82 +920,82 @@ VALUES
 	(
 		'BOn',
 		'locally essentially small',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'initial object',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'terminal object',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'right cancellative',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'zero morphisms',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'balanced',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'binary products',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'binary coproducts',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'small',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'binary coproducts',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'subobject classifier',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'sequential colimits',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'countable products',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
@@ -1005,17 +1005,17 @@ VALUES
 	(
 		'FinOrd',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'Rel',
 		'preadditive',
-		''
+		NULL
 	),
 	(
 		'Rel',
 		'Cauchy complete',
-		''
+		NULL
 	),
 	(
 		'Rel',
@@ -1025,22 +1025,22 @@ VALUES
 	(
 		'Sp',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Sp',
 		'strict terminal object',
-		''
+		NULL
 	),
 	(
 		'Sp',
 		'countable products',
-		''
+		NULL
 	),
 	(
 		'Sp',
 		'countable coproducts',
-		''
+		NULL
 	),
 	(
 		'Sp',
@@ -1050,17 +1050,17 @@ VALUES
 	(
 		'Sp',
 		'Malcev',
-		''
+		NULL
 	),
 	(
 		'real_interval',
 		'essentially finite',
-		''
+		NULL
 	),
 	(
 		'real_interval',
 		'locally finitely presentable',
-		''
+		NULL
 	),
 	(
 		'Zdiv',

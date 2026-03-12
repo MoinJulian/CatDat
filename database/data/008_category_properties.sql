@@ -140,12 +140,12 @@ VALUES
 	(
 		'Grp',
 		'mono-regular',
-		''
+		NULL
 	),
 	(
 		'Grp',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Grp',
@@ -230,7 +230,7 @@ VALUES
 	(
 		'Rng',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Rng',
@@ -250,7 +250,7 @@ VALUES
 	(
 		'FinSet',
 		'elementary topos',
-		''
+		NULL
 	),
 	(
 		'FinSet',
@@ -285,137 +285,137 @@ VALUES
 	(
 		'Abfg',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Abfg',
 		'essentially small',
-		''
+		NULL
 	),
 	(
 		'Abfg',
 		'abelian',
-		''
+		NULL
 	),
 	(
 		'Abfg',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'Set*',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Set*',
 		'pointed',
-		''
+		NULL
 	),
 	(
 		'Set*',
 		'finitary algebraic',
-		''
+		NULL
 	),
 	(
 		'Set*',
 		'subobject classifier',
-		''
+		NULL
 	),
 	(
 		'Set*',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Set*',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Set*',
 		'epi-regular',
-		''
+		NULL
 	),
 	(
 		'sSet',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'sSet',
 		'Grothendieck topos',
-		''
+		NULL
 	),
 	(
 		'sSet',
 		'locally finitely presentable',
-		''
+		NULL
 	),
 	(
 		'Mon',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Mon',
 		'pointed',
-		''
+		NULL
 	),
 	(
 		'Mon',
 		'finitary algebraic',
-		''
+		NULL
 	),
 	(
 		'Mon',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Pos',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Pos',
 		'locally finitely presentable',
-		''
+		NULL
 	),
 	(
 		'Pos',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Pos',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Pos',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'walking_morphism',
 		'finitary algebraic',
-		''
+		NULL
 	),
 	(
 		'walking_morphism',
 		'self-dual',
-		''
+		NULL
 	),
 	(
 		'walking_morphism',
 		'finite',
-		''
+		NULL
 	),
 	(
 		'walking_morphism',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'walking_morphism',
@@ -425,87 +425,87 @@ VALUES
 	(
 		'M-Set',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'M-Set',
 		'Grothendieck topos',
-		''
+		NULL
 	),
 	(
 		'M-Set',
 		'finitary algebraic',
-		''
+		NULL
 	),
 	(
 		'R-Mod',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'R-Mod',
 		'abelian',
-		''
+		NULL
 	),
 	(
 		'R-Mod',
 		'finitary algebraic',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'well-copowered',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'equalizers',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'finite products',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'coequalizers',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'filtered colimits',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'strict initial object',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'Met',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Met_oo',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Met_oo',
@@ -515,67 +515,67 @@ VALUES
 	(
 		'Met_oo',
 		'infinitary distributive',
-		''
+		NULL
 	),
 	(
 		'Met_oo',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Met_oo',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'equalizers',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'infinitary distributive',
-		''
+		NULL
 	),
 	(
 		'Met_c',
 		'countable products',
-		''
+		NULL
 	),
 	(
 		'Ban',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Ban',
 		'pointed',
-		''
+		NULL
 	),
 	(
 		'Ban',
@@ -585,7 +585,7 @@ VALUES
 	(
 		'Ban',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Ban',
@@ -595,112 +595,112 @@ VALUES
 	(
 		'Man',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'well-copowered',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'distributive',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'disjoint finite coproducts',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'countable coproducts',
-		''
+		NULL
 	),
 	(
 		'Man',
 		'Cauchy complete',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'well-copowered',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'complete',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'cocomplete',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'infinitary distributive',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Meas',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'N',
 		'small',
-		''
+		NULL
 	),
 	(
 		'N',
 		'finitely cocomplete',
-		''
+		NULL
 	),
 	(
 		'N',
 		'binary products',
-		''
+		NULL
 	),
 	(
 		'N',
 		'thin',
-		''
+		NULL
 	),
 	(
 		'N',
 		'wide pullbacks',
-		''
+		NULL
 	),
 	(
 		'N',
@@ -710,52 +710,52 @@ VALUES
 	(
 		'Cat',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Cat',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Cat',
 		'locally finitely presentable',
-		''
+		NULL
 	),
 	(
 		'Cat',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'On',
 		'thin',
-		''
+		NULL
 	),
 	(
 		'On',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'On',
 		'cocomplete',
-		''
+		NULL
 	),
 	(
 		'On',
 		'binary products',
-		''
+		NULL
 	),
 	(
 		'On',
 		'wide pullbacks',
-		''
+		NULL
 	),
 	(
 		'On',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'On',
@@ -765,112 +765,112 @@ VALUES
 	(
 		'LRS',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'LRS',
 		'complete',
-		''
+		NULL
 	),
 	(
 		'LRS',
 		'cocomplete',
-		''
+		NULL
 	),
 	(
 		'LRS',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'LRS',
 		'well-copowered',
-		''
+		NULL
 	),
 	(
 		'LRS',
 		'infinitary distributive',
-		''
+		NULL
 	),
 	(
 		'LRS',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Sch',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Sch',
 		'finitely complete',
-		''
+		NULL
 	),
 	(
 		'Sch',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'Sch',
 		'infinitary distributive',
-		''
+		NULL
 	),
 	(
 		'Sch',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'filtered colimits',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'connected limits',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'inhabited',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'left cancellative',
-		''
+		NULL
 	),
 	(
 		'Fld',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
 		'additive',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
 		'well-copowered',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
@@ -880,17 +880,17 @@ VALUES
 	(
 		'FreeAb',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
@@ -900,57 +900,57 @@ VALUES
 	(
 		'Z',
 		'complete',
-		''
+		NULL
 	),
 	(
 		'Z',
 		'cocomplete',
-		''
+		NULL
 	),
 	(
 		'Z',
 		'infinitary distributive',
-		''
+		NULL
 	),
 	(
 		'Z',
 		'exact filtered colimits',
-		''
+		NULL
 	),
 	(
 		'Z',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Z',
 		'mono-regular',
-		''
+		NULL
 	),
 	(
 		'Z',
 		'epi-regular',
-		''
+		NULL
 	),
 	(
 		'BG',
 		'small',
-		''
+		NULL
 	),
 	(
 		'BG',
 		'groupoid',
-		''
+		NULL
 	),
 	(
 		'BG',
 		'connected',
-		''
+		NULL
 	),
 	(
 		'BG',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'BG',
@@ -960,22 +960,22 @@ VALUES
 	(
 		'BGf',
 		'finite',
-		''
+		NULL
 	),
 	(
 		'BGf',
 		'groupoid',
-		''
+		NULL
 	),
 	(
 		'BGf',
 		'connected',
-		''
+		NULL
 	),
 	(
 		'BGf',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'BGf',
@@ -985,32 +985,32 @@ VALUES
 	(
 		'BN',
 		'small',
-		''
+		NULL
 	),
 	(
 		'BN',
 		'connected',
-		''
+		NULL
 	),
 	(
 		'BN',
 		'self-dual',
-		''
+		NULL
 	),
 	(
 		'BN',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'BN',
 		'pullbacks',
-		''
+		NULL
 	),
 	(
 		'BN',
 		'left cancellative',
-		''
+		NULL
 	),
 	(
 		'BN',
@@ -1020,32 +1020,32 @@ VALUES
 	(
 		'walking_pair',
 		'finite',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'self-dual',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'connected',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'filtered limits',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
 		'left cancellative',
-		''
+		NULL
 	),
 	(
 		'walking_pair',
@@ -1055,197 +1055,197 @@ VALUES
 	(
 		'walking_isomorphism',
 		'trivial',
-		''
+		NULL
 	),
 	(
 		'walking_isomorphism',
 		'finite',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'well-copowered',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'products',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'wide pushouts',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'coequalizers',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'cartesian closed',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'mono-regular',
-		''
+		NULL
 	),
 	(
 		'Setne',
 		'epi-regular',
-		''
+		NULL
 	),
 	(
 		'B',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'B',
 		'essentially small',
-		''
+		NULL
 	),
 	(
 		'B',
 		'groupoid',
-		''
+		NULL
 	),
 	(
 		'B',
 		'inhabited',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'initial object',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'left cancellative',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'essentially small',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'connected limits',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'mono-regular',
-		''
+		NULL
 	),
 	(
 		'FI',
 		'epi-regular',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'essentially small',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'right cancellative',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'wide pushouts',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'coequalizers',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'mono-regular',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'epi-regular',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'connected',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'left cancellative',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'well-copowered',
-		''
+		NULL
 	),
 	(
 		'BOn',
 		'equalizers',
-		''
+		NULL
 	),
 	(
 		'BOn',
@@ -1255,102 +1255,102 @@ VALUES
 	(
 		'FinOrd',
 		'essentially small',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'finitely complete',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'cogenerator',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'strict initial object',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'coequalizers',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'mono-regular',
-		''
+		NULL
 	),
 	(
 		'FinOrd',
 		'epi-regular',
-		''
+		NULL
 	),
 	(
 		'Rel',
 		'locally small',
-		''
+		NULL
 	),
 	(
 		'Rel',
 		'self-dual',
-		''
+		NULL
 	),
 	(
 		'Rel',
 		'pointed',
-		''
+		NULL
 	),
 	(
 		'Rel',
 		'generator',
-		''
+		NULL
 	),
 	(
 		'Rel',
 		'disjoint coproducts',
-		''
+		NULL
 	),
 	(
 		'Rel',
 		'well-powered',
-		''
+		NULL
 	),
 	(
 		'Sp',
 		'elementary topos',
-		''
+		NULL
 	),
 	(
 		'Sp',
 		'essentially small',
-		''
+		NULL
 	),
 	(
 		'real_interval',
 		'small',
-		''
+		NULL
 	),
 	(
 		'real_interval',
 		'self-dual',
-		''
+		NULL
 	),
 	(
 		'real_interval',
 		'distributive',
-		''
+		NULL
 	),
 	(
 		'real_interval',

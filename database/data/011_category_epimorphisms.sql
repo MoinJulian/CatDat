@@ -60,7 +60,7 @@ VALUES
 	(
 		'Set*',
 		'surjective pointed maps',
-		''
+		NULL
 	),
 	(
 		'sSet',
@@ -90,7 +90,7 @@ VALUES
 	(
 		'Ban',
 		'linear contractions with dense image',
-		''
+		NULL
 	),
 	(
 		'Meas',
@@ -105,7 +105,7 @@ VALUES
 	(
 		'Cat',
 		'are surjective on objects, but not necessarily on morphisms. Isbell''s zigzag theorem gives a precise characterization.',
-		''
+		NULL
 	),
 	(
 		'On',
@@ -115,12 +115,12 @@ VALUES
 	(
 		'Fld',
 		'purely inseparable homomorphisms',
-		''
+		NULL
 	),
 	(
 		'FreeAb',
 		'homomorphisms $f : A \to B$ with the property that $f(A)$ is not contained in a proper direct summand of $B$.',
-		''
+		NULL
 	),
 	(
 		'Z',
@@ -165,12 +165,12 @@ VALUES
 	(
 		'FI',
 		'bijective maps',
-		''
+		NULL
 	),
 	(
 		'FS',
 		'every morphism',
-		''
+		NULL
 	),
 	(
 		'BOn',
@@ -180,12 +180,12 @@ VALUES
 	(
 		'FinOrd',
 		'surjective order-preserving maps',
-		''
+		NULL
 	),
 	(
 		'Rel',
 		'A relation $R : A \to B$ is an epimorphism iff the map $R^* : P(B) \to P(A)$ defined by $S \mapsto \{a \in A : \exists \, b \in S: (a,b) \in R \}$ is injective.',
-		''
+		NULL
 	),
 	(
 		'Sp',

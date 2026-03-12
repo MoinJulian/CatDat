@@ -5,7 +5,7 @@
 
 	type Props = {
 		children: Snippet
-		reason?: string
+		reason?: string | null
 	}
 
 	let { children, reason }: Props = $props()
