@@ -1,13 +1,10 @@
+import { LOG_DETAILS } from '$env/static/private'
 import { query } from '$lib/server/db'
 import sql from 'sql-template-tag'
 
-const LOG_DETAILS = false
+create_dualized_implications()
 
-main()
-
-// TODO: use batch
-
-async function main() {
+async function create_dualized_implications() {
 	const { err: err_clear } = await query(sql`
         DELETE FROM implications WHERE is_deduced = TRUE    
     `)
@@ -69,7 +66,7 @@ async function main() {
 	if (err) return
 
 	console.info(`Dualized ${dual_implications.length} implications`)
-	if (LOG_DETAILS) console.info(dual_implications.map((i) => i.id))
+	if (LOG_DETAILS === 'true') console.info(dual_implications.map((i) => i.id))
 
 	const { rows: self_dual_implications, err: err_self_dual } = await query<{
 		id: string
@@ -101,5 +98,5 @@ async function main() {
 	if (err_self_dual) return
 
 	console.info(`Created ${self_dual_implications.length} self-dual implications`)
-	if (LOG_DETAILS) console.info(self_dual_implications.map((i) => i.id))
+	if (LOG_DETAILS === 'true') console.info(self_dual_implications.map((i) => i.id))
 }

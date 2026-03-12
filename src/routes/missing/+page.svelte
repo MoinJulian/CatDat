@@ -7,7 +7,7 @@
 
 <MetaData
 	title="Missing data in CatDat"
-	description="Missing properties, missing special morphisms, missing examples, and more."
+	description="Missing properties, missing special morphisms, and more."
 />
 
 <h2>Missing data</h2>
@@ -37,29 +37,3 @@
 	description="There are {data.categories_with_missing_morphisms
 		.length} categories whose iso-, epi-, or monomorphisms are unknown."
 />
-
-<!-- TODO: bring back missing combinations -->
-
-<!-- <h3>Missing combinations</h3>
-
-<p class="hint">
-	Among the consistent combinations of the form <strong>P &#8743; &#172;Q</strong>
-	the following {data.missing_basic_combinations_with_prefixes.length}
-	combinations are currently not yet witnessed by an example category (or its dual) in our
-	database. Please help us fill in the gaps by <a href="/contribute">contributing</a> to this
-	project. Please also report in case some combination is inconsistent. This means that an
-	implication is missing in the database.
-</p>
-
-{#if data.missing_basic_combinations_with_prefixes.length}
-	<ul>
-		{#each data.missing_basic_combinations_with_prefixes as combination}
-			<li>
-				{combination.assumption_prefix}
-				{combination.assumption}, 
-				but {negate_prefix(combination.negation_prefix)}
-				{combination.negation}
-			</li>
-		{/each}
-	</ul>
-{/if} -->

@@ -1,26 +1,28 @@
+import { LOG_DETAILS } from '$env/static/private'
 import { sleep } from '$lib/commons/utils'
 import { batch, query } from '$lib/server/db'
 import sql from 'sql-template-tag'
 
-const LOG_DETAILS = false
+create_deductions()
 
-main()
-
-async function main() {
-	const { rows, err } = await query<{ category_id: string }>(sql`
-		SELECT id AS category_id FROM categories
-	`)
-
-	if (err) return
-
+async function create_deductions() {
 	const implications = await get_normalized_implications()
 	if (!implications) return
 
-	for (const { category_id } of rows) {
+	const categories = await get_categories()
+
+	for (const { category_id } of categories) {
 		await deduce_properties(category_id, implications)
 		await deduce_non_properties(category_id, implications)
 		await sleep(100)
 	}
+}
+
+async function get_categories() {
+	const { rows } = await query<{ category_id: string }>(sql`
+		SELECT id AS category_id FROM categories
+	`)
+	return rows ?? []
 }
 
 type NormalizedImplication = { assumptions: Set<string>; conclusion: string }
@@ -87,7 +89,7 @@ async function deduce_properties(
 
 	const properties = new Set(property_objects.map(({ property_id }) => property_id))
 
-	if (LOG_DETAILS) {
+	if (LOG_DETAILS === 'true') {
 		console.info(`Found ${properties.size} properties in the database`)
 		console.info(Array.from(properties))
 	}
@@ -106,12 +108,11 @@ async function deduce_properties(
 		properties.add(conclusion)
 		deduced_properties.push(conclusion)
 
-		// TODO: add prefixes to the reason text, and make it readable
 		const reason = `${Array.from(assumptions).join(', ')} => ${conclusion}.`
 		reasons[conclusion] = reason
 	}
 
-	if (LOG_DETAILS) {
+	if (LOG_DETAILS === 'true') {
 		console.info(`${deduced_properties.length} properties have been deduced`)
 		console.info(deduced_properties)
 	}
@@ -170,7 +171,7 @@ async function deduce_non_properties(
 		non_property_objects.map(({ non_property_id }) => non_property_id),
 	)
 
-	if (LOG_DETAILS) {
+	if (LOG_DETAILS === 'true') {
 		console.info(`Found ${non_properties.size} non-properties in the database`)
 		console.info(Array.from(non_properties))
 	}
@@ -207,12 +208,11 @@ async function deduce_non_properties(
 		non_properties.add(non_property)
 		deduced_non_properties.push(non_property)
 
-		// TODO: add prefixes, and make it readable
 		const reason = `Assume ${non_property}. But ${[...implication.assumptions].join(', ')} => ${implication.conclusion}. This is a contradiction.`
 		reasons[non_property] = reason
 	}
 
-	if (LOG_DETAILS) {
+	if (LOG_DETAILS === 'true') {
 		console.info(`${deduced_non_properties.length} non-properties have been deduced`)
 		console.info(deduced_non_properties)
 	}
