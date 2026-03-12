@@ -8,7 +8,7 @@ import {
 } from '$lib/data-utils/data.helpers'
 import { category_system, property_deduction_system } from '$lib/data-utils/deductions'
 import type { Category } from '$lib/database/categories.data'
-import { separator_in_url } from './search.config'
+import { search_separator } from './search.config'
 
 export function get_search_results(url: URL) {
 	const properties_query = url.searchParams.get('properties')
@@ -19,11 +19,11 @@ export function get_search_results(url: URL) {
 	}
 
 	const properties = properties_query
-		? properties_query.split(separator_in_url).map(decode_property_ID)
+		? properties_query.split(search_separator).map(decode_property_ID)
 		: []
 
 	const non_properties = non_properties_query
-		? non_properties_query.split(separator_in_url).map(decode_property_ID)
+		? non_properties_query.split(search_separator).map(decode_property_ID)
 		: []
 
 	const is_valid =

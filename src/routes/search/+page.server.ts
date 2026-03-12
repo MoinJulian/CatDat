@@ -1,17 +1,26 @@
 import { decode_property_ID } from '$lib/commons/property.url'
+import { search_separator } from '$lib/commons/search.config.js'
 import type { CategoryShort } from '$lib/commons/types'
 import { query } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
 
 export const load = async (event) => {
-	const { rows: rows_props, err: err_all } = await query<{ id: string }>(sql`
-		SELECT id FROM properties	
+	const { rows: rows_props, err: err_all } = await query<{
+		id: string
+		dual_property_id: string | null
+	}>(sql`
+		SELECT id, dual_property_id FROM properties	
 	`)
 
 	if (err_all) error(500, 'Failed to load properties')
 
 	const all_properties = rows_props.map(({ id }) => id)
+
+	const dual_properties_dict: Record<string, string | null> = {}
+	for (const row of rows_props) {
+		dual_properties_dict[row.id] = row.dual_property_id
+	}
 
 	const properties_query = event.url.searchParams.get('properties')
 	const non_properties_query = event.url.searchParams.get('non_properties')
@@ -27,12 +36,30 @@ export const load = async (event) => {
 	const all_properties_set = new Set(all_properties)
 
 	const selected_properties = properties_query
-		? properties_query.split(',').map(decode_property_ID)
+		? properties_query.split(search_separator).map(decode_property_ID)
 		: []
 
 	const selected_non_properties = non_properties_query
-		? non_properties_query.split(',').map(decode_property_ID)
+		? non_properties_query.split(search_separator).map(decode_property_ID)
 		: []
+
+	const dual_selected_properties_potential = selected_properties.map(
+		(p) => dual_properties_dict[p],
+	)
+
+	const dual_selected_non_properties_potential = selected_non_properties.map(
+		(p) => dual_properties_dict[p],
+	)
+
+	const dual_selected_properties = dual_selected_properties_potential.every(Boolean)
+		? (dual_selected_properties_potential as string[])
+		: null
+
+	const dual_selected_non_properties = dual_selected_non_properties_potential.every(
+		Boolean,
+	)
+		? (dual_selected_non_properties_potential as string[])
+		: null
 
 	const join_fragments: string[] = []
 	const join_fragments_negated: string[] = []
@@ -78,5 +105,7 @@ export const load = async (event) => {
 		selected_properties,
 		selected_non_properties,
 		found_categories,
+		dual_selected_properties,
+		dual_selected_non_properties,
 	}
 }

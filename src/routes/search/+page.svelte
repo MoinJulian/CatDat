@@ -4,6 +4,7 @@
 	import { browser } from '$app/environment'
 	import CategoryList from '$components/CategoryList.svelte'
 	import {
+		search_separator,
 		storage_key_non_properties,
 		storage_key_properties,
 	} from '$lib/commons/search.config'
@@ -42,11 +43,13 @@
 	)
 
 	function request_search_results() {
-		const properties_query = selected_properties.map(encode_property_ID).join(',')
+		const properties_query = selected_properties
+			.map(encode_property_ID)
+			.join(search_separator)
 
 		const non_properties_query = selected_non_properties
 			.map(encode_property_ID)
-			.join(',')
+			.join(search_separator)
 
 		const url = new URL('/search', window.location.origin)
 
@@ -61,8 +64,34 @@
 		goto(url, { invalidateAll: true })
 	}
 
+	function get_dual_search_results_link() {
+		if (!data.dual_selected_properties) return '/'
+		if (!data.dual_selected_non_properties) return '/'
+		if (!browser) return '/'
+
+		const properties_query = data.dual_selected_properties
+			.map(encode_property_ID)
+			.join(search_separator)
+
+		const non_properties_query = data.selected_non_properties
+			.map(encode_property_ID)
+			.join(search_separator)
+
+		const url = new URL('/search', window.location.origin)
+
+		if (properties_query) {
+			url.searchParams.set('properties', properties_query)
+		}
+
+		if (non_properties_query) {
+			url.searchParams.set('non_properties', non_properties_query)
+		}
+
+		return decodeURIComponent(url.toString())
+	}
+
 	const sample_search_url =
-		'/search?properties=finitely_complete,pointed&non_properties=complete'
+		'/search?properties=finitely_complete~pointed&non_properties=complete'
 </script>
 
 <MetaData
@@ -119,26 +148,16 @@
 	</section>
 {/if}
 
-<!-- TODO: bring back dual search if applicable -->
-<!-- idea: just add a link to it, do not display both results here -->
-
-<!-- {#if data.is_dual_search}
-	<section
-		transition:fade={{
-			duration: 150,
-		}}
-	>
-		<h2>Results for dual search</h2>
-
-		<p class="hint">
-			These categories satisfy the dual properties ({concatenate_info(
-				data.dualized_properties,
-			)}) resp. non-properties ({concatenate_info(data.dualized_non_properties)}).
-		</p>
-
-		<CategoryList categories={data.found_dualized_categories ?? []} />
-	</section>
-{/if} -->
+{#if data.dual_selected_properties && data.dual_selected_non_properties}
+	<p class="hint">
+		All properties have a dual, you may perform the <a
+			href={get_dual_search_results_link()}
+			data-sveltekit-reload="true"
+		>
+			dual search
+		</a>,
+	</p>
+{/if}
 
 <style>
 	.form {
