@@ -14,51 +14,65 @@ import { category_system, property_deduction_system } from '$lib/data-utils/dedu
 import { batch, query } from '$lib/server/db'
 import sql from 'sql-template-tag'
 import type { PropertyDB, PropertyDisplay } from '$lib/commons/types'
+import type { ImplicationDB } from '$lib/commons/types'
+import { display_implication, display_property } from '$lib/server/utils'
 
 export const load: PageServerLoad = async (event) => {
 	const id = decode_property_ID(event.params.id)
 
-	const { results, err } = await batch<[PropertyDB, { id: string }]>([
+	const { results, err } = await batch<[PropertyDB, { id: string }, ImplicationDB]>([
 		sql`
-		SELECT
-			id, prefix, description, dual_property_id,
-			nlab_link, invariant_under_equivalences
-		FROM properties
-		WHERE id = ${id}`,
+			SELECT
+				id, prefix, description, dual_property_id,
+				nlab_link, invariant_under_equivalences
+			FROM properties
+			WHERE id = ${id}
+		`,
 		sql`
-		SELECT related_property_id AS id
-		FROM related_properties
-		WHERE property_id = ${id}`,
+			SELECT related_property_id AS id
+			FROM related_properties
+			WHERE property_id = ${id}
+		`,
+		sql`
+			SELECT id, is_equivalence, reason, assumptions, conclusions
+			FROM implications_view
+			WHERE
+				EXISTS (
+					SELECT 1
+					FROM json_each(conclusions)
+					WHERE value = ${id}
+				)
+				OR
+				EXISTS (
+					SELECT 1
+					FROM json_each(assumptions)
+					WHERE value = ${id}
+				)
+			ORDER BY lower(assumptions) || ' ' || lower(conclusions)
+		`,
 	])
 
 	if (err) error(500, 'Could not load property')
 
-	const [properties, related] = results
+	const [properties, related, relevant_implications_db] = results
 
 	if (!properties.length) error(404, 'Property not found')
 
-	const row = properties[0]
-
-	const property: PropertyDisplay = {
-		id,
-		prefix: row.prefix,
-		description: row.description,
-		dual_property: row.dual_property,
-		nlab_link: row.nlab_link,
-		invariant_under_equivalences: Boolean(row.invariant_under_equivalences),
-	}
+	const property = display_property(properties[0])
 
 	const related_properties = related.map(({ id }) => id)
 
-	return {
-		property: render_nested_formulas(property),
+	const relevant_implications = relevant_implications_db.map(display_implication)
+
+	return render_nested_formulas({
+		property,
 		related_properties,
 		/* TODO: bring these values back */
 		categories_with_this_property: [],
 		categories_without_this_property: [],
 		unknown_categories: [],
-		relevant_implications: [],
-	}
+		relevant_implications,
+	})
 }
 
 // const categories_with_this_property = category_system

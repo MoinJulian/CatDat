@@ -61,16 +61,16 @@
 	</ul>
 {/if}
 
-<!-- TODO: bring these components back -->
-
-<!-- 
-
 <h3>Relevant implications</h3>
 
 <ImplicationList
 	implications={relevant_implications}
 	highlighted_property={property.id}
 />
+
+<!-- TODO: bring these components back -->
+
+<!--
 
 <h3>Examples</h3>
 

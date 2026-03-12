@@ -1,12 +1,11 @@
 <script lang="ts">
 	import type { ImplicationDisplay } from '$lib/commons/types'
-	import type { PropertyID } from '$lib/database/properties.data'
 	import ImplicationItem from './ImplicationItem.svelte'
 
 	type Props = {
 		implications: ImplicationDisplay[]
 		description?: string
-		highlighted_property?: PropertyID
+		highlighted_property?: string
 	}
 
 	let { implications, description, highlighted_property }: Props = $props()

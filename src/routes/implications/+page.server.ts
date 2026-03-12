@@ -3,6 +3,7 @@ import { query } from '$lib/server/db'
 import sql from 'sql-template-tag'
 import { error } from '@sveltejs/kit'
 import type { ImplicationDB, ImplicationDisplay } from '$lib/commons/types'
+import { display_implication } from '$lib/server/utils'
 
 export const load = async (event) => {
 	const show_all_implications = event.url.searchParams.has('show_all')
@@ -15,13 +16,7 @@ export const load = async (event) => {
 
 	if (err) error(500, 'Could not load implications')
 
-	const implications: ImplicationDisplay[] = rows.map((row) => ({
-		id: row.id,
-		is_equivalence: Boolean(row.is_equivalence),
-		reason: row.reason,
-		assumptions: JSON.parse(row.assumptions),
-		conclusions: JSON.parse(row.conclusions),
-	}))
+	const implications: ImplicationDisplay[] = rows.map(display_implication)
 
 	return {
 		implications: render_nested_formulas(implications),
