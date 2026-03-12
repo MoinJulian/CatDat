@@ -27,7 +27,7 @@
 <CategoryList categories={data.categories_with_unknown_properties} />
 
 <p class="hint">
-	In total, there are {data.total_number_unknown_properties} unknown properties of categories.
+	In total, there are {data.total_number_unknown_properties} unknown (category, property)-pairs.
 </p>
 
 <h3>Categories with unknown special morphisms</h3>
