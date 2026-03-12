@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit'
 import { query } from '$lib/server/db'
 import { render_nested_formulas } from '$lib/server/rendering'
-import { MAX_CATEGORIES_COMPARE } from '$lib/server/config'
+import { MAX_CATEGORIES_COMPARE } from '../compare.config'
 
 export const load = async (event) => {
 	const compared_ids = event.params.ids.split('/')

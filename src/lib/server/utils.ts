@@ -5,6 +5,12 @@ import type {
 	PropertyDisplay,
 } from '$lib/commons/types'
 
+export function is_object(obj: unknown): obj is Record<string, unknown> {
+	return obj != null && obj.constructor.name === 'Object'
+}
+
+export const sleep = (delay: number) => new Promise<void>((res) => setTimeout(res, delay))
+
 export function display_implication(implication: ImplicationDB): ImplicationDisplay {
 	return {
 		id: implication.id,
@@ -25,9 +31,3 @@ export function display_property(property: PropertyDB): PropertyDisplay {
 		invariant_under_equivalences: Boolean(property.invariant_under_equivalences),
 	}
 }
-
-export function is_object(obj: unknown): obj is Record<string, unknown> {
-	return obj != null && obj.constructor.name === 'Object'
-}
-
-export const sleep = (delay: number) => new Promise<void>((res) => setTimeout(res, delay))
