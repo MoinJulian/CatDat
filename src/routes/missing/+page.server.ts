@@ -20,7 +20,7 @@ export const load = async () => {
 		sql`
 			SELECT DISTINCT c.id, c.name
 			FROM categories c
-			CROSS INNER JOIN properties p
+			INNER JOIN properties p
 			LEFT JOIN category_properties cp
 				ON cp.category_id = c.id
 				AND cp.property_id = p.id
@@ -35,7 +35,7 @@ export const load = async () => {
 		sql`
 			SELECT COUNT(*) as total
 			FROM categories c
-			CROSS JOIN properties p
+			JOIN properties p
 			LEFT JOIN category_properties cp
 				ON cp.category_id = c.id
 				AND cp.property_id = p.id
