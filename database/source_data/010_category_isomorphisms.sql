@@ -3,7 +3,7 @@ DELETE FROM category_isomorphisms;
 INSERT INTO category_isomorphisms (
 	category_id, -- ID of the category
 	description, -- description of its isomorphisms
-	reason		 -- proof or reference of this description
+	reason		 -- proof or reference for this description (required)
 )
 VALUES
 	(
