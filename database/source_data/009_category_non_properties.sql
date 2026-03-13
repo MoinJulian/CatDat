@@ -1,9 +1,9 @@
 DELETE FROM category_non_properties;
 
 INSERT INTO category_non_properties (
-	category_id,		-- ID of the category
-	non_property_id,	-- ID of the non-property
-	reason				-- proof or reference why the category lacks the property
+	category_id,	 -- ID of the category
+	non_property_id, -- ID of the non-property
+	reason			 -- proof or reference why the category lacks the property (if known)
 )
 VALUES
 	(
