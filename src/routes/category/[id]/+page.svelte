@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
-
+	import Fa from 'svelte-fa'
 	import MetaData from '$components/MetaData.svelte'
 	import PropertyList from '$components/PropertyList.svelte'
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import Chip from '$components/Chip.svelte'
 	import LabelWithReason from '$components/LabelWithReason.svelte'
 	import { category_detail_level } from '$lib/states/detail_level.svelte'
+	import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 
 	let { data } = $props()
 
@@ -138,7 +139,7 @@
 				</LabelWithReason>
 			</li>
 		{:else}
-			<li>Isomorphisms: unknown</li>
+			<li>Isomorphisms: <Fa icon={faQuestion} scale={0.825} /></li>
 		{/if}
 		{#if data.monomorphisms}
 			<li>
@@ -147,7 +148,7 @@
 				</LabelWithReason>
 			</li>
 		{:else}
-			<li>Monomorphisms: unknown</li>
+			<li>Monomorphisms: <Fa icon={faQuestion} scale={0.825} /></li>
 		{/if}
 		{#if data.epimorphisms}
 			<li>
@@ -156,7 +157,7 @@
 				</LabelWithReason>
 			</li>
 		{:else}
-			<li>Epimorphisms: unknown</li>
+			<li>Epimorphisms: <Fa icon={faQuestion} scale={0.825} /></li>
 		{/if}
 	</ul>
 </section>
