@@ -7,7 +7,7 @@ export const prerender = true
 
 export const load = async () => {
 	const { results, err } = await batch<
-		[CategoryShort, CategoryShort, { total: number }]
+		[CategoryShort, CategoryShort, { total: number }, CategoryShort, CategoryShort]
 	>([
 		sql`
 			SELECT c.id, c.name FROM categories c
@@ -48,6 +48,20 @@ export const load = async () => {
 				cp.property_id IS NULL
 				AND cnp.non_property_id IS NULL
 		`,
+		sql`
+			SELECT DISTINCT c.id, c.name
+			FROM categories c
+			INNER JOIN category_properties cp
+				ON cp.category_id = c.id
+			WHERE cp.reason IS NULL
+		`,
+		sql`
+			SELECT DISTINCT c.id, c.name
+			FROM categories c
+			INNER JOIN category_non_properties cnp
+				ON cnp.category_id = c.id
+			WHERE cnp.reason IS NULL
+		`,
 	])
 
 	if (err) error(500, 'Failed to load data')
@@ -56,6 +70,8 @@ export const load = async () => {
 		categories_with_missing_morphisms,
 		categories_with_unknown_properties,
 		total_objects,
+		categories_with_unreasoned_properties,
+		categories_with_unreasoned_non_properties,
 	] = results
 
 	const total_number_unknown_properties = total_objects[0].total
@@ -64,5 +80,7 @@ export const load = async () => {
 		categories_with_unknown_properties,
 		total_number_unknown_properties,
 		categories_with_missing_morphisms,
+		categories_with_unreasoned_properties,
+		categories_with_unreasoned_non_properties,
 	}
 }

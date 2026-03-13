@@ -12,23 +12,39 @@
 
 <h2>Missing data</h2>
 
-<p class="hint">
+<p>
 	This page lists some missing data in the database. Please help us fill in the gaps by
 	<a href="/contribute">contributing</a> to this project.
 </p>
 
 <h3>Categories with unknown properties</h3>
 
-<p class="hint">
-	There are {data.categories_with_unknown_properties.length} categories that have some unknown
-	properties.
-</p>
-
-<CategoryList categories={data.categories_with_unknown_properties} />
+<CategoryList
+	categories={data.categories_with_unknown_properties}
+	description="There are {data.categories_with_unknown_properties
+		.length} categories that have some unknown
+	properties."
+/>
 
 <p class="hint">
 	In total, there are {data.total_number_unknown_properties} unknown (category, property)-pairs.
 </p>
+
+<h3>Categories with properties without recorded reason</h3>
+
+<CategoryList
+	categories={data.categories_with_unreasoned_properties}
+	description="There are {data.categories_with_unreasoned_properties
+		.length} categories with properties that have no reason."
+/>
+
+<h3>Categories with non-properties without recorded reason</h3>
+
+<CategoryList
+	categories={data.categories_with_unreasoned_non_properties}
+	description="There are {data.categories_with_unreasoned_non_properties
+		.length} categories with non_properties that have no reason."
+/>
 
 <h3>Categories with unknown special morphisms</h3>
 
