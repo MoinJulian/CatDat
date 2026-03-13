@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
+		"dev:remote": "vite dev --mode prod",
 		"dev:host": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -17,7 +18,12 @@
 		"db:seed": "./scripts/seed.sh",
 		"db:deduce-implications": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-implications.ts",
 		"db:deduce-properties": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-properties.ts",
-		"db:create": "pnpm db:seed && pnpm db:deduce-implications && pnpm db:deduce-properties"
+		"db:create": "pnpm db:seed && pnpm db:deduce-implications && pnpm db:deduce-properties",
+		"db:shell:remote": "turso db shell catdat",
+		"db:seed:remote": "./scripts/seed_remote.sh",
+		"db:deduce-implications:remote": "npx vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-implications.ts",
+		"db:deduce-properties:remote": "npx vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-properties.ts",
+		"db:create:remote": "pnpm db:seed:remote && pnpm db:deduce-implications:remote && pnpm db:deduce-properties:remote"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.0",
