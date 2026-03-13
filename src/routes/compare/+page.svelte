@@ -4,6 +4,7 @@
 	import MetaData from '$components/MetaData.svelte'
 	import Selection from '$components/Selection.svelte'
 	import { is_string_array } from '$lib/commons/utils'
+	import { MAX_CATEGORIES_COMPARE } from './compare.config'
 
 	let { data } = $props()
 
@@ -42,7 +43,7 @@
 
 		if (
 			chosen_categories.length === 0 ||
-			chosen_categories.length > data.max_categories_compare
+			chosen_categories.length > MAX_CATEGORIES_COMPARE
 		)
 			return
 
@@ -59,8 +60,7 @@
 <h2>Choose categories for comparison</h2>
 
 <p class="hint">
-	Select up to {data.max_categories_compare} categories to compare their properties with each
-	other.
+	Select up to {MAX_CATEGORIES_COMPARE} categories to compare their properties with each other.
 </p>
 
 <Selection
