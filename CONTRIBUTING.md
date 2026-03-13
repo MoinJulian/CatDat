@@ -41,7 +41,9 @@ All your updates to the _data_ happen in the folder [database/source_data](datab
 
 ### Updating the local database
 
-Run the command `pnpm db:create`.
+Run `pnpm db:create` to create the local database from scratch. Ensure that it completes without errors.
+
+Then, run `pnpm db:check` to perform sanity checks. If it fails, either there is an issue in your PR, or the data used by this script needs to be updated.
 
 ### Guidelines for Adding New Data
 

@@ -35,6 +35,6 @@ Changes to the database are reflected by updating the mentioned SQL files in the
 
 Crucially, from the defined properties for a given category and implications, new properties can be derived automatically (same with non-properties). Also, suitable implications may be dualized. These deductions are computed and applied to the database via the commands `pnpm db:deduce-implications` and `pnpm db:deduce-properties`. Notice that the SQL files do _not_ contain derived data.
 
-The command `pnpm db:create` executes all the previous commands in sequence, thus creating the database from scratch.
+The command `pnpm db:create` executes all the previous commands in sequence, thus creating the database from scratch. The command `pnpm db:check` executes some sanity checks of the generated data.
 
 During runtime of the application, the database is read-only.
