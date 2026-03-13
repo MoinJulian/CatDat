@@ -3,11 +3,13 @@ import type { CategoryShort } from '$lib/commons/types'
 import { query } from '$lib/server/db'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
-
-const SEARCH_SEPARATOR = '~'
+import { SEARCH_SEPARATOR } from './search.config'
 
 export const load = async (event) => {
-	const { rows: rows_props, err: err_all } = await query<{
+	const properties_query = event.url.searchParams.get('properties')
+	const non_properties_query = event.url.searchParams.get('non_properties')
+
+	const { rows: all_properties_objects, err: err_all } = await query<{
 		id: string
 		dual_property_id: string | null
 	}>(sql`
@@ -16,23 +18,19 @@ export const load = async (event) => {
 
 	if (err_all) error(500, 'Failed to load properties')
 
-	const all_properties = rows_props.map(({ id }) => id)
-
-	const dual_properties_dict: Record<string, string | null> = {}
-	for (const row of rows_props) {
-		dual_properties_dict[row.id] = row.dual_property_id
-	}
-
-	const properties_query = event.url.searchParams.get('properties')
-	const non_properties_query = event.url.searchParams.get('non_properties')
+	const all_properties = all_properties_objects.map(({ id }) => id)
 
 	if (!properties_query && !non_properties_query) {
 		return {
 			is_search: false,
-			search_separator: SEARCH_SEPARATOR,
 			all_properties,
 			found_categories: [],
 		}
+	}
+
+	const dual_properties_dict: Record<string, string | null> = {}
+	for (const row of all_properties_objects) {
+		dual_properties_dict[row.id] = row.dual_property_id
 	}
 
 	const all_properties_set = new Set(all_properties)
@@ -45,31 +43,33 @@ export const load = async (event) => {
 		? non_properties_query.split(SEARCH_SEPARATOR).map(decode_property_ID)
 		: []
 
-	const dual_selected_properties_potential = selected_properties.map(
+	const potential_dual_selected_properties = selected_properties.map(
 		(p) => dual_properties_dict[p],
 	)
 
-	const dual_selected_non_properties_potential = selected_non_properties.map(
+	const potential_dual_selected_non_properties = selected_non_properties.map(
 		(p) => dual_properties_dict[p],
 	)
 
-	const dual_selected_properties = dual_selected_properties_potential.every(Boolean)
-		? (dual_selected_properties_potential as string[])
-		: null
-
-	const dual_selected_non_properties = dual_selected_non_properties_potential.every(
-		Boolean,
+	const dual_selected_properties = potential_dual_selected_properties.every(
+		(p) => p !== null,
 	)
-		? (dual_selected_non_properties_potential as string[])
+		? potential_dual_selected_properties
 		: null
 
-	const join_fragments: string[] = []
-	const join_fragments_negated: string[] = []
+	const dual_selected_non_properties = potential_dual_selected_non_properties.every(
+		(p) => p !== null,
+	)
+		? (potential_dual_selected_non_properties as string[])
+		: null
+
+	const join_fragments_properties: string[] = []
+	const join_fragments_non_properties: string[] = []
 	const values: string[] = []
 
 	selected_properties.forEach((p, i) => {
 		if (!all_properties_set.has(p)) return
-		join_fragments.push(`
+		join_fragments_properties.push(`
 			INNER JOIN category_properties cp${i}
 			ON cp${i}.category_id = c.id
 			AND cp${i}.property_id = ?
@@ -79,7 +79,7 @@ export const load = async (event) => {
 
 	selected_non_properties.forEach((p, i) => {
 		if (!all_properties_set.has(p)) return
-		join_fragments.push(`
+		join_fragments_properties.push(`
 			INNER JOIN category_non_properties cnp${i}
 			ON cnp${i}.category_id = c.id
 			AND cnp${i}.non_property_id = ?
@@ -90,8 +90,8 @@ export const load = async (event) => {
 	const stmt = `
 		SELECT c.id, c.name
 		FROM categories c
-		${join_fragments.join('\n')}
-		${join_fragments_negated.join('\n')}
+		${join_fragments_properties.join('\n')}
+		${join_fragments_non_properties.join('\n')}
 	`
 
 	const { rows: found_categories, err } = await query<CategoryShort>({
@@ -103,7 +103,6 @@ export const load = async (event) => {
 
 	return {
 		is_search: true,
-		search_separator: SEARCH_SEPARATOR,
 		all_properties,
 		selected_properties,
 		selected_non_properties,

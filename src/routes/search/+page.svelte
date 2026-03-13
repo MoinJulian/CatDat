@@ -6,49 +6,8 @@
 	import Selection from '$components/Selection.svelte'
 	import { encode_property_ID } from '$lib/commons/property.url'
 	import MetaData from '$components/MetaData.svelte'
-	import { is_string_array } from '$lib/commons/utils'
-
-	const SELECTED_PROPERTIES_STORAGE_KEY = 'search_properties'
-	const SELECTED_NON_PROPERTIES_STORAGE_KEY = 'search_non_properties'
-
-	function get_saved_search(): [string[], string[]] {
-		if (!browser) return [[], []]
-
-		const properties_string = window.sessionStorage.getItem(
-			SELECTED_PROPERTIES_STORAGE_KEY,
-		)
-		const non_properties_string = window.sessionStorage.getItem(
-			SELECTED_NON_PROPERTIES_STORAGE_KEY,
-		)
-
-		if (!properties_string || !non_properties_string) return [[], []]
-
-		try {
-			const parsed_properties: unknown = JSON.parse(properties_string)
-			const parsed_non_properties: unknown = JSON.parse(non_properties_string)
-
-			const is_valid =
-				is_string_array(parsed_properties) &&
-				is_string_array(parsed_non_properties)
-
-			return is_valid ? [parsed_properties, parsed_non_properties] : [[], []]
-		} catch {
-			console.error('Error parsing saved search from sessionStorage')
-			return [[], []]
-		}
-	}
-
-	$effect(() => {
-		if (!browser) return
-		window.sessionStorage.setItem(
-			SELECTED_PROPERTIES_STORAGE_KEY,
-			JSON.stringify(selected_properties),
-		)
-		window.sessionStorage.setItem(
-			SELECTED_NON_PROPERTIES_STORAGE_KEY,
-			JSON.stringify(selected_non_properties),
-		)
-	})
+	import { SEARCH_SEPARATOR } from './search.config'
+	import { get_saved_search, save_search } from './search.utils'
 
 	const [saved_properties, saved_non_properties] = get_saved_search()
 
@@ -67,14 +26,18 @@
 			: saved_non_properties,
 	)
 
+	$effect(() => {
+		save_search(selected_properties, selected_non_properties)
+	})
+
 	function request_search_results() {
 		const properties_query = selected_properties
 			.map(encode_property_ID)
-			.join(data.search_separator)
+			.join(SEARCH_SEPARATOR)
 
 		const non_properties_query = selected_non_properties
 			.map(encode_property_ID)
-			.join(data.search_separator)
+			.join(SEARCH_SEPARATOR)
 
 		const url = new URL('/search', window.location.origin)
 
@@ -96,11 +59,11 @@
 
 		const properties_query = data.dual_selected_properties
 			.map(encode_property_ID)
-			.join(data.search_separator)
+			.join(SEARCH_SEPARATOR)
 
 		const non_properties_query = data.dual_selected_non_properties
 			.map(encode_property_ID)
-			.join(data.search_separator)
+			.join(SEARCH_SEPARATOR)
 
 		const url = new URL('/search', window.location.origin)
 
@@ -115,8 +78,7 @@
 		return decodeURIComponent(url.toString())
 	}
 
-	const sample_search_url =
-		'/search?properties=finitely_complete~pointed&non_properties=complete'
+	const sample_search_url = `/search?properties=finitely_complete${SEARCH_SEPARATOR}pointed&non_properties=complete`
 </script>
 
 <MetaData
@@ -129,7 +91,7 @@
 <p class="hint">
 	Search for categories that satisfy a specific set of properties while simultaneously
 	not satisfying another set of properties. For example, you can
-	<a href={sample_search_url} target="_blank">look</a>
+	<a href={sample_search_url} data-sveltekit-reload="true">look</a>
 	for categories that are finitely complete and pointed but not complete.
 </p>
 
@@ -166,7 +128,7 @@
 
 {#if data.dual_selected_properties && data.dual_selected_non_properties}
 	<p class="hint">
-		All properties have a dual, you may perform the <a
+		All selected properties have a dual, you may perform the <a
 			href={get_dual_search_results_link()}
 			data-sveltekit-reload="true"
 		>

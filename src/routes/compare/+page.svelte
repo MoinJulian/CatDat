@@ -1,40 +1,17 @@
 <script lang="ts">
-	import { browser } from '$app/environment'
 	import { goto } from '$app/navigation'
 	import MetaData from '$components/MetaData.svelte'
 	import Selection from '$components/Selection.svelte'
 	import type { CategoryShort } from '$lib/commons/types'
-	import { is_string_array } from '$lib/commons/utils'
 	import { MAX_CATEGORIES_COMPARE } from './compare.config'
+	import { get_compared_categories, save_comparison } from './compare.utils'
 
 	let { data } = $props()
-
-	const COMPARISON_STORAGE_KEY = 'comparison'
-
-	function get_compared_categories(): string[] {
-		if (!browser) return []
-
-		const names_string = window.sessionStorage.getItem(COMPARISON_STORAGE_KEY)
-		if (!names_string) return []
-
-		try {
-			const parsed_names: unknown = JSON.parse(names_string)
-			const is_valid = is_string_array(parsed_names)
-			return is_valid ? parsed_names : []
-		} catch {
-			console.error('Error parsing saved categories from sessionStorage')
-			return []
-		}
-	}
 
 	let compared_categories: string[] = $state(get_compared_categories())
 
 	$effect(() => {
-		if (!browser) return
-		window.sessionStorage.setItem(
-			COMPARISON_STORAGE_KEY,
-			JSON.stringify(compared_categories),
-		)
+		save_comparison(compared_categories)
 	})
 
 	let chosen_categories: CategoryShort[] = $derived(
