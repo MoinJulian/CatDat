@@ -16,16 +16,16 @@
 		"prepare": "husky",
 		"db:shell": "sqlite3 database/local.db",
 		"db:seed": "./scripts/seed.sh",
-		"db:deduce-implications": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-implications.ts",
-		"db:deduce-properties": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-properties.ts",
+		"db:deduce-implications": "vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-implications.ts",
+		"db:deduce-properties": "vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-properties.ts",
 		"db:create": "pnpm db:seed && pnpm db:deduce-implications && pnpm db:deduce-properties",
-		"db:check": "npx vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/check.ts",
+		"db:check": "vite-node --options.transformMode.ssr='/.*/' src/lib/scripts/check.ts",
 		"db:shell:remote": "turso db shell catdat",
 		"db:seed:remote": "./scripts/seed_remote.sh",
-		"db:deduce-implications:remote": "npx vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-implications.ts",
-		"db:deduce-properties:remote": "npx vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-properties.ts",
+		"db:deduce-implications:remote": "vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-implications.ts",
+		"db:deduce-properties:remote": "vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/deduce-properties.ts",
 		"db:create:remote": "pnpm db:seed:remote && pnpm db:deduce-implications:remote && pnpm db:deduce-properties:remote",
-		"db:check:remote": "npx vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/check.ts"
+		"db:check:remote": "vite-node --mode prod --options.transformMode.ssr='/.*/' src/lib/scripts/check.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.0",
