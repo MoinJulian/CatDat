@@ -20,10 +20,6 @@
 		padding-block: 2rem;
 	}
 
-	h1 {
-		position: relative;
-	}
-
 	svg {
 		width: 175px;
 		display: inline-block;
