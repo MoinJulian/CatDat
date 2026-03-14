@@ -123,6 +123,11 @@ VALUES
 	),
 	(
 		'Top',
+		'cogenerator',
+		'It is easily checked that the indiscrete two-point space is a cogenerator.'
+	),
+	(
+		'Top',
 		'disjoint coproducts',
 		'This follows easily from the corresponding fact for sets.'
 	),

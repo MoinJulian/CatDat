@@ -63,11 +63,6 @@ VALUES
 	),
 	(
 		'Top',
-		'cogenerator',
-		NULL
-	),
-	(
-		'Top',
 		'exact filtered colimits',
 		NULL
 	),
