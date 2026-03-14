@@ -43,7 +43,7 @@
 <CategoryList
 	categories={data.categories_with_unreasoned_non_properties}
 	description="There are {data.categories_with_unreasoned_non_properties
-		.length} categories with non_properties that have no reason."
+		.length} categories with non-properties that have no reason."
 />
 
 <h3>Categories with unknown special morphisms</h3>
