@@ -14,13 +14,13 @@
 body {
 	--bg-color: #fff;
 	--secondary-bg-color: #eee;
-	--text-color: #000;
-	--secondary-text-color: #666;
+	--text-color: #111;
+	--secondary-text-color: #555;
 	--outline-color: #666;
 	--secondary-outline-color: #aaa;
-	--accent-color: #3265a8;
+	--accent-color: #375886;
 	--heading-color: #000;
-	--button-color: #000;
+	--button-color: #375886;
 	--button-text-color: #fff;
 	--success-color: #079307;
 	--error-color: #ff0000;

@@ -60,7 +60,7 @@
 		transition: color 150ms;
 
 		&[aria-expanded='true'] {
-			color: var(--accent-color);
+			color: var(--text-color);
 		}
 	}
 
