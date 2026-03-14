@@ -1373,8 +1373,8 @@ VALUES
 	),
 	(
 		'real_interval',
-		'distributive',
-		NULL
+		'cartesian closed',
+		'The exponential $a \Rightarrow b$ (Heyting implication) is $1$ when $a \leq b$ and otherwise $b$.'
 	),
 	(
 		'real_interval',
