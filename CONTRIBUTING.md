@@ -14,10 +14,10 @@ Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You 
 1. Clone the repository
 2. Install the dependencies with `pnpm install`
 3. Create the local `.env` file based on the `.env.example` file.
-4. Start the local development server with `pnpm dev`.
-5. Create the local database with `pnpm db:create`.
+4. Create the local database with `pnpm db:create`.
+5. Start the local development server with `pnpm dev`.
 
-All your updates to the _data_ happen in the folder [database/data](database/data/), see also [database.md](/DATABASE.md).
+See [here](DEVELOPMENT.md) for details. All your updates to the _data_ happen in the folder [database/data](database/data/), see also [database.md](/DATABASE.md).
 
 ### Adding a New Category
 
