@@ -10,13 +10,7 @@ A push also locally triggers a Svelte check `pnpm check`, which includes type ch
 
 ## Database
 
-The database is hosted on [Turso](https://turso.tech). The command
-
-```sh
-pnpm db:create:remote
-```
-
-recreates the Turso database from the local database as defined in the [/database](/database/) folder. See [database.md](/DATABASE.md) for details on this command.
+The database is hosted on [Turso](https://turso.tech). The command `pnpm db:create:remote` recreates the Turso database from the local database as defined in the [/database](/database/) folder. See [database.md](/DATABASE.md) for details on this command.
 
 ## Prerendering
 

@@ -50,6 +50,6 @@ These deductions are computed and applied to the database via the commands `pnpm
 
 The command `pnpm db:create` executes all the previous commands in sequence, thus creating the database from scratch. The command `pnpm db:check` executes some sanity checks on the generated data.
 
-For every one of the mentioned commands there is a version for the remote database hosted on [Turso](https://turso.tech). For example, `pnpm db:create:remote` creates the whole remote database.
+For every one of the mentioned commands there is a version for the remote database hosted on [Turso](https://turso.tech). For example, `pnpm db:create:remote` creates the whole remote database; this runs automatically before every `git push` to the main branch.
 
 During runtime of the application, the database is read-only.
