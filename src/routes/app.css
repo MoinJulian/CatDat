@@ -67,6 +67,7 @@ a {
 a.accent,
 a:active {
 	color: var(--accent-color);
+	text-decoration-color: currentColor;
 }
 
 a:focus-visible,
