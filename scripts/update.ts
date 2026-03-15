@@ -23,11 +23,9 @@ await db.execute('PRAGMA foreign_keys = ON')
 async function update(db: Client) {
 	const has_migrated = await migrate(db)
 	if (!has_migrated) return
-	console.info('')
+
 	await deduce_implications(db)
-	console.info('')
 	await deduce_all_properties(db)
-	console.info('')
 	await check(db)
 }
 
