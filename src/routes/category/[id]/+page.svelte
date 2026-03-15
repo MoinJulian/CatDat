@@ -32,7 +32,7 @@
 </ChipGroup>
 
 <section aria-label="main info" class="main">
-	<ul>
+	<ul class="with-margins">
 		<li>
 			notation: {@html category.notation}
 		</li>
@@ -131,7 +131,7 @@
 
 <section>
 	<h3>Special morphisms</h3>
-	<ul>
+	<ul class="with-margins">
 		{#if data.isomorphisms}
 			<li>
 				<TextWithReason reason={data.isomorphisms.reason}>
@@ -185,5 +185,9 @@
 			grid-template-columns: 1fr 1fr;
 			gap: 0.5rem;
 		}
+	}
+
+	ul.with-margins li + li {
+		margin-top: 0.25rem;
 	}
 </style>
