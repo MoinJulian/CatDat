@@ -32,13 +32,9 @@ Further tables are:
 - `related_properties`
 - `category_comments`
 
-See [tables.sql](/database/schema/01_tables.sql) in the folder [/database/schema](/database/schema) for detailed table definitions. The other files in this folder provide indices, triggers, and views for these tables.
+## Migrations
 
-## Source Data
-
-The SQL files in the folder [/database/data](/database/data/) provide the data source for these tables. The command `pnpm db:seed` applies the table definitions and the SQL files to the database.
-
-Changes to the database are made by updating the mentioned SQL files in the repository.
+The database is built up incrementally and updated with the help of migration files in the folder [/database/migrations](/database/migrations/). The command `pnpm db:migrate` runs the migrations that are not yet applied.
 
 ## Derived Data
 
@@ -48,7 +44,7 @@ These deductions are computed and applied to the database via the commands `pnpm
 
 ## Commands
 
-The command `pnpm db:create` executes all the previous commands in sequence, thus creating the database from scratch. The command `pnpm db:check` executes some sanity checks on the generated data.
+The command `pnpm db:create` executes all the previous commands in sequence. The command `pnpm db:check` executes some sanity checks on the generated data.
 
 For every one of the mentioned commands there is a version for the remote database hosted on [Turso](https://turso.tech). For example, `pnpm db:create:remote` creates the whole remote database; this runs automatically before every `git push` to the main branch.
 
