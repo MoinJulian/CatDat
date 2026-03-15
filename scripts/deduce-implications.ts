@@ -1,31 +1,37 @@
-import { LOG_DETAILS } from '$env/static/private'
-import { batch, query } from '$lib/server/db'
-import { are_equal_sets } from '$lib/server/utils'
-import sql from 'sql-template-tag'
+import dotenv from 'dotenv'
+import { createClient } from '@libsql/client'
+
+dotenv.config()
+
+const DB_URL = process.env.DB_URL
+const DB_AUTH_TOKEN = process.env.DB_AUTH_TOKEN
+const LOG_DETAILS = process.env.LOG_DETAILS
+
+if (!DB_URL) throw new Error('No DB_URL found')
+if (!DB_AUTH_TOKEN) throw new Error('No DB_AUTH_TOKEN found')
+if (!LOG_DETAILS) console.warn('No LOG_DETAILS found')
+
+const db = createClient({
+	url: DB_URL,
+	authToken: DB_AUTH_TOKEN!,
+})
+
+await db.execute('PRAGMA foreign_keys = ON')
 
 deduce_implications()
 
 async function deduce_implications() {
-	const { err: err_clear } = await query(sql`
-        DELETE FROM implications WHERE is_deduced = TRUE    
-    `)
-
-	if (err_clear) return
-
+	await clear_deduced_implications()
 	await create_dualized_implications()
 	await create_self_dual_implications()
 }
 
+async function clear_deduced_implications() {
+	await db.execute(`DELETE FROM implications WHERE is_deduced = TRUE`)
+}
+
 async function create_dualized_implications() {
-	const { rows: implications, err: err_impl } = await query<{
-		id: string
-		assumptions: string
-		conclusions: string
-		dual_assumptions: string
-		dual_conclusions: string
-		is_equivalence: boolean
-		reason: string
-	}>(sql`
+	const res = await db.execute(`
         SELECT
             v.id,
             v.assumptions,
@@ -46,7 +52,15 @@ async function create_dualized_implications() {
         WHERE v.is_deduced = FALSE
     `)
 
-	if (err_impl) return
+	const implications = res.rows as unknown as {
+		id: string
+		assumptions: string
+		conclusions: string
+		dual_assumptions: string
+		dual_conclusions: string
+		is_equivalence: number
+		reason: string
+	}[]
 
 	const dualizable_implications = implications.filter((impl) => {
 		const has_null =
@@ -65,9 +79,9 @@ async function create_dualized_implications() {
 		)
 	})
 
-	const { err } = await batch(
-		dualizable_implications.map(
-			(impl) => sql`
+	await db.batch(
+		dualizable_implications.map((impl) => ({
+			sql: `
             INSERT INTO implication_input (
                 id,
                 assumptions,
@@ -75,27 +89,24 @@ async function create_dualized_implications() {
                 is_equivalence,
                 reason,
                 is_deduced
-            ) VALUES (
-                ${`dual_${impl.id}`},
-                ${impl.dual_assumptions},
-                ${impl.dual_conclusions},
-                ${impl.is_equivalence},
-                ${`[dualized] ${impl.reason}`},
-                TRUE
-            )`,
-		),
+            ) VALUES (?, ?, ?, ?, ?, TRUE)`,
+			args: [
+				`dual_${impl.id}`,
+				impl.dual_assumptions,
+				impl.dual_conclusions,
+				impl.is_equivalence,
+				`[dualized] ${impl.reason}`,
+			],
+		})),
+		'write',
 	)
-
-	if (err) return
 
 	console.info(`Dualized ${dualizable_implications.length} implications`)
 	if (LOG_DETAILS === 'true') console.info(dualizable_implications.map((i) => i.id))
 }
 
 async function create_self_dual_implications() {
-	const { rows: self_dual_implications, err } = await query<{
-		id: string
-	}>(sql`
+	const { rows } = await db.execute(`
         INSERT INTO implication_input (
             id,
             assumptions,
@@ -121,8 +132,10 @@ async function create_self_dual_implications() {
         RETURNING id
     `)
 
-	if (err) return
+	console.info(`Created ${rows.length} self-dual implications`)
+	if (LOG_DETAILS === 'true') console.info(rows.map((i) => i.id))
+}
 
-	console.info(`Created ${self_dual_implications.length} self-dual implications`)
-	if (LOG_DETAILS === 'true') console.info(self_dual_implications.map((i) => i.id))
+function are_equal_sets<T>(a: Set<T>, b: Set<T>) {
+	return a.size === b.size && [...a].every((el) => b.has(el))
 }
