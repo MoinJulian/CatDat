@@ -103,20 +103,24 @@ async function deduce_properties(
 		console.info(deduced_properties)
 	}
 
-	for (let i = 0; i < deduced_properties.length; i++) {
-		const id = deduced_properties[i]
-		await tx.execute({
-			sql: `
-				INSERT INTO category_properties (
-					property_id,
-					category_id,
-					reason,
-					position,
-					is_deduced
-				)
-				VALUES (?, ?, ?, ?, TRUE)`,
-			args: [id, category_id, reasons[id], i + 1],
-		})
+	if (deduced_properties.length > 0) {
+		const value_fragments: string[] = []
+		const values: (string | number)[] = []
+
+		for (let i = 0; i < deduced_properties.length; i++) {
+			const id = deduced_properties[i]
+			value_fragments.push(`(?, ?, ?, ?, TRUE)`)
+			values.push(id, category_id, reasons[id], i + 1)
+		}
+
+		const insert_sql = `
+			INSERT INTO category_properties (
+				property_id, category_id, reason, position, is_deduced
+			)
+			VALUES
+			${value_fragments.join(',\n')}`
+
+		await tx.execute({ sql: insert_sql, args: values })
 	}
 
 	console.info(`Added ${deduced_properties.length} properties to the database\n`)
@@ -131,16 +135,16 @@ async function deduce_non_properties(
 
 	await tx.execute({
 		sql: `
-				DELETE FROM category_non_properties
-				WHERE category_id = ? AND is_deduced = TRUE`,
+			DELETE FROM category_non_properties
+			WHERE category_id = ? AND is_deduced = TRUE`,
 		args: [category_id],
 	})
 
 	const props_res = await tx.execute({
 		sql: `
-				SELECT property_id
-				FROM category_properties
-				WHERE category_id = ?
+			SELECT property_id
+			FROM category_properties
+			WHERE category_id = ?
 			`,
 		args: [category_id],
 	})
@@ -151,9 +155,9 @@ async function deduce_non_properties(
 
 	const non_props_res = await tx.execute({
 		sql: `
-				SELECT non_property_id
-				FROM category_non_properties
-				WHERE category_id = ? AND is_deduced = FALSE
+			SELECT non_property_id
+			FROM category_non_properties
+			WHERE category_id = ? AND is_deduced = FALSE
 			`,
 		args: [category_id],
 	})
@@ -220,20 +224,24 @@ async function deduce_non_properties(
 		console.info(deduced_non_properties)
 	}
 
-	for (let i = 0; i < deduced_non_properties.length; i++) {
-		const id = deduced_non_properties[i]
-		await tx.execute({
-			sql: `
-					INSERT INTO category_non_properties (
-						non_property_id,
-						category_id,
-						reason,
-						position,
-						is_deduced
-					)
-					VALUES (?, ?, ?, ?, TRUE)`,
-			args: [id, category_id, reasons[id], i + 1],
-		})
+	if (deduced_non_properties.length > 0) {
+		const value_fragments: string[] = []
+		const values: (string | number)[] = []
+
+		for (let i = 0; i < deduced_non_properties.length; i++) {
+			const id = deduced_non_properties[i]
+			value_fragments.push('(?, ?, ?, ?, TRUE)')
+			values.push(id, category_id, reasons[id], i + 1)
+		}
+
+		const insert_query = `
+			INSERT INTO category_non_properties (
+				non_property_id, category_id, reason, position, is_deduced
+			)
+			VALUES
+			${value_fragments.join(',\n')}`
+
+		await tx.execute({ sql: insert_query, args: values })
 	}
 
 	console.info(
