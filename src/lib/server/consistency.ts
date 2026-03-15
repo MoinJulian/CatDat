@@ -83,3 +83,47 @@ async function get_atomic_implications(): Promise<AtomicImplication[] | null> {
 
 	return implications
 }
+
+export async function get_missing_combinations() {
+	const implications = await get_atomic_implications()
+	if (!implications) return null
+
+	const { rows: props, err: err_props } = await query<{ id: string }>(
+		sql`SELECT id FROM properties ORDER BY lower(id)`,
+	)
+	if (err_props) return null
+
+	const properties: string[] = props.map(({ id }) => id)
+
+	const missing_pairs: [string, string][] = []
+
+	for (let i = 0; i < properties.length; i++) {
+		for (let j = i + 1; j < properties.length; j++) {
+			const p = properties[i]
+			const q = properties[j]
+			const { consistent } = check_consistency_worker(
+				new Set([p]),
+				new Set([q]),
+				implications,
+			)
+			if (!consistent) continue
+
+			const { rows: matches, err } = await query<{ category_id: string }>(sql`
+				SELECT cp.category_id
+				FROM category_properties cp
+				INNER JOIN category_non_properties cnp
+				ON cp.category_id = cnp.category_id
+				WHERE
+					cp.property_id = ${p}
+					AND cnp.non_property_id = ${q}
+				LIMIT 1
+			`)
+
+			if (err) return null
+
+			if (!matches.length) missing_pairs.push([p, q])
+		}
+	}
+
+	return missing_pairs
+}

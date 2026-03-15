@@ -168,9 +168,14 @@ button:focus-visible {
 	white-space: nowrap;
 }
 
-summary:focus-visible {
-	outline: 1px solid var(--text-color);
-	outline-offset: 2px;
+summary {
+	cursor: pointer;
+	width: fit-content;
+
+	&:focus-visible {
+		outline: 1px solid var(--text-color);
+		outline-offset: 2px;
+	}
 }
 
 @media (prefers-reduced-motion: no-preference) {
