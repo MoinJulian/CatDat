@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {
 		faArrowsSplitUpAndLeft,
-		faCodeCompare,
+		faChartBar,
 		faDatabase,
 		faHome,
 		faList,
@@ -52,7 +52,7 @@
 		<li>
 			<a href="/compare">
 				Compare
-				<Fa icon={faCodeCompare} />
+				<Fa icon={faChartBar} />
 			</a>
 		</li>
 
