@@ -39,9 +39,6 @@ jobs:
             - name: Generate SvelteKit config
               run: pnpm svelte-kit sync
 
-            - name: Install Netlify CLI
-              run: pnpm i -g netlify-cli@24.2.0
-
             - name: Update database
               env:
                   DB_URL: ${{ secrets.DB_URL }}
@@ -61,7 +58,7 @@ jobs:
 
             - name: Deploy to Netlify
               run: |
-                  netlify deploy --no-build \
+                  pnpm exec netlify deploy --no-build \
                     --dir build \
                     --site ${{ secrets.NETLIFY_SITE_ID }} \
                     --auth ${{ secrets.NETLIFY_ACCESS_TOKEN }} \
