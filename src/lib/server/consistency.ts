@@ -5,13 +5,25 @@ type AtomicImplication = { assumptions: string[]; conclusion: string }
 export async function check_consistency(
 	properties: Set<string>,
 	non_properties: Set<string>,
-) {
+): Promise<{ consistent: boolean } | null> {
 	for (const p of properties) {
 		if (non_properties.has(p)) return { consistent: false }
 	}
 
 	const implications = await get_atomic_implications()
 	if (!implications) return null
+
+	return check_consistency_worker(properties, non_properties, implications)
+}
+
+function check_consistency_worker(
+	properties: Set<string>,
+	non_properties: Set<string>,
+	implications: AtomicImplication[],
+): { consistent: boolean } {
+	for (const p of properties) {
+		if (non_properties.has(p)) return { consistent: false }
+	}
 
 	const deduced_properties = new Set<string>()
 
@@ -34,17 +46,17 @@ export async function check_consistency(
 	return { consistent: true }
 }
 
-async function get_atomic_implications(): Promise<AtomicImplication[]> {
-	const res = await query(sql`
+async function get_atomic_implications(): Promise<AtomicImplication[] | null> {
+	const { rows: all_implications_db, err: err_imp } = await query<{
+		assumptions: string
+		conclusions: string
+		is_equivalence: number
+	}>(sql`
         SELECT assumptions, conclusions, is_equivalence
         FROM implications_view
     `)
 
-	const all_implications_db = res.rows as unknown as {
-		assumptions: string
-		conclusions: string
-		is_equivalence: number
-	}[]
+	if (err_imp) return null
 
 	const implications: AtomicImplication[] = []
 
