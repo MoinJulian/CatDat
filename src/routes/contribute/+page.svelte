@@ -18,26 +18,35 @@
 	observe new combinations of properties.
 </p>
 
-<p>There are two options to contribute to this project:</p>
+<p>There are three options to contribute to this project:</p>
 
 <ul>
 	<li>
-		Either create a
+		Submit our
+		<a class="accent" href="https://forms.gle/8LBmro5FfSa43pD2A" target="_blank"
+			>Google form</a
+		>
+	</li>
+
+	<li>
+		Create a
 		<a
 			class="accent"
 			href="https://github.com/ScriptRaccoon/CatDat/pulls"
 			target="_blank">pull request</a
-		>,
+		>
 	</li>
+
 	<li>
-		or submit our
-		<a class="accent" href="https://forms.gle/8LBmro5FfSa43pD2A" target="_blank"
-			>Google form</a
-		>.
+		Create an <a
+			class="accent"
+			href="https://github.com/ScriptRaccoon/CatDat/issues/new"
+			target="_blank">issue</a
+		>
 	</li>
 </ul>
 
-<p>The form does not require any knowledge of GitHub or coding.</p>
+<p>The Google form does not require any knowledge of GitHub or coding.</p>
 
 <p>
 	Make sure to follow the
