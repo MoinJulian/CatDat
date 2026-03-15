@@ -8,17 +8,18 @@
 
 <p>
 	<i>CatDat</i> provides a growing collection of
-	<a class="accent" href="https://en.wikipedia.org/wiki/Category_theory" target="_blank"
-		>categories</a
-	>, each with detailed descriptions, properties, and non-properties. It leverages a
-	powerful deduction system based on a list of implications, which allows for automatic
+	<a class="accent" href="/categories">categories</a>, each with detailed descriptions,
+	properties, and non-properties. It leverages a powerful deduction system based on a
+	list of <a class="accent" href="/implications">implications</a> between
+	<a class="accent" href="/properties">properties</a>, which allows for automatic
 	deduction of properties and non-properties from more basic ones.
 </p>
 
 <p>
-	Additionally, you can search for categories with specific properties or
-	non-properties, and also compare several categories to see how their properties align
-	or differ.
+	Additionally, you can <a class="accent" href="/search">search</a> for categories with
+	specific properties or non-properties, and also
+	<a class="accent" href="/compare">compare</a> several categories to see how their properties
+	align or differ.
 </p>
 
 <p>
@@ -38,3 +39,18 @@
 	Note that this project is still in its early stages. Breaking changes are likely, and
 	the structure of the application and the database may change without notice.
 </p>
+
+<p class="hint">
+	If you are not familiar with category theory, it may be helpful to first consult the
+	Wikipedia article on <a
+		class="accent"
+		href="https://en.wikipedia.org/wiki/Category_theory"
+		target="_blank">category theory</a
+	>.
+</p>
+
+<style>
+	h2 {
+		margin-bottom: 2rem;
+	}
+</style>
