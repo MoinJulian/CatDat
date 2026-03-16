@@ -74,6 +74,9 @@
 		<li>
 			<a href="/missing">Missing Data</a>
 		</li>
+		<li>
+			<a href="/resources">Resources</a>
+		</li>
 	</ul>
 </nav>
 
