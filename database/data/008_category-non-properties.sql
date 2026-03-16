@@ -196,6 +196,26 @@ VALUES
 		'Consider the submonoid $\{(a,b) : a \leq b \}$ of $\mathbb{N}^2$.'
 	),
 	(
+		'CMon',
+		'preadditive',
+		'In categories with finite products and coproducts, the preadditive structure is <i>unique</i>: If $f,g : A \to B$ are morphisms, their sum $f+g : A \to B$ is the composite of $(f,g) :A \to B \times B$, the inverse of the canonical morphism $B \oplus B \to B \times B$ (which indeed must be an isomorphism), and the codiagonal $B \oplus B \to B$. In the case of $\mathbf{CMon}$, this is just the pointwise addition of maps, and this is indeed an enrichment of $\mathbf{CMon}$ over itself. But not over $\mathbf{Ab}$, since for example $\mathrm{Hom}(\mathbb{N},\mathbb{N}) \cong \mathbb{N}$ (with respect to addition) is not a group.'
+	),
+	(
+		'CMon',
+		'balanced',
+		'The inclusion of additive monoids $\mathbb{N} \hookrightarrow \mathbb{Z}$ is a counterexample.'
+	),
+	(
+		'CMon',
+		'skeletal',
+		'trivial'
+	),
+	(
+		'CMon',
+		'Malcev',
+		'Consider the submonoid $\{(a,b) : a \leq b \}$ of $\mathbb{N}^2$.'
+	),
+	(
 		'Pos',
 		'strict terminal object',
 		'trivial'

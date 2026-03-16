@@ -251,6 +251,26 @@ VALUES
 		'It follows from the normal form of the elements of coproducts of monoids that the inclusions $G \to G \sqcup H \leftarrow H$ are injective (hence, monomorphisms) and that their intersection is trivial.'
 	),
 	(
+		'CMon',
+		'locally small',
+		'There is a forgetful functor $\mathbf{CMon} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
+	),
+	(
+		'CMon',
+		'pointed',
+		'The trivial monoid is a zero object.'
+	),
+	(
+		'CMon',
+		'finitary algebraic',
+		'Take the algebraic of a commutative monoid.'
+	),
+	(
+		'CMon',
+		'disjoint coproducts',
+		'This follows from the description of the coproduct as a form of direct sum (very similar to $\mathbf{Ab}$).'
+	),
+	(
 		'Pos',
 		'locally small',
 		'There is a forgetful functor $\mathbf{Pos} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'

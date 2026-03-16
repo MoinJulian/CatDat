@@ -99,6 +99,15 @@ VALUES
 		NULL,
 		'https://ncatlab.org/nlab/show/category+of+monoids'
 	),
+    (
+		'CMon',
+		'category of commutative monoids',
+		'$\mathbf{CMon}$',
+		'commutative monoids',
+		'monoid homomorphisms',
+		NULL,
+		'https://ncatlab.org/nlab/show/category+of+monoids'
+	),
 	(
 		'Pos',
 		'category of posets',
