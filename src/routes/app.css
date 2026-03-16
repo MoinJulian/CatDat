@@ -122,20 +122,30 @@ input {
 	color: inherit;
 }
 
-input[type='text'] {
+input[type='text'],
+input[type='search'] {
 	padding: 0.25rem 0.75rem;
 	border-radius: 0.4rem;
 	outline: none;
 	border: 1px solid var(--outline-color);
+
+	&:focus-visible {
+		border-color: var(--text-color);
+		background-color: var(--secondary-bg-color);
+	}
+
+	&[aria-invalid='true'] {
+		border-color: var(--error-color);
+	}
 }
 
-input[type='text']:focus-visible {
-	border-color: var(--text-color);
-	background-color: var(--secondary-bg-color);
+input[type='search']::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	appearance: none;
 }
 
-input[type='text'][aria-invalid='true'] {
-	border-color: var(--error-color);
+input[type='search']::-ms-clear {
+	display: none;
 }
 
 button:not(:disabled) {

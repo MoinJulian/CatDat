@@ -2,6 +2,7 @@
 	import { browser } from '$app/environment'
 	import ImplicationList from '$components/ImplicationList.svelte'
 	import MetaData from '$components/MetaData.svelte'
+	import SearchFilter from '$components/SearchFilter.svelte'
 
 	let { data } = $props()
 
@@ -17,6 +18,23 @@
 			? data.implications
 			: data.implications.filter((implication) => !implication.is_deduced),
 	)
+
+	let search = $state('')
+	let search_t = $derived(search.trim())
+
+	let searched_implications = $derived(
+		search_t
+			? displayed_implications.filter(
+					(implication) =>
+						implication.assumptions.some((prop) =>
+							prop.toLowerCase().includes(search_t.toLowerCase()),
+						) ||
+						implication.conclusions.some((prop) =>
+							prop.toLowerCase().includes(search_t.toLowerCase()),
+						),
+				)
+			: displayed_implications,
+	)
 </script>
 
 <MetaData
@@ -26,9 +44,13 @@
 
 <h2>List of Implications</h2>
 
+<SearchFilter bind:search />
+
 <ImplicationList
-	implications={displayed_implications}
-	description="The following {displayed_implications.length} implications and equivalences are available*."
+	implications={searched_implications}
+	description={search
+		? `Found ${searched_implications.length} implications`
+		: `The following ${searched_implications.length} implications and equivalences are available*.`}
 />
 
 <p class="hint">
