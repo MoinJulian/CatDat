@@ -9,11 +9,10 @@ const DB_URL = process.env.DB_URL
 const DB_AUTH_TOKEN = process.env.DB_AUTH_TOKEN
 
 if (!DB_URL) throw new Error('No DB_URL found')
-if (!DB_AUTH_TOKEN) throw new Error('No DB_AUTH_TOKEN found')
 
 const db = createClient({
 	url: DB_URL,
-	authToken: DB_AUTH_TOKEN!,
+	authToken: DB_AUTH_TOKEN,
 })
 
 const data_folder = path.join(process.cwd(), 'database', 'data')
