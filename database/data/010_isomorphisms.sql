@@ -155,6 +155,16 @@ VALUES
 		'This is true for every poset (regarded as a category).'
 	),
 	(
+		'Sh(X)',
+		'morphisms of sheaves that are bijective on every open set',
+		'easy'
+	),
+	(
+		'Sh(X,Ab)',
+		'morphisms of abelian sheaves that are bijective on every open set',
+		'easy'
+	),
+	(
 		'LRS',
 		'pairs $(f,f^{\sharp})$ consisting of a homeomorphism $f$ and an isomorphism of sheaves $f^{\sharp}$',
 		'easy'

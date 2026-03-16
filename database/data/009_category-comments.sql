@@ -53,4 +53,12 @@ INSERT INTO category_comments (
     (
         'Met',
         'Once we know how the epimorphism look like (probably the non-expansive maps with dense image), it should follow that it is well-copowered.'
+    ),
+    (
+        'Sh(X)',
+        'It is likely that neither of the currently remaining unknown properties (finitary algebraic, locally ℵ₁-presentable, exact filtered colimits) are satisfied for a <i>generic</i> space $X$, but we need to make this precise by adding additional requirements to $X$.'
+    ),
+    (
+        'Sh(X,Ab)',
+        'It is likely that neither of the currently remaining unknown properties (finitary algebraic, locally ℵ₁-presentable, split abelian) are satisfied for a <i>generic</i> space $X$, but we need to make this precise by adding additional requirements to $X$.'
     );

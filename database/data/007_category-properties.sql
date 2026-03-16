@@ -655,9 +655,29 @@ VALUES
 
 	-- geometric categories
 	(
+		'Sh(X)',
+		'locally small',
+		'easy'
+	),
+	(
+		'Sh(X)',
+		'Grothendieck topos',
+		'by definition of a Grothendieck topos'
+	),
+	(
 		'sSet',
 		'locally small',
 		'This follows from the general fact that $[\mathcal{C},\mathcal{D}]$ is locally small when $\mathcal{C}$ is small and $\mathcal{D}$ is locally small, here applied to $\mathcal{C} = \Delta^{\mathrm{op}}$ and $\mathcal{D} = \mathbf{Set}$.'
+	),
+	(
+		'Sh(X,Ab)',
+		'locally small',
+		'easy'
+	),
+	(
+		'Sh(X,Ab)',
+		'Grothendieck abelian',
+		'This is standard, see for example Theorem 18.1.6. in <a href="https://ncatlab.org/nlab/show/Categories+and+Sheaves" target="_blank">Kashiwara-Schapira</a>.'
 	),
 	(
 		'sSet',

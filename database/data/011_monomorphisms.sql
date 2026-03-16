@@ -110,6 +110,16 @@ VALUES
 		'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'
 	),
 	(
+		'Sh(X)',
+		'morphisms of sheaves that are injective on every open subset',
+		'For the non-trivial direction, assume that $f : F \to G$ is a monomorphism of sheaves on $X$. Then the diagonal $F \to F \times_G F$ is an isomorphism. Since pullbacks of sheaves are constructed section-wise, it follows that the diagonal $F(U) \to F(U) \times_{G(U)} F(U)$ is an isomorphism for every open set $U \subseteq X$. But this means that $f(U) : F(U) \to G(U)$ is injective.'
+	),
+	(
+		'Sh(X,Ab)',
+		'morphisms of abelian sheaves that are injective on every open subset',
+		'For the non-trivial direction, assume that $f : F \to G$ is a monomorphism of abelian sheaves on $X$. Then the diagonal $F \to F \times_G F$ is an isomorphism. Since pullbacks of abelian sheaves are constructed section-wise, it follows that the diagonal $F(U) \to F(U) \times_{G(U)} F(U)$ is an isomorphism for every open set $U \subseteq X$. But this means that $f(U) : F(U) \to G(U)$ is injective.'
+	),
+	(
 		'Met',
 		'injective non-expansive maps',
 		'The same proof as for $\mathbf{Set}$ can be used.'
