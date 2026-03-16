@@ -581,7 +581,7 @@ VALUES
 	(
 		'Met',
 		'finite coproducts',
-		NULL
+		'See <a href="https://math.stackexchange.com/questions/1778408" target="_blank">MSE/1778408</a>. We only get coproducts when allowing $\infty$ as a distance, as in $\mathbf{Met}_{\infty}$.'
 	),
 	(
 		'Met',
@@ -606,7 +606,7 @@ VALUES
 	(
 		'Met',
 		'exact filtered colimits',
-		'2.7 in <a href="https://arxiv.org/abs/2006.01399" target="_blank">this paper</a>'
+		'Remark 2.7 in <a href="https://arxiv.org/abs/2006.01399" target="_blank">this paper</a>'
 	),
 	(
 		'Met',
