@@ -73,7 +73,7 @@ VALUES
 	(
 		'Grp',
 		'cogenerator',
-		NULL
+		'Assume there is a group $Q$ that cogenerates. Take an infinite simple group $G$ larger than $Q$ (w.r.t. cardinalities), for example an infinite alternating group. Then every homomorphism $G \to Q$ is trivial. Since $Q$ cogenerates, $G$ is trivial, a contradiction.'
 	),
 	(
 		'Grp',
@@ -103,7 +103,7 @@ VALUES
 	(
 		'Ring',
 		'cogenerator',
-		NULL
+		'Assume that there is a ring $Q$ that cogenerates. Clearly, $Q$ is non-zero. Take an infinite field $F$ which is larger than $Q$ and admits a non-trivial automorphism (for example, a field of rational functions). Then there is no ring homomorphism $F \to Q$. Since $Q$ cogenerates, this implies that all homomorphisms $F \to F$ are equal, a contradiction.'
 	),
 	(
 		'Ring',
@@ -128,7 +128,7 @@ VALUES
 	(
 		'CRing',
 		'cogenerator',
-		NULL
+		'Assume that there is a commutative ring $Q$ that cogenerates. Clearly, $Q$ is non-zero. Take an infinite field $F$ which is larger than $Q$ and admits a non-trivial automorphism (for example, a field of rational functions). Then there is no ring homomorphism $F \to Q$. Since $Q$ cogenerates, this implies that all homomorphisms $F \to F$ are equal, a contradiction.'
 	),
 	(
 		'CRing',
@@ -153,7 +153,7 @@ VALUES
 	(
 		'Rng',
 		'cogenerator',
-		NULL
+		'Assume that there is a rng $Q$ that cogenerates. Clearly, $Q$ is non-zero. Take an infinite field $F$ which is larger than $Q$ and admits a non-trivial automorphism (for example, a field of rational functions). Then every rng homomorphism $f : F \to Q$ is zero: If $e := f(1)$, then $e$ is idempotent and $f$ corestricts to a ring homomorphism $f : F \to eQ$. Since $F$ is a field but $f$ cannot be injective, we must have $eQ = 0$, so that $e = 0$ and $f = 0$. Since $Q$ cogenerates, this implies that all homomorphisms $F \to F$ are equal, a contradiction.'
 	),
 	(
 		'Rng',
@@ -170,7 +170,6 @@ VALUES
 		'Malcev',
 		NULL
 	),
-	
 	(
 		'Mon',
 		'preadditive',
@@ -184,7 +183,7 @@ VALUES
 	(
 		'Mon',
 		'cogenerator',
-		NULL
+		'Assume there is a monoid $Q$ that cogenerates. Take an infinite simple group $G$ larger than $Q$ (w.r.t. cardinalities), for example an infinite alternating group. Then every monoid homomorphism $G \to Q$ is trivial: it corestricts to a group homomorphism $G \to Q^{\times}$, so its kernel must be all of $G$. Since $Q$ cogenerates, $G$ is trivial, a contradiction.'
 	),
 	(
 		'Mon',
@@ -1040,7 +1039,7 @@ VALUES
 	(
 		'Fld',
 		'cogenerator',
-		NULL
+		'Assume that there is a field $Q$ that cogenerates. Take a field $F$ which is larger than $R$ and admits a non-trivial automorphism (for example, a field of rational functions). Then there is no field homomorphism $F \to Q$ (as it would be injective). Since $Q$ cogenerates, this means that all homomorphisms $F \to F$ are equal, a contradiction.'
 	),
 	(
 		'Fld',
