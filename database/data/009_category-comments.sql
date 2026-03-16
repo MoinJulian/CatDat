@@ -20,6 +20,10 @@ INSERT INTO category_comments (
     ),
     (
         'Sch',
+        'Monomorphisms are discussed at <a href="https://mathoverflow.net/questions/56591" target="_blank">MO/56591</a>. At least the case of morphisms of locally finite type is understood.'
+    ),
+    (
+        'Sch',
         'Epimorphisms are discussed at <a href="https://mathoverflow.net/questions/56564" target="_blank">MO/56564</a>. Probably they cannot be classified.'
     ),
     (
@@ -44,7 +48,7 @@ INSERT INTO category_comments (
     ),
     (
         'Met_c',
-        'It is likely that the epimorphisms are exactly the continuous maps with dense image, just as for Hausdorff spaces (see <a href="https://math.stackexchange.com/questions/214045" target="_blank">MSE/214045</a>).'
+        'It is likely that the epimorphisms are exactly the continuous maps with dense image, just as for Hausdorff spaces (see <a href="https://math.stackexchange.com/questions/214045" target="_blank">MSE/214045</a>), but the proof needs to be tweaked.'
     ),
     (
         'Met',

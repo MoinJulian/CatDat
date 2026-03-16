@@ -4,14 +4,6 @@ CREATE TABLE prefixes (
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO prefixes (prefix, negation) VALUES
-    ('is', 'is not'),
-	('is a', 'is not a'),
-	('is an', 'is not an'),
-	('has', 'does not have'),
-	('has a', 'does not have a'),
-	('has an', 'does not have an');
-
 CREATE TABLE properties (
     id TEXT PRIMARY KEY,
     prefix TEXT NOT NULL,
@@ -21,5 +13,14 @@ CREATE TABLE properties (
     dual_property_id TEXT,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (prefix) REFERENCES prefixes (prefix) ON DELETE RESTRICT,
-    FOREIGN KEY (dual_property_id) REFERENCES properties (id) ON DELETE RESTRICT
+    FOREIGN KEY (dual_property_id) REFERENCES properties (id) ON DELETE SET NULL
+);
+
+CREATE TABLE related_properties (
+    property_id TEXT NOT NULL,
+    related_property_id TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (property_id, related_property_id),
+    FOREIGN KEY (property_id) REFERENCES properties (id) ON DELETE CASCADE,
+    FOREIGN KEY (related_property_id) REFERENCES properties (id) ON DELETE CASCADE
 );

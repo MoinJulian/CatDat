@@ -15,10 +15,10 @@
 		"lint": "prettier --check .",
 		"prepare": "husky",
 		"db:shell": "sqlite3 database/local.db",
-		"db:shell:remote": "turso db shell catdat",
-		"db:update": "tsx scripts/update.ts",
-		"db:update:remote": "vite-node --mode prod scripts/update.ts",
-		"db:diff": "sqldiff database/original.db database/local.db"
+		"db:migrate": "tsx scripts/migrate.ts",
+		"db:seed": "tsx scripts/seed.ts",
+		"db:deduce": "tsx scripts/deduce.ts",
+		"db:update": "pnpm db:migrate && pnpm db:seed && pnpm db:deduce"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^6.0.4",

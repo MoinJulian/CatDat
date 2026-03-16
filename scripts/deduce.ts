@@ -1,6 +1,5 @@
-import { type Client, createClient } from '@libsql/client'
+import { createClient } from '@libsql/client'
 import dotenv from 'dotenv'
-import { migrate } from './migrate'
 import { deduce_implications } from './deduce-implications'
 import { deduce_all_properties } from './deduce-properties'
 import { check } from './check'
@@ -20,13 +19,6 @@ const db = createClient({
 
 await db.execute('PRAGMA foreign_keys = ON')
 
-async function update(db: Client) {
-	const has_migrated = await migrate(db)
-	if (!has_migrated) return
-
-	await deduce_implications(db)
-	await deduce_all_properties(db)
-	await check(db)
-}
-
-await update(db)
+await deduce_implications(db)
+await deduce_all_properties(db)
+await check(db)

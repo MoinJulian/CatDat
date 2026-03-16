@@ -1,12 +1,3 @@
-CREATE TABLE related_categories (
-    category_id TEXT NOT NULL,
-    related_category_id TEXT NOT NULL,
-    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (category_id, related_category_id),
-    FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE,
-    FOREIGN KEY (related_category_id) REFERENCES categories (id) ON DELETE CASCADE
-);
-
 INSERT INTO related_categories (category_id, related_category_id)
 VALUES
 	('1', '2'),
@@ -75,6 +66,7 @@ VALUES
 	('FS', 'B'),
 	('FS', 'FI'),
 	('BOn', 'BN'),
+    ('Meas', 'Top'),
 	('FinOrd', 'Pos'),
 	('FinOrd', 'FinSet'),
 	('Rel', 'Set'),

@@ -155,11 +155,6 @@ VALUES
 		'It is a thin category.'
 	),
 	(
-		'Sch',
-		'Morphisms that are radicial and formally unramified.',
-		'EGA IV, 17.2.6'
-	),
-	(
 		'Fld',
 		'every morphism',
 		'It is well-known that field homomorphisms are injective.'
