@@ -26,5 +26,5 @@ vite.config.ts.timestamp-*
 todo.txt
 thoughts.txt
 
-# Local database
-local.db
+# Local databases
+database/*.db
