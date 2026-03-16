@@ -17,7 +17,8 @@
 		"db:shell": "sqlite3 database/local.db",
 		"db:shell:remote": "turso db shell catdat",
 		"db:update": "tsx scripts/update.ts",
-		"db:update:remote": "vite-node --mode prod scripts/update.ts"
+		"db:update:remote": "vite-node --mode prod scripts/update.ts",
+		"db:diff": "sqldiff database/original.db database/local.db"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^6.0.4",
