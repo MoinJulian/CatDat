@@ -18,7 +18,8 @@
 		"db:migrate": "tsx scripts/migrate.ts",
 		"db:seed": "tsx scripts/seed.ts",
 		"db:deduce": "tsx scripts/deduce.ts",
-		"db:update": "pnpm db:migrate && pnpm db:seed && pnpm db:deduce"
+		"db:test": "tsx scripts/test.ts",
+		"db:update": "pnpm db:migrate && pnpm db:seed && pnpm db:deduce && pnpm db:test"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^6.0.4",

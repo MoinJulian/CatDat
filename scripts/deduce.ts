@@ -2,7 +2,6 @@ import { createClient } from '@libsql/client'
 import dotenv from 'dotenv'
 import { deduce_implications } from './deduce-implications'
 import { deduce_all_properties } from './deduce-properties'
-import { check } from './check'
 
 dotenv.config({ quiet: true })
 
@@ -20,4 +19,3 @@ await db.execute('PRAGMA foreign_keys = ON')
 
 await deduce_implications(db)
 await deduce_all_properties(db)
-await check(db)
