@@ -202,7 +202,7 @@ VALUES
 	(
 		'FinOrd',
 		'surjective order-preserving maps',
-		'The proof is similar to the one for $\mathbf{Set}$: If $f : X \to Y$ is an epimorphism of (finite) orders, in particular for all morphismus $g,h : Y \to \{0 < 1\}$ with $g \circ f = h \circ f$ we have $g = h$. This means for all upper sets $A,B \subseteq Y$ with $f^*(A) = f^*(B)$ we have $A = B$. If $y \in Y$, apply this to the intervals $A = Y_{\geq y}$ and $B = Y_{> y}$, which are different. Hence, there is some $x \in f^*(A) \setminus f^*(B)$, which means $f(x) \geq y$ but not $f(x) > y$, so that $f(x) = y$.'
+		'The proof is similar to the one for $\mathbf{Set}$: If $f : X \to Y$ is an epimorphism of (finite) orders, in particular for all morphisms $g,h : Y \to \{0 < 1\}$ with $g \circ f = h \circ f$ we have $g = h$. This means for all upper sets $A,B \subseteq Y$ with $f^*(A) = f^*(B)$ we have $A = B$. If $y \in Y$, apply this to the intervals $A = Y_{\geq y}$ and $B = Y_{> y}$, which are different. Hence, there is some $x \in f^*(A) \setminus f^*(B)$, which means $f(x) \geq y$ but not $f(x) > y$, so that $f(x) = y$.'
 	),
 	(
 		'Rel',

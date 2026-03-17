@@ -373,8 +373,6 @@ VALUES
 	),
 
     -- other properties
-
-
 	(
 		'inhabited',
 		'is',
@@ -442,7 +440,7 @@ VALUES
 	(
 		'zero morphisms',
 		'has',
-		'A category has <i>zero morphisms</i> if for every pair of objects $A,B$ there is a distinugished morphism $0_{A,B} : A \to B$, called the zero morphism, such that we have $f \circ 0_{A,B} = 0_{A,C}$ and $0_{B,C} \circ g = 0_{A,C}$ for all morphisms $f : B \to C$ and $g : A \to B$. The zero morphisms are unique if they exist, hence this is actually a property of the category.',
+		'A category has <i>zero morphisms</i> if for every pair of objects $A,B$ there is a distinguished morphism $0_{A,B} : A \to B$, called the zero morphism, such that we have $f \circ 0_{A,B} = 0_{A,C}$ and $0_{B,C} \circ g = 0_{A,C}$ for all morphisms $f : B \to C$ and $g : A \to B$. The zero morphisms are unique if they exist, hence this is actually a property of the category.',
 		'https://ncatlab.org/nlab/show/zero+morphism',
 		'zero morphisms',
 		TRUE
@@ -450,7 +448,7 @@ VALUES
 	(
 		'preadditive',
 		'is',
-		'A category is <i>preadditive</i> when it is locally essentially small* and each hom-set carries the structure of an abelian group such that the composition is bilinear. Notice that "preadditive" is an extra structure. The property here just says that some preadditive structure exists.<br>*We demand this instead of the more common "locall small" to ensure that preadditive categories are invariant under equivalences of categories.',
+		'A category is <i>preadditive</i> when it is locally essentially small* and each hom-set carries the structure of an abelian group such that the composition is bilinear. Notice that "preadditive" is an extra structure. The property here just says that some preadditive structure exists.<br>*We demand this instead of the more common "locally small" to ensure that preadditive categories are invariant under equivalences of categories.',
 		'https://ncatlab.org/nlab/show/Ab-enriched+category',
 		'preadditive',
 		TRUE

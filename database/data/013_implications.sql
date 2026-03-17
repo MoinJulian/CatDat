@@ -293,7 +293,7 @@ VALUES
 		FALSE
 	),
 	(
-		'locally_countabley_presentable_raise',
+		'locally_countably_presentable_raise',
 		'["locally ℵ₁-presentable"]',
 		'["locally presentable"]',
 		'trivial',
@@ -582,7 +582,7 @@ VALUES
 		FALSE
 	),
 	(
-		'subobject_classifier_wellpowered',
+		'subobject_classifier_well-powered',
 		'["subobject classifier", "locally essentially small"]',
 		'["well-powered"]',
 		'<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Prop. I.3.1',
@@ -647,7 +647,7 @@ VALUES
 		FALSE
 	),
 	(
-		'topos_wellcopowered_criterion',
+		'topos_well-copowered_criterion',
 		'["elementary topos", "locally essentially small"]',
 		'["well-copowered"]',
 		'This follows from <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Theorem IV.7.8 (and Prop. I.3.1).',
@@ -682,7 +682,7 @@ VALUES
 		FALSE
 	),
 	(
-		'grothendieck_abelian_selfdual',
+		'grothendieck_abelian_self-dual',
 		'["Grothendieck abelian", "self-dual"]',
 		'["trivial"]',
 		'This follows since the dual of a non-trivial Grothendieck abelian category cannot be Grothendieck abelian. See Peter Freyd, <i>Abelian categories</i>, p. 116.',

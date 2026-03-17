@@ -802,7 +802,7 @@ VALUES
 	(
 		'Met_c',
 		'countable products',
-		 'For finite products, we take the cartesian product with, say, the sup-metric. The prouct of countably many metric spaces $(X_i,d_i)_{i \geq 0}$ is given by the cartesian product $\prod_{i \geq 0} X_i$ with the metric $d(x,y) := \sum_{i \geq 0} d_i(x_i,y_i)/(1 + d_i(x_i,y_i))$. See Engelking''s book <i>General Topoloy</i>.'
+		 'For finite products, we take the cartesian product with, say, the sup-metric. The product of countably many metric spaces $(X_i,d_i)_{i \geq 0}$ is given by the cartesian product $\prod_{i \geq 0} X_i$ with the metric $d(x,y) := \sum_{i \geq 0} d_i(x_i,y_i)/(1 + d_i(x_i,y_i))$. See Engelking''s book <i>General Topology</i>.'
 	),
 
 	(
@@ -889,7 +889,7 @@ VALUES
 	(
 		'Sch',
 		'pullbacks',
-		'This is the well-known construction of the fiber product of schemes, see e.g. EGA I, Chap. I, Théorème 3.2.1.'
+		'This is the well-known construction of the fiber product of schemes, see e.g. EGA I, Chap. I, Thm. 3.2.1.'
 	),
     (
         'Sch',
@@ -1398,7 +1398,7 @@ VALUES
 	(
 		'Sp',
 		'epi-regular',
-		'This follows from the corresponding fact for $\mathbf{FinSet}$ since there every epiomorphism is even effective.'
+		'This follows from the corresponding fact for $\mathbf{FinSet}$ since there every epimorphism is even effective.'
 	),
 	(
 		'Sp',

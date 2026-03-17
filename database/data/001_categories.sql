@@ -278,7 +278,7 @@ VALUES
 	),
 	(
 		'Zdiv',
-		'preorder of integers w.r.t. divisiblity',
+		'preorder of integers w.r.t. divisibility',
 		'$(\mathbb{Z},\mid)$',
 		'integers',
 		'a unique morphism $(a,b) : a \to b$ if $a$ divides $b$',
