@@ -9,14 +9,12 @@
 
 	let { children } = $props()
 
-	let show_mobile_nav = $state(false)
-
 	function open_mobile_nav() {
-		show_mobile_nav = true
+		nav_dialog?.showModal()
 	}
 
 	function close_mobile_nav() {
-		show_mobile_nav = false
+		nav_dialog?.close()
 	}
 
 	afterNavigate(() => {
@@ -26,6 +24,8 @@
 	$effect(() => {
 		track_visit()
 	})
+
+	let nav_dialog = $state<HTMLDialogElement | null>(null)
 </script>
 
 <svelte:head>
@@ -63,9 +63,9 @@
 	<Footer />
 </div>
 
-{#if show_mobile_nav}
+<dialog bind:this={nav_dialog}>
 	<NavMobile close={close_mobile_nav} />
-{/if}
+</dialog>
 
 <style>
 	main {
