@@ -22,6 +22,17 @@
 	>.
 </p>
 
+<div class="video-container">
+	<iframe
+		src="https://www.youtube.com/embed/dQXbPxk__qA"
+		title="YouTube video player"
+		frameborder="0"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		referrerpolicy="strict-origin-when-cross-origin"
+		allowfullscreen
+	></iframe>
+</div>
+
 <div class="features">
 	<article class="feature-card">
 		<h3>
@@ -102,6 +113,19 @@
 
 		h3 {
 			margin-block: 1rem;
+		}
+	}
+
+	.video-container {
+		margin-block: 2rem;
+		display: flex;
+		justify-content: center;
+
+		iframe {
+			max-width: 600px;
+			aspect-ratio: 16/9;
+			border: 1px solid var(--secondary-outline-color);
+			border-radius: 0.5rem;
 		}
 	}
 </style>
