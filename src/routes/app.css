@@ -206,3 +206,7 @@ dialog {
 	border: none;
 	width: 100%;
 }
+
+.katex {
+	white-space: nowrap;
+}
