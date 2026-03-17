@@ -46,7 +46,9 @@ async function deduce_properties(
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
-	console.info('Deduce properties for category:', category_id)
+	if (LOG_DETAILS === 'true') {
+		console.info('Deduce properties for category:', category_id)
+	}
 
 	await tx.execute({
 		sql: `
@@ -123,7 +125,9 @@ async function deduce_properties(
 		await tx.execute({ sql: insert_sql, args: values })
 	}
 
-	console.info(`Added ${deduced_properties.length} properties to the database`)
+	console.info(
+		`Added ${deduced_properties.length} properties for ${category_id} to the database`,
+	)
 }
 
 async function deduce_non_properties(
@@ -131,7 +135,9 @@ async function deduce_non_properties(
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
-	console.info('Deduce non-properties for category:', category_id)
+	if (LOG_DETAILS === 'true') {
+		console.info('Deduce non-properties for category:', category_id)
+	}
 
 	await tx.execute({
 		sql: `
@@ -244,7 +250,9 @@ async function deduce_non_properties(
 		await tx.execute({ sql: insert_query, args: values })
 	}
 
-	console.info(`Added ${deduced_non_properties.length} non-properties to the database`)
+	console.info(
+		`Added ${deduced_non_properties.length} non-properties for ${category_id} to the database`,
+	)
 }
 
 async function get_normalized_implications(
