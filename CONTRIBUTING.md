@@ -41,7 +41,13 @@ Apply the updates using:
 pnpm db:update
 ```
 
-Ensure that it does not error.
+Ensure that it does not error. You can also use
+
+```sh
+pnpm db:watch
+```
+
+to continuously run this update when a file in the subfolder [/database/data](/database/data) changes.
 
 ### Guidelines for Adding New Data
 

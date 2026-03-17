@@ -19,12 +19,14 @@
 		"db:seed": "tsx scripts/seed.ts",
 		"db:deduce": "tsx scripts/deduce.ts",
 		"db:test": "tsx scripts/test.ts",
-		"db:update": "pnpm db:migrate && pnpm db:seed && pnpm db:deduce && pnpm db:test"
+		"db:update": "pnpm db:migrate && pnpm db:seed && pnpm db:deduce && pnpm db:test",
+		"db:watch": "tsx scripts/watch.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^6.0.4",
 		"@sveltejs/kit": "^2.55.0",
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
+		"@types/chokidar": "^2.1.7",
 		"@types/katex": "^0.16.8",
 		"@types/node": "^25.5.0",
 		"dotenv": "^17.3.1",
@@ -46,6 +48,7 @@
 		"@fortawesome/free-regular-svg-icons": "^7.2.0",
 		"@fortawesome/free-solid-svg-icons": "^7.2.0",
 		"@libsql/client": "^0.17.0",
+		"chokidar": "^5.0.0",
 		"es6-crawler-detect": "^4.0.2",
 		"katex": "^0.16.38",
 		"sql-template-tag": "^5.2.1",

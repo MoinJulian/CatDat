@@ -50,6 +50,8 @@ The command `pnpm db:deduce` deduces implications, properties, and non-propertie
 
 Use `pnpm db:update` to run all the commands in sequence: `pnpm db:migrate`, `pnpm db:seed`, and `pnpm db:deduce`.
 
+Use `pnpm db:watch` to run this command automatically everytime a file in the subfolder [/database/data](/database/data) changes. This is useful in particular during development.
+
 ## Diagram
 
 ![database diagram](/static/database-diagram.png)
