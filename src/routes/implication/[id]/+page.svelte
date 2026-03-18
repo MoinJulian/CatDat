@@ -49,7 +49,7 @@
 	</p>
 {:else}
 	<p>
-		<strong>Proof:</strong>
+		<strong>Reason:</strong>
 		{@html data.implication.reason}
 	</p>
 {/if}

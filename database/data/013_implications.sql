@@ -11,70 +11,70 @@ VALUES
 		'small_consequence',
 		'["small"]',
 		'["locally small", "essentially small"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'essentially_small_consequence',
 		'["essentially small"]',
 		'["well-powered", "well-copowered", "locally essentially small"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'finite_consequence',
 		'["finite"]',
 		'["small", "essentially finite"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'essentially_finite_consequence',
 		'["essentially finite"]',
 		'["essentially small"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'locally_small_consequence',
 		'["locally small"]',
 		'["locally essentially small"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'discrete_consequence',
 		'["discrete"]',
 		'["essentially discrete", "locally small", "skeletal"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'essentially_discrete_characterization',
 		'["essentially discrete"]',
 		'["thin", "groupoid"]',
-		'trivial',
+		'This is trivial.',
 		TRUE
 	),
 	(
 		'essentially_discrete_consequence',
 		'["essentially discrete"]',
 		'["locally essentially small", "connected limits"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'essentially_discrete_trivial',
 		'["essentially discrete", "connected"]',
 		'["trivial"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'trivial_consequence',
 		'["trivial"]',
 		'["finitary algebraic", "Grothendieck topos", "split abelian", "self-dual", "essentially discrete", "essentially finite"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 
@@ -103,7 +103,7 @@ VALUES
 		'complete_consequence',
 		'["complete"]',
 		'["finitely complete", "filtered limits", "wide pullbacks", "connected limits"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 
@@ -111,7 +111,7 @@ VALUES
 		'products_consequence',
 		'["products"]',
 		'["finite products", "countable products"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
@@ -147,7 +147,7 @@ VALUES
 		'pointed_characterization',
 		'["pointed"]',
 		'["zero morphisms", "initial object"]',
-		'easy',
+		'This is easy.',
 		TRUE
 	),
 
@@ -162,14 +162,14 @@ VALUES
 		'disjoint_coproducts_equivalence',
 		'["disjoint coproducts"]',
 		'["coproducts", "disjoint finite coproducts"]',
-		'easy',
+		'This is easy.',
 		TRUE
 	),
 	(
 		'disjoint_coproducts_consequence',
 		'["disjoint finite coproducts"]',
 		'["finite coproducts"]',
-		'by definition',
+		'This holds by definition.',
 		FALSE
 	),
 	(
@@ -197,7 +197,7 @@ VALUES
 		'strict_initial_consequence',
 		'["strict initial object"]',
 		'["initial object"]',
-		'by definition',
+		'This holds by definition.',
 		FALSE
 	),
 	(
@@ -214,7 +214,6 @@ VALUES
 		'It suffices to prove that in general any monomorphism $f : A \to 0$ into an initial object is an isomorphism. If $g : 0 \to A$ is the unique morphism, then $f \circ g = \mathrm{id}_0$ since $0$ is initial. But then $f$ is a split epimorphism and a monomorphism, hence an isomorphism.',
 		FALSE
 	),
-
 	(
 		'strict_initial_right_criterion',
 		'["right cancellative", "initial object"]',
@@ -240,49 +239,49 @@ VALUES
 		'countable_products_consequence',
 		'["countable products"]',
 		'["finite products"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'filtered_limits_consequence',
 		'["filtered limits"]',
 		'["sequential limits"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'exact_filtered_colimits_condition',
 		'["exact filtered colimits"]',
 		'["filtered colimits", "finitely complete"]',
-		'by definition',
+		'This holds by definition.',
 		FALSE
 	),
 	(
 		'infinitary_distributive_consequence',
 		'["infinitary distributive"]',
 		'["finite products", "coproducts"]',
-		'by definition',
+		'This holds by definition.',
 		FALSE
 	),
 	(
 		'infinitary_distributive_condition',
 		'["infinitary distributive"]',
 		'["distributive"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'distributive_condition',
 		'["distributive"]',
 		'["finite products", "finite coproducts"]',
-		'by definition',
+		'This holds by definition.',
 		FALSE
 	),
 	(
 		'connected_criterion',
 		'["zero morphisms", "inhabited"]',
 		'["connected"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
@@ -296,28 +295,28 @@ VALUES
 		'locally_finitely_presentable_raise',
 		'["locally finitely presentable"]',
 		'["locally ℵ₁-presentable"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'locally_countably_presentable_raise',
 		'["locally ℵ₁-presentable"]',
 		'["locally presentable"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'topos_definition',
 		'["elementary topos"]',
 		'["cartesian closed", "finitely complete", "subobject classifier"]',
-		'by definition',
+		'This holds by definition.',
 		TRUE
 	),
 	(
 		'ccc_condition',
 		'["cartesian closed"]',
 		'["finite products"]',
-		'by definition',
+		'This holds by definition.',
 		FALSE
 	),
 	(
@@ -331,14 +330,14 @@ VALUES
 		'preadditive_consequence',
 		'["preadditive"]',
 		'["locally essentially small", "zero morphisms"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'additive_definition',
 		'["additive"]',
 		'["preadditive", "finite products"]',
-		'by definition',
+		'This holds by definition.',
 		TRUE
 	),
 	(
@@ -352,28 +351,28 @@ VALUES
 		'abelian_definition',
 		'["abelian"]',
 		'["additive", "equalizers", "coequalizers", "mono-regular", "epi-regular"]',
-		'by definition',
+		'This holds by definition.',
 		TRUE
 	),
 	(
 		'grothendieck_abelian_definition',
 		'["Grothendieck abelian"]',
 		'["abelian", "coproducts", "generator", "exact filtered colimits"]',
-		'by definition',
+		'This holds by definition.',
 		TRUE
 	),
 	(
 		'split_abelian_condition',
 		'["split abelian"]',
 		'["abelian"]',
-		'by definition',
+		'This holds by definition.',
 		FALSE
 	),
 	(
 		'groupoid_criterion',
 		'["left cancellative", "right cancellative", "balanced"]',
 		'["groupoid"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
@@ -394,35 +393,35 @@ VALUES
 		'groupoid_initial',
 		'["groupoid", "initial object"]',
 		'["trivial"]',
-		'easy',
+		'This is easy.',
 		FALSE
 	),
 	(
 		'groupoid_zero',
 		'["groupoid", "zero morphisms", "inhabited"]',
 		'["trivial"]',
-		'easy',
+		'This is easy.',
 		FALSE
 	),
 	(
 		'connected_consequence',
 		'["connected"]',
 		'["inhabited"]',
-		'by definition',
+		'This holds by definition.',
 		FALSE
 	),
 	(
 		'generator_consequence',
 		'["generator"]',
 		'["inhabited"]',
-		'trivial',
+		'This is trivial.',
 		FALSE
 	),
 	(
 		'groupoid_consequence',
 		'["groupoid"]',
 		'["self-dual", "mono-regular", "pullbacks", "filtered limits", "left cancellative", "well-powered"]',
-		'easy',
+		'This is easy.',
 		FALSE
 	),
 	(
@@ -436,7 +435,7 @@ VALUES
 		'malcev_condition',
 		'["Malcev"]',
 		'["finitely complete"]',
-		'by definition',
+		'This holds by definition.',
 		FALSE
 	),
 	(
@@ -466,28 +465,28 @@ VALUES
 		'freyd_small',
 		'["essentially small", "products"]',
 		'["thin"]',
-		'<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof works for any category with products.',
+		'See <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof works for any category with products.',
 		FALSE
 	),
 	(
 		'freyd_finite',
 		'["essentially finite", "finite products"]',
 		'["thin"]',
-		'<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof can easily be adapted to this case.',
+		'See <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof can easily be adapted to this case.',
 		FALSE
 	),
 	(
 		'complete_characterization',
 		'["complete"]',
 		'["products", "equalizers"]',
-		'<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Cor. 2',
+		'See <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Cor. 2.',
 		TRUE
 	),
 	(
 		'finitely_complete_characterization',
 		'["finitely complete"]',
 		'["finite products", "equalizers"]',
-		'<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Cor. 1',
+		'See <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Cor. 1.',
 		TRUE
 	),
 	(
@@ -529,7 +528,7 @@ VALUES
 		'sequential_limits_criterion',
 		'["equalizers", "countable products"]',
 		'["sequential limits"]',
-		'<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof can easily be adapted to this case. Namely, the limit of $\cdots \to X_2 \to X_1 \to X_0$ is the equalizer of two suitable endomorphisms of $\prod_{n \geq 0} X_n$.',
+		'See <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof can easily be adapted to this case. Namely, the limit of $\cdots \to X_2 \to X_1 \to X_0$ is the equalizer of two suitable endomorphisms of $\prod_{n \geq 0} X_n$.',
 		FALSE
 	),
 	(
@@ -585,14 +584,14 @@ VALUES
 		'finitary_algebraic_consequence',
 		'["finitary algebraic"]',
 		'["locally finitely presentable"]',
-		'<a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Cor. 3.7',
+		'See <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>, Cor. 3.7.',
 		FALSE
 	),
 	(
 		'subobject_classifier_well-powered',
 		'["subobject classifier", "locally essentially small"]',
 		'["well-powered"]',
-		'<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Prop. I.3.1',
+		'See <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Prop. I.3.1.',
 		FALSE
 	),
 	(
@@ -606,14 +605,14 @@ VALUES
 		'preadditive_products_criterion',
 		'["preadditive", "finite coproducts"]',
 		'["finite products"]',
-		'<a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, VIII.2., Theorem 2',
+		'See <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, VIII.2., Theorem 2.',
 		FALSE
 	),
 	(
 		'additive_trivial_condition',
 		'["additive", "pullbacks", "subobject classifier"]',
 		'["trivial"]',
-		'see <a href="https://math.stackexchange.com/questions/4086192" target="_blank">MSE/4086192</a>',
+		'See <a href="https://math.stackexchange.com/questions/4086192" target="_blank">MSE/4086192</a>.',
 		FALSE
 	),
 	(
@@ -650,7 +649,7 @@ VALUES
 		'topos_consequence',
 		'["elementary topos"]',
 		'["finitely cocomplete", "disjoint finite coproducts", "epi-regular"]',
-		'<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Cor. IV.5.4, Cor. IV.10.5, Thm. 4.7.8.',
+		'See <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Cor. IV.5.4, Cor. IV.10.5, Thm. 4.7.8.',
 		FALSE
 	),
 	(
@@ -664,7 +663,7 @@ VALUES
 		'grothendieck_topos_definition',
 		'["Grothendieck topos"]',
 		'["elementary topos", "coproducts", "generator", "locally essentially small"]',
-		'<a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Appendix, Prop. 4.4',
+		'See <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Appendix, Prop. 4.4.',
 		TRUE
 	),
 	(
@@ -685,7 +684,7 @@ VALUES
 		'grothendieck_abelian_cogenerator',
 		'["Grothendieck abelian"]',
 		'["cogenerator"]',
-		'<a href="https://ncatlab.org/nlab/show/Categories+and+Sheaves" target="_blank">Kashiwara-Schapira</a>, Thm. 9.6.3',
+		'See <a href="https://ncatlab.org/nlab/show/Categories+and+Sheaves" target="_blank">Kashiwara-Schapira</a>, Thm. 9.6.3.',
 		FALSE
 	),
 	(

@@ -106,11 +106,11 @@ async function create_self_dual_implications(db: Client) {
             is_deduced
         )
         SELECT
-            'selfdual_' || p.id,
+            'self-dual_' || p.id,
             json_array('self-dual', p.id),
             json_array(p.dual_property_id),
             FALSE,
-            'trivial by self-duality',
+            'This holds by self-duality.',
             TRUE
         FROM
             properties p
