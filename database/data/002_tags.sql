@@ -1,22 +1,22 @@
-INSERT INTO tags (tag, description) VALUES
-	('basic', 'difficulty level'),
-	('intermediate', 'difficulty level'),
-	('advanced', 'difficulty level'),
-	('artificial', 'does not appear in the wild'),
-	('well-behaved', 'many properties are satisfied'),
-	('badly-behaved', 'few properties are satisfied'),
-	('algebra', 'branch of mathematics'),
-	('algebraic geometry', 'branch of mathematics'),
-	('topology', 'branch of mathematics'),
-	('analysis', 'branch of mathematics'),
-	('order theory', 'branch of mathematics'),
-	('measure theory', 'branch of mathematics'),
-	('geometry', 'branch of mathematics'),
-	('set theory', 'branch of mathematics'),
-	('representation theory', 'branch of mathematics'),
-	('combinatorics', 'branch of mathematics'),
-	('category theory', 'branch of mathematics'),
-	('number theory', 'branch of mathematics');
+INSERT INTO tags (tag, description, position) VALUES
+	('basic', 'difficulty level', 0),
+	('intermediate', 'difficulty level', 1),
+	('advanced', 'difficulty level', 2),
+	('well-behaved', 'many properties are satisfied', 3),
+	('badly-behaved', 'few properties are satisfied', 4),
+	('artificial', 'does not appear in the wild', 5),
+	('algebra', 'branch of mathematics', 6),
+	('algebraic geometry', 'branch of mathematics', 7),
+	('topology', 'branch of mathematics', 8),
+	('analysis', 'branch of mathematics', 9),
+	('order theory', 'branch of mathematics', 10),
+	('measure theory', 'branch of mathematics', 11),
+	('geometry', 'branch of mathematics', 12),
+	('set theory', 'branch of mathematics', 13),
+	('representation theory', 'branch of mathematics', 14),
+	('combinatorics', 'branch of mathematics', 15),
+	('category theory', 'branch of mathematics', 16),
+	('number theory', 'branch of mathematics', 16);
 
 INSERT INTO category_tags (category_id, tag)
 VALUES

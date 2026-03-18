@@ -48,10 +48,11 @@ export const load = async (event) => {
 			ORDER BY id
 		`,
 		sql`
-			SELECT tag
-			FROM category_tags
-			WHERE category_id = ${id}
-			ORDER BY tag
+			SELECT ct.tag
+			FROM category_tags ct
+			INNER JOIN tags t ON t.tag = ct.tag
+			WHERE ct.category_id = ${id}
+			ORDER BY t.position
 		`,
 		sql`
 			SELECT description, reason
