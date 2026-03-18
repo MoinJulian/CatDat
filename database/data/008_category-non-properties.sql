@@ -216,6 +216,11 @@ VALUES
 		'Consider the submonoid $\{(a,b) : a \leq b \}$ of $\mathbb{N}^2$.'
 	),
 	(
+		'CMon',
+		'cogenerator',
+		'See <a href="https://mathoverflow.net/questions/509232" target="_blank">MO/509232</a>.'
+	),
+	(
 		'Pos',
 		'strict terminal object',
 		'trivial'
