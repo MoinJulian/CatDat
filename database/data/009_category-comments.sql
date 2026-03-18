@@ -31,6 +31,10 @@ INSERT INTO category_comments (
         'It is likely that the epimorphisms can be described as in the <a href="/category/CRing">commutative, unital case</a>.'
     ),
     (
+        'Fld',
+        'Limits and colimits are discussed in <a href="https://math.stackexchange.com/questions/359352" target="_blank">MSE/359352</a>.'
+    ),
+    (
         'Sch',
         'Monomorphisms are discussed at <a href="https://mathoverflow.net/questions/56591" target="_blank">MO/56591</a>. At least the case of morphisms of locally finite type is understood.'
     ),

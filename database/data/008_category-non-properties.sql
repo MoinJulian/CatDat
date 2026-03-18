@@ -1098,22 +1098,27 @@ VALUES
 	(
 		'Fld',
 		'pushouts',
-		NULL
+		'By <a href="https://math.stackexchange.com/questions/359352/" target="_blank">MSE/359352</a>, the pushout $E \sqcup_K F$ of two field homomorphisms $E \leftarrow K \rightarrow F$ exists if and only if the tensor product $E \otimes_K F$ has a "fieldification": this means that the nilradical is a prime ideal whose quotient ring is a field. This is quite rare: Consider $E = K(X)$, $F = K(Y)$. Then $E \otimes_K F$ is isomorphic to $K[X,Y] (K[X]-\{0\})^{-1} (K[Y]-\{0\})^{-1}$, which is an integral domain but not a field: for example, $X-Y$ has no inverse.'
 	),
 	(
 		'Fld',
 		'balanced',
-		NULL
+		'Every non-trivial purely inseparable field extension, such as $\mathbb{F}_p(X^p) \to \mathbb{F}_p(X)$, provides a counterexample by the descriptions of special morphisms below.'
 	),
 	(
 		'Fld',
 		'generator',
-		NULL
+		'Assume that $G$ is a generator, say of characteristic $p$. Then for all $q \neq p$ all homomorphisms between two fields of characteristic $q$ would be equal, which is absurd.'
 	),
 	(
 		'Fld',
 		'cogenerator',
 		'Assume that there is a field $Q$ that cogenerates. Take a field $F$ which is larger than $R$ and admits a non-trivial automorphism (for example, a field of rational functions). Then there is no field homomorphism $F \to Q$ (as it would be injective). Since $Q$ cogenerates, this means that all homomorphisms $F \to F$ are equal, a contradiction.'
+	),
+	(
+		'Fld',
+		'essentially small',
+		'Consider function fields in any number of variables.'
 	),
 	(
 		'Fld',
