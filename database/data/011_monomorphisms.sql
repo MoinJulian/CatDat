@@ -25,14 +25,15 @@ VALUES
 		'For the non-trivial direction, if $f : X \to Y$ is a monomorphism of sets and $a,b \in X$ satisfy $f(a) = f(b)$, then $f \circ a = f \circ b$ when we regard $a,b$ as morphisms $a,b : 1 \to X$. Hence, $a = b$. More generally, if $\mathcal{C}$ is a category that admits a faithful and representable functor $U : \mathcal{C} \to \mathbf{Set}$, then the monomorphisms in $\mathcal{C}$ are precisely the morphisms whose $U$-image is injective.'
 	),
 	(
-		'Ab',
-		'injective homomorphisms',
-		'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'
-	),
-	(
 		'Top',
 		'injective continuous maps',
 		'The same proof as for $\mathbf{Set}$ can be used.'
+	),
+	-- code duplication ahead 🚨
+	(
+		'Ab',
+		'injective homomorphisms',
+		'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'
 	),
 	(
 		'Grp',
@@ -46,6 +47,11 @@ VALUES
 	),
 	(
 		'Ring',
+		'injective ring homomorphisms',
+		'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'
+	),
+	(
+		'Alg(R)',
 		'injective ring homomorphisms',
 		'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'
 	),

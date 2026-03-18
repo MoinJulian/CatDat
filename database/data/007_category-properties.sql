@@ -151,6 +151,26 @@ VALUES
 		'follows in the same way as for (additive) groups'
 	),
 	(
+		'Alg(R)',
+		'locally small',
+		'There is a forgetful functor $\mathbf{Alg}(R) \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
+	),
+	(
+		'Alg(R)',
+		'finitary algebraic',
+		'Take the algebraic theory of an $R$-algebra.'
+	),
+	(
+		'Alg(R)',
+		'strict terminal object',
+		'If $f : 0 \to A$ is an algebra homomorphism, then $A$ satisfies $1=f(1)=f(0)=0$, so that $A=0$.'
+	),
+	(
+		'Alg(R)',
+		'Malcev',
+		'follows in the same way as for (additive) groups'
+	),
+	(
 		'CRing',
 		'locally small',
 		'There is a forgetful functor $\mathbf{CRing} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
@@ -167,6 +187,26 @@ VALUES
 	),
 	(
 		'CRing',
+		'Malcev',
+		'follows in the same way as for (additive) groups'
+	),
+	(
+		'CAlg(R)',
+		'locally small',
+		'There is a forgetful functor $\mathbf{CAlg(R)} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
+	),
+	(
+		'CAlg(R)',
+		'finitary algebraic',
+		'Take the algebraic theory of a commutative ring.'
+	),
+	(
+		'CAlg(R)',
+		'strict terminal object',
+		'If $f : 0 \to R$ is a homomorphism, then $R$ satisfies $1=f(1)=f(0)=0$, so that $R=0$.'
+	),
+	(
+		'CAlg(R)',
 		'Malcev',
 		'follows in the same way as for (additive) groups'
 	),

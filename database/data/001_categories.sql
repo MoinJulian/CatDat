@@ -64,6 +64,15 @@ VALUES
 		'https://ncatlab.org/nlab/show/Ring'
 	),
 	(
+		'Alg(R)',
+		'category of algebras',
+		'$\mathbf{Alg}(R)$',
+		'algebras over a commutative ring $R \neq 0$',
+		'maps preserving the ring and module structure',
+		'This is very similar to the category of rings, which we get for $R = \mathbb{Z}$. We assume our rings (and algebras) to be unital. For $R = 0$ we would get the trivial category, which is why we exclude this here.',
+		'https://ncatlab.org/nlab/show/Alg'
+	),
+	(
 		'CRing',
 		'category of commutative rings',
 		'$\mathbf{CRing}$',
@@ -71,6 +80,15 @@ VALUES
 		'ring homomorphisms',
 		NULL,
 		'https://ncatlab.org/nlab/show/CRing'
+	),
+	(
+		'CAlg(R)',
+		'category of commutative algebras',
+		'$\mathbf{CAlg}(R)$',
+		'commutative algebras over a commutative ring $R \neq 0$',
+		'maps preserving the ring and module structure',
+		'This is very similar to the category of commutative rings, which we get for $R = \mathbb{Z}$. In general, $\mathbf{CAlg}(R) \cong R \,/\, \mathbf{CRing}$. We assume our rings (and algebras) to be unital. For $R = 0$ we would get the trivial category, which is why we exclude this here.',
+		'https://ncatlab.org/nlab/show/CommAlg'
 	),
 	(
 		'Rng',

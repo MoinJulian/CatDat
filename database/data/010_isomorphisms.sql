@@ -25,14 +25,15 @@ VALUES
 		'easy'
 	),
 	(
-		'Ab',
-		'bijective homomorphisms',
-		'This characterization holds in every algebraic category.'
-	),
-	(
 		'Top',
 		'homeomorphisms',
 		'easy'
+	),
+	-- code duplication ahead 🚨
+	(
+		'Ab',
+		'bijective homomorphisms',
+		'This characterization holds in every algebraic category.'
 	),
 	(
 		'Grp',
@@ -46,6 +47,11 @@ VALUES
 	),
 	(
 		'Ring',
+		'bijective ring homomorphisms',
+		'This characterization holds in every algebraic category.'
+	),
+	(
+		'Alg(R)',
 		'bijective ring homomorphisms',
 		'This characterization holds in every algebraic category.'
 	),

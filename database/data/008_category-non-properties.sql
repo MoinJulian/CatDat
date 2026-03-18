@@ -107,13 +107,28 @@ VALUES
 	),
 	(
 		'Ring',
-		'disjoint finite coproducts',
-		NULL
-	),
-	(
-		'Ring',
 		'skeletal',
 		'trivial'
+	),
+	(
+		'Alg(R)',
+		'strict initial object',
+		'The homomorphism $p_1 : R \times R \to R$ is not an isomorphism, and $R$ is initial.'
+	),
+	(
+		'Alg(R)',
+		'balanced',
+		'Take a prime ideal $P \subseteq R$ and consider the $R$-algebra $A := R/P$ (which is an integral domain). Then the inclusion $A \hookrightarrow Q(A)$ is a counterexample.'
+	),
+	(
+		'Alg(R)',
+		'skeletal',
+		'trivial'
+	),
+	(
+		'Alg(R)',
+		'cogenerator',
+		'Assume that there is a $R$-algebra $Q$ that cogenerates. Clearly, $Q$ is non-zero. Take an infinite field $F$ which has a $R$-algebra structure, is larger than $Q$ and admits a non-trivial automorphism (for example, a field of rational functions over some residue field of $R$). Then there is no algebra homomorphism $F \to Q$. Since $Q$ cogenerates, this implies that all homomorphisms $F \to F$ are equal, a contradiction.'
 	),
 	(
 		'CRing',
@@ -132,18 +147,33 @@ VALUES
 	),
 	(
 		'CRing',
-		'disjoint finite coproducts',
-		'The coproduct inclusion $\mathbb{Z}/2 \to \mathbb{Z}/2 \otimes \mathbb{Z}/3 = 0$ is not a monomorphism.'
+		'skeletal',
+		'trivial'
 	),
 	(
-		'CRing',
+		'CAlg(R)',
+		'strict initial object',
+		'The homomorphism $p_1 : R \times R \to R$ is not an isomorphism, and $R$ is initial.'
+	),
+	(
+		'CAlg(R)',
+		'balanced',
+		'Take a prime ideal $P \subseteq R$ and consider the commutative $R$-algebra $A := R/P$ (which is an integral domain). Then the inclusion $A \hookrightarrow Q(A)$ is a counterexample.'
+	),
+	(
+		'CAlg(R)',
+		'cogenerator',
+		'Assume that there is a commutative $R$-algebra $Q$ that cogenerates. Clearly, $Q$ is non-zero. Take an infinite field $F$ which admits an $R$-algebra structure, is larger than $Q$ and admits a non-trivial automorphism (for example, a field of rational functions over some residue field of $R$). Then there is no homomorphism $F \to Q$. Since $Q$ cogenerates, this implies that all homomorphisms $F \to F$ are equal, a contradiction.'
+	),
+	(
+		'CAlg(R)',
 		'skeletal',
 		'trivial'
 	),
 	(
 		'Rng',
-		'preadditive',
-		NULL
+		'additive',
+		'The explicit construction of coproducts of rngs (see <a href="https://math.stackexchange.com/questions/4975797" target="_blank">MSE/4975797</a>) shows that the canonical homomorphism $R \sqcup S \to R \times S$ is surjective, but in most cases not injective: The kernel contains the tensor product $R \otimes S$.'
 	),
 	(
 		'Rng',
@@ -198,7 +228,7 @@ VALUES
 	(
 		'CMon',
 		'preadditive',
-		'In categories with finite products and coproducts, the preadditive structure is <i>unique</i>: If $f,g : A \to B$ are morphisms, their sum $f+g : A \to B$ is the composite of $(f,g) :A \to B \times B$, the inverse of the canonical morphism $B \oplus B \to B \times B$ (which indeed must be an isomorphism), and the codiagonal $B \oplus B \to B$. In the case of $\mathbf{CMon}$, this is just the pointwise addition of maps, and this is indeed an enrichment of $\mathbf{CMon}$ over itself. But not over $\mathbf{Ab}$, since for example $\mathrm{Hom}(\mathbb{N},\mathbb{N}) \cong \mathbb{N}$ (with respect to addition) is not a group.'
+		'In categories with finite products and coproducts, the preadditive structure is <i>unique</i>: If $f,g : A \to B$ are morphisms, their sum $f+g : A \to B$ is the composite of $(f,g) : A \to B \times B$, the inverse of the canonical morphism $B \oplus B \to B \times B$ (which indeed must be an isomorphism), and the codiagonal $B \oplus B \to B$. In the case of $\mathbf{CMon}$, this is just the pointwise addition of maps, and this is indeed an enrichment of $\mathbf{CMon}$ over itself. But not over $\mathbf{Ab}$, since for example $\mathrm{Hom}(\mathbb{N},\mathbb{N}) \cong \mathbb{N}$ (with respect to addition) is not a group.'
 	),
 	(
 		'CMon',

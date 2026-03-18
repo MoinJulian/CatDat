@@ -180,6 +180,13 @@ VALUES
 		FALSE
 	),
 	(
+		'disjoint_coproducts_strict',
+		'["disjoint finite coproducts", "strict terminal object"]',
+		'["thin"]',
+		'Let $1$ be the strict terminal object, and let $A$ be any object. Then $1 \to A + 1$ is an isomorphism, since $1$ is strict. Also, $A \to A + 1$ is a monomorphism by assumption. It follows that the unique morphism $u : A \to 1$ is a monomorphism. For all $f,g : B \to A$ we have $uf = ug$ (since $1$ is terminal), hence $f = g$.',
+		FALSE
+	),
+	(
 		'binary_products_consequence',
 		'["binary products", "inhabited"]',
 		'["connected"]',
