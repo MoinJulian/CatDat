@@ -24,7 +24,5 @@ export const load = async () => {
 
 	const implications: ImplicationDisplay[] = rows.map(display_implication)
 
-	return {
-		implications: render_nested_formulas(implications),
-	}
+	return render_nested_formulas({ implications })
 }

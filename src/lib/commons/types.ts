@@ -25,6 +25,7 @@ export type ImplicationDB = {
 	assumptions: string
 	conclusions: string
 	is_deduced: number
+	dualized_from?: string | null
 }
 
 export type ImplicationDisplay = Replace<

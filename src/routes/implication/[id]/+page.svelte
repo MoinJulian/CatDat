@@ -1,6 +1,8 @@
 <script lang="ts">
 	import MetaData from '$components/MetaData.svelte'
 	import { get_property_url } from '$lib/commons/property.url.js'
+	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+	import Fa from 'svelte-fa'
 
 	let { data } = $props()
 </script>
@@ -31,12 +33,25 @@
 </p>
 
 {#if data.implication.is_equivalence}
-	<p>This is an equivalence.</p>
+	<p>
+		<Fa icon={faInfoCircle} />
+		This is an equivalence.
+	</p>
 {/if}
 
-<p>
-	<strong>Proof:</strong>
-	{@html data.implication.reason}
-</p>
+{#if data.implication.dualized_from}
+	<p>
+		This implication has been dualized from <a
+			href="/implication/{data.implication.dualized_from}"
+		>
+			this implication
+		</a>.
+	</p>
+{:else}
+	<p>
+		<strong>Proof:</strong>
+		{@html data.implication.reason}
+	</p>
+{/if}
 
 <button class="button" onclick={() => window.history.back()}>Go back</button>

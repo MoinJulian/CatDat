@@ -75,14 +75,17 @@ async function create_dualized_implications(db: Client) {
                 conclusions,
                 is_equivalence,
                 reason,
-                is_deduced
-            ) VALUES (?, ?, ?, ?, ?, TRUE)`,
+                is_deduced,
+                dualized_from
+            ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
 			args: [
 				`dual_${impl.id}`,
 				impl.dual_assumptions,
 				impl.dual_conclusions,
 				impl.is_equivalence,
-				`[dualized] ${impl.reason}`,
+				'This follows from the dual implication.',
+				true,
+				impl.id,
 			],
 		})),
 		'write',

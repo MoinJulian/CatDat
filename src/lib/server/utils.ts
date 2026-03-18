@@ -21,6 +21,7 @@ export function display_implication(implication: ImplicationDB): ImplicationDisp
 		is_deduced: Boolean(implication.is_deduced),
 		assumptions: JSON.parse(implication.assumptions),
 		conclusions: JSON.parse(implication.conclusions),
+		dualized_from: implication.dualized_from,
 	}
 }
 
