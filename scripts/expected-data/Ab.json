@@ -23,6 +23,8 @@
 		"exact filtered colimits",
 		"filtered colimits",
 		"filtered limits",
+		"directed limits",
+		"directed colimits",
 		"finitary algebraic",
 		"finite coproducts",
 		"finite products",

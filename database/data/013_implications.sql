@@ -243,8 +243,8 @@ VALUES
 		FALSE
 	),
 	(
-		'filtered_limits_consequence',
-		'["filtered limits"]',
+		'directed_limits_consequence',
+		'["directed limits"]',
 		'["sequential limits"]',
 		'This is trivial.',
 		FALSE
@@ -420,7 +420,7 @@ VALUES
 	(
 		'groupoid_consequence',
 		'["groupoid"]',
-		'["self-dual", "mono-regular", "pullbacks", "filtered limits", "left cancellative", "well-powered"]',
+		'["self-dual", "mono-regular", "pullbacks", "directed limits", "left cancellative", "well-powered"]',
 		'This is easy.',
 		FALSE
 	),
@@ -504,6 +504,13 @@ VALUES
 		FALSE
 	),
 	(
+		'directed_colimits_suffice',
+		'["directed colimits"]',
+		'["filtered colimits"]',
+		'This is Theorem 1.5. in <a href="https://ncatlab.org/nlab/show/Locally+Presentable+and+Accessible+Categories" target="_blank">Adamek-Rosicky</a>.',
+		TRUE
+	),
+	(
 		'connected_limits_characterization',
 		'["connected limits"]',
 		'["wide pullbacks", "equalizers"]',
@@ -521,7 +528,7 @@ VALUES
 		'wide_pullbacks_criterion',
 		'["wide pullbacks"]',
 		'["pullbacks", "filtered limits"]',
-		'To prove $\Leftarrow$, a wide pullback can be constructed as a filtered limit of finite pullbacks, and finite pullbacks can be reduced to binary products (the empty-indexed pullback always exists). Conversely, assume that wide pullbacks exist in $\mathcal{C}$. For every object $A$ then the slice category $\mathcal{C} / A$ has wide pullbacks and a terminal object, hence is complete. Since a filtered limit can be finally reduced to such a slice, we are done.',
+		'To prove $\Leftarrow$, a wide pullback can be constructed as a filtered limit of finite pullbacks, and finite pullbacks can be reduced to binary pullbacks (the empty-indexed pullback always exists). Conversely, assume that wide pullbacks exist in $\mathcal{C}$. For every object $A$ then the slice category $\mathcal{C} / A$ has wide pullbacks and a terminal object, hence is complete. Since a filtered limit can be finally reduced to such a slice, we are done.',
 		TRUE
 	),
 	(

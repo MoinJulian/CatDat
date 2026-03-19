@@ -1169,7 +1169,7 @@ VALUES
 	),
 	(
 		'FreeAb',
-		'filtered colimits',
+		'directed colimits',
 		'See <a href="https://math.stackexchange.com/questions/5025660" target="_blank">this post</a>'
 	),
 	(

@@ -177,6 +177,22 @@ VALUES
 		TRUE
 	),
 	(
+		'directed limits',
+		'has',
+		'A category has <i>directed limits</i> if it has limits of diagrams indexed by codirected posets. This is actually equivalent to having filtered limits.',
+		'https://ncatlab.org/nlab/show/directed+limit',
+		'directed colimits',
+		TRUE
+	),
+	(
+		'directed colimits',
+		'has',
+		'A category has <i>directed colimits</i> if it has colimits of diagrams indexed by directed posets. This is actually equivalent to having filtered colimits. Directed colimits are (somewhat confusingly) also known as <i>inverse limits</i>.',
+		'https://ncatlab.org/nlab/show/directed+colimit',
+		'directed limits',
+		TRUE
+	),
+	(
 		'sequential limits',
 		'has',
 		'A category has <i>sequential limits</i> if it has limits of diagrams of the following form: $\cdots \bullet \to \bullet \to \bullet$',

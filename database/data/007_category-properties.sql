@@ -669,8 +669,8 @@ VALUES
 	),
 	(
 		'walking_pair',
-		'filtered colimits',
-		'Every filtered diagram can be reduced to one of the three trivial diagrams $0 \to 0$, $0 \to 1$, $1 \to 1$, which have colimits $0$, $1$, resp. $1$.'
+		'directed colimits',
+		'Every directed diagram can be reduced to one of the three trivial diagrams $0 \to 0$, $0 \to 1$, $1 \to 1$, which have colimits $0$, $1$, resp. $1$.'
 	),
 	(
 		'walking_pair',
@@ -761,8 +761,8 @@ VALUES
 	),
 	(
 		'Met',
-		'filtered colimits',
-		'Given a filtered diagram $(X_i)$ of metric spaces, take the filtered colimit $X$ of the underlying sets with the following metric: If $x,y \in X$, let $d(x,y)$ be infimum of all $d(x_i,y_i)$, where $x_i,y_i \in X_i$ are some preimages of $x,y$ in some $X_i$. This is only a pseudo-metric, so finally take the associated metric space (Kolmogorov quotient). The definition ensures that each $X_i \to X$ is non-expansive, and the universal property is easy to check.' 
+		'directed colimits',
+		'Given a directed diagram $(X_i)$ of metric spaces, take the directed colimit $X$ of the underlying sets with the following metric: If $x,y \in X$, let $d(x,y)$ be infimum of all $d(x_i,y_i)$, where $x_i,y_i \in X_i$ are some preimages of $x,y$ in some $X_i$. This is only a pseudo-metric, so finally take the associated metric space (Kolmogorov quotient). The definition ensures that each $X_i \to X$ is non-expansive, and the universal property is easy to check.' 
 	),
 	(
 		'Met',
@@ -1251,7 +1251,7 @@ VALUES
 		'sequential limits',
 		'See <a href="https://math.stackexchange.com/questions/5129138/" target="_blank">MSE/5129138</a>.'
 	),
-	
+
 	-- various categories
 	(
 		'Ban',
@@ -1350,8 +1350,8 @@ VALUES
 	),
 	(
 		'Fld',
-		'filtered colimits',
-		'Consider a filtered diagram $(F_i)$ of fields and take the colimit $F$ in the category of commutative rings. Now one checks that $F$ is a field as well, and the universal property remains true for fields.'
+		'directed colimits',
+		'Consider a directed diagram $(F_i)$ of fields and take the colimit $F$ in the category of commutative rings. Now one checks that $F$ is a field as well, and the universal property remains true for fields.'
 	),
 	(
 		'Fld',

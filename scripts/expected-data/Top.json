@@ -19,6 +19,8 @@
 		"equalizers",
 		"filtered colimits",
 		"filtered limits",
+		"directed limits",
+		"directed colimits",
 		"finite coproducts",
 		"finite products",
 		"finitely cocomplete",
