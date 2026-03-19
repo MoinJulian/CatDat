@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { faPlus } from '@fortawesome/free-solid-svg-icons'
-	import Fa from 'svelte-fa'
 	import ChipGroup from './ChipGroup.svelte'
 	import Chip from './Chip.svelte'
+	import { debounce } from '$lib/client/utils'
 
 	type Props = {
 		title?: string
@@ -31,16 +30,19 @@
 				selected_items.length < max),
 	)
 
-	function handle_submit(e: SubmitEvent) {
-		e.preventDefault()
-		if (!item || !is_valid) return
-		selected_items.push(item)
-		item = ''
-	}
-
 	function remove_item(item: string) {
 		selected_items = selected_items.filter((_item) => _item !== item)
 	}
+
+	function handle_input() {
+		if (!item.length) return
+		if (is_valid) {
+			selected_items.push(item)
+			item = ''
+		}
+	}
+
+	const debounced_handle_input = debounce(handle_input, 500)
 </script>
 
 <section aria-label={section_label}>
@@ -48,23 +50,16 @@
 		<p>{@html title}</p>
 	{/if}
 
-	<form onsubmit={handle_submit}>
+	<div class="input-wrapper">
 		<input
 			aria-label={item_label}
 			aria-invalid={!is_valid}
 			type="text"
 			bind:value={item}
 			list="list-{item_label}"
+			oninput={debounced_handle_input}
 		/>
-		<button
-			type="submit"
-			class="button"
-			disabled={selected_items.length >= max}
-			aria-label="add item"
-		>
-			<Fa icon={faPlus} />
-		</button>
-	</form>
+	</div>
 
 	<ChipGroup>
 		{#each selected_items as selected_item}
@@ -86,19 +81,15 @@
 		margin-block: 1.5rem;
 	}
 
-	form {
-		display: flex;
-		gap: 1rem;
+	.input-wrapper {
 		margin-bottom: 1rem;
-	}
 
-	input {
-		flex: 1;
-	}
+		input {
+			width: 100%;
+		}
 
-	@media (min-width: 600px) {
-		form {
-			max-width: 30rem;
+		@media (min-width: 600px) {
+			max-width: 28rem;
 		}
 	}
 </style>

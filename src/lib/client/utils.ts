@@ -10,3 +10,14 @@ export function get_device_type() {
 export function filter_by_tag(tag: string) {
 	goto(`/categories/${tag}`)
 }
+
+export function debounce<T extends (...args: any[]) => any>(fn: T, delay: number) {
+	let timer: number | undefined
+
+	return (...args: Parameters<T>) => {
+		if (timer) clearTimeout(timer)
+		timer = window.setTimeout(() => {
+			fn(...args)
+		}, delay)
+	}
+}
