@@ -480,7 +480,7 @@ VALUES
 	(
 		'Abfg',
 		'generator',
-		'The group $\mathbb{Z}$ is a generator since it represents the forgetful functor $\mathbf{Abfg} \to \mathbf{Set}$.'
+		'The group $\mathbb{Z}$ is a generator since it represents the forgetful functor to $\mathbf{Set}$.'
 	),
 
 	(

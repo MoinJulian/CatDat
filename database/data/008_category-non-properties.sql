@@ -198,7 +198,7 @@ VALUES
 	(
 		'Set*',
 		'Malcev',
-		NULL
+		'There are lots of pointed reflexive relations that are not symmetric, for example $\{(a,b) \in \mathbb{N} : a \leq b\}$ on $(\mathbb{N},0)$.'
 	),
 	(
 		'Mon',
@@ -263,7 +263,7 @@ VALUES
 	(
 		'Pos',
 		'balanced',
-		NULL
+		'Consider any set $X$ with $ \geq 2$ elements and the identity map $(X,\Delta_X) \to (X, X \times X)$. It is is bijective but no isomorphism.'
 	),
 	(
 		'Pos',
@@ -273,7 +273,7 @@ VALUES
 	(
 		'Pos',
 		'Malcev',
-		NULL
+		'Consider the subposet $\{(a,b) : a \leq b \}$ of $\mathbb{N}^2$.'
 	),
 	(
 		'M-Set',
@@ -288,7 +288,7 @@ VALUES
 	(
 		'M-Set',
 		'Malcev',
-		NULL
+		'Endow the set $\mathbb{N}$ with the trivial $M$-action, and consider the subset $\{(a,b) : a \leq b \}$ of $\mathbb{N}^2$.'
 	),
 	(
 		'R-Mod',
@@ -339,13 +339,13 @@ VALUES
 	),
 	(
 		'FinSet',
-		'sequential limits',
-		NULL
+		'sequential colimits',
+		'Let $[n] := \{1,\dotsc,n\}$. Assume the sequence of inclusion maps $[1] \to [2] \to \cdots$ has a colimit $X$ in $\mathbf{FinSet}$ with maps $f_n : [n] \to X$. Let $n_0 \geq 1$ be fixed. I claim that $f_{n_0}$ is injective, which will then yield a contradiction by taking $n_0 > \mathrm{card}(X)$. For $n \geq 1$ define $g_n : [n] \to [n_0]$ as follows. For $n \leq n_0$ it is the inclusion, and for $n \geq n_0$ it is the projection which keeps all elements of $[n_0]$ and maps all other elements to $n_0$. Observe that $g_{n+1} |_{[n]} = g_n$. Hence, there is a unique map $g : X \to [n_0]$ with $g \circ f_n = g_n$ for all $n$. For $n = n_0$ this shows $g \circ f_{n_0} = \mathrm{id}_{[n_0]}$, and $f_{n_0}$ is injective.'
 	),
 	(
 		'FinSet',
-		'sequential colimits',
-		NULL
+		'sequential limits',
+		'Let $[n] := \{1,\dotsc,n\}$. We define the projection $p_n : [n+1] \to [n]$ by extending the identity of $[n]$ with $p_n(n+1) := n$. Assume the sequence of projections $\cdots \to [2] \to [1]$ has a limit $X$ in $\mathbf{FinSet}$ with maps $f_n : X \to [n]$. Let $n_0 \geq 1$ be fixed. I claim that $f_{n_0}$ is surjective, which will then yield a contradiction by taking $n_0 > \mathrm{card}(X)$. For $n \geq 1$ define $g_n : [n_0] \to [n]$ as follows. For $n \leq n_0$ it is the projection, and for $n \geq n_0$ it is the inclusion. Observe that $p_n \circ g_{n+1} = g_n$. Hence, there is a unique map $g : [n_0] \to X$ with $f_n \circ g = g_n$ for all $n$. For $n = n_0$ this shows $f_{n_0} \circ g = \mathrm{id}_{[n_0]}$, and $f_{n_0}$ is surjective.'
 	),
 	(
 		'FinSet',
@@ -365,7 +365,7 @@ VALUES
 	(
 		'FinAb',
 		'generator',
-		NULL
+		'If $A,B$ are finite abelian groups whose orders are coprime, then we know that $\hom(A,B)$ is trivial. But a generator would admit a non-trivial homomorphism to any other non-trivial finite abelian group.'
 	),
 	(
 		'FinAb',
@@ -374,38 +374,38 @@ VALUES
 	),
 	(
 		'FinAb',
-		'sequential limits',
-		NULL
+		'countable products',
+		'Assume that the product $P := \mathbb{Z}/2 \times \mathbb{Z}/2 \times \cdots$ exists. Since products are associative, we conclude $P \cong \mathbb{Z}/2 \times P$. By induction, we get $P \cong (\mathbb{Z}/2)^n \times P$ for all $n$. But then $P$ has at least $2^n$ elements, which contradicts finiteness of $P$.'
 	),
 	(
 		'FinAb',
 		'skeletal',
-		'There are many trivial and hence isomorphic groups, which are not equal.'
+		'There are many trivial and hence isomorphic groups which are not equal.'
 	),
 	(
 		'Abfg',
 		'small',
-		NULL
+		'Even the collection of trivial groups is not small.'
 	),
 	(
 		'Abfg',
 		'cogenerator',
-		NULL
+		'Let $Q$ be a finitely generated abelian group. By their well-known classification, we have $Q = F \oplus T$ for a free abelian group $F$ and a finite abelian group $T$. Let $p$ be a prime number which does not divide the order of $T$. Then $\hom(\mathbb{Z}/p, Q) = 0$, but $\mathbb{Z}/p \neq 0$. Therefore, $Q$ is no cogenerator.'
 	),
 	(
 		'Abfg',
 		'split abelian',
-		NULL
+		'The short exact sequence $0 \xrightarrow{} \mathbb{Z} \xrightarrow{p} \mathbb{Z} \xrightarrow{} \mathbb{Z}/p \xrightarrow{} 0$ does not split.'
 	),
 	(
 		'Abfg',
 		'countable products',
-		NULL
+		'For $n \geq 1$ set $A_n = \mathbb{Z}$. Assume that these groups have a product $P$ in this category. Since products are associative, we have $P \cong \mathbb{Z} \times P$. Induction yields $P \cong \mathbb{Z}^n \times P$ for all $n$. But then the rank of $P$ cannot be finite.'
 	),
 	(
 		'Abfg',
 		'countable coproducts',
-		NULL
+		'For $n \geq 1$ set $A_n = \mathbb{Z}$. Assume that these groups have a coproduct $C$ in this category. Since coproducts are associative, we have $C \cong \mathbb{Z} \oplus C$. Induction yields $C \cong \mathbb{Z}^{\oplus n} \oplus C$ for all $n$. But then the rank of $C$ cannot be finite.'
 	),
 	(
 		'Abfg',
@@ -415,22 +415,22 @@ VALUES
 	(
 		'B',
 		'small',
-		NULL
+		'Even the collection of singletons is not small.'
 	),
 	(
 		'B',
 		'connected',
-		NULL
+		'For every $n \geq 0$ there is a connected component of sets of size $n$.'
 	),
 	(
 		'B',
 		'generator',
-		NULL
+		'trivial'
 	),
 	(
 		'B',
 		'essentially finite',
-		NULL
+		'trivial'
 	),
 	(
 		'B',
@@ -439,33 +439,28 @@ VALUES
 	),
 	(
 		'FI',
-		'binary coproducts',
-		NULL
-	),
-	(
-		'FI',
 		'small',
-		NULL
+		'Even the collection of all singletons is not small.'
 	),
 	(
 		'FI',
 		'cogenerator',
-		NULL
+		'Let $Q$ be finite set. When $Q$ is empty, it is clearly no cogenerator. Otherwise, $Q + 1$ has at least two elements, so that there are two different morphisms $1 \to Q + 1$. But there is no morphism $Q + 1 \to Q$ at all. Hence, $Q$ is no cogenerator.'
 	),
 	(
 		'FI',
 		'binary products',
-		NULL
+		'Assume that two finite sets $X,Y$ have a product $P$ in this category. Elements of $P$ are the same as maps $1 \to P$, and they are automatically injective. Therefore, $P \cong \hom(1,P) \times \hom(1,X) \times \hom(1,Y) \cong X \times Y$, and the projections must agree as well. But they are usually not injective.' 
 	),
 	(
 		'FI',
 		'sequential colimits',
-		NULL
+		'Let $[n] := \{1,\dotsc,n\}$. Assume the sequence of inclusion maps $[1] \to [2] \to \cdots$ has a colimit $X$ in this category with maps $f_n : [n] \to X$. But $f_n$ must be an injective map, so that $\mathrm{card}(X) \geq n$ for all $n$. Since $X$ is finite, this is a contradiction.'
 	),
 	(
 		'FI',
 		'essentially finite',
-		NULL
+		'trivial'
 	),
 	(
 		'FI',
@@ -475,32 +470,32 @@ VALUES
 	(
 		'FS',
 		'small',
-		NULL
+		'Even the collection of all singletons is not small.'
 	),
 	(
 		'FS',
 		'connected',
-		NULL
+		'If $f : \emptyset \to X$ is surjective, then $X = \emptyset$, and if $f : X \to \emptyset$ is any map, then also $X = \emptyset$. This shows that $\{ \emptyset \}$ is a connected component in this category.'
 	),
 	(
 		'FS',
 		'generator',
-		NULL
+		'Let $G$ be a finite set. There are at least two morphisms $G + 2 \to 2$, but there is no morphism $G \to G + 2$ at all. Hence, $G$ is not a generator.'
 	),
 	(
 		'FS',
 		'sequential limits',
-		NULL
+		'Let $[n] := \{1,\dotsc,n\}$. We define the projection $p_n : [n+1] \to [n]$ by extending the identity of $[n]$ with $p_n(n+1) := n$. Assume the sequence of projections $\cdots \to [2] \to [1]$ has a limit $X$ in this category with maps $f_n : X \to [n]$. But $f_n$ is surjective, so that $\mathrm{card}(X) \geq n$ for all $n$. Since $X$ is finite, this is a contradiction.'
 	),
 	(
 		'FS',
 		'pullbacks',
-		NULL
+		'The connected component of non-empty sets has a terminal object, $1$, and it suffices to prove that it has no products. Let $X$ be a finite set with more than $1$ element. Assume that the product $P$ of $X$ with itself exists. The diagonal $X \to P$ is a split monomorphism, hence injective, but also surjective, i.e. an isomorphism. In other words, the two projections $P \to X$ are equal. The universal property of $P$ now implies that all morphisms $Y \to X$ are equal, which is absurd.'
 	),
 	(
 		'FS',
 		'essentially finite',
-		NULL
+		'trivial'
 	),
 	(
 		'FS',
@@ -511,7 +506,7 @@ VALUES
 	(
 		'FinOrd',
 		'small',
-		NULL
+		'Even the collection of all singleton orders is not small.'
 	),
 	(
 		'FinOrd',
@@ -676,7 +671,7 @@ VALUES
 	(
 		'Met',
 		'essentially small',
-		NULL
+		'trivial'
 	),
 	(
 		'Met',
@@ -691,7 +686,7 @@ VALUES
 	(
 		'Met',
 		'Malcev',
-		NULL
+		'Consider the metric subspace $\{(a,b) \in \mathbb{R}^2 : a \leq b\}$ of $\mathbb{R}^2$.'
 	),
 	(
 		'Met_oo',
@@ -701,7 +696,7 @@ VALUES
 	(
 		'Met_oo',
 		'balanced',
-		NULL
+		'The inclusion $\mathbb{Q} \hookrightarrow \mathbb{R}$ provides a counterexample.'
 	),
 	(
 		'Met_oo',
@@ -726,7 +721,7 @@ VALUES
 	(
 		'Met_c',
 		'products',
-		NULL
+		'See <a href="https://math.stackexchange.com/questions/139168" target="_blank">MSE/139168</a> for a proof that uncountable products do not exist.'
 	),
 	(
 		'Met_c',
@@ -736,7 +731,7 @@ VALUES
 	(
 		'Met_c',
 		'balanced',
-		NULL
+		'The inclusion $\mathbb{Q} \hookrightarrow \mathbb{R}$ provides a counterexample.'
 	),
 	(
 		'Met_c',
@@ -751,7 +746,7 @@ VALUES
 	(
 		'Met_c',
 		'Malcev',
-		NULL
+		'Consider the metric subspace $\{(a,b) \in \mathbb{R}^2 : a \leq b\}$ of $\mathbb{R}^2$.'
 	),
 
 	(
@@ -859,12 +854,12 @@ VALUES
 	(
 		'real_interval',
 		'essentially finite',
-		NULL
+		'trivial'
 	),
 	(
 		'real_interval',
 		'locally finitely presentable',
-		NULL
+		'It suffices to prove that $0$ (the initial object) is the only finitely presentable object. If $s > 0$, then $s = \sup_{n \in \mathbb{N}, \, s \geq 1/n } (s - 1/n)$, but there is no $n$ with $s \leq s - 1/n$.'
 	),
 	(
 		'Zdiv',

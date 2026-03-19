@@ -3,6 +3,10 @@ INSERT INTO category_comments (
     comment
 ) VALUES
     (
+        'FinSet',
+        'For the non-existence of sequential (co-)limits it is <i>not</i> sufficient to take a diagram of finite sets whose (co-)limit in $\mathbf{Set}$ is not contained in $\mathbf{FinSet}$.'
+    ),
+    (
         'Rel',
         'Lots of properties are unknown here. Please help to fill in the gaps!'
     ),
