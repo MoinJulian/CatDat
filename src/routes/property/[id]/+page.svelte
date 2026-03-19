@@ -2,6 +2,7 @@
 	import CategoryList from '$components/CategoryList.svelte'
 	import ImplicationList from '$components/ImplicationList.svelte'
 	import MetaData from '$components/MetaData.svelte'
+	import { pluralize } from '$lib/client/utils'
 	import { get_property_url } from '$lib/commons/property.url'
 
 	let { data } = $props()
@@ -74,19 +75,28 @@
 
 <CategoryList
 	categories={categories_with_this_property}
-	description="There are {categories_with_this_property.length} categories with this property."
+	description={pluralize(categories_with_this_property.length, {
+		one: 'There is {count} category with this property.',
+		other: 'There are {count} categories with this property.',
+	})}
 />
 
 <h3>Counterexamples</h3>
 
 <CategoryList
 	categories={categories_without_this_property}
-	description="There are {categories_without_this_property.length} categories without this property."
+	description={pluralize(categories_without_this_property.length, {
+		one: 'There is {count} category without this property.',
+		other: 'There are {count} categories without this property.',
+	})}
 />
 
 <h3>Unknown</h3>
 
 <CategoryList
 	categories={unknown_categories}
-	description="There are {unknown_categories.length} categories for which the database has no information on whether they satisfy this property."
+	description={pluralize(unknown_categories.length, {
+		one: 'There is {count} category for which the database has no information on whether it satisfies this property.',
+		other: 'There are {count} categories for which the database has no information on whether they satisfy this property.',
+	})}
 />

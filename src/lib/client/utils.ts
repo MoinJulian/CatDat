@@ -21,3 +21,8 @@ export function debounce<T extends (...args: any[]) => any>(fn: T, delay: number
 		}, delay)
 	}
 }
+
+export function pluralize(count: number, forms: { one: string; other: string }) {
+	const word = count === 1 ? forms.one : forms.other
+	return word.replace('{count}', String(count))
+}

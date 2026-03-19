@@ -3,6 +3,7 @@
 	import ImplicationList from '$components/ImplicationList.svelte'
 	import MetaData from '$components/MetaData.svelte'
 	import SearchFilter from '$components/SearchFilter.svelte'
+	import { pluralize } from '$lib/client/utils'
 
 	let { data } = $props()
 
@@ -47,9 +48,10 @@
 
 <ImplicationList
 	implications={searched_implications}
-	description={search
-		? `Found ${searched_implications.length} implications`
-		: `The following ${searched_implications.length} implications and equivalences are available*.`}
+	description={pluralize(searched_implications.length, {
+		one: 'Found {count} implication*',
+		other: 'Found {count} implications*',
+	})}
 />
 
 <p class="hint">

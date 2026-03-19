@@ -4,7 +4,7 @@
 	import ChipGroup from '$components/ChipGroup.svelte'
 	import MetaData from '$components/MetaData.svelte'
 	import SearchFilter from '$components/SearchFilter.svelte'
-	import { filter_by_tag } from '$lib/client/utils'
+	import { filter_by_tag, pluralize } from '$lib/client/utils'
 
 	let { data } = $props()
 
@@ -28,9 +28,10 @@
 
 	<CategoryList
 		categories={searched_categories}
-		description={search
-			? `Found ${searched_categories.length} categories`
-			: `The following ${searched_categories.length} categories are available.`}
+		description={pluralize(searched_categories.length, {
+			one: 'Found {count} category',
+			other: 'Found {count} categories',
+		})}
 	/>
 </section>
 

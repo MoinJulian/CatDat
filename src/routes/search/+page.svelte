@@ -7,6 +7,7 @@
 	import { encode_property_ID } from '$lib/commons/property.url'
 	import MetaData from '$components/MetaData.svelte'
 	import { SEARCH_SEPARATOR } from './search.config'
+	import { pluralize } from '$lib/client/utils'
 
 	let { data } = $props()
 
@@ -112,7 +113,10 @@
 		{#if data.is_consistent}
 			<CategoryList
 				categories={data.found_categories ?? []}
-				description="Found {data.found_categories.length} categories."
+				description={pluralize(data.found_categories.length, {
+					one: 'Found {count} category',
+					other: 'Found {count} categories',
+				})}
 			/>
 		{:else}
 			<p>No categories found because the requirements are inconsistent.</p>

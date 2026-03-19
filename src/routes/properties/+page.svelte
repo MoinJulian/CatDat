@@ -2,6 +2,7 @@
 	import MetaData from '$components/MetaData.svelte'
 	import PropertyList from '$components/PropertyList.svelte'
 	import SearchFilter from '$components/SearchFilter.svelte'
+	import { pluralize } from '$lib/client/utils'
 
 	let { data } = $props()
 
@@ -24,7 +25,8 @@
 
 <PropertyList
 	properties={searched_properties}
-	description={search
-		? `Found ${searched_properties.length} properties`
-		: `The following ${searched_properties.length} properties are available.`}
+	description={pluralize(searched_properties.length, {
+		one: 'Found {count} property',
+		other: 'Found {count} properties',
+	})}
 />
