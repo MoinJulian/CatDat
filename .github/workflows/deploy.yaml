@@ -1,5 +1,8 @@
 name: deployment from main branch
 
+permissions:
+    contents: write
+
 on:
     push:
         branches:
@@ -11,7 +14,6 @@ on:
             - main
         paths-ignore:
             - '*.md'
-
     workflow_dispatch:
 
 jobs:
@@ -21,6 +23,28 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v5
+              with:
+                  fetch-depth: 0
+                  persist-credentials: true
+
+            - name: Fetch tags
+              run: git fetch --tags --force
+
+            - name: Compute diff since last deploy (database/scripts only)
+              id: diff
+              run: |
+                  if git rev-parse deploy-prod >/dev/null 2>&1; then
+                    if git diff --quiet deploy-prod...HEAD -- database/ scripts/; then
+                      echo "db_changed=false" >> $GITHUB_OUTPUT
+                      echo "No changes in database"
+                    else
+                      echo "db_changed=true" >> $GITHUB_OUTPUT
+                      echo "Changes detected in database"
+                    fi
+                  else
+                    echo "db_changed=true" >> $GITHUB_OUTPUT
+                    echo "No deploy-prod tag found"
+                  fi
 
             - name: Install pnpm
               uses: pnpm/action-setup@v4
@@ -40,12 +64,12 @@ jobs:
               run: pnpm svelte-kit sync
 
             - name: Update database
+              if: steps.diff.outputs.db_changed == 'true'
               env:
                   DB_URL: ${{ secrets.DB_URL }}
                   DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
-                  LOG_DETAILS: ${{ vars.LOG_DETAILS}}
-              run: |
-                  pnpm db:update
+                  LOG_DETAILS: ${{ vars.LOG_DETAILS }}
+              run: pnpm db:update
 
             - name: Build app
               env:
@@ -64,3 +88,12 @@ jobs:
                     --auth ${{ secrets.NETLIFY_ACCESS_TOKEN }} \
                     --message "${{ github.event.head_commit.message }}" \
                     --prod
+
+            - name: Update deploy tag
+              if: github.ref == 'refs/heads/main'
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+
+                  git tag -f deploy-prod $GITHUB_SHA
+                  git push --no-verify origin refs/tags/deploy-prod --force
