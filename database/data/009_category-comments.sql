@@ -19,18 +19,6 @@ INSERT INTO category_comments (
         'It is likely that the epimorphisms can be described as in the <a href="/category/CRing">commutative case</a>.'
     ),
     (
-        'Ring',
-        'For a concrete description of coproducts, see <a href="https://math.stackexchange.com/questions/625874" target="_blank">MSE/625874</a>.'
-    ),
-    (
-        'Alg(R)',
-        'For a concrete description of coproducts, see <a href="https://math.stackexchange.com/questions/625874" target="_blank">MSE/625874</a>.'
-    ),
-    (
-        'Rng',
-        'For a concrete description of coproducts, see <a href="https://math.stackexchange.com/questions/4975797" target="_blank">MSE/4975797</a>.'
-    ),
-    (
         'Rng',
         'It is likely that the epimorphisms can be described as in the <a href="/category/CRing">commutative, unital case</a>.'
     ),
