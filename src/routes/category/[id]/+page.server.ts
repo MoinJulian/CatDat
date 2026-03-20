@@ -10,6 +10,7 @@ import type {
 	DescriptionWithReason,
 	PropertyShort,
 	RelatedCategory,
+	SpecialObject,
 	TagObject,
 } from '$lib/commons/types'
 
@@ -30,6 +31,7 @@ export const load = async (event) => {
 			CategoryPropertyDB,
 			PropertyShort,
 			CommentObject,
+			SpecialObject,
 		]
 	>([
 		sql`
@@ -114,6 +116,13 @@ export const load = async (event) => {
 			WHERE category_id = ${id}
 			ORDER BY created_at
 		`,
+		sql`
+			SELECT s.type, s.description
+			FROM special_objects s
+			INNER JOIN special_object_types t ON t.type = s.type
+			WHERE s.category_id = ${id}
+			ORDER BY t.position
+		`,
 	])
 
 	if (err) error(500, 'Could not load category')
@@ -129,6 +138,7 @@ export const load = async (event) => {
 		non_properties_db,
 		unknown_properties,
 		comments,
+		special_objects,
 	] = results
 
 	if (!categories.length) error(404, `Could not find category with ID '${id}'`)
@@ -164,5 +174,6 @@ export const load = async (event) => {
 		non_properties,
 		unknown_properties,
 		comments,
+		special_objects,
 	})
 }

@@ -133,6 +133,18 @@
 	</section>
 {/key}
 
+{#if data.special_objects.length}
+	<section>
+		<h3>Special objects</h3>
+
+		<ul class="with-margins">
+			{#each data.special_objects as obj}
+				<li>{obj.type}: {@html obj.description}</li>
+			{/each}
+		</ul>
+	</section>
+{/if}
+
 <section>
 	<h3>Special morphisms</h3>
 	<ul class="with-margins">

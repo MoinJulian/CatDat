@@ -71,3 +71,8 @@ export type CategoryPropertyDB = {
 }
 
 export type CategoryProperty = Replace<CategoryPropertyDB, { is_deduced: boolean }>
+
+export type SpecialObject = {
+	type: string
+	description: string
+}
