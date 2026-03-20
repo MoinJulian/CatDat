@@ -191,6 +191,11 @@ VALUES
 		'follows in the same way as for (additive) groups'
 	),
 	(
+		'CRing',
+		'codistributive',
+		'Coproducts of commutative rings are constructed using the tensor product of abelian groups. For finite families, the canonical homomorphism $A \otimes \prod_i B_i \to \prod_i (A \otimes B_i)$ is an isomorphism: It suffices to check this for for the underlying abelian groups, but it is well-known that the tensor product commutes with direct sums, hence with finite products.'
+	),
+	(
 		'CAlg(R)',
 		'locally small',
 		'There is a forgetful functor $\mathbf{CAlg(R)} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
@@ -209,6 +214,11 @@ VALUES
 		'CAlg(R)',
 		'Malcev',
 		'follows in the same way as for (additive) groups'
+	),
+	(
+		'CAlg(R)',
+		'codistributive',
+		'Coproducts of commutative algebras are constructed using the tensor product of modules. For finite families, the canonical homomorphism $A \otimes_R \prod_i B_i \to \prod_i (A \otimes_R B_i)$ is an isomorphism: It suffices to check this for for the underlying $R$-modules, but it is well-known that the tensor product commutes with direct sums, hence with finite products.'
 	),
 	(
 		'Rng',
@@ -1095,12 +1105,17 @@ VALUES
 	(
 		'Zdiv',
 		'products',
-		'Take the $\gcd$ of a subset.'
+		'Take the $\gcd$ of a subset. This also works for infinite sets, for example the $\gcd$ of all primes is $0$.'
 	),
 	(
 		'Zdiv',
 		'distributive',
-		'Using prime factorizations, one can prove that $\gcd(a, \mathrm{lcm} \{b_i \}) = \mathrm{lcm} \{ \gcd(a, b_i) \}$ for finitely many $b_i$.'
+		'We need to prove $\mathrm{lcm}_i \gcd(a, b_i) \cong \gcd(a, \mathrm{lcm}_i b_i)$ for finite families. If $x$ denotes the LHS and $y$ denotes the RHS, the relation $x \mid y$ is formal. If $v_p(-) : \mathbb{Z} \to \mathbb{N}_{\infty}$  denotes the multiplicity of a prime $p$, then $v_p(x)$ equals $\max_i \min(v_p(a),v_p(b_i))$, and $v_p(y)$ equals $\min(v_p(a), \max_i v_p(b_i))$. Since our family is finite, there is some $i_0$ with $\max_i v_p(b_i) = v_p(b_{i_0})$. Then $v_p(x) \geq \min(v_p(a),v_p(b_{i_0})) = v_p(y)$. This proves $y \mid x$.'
+	),
+	(
+		'Zdiv',
+		'codistributive',
+		'We need to prove $\mathrm{lcm}(a, \gcd_i b_i) \cong \gcd_i \mathrm{lcm}(a,b_i)$ for finite families. This is clear for the empty family (both sides are $0$ then), so assume it is non-empty. If $x$ denotes the LHS and $y$ denotes the RHS, the relation $x \mid y$ is formal. If $v_p(-) : \mathbb{Z} \to \mathbb{N}_{\infty}$ denotes the multiplicity of a prime $p$, then $v_p(x)$ equals $\max(v_p(a), \min_i v_p(b_i))$, and $v_p(y)$ equals $\min_i \max(v_p(a), v_p(b_i))$. Choose some $i_0$ with $\min_i v_p(b_i) = v_p(b_{i_0})$. Then $v_p(x) = \max(v_p(a), v_p(b_{i_0})) \geq v_p(y)$.'
 	),
 	(
 		'Zdiv',
@@ -1125,12 +1140,17 @@ VALUES
 	(
 		'Noo',
 		'infinitary distributive',
-		'One can show that $\sup_i \min(a,b_i) = \min(a, \sup_i b_i)$.'
+		'We need to prove that $\sup_i \min(a,b_i) = \min(a, \sup_i b_i)$. The inequality $\leq$ is formal, we need to prove $\geq$. For the empty index set both sides are $0$. If $a = \infty$, both sides are $\sup_i b_i$. If the set $\{b_i\}$ is bounded, there is some $i_0$ with $b_{i_0} = \sup_i b_i$. Then $\sup_i \min(a,b_i) \geq \sup_i \min(a,b_{i_0}) =  \min(a, \sup_i b_i)$. If $a < \infty$ and the set $\{b_i\}$ is unbounded, there is some $i_0$ with $b_{i_0} > a$. Then $\sup_i \min(a,b_i) \geq \min(a,b_{i_0}) = a = \min(a,\infty) = \min(a, \sup_i b_i)$.'
 	),
 	(
 		'Noo',
 		'locally finitely presentable',
 		'Every natural number is finitely presentable, and $\infty$ is the colimit of all $n < \infty$.'
+	),
+	(
+		'Noo',
+		'infinitary codistributive',
+		'We need to prove $\max(a, \inf_i b_i) = \inf_i \max(a,b_i)$. The inequality $\leq$ is formal, we need to prove $\geq$. For the empty index set both sides are $\infty$. Otherwise, there is some $i_0$ with $b_{i_0} = \inf_i b_i$. Then $\max(a, \inf_i b_i) = \max(a, b_{i_0}) \geq   \inf_i \max(a,b_i)$.'
 	),
 
 	-- deloopings

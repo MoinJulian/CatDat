@@ -251,17 +251,33 @@ VALUES
 	(
 		'infinitary distributive',
 		'is',
-		'A category is <i>infinitary distributive</i> if it has finite products, all small coproducts, and for every object $A$ the functor $- \times A$ preserves all small coproducts.',
+		'A category is <i>infinitary distributive</i> if it has finite products, all small coproducts, and for every object $A$ the functor $A \times -$ preserves all small coproducts. Concretely, for every family of objects $(B_i)$ the canonical morphism $\coprod_i (A \times B_i) \to A \times \coprod_i B_i$ must be an isomorphism.',
 		'https://ncatlab.org/nlab/show/distributive+category',
-		NULL,
+		'infinitary codistributive',
 		TRUE
 	),
 	(
 		'distributive',
 		'is',
-		'A category is <i>distributive</i> if it has finite products, finite coproducts, and for every object $A$ the functor $- \times A$ preserves finite coproducts.',
+		'A category is <i>distributive</i> if it has finite products, finite coproducts, and for every object $A$ the functor $A \times -$ preserves finite coproducts. Concretely, for every finite family of objects $(B_i)$ the canonical morphism $\coprod_i (A \times B_i) \to A \times \coprod_i B_i$ must be an isomorphism.',
 		'https://ncatlab.org/nlab/show/distributive+category',
+		'codistributive',
+		TRUE
+	),
+	(
+		'infinitary codistributive',
+		'is',
+		'A category is <i>infinitary codistributive</i> if it has finite coproducts, all small products, and for every object $A$ the functor $A \sqcup -$ preserves all small products. Concretely, for every family of objects $(B_i)$ the canonical morphism $A \sqcup \prod_i B_i \to \prod_i (A \sqcup B_i)$ must be an isomorphism.' ,
 		NULL,
+		'infinitary distributive',
+		TRUE
+	),
+	(
+		'codistributive',
+		'is',
+		'A category is <i>codistributive</i> if it has finite coproducts, finite products, and for every object $A$ the functor $- \sqcup A$ preserves finite products. Concretely, for every finite family of objects $(B_i)$ the canonical morphism $A \sqcup \prod_i B_i \to \prod_i (A \sqcup B_i)$ must be an isomorphism.',
+		NULL,
+		'distributive',
 		TRUE
 	),
 	(

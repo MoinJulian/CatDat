@@ -77,6 +77,8 @@
 		"subobject classifier",
 		"thin",
 		"trivial",
-		"zero morphisms"
+		"zero morphisms",
+		"codistributive",
+		"infinitary codistributive"
 	]
 }

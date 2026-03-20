@@ -77,6 +77,8 @@
 		"strict terminal object",
 		"subobject classifier",
 		"thin",
-		"trivial"
+		"trivial",
+		"codistributive",
+		"infinitary codistributive"
 	]
 }

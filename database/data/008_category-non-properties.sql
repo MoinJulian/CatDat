@@ -111,6 +111,11 @@ VALUES
 		'trivial'
 	),
 	(
+		'Ring',
+		'codistributive',
+		'If $\sqcup$ denotes the coproduct of rings (see <a href="https://math.stackexchange.com/questions/625874" target="_blank">MSE/625874</a> for their description) and $R$ is a ring, the canonical morphism $R \sqcup \mathbb{Z}^2 \to (R \sqcup \mathbb{Z})^2 = R^2$ is usually no isomorphism. For example, for $R = \mathbb{Z}[X]$ the coproduct on the LHS is not commutative, it has the ring presentation $\langle X,E : E^2=E \rangle$.'
+	),
+	(
 		'Alg(R)',
 		'strict initial object',
 		'The homomorphism $p_1 : R \times R \to R$ is not an isomorphism, and $R$ is initial.'
@@ -129,6 +134,11 @@ VALUES
 		'Alg(R)',
 		'cogenerator',
 		'Assume that there is a $R$-algebra $Q$ that cogenerates. Clearly, $Q$ is non-zero. Take an infinite field $F$ which has a $R$-algebra structure, is larger than $Q$ and admits a non-trivial automorphism (for example, a field of rational functions over some residue field of $R$). Then there is no algebra homomorphism $F \to Q$. Since $Q$ cogenerates, this implies that all homomorphisms $F \to F$ are equal, a contradiction.'
+	),
+	(
+		'Alg(R)',
+		'codistributive',
+		'If $\sqcup$ denotes the coproduct of $R$-algebras (see <a href="https://math.stackexchange.com/questions/625874" target="_blank">MSE/625874</a> for their description) and $A$ is an $R$-algebra, the canonical morphism $A \sqcup R^2 \to (A \sqcup R)^2 = A^2$ is usually no isomorphism. For example, for $A = R[X]$ the coproduct on the LHS is not commutative, it has the algebra presentation $\langle X,E : E^2=E \rangle$.'	
 	),
 	(
 		'CRing',
@@ -151,6 +161,11 @@ VALUES
 		'trivial'
 	),
 	(
+		'CRing',
+		'infinitary codistributive',
+		'The canonical homomorphism $\mathbb{Q} \otimes \mathbb{Z}^{\mathbb{N}} \to (\mathbb{Q} \otimes \mathbb{Z})^{\mathbb{N}} = \mathbb{Q}^{\mathbb{N}}$ is not an isomorphism: its image consists of those sequences of rational numbers whose denominators can be bounded.'
+	),
+	(
 		'CAlg(R)',
 		'strict initial object',
 		'The homomorphism $p_1 : R \times R \to R$ is not an isomorphism, and $R$ is initial.'
@@ -169,6 +184,11 @@ VALUES
 		'CAlg(R)',
 		'skeletal',
 		'trivial'
+	),
+	(
+		'CAlg(R)',
+		'infinitary codistributive',
+		'The canonical homomorphism $A \otimes_R R^{\mathbb{N}} \to A^{\mathbb{N}}$ is given by $a \otimes (r_n)_n \mapsto (r_n a)_n$ and does not have to be surjective: Since $R \neq 0$, there is a commutative $R$-algebra $K$ which is a field. Now take $A := K[X]$ and consider the sequence $(X^n)_{n} \in A^{\mathbb{N}}$.'
 	),
 	(
 		'Rng',
@@ -874,12 +894,17 @@ VALUES
 	(
 		'Zdiv',
 		'self-dual',
-		'The only integer with infinitely many divisors (up to isomorphism) is $0$. But many integers have infinitely many multiple (up to isomorphism).'
+		'The only integer with infinitely many divisors (up to isomorphism) is $0$. But many integers have infinitely many multiples (up to isomorphism).'
 	),
 	(
 		'Zdiv',
 		'infinitary distributive',
 		'We have $2 \times \coprod_n 3^n = \gcd(2,\mathrm{lcm}_n(3^n)) = \gcd(2,0) = 2$, but $\coprod_n (2 \times 3^n) = \mathrm{lcm}_n \gcd(2,3^n) = \mathrm{lcm}_n 1  = 1$.'
+	),
+	(
+		'Zdiv',
+		'infinitary codistributive',
+		'If $p$ runs through all odd primes, we have $2 \sqcup \prod_p p = \mathrm{lcm}(2,\mathrm{gcd}_p p) = \mathrm{lcm}(2,0) = 0$, but $\prod_p (2 \sqcup p) = \gcd_p (\mathrm{lcm}(2,p)) = \gcd_p (2 \cdot p) = 2$.'
 	),
 	(
 		'Noo',

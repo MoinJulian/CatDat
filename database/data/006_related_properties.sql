@@ -61,6 +61,8 @@ VALUES
 	('subobject classifier', 'elementary topos'),
 	('infinitary distributive', 'distributive'),
 	('distributive', 'infinitary distributive'),
+	('infinitary codistributive', 'codistributive'),
+	('codistributive', 'infinitary codistributive'),
 	('exact filtered colimits', 'filtered colimits'),
 	('exact filtered colimits', 'finitely complete'),
 	('Grothendieck abelian', 'abelian'),
