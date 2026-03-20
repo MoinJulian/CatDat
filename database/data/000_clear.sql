@@ -8,6 +8,9 @@ DELETE FROM category_isomorphisms;
 DELETE FROM category_epimorphisms;
 DELETE FROM category_monomorphisms;
 
+DELETE FROM special_objects;
+DELETE FROM special_object_types;
+
 DELETE FROM category_non_properties;
 DELETE FROM category_properties;
 
