@@ -4,9 +4,8 @@ DELETE FROM implication_assumptions;
 DELETE FROM implication_conclusions;
 DELETE FROM implications;
 
-DELETE FROM category_isomorphisms;
-DELETE FROM category_epimorphisms;
-DELETE FROM category_monomorphisms;
+DELETE FROM special_morphisms;
+DELETE FROM special_morphism_types;
 
 DELETE FROM special_objects;
 DELETE FROM special_object_types;

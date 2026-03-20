@@ -1,4 +1,3 @@
--- TODO: add products, coproducts, etc.
 INSERT INTO special_object_types (type, position)
 VALUES
     ('terminal object', 0),

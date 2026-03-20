@@ -7,9 +7,9 @@ import type {
 	CategoryProperty,
 	CategoryPropertyDB,
 	CommentObject,
-	DescriptionWithReason,
 	PropertyShort,
 	RelatedCategory,
+	SpecialMorphism,
 	SpecialObject,
 	TagObject,
 } from '$lib/commons/types'
@@ -24,16 +24,15 @@ export const load = async (event) => {
 			CategoryDisplay,
 			RelatedCategory,
 			TagObject,
-			DescriptionWithReason,
-			DescriptionWithReason,
-			DescriptionWithReason,
 			CategoryPropertyDB,
 			CategoryPropertyDB,
 			PropertyShort,
-			CommentObject,
 			SpecialObject,
+			SpecialMorphism,
+			CommentObject,
 		]
 	>([
+		// basic information
 		sql`
 			SELECT
 				id, name, notation, objects, morphisms,
@@ -41,6 +40,7 @@ export const load = async (event) => {
 			FROM categories
 			WHERE id = ${id}
 		`,
+		// related categories
 		sql`
 			SELECT
 				r.related_category_id AS id,
@@ -51,6 +51,7 @@ export const load = async (event) => {
 			WHERE r.category_id = ${id}
 			ORDER BY id
 		`,
+		// tags
 		sql`
 			SELECT ct.tag
 			FROM category_tags ct
@@ -58,21 +59,7 @@ export const load = async (event) => {
 			WHERE ct.category_id = ${id}
 			ORDER BY t.position
 		`,
-		sql`
-			SELECT description, reason
-			FROM category_isomorphisms
-			WHERE category_id = ${id}
-		`,
-		sql`
-			SELECT description, reason
-			FROM category_epimorphisms
-			WHERE category_id = ${id}
-		`,
-		sql`
-			SELECT description, reason
-			FROM category_monomorphisms
-			WHERE category_id = ${id}
-		`,
+		// properties
 		sql`
 			SELECT
 				cp.property_id AS id,
@@ -84,6 +71,7 @@ export const load = async (event) => {
 			WHERE cp.category_id = ${id}
 			ORDER BY cp.position, lower(cp.property_id)
 		`,
+		// non-properties
 		sql`
 			SELECT
 				cnp.non_property_id AS id,
@@ -96,6 +84,7 @@ export const load = async (event) => {
 			WHERE cnp.category_id = ${id}
 			ORDER BY cnp.position, lower(cnp.non_property_id)
 		`,
+		// unknown properties
 		sql`
 			SELECT
 				p.id,
@@ -111,17 +100,27 @@ export const load = async (event) => {
 			)
 			ORDER BY lower(p.id)
 		`,
-		sql`
-			SELECT id, comment FROM category_comments
-			WHERE category_id = ${id}
-			ORDER BY created_at
-		`,
+		// special objects
 		sql`
 			SELECT s.type, s.description
 			FROM special_objects s
 			INNER JOIN special_object_types t ON t.type = s.type
 			WHERE s.category_id = ${id}
 			ORDER BY t.position
+		`,
+		// special morphisms
+		sql`
+			SELECT s.type, s.description, s.reason
+			FROM special_morphisms s
+			INNER JOIN special_morphism_types t ON t.type = s.type
+			WHERE s.category_id = ${id}
+			ORDER BY t.position
+		`,
+		// comments
+		sql`
+			SELECT id, comment FROM category_comments
+			WHERE category_id = ${id}
+			ORDER BY created_at
 		`,
 	])
 
@@ -131,23 +130,18 @@ export const load = async (event) => {
 		categories,
 		related_categories,
 		tag_objects,
-		iso_rows,
-		epi_rows,
-		mono_rows,
 		properties_db,
 		non_properties_db,
 		unknown_properties,
-		comments,
 		special_objects,
+		special_morphisms,
+		comments,
 	] = results
 
 	if (!categories.length) error(404, `Could not find category with ID '${id}'`)
 
 	const category = categories[0]
 	const tags = tag_objects.map(({ tag }) => tag)
-	const isomorphisms = iso_rows.at(0)
-	const epimorphisms = epi_rows.at(0)
-	const monomorphisms = mono_rows.at(0)
 
 	const properties: CategoryProperty[] = properties_db.map((p) => ({
 		id: p.id,
@@ -167,13 +161,11 @@ export const load = async (event) => {
 		category,
 		related_categories,
 		tags,
-		isomorphisms,
-		epimorphisms,
-		monomorphisms,
 		properties,
 		non_properties,
 		unknown_properties,
-		comments,
 		special_objects,
+		special_morphisms,
+		comments,
 	})
 }

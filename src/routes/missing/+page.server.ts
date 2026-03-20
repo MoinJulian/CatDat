@@ -11,14 +11,21 @@ export const load = async () => {
 		[CategoryShort, CategoryShort, { total: number }, CategoryShort, CategoryShort]
 	>([
 		sql`
-			SELECT c.id, c.name FROM categories c
-			LEFT JOIN category_isomorphisms i ON i.category_id = c.id
-			LEFT JOIN category_epimorphisms e ON e.category_id = c.id
-			LEFT JOIN category_monomorphisms m ON m.category_id = c.id
+			SELECT c.id, c.name
+			FROM categories c
+			LEFT JOIN special_morphisms sm_iso
+				ON sm_iso.category_id = c.id
+				AND sm_iso.type = 'isomorphisms'
+			LEFT JOIN special_morphisms sm_epi
+				ON sm_epi.category_id = c.id
+				AND sm_epi.type = 'epimorphisms'
+			LEFT JOIN special_morphisms sm_mono
+				ON sm_mono.category_id = c.id
+				AND sm_mono.type = 'monomorphisms'
 			WHERE
-				i.description IS NULL
-				OR e.description IS NULL
-				OR m.description IS NULL
+				sm_iso.category_id IS NULL
+				OR sm_epi.category_id IS NULL
+				OR sm_mono.category_id IS NULL
 		`,
 		sql`
 			SELECT DISTINCT c.id, c.name

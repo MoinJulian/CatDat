@@ -133,49 +133,36 @@
 	</section>
 {/key}
 
-{#if data.special_objects.length}
-	<section>
-		<h3>Special objects</h3>
+<section>
+	<h3>Special objects</h3>
 
+	{#if data.special_objects.length}
 		<ul class="with-margins">
 			{#each data.special_objects as obj}
 				<li>{obj.type}: {@html obj.description}</li>
 			{/each}
 		</ul>
-	</section>
-{/if}
+	{:else}
+		<p>&mdash;</p>
+	{/if}
+</section>
 
 <section>
 	<h3>Special morphisms</h3>
-	<ul class="with-margins">
-		{#if data.isomorphisms}
-			<li>
-				<TextWithReason reason={data.isomorphisms.reason}>
-					Isomorphisms: {@html data.isomorphisms.description}
-				</TextWithReason>
-			</li>
-		{:else}
-			<li>Isomorphisms: <Fa icon={faQuestion} scale={0.825} /></li>
-		{/if}
-		{#if data.monomorphisms}
-			<li>
-				<TextWithReason reason={data.monomorphisms.reason}>
-					Monomorphisms: {@html data.monomorphisms.description}
-				</TextWithReason>
-			</li>
-		{:else}
-			<li>Monomorphisms: <Fa icon={faQuestion} scale={0.825} /></li>
-		{/if}
-		{#if data.epimorphisms}
-			<li>
-				<TextWithReason reason={data.epimorphisms.reason}>
-					Epimorphisms: {@html data.epimorphisms.description}
-				</TextWithReason>
-			</li>
-		{:else}
-			<li>Epimorphisms: <Fa icon={faQuestion} scale={0.825} /></li>
-		{/if}
-	</ul>
+
+	{#if data.special_morphisms.length}
+		<ul class="with-margins">
+			{#each data.special_morphisms as obj}
+				<li>
+					<TextWithReason reason={obj.reason}>
+						{obj.type}: {@html obj.description}
+					</TextWithReason>
+				</li>
+			{/each}
+		</ul>
+	{:else}
+		<p>&mdash;</p>
+	{/if}
 </section>
 
 {#if data.comments.length}
