@@ -104,11 +104,11 @@ export const load = async (event) => {
 				CASE
 					WHEN
 						property_id IN (${to_placeholders(unsatisfied_properties)})
-						AND is_satisfied = TRUE
+						AND is_satisfied = FALSE
 					THEN 1
 					ELSE 0
 				END
-			) = 0
+			) = ${unsatisfied_properties.length}
 	`
 
 	const { rows: found_categories, err } = await query<CategoryShort>({
