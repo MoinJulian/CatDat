@@ -64,7 +64,7 @@
 	<Footer />
 </div>
 
-<dialog bind:this={nav_dialog}>
+<dialog bind:this={nav_dialog} id="nav_dialog">
 	<NavMobile close={close_mobile_nav} />
 </dialog>
 
