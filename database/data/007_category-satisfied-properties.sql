@@ -902,7 +902,12 @@ VALUES
 	(
 		'Man',
 		'well-powered',
-		'follows from the fact that monomorphisms are injective here'
+		'This follows from the fact that monomorphisms are injective here.'
+	),
+	(
+		'Man',
+		'well-copowered',
+		'This follows from the fact that epimorphisms have dense image (see below), which bounds the size of the codomain.'
 	),
 	(
 		'Man',
@@ -913,6 +918,11 @@ VALUES
 		'Man',
 		'generator',
 		'The $0$-dimensional one-point manifold is a generator since it represents the forgetful functor $\mathbf{Top} \to \mathbf{Set}$.'
+	),
+	(
+		'Man',
+		'cogenerator',
+		'The manifold $\mathbb{R}$ is a cogenerator, since for every smooth manifold $M$ and points $p \neq q$ in $M$ there is a smooth function $f : M \to \mathbb{R}$ with $f(p) = 1$ and $f(q) = 0$ (John Lee, Introduction to Smooth Manifolds, Prop. 2.25).'
 	),
 	(
 		'Man',

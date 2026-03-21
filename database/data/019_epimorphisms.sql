@@ -141,7 +141,7 @@ VALUES
 		'Man',
 		'epimorphisms',
 		'smooth maps with dense image',
-		'Let $f : X \to Y$ be a smooth map which is not dense. Choose some non-empty open subset $U \subseteq Y$ that is disjoint from $f(X)$. Take any $p \in U$. It is well-known that there is a smooth <i>bump function</i> $g : Y \to \mathbb{R}$ with $g(p) = 1$ and $\mathrm{supp}(g) \subseteq U$. Hence, $g \neq 0$ and $g \circ f = 0 = 0 \circ f$. Thus, $f$ is not an epimorphism.'
+		'Let $f : X \to Y$ be a smooth map which is not dense. Choose some non-empty open subset $U \subseteq Y$ that is disjoint from $f(X)$. Take any $p \in U$. There is a smooth <i>bump function</i> $g : Y \to \mathbb{R}$ with $g(p) = 1$ and $\mathrm{supp}(g) \subseteq U$ (John Lee, Introduction to Smooth Manifolds, Prop. 2.25). Hence, $g \neq 0$ and $g \circ f = 0 = 0 \circ f$. Thus, $f$ is not an epimorphism.'
 	),
 	(
 		'Meas',

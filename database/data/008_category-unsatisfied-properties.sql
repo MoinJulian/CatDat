@@ -1058,8 +1058,8 @@ VALUES
 	),
 	(
 		'Man',
-		'equalizers',
-		NULL
+		'pullbacks',
+		'See <a href="https://math.stackexchange.com/questions/5129579/" target="_blank">MSE/5129579</a>.'
 	),
 	(
 		'Man',
