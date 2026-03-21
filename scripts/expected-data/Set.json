@@ -77,5 +77,6 @@
 	"trivial": false,
 	"zero morphisms": false,
 	"codistributive": false,
-	"infinitary codistributive": false
+	"infinitary codistributive": false,
+	"biproducts": false
 }

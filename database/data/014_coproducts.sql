@@ -8,7 +8,7 @@ VALUES
 ('1', 'coproducts', '$0 \sqcup 0 = 0$'),
 ('Ab', 'coproducts', 'direct sums'),
 ('Alg(R)', 'coproducts', 'see <a href="https://math.stackexchange.com/questions/625874" target="_blank">MSE/625874</a>'),
-('Ban', 'coproducts', 'Cocompletion of the direct sum with the $1$-norm'),
+('Ban', 'coproducts', 'cocompletion of the direct sum with the $1$-norm'),
 ('CAlg(R)', 'coproducts', 'tensor products over $R$'),
 ('Cat', 'coproducts', 'disjoint unions'),
 ('CMon', 'coproducts', 'direct sums'),

@@ -459,6 +459,20 @@ VALUES
 		'For every object $A$ the codiagonal $A + A \to A$ is a split epimorphism, and by assumption a monomorphism, hence an isomorphism. Hence, the two inclusions $i_1,i_2 : A \to A + A$ coincide. Now, if $f, g : A \to B$ are two morphisms, consider the induced morphism $h : A + A \to B$ and compute $f = h \circ i_1 = h \circ i_2 = g$.',
 		FALSE
 	),
+	(
+		'biproducts_definition_consequences',
+		'["biproducts"]',
+		'["zero morphisms", "finite products", "finite coproducts"]',
+		'This holds by definition of biproducts.',
+		FALSE
+	),
+	(
+		'additive_biproducts',
+		'["additive"]',
+		'["biproducts"]',
+		'This is standard, see e.g. Prop. 2.1 on the <a href="https://ncatlab.org/nlab/show/additive+category" target="_blank">nLab</a>.',
+		FALSE
+	),
 
 	-- standard implications
 	(

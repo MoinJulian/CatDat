@@ -327,6 +327,11 @@ VALUES
 		'This follows from the description of the coproduct as a form of direct sum (very similar to $\mathbf{Ab}$).'
 	),
 	(
+		'CMon',
+		'biproducts',
+		'This follows from the explicit construction of coproducts and products.'
+	),
+	(
 		'Pos',
 		'locally small',
 		'There is a forgetful functor $\mathbf{Pos} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
@@ -430,6 +435,11 @@ VALUES
 		'Rel',
 		'balanced',
 		'See <a href="https://math.stackexchange.com/questions/5030393" target="_blank">MSE/5030393</a>.'
+	),
+	(
+		'Rel',
+		'biproducts',
+		'This is a consequence of the description of coproducts and products, both are disjoint unions (even for infinite families).'
 	),
 
 	-- categories of "finite" objects

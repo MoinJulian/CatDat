@@ -113,6 +113,14 @@ VALUES
 		TRUE
 	),
 	(
+		'biproducts',
+		'has',
+		'A category has <i>biproducts</i> when it has zero morphisms, finite products, finite coproducts, and for every finite family of objects $A_1,\dotsc,A_n$ the canonical morphism $A_1 \sqcup \cdots \sqcup A_n \to A_1 \times \cdots \times A_n$ is an isomorphism. It is then also called <i>semi-additive</i>.',
+		'https://ncatlab.org/nlab/show/biproduct',
+		'biproducts',
+		TRUE
+	),
+	(
 		'binary products',
 		'has',
 		'A category has <i>binary products</i> if every pair $A,B$ of objects has a product $A \times B$.',

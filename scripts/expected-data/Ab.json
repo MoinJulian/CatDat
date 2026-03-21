@@ -53,6 +53,7 @@
 	"wide pullbacks": true,
 	"wide pushouts": true,
 	"zero morphisms": true,
+	"biproducts": true,
 
 	"cartesian closed": false,
 	"discrete": false,

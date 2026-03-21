@@ -83,6 +83,11 @@ VALUES
 	),
 	(
 		'Grp',
+		'biproducts',
+		'If $\sqcup$ denotes the coproduct, the canonical homomorphism $\mathbb{Z} \sqcup \mathbb{Z} \to \mathbb{Z} \times \mathbb{Z}$ is not an isomorphism, since $\mathbb{Z} \sqcup \mathbb{Z}$ is the free group on two generators and therefore not commutative.'
+	),
+	(
+		'Grp',
 		'skeletal',
 		'trivial'
 	),
@@ -198,11 +203,6 @@ VALUES
 	),
 	(
 		'Rng',
-		'additive',
-		'The explicit construction of coproducts of rngs (see <a href="https://math.stackexchange.com/questions/4975797" target="_blank">MSE/4975797</a>) shows that the canonical homomorphism $R \sqcup S \to R \times S$ is surjective, but in most cases not injective: The kernel contains the tensor product $R \otimes S$.'
-	),
-	(
-		'Rng',
 		'balanced',
 		'The inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$ is a counterexample. (The proof can be reduced to the unital case.)'
 	),
@@ -217,6 +217,11 @@ VALUES
 		'trivial'
 	),
 	(
+		'Rng',
+		'biproducts',
+		'If $\sqcup$ denotes the coproduct and $(X)$ the free rng on one generator (integer polynomials without constant term), the canonical homomorphism $(X) \sqcup (Y) \to (X) \times (Y)$ is not an isomorphism, since $(X) \sqcup (Y)$ is the free rng on two generators and therefore not commutative.'
+	),
+	(
 		'Set*',
 		'skeletal',
 		'trivial'
@@ -227,9 +232,9 @@ VALUES
 		'There are lots of pointed reflexive relations that are not symmetric, for example $\{(a,b) \in \mathbb{N} : a \leq b\}$ on $(\mathbb{N},0)$.'
 	),
 	(
-		'Mon',
-		'preadditive',
-		'In fact, already $\mathbf{Grp}$ is not preadditive.'
+		'Set*',
+		'biproducts',
+		'Binary coproducts are wedge sums $\vee$, so the canonical map $X \vee Y \to X \times Y$ is injective, but in most cases not surjective.'
 	),
 	(
 		'Mon',
@@ -250,6 +255,11 @@ VALUES
 		'Mon',
 		'Malcev',
 		'Consider the submonoid $\{(a,b) : a \leq b \}$ of $\mathbb{N}^2$.'
+	),
+	(
+		'Mon',
+		'biproducts',
+		'If $\sqcup$ denotes the coproduct, the canonical homomorphism $\mathbb{N} \sqcup \mathbb{N} \to \mathbb{N} \times \mathbb{N}$ is not an isomorphism, since $\mathbb{N} \sqcup \mathbb{N}$ is the free monoid on two generators and therefore not commutative.'
 	),
 	(
 		'CMon',
@@ -626,11 +636,6 @@ VALUES
 	-- geometric categories
 	(
 		'Sh(X)',
-		'additive',
-		NULL
-	),
-	(
-		'Sh(X)',
 		'strict terminal object',
 		'Take any set $A$ with $ > 1$ elements. Consider the constant sheaf $\underline{A}$. Morphisms $1 \to \underline{A}$ corresponds to global sections of $\underline{A}$, i.e. locally constant functions $X \to A$. There is such a function since $A$ is non-empty. If $1$ was strict, $1 \to \underline{A}$ would be an isomorphism, so that there is a unique locally constant function $X \to A$, and hence a unique constant function, which is absurd.'
 	),
@@ -1003,8 +1008,8 @@ VALUES
 	-- various categories
 	(
 		'Ban',
-		'preadditive',
-		NULL
+		'biproducts',
+		'If $\sqcup$ denotes the coproduct, the canonical morphism $\mathbb{C} \sqcup \mathbb{C} \to \mathbb{C} \times \mathbb{C}$ is bijective, but not an isomorphism in this category since the coproduct carries the $1$-norm, while the product carries the $\sup$-norm.'
 	),
 	(
 		'Ban',
