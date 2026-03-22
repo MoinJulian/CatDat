@@ -2,6 +2,7 @@ import { error } from '@sveltejs/kit'
 import { query } from '$lib/server/db'
 import { render_nested_formulas } from '$lib/server/rendering'
 import { MAX_CATEGORIES_COMPARE } from '../compare.config'
+import { get_deployment_status } from '$lib/server/deployment'
 
 export const load = async (event) => {
 	const compared_ids = event.params.ids.split('/')
@@ -16,6 +17,8 @@ export const load = async (event) => {
 	}
 
 	const placeholders = compared_ids.map(() => '?').join(', ')
+
+	const deployment_status = await get_deployment_status()
 
 	const { rows, err: err_cat } = await query<{
 		id: string
@@ -77,5 +80,9 @@ export const load = async (event) => {
 
 	const comparison_table = comparison_objects.map((obj) => Object.values(obj))
 
-	return { categories: render_nested_formulas(categories), comparison_table }
+	return {
+		categories: render_nested_formulas(categories),
+		comparison_table,
+		deployment_status,
+	}
 }

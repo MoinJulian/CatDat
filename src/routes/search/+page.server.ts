@@ -6,11 +6,9 @@ import sql from 'sql-template-tag'
 import { SEARCH_SEPARATOR } from './search.config'
 import { check_consistency } from '$lib/server/consistency'
 import { to_placeholders } from '$lib/server/utils'
+import { get_deployment_status } from '$lib/server/deployment'
 
 export const load = async (event) => {
-	const satisfied_query = event.url.searchParams.get('satisfied')
-	const unsatisfied_query = event.url.searchParams.get('unsatisfied')
-
 	const { rows: all_properties_objects, err: err_all } = await query<{
 		id: string
 		dual_property_id: string | null
@@ -19,6 +17,9 @@ export const load = async (event) => {
 	`)
 
 	if (err_all) error(500, 'Failed to load properties')
+
+	const satisfied_query = event.url.searchParams.get('satisfied')
+	const unsatisfied_query = event.url.searchParams.get('unsatisfied')
 
 	const all_properties = all_properties_objects.map(({ id }) => id)
 
@@ -35,6 +36,8 @@ export const load = async (event) => {
 			dual_search_available: false,
 		}
 	}
+
+	const deployment_status = await get_deployment_status()
 
 	const dual_properties_dict: Record<string, string | null> = {}
 	for (const row of all_properties_objects) {
@@ -79,6 +82,7 @@ export const load = async (event) => {
 			dual_satisfied_properties,
 			dual_unsatisfied_properties,
 			dual_search_available,
+			deployment_status,
 		}
 	}
 
@@ -128,5 +132,6 @@ export const load = async (event) => {
 		dual_satisfied_properties,
 		dual_unsatisfied_properties,
 		dual_search_available,
+		deployment_status,
 	}
 }
