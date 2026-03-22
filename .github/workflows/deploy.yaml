@@ -58,6 +58,13 @@ jobs:
             - name: Generate SvelteKit config
               run: pnpm svelte-kit sync
 
+            # - name: Set deployment status
+            #   if: steps.diff.outputs.db_changed == 'true'
+            #   env:
+            #       DB_URL: ${{ secrets.DB_URL }}
+            #       DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
+            #   run: tsx scripts/deploy-status.ts --deploying
+
             - name: Update database
               if: steps.diff.outputs.db_changed == 'true'
               env:
@@ -92,3 +99,10 @@ jobs:
 
                   git tag -f deploy-prod $GITHUB_SHA
                   git push --no-verify origin refs/tags/deploy-prod --force
+
+            - name: Reset deployment status
+              if: always()
+              env:
+                  DB_URL: ${{ secrets.DB_URL }}
+                  DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
+              run: pnpm db:finish-deploy
