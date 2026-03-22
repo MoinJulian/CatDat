@@ -5,6 +5,8 @@ import { display_implication } from '$lib/server/utils'
 import { error } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
 
+export const prerender = true
+
 export const load = async (event) => {
 	const id = event.params.id
 
