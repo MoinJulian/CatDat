@@ -603,8 +603,8 @@ VALUES
 	),
 	(
 		'walking_morphism',
-		'subobject classifier',
-		NULL
+		'trivial',
+		'trivial'
 	),
 
 	(

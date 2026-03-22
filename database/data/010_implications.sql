@@ -327,6 +327,13 @@ VALUES
 		FALSE
 	),
 	(
+		'subobject_thin',
+		'["thin", "subobject classifier"]',
+		'["trivial"]',
+		'Let $\mathcal{C}$ be a thin category with a subobject classifier $\Omega$. Every object has a subobject, hence a morphism to $\Omega$. It must be unique since $\mathcal{C}$ is thin. Hence, $\Omega$ is terminal. If $X$ is any object, then $1 \cong \mathrm{Hom}(X,\Omega) \cong \mathrm{Sub}(X)$ shows that every morphism $Y \to X$ is isomorphic to $\mathrm{id}_X : X \to X$. Apply this to $X = \Omega$ to finish the proof.',
+		FALSE
+	),
+	(
 		'preadditive_consequence',
 		'["preadditive"]',
 		'["locally essentially small", "zero morphisms"]',
