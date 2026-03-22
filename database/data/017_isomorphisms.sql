@@ -133,6 +133,12 @@ VALUES
 		'trivial'
 	),
 	(
+		'walking_composable_pair',
+		'isomorphisms',
+		'the three identities',
+		'trivial'
+	),
+	(
 		'M-Set',
 		'isomorphisms',
 		'bijective $M$-maps',

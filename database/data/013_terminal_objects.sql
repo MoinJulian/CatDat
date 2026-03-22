@@ -47,4 +47,5 @@ VALUES
 ('walking_isomorphism', 'terminal object', 'both objects'),
 ('walking_morphism', 'terminal object', '$1$'),
 ('Z', 'terminal object', 'constant functor with value $1$'),
-('Zdiv', 'terminal object', '$0$');
+('Zdiv', 'terminal object', '$0$'),
+('walking_composable_pair', 'terminal object', '$2$');

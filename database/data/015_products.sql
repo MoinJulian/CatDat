@@ -37,6 +37,7 @@ VALUES
 ('Vect', 'products', 'direct products with pointwise operations'),
 ('walking_isomorphism', 'products', '$0 \times 0 = 0$'),
 ('walking_morphism', 'products', '$0 \times x = 0$, $1 \times x = x$'),
+('walking_composable_pair', 'products', 'infimum taken in $\{0 < 1 < 2\}$'),
 ('Z', 'products', 'pointwise defined direct product'),
 ('Zdiv', 'products', 'greatest common divisor'),
 -- only finite and countable products

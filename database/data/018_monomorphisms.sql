@@ -130,7 +130,13 @@ VALUES
 		'walking_morphism',
 		'monomorphisms',
 		'every morphism',
-		'trivial'
+		'It is a thin category.'
+	),
+	(
+		'walking_composable_pair',
+		'monomorphisms',
+		'every morphism',
+		'It is a thin category.'
 	),
 	(
 		'M-Set',

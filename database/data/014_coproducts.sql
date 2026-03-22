@@ -40,6 +40,7 @@ VALUES
 ('Vect', 'coproducts', 'direct sums'),
 ('walking_isomorphism', 'coproducts', '$0 \sqcup 0 = 0$'),
 ('walking_morphism', 'coproducts', '$0 \sqcup x = x$, $1 \sqcup x = 1$'),
+('walking_composable_pair', 'coproducts', 'supremum taken in $\{0 < 1 < 2\}$'),
 ('Z', 'coproducts', 'pointwise disjoint union'),
 ('Zdiv', 'coproducts', 'the least common multiple, can be $0$ for infinite families'),
 -- only finite and countable coproducts

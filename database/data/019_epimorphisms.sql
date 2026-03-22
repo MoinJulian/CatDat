@@ -96,6 +96,12 @@ VALUES
 		'It is a thin category.'
 	),
 	(
+		'walking_composable_pair',
+		'epimorphisms',
+		'every morphism',
+		'It is a thin category.'
+	),
+	(
 		'M-Set',
 		'epimorphisms',
 		'surjective $M$-maps',

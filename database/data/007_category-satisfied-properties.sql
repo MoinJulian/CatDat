@@ -778,8 +778,8 @@ VALUES
 	),
 	(
 		'walking_composable_pair',
-		'products',
-		'trivial'
+		'locally finitely presentable',
+		'We get coproducts by taking the supremum inside $\{0 < 1 < 2\}$. The objects $0,1,2$ are finitely presentable for trivial reasons.'
 	),
 	(
 		'walking_composable_pair',
