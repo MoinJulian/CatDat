@@ -58,12 +58,12 @@ jobs:
             - name: Generate SvelteKit config
               run: pnpm svelte-kit sync
 
-            # - name: Set deployment status
-            #   if: steps.diff.outputs.db_changed == 'true'
-            #   env:
-            #       DB_URL: ${{ secrets.DB_URL }}
-            #       DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
-            #   run: tsx scripts/deploy-status.ts --deploying
+            - name: Set deployment status
+              if: steps.diff.outputs.db_changed == 'true'
+              env:
+                  DB_URL: ${{ secrets.DB_URL }}
+                  DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
+              run: pnpm db:start-deploy
 
             - name: Update database
               if: steps.diff.outputs.db_changed == 'true'
