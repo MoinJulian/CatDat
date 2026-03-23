@@ -101,7 +101,8 @@ an issue when clicking two reasons in a row. So it's a <div> then.
 		background-color: var(--bg-color);
 		border-top: 2px solid var(--secondary-outline-color);
 		color: var(--text-color);
-		padding: 1rem;
+		padding-inline: 1rem;
+		padding-block: 1rem 1.5rem;
 		box-shadow: 0 0 3rem var(--bg-color);
 
 		opacity: 0;
