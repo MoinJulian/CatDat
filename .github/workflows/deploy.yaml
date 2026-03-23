@@ -70,7 +70,6 @@ jobs:
               env:
                   DB_URL: ${{ secrets.DB_URL }}
                   DB_AUTH_TOKEN: ${{ secrets.DB_AUTH_TOKEN }}
-                  LOG_DETAILS: ${{ vars.LOG_DETAILS }}
               run: pnpm db:update
 
             - name: Build app

@@ -4,9 +4,6 @@ import dotenv from 'dotenv'
 
 dotenv.config({ quiet: true })
 
-const LOG_DETAILS = process.env.LOG_DETAILS
-if (!LOG_DETAILS) console.warn('No LOG_DETAILS found')
-
 export async function deduce_implications(db: Client) {
 	await clear_deduced_implications(db)
 	await create_dualized_implications(db)
@@ -92,7 +89,6 @@ async function create_dualized_implications(db: Client) {
 	)
 
 	console.info(`Dualized ${dualizable_implications.length} implications`)
-	if (LOG_DETAILS === 'true') console.info(dualizable_implications.map((i) => i.id))
 }
 
 async function create_self_dual_implications(db: Client) {
@@ -123,5 +119,4 @@ async function create_self_dual_implications(db: Client) {
     `)
 
 	console.info(`Created ${rows.length} self-dual implications`)
-	if (LOG_DETAILS === 'true') console.info(rows.map((i) => i.id))
 }

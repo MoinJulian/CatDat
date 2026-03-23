@@ -9,9 +9,6 @@ import {
 
 dotenv.config({ quiet: true })
 
-const LOG_DETAILS = process.env.LOG_DETAILS
-if (!LOG_DETAILS) console.warn('No LOG_DETAILS found')
-
 export async function deduce_all_properties(db: Client) {
 	const tx = await db.transaction()
 
@@ -57,10 +54,6 @@ async function deduce_satisfied_properties(
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
-	if (LOG_DETAILS === 'true') {
-		console.info('Deduce satisfied properties for category:', category_id)
-	}
-
 	const satisfied_res = await tx.execute({
 		sql: `
 			SELECT property_id
@@ -76,11 +69,6 @@ async function deduce_satisfied_properties(
 	const satisfied_props = new Set(
 		satisfied_res.rows.map((row) => row.property_id) as string[],
 	) as Set<string>
-
-	if (LOG_DETAILS === 'true') {
-		console.info(`Found ${satisfied_props.size} satisfied properties in the database`)
-		console.info(Array.from(satisfied_props))
-	}
 
 	const deduced_satisfied_props: string[] = []
 	const reasons: Record<string, string> = {}
@@ -105,13 +93,6 @@ async function deduce_satisfied_properties(
 		const reason = `Since it ${assumption_string}, it ${conclusion_string} ${ref}.`
 
 		reasons[conclusion] = reason
-	}
-
-	if (LOG_DETAILS === 'true') {
-		console.info(
-			`${deduced_satisfied_props.length} satisfied properties have been deduced`,
-		)
-		console.info(deduced_satisfied_props)
 	}
 
 	if (deduced_satisfied_props.length > 0) {
@@ -145,10 +126,6 @@ async function deduce_unsatisfied_properties(
 	category_id: string,
 	implications: NormalizedImplication[],
 ) {
-	if (LOG_DETAILS === 'true') {
-		console.info('Deduce unsatisfied properties for category:', category_id)
-	}
-
 	const satisfied_res = await tx.execute({
 		sql: `
 			SELECT property_id
@@ -177,13 +154,6 @@ async function deduce_unsatisfied_properties(
 	const unsatisfied_props = new Set(
 		unsatisfied_res.rows.map((row) => row.property_id) as string[],
 	)
-
-	if (LOG_DETAILS === 'true') {
-		console.info(
-			`Found ${unsatisfied_props.size} unsatisfied properties in the database`,
-		)
-		console.info(Array.from(unsatisfied_props))
-	}
 
 	const deduced_unsatisfied_props: string[] = []
 	const reasons: Record<string, string> = {}
@@ -228,13 +198,6 @@ async function deduce_unsatisfied_properties(
 			`But since it ${assumption_string}, it ${conclusion_string} ${ref} – contradiction.`
 
 		reasons[property] = reason
-	}
-
-	if (LOG_DETAILS === 'true') {
-		console.info(
-			`${deduced_unsatisfied_props.length} unsatisfied properties have been deduced`,
-		)
-		console.info(deduced_unsatisfied_props)
 	}
 
 	if (deduced_unsatisfied_props.length > 0) {
