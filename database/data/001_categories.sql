@@ -245,7 +245,7 @@ VALUES
 		'$\mathbf{1}$',
 		'a single object $0$',
 		'only the identity morphism',
-		'This is the simplest category, consisting of a single object $0$ and only the identity morphism $0 \to 0$. It is the terminal object in the category of small categories.',
+		'This is the simplest category, consisting of a single object $0$ and its identity morphism $0 \to 0$. It is the terminal object in the category of small categories.',
 		'https://ncatlab.org/nlab/show/terminal+category'
 	),
 	(
