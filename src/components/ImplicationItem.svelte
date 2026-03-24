@@ -26,7 +26,7 @@
 	>
 	{#if i < implication.assumptions.length - 1}
 		<Fa icon={faPlus} class="operator" />
-		<span class="visually-hidden">and &nbsp;</span>
+		<span class="visually-hidden">and</span>
 	{/if}
 {/each}
 
@@ -40,9 +40,9 @@
 
 <span class="visually-hidden">
 	{#if implication.is_equivalence}
-		is equivalent to &nbsp;
+		is equivalent to
 	{:else}
-		implies &nbsp;
+		implies
 	{/if}
 </span>
 
@@ -54,7 +54,7 @@
 	>
 	{#if i < implication.conclusions.length - 1}
 		<Fa icon={faPlus} class="operator" />
-		<span class="visually-hidden">and &nbsp;</span>
+		<span class="visually-hidden">and</span>
 	{/if}
 {/each}
 

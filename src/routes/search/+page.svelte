@@ -98,13 +98,13 @@
 		{/if}
 
 		{#if data.is_consistent}
-			<CategoryList
-				categories={data.found_categories ?? []}
-				description={pluralize(data.found_categories.length, {
+			<p class="hint">
+				{pluralize(data.found_categories.length, {
 					one: 'Found {count} category',
 					other: 'Found {count} categories',
 				})}
-			/>
+			</p>
+			<CategoryList categories={data.found_categories ?? []} />
 		{:else}
 			<p>No categories found because the requirements are inconsistent.</p>
 		{/if}

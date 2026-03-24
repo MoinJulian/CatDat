@@ -4,18 +4,11 @@
 
 	type Props = {
 		implications: ImplicationDisplay[]
-		description?: string
 		highlighted_property?: string
 	}
 
-	let { implications, description, highlighted_property }: Props = $props()
+	let { implications, highlighted_property }: Props = $props()
 </script>
-
-{#if description}
-	<p class="hint">
-		{description}
-	</p>
-{/if}
 
 {#if implications.length}
 	<ul>

@@ -103,7 +103,6 @@
 				/>
 
 				<p class="hint">Deduced properties</p>
-
 				<PropertyList
 					properties={data.unsatisfied_properties.filter((p) => p.is_deduced)}
 				/>

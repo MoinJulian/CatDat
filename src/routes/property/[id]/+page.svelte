@@ -64,30 +64,37 @@
 
 <h3>Examples</h3>
 
-<CategoryList
-	categories={data.examples}
-	description={pluralize(data.examples.length, {
+<p class="hint">
+	{pluralize(data.examples.length, {
 		one: 'There is {count} category with this property.',
 		other: 'There are {count} categories with this property.',
 	})}
-/>
+</p>
+
+<CategoryList categories={data.examples} />
 
 <h3>Counterexamples</h3>
 
-<CategoryList
-	categories={data.counterexamples}
-	description={pluralize(data.counterexamples.length, {
+<p class="hint">
+	{pluralize(data.counterexamples.length, {
 		one: 'There is {count} category without this property.',
 		other: 'There are {count} categories without this property.',
 	})}
-/>
+</p>
+
+<CategoryList categories={data.counterexamples} />
 
 <h3>Unknown</h3>
 
-<CategoryList
-	categories={data.unknown_categories}
-	description={pluralize(data.unknown_categories.length, {
+<p class="hint">
+	{pluralize(data.unknown_categories.length, {
 		one: 'There is {count} category for which the database has no information on whether it satisfies this property.',
 		other: 'There are {count} categories for which the database has no information on whether they satisfy this property.',
 	})}
-/>
+	{#if data.unknown_categories.length > 0}
+		Please help us fill in the gaps by
+		<a href="/contribute">contributing</a> to this project.
+	{/if}
+</p>
+
+<CategoryList categories={data.unknown_categories} />

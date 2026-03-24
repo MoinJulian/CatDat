@@ -22,7 +22,7 @@
 
 	let search = $state('')
 
-	let searched_implications = $derived(
+	let filtered_implications = $derived(
 		search
 			? displayed_implications.filter(
 					(implication) =>
@@ -46,13 +46,14 @@
 
 <SearchFilter bind:search />
 
-<ImplicationList
-	implications={searched_implications}
-	description={pluralize(searched_implications.length, {
+<p class="hint">
+	{pluralize(filtered_implications.length, {
 		one: 'Found {count} implication*',
 		other: 'Found {count} implications*',
 	})}
-/>
+</p>
+
+<ImplicationList implications={filtered_implications} />
 
 <p class="hint">
 	*Deductions from these implications are automatically incorporated into each category

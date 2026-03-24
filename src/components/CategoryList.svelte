@@ -1,17 +1,12 @@
 <script lang="ts">
+	import type { CategoryShort } from '$lib/commons/types'
+
 	type Props = {
-		categories: { id: string; name: string }[]
-		description?: string
+		categories: CategoryShort[]
 	}
 
-	let { description, categories }: Props = $props()
+	let { categories }: Props = $props()
 </script>
-
-{#if description}
-	<p class="hint">
-		{description}
-	</p>
-{/if}
 
 {#if categories.length}
 	<ul>

@@ -20,11 +20,12 @@
 
 <h3>Categories with unknown properties</h3>
 
-<CategoryList
-	categories={data.categories_with_unknown_properties}
-	description="There are {data.categories_with_unknown_properties.length} categories
-	that have some unknown properties."
-/>
+<p class="hint">
+	There are {data.categories_with_unknown_properties.length} categories that have some unknown
+	properties.
+</p>
+
+<CategoryList categories={data.categories_with_unknown_properties} />
 
 <p class="hint">
 	In total, there are {data.total_number_unknown_pairs} unknown (category, property)-pairs.
@@ -32,19 +33,21 @@
 
 <h3>Categories with properties without recorded reason</h3>
 
-<CategoryList
-	categories={data.categories_with_unreasoned_properties}
-	description="There are {data.categories_with_unreasoned_properties
-		.length} categories with properties (satisfied or unsatisfied) that have no reason specified."
-/>
+<p class="hint">
+	There are {data.categories_with_unreasoned_properties.length} categories with properties
+	(satisfied or unsatisfied) that have no reason specified.
+</p>
+
+<CategoryList categories={data.categories_with_unreasoned_properties} />
 
 <h3>Categories with unknown special morphisms</h3>
 
-<CategoryList
-	categories={data.categories_with_missing_morphisms}
-	description="There are {data.categories_with_missing_morphisms
-		.length} categories whose iso-, epi-, or monomorphisms are unknown."
-/>
+<p class="hint">
+	There are {data.categories_with_missing_morphisms.length} categories whose iso-, epi-, or
+	monomorphisms are unknown.
+</p>
+
+<CategoryList categories={data.categories_with_missing_morphisms} />
 
 <h3>Missing combinations</h3>
 

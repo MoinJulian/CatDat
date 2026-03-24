@@ -13,10 +13,11 @@
 
 <h2>List of categories tagged with '{data.tag}'</h2>
 
-<CategoryList
-	categories={data.categories}
-	description={pluralize(data.categories.length, {
+<p class="hint">
+	{pluralize(data.categories.length, {
 		one: 'Found {count} category',
 		other: 'Found {count} categories',
 	})}
-/>
+</p>
+
+<CategoryList categories={data.categories} />

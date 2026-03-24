@@ -26,13 +26,14 @@
 
 	<SearchFilter bind:search />
 
-	<CategoryList
-		categories={searched_categories}
-		description={pluralize(searched_categories.length, {
+	<p class="hint">
+		{pluralize(searched_categories.length, {
 			one: 'Found {count} category',
 			other: 'Found {count} categories',
 		})}
-	/>
+	</p>
+
+	<CategoryList categories={searched_categories} />
 </section>
 
 <section>
