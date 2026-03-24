@@ -8,15 +8,10 @@
 			prefix: string
 			reason?: string | null
 		}[]
-		description?: string
 	}
 
-	let { properties, description }: Props = $props()
+	let { properties }: Props = $props()
 </script>
-
-{#if description}
-	<p class="hint">{description}</p>
-{/if}
 
 {#if properties.length}
 	<ul>

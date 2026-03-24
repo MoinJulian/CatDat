@@ -72,21 +72,23 @@
 			<h3>Satisfied Properties</h3>
 
 			{#if category_detail_level.value === 'all'}
+				<p class="hint">Properties from the database</p>
 				<PropertyList
 					properties={data.satisfied_properties.filter((p) => !p.is_deduced)}
-					description="Properties from the database"
 				/>
 
+				<p class="hint">Deduced properties</p>
 				<PropertyList
 					properties={data.satisfied_properties.filter((p) => p.is_deduced)}
-					description="Deduced properties"
 				/>
 			{:else if category_detail_level.value === 'merged'}
 				<PropertyList properties={data.satisfied_properties} />
 			{:else if category_detail_level.value === 'basic'}
+				<p class="hint">
+					Properties from the database; further properties can be deduced.
+				</p>
 				<PropertyList
 					properties={data.satisfied_properties.filter((p) => !p.is_deduced)}
-					description="Properties from the database; further properties can be deduced."
 				/>
 			{/if}
 		</section>
@@ -95,23 +97,26 @@
 			<h3>Unsatisfied Properties</h3>
 
 			{#if category_detail_level.value === 'all'}
+				<p class="hint">Properties from the database</p>
 				<PropertyList
 					properties={data.unsatisfied_properties.filter((p) => !p.is_deduced)}
-					description="Properties from the database"
 				/>
+
+				<p class="hint">Deduced properties</p>
 
 				<PropertyList
 					properties={data.unsatisfied_properties.filter((p) => p.is_deduced)}
-					description="Deduced properties*"
 				/>
 
 				<p class="hint">*This also uses the deduced satisfied properties.</p>
 			{:else if category_detail_level.value === 'merged'}
 				<PropertyList properties={data.unsatisfied_properties} />
 			{:else if category_detail_level.value === 'basic'}
+				<p class="hint">
+					Properties from the database; further properties can be deduced.
+				</p>
 				<PropertyList
 					properties={data.unsatisfied_properties.filter((p) => !p.is_deduced)}
-					description="Properties from the database; further properties can be deduced."
 				/>
 			{/if}
 		</section>
@@ -120,12 +125,15 @@
 	<section>
 		<h3>Unknown properties</h3>
 
-		<PropertyList
-			properties={data.unknown_properties}
-			description={data.unknown_properties.length
-				? "For these properties the database currently doesn't have an answer if they are satisfied or not. Please help to complete the data!"
-				: undefined}
-		/>
+		{#if data.unknown_properties.length > 0}
+			<p class="hint">
+				For these properties the database currently doesn't have an answer if they
+				are satisfied or not. Please help to <a href="/contribute">contribute</a> the
+				data!
+			</p>
+		{/if}
+
+		<PropertyList properties={data.unknown_properties} />
 	</section>
 {/key}
 

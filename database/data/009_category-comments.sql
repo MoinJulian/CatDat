@@ -7,10 +7,6 @@ INSERT INTO category_comments (
         'For the non-existence of sequential (co-)limits it is <i>not</i> sufficient to take a diagram of finite sets whose (co-)limit in $\mathbf{Set}$ is not contained in $\mathbf{FinSet}$.'
     ),
     (
-        'Rel',
-        'Lots of properties are unknown here. Please help to fill in the gaps!'
-    ),
-    (
         'Ring',
         'It is likely that the epimorphisms can be described as in the <a href="/category/CRing">commutative case</a>.'
     ),
@@ -28,10 +24,6 @@ INSERT INTO category_comments (
     ),
     (
         'Sch',
-        'Lots of properties are unknown here. Please help to fill in the gaps!'
-    ),
-    (
-        'Sch',
         'Monomorphisms are discussed at <a href="https://mathoverflow.net/questions/56591" target="_blank">MO/56591</a>. At least the case of morphisms of locally finite type is understood.'
     ),
     (
@@ -43,20 +35,8 @@ INSERT INTO category_comments (
         'Epimorphisms are discussed at <a href="https://mathoverflow.net/questions/56564" target="_blank">MO/56564</a>. Probably they cannot be classified.'
     ),
     (
-        'Z',
-        'Lots of properties are unknown here. Please help to fill in the gaps!'
-    ),
-    (
         'FreeAb',
         'Sequential colimits are discussed at <a href="https://math.stackexchange.com/questions/5035594" target="_blank">5035594</a>. Probably they do not exist.'
-    ),
-    (
-        'LRS',
-        'Lots of stuff is unknown here. Please help to fill in the gaps!'
-    ),
-    (
-        'Met_c',
-        'Lots of stuff is unknown here. Please help to fill in the gaps!'
     ),
     (
         'Sh(X)',

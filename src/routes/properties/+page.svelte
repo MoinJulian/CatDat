@@ -23,10 +23,11 @@
 
 <SearchFilter bind:search />
 
-<PropertyList
-	properties={searched_properties}
-	description={pluralize(searched_properties.length, {
+<p class="hint">
+	{pluralize(searched_properties.length, {
 		one: 'Found {count} property',
 		other: 'Found {count} properties',
 	})}
-/>
+</p>
+
+<PropertyList properties={searched_properties} />
