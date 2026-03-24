@@ -37,7 +37,6 @@ an issue when clicking two reasons in a row. So it's a <div> then.
 
 	import { faXmark } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
-	import { fly } from 'svelte/transition'
 
 	afterNavigate(() => {
 		close_popup()

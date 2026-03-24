@@ -11,7 +11,7 @@
 	})
 </script>
 
-<div class="search-container">
+<div class="search-filter">
 	<div class="input-container">
 		<input
 			type="search"
@@ -32,7 +32,7 @@
 </div>
 
 <style>
-	.search-container {
+	.search-filter {
 		display: inline-grid;
 		width: min(32ch, 100%);
 		grid-template-columns: 1fr auto;

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import CategoryList from '$components/CategoryList.svelte'
 	import MetaData from '$components/MetaData.svelte'
 	import { get_property_url } from '$lib/commons/property.url'

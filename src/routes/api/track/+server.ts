@@ -1,7 +1,17 @@
 import { query } from '$lib/server/db'
-import { get_geo_data, is_allowed, is_object } from '$lib/server/utils'
+import { is_object } from '$lib/server/utils'
 import { json } from '@sveltejs/kit'
 import sql from 'sql-template-tag'
+import { get_geo_data, is_allowed } from './track.utils'
+
+type ValidBody = { device_type: string; theme: string }
+
+const is_valid_body = (body: unknown): body is ValidBody =>
+	is_object(body) &&
+	'device_type' in body &&
+	typeof body.device_type === 'string' &&
+	'theme' in body &&
+	typeof body.theme === 'string'
 
 export const POST = async (event) => {
 	if (!is_allowed(event)) return json({ error: 'Forbidden' }, { status: 403 })
@@ -12,14 +22,7 @@ export const POST = async (event) => {
 
 	const body: unknown = await event.request.json()
 
-	const is_valid_body =
-		is_object(body) &&
-		'device_type' in body &&
-		typeof body.device_type === 'string' &&
-		'theme' in body &&
-		typeof body.theme === 'string'
-
-	if (!is_valid_body) {
+	if (!is_valid_body(body)) {
 		return json({ error: 'Invalid Request Body' }, { status: 400 })
 	}
 

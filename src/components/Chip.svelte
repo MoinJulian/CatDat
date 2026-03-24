@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte'
 
 	type Props = {
-		handle_click?: () => void // undefined if not clickable
+		handle_click?: () => void
 		children: Snippet
 		size?: 'small' | 'medium'
 	}
