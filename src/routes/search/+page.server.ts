@@ -6,7 +6,6 @@ import sql from 'sql-template-tag'
 import { SEARCH_SEPARATOR } from './search.config'
 import { check_consistency } from '$lib/server/consistency'
 import { to_placeholders } from '$lib/server/utils'
-import { get_deployment_status } from '$lib/server/deployment'
 
 export const prerender = false
 
@@ -38,8 +37,6 @@ export const load = async (event) => {
 			dual_search_available: false,
 		}
 	}
-
-	const deployment_status = await get_deployment_status()
 
 	const dual_properties_dict: Record<string, string | null> = {}
 	for (const row of all_properties_objects) {
@@ -84,7 +81,6 @@ export const load = async (event) => {
 			dual_satisfied_properties,
 			dual_unsatisfied_properties,
 			dual_search_available,
-			deployment_status,
 		}
 	}
 
@@ -135,6 +131,5 @@ export const load = async (event) => {
 		dual_satisfied_properties,
 		dual_unsatisfied_properties,
 		dual_search_available,
-		deployment_status,
 	}
 }

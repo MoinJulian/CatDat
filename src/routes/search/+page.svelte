@@ -8,7 +8,6 @@
 	import MetaData from '$components/MetaData.svelte'
 	import { SEARCH_SEPARATOR } from './search.config'
 	import { pluralize } from '$lib/client/utils'
-	import DeploymentWarning from '$components/DeploymentWarning.svelte'
 
 	let { data } = $props()
 
@@ -92,10 +91,6 @@
 {#if data.is_search}
 	<section transition:fade={{ duration: 150 }}>
 		<h2>Results</h2>
-
-		{#if data.deployment_status === 'deploying'}
-			<DeploymentWarning />
-		{/if}
 
 		{#if data.is_consistent}
 			<p class="hint">

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import DeploymentWarning from '$components/DeploymentWarning.svelte'
 	import MetaData from '$components/MetaData.svelte'
 	import { get_property_url } from '$lib/commons/property.url'
 	import {
@@ -44,10 +43,6 @@
 />
 
 <h2>Comparison of categories</h2>
-
-{#if data.deployment_status === 'deploying'}
-	<DeploymentWarning />
-{/if}
 
 <p class="hint" bind:this={paragraph_element}>
 	Selected:
