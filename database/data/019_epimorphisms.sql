@@ -261,7 +261,7 @@ VALUES
 		'BOn',
 		'epimorphisms',
 		'finite ordinal numbers',
-		'See <a href="https://math.stackexchange.com/questions/5029605" target="_blank">MO/5029605</a>.'
+		'See <a href="https://math.stackexchange.com/questions/5029605" target="_blank">MSE/5029605</a>.'
 	),
 	(
 		'FinOrd',
