@@ -20,14 +20,14 @@
 		max = Infinity,
 	}: Props = $props()
 
-	const id = $props.id()
-
 	let item = $state('')
 	let show_suggestions = $state(false)
 
 	let suggestions = $derived(
 		selected_items.length >= max ? [] : allowed_items.filter(is_suggestion),
 	)
+
+	let suggestions_element = $state<HTMLDivElement | null>(null)
 
 	function is_suggestion(allowed_item: string) {
 		return (
@@ -62,9 +62,7 @@
 	}
 
 	function handle_blur(e: FocusEvent) {
-		const is_suggestion_click =
-			e.relatedTarget instanceof HTMLButtonElement &&
-			e.relatedTarget.getAttribute('data-for') == id
+		const is_suggestion_click = suggestions_element?.contains(e.relatedTarget as Node)
 		if (!is_suggestion_click) show_suggestions = false
 	}
 
@@ -88,14 +86,15 @@
 				type="text"
 				bind:value={item}
 				onfocus={() => (show_suggestions = true)}
+				oninput={() => (show_suggestions = true)}
 				onblur={handle_blur}
 			/>
 		</div>
 
 		{#if show_suggestions && suggestions.length > 0}
-			<div class="suggestions">
+			<div class="suggestions" bind:this={suggestions_element}>
 				{#each suggestions as allowed_item}
-					<button onclick={() => select(allowed_item)} data-for={id}>
+					<button onclick={() => select(allowed_item)}>
 						{allowed_item}
 					</button>
 				{/each}
@@ -135,22 +134,26 @@
 
 	.suggestions {
 		position: absolute;
-		z-index: 10;
+		z-index: 5;
 		max-height: 12rem;
 		overflow-y: scroll;
 		scrollbar-width: thin;
 		top: calc(100% + 0.25rem);
 		background-color: var(--bg-color);
-		padding: 0.5rem 1rem;
 		border: 1px solid var(--outline-color);
 		border-radius: 0.4rem;
 		box-shadow: 0 0 1rem var(--shadow-color);
 		display: grid;
-		gap: 0.25rem;
 
 		button {
 			font-size: 1rem;
 			text-align: left;
+			padding: 0.25rem 1rem;
+
+			&:hover,
+			&:focus-visible {
+				background-color: var(--secondary-bg-color);
+			}
 		}
 	}
 </style>
