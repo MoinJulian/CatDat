@@ -17,7 +17,7 @@ VALUES
 ('Grp', 'coproducts', 'free products'),
 ('LRS', 'coproducts', 'disjoint union with the product sheaf'),
 ('M-Set', 'coproducts', 'disjoint union with obvious $M$-action'),
-('Meas', 'coproducts', 'disjoint union with obvious $\sigma$-algebra'),
+('Meas', 'coproducts', 'disjoint union with the obvious $\sigma$-algebra'),
 ('Met_c', 'coproducts', 'Given metric spaces $(X_i,d_i)$ with $d_i \leq 1$ w.l.o.g, we endow the disjoint union $\coprod_i X_i$ with the metric $d$ that extends the metrics $d_i$ and satisfies $d(x,y) = 1$ when $x,y$ are in different $X_i$.'),
 ('Met_oo', 'coproducts', 'disjoint union with the metric that extends the given ones and gives points in different spaces the distance $\infty$'),
 ('Mon', 'coproducts', 'free products'),

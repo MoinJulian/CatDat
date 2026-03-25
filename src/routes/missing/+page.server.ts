@@ -73,7 +73,7 @@ export const load = async () => {
 
 	const total_number_unknown_pairs = unknown_pair_count[0].total
 
-	const missing_combinations = await get_missing_combinations() // FIXME
+	const missing_combinations = await get_missing_combinations()
 
 	return {
 		categories_with_unknown_properties,
