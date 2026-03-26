@@ -123,7 +123,7 @@ VALUES
 (
     'Pos',
     'embeddings',
-    'Every regular monomorphism is an embedding by the explicit construction of equalizers. For the converse, let $i : P \to Q$ be an embedding, which we may assume the be an inclusion. Consider the cokernel pair $C := Q \cup_P Q$. It exists because the category has pushouts, but we can (and need to) describe it more concretely: As a set, $C$ is a disjoint union of $P$ and two copies of $Q \setminus P$. The elements will be denoted by $p,q_1,q_2$. The $i$th inclusion map $Q \to C$ maps $p \in P$ to itself and $q \in Q \setminus P$ to $q_i$. The ordering is directly induced by $Q$: We have $p \leq p''$ in $C$ iff $p \leq p''$ in $P$, we have $p \leq q_i$ iff $p \leq q$ in $Q$, etc. One verifies that this indeed defines a partial order, and by construction the two maps $Q \to C$ are order-preserving and have equalizer $P$.'
+    'Every regular monomorphism is an embedding by the explicit construction of equalizers. For the converse, let $i : P \to Q$ be an embedding, which we may assume to be an inclusion. Consider the cokernel pair $C := Q \cup_P Q$. It exists because the category has pushouts, but we can (and need to) describe it more concretely: As a set, $C$ is a disjoint union of $P$ and two copies of $Q \setminus P$. The elements will be denoted by $p,q_1,q_2$. The $i$th inclusion map $Q \to C$ maps $p \in P$ to itself and $q \in Q \setminus P$ to $q_i$. The ordering is directly induced by $Q$: We have $p \leq p''$ in $C$ iff $p \leq p''$ in $P$, we have $p \leq q_i$ iff $p \leq q$ in $Q$, etc. One verifies that this indeed defines a partial order, and by construction the two maps $Q \to C$ are order-preserving and have equalizer $P$.'
 ),
 (
     'R-Mod',
