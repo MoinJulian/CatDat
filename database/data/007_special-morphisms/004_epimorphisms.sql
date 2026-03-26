@@ -31,7 +31,7 @@ VALUES
 	'For the non-trivial direction, if $f : A \to B$ is an epimorphism, then $p \circ f = 0$ for the projection  $p : B \to B/f(A)$ implies that $p = 0$, so that $B = f(A)$.'
 ),
 (
-	'Abfg',
+	'Ab_fg',
 	'surjective homomorphisms',
 	'Use the same proof as for abelian groups.'
 ),

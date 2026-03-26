@@ -31,7 +31,7 @@ VALUES
 	'This holds in every finitary algebraic category: the forgetful functor to $\mathbf{Set}$ is faithful, hence reflects monomorphisms, and it is continuous (even representable), hence preserves monomorphisms.'
 ),
 (
-	'Abfg',
+	'Ab_fg',
 	'injective homomorphisms',
 	'Let $f : A \to B$ be a monomorphism of finitely generated abelian groups. Let $a \in A$ be in the kernel of $a$. Then we may view $a$ as a morphism $a : \mathbb{Z} \to A$ with $f \circ a = 0$, and $\mathbb{Z}$ is finitely generated. Hence, $a = 0$.'
 ),

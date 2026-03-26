@@ -7,7 +7,7 @@ INSERT INTO terminal_objects (category_id, description)
 VALUES
 ('1', 'the unique object'),
 ('Ab', 'trivial group'),
-('Abfg', 'trivial group'),
+('Ab_fg', 'trivial group'),
 ('Alg(R)', 'trivial algebra'),
 ('Ban', 'trivial Banach space'),
 ('CAlg(R)', 'trivial algebra'),

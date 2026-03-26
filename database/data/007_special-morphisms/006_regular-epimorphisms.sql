@@ -31,7 +31,7 @@ VALUES
     'This is because the category is epi-regular.'
 ),    
 (
-    'Abfg',
+    'Ab_fg',
     'same as epimorphisms',
     'This is because the category is epi-regular.'
 ),    

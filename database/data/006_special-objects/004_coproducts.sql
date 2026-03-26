@@ -53,7 +53,7 @@ VALUES
 ('Sp', '[finite case] pointwise finite disjoint union'),
 ('FinAb', '[finite case] direct sum'),
 ('FinSet', '[finite case] disjoint union'),
-('Abfg', '[finite case] direct sum'),
+('Ab_fg', '[finite case] direct sum'),
 ('Man', '[countable case] disjoint union with the disjoint union topology and the obvious charts'),
 ('N', '[finite case] supremum');
 

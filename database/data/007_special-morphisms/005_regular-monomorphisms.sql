@@ -31,7 +31,7 @@ VALUES
     'This is because the category is mono-regular.'
 ),
 (
-    'Abfg',
+    'Ab_fg',
     'same as monomorphisms',
     'This is because the category is mono-regular'
 ),

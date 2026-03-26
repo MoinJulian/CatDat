@@ -31,7 +31,7 @@ VALUES
 	'This characterization holds in every algebraic category.'
 ),
 (
-	'Abfg',
+	'Ab_fg',
 	'bijective homomorphisms',
 	'follows exactly as for abelian groups'
 ),
