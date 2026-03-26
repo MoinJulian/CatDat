@@ -9,6 +9,12 @@ import {
 
 dotenv.config({ quiet: true })
 
+type CategoryMeta = {
+	id: string
+	name: string
+	dual_category_id: string | null
+}
+
 export async function deduce_all_properties(db: Client) {
 	const tx = await db.transaction()
 
@@ -18,10 +24,14 @@ export async function deduce_all_properties(db: Client) {
 
 		const categories = await get_categories(tx)
 
-		for (const { category_id } of categories) {
-			await delete_deduced_properties(tx, category_id)
-			await deduce_satisfied_properties(tx, category_id, implications)
-			await deduce_unsatisfied_properties(tx, category_id, implications)
+		for (const category of categories) {
+			await delete_deduced_properties(tx, category.id)
+			await deduce_satisfied_properties(tx, category.id, implications)
+			await deduce_unsatisfied_properties(tx, category.id, implications)
+		}
+
+		for (const category of categories) {
+			await deduce_dual_properties(tx, category)
 		}
 
 		await tx.commit()
@@ -34,9 +44,10 @@ export async function deduce_all_properties(db: Client) {
 
 async function get_categories(tx: Transaction) {
 	const res = await tx.execute(`
-		SELECT id AS category_id FROM categories ORDER BY lower(name)
+		SELECT id, name, dual_category_id
+		FROM categories ORDER BY lower(name)
 	`)
-	return res.rows as unknown as { category_id: string }[]
+	return res.rows as unknown as CategoryMeta[]
 }
 
 async function delete_deduced_properties(tx: Transaction, category_id: string) {
@@ -47,6 +58,42 @@ async function delete_deduced_properties(tx: Transaction, category_id: string) {
 		`,
 		args: [category_id],
 	})
+}
+
+async function deduce_dual_properties(tx: Transaction, category: CategoryMeta) {
+	const allowed =
+		category.dual_category_id !== null &&
+		category.name.toLowerCase().startsWith('dual') // prevent circular deduction
+
+	if (!allowed) return
+
+	const res = await tx.execute({
+		sql: `
+			INSERT OR REPLACE INTO category_property_assignments
+				(category_id, property_id, is_satisfied, reason, is_deduced)
+			SELECT
+				?,
+				p.dual_property_id,
+				a.is_satisfied,
+				CASE
+					WHEN a.is_satisfied THEN
+					'Its dual category ' || pf.prefix || ' ' || a.property_id || '.'
+					ELSE
+					'Its dual category ' || pf.negation || ' ' || a.property_id || '.'
+				END,
+				TRUE
+			FROM category_property_assignments a
+			INNER JOIN properties p ON p.id = a.property_id
+			INNER JOIN prefixes pf ON pf.prefix = p.prefix
+			WHERE a.category_id = ? AND p.dual_property_id IS NOT NULL
+			ORDER BY lower(p.dual_property_id)
+		`,
+		args: [category.id, category.dual_category_id],
+	})
+
+	console.info(
+		`Added ${res.rowsAffected} (un-)satisfied properties for ${category.id} to the database by using its dual ${category.dual_category_id}`,
+	)
 }
 
 async function deduce_satisfied_properties(

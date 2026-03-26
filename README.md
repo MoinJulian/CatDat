@@ -18,7 +18,7 @@ and properties. Built by and for those who love [category theory](https://en.wik
 - **Property Detail Pages**: Explore the definition of a property and view categories that satisfy it and those that don't.
 - **Reasons and References**: Each property and implication includes a reason or reference, forming a data-driven knowledge base for category theory.
 - **Deduction System**: Automatically infers properties from existing ones using a database of implications.
-- **Automatic Dualization**: Automatically dualizes implications.
+- **Automatic Dualization**: Automatically dualizes implications and property assignments.
 - **Searchable Database**: Find categories based on satisfied properties and unsatisfied properties.
 - **Comparison Feature**: Compare multiple categories to identify their differences and similarities.
 - **Customizable Display**: Light/dark mode and optional display of deduced properties.

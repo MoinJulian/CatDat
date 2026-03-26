@@ -42,7 +42,7 @@ Database entries (categories, properties, implications, etc.) are defined via SQ
 
 ## Derived Data
 
-From the defined satisfied properties of a given category, new properties can be automatically deduced using the implications. (For example, when a category has equalizers and products, we can infer that it is complete.) The same applies to unsatisfied properties. Additionally, suitable implications may be dualized. Note that the SQL files mentioned above do _not_ contain any derived data.
+From the defined satisfied properties of a given category, new properties can be automatically deduced using the implications. (For example, when a category has equalizers and products, we can infer that it is complete.) The same applies to unsatisfied properties. Additionally, suitable implications may be dualized, and a category inherits all dualized properties of its dual category, if available. Note that the SQL files mentioned above do _not_ contain any derived data.
 
 The command `pnpm db:deduce` deduces implications, satisfied properties, and unsatisfied properties.
 
