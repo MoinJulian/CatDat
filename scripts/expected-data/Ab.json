@@ -91,5 +91,6 @@
 	"extensive": false,
 	"infinitary extensive": false,
 	"coextensive": false,
-	"infinitary coextensive": false
+	"infinitary coextensive": false,
+	"lextensive": false
 }

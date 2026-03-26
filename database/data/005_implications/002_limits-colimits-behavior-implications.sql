@@ -208,4 +208,11 @@ VALUES
 	'["finitely complete"]',
 	'This holds by definition of a regular category.',
 	FALSE
+),
+(
+	'lextensive_def',
+	'["lextensive"]',
+	'["extensive", "finitely complete"]',
+	'This holds by definition.',
+	TRUE
 );

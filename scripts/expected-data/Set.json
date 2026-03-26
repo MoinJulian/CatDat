@@ -60,6 +60,7 @@
 	"extensive": true,
 	"infinitary extensive": true,
 	"co-Malcev": true,
+	"lextensive": true,
 
 	"Grothendieck abelian": false,
 	"Malcev": false,

@@ -45,6 +45,7 @@
 	"coregular": true,
 	"extensive": true,
 	"infinitary extensive": true,
+	"lextensive": true,
 
 	"abelian": false,
 	"additive": false,
