@@ -32,6 +32,7 @@ export const load = async (event) => {
 			SELECT related_property_id AS id
 			FROM related_properties
 			WHERE property_id = ${id}
+			ORDER BY lower(id)
 		`,
 		// relevant implications
 		sql`
