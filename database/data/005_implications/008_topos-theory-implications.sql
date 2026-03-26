@@ -1,0 +1,141 @@
+INSERT INTO implication_input (
+	id,
+	assumptions,
+	conclusions,
+	reason,
+	is_equivalence
+)
+VALUES
+(
+	'ccc_condition',
+	'["cartesian closed"]',
+	'["finite products"]',
+	'This holds by definition.',
+	FALSE
+),
+(
+	'subobject_classifier_well-powered',
+	'["subobject classifier", "locally essentially small"]',
+	'["well-powered"]',
+	'See <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Prop. I.3.1.',
+	FALSE
+),
+(
+	'ccc_consequence',
+	'["cartesian closed", "initial object"]',
+	'["strict initial object"]',
+	'See the <a href="https://ncatlab.org/nlab/show/strict+initial+object" target="_blank">nLab</a>.',
+	FALSE
+),
+(
+	'pointed_ccc_trivial',
+	'["pointed", "cartesian closed"]',
+	'["trivial"]',
+	'We have $X \cong X \times 1 \cong X \times 0 \cong 0$ for every object $X$.',
+	FALSE
+),
+(
+	'topos_definition',
+	'["elementary topos"]',
+	'["cartesian closed", "finitely complete", "subobject classifier"]',
+	'This holds by definition.',
+	TRUE
+),
+(
+	'subobject_classifier_consequence',
+	'["subobject classifier"]',
+	'["finitely complete", "mono-regular"]',
+	'The first part holds by convention, and the second part: any monomorphism $U \to X$ is the equalizer of $\chi_U,\chi_X : X \to \Omega$.',
+	FALSE
+),
+(
+	'subobject_thin',
+	'["thin", "subobject classifier"]',
+	'["trivial"]',
+	'Let $\mathcal{C}$ be a thin category with a subobject classifier $\Omega$. Every object has a subobject, hence a morphism to $\Omega$. It must be unique since $\mathcal{C}$ is thin. Hence, $\Omega$ is terminal. If $X$ is any object, then $1 \cong \mathrm{Hom}(X,\Omega) \cong \mathrm{Sub}(X)$ shows that every morphism $Y \to X$ is isomorphic to $\mathrm{id}_X : X \to X$. Apply this to $X = \Omega$ to finish the proof.',
+	FALSE
+),
+(
+	'pullbacks_are_local_products',
+	'["locally cartesian closed"]',
+	'["pullbacks"]',
+	'Pullbacks are binary products in slice categories.',
+	FALSE
+),
+(
+	'locally_cartesian_closed_with_terminal_is_closed',
+	'["locally cartesian closed", "terminal object"]',
+	'["cartesian closed"]',
+	'The slice over the terminal object is the category itself.',
+	FALSE
+),
+(
+	'topos_consequence',
+	'["elementary topos"]',
+	'["finitely cocomplete", "disjoint finite coproducts", "epi-regular"]',
+	'See <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Cor. IV.5.4, Cor. IV.10.5, Thm. 4.7.8.',
+	FALSE
+),
+(
+	'topos_well-copowered_criterion',
+	'["elementary topos", "locally essentially small"]',
+	'["well-copowered"]',
+	'This follows from <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Theorem IV.7.8 (and Prop. I.3.1).',
+	FALSE
+),
+(
+	'grothendieck_topos_definition',
+	'["Grothendieck topos"]',
+	'["elementary topos", "coproducts", "generator", "locally essentially small"]',
+	'See <a href="https://ncatlab.org/nlab/show/Sheaves+in+Geometry+and+Logic" target="_blank">Mac Lane & Moerdijk</a>, Appendix, Prop. 4.4.',
+	TRUE
+),
+(
+	'grothendieck_topos_consequence',
+	'["Grothendieck topos"]',
+	'["locally presentable", "cogenerator"]',
+	'For "locally presentable" see Prop. 3.4.16 in <a href="https://www.cambridge.org/core/books/handbook-of-categorical-algebra/5033A02442342401E7BCC26A042DAB94" target="_blank">Handbook of Categorical Algebra Vol. 3</a>. For "cogenerator" see the <a href="https://ncatlab.org/nlab/show/cogenerator" target="_blank">nLab</a>.',
+	FALSE
+),
+(
+	'topos_is_locally_cartesian_closed',
+	'["elementary topos"]',
+	'["locally cartesian closed"]',
+	'See <a href="https://ncatlab.org/nlab/show/Sketches+of+an+Elephant" target="_blank">Johnstone</a>, Cor. A2.3.4.',
+	FALSE
+),
+(
+	'lcc_implies_regular',
+	'["locally cartesian closed", "coequalizers", "finitely complete"]',
+	'["regular"]',
+	'See <a href="https://ncatlab.org/nlab/show/Sketches+of+an+Elephant" target="_blank">Johnstone</a>, Lemma A1.5.13. (From this it follows also that every elementary topos is regular.)',
+	FALSE
+),
+(
+	'topos_implies_coregular',
+	'["elementary topos"]',
+	'["coregular"]',
+	'This is proven in <a href="https://ncatlab.org/nlab/show/Sketches+of+an+Elephant" target="_blank">Johnstone</a>, A2.6.3 (for every quasitopos).',
+	FALSE
+),
+(
+	'lcc_implies_extensive',
+	'["locally cartesian closed", "disjoint finite coproducts"]',
+	'["extensive"]',
+	'The pullback functor preserves finite coproducts because it has a right adjoint. Remark: In combination with other implication, this result implies that every elementary topos is extensive.',
+	FALSE
+),
+(
+	'lcc_extensive_yields_infinitary',
+	'["locally cartesian closed", "cocomplete", "extensive"]',
+	'["infinitary extensive"]',
+	'The pullback functor preserves coproducts because it has a right adjoint. See also Remark 2.6 at the <a href="https://ncatlab.org/nlab/show/extensive+category" target="_blank">nLab</a>. ',
+	FALSE
+),
+(
+	'Grothendieck_extensive',
+	'["Grothendieck topos"]',
+	'["infinitary extensive"]',
+	'This is a part of <a href="https://ncatlab.org/nlab/show/Giraud%27s+theorem" target="_blank">Giraud''s Theorem</a>.',
+	FALSE
+);

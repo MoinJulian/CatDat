@@ -1,0 +1,25 @@
+INSERT INTO category_property_assignments (
+	category_id,
+	property_id,
+	is_satisfied,
+	reason
+)
+VALUES
+(
+	'1',
+	'trivial',
+	TRUE,
+	'trivial'
+),
+(
+	'1',
+	'finite',
+	TRUE,
+	'trivial'
+),
+(
+	'1',
+	'discrete',
+	TRUE,
+	'trivial'
+);

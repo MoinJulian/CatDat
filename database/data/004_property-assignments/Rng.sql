@@ -1,0 +1,61 @@
+INSERT INTO category_property_assignments (
+	category_id,
+	property_id,
+	is_satisfied,
+	reason
+)
+VALUES
+(
+	'Rng',
+	'locally small',
+	TRUE,
+	'There is a forgetful functor $\mathbf{Rng} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
+),
+(
+	'Rng',
+	'finitary algebraic',
+	TRUE,
+	'Take the algebraic theory of a rng.'
+),
+(
+	'Rng',
+	'pointed',
+	TRUE,
+	'The zero ring is a zero object.'
+),
+(
+	'Rng',
+	'disjoint coproducts',
+	TRUE,
+	'The coproduct of two rngs $R,S$ has as underlying additive group $R \oplus S \oplus (R \otimes S) \oplus (S \otimes R) \oplus \cdots$ from which the claim easily follows.'
+),
+(
+	'Rng',
+	'Malcev',
+	TRUE,
+	'follows in the same way as for (additive) groups'
+),
+(
+	'Rng',
+	'balanced',
+	FALSE,
+	'The inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$ is a counterexample. (The proof can be reduced to the unital case.)'
+),
+(
+	'Rng',
+	'cogenerator',
+	FALSE,
+	'Assume that there is a rng $Q$ that cogenerates. Clearly, $Q$ is non-zero. Take an infinite field $F$ which is larger than $Q$ and admits a non-trivial automorphism (for example, a field of rational functions). Then every rng homomorphism $f : F \to Q$ is zero: If $e := f(1)$, then $e$ is idempotent and $f$ corestricts to a ring homomorphism $f : F \to eQ$. Since $F$ is a field but $f$ cannot be injective, we must have $eQ = 0$, so that $e = 0$ and $f = 0$. Since $Q$ cogenerates, this implies that all homomorphisms $F \to F$ are equal, a contradiction.'
+),
+(
+	'Rng',
+	'skeletal',
+	FALSE,
+	'trivial'
+),
+(
+	'Rng',
+	'biproducts',
+	FALSE,
+	'If $\sqcup$ denotes the coproduct and $(X)$ the free rng on one generator (integer polynomials without constant term), the canonical homomorphism $(X) \sqcup (Y) \to (X) \times (Y)$ is not an isomorphism, since $(X) \sqcup (Y)$ is the free rng on two generators and therefore not commutative.'
+);

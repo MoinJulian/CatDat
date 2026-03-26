@@ -1,0 +1,43 @@
+INSERT INTO category_property_assignments (
+	category_id,
+	property_id,
+	is_satisfied,
+	reason
+)
+VALUES
+(
+	'sSet',
+	'locally small',
+	TRUE,
+	'This follows from the general fact that $[\mathcal{C},\mathcal{D}]$ is locally small when $\mathcal{C}$ is small and $\mathcal{D}$ is locally small, here applied to $\mathcal{C} = \Delta^{\mathrm{op}}$ and $\mathcal{D} = \mathbf{Set}$.'
+),
+(
+	'sSet',
+	'Grothendieck topos',
+	TRUE,
+	'obvious'
+),
+(
+	'sSet',
+	'locally finitely presentable',
+	TRUE,
+	'This follows from the fact that the free cocompletion of a small category is locally finitely presentable.'
+),
+(
+	'sSet',
+	'strict terminal object',
+	FALSE,
+	NULL
+),
+(
+	'sSet',
+	'skeletal',
+	FALSE,
+	'trivial'
+),
+(
+	'sSet',
+	'Malcev',
+	FALSE,
+	NULL
+);

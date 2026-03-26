@@ -1,0 +1,91 @@
+INSERT INTO category_property_assignments (
+	category_id,
+	property_id,
+	is_satisfied,
+	reason
+)
+VALUES
+(
+	'Z',
+	'complete',
+	TRUE,
+	'follows immediately from the fact for $\mathbf{Set}$'
+),
+(
+	'Z',
+	'cocomplete',
+	TRUE,
+	'follows immediately from the fact for $\mathbf{Set}$'
+),
+(
+	'Z',
+	'infinitary extensive',
+	TRUE,
+	'follows immediately from the fact for $\mathbf{Set}$'
+),
+(
+	'Z',
+	'exact filtered colimits',
+	TRUE,
+	'follows immediately from the fact for $\mathbf{Set}$'
+),
+(
+	'Z',
+	'mono-regular',
+	TRUE,
+	'follows immediately from the fact for $\mathbf{Set}$'
+),
+(
+	'Z',
+	'epi-regular',
+	TRUE,
+	'follows immediately from the fact for $\mathbf{Set}$'
+),
+(
+	'Z',
+	'regular',
+	TRUE,
+	'follows immediately from the fact for $\mathbf{Set}$'
+),
+(
+	'Z',
+	'coregular',
+	TRUE,
+	'follows immediately from the fact for $\mathbf{Set}$'
+),
+(
+	'Z',
+	'locally essentially small',
+	FALSE,
+	'See <a href="https://mathoverflow.net/questions/390611" target="_blank">MO/390611</a> for example.'
+),
+(
+	'Z',
+	'strict terminal object',
+	FALSE,
+	'This is because $\mathbf{CRing}$ does not have a strict initial object.'
+),
+(
+	'Z',
+	'skeletal',
+	FALSE,
+	'trivial'
+),
+(
+	'Z',
+	'Malcev',
+	FALSE,
+	NULL
+),
+(
+	'Z',
+	'strongly connected',
+	FALSE,
+	'This is because already the full subcategory of representable functors is not strongly connected, see <a href="/category/CRing">the entry for $\mathbf{CRing}$</a>. Specifically, there is no morphism between $\mathrm{Hom}(\mathbb{F}_2,-)$ and $\mathrm{Hom}(\mathbb{F}_3,-)$.'
+),
+(
+	'Z',
+	'cartesian closed',
+	FALSE,
+	'There are functors $F,G : \mathbf{CRing} \to \mathbf{Set}$ such that $\mathrm{Hom}(F,G)$ is not essentially small, see <a href="https://mathoverflow.net/questions/390611" target="_blank">MO/390611</a> for example. Now if the exponential $[F,G] : \mathbf{CRing} \to \mathbf{Set}$ exists, we get $[F,G](\mathbb{Z}) \cong \mathrm{Hom}(\mathrm{Hom}(\mathbb{Z},-),[F,G])$ by Yoneda, which simplifies to $\mathrm{Hom}(1,[F,G]) \cong \mathrm{Hom}(1 \times F,G) \cong \mathrm{Hom}(F,G)$, a contradiction.'
+);

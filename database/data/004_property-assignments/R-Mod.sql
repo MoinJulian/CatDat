@@ -1,0 +1,37 @@
+INSERT INTO category_property_assignments (
+	category_id,
+	property_id,
+	is_satisfied,
+	reason
+)
+VALUES
+(
+	'R-Mod',
+	'locally small',
+	TRUE,
+	'There is a forgetful functor $R{-}\mathbf{Mod} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
+),
+(
+	'R-Mod',
+	'abelian',
+	TRUE,
+	'standard'
+),
+(
+	'R-Mod',
+	'finitary algebraic',
+	TRUE,
+	'Take the algebraic theory of an $R$-module (given by the algebraic theory of an abelian group and for each $r \in R$ a unary operation).'
+),
+(
+	'R-Mod',
+	'split abelian',
+	FALSE,
+	'By assumption, $R$ is not semisimple, so that there is a non-projective $R$-module, which yields a non-split sequence.'
+),
+(
+	'R-Mod',
+	'skeletal',
+	FALSE,
+	'trivial'
+);

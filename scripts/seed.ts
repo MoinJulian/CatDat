@@ -16,25 +16,35 @@ const db = createClient({
 })
 
 const data_folder = path.join(process.cwd(), 'database', 'data')
-const unsorted_files = await fs.readdir(data_folder, 'utf8')
-const files = unsorted_files.filter((f) => f.endsWith('.sql')).sort()
 
-const invalid_file = files.find((file) => !file.match(/^\d{3}_/))
-if (invalid_file) throw new Error(`Invalid file name: ${invalid_file}`)
+const subfolders = (await fs.readdir(data_folder, { withFileTypes: true }))
+	.filter((f) => f.isDirectory())
+	.map((f) => f.name)
+	.sort()
 
-for (const file of files) {
-	const sql = await fs.readFile(path.join(data_folder, file), 'utf8')
+const invalid_folder = subfolders.find((f) => !f.match(/^\d{3}_/))
+if (invalid_folder) throw new Error(`Invalid folder name: ${invalid_folder}`)
 
-	const tx = await db.transaction()
-	try {
-		await tx.executeMultiple(sql)
-		await tx.commit()
-		const operation = file.includes('clear') ? 'Clear data' : 'Insert data'
-		console.info(`${operation}: ${file}`)
-	} catch (err) {
-		console.error(`Failed to process ${file}`, err)
-		await tx.rollback()
-		process.exit(1)
+for (const folder of subfolders) {
+	const folder_path = path.join(data_folder, folder)
+	const files = (await fs.readdir(folder_path, { withFileTypes: true }))
+		.filter((f) => f.isFile() && f.name.endsWith('.sql'))
+		.map((f) => path.join(folder_path, f.name))
+		.sort()
+
+	for (const file of files) {
+		const sql = await fs.readFile(file, 'utf8')
+		const tx = await db.transaction()
+		try {
+			await tx.executeMultiple(sql)
+			await tx.commit()
+			const operation = file.includes('clear') ? 'Clear data' : 'Insert data'
+			console.info(`${operation}: ${file.split('/').at(-1)}`)
+		} catch (err) {
+			console.error(`Failed to process ${file}`, err)
+			await tx.rollback()
+			process.exit(1)
+		}
 	}
 }
 

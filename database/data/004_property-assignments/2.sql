@@ -1,0 +1,31 @@
+INSERT INTO category_property_assignments (
+	category_id,
+	property_id,
+	is_satisfied,
+	reason
+)
+VALUES
+(
+	'2',
+	'discrete',
+	TRUE,
+	'trivial'
+),
+(
+	'2',
+	'finite',
+	TRUE,
+	'trivial'
+),
+(
+	'2',
+	'inhabited',
+	TRUE,
+	'trivial'
+),
+(
+	'2',
+	'connected',
+	FALSE,
+	'The objects $0$, $1$ have no zig-zag path between them.'
+);

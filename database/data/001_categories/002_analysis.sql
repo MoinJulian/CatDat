@@ -1,0 +1,55 @@
+INSERT INTO CATEGORIES (
+	id,
+	name,
+	notation,
+	objects,
+	morphisms,
+	description,
+	nlab_link
+)
+VALUES
+(
+	'Ban',
+	'category of Banach spaces with linear contractions',
+	'$\mathbf{Ban}$',
+	'Banach spaces over $\mathbb{C}$',
+	'linear contractions, i.e. linear maps of norm $\leq 1$',
+	'The choice of morphisms is similar to that of $\mathbf{Met}$ which yields the best categorical properties.',
+	'https://ncatlab.org/nlab/show/Banach+space'
+),
+(
+	'Meas',
+	'category of measurable spaces',
+	'$\mathbf{Meas}$',
+	'measurable spaces',
+	'measurable maps',
+	'This is very similar to the category of topological spaces. Accordingly, limits and colimits can be constructed in the same way.',
+	'https://ncatlab.org/nlab/show/Meas'
+),
+(
+	'Met',
+	'category of metric spaces with non-expansive maps',
+	'$\mathbf{Met}$',
+	'metric spaces',
+	'non-expansive maps $f$, meaning $d(f(x),f(y)) \leq d(x,y)$ for all $x,y$',
+	NULL,
+	'https://ncatlab.org/nlab/show/Met'
+),
+(
+	'Met_oo',
+	'category of metric spaces with ∞ allowed',
+	'$\mathbf{Met}_{\infty}$',
+	'metric spaces, where the metric is allowed to assume the value $\infty$',
+	'non-expansive maps $f$, meaning $d(f(x),f(y)) \leq d(x,y)$ for all $x,y$',
+	'The fact that we allow $\infty$ means that universal constructions work much better.',
+	'https://ncatlab.org/nlab/show/Met'
+),
+(
+	'Met_c',
+	'category of metric spaces with continuous maps',
+	'$\mathbf{Met}_c$',
+	'metric spaces',
+	'continuous maps',
+	'This category is equivalent to the subcategory of $\mathbf{Top}$ (or $\mathbf{Haus}$) that consists of metrizable topological spaces.',
+	NULL
+);

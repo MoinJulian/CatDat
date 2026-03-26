@@ -1,0 +1,67 @@
+INSERT INTO category_property_assignments (
+	category_id,
+	property_id,
+	is_satisfied,
+	reason
+)
+VALUES
+(
+	'CMon',
+	'locally small',
+	TRUE,
+	'There is a forgetful functor $\mathbf{CMon} \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
+),
+(
+	'CMon',
+	'pointed',
+	TRUE,
+	'The trivial monoid is a zero object.'
+),
+(
+	'CMon',
+	'finitary algebraic',
+	TRUE,
+	'Take the algebraic of a commutative monoid.'
+),
+(
+	'CMon',
+	'disjoint coproducts',
+	TRUE,
+	'This follows from the description of the coproduct as a form of direct sum (very similar to $\mathbf{Ab}$).'
+),
+(
+	'CMon',
+	'biproducts',
+	TRUE,
+	'This follows from the explicit construction of coproducts and products.'
+),
+(
+	'CMon',
+	'preadditive',
+	FALSE,
+	'In categories with finite products and coproducts, the preadditive structure is <i>unique</i>: If $f,g : A \to B$ are morphisms, their sum $f+g : A \to B$ is the composite of $(f,g) : A \to B \times B$, the inverse of the canonical morphism $B \oplus B \to B \times B$ (which indeed must be an isomorphism), and the codiagonal $B \oplus B \to B$. In the case of $\mathbf{CMon}$, this is just the pointwise addition of maps, and this is indeed an enrichment of $\mathbf{CMon}$ over itself. But not over $\mathbf{Ab}$, since for example $\mathrm{Hom}(\mathbb{N},\mathbb{N}) \cong \mathbb{N}$ (with respect to addition) is not a group.'
+),
+(
+	'CMon',
+	'balanced',
+	FALSE,
+	'The inclusion of additive monoids $\mathbb{N} \hookrightarrow \mathbb{Z}$ is a counterexample.'
+),
+(
+	'CMon',
+	'skeletal',
+	FALSE,
+	'trivial'
+),
+(
+	'CMon',
+	'Malcev',
+	FALSE,
+	'Consider the submonoid $\{(a,b) : a \leq b \}$ of $\mathbb{N}^2$.'
+),
+(
+	'CMon',
+	'cogenerator',
+	FALSE,
+	'See <a href="https://mathoverflow.net/questions/509232" target="_blank">MO/509232</a>.'
+);

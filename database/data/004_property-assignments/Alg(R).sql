@@ -1,0 +1,73 @@
+INSERT INTO category_property_assignments (
+	category_id,
+	property_id,
+	is_satisfied,
+	reason
+)
+VALUES
+(
+	'Alg(R)',
+	'locally small',
+	TRUE,
+	'There is a forgetful functor $\mathbf{Alg}(R) \to \mathbf{Set}$ and $\mathbf{Set}$ is locally small.'
+),
+(
+	'Alg(R)',
+	'finitary algebraic',
+	TRUE,
+	'Take the algebraic theory of an $R$-algebra.'
+),
+(
+	'Alg(R)',
+	'strict terminal object',
+	TRUE,
+	'If $f : 0 \to A$ is an algebra homomorphism, then $A$ satisfies $1=f(1)=f(0)=0$, so that $A=0$.'
+),
+(
+	'Alg(R)',
+	'Malcev',
+	TRUE,
+	'follows in the same way as for (additive) groups'
+),
+(
+	'Alg(R)',
+	'disjoint finite products',
+	TRUE,
+	'One can take the same proof as for $\mathbf{Ring}$.'
+),
+(
+	'Alg(R)',
+	'strict initial object',
+	FALSE,
+	'The homomorphism $p_1 : R \times R \to R$ is not an isomorphism, and $R$ is initial.'
+),
+(
+	'Alg(R)',
+	'balanced',
+	FALSE,
+	'Take a prime ideal $P \subseteq R$ and consider the $R$-algebra $A := R/P$ (which is an integral domain). Then the inclusion $A \hookrightarrow Q(A)$ is a counterexample.'
+),
+(
+	'Alg(R)',
+	'skeletal',
+	FALSE,
+	'trivial'
+),
+(
+	'Alg(R)',
+	'cogenerator',
+	FALSE,
+	'Assume that there is a $R$-algebra $Q$ that cogenerates. Clearly, $Q$ is non-zero. Take an infinite field $F$ which has a $R$-algebra structure, is larger than $Q$ and admits a non-trivial automorphism (for example, a field of rational functions over some residue field of $R$). Then there is no algebra homomorphism $F \to Q$. Since $Q$ cogenerates, this implies that all homomorphisms $F \to F$ are equal, a contradiction.'
+),
+(
+	'Alg(R)',
+	'codistributive',
+	FALSE,
+	'If $\sqcup$ denotes the coproduct of $R$-algebras (see <a href="https://math.stackexchange.com/questions/625874" target="_blank">MSE/625874</a> for their description) and $A$ is an $R$-algebra, the canonical morphism $A \sqcup R^2 \to (A \sqcup R)^2 = A^2$ is usually no isomorphism. For example, for $A = R[X]$ the coproduct on the LHS is not commutative, it has the algebra presentation $\langle X,E : E^2=E \rangle$.'	
+),
+(
+	'Alg(R)',
+	'strongly connected',
+	FALSE,
+	'This is because already the full subcategory $\mathrm{CAlg}(R)$ of commutative algebras is not strongly connected, see <a href="/category/CAlg(R)">its category page</a> for details.'
+);

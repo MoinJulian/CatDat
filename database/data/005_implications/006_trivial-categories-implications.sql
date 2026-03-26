@@ -1,0 +1,99 @@
+INSERT INTO implication_input (
+	id,
+	assumptions,
+	conclusions,
+	reason,
+	is_equivalence
+)
+VALUES
+(
+	'discrete_consequence',
+	'["discrete"]',
+	'["essentially discrete", "locally small", "skeletal"]',
+	'This is trivial.',
+	FALSE
+),
+(
+	'essentially_discrete_characterization',
+	'["essentially discrete"]',
+	'["thin", "groupoid"]',
+	'This is trivial.',
+	TRUE
+),
+(
+	'essentially_discrete_consequence',
+	'["essentially discrete"]',
+	'["locally essentially small", "connected limits"]',
+	'This is trivial.',
+	FALSE
+),
+(
+	'essentially_discrete_trivial',
+	'["essentially discrete", "connected"]',
+	'["trivial"]',
+	'This is trivial.',
+	FALSE
+),
+(
+	'trivial_consequence',
+	'["trivial"]',
+	'["finitary algebraic", "Grothendieck topos", "split abelian", "self-dual", "essentially discrete", "essentially finite"]',
+	'This is trivial.',
+	FALSE
+),
+(
+	'thin_consequence',
+	'["thin"]',
+	'["equalizers", "left cancellative"]',
+	'Any two parallel morphisms are equal, so their equalizer is the identity, and every morphism is a monomorphism as well.',
+	FALSE
+),
+(
+	'thin_inhabited_consequence',
+	'["thin", "inhabited"]',
+	'["generator"]',
+	'Any object will be a generator for trivial reasons.',
+	FALSE
+),
+(
+	'freyd_small',
+	'["essentially small", "products"]',
+	'["thin"]',
+	'See <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof works for any category with products.',
+	FALSE
+),
+(
+	'freyd_finite',
+	'["essentially finite", "finite products"]',
+	'["thin"]',
+	'See <a href="https://ncatlab.org/nlab/show/Categories+for+the+Working+Mathematician" target="_blank">Mac Lane</a>, V.2, Prop. 3. The proof can easily be adapted to this case.',
+	FALSE
+),
+(
+	'cocomplete_thin_criterion',
+	'["essentially small", "thin", "complete"]',
+	'["cocomplete"]',
+	'The supremum of a subset in a (small) partial order is the infimum of the set of upper bounds.',
+	FALSE
+),
+(
+	'cartesian_closed_thin_criterion',
+	'["essentially small", "thin", "complete", "infinitary distributive"]',
+	'["cartesian closed"]',
+	'This is an application of the adjoint functor theorem. Specifically, if $P$ is a complete lattice in which $\sup_i \inf(t,x_i) = \inf(t, \sup_i y_i)$ always holds, then the functor $\int(t,-)$ is a left adjoint because it preserves all suprema.',
+	FALSE
+),
+(
+	'sequential_implies_lcc',
+	'["thin", "strongly connected"]',
+	'["locally cartesian closed"]',
+	'Each slice is thin, strongly connected, and has a terminal object. Every such category is cartesian closed, where the exponential $a \Rightarrow b$ (Heyting implication) is $1$ when $a \leq b$ and otherwise $b$.',
+	FALSE
+),
+(
+	'thin_implies_regular',
+	'["thin", "finitely complete"]',
+	'["regular"]',
+	'In a thin category, regular epimorphisms are isomorphisms, and the rest is clear as well.',
+	FALSE
+);

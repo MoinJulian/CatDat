@@ -31,9 +31,7 @@ You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) inst
 
 ### Updating the Database
 
-All updates to the database are made by updating the SQL files in the folder [/database](database/) (see also [DATABASE.md](/DATABASE.md)).
-
-For example, when you want to change the description of a category, edit [categories.sql](/database/data/001_categories.sql). Or, when you want to assign a property to a category, add it to the file [category_satisfied_properties.sql](/database/data/007_category-satisfied-properties.sql). You may have a look at [an example commit](https://github.com/ScriptRaccoon/CatDat/commit/e06f85fa13e5f8eeb42049880b5662be7fc36a50) or at [an example PR](https://github.com/ScriptRaccoon/CatDat/pull/3/changes).
+All updates to the database are made by updating the SQL files in the folder [/database](database/) (see also [DATABASE.md](/DATABASE.md)). You may have a look at [an example commit](https://github.com/ScriptRaccoon/CatDat/commit/e06f85fa13e5f8eeb42049880b5662be7fc36a50) or at [an example PR](https://github.com/ScriptRaccoon/CatDat/pull/3/changes).
 
 Apply the updates using:
 
