@@ -30,7 +30,7 @@ VALUES
 	NULL
 ),
 (
-	'Zdiv',
+	'Z_div',
 	'preorder of integers w.r.t. divisibility',
 	'$(\mathbb{Z},\mid)$',
 	'integers',
@@ -40,7 +40,7 @@ VALUES
 	NULL
 ),
 (
-	'Noo',
+	'N_oo',
 	'partial order of extended natural numbers',
 	'$(\mathbb{N}_\infty, \leq)$',
 	'natural numbers and $\infty$',

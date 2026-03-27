@@ -24,7 +24,7 @@ VALUES
 ('Met_c', 'Given metric spaces $(X_i,d_i)$ with $d_i \leq 1$ w.l.o.g, we endow the disjoint union $\coprod_i X_i$ with the metric $d$ that extends the metrics $d_i$ and satisfies $d(x,y) = 1$ when $x,y$ are in different $X_i$.'),
 ('Met_oo', 'disjoint union with the metric that extends the given ones and gives points in different spaces the distance $\infty$'),
 ('Mon', 'free products'),
-('Noo', 'supremum'),
+('N_oo', 'supremum'),
 ('On', 'supremum'),
 ('Pos', 'disjoint union with the obvious partial order that leaves the distinct summands incomparable'),
 ('R-Mod', 'direct sums'),
@@ -45,7 +45,7 @@ VALUES
 ('walking_morphism', '$0 \sqcup x = x$, $1 \sqcup x = 1$'),
 ('walking_composable_pair', 'supremum taken in $\{0 < 1 < 2\}$'),
 ('Z', 'pointwise disjoint union'),
-('Zdiv', 'the least common multiple, can be $0$ for infinite families'),
+('Z_div', 'the least common multiple, can be $0$ for infinite families'),
 
 ---------------------------------------------------------------
 -- only finite and countable coproducts

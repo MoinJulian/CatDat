@@ -84,9 +84,9 @@ VALUES
 ('N', 'number theory'),
 ('N', 'badly-behaved'),
 ('N', 'thin'),
-('Noo', 'number theory'),
-('Noo', 'well-behaved'),
-('Noo', 'thin'),
+('N_oo', 'number theory'),
+('N_oo', 'well-behaved'),
+('N_oo', 'thin'),
 ('On', 'set theory'),
 ('On', 'well-behaved'),
 ('On', 'thin'),
@@ -147,6 +147,6 @@ VALUES
 ('Z', 'algebraic geometry'),
 ('Z', 'category theory'),
 ('Z', 'well-behaved'),
-('Zdiv', 'number theory'),
-('Zdiv', 'well-behaved'),
-('Zdiv', 'thin');
+('Z_div', 'number theory'),
+('Z_div', 'well-behaved'),
+('Z_div', 'thin');

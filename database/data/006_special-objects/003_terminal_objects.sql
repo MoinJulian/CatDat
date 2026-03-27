@@ -27,7 +27,7 @@ VALUES
 ('Met_c', 'singleton space'),
 ('Met_oo', 'singleton space'),
 ('Mon', 'trivial monoid'),
-('Noo', '$\infty$'),
+('N_oo', '$\infty$'),
 ('Pos', 'singleton poset'),
 ('R-Mod', 'zero module'),
 ('R-Mod_div', 'zero module'),
@@ -48,7 +48,7 @@ VALUES
 ('walking_isomorphism', 'both objects'),
 ('walking_morphism', '$1$'),
 ('Z', 'constant functor with value $1$'),
-('Zdiv', '$0$'),
+('Z_div', '$0$'),
 ('walking_composable_pair', '$2$');
 
 INSERT INTO special_objects

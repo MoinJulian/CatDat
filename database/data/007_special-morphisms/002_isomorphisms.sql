@@ -171,7 +171,7 @@ VALUES
 	'This is true for every poset (regarded as a category).'
 ),
 (
-	'Noo',
+	'N_oo',
 	'only the identity morphisms',
 	'This is true for every poset (regarded as a category).'
 ),
@@ -286,7 +286,7 @@ VALUES
 	'This is true for all functor categories.'
 ),
 (
-	'Zdiv',
+	'Z_div',
 	'the identities $(a,a) : a \to a$ and the isomorphisms $(a,-a) : a \to -a$ for $a \in \mathbb{Z}$',
 	'trivial'
 );

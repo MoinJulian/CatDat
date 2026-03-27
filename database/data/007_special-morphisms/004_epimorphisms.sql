@@ -151,7 +151,7 @@ VALUES
 	'It is a thin category.'
 ),
 (
-	'Noo',
+	'N_oo',
 	'every morphism',
 	'It is a thin category.'
 ),
@@ -251,7 +251,7 @@ VALUES
 	'This holds in every functor category $[\mathcal{C},\mathbf{Set}]$, here applied to the case that $\mathcal{C}$ has just one object.'
 ),
 (
-	'Zdiv',
+	'Z_div',
 	'every morphism',
 	'It is a thin category'
 );

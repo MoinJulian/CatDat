@@ -111,7 +111,7 @@ VALUES
     'This is because the category is right cancellative.'
 ),
 (
-    'Noo',
+    'N_oo',
     'same as isomorphisms',
     'This is because the category is right cancellative.'
 ),
@@ -181,7 +181,7 @@ VALUES
     'This is because the category is mono-regular'
 ),
 (
-    'Zdiv',
+    'Z_div',
     'same as isomorphisms',
     'This is because the category is right cancellative.'
 ),

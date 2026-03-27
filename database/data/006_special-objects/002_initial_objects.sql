@@ -29,7 +29,7 @@ VALUES
 ('Met_oo', 'empty metric space'),
 ('Mon', 'trivial monoid'),
 ('N', '$0$'),
-('Noo', '$0$'),
+('N_oo', '$0$'),
 ('On', '$0$'),
 ('Pos', 'empty poset'),
 ('R-Mod', 'trivial module'),
@@ -50,7 +50,7 @@ VALUES
 ('walking_isomorphism', 'both objects'),
 ('walking_morphism', '$0$'),
 ('Z', 'constant functor with value $\emptyset$'),
-('Zdiv', '$1$'),
+('Z_div', '$1$'),
 ('walking_composable_pair', '$0$');
 
 INSERT INTO special_objects

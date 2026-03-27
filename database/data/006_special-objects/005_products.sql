@@ -22,7 +22,7 @@ VALUES
 ('Meas', 'direct products with the <a href="https://de.wikipedia.org/wiki/Produkt-%CF%83-Algebra" target="_blank">product $\sigma$-algebra</a>'),
 ('Met_oo', 'direct products with the metric $d(x,y) = \sup_i d_i(x_i,y_i)$'),
 ('Mon', 'direct products with pointwise operations'),
-('Noo', 'infimum'),
+('N_oo', 'infimum'),
 ('Pos', 'direct products with the evident partial order'),
 ('R-Mod', 'direct products with pointwise operations'),
 ('R-Mod_div', 'direct products with pointwise operations'),
@@ -42,7 +42,7 @@ VALUES
 ('walking_morphism', '$0 \times x = 0$, $1 \times x = x$'),
 ('walking_composable_pair', 'infimum taken in $\{0 < 1 < 2\}$'),
 ('Z', 'pointwise defined direct product'),
-('Zdiv', 'greatest common divisor'),
+('Z_div', 'greatest common divisor'),
 
 ---------------------------------------------------------------
 -- only finite and countable products

@@ -131,7 +131,7 @@ VALUES
     'This is because the category is left-cancellative.'
 ),    
 (
-    'Noo',
+    'N_oo',
     'same as isomorphisms',
     'This is because the category is left-cancellative.'
 ),    
@@ -236,7 +236,7 @@ VALUES
     'This is because the category is epi-regular.'
 ),    
 (
-    'Zdiv',
+    'Z_div',
     'same as isomorphisms',
     'This is because the category is left-cancellative.'
 );
