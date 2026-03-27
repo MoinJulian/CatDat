@@ -76,4 +76,10 @@ VALUES
 	'coregular',
 	FALSE,
 	'See <a href="https://math.stackexchange.com/questions/3745302" target="_blank">MSE/3745302</a>.'
+),
+(
+	'CRing',
+	'co-Malcev',
+	FALSE,
+	'See <a href="https://mathoverflow.net/questions/509552">MO/509552</a>: Consider the forgetful functor $U : \mathbf{CRing} \to \mathbf{Set}$ and the relation $R \subseteq U^2$ defined by $R(A) := \{(a,b) \in U(A)^2 : ab = a^2\}$. Both are representable: $U$ by $\mathbb{Z}[X]$ and $R$ by $\mathbb{Z}[X,Y] / \langle XY-X^2 \rangle$. It is clear that $R$ is reflexive, but not symmetric.'
 );

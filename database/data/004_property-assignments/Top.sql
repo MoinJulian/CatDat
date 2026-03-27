@@ -117,5 +117,5 @@ VALUES
 	'Top',
 	'co-Malcev',
 	FALSE,
-	'See <a href="https://mathoverflow.net/questions/509548" target="_blank">MO/509548</a>.'
+	'See <a href="https://mathoverflow.net/questions/509548" target="_blank">MO/509548</a>. We can also phrase the proof as follows: Consider the forgetful functor $U : \mathbf{Top} \to \mathbf{Set}$ and the relation $R \subseteq U^2$ defined by $R(X) := \{(x,y) \in U(X)^2 : x \in \overline{\{y\}} \}$. Both are representable: $U$ by the singleton and $R$ by the Sierpinski space. It is clear that $R$ is reflexive, but not symmetric.'
 );

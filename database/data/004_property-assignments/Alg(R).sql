@@ -70,4 +70,10 @@ VALUES
 	'strongly connected',
 	FALSE,
 	'This is because already the full subcategory $\mathrm{CAlg}(R)$ of commutative algebras is not strongly connected, see <a href="/category/CAlg(R)">its category page</a> for details.'
+),
+(
+	'Alg(R)',
+	'co-Malcev',
+	FALSE,
+	'See <a href="https://mathoverflow.net/questions/509552">MO/509552</a>: Consider the forgetful functor $U : \mathbf{Alg}(R) \to \mathbf{Set}$ and the relation $S \subseteq U^2$ defined by $S(A) := \{(a,b) \in U(A)^2 : ab = a^2\}$. Both are representable: $U$ by $R[X]$ and $S$ by $R \langle X,Y \rangle / \langle XY-X^2 \rangle$. It is clear that $S$ is reflexive, but not symmetric.'
 );

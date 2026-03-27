@@ -64,4 +64,10 @@ VALUES
 	'cogenerator',
 	FALSE,
 	'See <a href="https://mathoverflow.net/questions/509232" target="_blank">MO/509232</a>.'
+),
+(
+	'CMon',
+	'co-Malcev',
+	FALSE,
+	'See <a href="https://mathoverflow.net/questions/509552">MO/509552</a>: Consider the forgetful functor $U : \mathbf{CMon} \to \mathbf{Set}$ and the relation $R \subseteq U^2$ defined by $R(A) := \{(a,b) \in U(A)^2 : ab = a^2\}$. Both are representable: $U$ by the free monoid on a single generator and $R$ by the free commutative monoid on two generators $x,y$ subject to the relation $xy=x^2$. It is clear that $R$ is reflexive, but not symmetric.'
 );

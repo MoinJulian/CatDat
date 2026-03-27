@@ -76,4 +76,10 @@ VALUES
 	'coregular',
 	FALSE,
 	'See <a href="https://math.stackexchange.com/questions/3745302" target="_blank">MSE/3745302</a>.'
+),
+(
+	'CAlg(R)',
+	'co-Malcev',
+	FALSE,
+	'See <a href="https://mathoverflow.net/questions/509552">MO/509552</a>: Consider the forgetful functor $U : \mathbf{CAlg}(R) \to \mathbf{Set}$ and the relation $S \subseteq U^2$ defined by $S(A) := \{(a,b) \in U(A)^2 : ab = a^2\}$. Both are representable: $U$ by $R[X]$ and $S$ by $R[X,Y] / \langle XY-X^2 \rangle$. It is clear that $S$ is reflexive, but not symmetric.'
 );
