@@ -36,15 +36,17 @@
 		)
 	}
 
-	let item_is_valid = $derived(
-		allowed_items.includes(item.trim()) &&
+	function is_valid(item: string) {
+		return (
+			allowed_items.includes(item.trim()) &&
 			!selected_items.includes(item.trim()) &&
-			selected_items.length < max,
-	)
+			selected_items.length < max
+		)
+	}
 
 	function handle_submit(e: SubmitEvent) {
 		e.preventDefault()
-		if (!item_is_valid) return
+		if (!is_valid(item)) return
 		selected_items.push(item.trim())
 		item = ''
 	}
@@ -66,6 +68,19 @@
 		if (!is_suggestion_click) show_suggestions = false
 	}
 
+	function handle_input() {
+		const last_char = item.slice(-1)
+		const rest = item.slice(0, -1).trim()
+
+		if (last_char === ',' && is_valid(rest)) {
+			selected_items.push(rest)
+			item = ''
+			show_suggestions = false
+		} else {
+			show_suggestions = true
+		}
+	}
+
 	function remove_item(item: string) {
 		selected_items = selected_items.filter((_item) => _item !== item)
 	}
@@ -82,11 +97,11 @@
 		<div class="input-wrapper">
 			<input
 				aria-label={item_label}
-				aria-invalid={item.trim().length > 0 && !item_is_valid}
+				aria-invalid={item.trim().length > 0 && !is_valid(item)}
 				type="text"
 				bind:value={item}
 				onfocus={() => (show_suggestions = true)}
-				oninput={() => (show_suggestions = true)}
+				oninput={handle_input}
 				onblur={handle_blur}
 			/>
 		</div>
