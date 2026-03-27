@@ -26,7 +26,7 @@ Further tables are:
 - `tags`
 - `category_tags`
 - `related_categories`
-- `prefixes`
+- `relations`
 - `special_object_types`
 - `special_objects`
 - `special_morphism_types`
@@ -57,5 +57,7 @@ Use `pnpm db:update` to run all the commands in sequence: `pnpm db:migrate`, `pn
 Use `pnpm db:watch` to run this command automatically every time a file in the subfolder [/database/data](/database/data) changes. This is useful in particular during development.
 
 ## Diagram
+
+This is the database schema as of 20.03.2016; changes may occur.
 
 ![database diagram](/static/database-diagram.png)

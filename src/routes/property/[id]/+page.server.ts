@@ -22,7 +22,7 @@ export const load = async (event) => {
 		// basic information
 		sql`
 			SELECT
-				id, prefix, description, dual_property_id,
+				id, relation, description, dual_property_id,
 				nlab_link, invariant_under_equivalences
 			FROM properties
 			WHERE id = ${id}

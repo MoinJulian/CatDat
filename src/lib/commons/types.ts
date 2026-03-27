@@ -47,7 +47,7 @@ export type ImplicationDisplay = Replace<
 
 export type PropertyDB = {
 	id: string
-	prefix: string
+	relation: string
 	description: string
 	dual_property_id: string | null
 	nlab_link: string | null
@@ -59,7 +59,7 @@ export type PropertyDisplay = Replace<
 	{ invariant_under_equivalences: boolean }
 >
 
-export type PropertyShort = Pick<PropertyDB, 'id' | 'prefix'>
+export type PropertyShort = Pick<PropertyDB, 'id' | 'relation'>
 
 export type DescriptionWithReason = {
 	description: string
@@ -69,7 +69,7 @@ export type DescriptionWithReason = {
 export type CategoryPropertyDB = {
 	id: string
 	reason: string | null
-	prefix: string
+	relation: string
 	is_deduced: number
 }
 

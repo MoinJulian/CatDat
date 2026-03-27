@@ -5,7 +5,7 @@ import sql from 'sql-template-tag'
 
 export const load = async () => {
 	const { rows: properties, err } = await query<PropertyShort>(sql`
-		SELECT id, prefix FROM properties
+		SELECT id, relation FROM properties
 		ORDER BY lower(id)
 	`)
 

@@ -4,7 +4,7 @@ export type NormalizedImplication = {
 	id: string
 	assumptions: Set<string>
 	conclusion: string
-	prefixes: Record<string, string>
+	relations: Record<string, string>
 }
 
 export async function get_normalized_implications(
@@ -17,14 +17,14 @@ export async function get_normalized_implications(
             v.conclusions,
             v.is_equivalence,
             (
-                SELECT json_group_object(p.id, p.prefix)
+                SELECT json_group_object(p.id, p.relation)
                 FROM properties p
                 WHERE p.id IN (
                     SELECT value FROM json_each(v.assumptions)
                     UNION
                     SELECT value FROM json_each(v.conclusions)
                 )
-            ) AS prefixes
+            ) AS relations
         FROM implications_view v
     `)
 
@@ -33,7 +33,7 @@ export async function get_normalized_implications(
 		assumptions: string
 		conclusions: string
 		is_equivalence: number
-		prefixes: string
+		relations: string
 	}[]
 
 	const implications: NormalizedImplication[] = []
@@ -41,14 +41,14 @@ export async function get_normalized_implications(
 	for (const impl of all_implications_db) {
 		const assumptions: string[] = JSON.parse(impl.assumptions)
 		const conclusions: string[] = JSON.parse(impl.conclusions)
-		const prefixes: Record<string, string> = JSON.parse(impl.prefixes)
+		const relations: Record<string, string> = JSON.parse(impl.relations)
 
 		for (const conclusion of conclusions) {
 			implications.push({
 				id: impl.id,
 				assumptions: new Set(assumptions),
 				conclusion,
-				prefixes,
+				relations,
 			})
 		}
 
@@ -58,7 +58,7 @@ export async function get_normalized_implications(
 					id: impl.id,
 					assumptions: new Set(conclusions),
 					conclusion: assumption,
-					prefixes,
+					relations,
 				})
 			}
 		}
@@ -68,13 +68,13 @@ export async function get_normalized_implications(
 }
 
 export function get_assumption_string(implication: NormalizedImplication): string {
-	const { assumptions, prefixes } = implication
+	const { assumptions, relations } = implication
 	return Array.from(assumptions)
-		.map((assumption) => `${prefixes[assumption]} ${assumption}`)
+		.map((assumption) => `${relations[assumption]} ${assumption}`)
 		.join(' and ')
 }
 
 export function get_conclusion_string(implication: NormalizedImplication): string {
-	const { conclusion, prefixes } = implication
-	return `${prefixes[conclusion]} ${conclusion}`
+	const { conclusion, relations } = implication
+	return `${relations[conclusion]} ${conclusion}`
 }

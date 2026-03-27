@@ -1,1 +1,0 @@
-ALTER TABLE categories ADD COLUMN dual_category_id TEXT REFERENCES categories (id);

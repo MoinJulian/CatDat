@@ -1,20 +1,9 @@
-DROP TRIGGER trg_implication_input_insert;
-
-DROP VIEW implications_view;
-DROP VIEW implication_input;
-
-DROP TABLE implication_assumptions;
-DROP TABLE implication_conclusions;
-
-DROP TABLE implications;
-
 CREATE TABLE implications (
     id TEXT PRIMARY KEY,
-    reason TEXT NOT NULL CHECK (length(reason) > 0),
+    reason TEXT NOT NULL,
     is_equivalence INTEGER NOT NULL DEFAULT FALSE,
     is_deduced INTEGER NOT NULL DEFAULT FALSE,
     dualized_from TEXT,
-    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CHECK (dualized_from IS NULL OR is_deduced = TRUE),
     FOREIGN KEY (dualized_from) REFERENCES implications (id) ON DELETE SET NULL
 );
@@ -22,7 +11,6 @@ CREATE TABLE implications (
 CREATE TABLE implication_assumptions (
     implication_id TEXT NOT NULL,
     property_id TEXT NOT NULL,
-    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (implication_id, property_id),
     FOREIGN KEY (implication_id) REFERENCES implications (id) ON DELETE CASCADE,
     FOREIGN KEY (property_id) REFERENCES properties (id) ON DELETE CASCADE
@@ -31,7 +19,6 @@ CREATE TABLE implication_assumptions (
 CREATE TABLE implication_conclusions (
     implication_id TEXT NOT NULL,
     property_id TEXT NOT NULL,
-    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (implication_id, property_id),
     FOREIGN KEY (implication_id) REFERENCES implications (id) ON DELETE CASCADE,
     FOREIGN KEY (property_id) REFERENCES properties (id) ON DELETE CASCADE

@@ -77,14 +77,14 @@ async function deduce_dual_properties(tx: Transaction, category: CategoryMeta) {
 				a.is_satisfied,
 				CASE
 					WHEN a.is_satisfied THEN
-					'Its dual category ' || pf.prefix || ' ' || a.property_id || '.'
+					'Its dual category ' || r.relation || ' ' || a.property_id || '.'
 					ELSE
-					'Its dual category ' || pf.negation || ' ' || a.property_id || '.'
+					'Its dual category ' || r.negation || ' ' || a.property_id || '.'
 				END,
 				TRUE
 			FROM category_property_assignments a
 			INNER JOIN properties p ON p.id = a.property_id
-			INNER JOIN prefixes pf ON pf.prefix = p.prefix
+			INNER JOIN relations r ON r.relation= p.relation
 			WHERE a.category_id = ? AND p.dual_property_id IS NOT NULL
 			ORDER BY lower(p.dual_property_id)
 		`,
@@ -226,7 +226,7 @@ async function deduce_unsatisfied_properties(
 		if (!next) break
 
 		const { implication, property } = next
-		const { id: implication_id, prefixes } = implication
+		const { id: implication_id, relations } = implication
 
 		if (satisfied_props.has(property)) {
 			throw new Error(`Contradiction has been found for: ${property}`)
@@ -241,7 +241,7 @@ async function deduce_unsatisfied_properties(
 		const ref = `(see <a href="/implication/${implication_id}">here</a>)`
 
 		const reason =
-			`Assume that it ${prefixes[property]} ${property}. ` +
+			`Assume that it ${relations[property]} ${property}. ` +
 			`But since it ${assumption_string}, it ${conclusion_string} ${ref} – contradiction.`
 
 		reasons[property] = reason

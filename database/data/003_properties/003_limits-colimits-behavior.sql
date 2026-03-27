@@ -1,6 +1,6 @@
 INSERT INTO properties (
 	id,
-	prefix,
+	relation,
 	description,
 	nlab_link,
 	dual_property_id,

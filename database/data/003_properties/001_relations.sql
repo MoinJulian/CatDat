@@ -1,4 +1,4 @@
-INSERT INTO prefixes (prefix, negation) VALUES
+INSERT INTO relations (relation, negation) VALUES
 ('is', 'is not'),
 ('is a', 'is not a'),
 ('is an', 'is not an'),

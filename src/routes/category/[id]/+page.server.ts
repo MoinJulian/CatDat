@@ -73,12 +73,12 @@ export const load = async (event) => {
 				cp.reason,
 				cp.is_deduced,
 				CASE
-        			WHEN cp.is_satisfied = TRUE THEN p.prefix
-        			ELSE pf.negation
-    			END AS prefix
+        			WHEN cp.is_satisfied = TRUE THEN p.relation
+        			ELSE r.negation
+    			END AS relation
 			FROM category_property_assignments cp
 			INNER JOIN properties p ON p.id = cp.property_id
-			INNER JOIN prefixes pf ON pf.prefix = p.prefix
+			INNER JOIN relations r ON r.relation = p.relation
 			WHERE cp.category_id = ${id}
 			ORDER BY cp.position, lower(cp.property_id)
 		`,
@@ -86,7 +86,7 @@ export const load = async (event) => {
 		sql`
 			SELECT
 				p.id,
-				p.prefix
+				p.relation
 			FROM properties p
 			WHERE NOT EXISTS (
 				SELECT 1 FROM category_property_assignments
@@ -114,7 +114,6 @@ export const load = async (event) => {
 		sql`
 			SELECT id, comment FROM category_comments
 			WHERE category_id = ${id}
-			ORDER BY created_at
 		`,
 	])
 
@@ -142,7 +141,7 @@ export const load = async (event) => {
 			id: p.id,
 			reason: p.reason,
 			is_deduced: Boolean(p.is_deduced),
-			prefix: p.prefix,
+			relation: p.relation,
 		}))
 
 	const unsatisfied_properties: CategoryProperty[] = properties_db
@@ -151,7 +150,7 @@ export const load = async (event) => {
 			id: p.id,
 			reason: p.reason,
 			is_deduced: Boolean(p.is_deduced),
-			prefix: p.prefix,
+			relation: p.relation,
 		}))
 
 	return render_nested_formulas({

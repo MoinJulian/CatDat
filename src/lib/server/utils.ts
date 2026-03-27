@@ -26,7 +26,7 @@ export function display_implication(implication: ImplicationDB): ImplicationDisp
 export function display_property(property: PropertyDB): PropertyDisplay {
 	return {
 		id: property.id,
-		prefix: property.prefix,
+		relation: property.relation,
 		description: property.description,
 		dual_property_id: property.dual_property_id,
 		nlab_link: property.nlab_link,

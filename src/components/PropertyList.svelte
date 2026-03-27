@@ -5,7 +5,7 @@
 	type Props = {
 		properties: {
 			id: string
-			prefix: string
+			relation: string
 			reason?: string | null
 		}[]
 	}
@@ -15,10 +15,10 @@
 
 {#if properties.length}
 	<ul>
-		{#each properties as { id, prefix, reason }}
+		{#each properties as { id, relation, reason }}
 			<li>
 				<TextWithReason {reason}>
-					{prefix}
+					{relation}
 					<a href={get_property_url(id)}>{id}</a>
 				</TextWithReason>
 			</li>

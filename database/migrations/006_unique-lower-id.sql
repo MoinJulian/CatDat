@@ -2,4 +2,5 @@
 
 CREATE UNIQUE INDEX categories_lower_id_unique ON categories (lower(id));
 CREATE UNIQUE INDEX properties_lower_id_unique ON properties (lower(id));
+CREATE UNIQUE INDEX implications_lower_id_unique ON implications (lower(id));
 

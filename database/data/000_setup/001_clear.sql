@@ -21,6 +21,6 @@ DELETE FROM tags;
 
 DELETE FROM related_properties;
 DELETE FROM properties;
-DELETE FROM prefixes;
+DELETE FROM relations;
 
 PRAGMA foreign_keys = ON;
