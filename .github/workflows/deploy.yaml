@@ -70,4 +70,4 @@ jobs:
                   git config user.name "github-actions[bot]"
                   git config user.email "github-actions[bot]@users.noreply.github.com"
                   git tag -a "$TAG" -m "Deploy $TAG"
-                  git push origin "$TAG"
+                  git push --no-verify origin "$TAG"
