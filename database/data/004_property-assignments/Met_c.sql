@@ -61,6 +61,12 @@ VALUES
 ),
 (
 	'Met_c',
+	'co-Malcev',
+	TRUE,
+	'See <a href="https://mathoverflow.net/a/509582/2841" target="_blank">MO/509548</a>.'
+),
+(
+	'Met_c',
 	'products',
 	FALSE,
 	'See <a href="https://math.stackexchange.com/questions/139168" target="_blank">MSE/139168</a> for a proof that uncountable products do not exist.'

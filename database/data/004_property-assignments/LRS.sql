@@ -76,4 +76,10 @@ VALUES
 	'strongly connected',
 	FALSE,
 	'This is because already the full subcategory of affine schemes is not strongly connected, see <a href="/category/CRing">the entry for $\mathbf{CRing}$</a>. Specifically, there is no morphism between $\mathrm{Spec}(\mathbb{F}_2)$ and $\mathrm{Spec}(\mathbb{F}_3)$.'
+),
+(
+	'LRS',
+	'co-Malcev',
+	FALSE,
+	'We can adjust the proof for <a href="/category/Top">$\mathbf{Top}$</a> (see <a href="https://mathoverflow.net/questions/509548" target="_blank">MO/509548</a>) as follows: Let $k$ be a field, $X$ be a singleton and $Y = \{u,v\}$ be the Sierpinski space where $\{u\}$ is open, but $\{v\}$ is not. Endow both with the sheaf of locally constant functions to $k$. Thus, $\mathcal{O}_X(X) = k$, $\mathcal{O}_Y(Y) = \mathcal{O}_Y(\{u\}) = k$. There is a canonical morphism $p : X + X \to Y$. It is a coreflexive corelation that is not cosymmetric.'
 );

@@ -45,19 +45,19 @@ VALUES
 	'Ban',
 	'biproducts',
 	FALSE,
-	'If $\sqcup$ denotes the coproduct, the canonical morphism $\mathbb{C} \sqcup \mathbb{C} \to \mathbb{C} \times \mathbb{C}$ is bijective, but not an isomorphism in this category since the coproduct carries the $1$-norm, while the product carries the $\sup$-norm.'
+	'If $\oplus$ denotes the coproduct, the canonical morphism $\mathbb{C} \oplus \mathbb{C} \to \mathbb{C} \times \mathbb{C}$ is bijective, but not an isomorphism in this category since the coproduct carries the $1$-norm, while the product carries the $\sup$-norm.'
 ),
 (
 	'Ban',
 	'balanced',
 	FALSE,
-	NULL
+	'The canonical morphism $\mathbb{C} \oplus \mathbb{C} \to \mathbb{C} \times \mathbb{C}$ is a counterexample; here the direct sum (coproduct) carries the $1$-norm and the direct product the $\sup$-norm.'
 ),
 (
 	'Ban',
 	'exact filtered colimits',
 	FALSE,
-	NULL
+	'We will exhibit a directed colimit of monomorphisms which is not a monomorphism. For $n \geq 1$ let $V_n$ be the Banach space with underlying vector space $\mathbb{C}$ and the norm $|x|_n := \frac{1}{n} |x|$. For $n \leq m$ the identity map provides a morphism $V_n \to V_m$, which is clearly a monomorphism (also an epimorphism by the way, but an isomorphism iff $n=m$). Let $V$ be the colimit of all $V_n$ in the category of semi-normed vector spaces. It is constructed as the colimit in the category of vector spaces with the semi-norm $|x| := \inf \{|x|_m : n \leq m \}$ for $x \in V_n$. So clearly, the semi-norm is zero. Hence, the colimit in the category of normed vector spaces is $0$. The colimit in the category of Banach spaces is its completion, also $0$. Thus, the monomorphisms $V_1 \to V_n$ become $V_1 \to 0$ in the colimit.'
 ),
 (
 	'Ban',
@@ -70,4 +70,10 @@ VALUES
 	'unital',
 	FALSE,
 	'See <a href="https://math.stackexchange.com/questions/5033161" target="_blank">MSE/5033161</a>.'
+),
+(
+	'Ban',
+	'co-Malcev',
+	FALSE,
+	'See the comments to <a href="https://mathoverflow.net/a/509555/2841" target="_blank">MO/509552</a>.'
 );
