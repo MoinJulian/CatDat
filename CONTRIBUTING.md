@@ -31,7 +31,7 @@ You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) inst
 
 ### Updating the Database
 
-All updates to the database are made by updating the SQL files in the folder [/database](database/) (see also [DATABASE.md](/DATABASE.md)). You may have a look at [an example commit](https://github.com/ScriptRaccoon/CatDat/commit/e06f85fa13e5f8eeb42049880b5662be7fc36a50) or at [an example PR](https://github.com/ScriptRaccoon/CatDat/pull/3/changes).
+All updates to the database are made by updating the SQL files in the folder [/database](database/) (see also [DATABASE.md](/DATABASE.md)).
 
 Apply the updates using:
 
@@ -47,9 +47,21 @@ pnpm db:watch
 
 to continuously run this update when a file in the subfolder [/database/data](/database/data) changes.
 
-If this command throws an error, check the error message to identify the cause. It could be malformed SQL, or it could be a failing test in the script `pnpm db:test`. These tests verify that the data behaves as expected and that every property is assigned at least to the "core categories" (see below).
+### Troubleshooting
 
-**Tip.** If the local database is broken, just delete the `local.db` file and recreate it using `pnpm db:update`.
+If the command `pnpm db:update` throws an error, check the error message to identify the cause. It could be malformed SQL, or it could be a failing test in the script `pnpm db:test`. These tests verify that the data behaves as expected and that every property is assigned at least to the "core categories" (see below).
+
+If the local database is broken, just delete the `local.db` file and recreate it using `pnpm db:update`.
+
+### Example Commits
+
+- [Add category of Hausdorff spaces](https://github.com/ScriptRaccoon/CatDat/commit/390ed9c7996334138f8bc61c0b3f8e822003248a)
+- [Add regular and coregular categories](https://github.com/ScriptRaccoon/CatDat/commit/e06f85fa13e5f8eeb42049880b5662be7fc36a50)
+
+### Example Pull Requests
+
+- [Add "locally cartesian closed" property](https://github.com/ScriptRaccoon/CatDat/pull/3/changes)
+- [Add "locally strongly finitely presentable" as a property](https://github.com/ScriptRaccoon/CatDat/pull/21/changes)
 
 ### Guidelines for Adding New Data
 
