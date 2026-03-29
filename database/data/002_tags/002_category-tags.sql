@@ -64,6 +64,8 @@ VALUES
 ('FS', 'badly-behaved'),
 ('Grp', 'algebra'),
 ('Grp', 'well-behaved'),
+('Haus', 'topology'),
+('Haus', 'well-behaved'),
 ('LRS', 'algebraic geometry'),
 ('LRS', 'well-behaved'),
 ('M-Set', 'algebra'),
