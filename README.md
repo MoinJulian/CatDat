@@ -66,3 +66,11 @@ _CatDat_ draws inspiration from and complements other resources in category theo
 - **[pi-Base](https://topology.pi-base.org/)**: This is a database of examples and counterexamples in topology. Just like _CatDat_ it uses three types of entries (objects, properties, and theorems) and automatically derives properties from the theorems.
 
 **[MathBases](https://mathbases.org/)** lists many other databases for other kinds of mathematical structure.
+
+## Financial Support
+
+If you find this project useful, you can support its development:
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-00AA00?logo=buymeacoffee&logoColor=white)](https://www.buymeacoffee.com/scriptraccoon)
+
+**Cost transparency.** The project currently only incurs domain costs of about $10 per year. There are no costs for hosting or the database. All development is done in free time.
