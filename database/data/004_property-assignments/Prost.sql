@@ -43,6 +43,12 @@ VALUES
 ),
 (
 	'Prost',
+	'coregular',
+	TRUE,
+	'See <a href="https://math.stackexchange.com/questions/5130295" target="_blank">MSE/5130295</a>.'
+),
+(
+	'Prost',
 	'strict terminal object',
 	FALSE,
 	'This is trivial.'
