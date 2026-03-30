@@ -49,6 +49,30 @@
 
 <CategoryList categories={data.categories_with_missing_morphisms} />
 
+{#if data.undistinguishable_category_pairs.length > 0}
+	<h3>Undistinguishable category pairs</h3>
+
+	<p class="hint">
+		There are {data.undistinguishable_category_pairs.length} pairs of categories that cannot
+		be distinguished by the properties currently recorded in the database. This indicates
+		that the data may be incomplete or that a distinguishing property may be missing.
+	</p>
+
+	<ul>
+		{#each data.undistinguishable_category_pairs as pair}
+			<li>
+				<a href="/category/{pair.id1}">
+					{pair.name1}
+				</a>
+				&approx;
+				<a href="/category/{pair.id2}">
+					{pair.name2}
+				</a>
+			</li>
+		{/each}
+	</ul>
+{/if}
+
 <h3>Missing combinations</h3>
 
 {#if data.missing_combinations}

@@ -6,6 +6,7 @@
 	import { category_detail_level } from '$lib/states/detail_level.svelte'
 	import TextWithReason from '$components/TextWithReason.svelte'
 	import { filter_by_tag } from '$lib/client/utils'
+	import CategoryList from '$components/CategoryList.svelte'
 
 	let { data } = $props()
 
@@ -174,6 +175,20 @@
 		<p>&mdash;</p>
 	{/if}
 </section>
+
+{#if data.undistinguishable_categories.length}
+	<section>
+		<h3>Undistinguishable categories</h3>
+
+		<p class="hint">
+			These categories in the database currently have exactly the same properties as
+			the {data.category.name}. This indicates that the data may be incomplete or
+			that a distinguishing property may be missing from the database.
+		</p>
+
+		<CategoryList categories={data.undistinguishable_categories} />
+	</section>
+{/if}
 
 {#if data.comments.length}
 	<section>
