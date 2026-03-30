@@ -32,6 +32,7 @@ This project is a **community effort**. Whether you're a mathematician spotting 
 
 - [The database of _CatDat_](DATABASE.md)
 - [Deployment](DEPLOYMENT.md)
+- [Status Page](https://catdat.openstatus.dev/)
 
 ## Local Setup
 
