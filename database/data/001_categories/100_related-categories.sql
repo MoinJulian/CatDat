@@ -23,6 +23,8 @@ VALUES
 ('CAlg(R)', 'Alg(R)'),
 ('CAlg(R)', 'CRing'),
 ('CAlg(R)', 'R-Mod'),
+('Cat', 'Set'),
+('Cat', 'Mon'),
 ('CMon','Ab'),
 ('CMon','CRing'),
 ('CMon','Mon'),

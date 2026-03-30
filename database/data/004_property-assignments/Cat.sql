@@ -43,21 +43,15 @@ VALUES
 ),
 (
 	'Cat',
-	'finitary algebraic',
-	FALSE,
-	NULL
-),
-(
-	'Cat',
 	'balanced',
 	FALSE,
-	NULL
+	'Since we know that the <a href="/category/Mon">category of monoids</a> is not balanced, there is a monoid map $M \to N$ which is a monomorphism and an epimorphism which is not an isomorphism. Then $B(M) \to B(N)$ has the corresponding properties.'
 ),
 (
 	'Cat',
 	'cogenerator',
 	FALSE,
-	NULL
+	'If $\mathcal{C}$ was a cogenerator in $\mathbf{Cat}$, one can easily deduce that the coproduct of monoids (aka free product) $\coprod_{X \in \mathcal{C}} \mathrm{End}(X)$ would be a cogenerator in the <a href="/category/Mon">the category of monoids</a>, which we know does not exist.'
 ),
 (
 	'Cat',
@@ -70,12 +64,6 @@ VALUES
 	'Malcev',
 	FALSE,
 	'Use that $\mathbf{Set}$ is not Malcev and consider sets as discrete categories.'
-),
-(
-	'Cat',
-	'locally cartesian closed',
-	FALSE,
-	'See Theorem 4.4 of <a href="https://www.numdam.org/item/MSMF_1964__2__R3_0/" target="_blank">Giraud 1964</a>.'
 ),
 (
 	'Cat',
