@@ -61,8 +61,8 @@ importers:
         specifier: ^9.1.7
         version: 9.1.7
       netlify-cli:
-        specifier: ^24.6.2
-        version: 24.6.2(@types/node@25.5.0)(picomatch@4.0.4)
+        specifier: ^24.9.0
+        version: 24.9.0(@types/node@25.5.0)(picomatch@4.0.4)
       prettier:
         specifier: ^3.8.1
         version: 3.8.1
@@ -949,8 +949,8 @@ packages:
     engines: {node: '>=18.14.0'}
     hasBin: true
 
-  '@netlify/build@35.11.1':
-    resolution: {integrity: sha512-OXR/EqpsRqvj4N6PQitH3GnRaza/0E/PJpJDX6ns3mtt+Ucxq86Txb5bv/bmz4n/+5OXhkNqKAAI74JzSiZzng==}
+  '@netlify/build@35.11.2':
+    resolution: {integrity: sha512-y+Dl2HqNs/5r3z8GBCGRDgjEVaKxJCSIjwQBG9QP/BMOIe18stjhDqECCtFvRvZDqVRF4YjgHZ8Q5VWQ5pFvfA==}
     engines: {node: '>=18.14.0'}
     hasBin: true
     peerDependencies:
@@ -1011,8 +1011,8 @@ packages:
     resolution: {integrity: sha512-Ejrb+1HL11zgVgaaMHWukH4hOXFy3FUtue8hD5rgBiLWeGp03uOlGehmbRz47FXvGBMK7Z4t7HZRZU/vpaN5+g==}
     engines: {node: '>=20.6.1'}
 
-  '@netlify/functions-utils@6.2.28':
-    resolution: {integrity: sha512-YbDZJVeYay+c0jpk6LF1QYfpx0lZVdd/z62mrFkDQaKrlyl6/Wc8dlZi+ZHymUI6YodR1WqWrCLhAw6G7GBioA==}
+  '@netlify/functions-utils@6.2.29':
+    resolution: {integrity: sha512-82VfLDTEXLl6LKKMlBUIektOOaIz4Bhdn1FI6zgRhE4uPDnDd1rhJZPZ1JXf7QUaj0xUfVQAf9cALnQR0y+8Qw==}
     engines: {node: '>=18.14.0'}
 
   '@netlify/functions@5.1.5':
@@ -1149,8 +1149,8 @@ packages:
     resolution: {integrity: sha512-maPRSTG+q9rTkeP+hj5X8PN6OkUShp1E62+GBtZrVRVrkTYLiF3mz2JGUw32lCbw2OqqvlUab85N4OMPSdP5HA==}
     engines: {node: '>=20.6.1'}
 
-  '@netlify/serverless-functions-api@2.13.0':
-    resolution: {integrity: sha512-4DoMV6nJRpBNkWUHCyyhovZxMQNHYO0/oiK1TDe+Kx+pDycqCO3YqbqFDgPwZg807H/L5SnsZF9JgPgu2ACKIw==}
+  '@netlify/serverless-functions-api@2.14.0':
+    resolution: {integrity: sha512-6UwJ9Fm8NU9LPBa5zV5Gv20JgSEPOOwZ7oUbNYbB7SUnNTmIBccafgZF3+xXqSpI3hxXn4/l5xxCO+Pc2KURZA==}
     engines: {node: '>=18.0.0'}
 
   '@netlify/static@3.1.7':
@@ -1161,8 +1161,8 @@ packages:
     resolution: {integrity: sha512-yD20EizHJDQxajJ66Vo8RTwLwR2jMNVxufPG8MHd2AScX8jW4z0VPnnJHArq2GYPFTFZRHmiAhDrXr5m8zof6w==}
     engines: {node: ^18.14.0 || >=20}
 
-  '@netlify/zip-it-and-ship-it@14.5.2':
-    resolution: {integrity: sha512-FgJM6Sis60yDlq2mhCuaqDfAjFPizxSWnI7N4I79Hn5BWupsysE87bDPnOYJcdhREkfgNMORNM6acv5nGPAZ+g==}
+  '@netlify/zip-it-and-ship-it@14.5.3':
+    resolution: {integrity: sha512-7CCFbfEs11WZmY2ddXR85q6O6dHr8aWA/fcdw+7ftwtIaajQKWGDduZT5lI+u7i60wVymt8CEu2Et/hKOhFtzQ==}
     engines: {node: '>=18.14.0'}
     hasBin: true
 
@@ -3686,8 +3686,8 @@ packages:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
 
-  netlify-cli@24.6.2:
-    resolution: {integrity: sha512-rJrKIL4wRPK6HujoBCMTJOd7M+TdL2gmb4H0438EbA17paFS6yq2zUdCyrFzbRmIHgvdIpBhuKC408RWr/ZHSA==}
+  netlify-cli@24.9.0:
+    resolution: {integrity: sha512-99bGdxVrNH8vz3kJ5zuRd/qlG4KC0wuxTBZ+HE8NFoMdq4pXM2/DKokGcWoIt/Xudma3t+x8dEVkqS4vdftWJA==}
     engines: {node: '>=20.12.2'}
     hasBin: true
 
@@ -4013,10 +4013,6 @@ packages:
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
-
-  picomatch@4.0.3:
-    resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
-    engines: {node: '>=12'}
 
   picomatch@4.0.4:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
@@ -5808,19 +5804,19 @@ snapshots:
       yaml: 2.8.2
       yargs: 17.7.2
 
-  '@netlify/build@35.11.1(@opentelemetry/api@1.8.0)(@types/node@25.5.0)(picomatch@4.0.4)':
+  '@netlify/build@35.11.2(@opentelemetry/api@1.8.0)(@types/node@25.5.0)(picomatch@4.0.4)':
     dependencies:
       '@bugsnag/js': 8.8.1
       '@netlify/blobs': 10.7.4(supports-color@10.2.2)
       '@netlify/cache-utils': 6.0.5
       '@netlify/config': 24.4.4
       '@netlify/edge-bundler': 14.9.19
-      '@netlify/functions-utils': 6.2.28(supports-color@10.2.2)
+      '@netlify/functions-utils': 6.2.29(supports-color@10.2.2)
       '@netlify/git-utils': 6.0.4
       '@netlify/opentelemetry-utils': 2.0.2(@opentelemetry/api@1.8.0)
       '@netlify/plugins-list': 6.81.3
       '@netlify/run-utils': 6.0.3
-      '@netlify/zip-it-and-ship-it': 14.5.2(supports-color@10.2.2)
+      '@netlify/zip-it-and-ship-it': 14.5.3(supports-color@10.2.2)
       '@opentelemetry/api': 1.8.0
       '@sindresorhus/slugify': 2.2.1
       ansi-escapes: 7.3.0
@@ -6044,7 +6040,7 @@ snapshots:
       '@netlify/blobs': 10.7.4(supports-color@10.2.2)
       '@netlify/dev-utils': 4.4.3
       '@netlify/functions': 5.1.5
-      '@netlify/zip-it-and-ship-it': 14.5.2(supports-color@10.2.2)
+      '@netlify/zip-it-and-ship-it': 14.5.3(supports-color@10.2.2)
       cron-parser: 4.9.0
       decache: 4.6.2
       extract-zip: 2.0.1
@@ -6062,9 +6058,9 @@ snapshots:
       - rollup
       - supports-color
 
-  '@netlify/functions-utils@6.2.28(supports-color@10.2.2)':
+  '@netlify/functions-utils@6.2.29(supports-color@10.2.2)':
     dependencies:
-      '@netlify/zip-it-and-ship-it': 14.5.2(supports-color@10.2.2)
+      '@netlify/zip-it-and-ship-it': 14.5.3(supports-color@10.2.2)
       cpy: 11.1.0
       path-exists: 5.0.0
     transitivePeerDependencies:
@@ -6246,7 +6242,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@netlify/serverless-functions-api@2.13.0':
+  '@netlify/serverless-functions-api@2.14.0':
     dependencies:
       '@netlify/types': 2.6.0
 
@@ -6256,12 +6252,12 @@ snapshots:
 
   '@netlify/types@2.6.0': {}
 
-  '@netlify/zip-it-and-ship-it@14.5.2(supports-color@10.2.2)':
+  '@netlify/zip-it-and-ship-it@14.5.3(supports-color@10.2.2)':
     dependencies:
       '@babel/parser': 7.29.0
       '@babel/types': 7.29.0
       '@netlify/binary-info': 1.0.0
-      '@netlify/serverless-functions-api': 2.13.0
+      '@netlify/serverless-functions-api': 2.14.0
       '@vercel/nft': 0.29.4(supports-color@10.2.2)
       archiver: 7.0.1
       common-path-prefix: 3.0.0
@@ -6475,7 +6471,7 @@ snapshots:
   '@parcel/watcher-wasm@2.5.6':
     dependencies:
       is-glob: 4.0.3
-      picomatch: 4.0.3
+      picomatch: 4.0.4
 
   '@parcel/watcher-win32-arm64@2.5.6':
     optional: true
@@ -6491,7 +6487,7 @@ snapshots:
       detect-libc: 2.1.2
       is-glob: 4.0.3
       node-addon-api: 7.1.1
-      picomatch: 4.0.3
+      picomatch: 4.0.4
     optionalDependencies:
       '@parcel/watcher-android-arm64': 2.5.6
       '@parcel/watcher-darwin-arm64': 2.5.6
@@ -6588,7 +6584,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.8
       estree-walker: 2.0.2
-      picomatch: 4.0.3
+      picomatch: 4.0.4
 
   '@sec-ant/readable-stream@0.4.1': {}
 
@@ -6745,7 +6741,7 @@ snapshots:
       glob: 10.5.0
       graceful-fs: 4.2.11
       node-gyp-build: 4.8.4
-      picomatch: 4.0.3
+      picomatch: 4.0.4
       resolve-from: 5.0.0
     transitivePeerDependencies:
       - encoding
@@ -8972,13 +8968,13 @@ snapshots:
 
   negotiator@1.0.0: {}
 
-  netlify-cli@24.6.2(@types/node@25.5.0)(picomatch@4.0.4):
+  netlify-cli@24.9.0(@types/node@25.5.0)(picomatch@4.0.4):
     dependencies:
       '@fastify/static': 9.0.0
       '@netlify/ai': 0.4.1
       '@netlify/api': 14.0.18
       '@netlify/blobs': 10.7.0
-      '@netlify/build': 35.11.1(@opentelemetry/api@1.8.0)(@types/node@25.5.0)(picomatch@4.0.4)
+      '@netlify/build': 35.11.2(@opentelemetry/api@1.8.0)(@types/node@25.5.0)(picomatch@4.0.4)
       '@netlify/build-info': 10.4.0
       '@netlify/config': 24.4.4
       '@netlify/dev': 4.16.4
@@ -8990,7 +8986,7 @@ snapshots:
       '@netlify/images': 1.3.7(@netlify/blobs@10.7.0)
       '@netlify/local-functions-proxy': 2.0.3
       '@netlify/redirect-parser': 15.0.4
-      '@netlify/zip-it-and-ship-it': 14.5.2(supports-color@10.2.2)
+      '@netlify/zip-it-and-ship-it': 14.5.3(supports-color@10.2.2)
       '@octokit/rest': 22.0.0
       '@opentelemetry/api': 1.8.0
       '@pnpm/tabtab': 0.5.4
@@ -9417,8 +9413,6 @@ snapshots:
   picocolors@1.1.1: {}
 
   picomatch@2.3.1: {}
-
-  picomatch@4.0.3: {}
 
   picomatch@4.0.4: {}
 
