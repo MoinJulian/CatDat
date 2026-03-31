@@ -43,8 +43,8 @@
 		<p>
 			A list of <a class="accent" href="/category-implications">implications</a>
 			between
-			<a class="accent" href="/properties">properties</a> allows for automatic deduction
-			of satisfied and unsatisfied properties from more basic ones.
+			<a class="accent" href="/category-properties">properties</a> allows for automatic
+			deduction of satisfied and unsatisfied properties from more basic ones.
 		</p>
 	</article>
 

@@ -36,7 +36,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="/properties">
+			<a href="/category-properties">
 				Properties
 				<Fa icon={faList} />
 			</a>

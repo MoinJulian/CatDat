@@ -26,7 +26,12 @@
 			nested: '/category',
 			icon: faDatabase,
 		},
-		{ href: '/properties', text: 'Properties', nested: '/property', icon: faList },
+		{
+			href: '/category-properties',
+			text: 'Properties',
+			nested: '/property',
+			icon: faList,
+		},
 		{
 			href: '/category-implications',
 			text: 'Implications',
