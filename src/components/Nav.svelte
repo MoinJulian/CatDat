@@ -29,7 +29,7 @@
 		{
 			href: '/category-properties',
 			text: 'Properties',
-			nested: '/property',
+			nested: '/category-property',
 			icon: faList,
 		},
 		{
