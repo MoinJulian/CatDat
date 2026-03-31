@@ -19,31 +19,40 @@
 	}
 
 	const links: Link[] = [
-		{ href: '/', text: 'Home', icon: faHome },
+		{
+			href: '/',
+			text: 'Home',
+			icon: faHome,
+		},
 		{
 			href: '/categories',
 			text: 'Categories',
-			nested: '/category',
+			nested: '/category/',
 			icon: faDatabase,
 		},
 		{
 			href: '/category-properties',
 			text: 'Properties',
-			nested: '/category-property',
+			nested: '/category-property/',
 			icon: faList,
 		},
 		{
 			href: '/category-implications',
 			text: 'Implications',
+			nested: '/category-implication',
 			icon: faArrowsSplitUpAndLeft,
 		},
 		{
 			href: '/category-comparison',
 			text: 'Compare',
-			icon: faChartBar,
 			nested: '/category-comparison',
+			icon: faChartBar,
 		},
-		{ href: '/category-search', text: 'Search', icon: faSearch },
+		{
+			href: '/category-search',
+			text: 'Search',
+			icon: faSearch,
+		},
 	]
 </script>
 
