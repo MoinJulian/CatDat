@@ -53,6 +53,7 @@ VALUES
 ('walking_isomorphism', 'both objects'),
 ('walking_fork', '$0$'),
 ('walking_morphism', '$0$'),
+('walking_span', '$0$'),
 ('Z', 'constant functor with value $\emptyset$'),
 ('Z_div', '$1$'),
 ('walking_composable_pair', '$0$');

@@ -244,6 +244,11 @@ VALUES
     'walking_pair',
     'same as isomorphisms',
     'This is because the category is right cancellative.'
+),
+(
+    'walking_span',
+    'same as isomorphisms',
+    'This is because the category is right cancellative.'
 );
 
 INSERT INTO special_morphisms

@@ -239,7 +239,12 @@ VALUES
     'walking_pair',
     'same as isomorphisms',
     'This is because the category is left cancellative.'
-),    
+),  
+(
+    'walking_span',
+    'same as isomorphisms',
+    'This is because the category is right cancellative.'
+),  
 (
     'Z',
     'same as epimorphisms',

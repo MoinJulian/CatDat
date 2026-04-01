@@ -115,5 +115,8 @@ VALUES
 ('walking_morphism', 'walking_pair'),
 ('walking_morphism', 'walking_commutative_square'),
 ('walking_morphism', 'walking_composable_pair'),
+('walking_morphism', 'walking_span'),
 ('walking_pair', 'walking_morphism'),
-('walking_pair', 'walking_fork');
+('walking_pair', 'walking_fork'),
+('walking_span', 'walking_morphism'),
+('walking_span', 'walking_pair');

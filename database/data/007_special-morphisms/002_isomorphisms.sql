@@ -306,6 +306,11 @@ VALUES
 	'This is trivial.'
 ),
 (
+	'walking_span',
+	'the three identities',
+	'This is trivial.'
+),
+(
 	'Z',
 	'natural isomorphisms',
 	'This is true for all functor categories.'

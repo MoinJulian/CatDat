@@ -296,6 +296,11 @@ VALUES
 	'This is trivial.'
 ),
 (
+	'walking_span',
+	'every morphism',
+	'It is a thin category.'
+),
+(
 	'Z',
 	'pointwise injective natural transformations',
 	'If $a : F \to G$ is a monomorphism of Z-functors, then the diagonal morphism $F \to F \times_G F$ is an isomorphism, so that for every $R$ the diagonal morphism $F(R) \to F(R) \times_{G(R)} F(R)$ is an isomorphism, i.e., $a(R) : F(R) \to G(R)$ is a monomorphism. This argument works for every functor category where the target has fiber products.'

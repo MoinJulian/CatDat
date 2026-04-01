@@ -271,6 +271,11 @@ VALUES
 	'Each $0 \to 1$ is an epimorphism since the only morphism starting at $1$ is the identity.'
 ),
 (
+	'walking_span',
+	'every morphism',
+	'It is a thin category.'
+),
+(
 	'Z',
 	'objectwise surjective natural transformations',
 	'This holds in every functor category $[\mathcal{C},\mathbf{Set}]$, here applied to the case that $\mathcal{C}$ has just one object.'

@@ -100,4 +100,14 @@ VALUES
 	Its name comes from the fact that a functor out of it is the same as a <a href="https://ncatlab.org/nlab/show/commutative+square" target="_blank">commutative square</a> in the target category. Notice that the category is isomorphic to the product category $\{0 \to 1\} \times \{0 \to 1\}$ of the <a href="/category/walking_morphism">walking morphism</a> with itself. Hence, most (but not all) properties are inherited from it. It is also isomorphic to the partial order of positive divisors of $6$.',
 	'https://ncatlab.org/nlab/show/commutative+square',
 	NULL
+),
+(
+	'walking_span',
+	'walking span',
+	'$\{1 \leftarrow 0 \rightarrow 2\}$',
+	'$0,1,2$',
+	'$0 \to 1$, $0 \to 2$, and the identities',
+	'The name of this category comes from the fact that a functor out of it is the same as a <a href="https://ncatlab.org/nlab/show/span" target="_blank">span</a> in the target category. It is isomorphic to the partial order of proper positive divisors of $6$.',
+	'https://ncatlab.org/nlab/show/span#the_walking_span',
+	NULL
 );
