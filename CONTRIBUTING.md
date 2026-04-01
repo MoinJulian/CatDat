@@ -56,10 +56,12 @@ If the local database is broken, just delete the `local.db` file and recreate it
 ### Example Commits
 
 - [Add category of Hausdorff spaces](https://github.com/ScriptRaccoon/CatDat/commit/390ed9c7996334138f8bc61c0b3f8e822003248a)
+- [Add two tiny categories](https://github.com/ScriptRaccoon/CatDat/commit/e5781d87bdc084a65cf0ec67c7efc5b3e29c4303)
 - [Add regular and coregular categories](https://github.com/ScriptRaccoon/CatDat/commit/e06f85fa13e5f8eeb42049880b5662be7fc36a50)
 
 ### Example Pull Requests
 
+- [CMon is not coregular](https://github.com/ScriptRaccoon/CatDat/pull/27/changes)
 - [Add "locally cartesian closed" property](https://github.com/ScriptRaccoon/CatDat/pull/3/changes)
 - [Add "locally strongly finitely presentable" as a property](https://github.com/ScriptRaccoon/CatDat/pull/21/changes)
 
