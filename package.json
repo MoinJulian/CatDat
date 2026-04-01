@@ -15,6 +15,7 @@
 		"lint": "prettier --check .",
 		"prepare": "husky",
 		"db:shell": "sqlite3 database/local.db",
+		"db:kill": "rm -rf database/local.db",
 		"db:migrate": "tsx scripts/migrate.ts",
 		"db:seed": "tsx scripts/seed.ts",
 		"db:deduce": "tsx scripts/deduce.ts",
