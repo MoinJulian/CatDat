@@ -106,10 +106,10 @@ export const load = async (event) => {
 		`,
 		// special morphisms
 		sql`
-			SELECT s.type, s.description, s.reason
-			FROM special_morphisms s
-			INNER JOIN special_morphism_types t ON t.type = s.type
-			WHERE s.category_id = ${id}
+			SELECT t.type, s.description, s.reason
+			FROM special_morphism_types t
+			LEFT JOIN special_morphisms s
+				ON s.type = t.type AND s.category_id = ${id}
 			ORDER BY t.position
 		`,
 		// undistinguishable categories
