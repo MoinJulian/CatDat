@@ -55,7 +55,7 @@ VALUES
 	'$\mathbf{Man}$',
 	'smooth manifolds',
 	'smooth maps',
-	'Here, a smooth manifold is assumed to be finite-dimensional, Hausdorff, second-countable, and without boundary.',
+	'Here, a smooth manifold is defined as a second-countable Hausdorff space with a smooth atlas. The dimension is locally constant, not necessarily constant.',
 	'https://ncatlab.org/nlab/show/Diff',
 	NULL
 );
