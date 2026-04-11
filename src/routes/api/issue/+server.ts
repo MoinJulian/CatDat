@@ -10,7 +10,6 @@ import {
 	GITHUB_REPO,
 	TITLE_MAX_LENGTH,
 	NAME_MAX_LENGTH,
-	ORIGIN,
 } from './config'
 import { flag_violation, is_blocked, has_profanity, rate_limit } from '$lib/server/redis'
 
