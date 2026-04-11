@@ -25,12 +25,6 @@ VALUES
 ),
 (
 	'Sch',
-	'well-powered',
-	TRUE,
-	'This is because every monomorphism of schemes is injective, so that the size of the underlying set of a subobject is bounded.'
-),
-(
-	'Sch',
 	'infinitary extensive',
 	TRUE,
 	'One uses the same proof as for locally ringed spaces, using that open subspaces of schemes are also schemes.'
