@@ -16,6 +16,23 @@ This option does not require any knowledge of GitHub or coding, making it access
 
 Create a [**pull request**](https://github.com/ScriptRaccoon/CatDat/pulls). You will need a GitHub account.
 
+### New to open source?
+
+If you have not contributed to an open source project before, start by forking the repository on GitHub. A _fork_ is your own copy of the project under your GitHub account. It lets you make changes safely without affecting the original repository. A _pull request_ is a way to propose changes to the project and have them reviewed before they are merged into the original repository.
+
+The typical process is:
+
+- Fork `ScriptRaccoon/CatDat` on GitHub.
+- Clone your fork to your computer.
+- Create a new branch for your change.
+- Apply your changes locally.
+- Push the changes to your fork.
+- Open a pull request from your fork back to the original repository.
+
+More info can be found in GitHub's help section:
+
+- [Collaborating with pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests)
+
 ### Local Setup
 
 You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
