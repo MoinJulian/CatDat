@@ -35,10 +35,6 @@ This pipeline updates the remote production database (`catdat`) via `pnpm db:upd
 
 In case only the application, not the database has been updated since the last production deployment, the pipeline [deploy-prod-skip-db](.github/workflows/deploy-prod-skip-db.yaml) can be used. The preview deployment is not required.
 
-## Backups
-
-Since the whole database is defined by static SQL files in this repository, a database backup is not strictly necessary. Still, there is an API endpoint `/api/db_dump` that dumps the SQLite database. It is secured with an API key. A Google Apps Script regularly fetches this API endpoint and saves the dump to Google Drive.
-
 ## Domains
 
 - Main domain: <https://catdat.app>
