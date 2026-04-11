@@ -39,12 +39,13 @@ This project is a **community effort**. Whether you're a mathematician spotting 
 
 You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
 
-1. Clone the repository with `git clone https://github.com/ScriptRaccoon/CatDat.git`.
-2. Change the directory with `cd CatDat`.
-3. Install the dependencies with `pnpm install`.
-4. Create the local `.env` file based on `.env.example`.
-5. Create or Update the local database with `pnpm db:update`.
-6. Start the local development server with `pnpm dev`.
+1. Fork `ScriptRaccoon/CatDat` on GitHub.
+2. Clone your fork with `git clone https://github.com/{your_username}/CatDat.git`.
+3. Change into the directory with `cd CatDat`.
+4. Install dependencies with `pnpm install`.
+5. Create a local `.env` file from `.env.example`.
+6. Create the local database with `pnpm db:update`.
+7. Start the local development server with `pnpm dev`.
 
 ## Tech Stack
 
