@@ -37,7 +37,7 @@ This project is a **community effort**. Whether you're a mathematician spotting 
 
 ## Local Setup
 
-You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
+You need to have [Git](https://git-scm.com/), [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
 
 1. Fork `ScriptRaccoon/CatDat` on GitHub.
 2. Clone your fork with `git clone https://github.com/{your_username}/CatDat.git`.

@@ -35,7 +35,7 @@ More info can be found in GitHub's help section:
 
 ### Local Setup
 
-You need to have [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
+You need to have [Git](https://git-scm.com/), [NodeJS](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
 
 1. Fork `ScriptRaccoon/CatDat` on GitHub.
 2. Clone your fork with `git clone https://github.com/{your_username}/CatDat.git`.
@@ -91,6 +91,7 @@ If any of these tests fail, adjust the data accordingly.
 - [Add "locally cartesian closed" property](https://github.com/ScriptRaccoon/CatDat/pull/3/changes)
 - [Add "locally strongly finitely presentable" as a property](https://github.com/ScriptRaccoon/CatDat/pull/21/changes)
 - [Add filtered and cofiltered categories](https://github.com/ScriptRaccoon/CatDat/pull/40/changes)
+- [Add the simplex category](https://github.com/ScriptRaccoon/CatDat/pull/81)
 
 ### Guidelines for Adding New Data
 
@@ -127,6 +128,21 @@ When contributing new data (categories, functors, properties, implications), ple
 - **Avoid repetition**: When the same argument is used repeatedly for various categories but cannot be added as an implication, create a lemma and refer to its page where needed.
 
 - **New Combinations**: Add new categories that satisfy combinations of satisfied properties and unsatisfied properties and not yet in the database. For example, you may add a category that is abelian but neither cocomplete nor essentially small (if it is not already present). The [page with missing data](https://catdat.app/missing) lists consistent combinations of the form $p \land \neg q$ that are not yet witnessed by a category in the database. The same remarks apply to functors.
+
+### Keep Pull Requests Focused
+
+Please keep each pull request limited in scope. Large pull requests are harder to review, more likely to conflict with ongoing changes on the main branch, and more difficult to merge cleanly.
+
+If you plan to contribute multiple additions or improvements, split the work into several smaller pull requests and submit them one at a time. A pull request cannot be too small, but it can certainly be too large.
+
+Examples of appropriate pull requests include:
+
+- adding a single category property and determining it for several categories in the database,
+- adding a single category together with its properties,
+- adding a single missing proof ([Example](https://github.com/ScriptRaccoon/CatDat/pull/27))
+- clarifying definitions, explanations, or documentation.
+
+As a practical guideline, avoid introducing more than four properties (or four categories) in a single pull request.
 
 ### Conventions
 
