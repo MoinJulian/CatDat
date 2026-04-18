@@ -28,6 +28,14 @@ on:
                 required: true
             ADMIN_PAGE_PASSWORD:
                 required: true
+            EMAIL_ADDRESS:
+                required: true
+            EMAIL_PASSWORD:
+                required: true
+            ENABLE_EMAILS:
+                required: true
+            APPROVAL_EMAIL:
+                required: true
 
 jobs:
     build-and-deploy:
