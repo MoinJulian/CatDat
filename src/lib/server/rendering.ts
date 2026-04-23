@@ -3,6 +3,12 @@ import { is_object } from './utils'
 import MarkdownIt from 'markdown-it'
 
 function render_formula(formula: string): string {
+	if (formula.includes('\\emptyset')) {
+		console.warn(
+			`Warning: Use \\varnothing instead of \\emptyset.\nFormula: ${formula}`,
+		)
+	}
+
 	return katex.renderToString(formula, {
 		throwOnError: true,
 	})
