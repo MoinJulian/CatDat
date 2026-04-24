@@ -119,7 +119,7 @@ When contributing new data (categories, functors, properties, implications), ple
 
 - **Positive Properties**: Do not add negated properties to the database. For example, do not add "large" as the negation of "small". Instead, add "small" to the list of unsatisfied properties for a category. Every registered property of categories should be satisfied at least by the trivial category. Similarly, every property of functors should be satisfied at least by the identity functor.
 
-- **Proofs for Claims**: Provide proofs for all new claims (satisfied properties, unsatisfied properties, implications, special morphisms). (We are currently working on filling in the existing ones.)
+- **Proofs for Claims**: Provide proofs for all new claims (satisfied properties, unsatisfied properties, implications, special morphisms).
 
 - **Atomic Implications**: Do not add implications that can be deduced from others. For example, do not add "complete => finite products" since it can be deduced from "complete => finitely complete" and "finitely complete => finite products". These are deduced automatically.
 
@@ -156,7 +156,3 @@ As a practical guideline, avoid introducing more than four properties (or four c
 ## Option 3: Create an Issue
 
 If you want to report a bug or submit a feature request, you can [**create an issue**](https://github.com/ScriptRaccoon/CatDat/issues/new). You will need a GitHub account for this.
-
-## Deprecated Options
-
-Before the Suggestion Form (Option 1) was introduced, you could use a [Google Form](https://forms.gle/8LBmro5FfSa43pD2A). It is deprecated and will be removed soon.
