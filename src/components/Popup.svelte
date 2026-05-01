@@ -70,7 +70,9 @@ an issue when clicking two reasons in a row. So it's a <div> then.
 				<Fa icon={faXmark} />
 			</button>
 		</header>
-		{@html popup_state.text}
+		<div class="html">
+			{@html popup_state.text}
+		</div>
 	</div>
 </div>
 
@@ -117,6 +119,10 @@ an issue when clicking two reasons in a row. So it's a <div> then.
 		opacity: 1;
 		transform: translateY(0);
 		pointer-events: initial;
+	}
+
+	.html {
+		overflow-y: scroll;
 	}
 
 	button {

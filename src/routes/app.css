@@ -296,3 +296,7 @@ label {
 .katex-display {
 	margin: 0.5em 0;
 }
+
+.katex {
+	white-space: nowrap;
+}
