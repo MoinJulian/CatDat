@@ -13,7 +13,7 @@
 
 <MetaData />
 
-<h2>A comprehensive database of categories and their properties</h2>
+<h2>A comprehensive and searchable database of categories and their properties</h2>
 
 <p>
 	<i>CatDat</i> provides a growing collection of
