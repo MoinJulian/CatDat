@@ -1,5 +1,6 @@
 <script lang="ts">
 	import MetaData from '$components/MetaData.svelte'
+	import { sanitizeHTML } from '$lib/client/sanitize_HTML.js'
 	import { get_property_url } from '$lib/commons/property.url'
 	import {
 		faCheck,
@@ -54,7 +55,7 @@
 			{#each compared_categories as category}
 				<th>
 					<a href="/category/{category.id}" aria-label={category.name}>
-						{@html category.notation}
+						<span use:sanitizeHTML={[category.notation]}></span>
 					</a>
 				</th>
 			{/each}

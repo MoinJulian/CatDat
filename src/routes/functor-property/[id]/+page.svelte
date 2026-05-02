@@ -3,6 +3,7 @@
 	import FunctorList from '$components/FunctorList.svelte'
 	import MetaData from '$components/MetaData.svelte'
 	import SuggestionForm from '$components/SuggestionForm.svelte'
+	import { sanitizeHTML } from '$lib/client/sanitize_HTML.js'
 	import { pluralize } from '$lib/client/utils'
 	import { get_property_url } from '$lib/commons/property.url'
 
@@ -16,7 +17,7 @@
 <h2>{property.id}</h2>
 
 <p>
-	{@html property.description}
+	<span use:sanitizeHTML={[property.description]}></span>
 
 	{#if property.invariant_under_equivalences === false}
 		Warning: This property is not invariant under equivalences.

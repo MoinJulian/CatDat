@@ -34,6 +34,7 @@ an issue when clicking two reasons in a row. So it's a <div> then.
 
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation'
+	import { sanitizeHTML } from '$lib/client/sanitize_HTML'
 
 	import { faXmark } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
@@ -70,9 +71,7 @@ an issue when clicking two reasons in a row. So it's a <div> then.
 				<Fa icon={faXmark} />
 			</button>
 		</header>
-		<div class="html">
-			{@html popup_state.text}
-		</div>
+		<div class="html" use:sanitizeHTML={[popup_state.text]}></div>
 	</div>
 </div>
 

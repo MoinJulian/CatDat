@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MetaData from '$components/MetaData.svelte'
 	import SuggestionForm from '$components/SuggestionForm.svelte'
+	import { sanitizeHTML } from '$lib/client/sanitize_HTML.js'
 	import { get_property_url } from '$lib/commons/property.url'
 	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 	import Fa from 'svelte-fa'
@@ -77,7 +78,7 @@
 {:else}
 	<p>
 		<strong>Reason:</strong>
-		{@html data.implication.reason}
+		<span use:sanitizeHTML={[data.implication.reason]}></span>
 	</p>
 {/if}
 

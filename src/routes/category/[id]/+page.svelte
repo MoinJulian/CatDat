@@ -1,15 +1,16 @@
 <script lang="ts">
+	import CategoryList from '$components/CategoryList.svelte'
+	import Chip from '$components/Chip.svelte'
+	import ChipGroup from '$components/ChipGroup.svelte'
 	import MetaData from '$components/MetaData.svelte'
 	import PropertyList from '$components/PropertyList.svelte'
-	import ChipGroup from '$components/ChipGroup.svelte'
-	import Chip from '$components/Chip.svelte'
-	import { category_detail_level } from '$lib/states/detail_level.svelte'
-	import TextWithReason from '$components/TextWithReason.svelte'
-	import { filter_by_tag, pluralize } from '$lib/client/utils'
-	import CategoryList from '$components/CategoryList.svelte'
-	import { faQuestion, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
-	import Fa from 'svelte-fa'
 	import SuggestionForm from '$components/SuggestionForm.svelte'
+	import TextWithReason from '$components/TextWithReason.svelte'
+	import { sanitizeHTML } from '$lib/client/sanitize_HTML.js'
+	import { filter_by_tag, pluralize } from '$lib/client/utils'
+	import { category_detail_level } from '$lib/states/detail_level.svelte'
+	import { faQuestion } from '@fortawesome/free-solid-svg-icons'
+	import Fa from 'svelte-fa'
 
 	let { data } = $props()
 
@@ -30,17 +31,17 @@
 	<ul class="with-margins">
 		<li>
 			<strong>notation:</strong>
-			{@html category.notation}
+			<span use:sanitizeHTML={[category.notation]}></span>
 		</li>
 
 		<li>
 			<strong>objects:</strong>
-			{@html category.objects}
+			<span use:sanitizeHTML={[category.objects]}></span>
 		</li>
 
 		<li>
 			<strong>morphisms:</strong>
-			{@html category.morphisms}
+			<span use:sanitizeHTML={[category.morphisms]}></span>
 		</li>
 
 		{#if data.related_categories.length}
@@ -48,7 +49,7 @@
 				<strong>Related categories:</strong>
 				{#each data.related_categories as { id, name, notation }, i}
 					<a href={`/category/${id}`} aria-label={name}>
-						{@html notation}
+						<span use:sanitizeHTML={[notation]}></span>
 					</a>{#if i < data.related_categories.length - 1}
 						,&nbsp;
 					{/if}
@@ -69,14 +70,15 @@
 					href="/category/{category.dual_category_id}"
 					aria-label={category.dual_category_name}
 				>
-					{@html category.dual_category_notation}
+					<span use:sanitizeHTML={[category.dual_category_notation ?? '']}
+					></span>
 				</a>
 			</li>
 		{/if}
 	</ul>
 
 	{#if category.description}
-		<p>{@html category.description}</p>
+		<p use:sanitizeHTML={[category.description]}></p>
 	{/if}
 </section>
 
@@ -158,7 +160,7 @@
 	{#if data.special_objects.length}
 		<ul class="with-margins">
 			{#each data.special_objects as obj}
-				<li>{obj.type}: {@html obj.description}</li>
+				<li>{obj.type}: <span use:sanitizeHTML={[obj.description]}></span></li>
 			{/each}
 		</ul>
 	{:else}
@@ -174,7 +176,7 @@
 			<li>
 				<TextWithReason reason={obj.reason}>
 					{#if obj.description}
-						{obj.type}: {@html obj.description}
+						{obj.type}: <span use:sanitizeHTML={[obj.description]}></span>
 					{:else}
 						{obj.type}: <Fa icon={faQuestion} scale={0.825} />
 					{/if}
@@ -204,7 +206,7 @@
 
 		<ul>
 			{#each data.comments as { id, comment } (id)}
-				<li class="hint">{@html comment}</li>
+				<li class="hint" use:sanitizeHTML={[comment]}></li>
 			{/each}
 		</ul>
 	</section>
