@@ -2,6 +2,7 @@
 	import MetaData from '$components/MetaData.svelte'
 	import PropertyList from '$components/PropertyList.svelte'
 	import SuggestionForm from '$components/SuggestionForm.svelte'
+	import { sanitizeHTML } from '$lib/client/sanitize_HTML.js'
 	import { category_detail_level } from '$lib/states/detail_level.svelte'
 	let { data } = $props()
 
@@ -31,7 +32,7 @@
 		{/if}
 	</ul>
 
-	<p>{@html functor.description}</p>
+	<p><span use:sanitizeHTML={[functor.description]}></span></p>
 </section>
 
 <!-- TODO: remove code duplication with category detail page -->

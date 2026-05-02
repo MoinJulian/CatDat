@@ -51,6 +51,7 @@
 		"@fortawesome/free-solid-svg-icons": "^7.2.0",
 		"@libsql/client": "^0.17.2",
 		"@octokit/app": "^16.1.2",
+		"dompurify": "^3.4.2",
 		"es6-crawler-detect": "^4.0.2",
 		"ioredis": "^5.10.1",
 		"katex": "^0.16.44",

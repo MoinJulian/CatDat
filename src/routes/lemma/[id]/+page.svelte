@@ -2,6 +2,7 @@
 	import CategoryList from '$components/CategoryList.svelte'
 	import MetaData from '$components/MetaData.svelte'
 	import SuggestionForm from '$components/SuggestionForm.svelte'
+	import { sanitizeHTML } from '$lib/client/sanitize_HTML.js'
 
 	let { data } = $props()
 </script>
@@ -12,11 +13,11 @@
 
 <h3>Claim</h3>
 
-{@html data.lemma.claim}
+<span use:sanitizeHTML={[data.lemma.claim]}></span>
 
 <h3>Proof</h3>
 
-{@html data.lemma.proof}
+<span use:sanitizeHTML={[data.lemma.proof]}></span>
 
 <h3>Usage</h3>
 

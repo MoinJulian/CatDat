@@ -1,7 +1,8 @@
 <script lang="ts">
-	import ChipGroup from './ChipGroup.svelte'
+	import { sanitizeHTML } from '$lib/client/sanitize_HTML'
+	import { get_comparison_score } from '$lib/client/utils'
 	import Chip from './Chip.svelte'
-	import { get_comparison_score, normalize_text } from '$lib/client/utils'
+	import ChipGroup from './ChipGroup.svelte'
 
 	type Props = {
 		title?: string
@@ -122,7 +123,7 @@
 
 <section aria-label={section_label}>
 	{#if title}
-		<p>{@html title}</p>
+		<p use:sanitizeHTML={[title]}></p>
 	{/if}
 
 	<form onsubmit={handle_submit}>

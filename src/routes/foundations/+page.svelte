@@ -1,5 +1,6 @@
 <script lang="ts">
 	import MetaData from '$components/MetaData.svelte'
+	import { sanitizeHTML } from '$lib/client/sanitize_HTML.js'
 	let { data } = $props()
 </script>
 
@@ -8,7 +9,7 @@
 	description="How to make sense of categories in set theory"
 />
 
-{@html data.content}
+<span use:sanitizeHTML={[data.content]}></span>
 
 <style>
 	:global(img) {
